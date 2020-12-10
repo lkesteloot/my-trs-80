@@ -30232,20 +30232,21 @@ class Main_Library {
         const form = document.createElement("form");
         form.classList.add("file-info-form");
         fileInfoDiv.append(form);
-        const nameLabel = document.createElement("label");
-        nameLabel.classList.add("name");
-        nameLabel.innerText = "Name";
-        form.append(nameLabel);
-        const nameInput = document.createElement("input");
-        nameInput.value = file.name;
-        nameLabel.append(nameInput);
-        const filenameLabel = document.createElement("label");
-        filenameLabel.classList.add("filename");
-        filenameLabel.innerText = "Filename";
-        form.append(filenameLabel);
-        const filenameInput = document.createElement("input");
-        filenameInput.value = file.filename;
-        filenameLabel.append(filenameInput);
+        const makeInputBox = (label, cssClass, initialValue, enabled) => {
+            const labelElement = document.createElement("label");
+            if (cssClass !== undefined) {
+                labelElement.classList.add(cssClass);
+            }
+            labelElement.innerText = label;
+            form.append(labelElement);
+            const inputElement = document.createElement("input");
+            inputElement.value = initialValue;
+            inputElement.disabled = !enabled;
+            labelElement.append(inputElement);
+            return inputElement;
+        };
+        const nameInput = makeInputBox("Name", "name", file.name, true);
+        const filenameInput = makeInputBox("Filename", "filename", file.filename, true);
         const noteLabel = document.createElement("label");
         noteLabel.classList.add("note");
         noteLabel.innerText = "Note";
@@ -30256,26 +30257,10 @@ class Main_Library {
         noteLabel.append(noteInput);
         const miscDiv = document.createElement("div");
         miscDiv.classList.add("misc");
-        {
-            // Misc pane.
-            const table = document.createElement("table");
-            miscDiv.append(table);
-            const entries = [
-                ["Size:", Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s")],
-                ["Type:", file.getType()],
-                ["Date added:", formatDate(file.dateAdded)],
-                ["Date last modified:", formatDate(file.dateModified)],
-            ];
-            for (const [key, value] of entries) {
-                const tr = document.createElement("tr");
-                table.append(tr);
-                const th = document.createElement("th");
-                th.innerText = key;
-                const td = document.createElement("td");
-                td.innerText = value;
-                tr.append(th, td);
-            }
-        }
+        makeInputBox("Type", undefined, file.getType(), false);
+        makeInputBox("Date added", undefined, formatDate(file.dateAdded), false);
+        makeInputBox("Size", undefined, Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s"), false);
+        makeInputBox("Date last modified", undefined, formatDate(file.dateModified), false);
         form.append(miscDiv);
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
