@@ -30036,6 +30036,9 @@ function isSupported() {
 // CONCATENATED MODULE: ./node_modules/firebase/analytics/dist/index.esm.js
 
 
+// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
+var teamten_ts_utils_dist = __webpack_require__(36);
+
 // CONCATENATED MODULE: ./src/Main.ts
 
 
@@ -30043,6 +30046,7 @@ function isSupported() {
 
 
 // These imports load individual services into the firebase namespace.
+
 
 
 
@@ -30061,6 +30065,13 @@ class Main_EmptyCassette extends dist["Cassette"] {
 let inputIdCounter = 1;
 function makeId() {
     return "_input" + inputIdCounter++;
+}
+/**
+ * Format a long date without a time.
+ */
+function formatDate(date) {
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString(undefined, options);
 }
 /**
  * Make a material design icon with the given name.
@@ -30110,7 +30121,7 @@ function makeButton(label, iconName, cssClass, clickCallback) {
 /**
  * Represents a file that the user owns.
  */
-class File {
+class Main_File {
     constructor(doc) {
         var _a;
         this.id = doc.id;
@@ -30124,6 +30135,17 @@ class File {
         this.binary = data.binary.toUint8Array();
         this.dateAdded = data.dateAdded.toDate();
         this.dateModified = data.dateModified.toDate();
+    }
+    /**
+     * Get the type of the file as a string.
+     */
+    getType() {
+        if (Object(trs80_base_dist["isCmdProgram"])(this.binary)) {
+            return "CMD program";
+        }
+        else {
+            return "Unknown type";
+        }
     }
     static compare(a, b) {
         if (a.name < b.name) {
@@ -30186,8 +30208,8 @@ class Main_Library {
         programsDiv.classList.add("programs");
         this.libraryNode.append(programsDiv);
         db.collection("files").get().then((querySnapshot) => {
-            const files = querySnapshot.docs.map(d => new File(d));
-            files.sort(File.compare);
+            const files = querySnapshot.docs.map(d => new Main_File(d));
+            files.sort(Main_File.compare);
             for (const file of files) {
                 this.addFile(programsDiv, file);
             }
@@ -30234,7 +30256,26 @@ class Main_Library {
         noteLabel.append(noteInput);
         const miscDiv = document.createElement("div");
         miscDiv.classList.add("misc");
-        miscDiv.innerText = "misc";
+        {
+            // Misc pane.
+            const table = document.createElement("table");
+            miscDiv.append(table);
+            const entries = [
+                ["Size:", Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s")],
+                ["Type:", file.getType()],
+                ["Date added:", formatDate(file.dateAdded)],
+                ["Date last modified:", formatDate(file.dateModified)],
+            ];
+            for (const [key, value] of entries) {
+                const tr = document.createElement("tr");
+                table.append(tr);
+                const th = document.createElement("th");
+                th.innerText = key;
+                const td = document.createElement("td");
+                td.innerText = value;
+                tr.append(th, td);
+            }
+        }
         form.append(miscDiv);
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
@@ -39534,6 +39575,144 @@ class Z80_Z80 {
 
 // CONCATENATED MODULE: ../trs80-emulator/node_modules/z80-emulator/dist/module/index.js
 
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(37), exports);
+__exportStar(__webpack_require__(38), exports);
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.concatByteArrays = exports.withCommas = exports.clearElement = void 0;
+/**
+ * Remove all children from element.
+ */
+function clearElement(e) {
+    while (e.firstChild) {
+        e.removeChild(e.firstChild);
+    }
+}
+exports.clearElement = clearElement;
+/**
+ * Generate the string version of a number, in base 10, with commas for thousands groups.
+ */
+function withCommas(n) {
+    let s = typeof n === "number" ? Math.round(n).toString(10) : n;
+    const negative = s.length >= 1 && s.charAt(0) === "-";
+    const firstDigit = negative ? 1 : 0;
+    if (s.length - firstDigit > 4) {
+        for (let i = s.length - 3; i > firstDigit; i -= 3) {
+            s = s.substring(0, i) + "," + s.substring(i);
+        }
+    }
+    return s;
+}
+exports.withCommas = withCommas;
+/**
+ * Concatenate a list of byte arrays into one.
+ */
+function concatByteArrays(samplesList) {
+    const length = samplesList.reduce((sum, samples) => sum + samples.length, 0);
+    const allBytes = new Uint8Array(length);
+    let offset = 0;
+    for (const samples of samplesList) {
+        allBytes.set(samples, offset);
+        offset += samples.length;
+    }
+    return allBytes;
+}
+exports.concatByteArrays = concatByteArrays;
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ByteReader = exports.EOF = void 0;
+exports.EOF = -1;
+/**
+ * Provides an API for reading through a byte array.
+ */
+class ByteReader {
+    constructor(b) {
+        this.b = b;
+        this.pos = 0;
+    }
+    /**
+     * Return the next byte, or EOF on end of array.
+     *
+     * @returns {number}
+     */
+    read() {
+        return this.pos < this.b.length ? this.b[this.pos++] : exports.EOF;
+    }
+    /**
+     * Return the byte address of the next byte to be read.
+     */
+    addr() {
+        return this.pos;
+    }
+    /**
+     * Reads a little-endian short (two-byte) integer.
+     *
+     * @param allowEofAfterFirstByte if true, an EOF after the first byte will result in just the
+     * first byte. Otherwise an EOF is returned.
+     * @returns the integer, or EOF on end of file.
+     */
+    readShort(allowEofAfterFirstByte) {
+        const low = this.read();
+        if (low === exports.EOF) {
+            return exports.EOF;
+        }
+        const high = this.read();
+        if (high === exports.EOF) {
+            return allowEofAfterFirstByte ? low : exports.EOF;
+        }
+        return low + high * 256;
+    }
+    /**
+     * Reads an ASCII string from the stream. If the returned string is shorter than "length", then we hit EOF.
+     */
+    readString(length) {
+        return new TextDecoder("ascii").decode(this.readBytes(length));
+    }
+    /**
+     * Returns the next "length" bytes. If the returned array is shorter than "length", then we hit EOF.
+     */
+    readBytes(length) {
+        const pos = this.pos;
+        length = Math.min(length, this.b.length - pos);
+        this.pos += length;
+        // So instead make a copy.
+        return this.b.slice(pos, pos + length);
+    }
+}
+exports.ByteReader = ByteReader;
 
 
 /***/ })
