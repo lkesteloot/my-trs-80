@@ -30508,31 +30508,77 @@ class FileBuilder {
 // EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
 var teamten_ts_utils_dist = __webpack_require__(17);
 
+// CONCATENATED MODULE: ./src/PageTab.ts
+class PageTab {
+    constructor(name) {
+        this.name = name;
+        this.element = document.createElement("div");
+        this.element.classList.add("tab-content");
+    }
+}
+
+// CONCATENATED MODULE: ./src/PageTabs.ts
+
+
+class PageTabs_PageTabs {
+    constructor(element) {
+        this.tabs = [];
+        this.activeIndex = 0;
+        this.containerElement = element;
+        this.containerElement.classList.add("page-tabs-container");
+        // Where we draw the page tabs themselves.
+        this.tabElement = document.createElement("div");
+        this.tabElement.classList.add("page-tabs");
+        this.containerElement.append(this.tabElement);
+        this.recreateTabs();
+    }
+    newTab(name) {
+        const tab = new PageTab(name);
+        this.tabs.push(tab);
+        this.containerElement.append(tab.element);
+        this.recreateTabs();
+        return tab;
+    }
+    recreateTabs() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
+        for (let index = 0; index < this.tabs.length; index++) {
+            const tab = this.tabs[index];
+            const tabDiv = document.createElement("div");
+            tabDiv.innerText = tab.name;
+            tabDiv.classList.toggle("page-tab-active", index === this.activeIndex);
+            tabDiv.addEventListener("click", () => {
+                this.setActiveTab(index);
+            });
+            this.tabElement.append(tabDiv);
+        }
+    }
+    setActiveTab(activeIndex) {
+        console.log(activeIndex);
+        this.activeIndex = activeIndex;
+        this.recreateTabs();
+        for (let index = 0; index < this.tabs.length; index++) {
+            const tab = this.tabs[index];
+            tab.element.classList.toggle("hidden", index !== this.activeIndex);
+        }
+    }
+}
+
 // CONCATENATED MODULE: ./src/FilePanel.ts
 
 
 
+
 /**
- * Panel to explore a file.
+ * Handles the file info tab in the file panel.
  */
-class FilePanel_FilePanel extends Panel_Panel {
-    constructor(context, file) {
-        super(context);
-        this.file = file;
-        this.element.classList.add("file-panel");
-        const header = document.createElement("h1");
-        const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
-        backButton.classList.add("back-button");
-        header.append(backButton);
-        const headerTextNode = document.createElement("span");
-        headerTextNode.innerText = file.name;
-        header.append(headerTextNode);
-        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        this.element.append(header);
+class FilePanel_FileInfoTab {
+    constructor(filePanel, pageTabs) {
+        this.filePanel = filePanel;
+        const infoTab = pageTabs.newTab("File Info");
         // Form for editing file info.
         const form = document.createElement("form");
         form.classList.add("file-panel-form");
-        this.element.append(form);
+        infoTab.element.append(form);
         const makeInputBox = (label, cssClass, enabled) => {
             const labelElement = document.createElement("label");
             if (cssClass !== undefined) {
@@ -30571,16 +30617,16 @@ class FilePanel_FilePanel extends Panel_Panel {
         form.append(screenshotsDiv);
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        this.element.append(actionBar);
+        infoTab.element.append(actionBar);
         const runButton = makeButton("Run", "play_arrow", "play-button", () => {
-            this.runProgram(file);
+            this.filePanel.runProgram(this.filePanel.file);
         });
         actionBar.append(runButton);
         const deleteButton = makeButton("Delete File", "delete", "delete-button", () => {
-            this.context.db.collection("files").doc(this.file.id).delete()
+            this.filePanel.context.db.collection("files").doc(this.filePanel.file.id).delete()
                 .then(() => {
-                this.context.library.removeFile(this.file);
-                this.context.panelManager.popPanel();
+                this.filePanel.context.library.removeFile(this.filePanel.file);
+                this.filePanel.context.panelManager.popPanel();
             })
                 .catch(error => {
                 // TODO.
@@ -30598,10 +30644,10 @@ class FilePanel_FilePanel extends Panel_Panel {
             let name = this.fileFromUi().name;
             if (name === "") {
                 // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
-                headerTextNode.innerHTML = "&nbsp;";
+                this.filePanel.headerTextNode.innerHTML = "&nbsp;";
             }
             else {
-                headerTextNode.innerText = name;
+                this.filePanel.headerTextNode.innerText = name;
             }
         });
         this.revertButton.addEventListener("click", () => {
@@ -30613,7 +30659,7 @@ class FilePanel_FilePanel extends Panel_Panel {
             // Disable right away so it's not clicked again.
             this.saveButton.disabled = true;
             // TODO turn save button into progress.
-            this.context.db.collection("files").doc(file.id).update({
+            this.filePanel.context.db.collection("files").doc(this.filePanel.file.id).update({
                 name: newFile.name,
                 filename: newFile.filename,
                 note: newFile.note,
@@ -30625,8 +30671,8 @@ class FilePanel_FilePanel extends Panel_Panel {
                 setTimeout(() => {
                     this.saveButton.classList.remove("success");
                 }, 1000);
-                this.file = newFile;
-                this.context.library.modifyFile(newFile);
+                this.filePanel.file = newFile;
+                this.filePanel.context.library.modifyFile(newFile);
                 this.updateUi();
             })
                 .catch(error => {
@@ -30643,23 +30689,25 @@ class FilePanel_FilePanel extends Panel_Panel {
      * Update UI after a change to file.
      */
     updateUi() {
-        this.nameInput.value = this.file.name;
-        this.filenameInput.value = this.file.filename;
-        this.noteInput.value = this.file.note;
-        this.typeInput.value = this.file.getType();
-        this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(this.file.binary.length) + " byte" + (this.file.binary.length === 1 ? "" : "s");
-        this.dateAddedInput.value = formatDate(this.file.dateAdded);
-        this.dateModifiedInput.value = formatDate(this.file.dateModified);
+        const file = this.filePanel.file;
+        this.nameInput.value = file.name;
+        this.filenameInput.value = file.filename;
+        this.noteInput.value = file.note;
+        this.typeInput.value = file.getType();
+        this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
+        this.dateAddedInput.value = formatDate(file.dateAdded);
+        this.dateModifiedInput.value = formatDate(file.dateModified);
         this.updateButtonStatus();
     }
     /**
      * Update the save/restore buttons' enabled status based on input fields.
      */
     updateButtonStatus() {
+        const file = this.filePanel.file;
         const newFile = this.fileFromUi();
-        const isSame = newFile.name === this.file.name &&
-            newFile.filename === this.file.filename &&
-            newFile.note === this.file.note;
+        const isSame = newFile.name === file.name &&
+            newFile.filename === file.filename &&
+            newFile.note === file.note;
         const isValid = newFile.name.length > 0 &&
             newFile.filename.length > 0;
         const isDisabled = isSame || !isValid;
@@ -30670,11 +30718,37 @@ class FilePanel_FilePanel extends Panel_Panel {
      * Make a new File object based on the user's inputs.
      */
     fileFromUi() {
-        return this.file.builder()
+        return this.filePanel.file.builder()
             .withName(this.nameInput.value.trim())
             .withFilename(this.filenameInput.value.trim())
             .withNote(this.noteInput.value.trim())
             .build();
+    }
+}
+/**
+ * Panel to explore a file.
+ */
+class FilePanel_FilePanel extends Panel_Panel {
+    constructor(context, file) {
+        super(context);
+        this.file = file;
+        this.element.classList.add("file-panel");
+        const header = document.createElement("h1");
+        const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
+        backButton.classList.add("back-button");
+        header.append(backButton);
+        this.headerTextNode = document.createElement("span");
+        this.headerTextNode.innerText = file.name;
+        header.append(this.headerTextNode);
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
+        this.element.append(header);
+        const content = document.createElement("div");
+        content.classList.add("panel-content");
+        this.element.append(content);
+        const pageTabs = new PageTabs_PageTabs(content);
+        this.fileInfoTab = new FilePanel_FileInfoTab(this, pageTabs);
+        // pageTabs.newTab("Hexdump");
+        // pageTabs.newTab("CMD File");
     }
 }
 
@@ -31000,7 +31074,6 @@ function configureRoutes() {
     const body = document.querySelector("body");
     const router = new navigo_min_default.a(null, true, "#!");
     const s = createHome(router);
-    s.classList.add("screen");
     body.append(s);
     router.resolve();
 }
