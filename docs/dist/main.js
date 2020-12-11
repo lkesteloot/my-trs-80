@@ -30198,7 +30198,7 @@ function makeIcon(name) {
  */
 function makeIconButton(icon, title, clickCallback) {
     const button = document.createElement("div");
-    button.classList.add("button");
+    button.classList.add("icon-button");
     button.title = title;
     button.append(icon);
     button.addEventListener("click", clickCallback);
