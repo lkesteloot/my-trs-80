@@ -30577,7 +30577,14 @@ class FilePanel_FilePanel extends Panel_Panel {
         });
         actionBar.append(runButton);
         const deleteButton = makeButton("Delete File", "delete", "delete-button", () => {
-            // TODO.
+            this.context.db.collection("files").doc(this.file.id).delete()
+                .then(() => {
+                this.context.library.removeFile(this.file);
+                this.context.panelManager.popPanel();
+            })
+                .catch(error => {
+                // TODO.
+            });
         });
         actionBar.append(deleteButton);
         this.revertButton = makeButton("Revert", "undo", "revert-button", undefined);
@@ -30791,6 +30798,9 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
         this.element.append(this.filesDiv);
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
     }
+    /**
+     * Handle change to library files.
+     */
     onLibraryEvent(event) {
         if (event instanceof LibraryAddEvent) {
             this.addFile(event.newFile);
