@@ -30511,17 +30511,19 @@ class FilePanel_FilePanel extends Panel_Panel {
     constructor(context, file) {
         super(context);
         this.file = file;
-        this.element.classList.add("file-info");
+        this.element.classList.add("file-panel");
         const header = document.createElement("h1");
         const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
         backButton.classList.add("back-button");
         header.append(backButton);
+        const headerTextNode = document.createElement("span");
+        headerTextNode.innerText = file.name;
+        header.append(headerTextNode);
         header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        header.append(document.createTextNode(file.name));
         this.element.append(header);
         // Form for editing file info.
         const form = document.createElement("form");
-        form.classList.add("file-info-form");
+        form.classList.add("file-panel-form");
         this.element.append(form);
         const makeInputBox = (label, cssClass, enabled) => {
             const labelElement = document.createElement("label");
@@ -30577,6 +30579,16 @@ class FilePanel_FilePanel extends Panel_Panel {
         for (const input of [this.nameInput, this.filenameInput, this.noteInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
         }
+        this.nameInput.addEventListener("input", () => {
+            let name = this.fileFromUi().name;
+            if (name === "") {
+                // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
+                headerTextNode.innerHTML = "&nbsp;";
+            }
+            else {
+                headerTextNode.innerText = name;
+            }
+        });
         this.revertButton.addEventListener("click", () => {
             this.updateUi();
         });
@@ -30655,7 +30667,7 @@ class FilePanel_FilePanel extends Panel_Panel {
 class LibraryPanel_LibraryPanel extends Panel_Panel {
     constructor(context) {
         super(context);
-        this.element.classList.add("library");
+        this.element.classList.add("library-panel");
         const header = document.createElement("h1");
         header.innerText = "Library";
         header.append(makeCloseIconButton(() => this.context.panelManager.close()));
@@ -30679,29 +30691,31 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
         const programDiv = document.createElement("div");
         programDiv.classList.add("program");
         parent.append(programDiv);
+        const infoDiv = document.createElement("div");
+        programDiv.append(infoDiv);
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        nameDiv.innerText = file.name;
+        infoDiv.append(nameDiv);
+        const filenameDiv = document.createElement("div");
+        filenameDiv.classList.add("filename");
+        filenameDiv.innerText = file.filename;
+        infoDiv.append(filenameDiv);
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("note");
+        noteDiv.innerText = file.note;
+        infoDiv.append(noteDiv);
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
+            this.runProgram(file);
+        });
+        playButton.classList.add("play-button");
+        programDiv.append(playButton);
         const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
             const filePanel = new FilePanel_FilePanel(this.context, file);
             this.context.panelManager.pushPanel(filePanel);
         });
         infoButton.classList.add("info-button");
         programDiv.append(infoButton);
-        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
-            this.runProgram(file);
-        });
-        playButton.classList.add("play-button");
-        programDiv.append(playButton);
-        const nameDiv = document.createElement("div");
-        nameDiv.classList.add("name");
-        nameDiv.innerText = file.name;
-        programDiv.append(nameDiv);
-        const filenameDiv = document.createElement("div");
-        filenameDiv.classList.add("filename");
-        filenameDiv.innerText = file.filename;
-        programDiv.append(filenameDiv);
-        const noteDiv = document.createElement("div");
-        noteDiv.classList.add("note");
-        noteDiv.innerText = file.note;
-        programDiv.append(noteDiv);
     }
 }
 
@@ -30770,6 +30784,9 @@ function addProgramToFirestore(db, name, url, note) {
 function createNavbar(openLibrary) {
     const navbar = document.createElement("div");
     navbar.classList.add("navbar");
+    const title = document.createElement("span");
+    title.textContent = "My TRS-80";
+    navbar.append(title);
     const libraryButton = makeIconButton(makeIcon("folder_open"), "Open library (Ctrl-L)", openLibrary);
     navbar.append(libraryButton);
     const themeButton = makeIconButton(makeIcon("brightness_medium"), "Toggle theme", () => {
