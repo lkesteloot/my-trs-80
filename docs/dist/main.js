@@ -30611,6 +30611,7 @@ class FilePanel_FilePanel extends Panel_Panel {
                     this.saveButton.classList.remove("success");
                 }, 1000);
                 this.file = newFile;
+                this.context.library.modifyFile(newFile);
                 this.updateUi();
             })
                 .catch(error => {
@@ -30781,8 +30782,17 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
     onLibraryEvent(event) {
         if (event instanceof LibraryAddEvent) {
             this.addFile(event.newFile);
+            this.sortFiles();
         }
-        this.sortFiles();
+        if (event instanceof LibraryModifyEvent) {
+            // Probably not worth modifying in-place.
+            this.removeFile(event.oldFile.id);
+            this.addFile(event.newFile);
+            this.sortFiles();
+        }
+        if (event instanceof LibraryRemoveEvent) {
+            this.removeFile(event.oldFile.id);
+        }
     }
     /**
      * Add a file to the list of files in the library.
@@ -30818,6 +30828,29 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
         infoButton.classList.add("info-button");
         fileDiv.append(infoButton);
     }
+    /**
+     * Remove a file from the UI by its ID.
+     */
+    removeFile(fileId) {
+        const element = this.getFileElementById(fileId);
+        if (element !== undefined) {
+            element.remove();
+        }
+        else {
+            console.error("removeFile(): No element with file ID " + fileId);
+        }
+    }
+    /**
+     * Return an element for a file given its ID, or undefined if not found.
+     */
+    getFileElementById(fileId) {
+        let selectors = ":scope > [" + FILE_ID_ATTR + "=\"" + fileId + "\"]";
+        const element = this.filesDiv.querySelector(selectors);
+        return element === null ? undefined : element;
+    }
+    /**
+     * Sort files already displayed.
+     */
     sortFiles() {
         // Sort existing files.
         const fileElements = [];
