@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 34);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -3151,7 +3151,7 @@ function indicator(i) {
 
 
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12)))
 
 /***/ }),
 /* 4 */
@@ -4576,7 +4576,7 @@ var esm = {
 /* unused harmony default export */ var _unused_webpack_default_export = (esm);
 
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12)))
 
 /***/ }),
 /* 5 */
@@ -5205,18 +5205,18 @@ var ComponentContainer = /** @class */ (function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Cassette_1 = __webpack_require__(17);
+var Cassette_1 = __webpack_require__(18);
 Object.defineProperty(exports, "Cassette", { enumerable: true, get: function () { return Cassette_1.Cassette; } });
-var Trs80_1 = __webpack_require__(18);
+var Trs80_1 = __webpack_require__(19);
 Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
 var CanvasScreen_1 = __webpack_require__(13);
 Object.defineProperty(exports, "CanvasScreen", { enumerable: true, get: function () { return CanvasScreen_1.CanvasScreen; } });
-var ControlPanel_1 = __webpack_require__(29);
+var ControlPanel_1 = __webpack_require__(30);
 Object.defineProperty(exports, "ControlPanel", { enumerable: true, get: function () { return ControlPanel_1.ControlPanel; } });
 var SettingsPanel_1 = __webpack_require__(14);
 Object.defineProperty(exports, "SettingsPanel", { enumerable: true, get: function () { return SettingsPanel_1.SettingsPanel; } });
 Object.defineProperty(exports, "PanelType", { enumerable: true, get: function () { return SettingsPanel_1.PanelType; } });
-var ProgressBar_1 = __webpack_require__(30);
+var ProgressBar_1 = __webpack_require__(31);
 Object.defineProperty(exports, "ProgressBar", { enumerable: true, get: function () { return ProgressBar_1.ProgressBar; } });
 
 
@@ -5236,6 +5236,27 @@ exports.SCREEN_END = 16 * 1024;
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(24), exports);
+__exportStar(__webpack_require__(27), exports);
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5395,7 +5416,7 @@ exports.Config = Config;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5411,12 +5432,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(24), exports);
 __exportStar(__webpack_require__(25), exports);
+__exportStar(__webpack_require__(26), exports);
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 var g;
@@ -5442,27 +5463,6 @@ module.exports = g;
 
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(23), exports);
-__exportStar(__webpack_require__(26), exports);
-
-
-/***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5470,11 +5470,11 @@ __exportStar(__webpack_require__(26), exports);
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CanvasScreen = exports.phosphorToRgb = exports.configureStylesheet = exports.BLACK_BACKGROUND = exports.AUTHENTIC_BACKGROUND = void 0;
-const Trs80Screen_1 = __webpack_require__(27);
+const Trs80Screen_1 = __webpack_require__(28);
 const Utils_1 = __webpack_require__(8);
-const Fonts_1 = __webpack_require__(28);
-const Config_1 = __webpack_require__(9);
-const teamten_ts_utils_1 = __webpack_require__(10);
+const Fonts_1 = __webpack_require__(29);
+const Config_1 = __webpack_require__(10);
+const teamten_ts_utils_1 = __webpack_require__(11);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-canvas-screen";
 const gBlackBackgroundClass = gCssPrefix + "-black-background";
 exports.AUTHENTIC_BACKGROUND = "#334843";
@@ -5693,7 +5693,7 @@ exports.CanvasScreen = CanvasScreen;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SettingsPanel = exports.PanelType = void 0;
 const Utils_1 = __webpack_require__(8);
-const Config_1 = __webpack_require__(9);
+const Config_1 = __webpack_require__(10);
 const CanvasScreen_1 = __webpack_require__(13);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-settings-panel";
 const gScreenNodeCssClass = gCssPrefix + "-screen-node";
@@ -6530,6 +6530,27 @@ exports.SettingsPanel = SettingsPanel;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(35), exports);
+__exportStar(__webpack_require__(36), exports);
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cassette = void 0;
 /**
@@ -6567,7 +6588,7 @@ exports.Cassette = Cassette;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6575,14 +6596,14 @@ exports.Cassette = Cassette;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Trs80 = void 0;
 const z80_base_1 = __webpack_require__(0);
-const z80_emulator_1 = __webpack_require__(35);
-const Keyboard_1 = __webpack_require__(19);
-const Model1Level1Rom_1 = __webpack_require__(20);
-const Model1Level2Rom_1 = __webpack_require__(21);
-const Model3Rom_1 = __webpack_require__(22);
+const z80_emulator_1 = __webpack_require__(38);
+const Keyboard_1 = __webpack_require__(20);
+const Model1Level1Rom_1 = __webpack_require__(21);
+const Model1Level2Rom_1 = __webpack_require__(22);
+const Model3Rom_1 = __webpack_require__(23);
 const Utils_1 = __webpack_require__(8);
-const Config_1 = __webpack_require__(9);
-const trs80_base_1 = __webpack_require__(12);
+const Config_1 = __webpack_require__(10);
+const trs80_base_1 = __webpack_require__(9);
 // IRQs
 const M1_TIMER_IRQ_MASK = 0x80;
 const M3_CASSETTE_RISE_IRQ_MASK = 0x01;
@@ -7391,7 +7412,7 @@ exports.Trs80 = Trs80;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7660,7 +7681,7 @@ exports.Keyboard = Keyboard;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7673,7 +7694,7 @@ exports.model1Level1Rom = `
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7686,7 +7707,7 @@ exports.model1Level2Rom = `
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7699,7 +7720,7 @@ exports.model3Rom = `
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7707,7 +7728,7 @@ exports.model3Rom = `
 // Tools for decoding Basic programs.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fromTokenized = exports.wrapBasic = exports.BasicElement = exports.ElementType = exports.getToken = void 0;
-const teamten_ts_utils_1 = __webpack_require__(10);
+const teamten_ts_utils_1 = __webpack_require__(11);
 const BASIC_HEADER_BYTE = 0xD3;
 // Starts at 0x80.
 const TOKENS = [
@@ -7944,7 +7965,7 @@ exports.fromTokenized = fromTokenized;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7992,7 +8013,7 @@ exports.concatByteArrays = concatByteArrays;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8061,7 +8082,7 @@ exports.ByteReader = ByteReader;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8073,7 +8094,7 @@ exports.ByteReader = ByteReader;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CmdProgram = exports.isCmdProgram = exports.CmdLoadModuleHeaderChunk = exports.CmdTransferAddressChunk = exports.CmdLoadBlockChunk = exports.CmdChunk = exports.CMD_MAX_TYPE = exports.CMD_LOAD_MODULE_HEADER = exports.CMD_TRANSFER_ADDRESS = exports.CMD_LOAD_BLOCK = void 0;
-const teamten_ts_utils_1 = __webpack_require__(10);
+const teamten_ts_utils_1 = __webpack_require__(11);
 // Chunk types.
 exports.CMD_LOAD_BLOCK = 0x01;
 exports.CMD_TRANSFER_ADDRESS = 0x02;
@@ -8210,7 +8231,7 @@ exports.CmdProgram = CmdProgram;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8317,7 +8338,7 @@ exports.Trs80Screen = Trs80Screen;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8976,7 +8997,7 @@ exports.MODEL3_ALT_FONT = new Font(GLYPH_CG4, 8, 12, [0, 64, -1, 192]);
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9172,7 +9193,7 @@ exports.ControlPanel = ControlPanel;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9259,7 +9280,7 @@ exports.ProgressBar = ProgressBar;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9699,10 +9720,10 @@ Z(a,"OAuthProvider",Qg,[V("providerId")]);Z(a,"SAMLAuthProvider",Pg,[V("provider
 instanceFactory:function(b){b=b.getProvider("auth").getImmediate();return{getUid:q(b.getUid,b),getToken:q(b.mc,b),addAuthTokenListener:q(b.cc,b),removeAuthTokenListener:q(b.Oc,b)}},multipleInstances:!1,instantiationMode:"LAZY",type:"PRIVATE"});_firebase_app__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].registerVersion("@firebase/auth","0.15.3");_firebase_app__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].INTERNAL.extendNamespace({User:Jm})}else throw Error("Cannot find the firebase namespace; be sure to include firebase-app.js before this library.");})();}).apply(typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {});
 
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12)))
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27197,10 +27218,10 @@ xc(_firebase_app__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]);
 
 
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(34)))
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -27390,7 +27411,124 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 34 */
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.concatByteArrays = exports.withCommas = exports.clearElement = void 0;
+/**
+ * Remove all children from element.
+ */
+function clearElement(e) {
+    while (e.firstChild) {
+        e.removeChild(e.firstChild);
+    }
+}
+exports.clearElement = clearElement;
+/**
+ * Generate the string version of a number, in base 10, with commas for thousands groups.
+ */
+function withCommas(n) {
+    let s = typeof n === "number" ? Math.round(n).toString(10) : n;
+    const negative = s.length >= 1 && s.charAt(0) === "-";
+    const firstDigit = negative ? 1 : 0;
+    if (s.length - firstDigit > 4) {
+        for (let i = s.length - 3; i > firstDigit; i -= 3) {
+            s = s.substring(0, i) + "," + s.substring(i);
+        }
+    }
+    return s;
+}
+exports.withCommas = withCommas;
+/**
+ * Concatenate a list of byte arrays into one.
+ */
+function concatByteArrays(samplesList) {
+    const length = samplesList.reduce((sum, samples) => sum + samples.length, 0);
+    const allBytes = new Uint8Array(length);
+    let offset = 0;
+    for (const samples of samplesList) {
+        allBytes.set(samples, offset);
+        offset += samples.length;
+    }
+    return allBytes;
+}
+exports.concatByteArrays = concatByteArrays;
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ByteReader = exports.EOF = void 0;
+exports.EOF = -1;
+/**
+ * Provides an API for reading through a byte array.
+ */
+class ByteReader {
+    constructor(b) {
+        this.b = b;
+        this.pos = 0;
+    }
+    /**
+     * Return the next byte, or EOF on end of array.
+     *
+     * @returns {number}
+     */
+    read() {
+        return this.pos < this.b.length ? this.b[this.pos++] : exports.EOF;
+    }
+    /**
+     * Return the byte address of the next byte to be read.
+     */
+    addr() {
+        return this.pos;
+    }
+    /**
+     * Reads a little-endian short (two-byte) integer.
+     *
+     * @param allowEofAfterFirstByte if true, an EOF after the first byte will result in just the
+     * first byte. Otherwise an EOF is returned.
+     * @returns the integer, or EOF on end of file.
+     */
+    readShort(allowEofAfterFirstByte) {
+        const low = this.read();
+        if (low === exports.EOF) {
+            return exports.EOF;
+        }
+        const high = this.read();
+        if (high === exports.EOF) {
+            return allowEofAfterFirstByte ? low : exports.EOF;
+        }
+        return low + high * 256;
+    }
+    /**
+     * Reads an ASCII string from the stream. If the returned string is shorter than "length", then we hit EOF.
+     */
+    readString(length) {
+        return new TextDecoder("ascii").decode(this.readBytes(length));
+    }
+    /**
+     * Returns the next "length" bytes. If the returned array is shorter than "length", then we hit EOF.
+     */
+    readBytes(length) {
+        const pos = this.pos;
+        length = Math.min(length, this.b.length - pos);
+        this.pos += length;
+        // So instead make a copy.
+        return this.b.slice(pos, pos + length);
+    }
+}
+exports.ByteReader = ByteReader;
+
+
+/***/ }),
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27422,9 +27560,6 @@ function createHome(router) {
 // EXTERNAL MODULE: ../trs80-emulator/dist/index.js
 var dist = __webpack_require__(7);
 
-// EXTERNAL MODULE: ../trs80-base/dist/index.js
-var trs80_base_dist = __webpack_require__(12);
-
 // EXTERNAL MODULE: ./node_modules/@firebase/app/dist/index.esm.js
 var index_esm = __webpack_require__(2);
 
@@ -27454,13 +27589,13 @@ var version = "8.1.2";
 index_esm["a" /* default */].registerVersion(index_esm_name, version, 'app');
 
 // EXTERNAL MODULE: ./node_modules/@firebase/auth/dist/auth.esm.js
-var auth_esm = __webpack_require__(31);
+var auth_esm = __webpack_require__(32);
 
 // CONCATENATED MODULE: ./node_modules/firebase/auth/dist/index.esm.js
 
 
 // EXTERNAL MODULE: ./node_modules/@firebase/firestore/dist/index.esm.js
-var dist_index_esm = __webpack_require__(32);
+var dist_index_esm = __webpack_require__(33);
 
 // CONCATENATED MODULE: ./node_modules/firebase/firestore/dist/index.esm.js
 
@@ -30036,36 +30171,8 @@ function isSupported() {
 // CONCATENATED MODULE: ./node_modules/firebase/analytics/dist/index.esm.js
 
 
-// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
-var teamten_ts_utils_dist = __webpack_require__(36);
-
-// CONCATENATED MODULE: ./src/Main.ts
-
-
-
-
-
-// These imports load individual services into the firebase namespace.
-
-
-
-
+// CONCATENATED MODULE: ./src/Utils.ts
 const MATERIAL_ICONS_CLASS = "material-icons-round";
-function configureRoutes() {
-    const body = document.querySelector("body");
-    const router = new navigo_min_default.a(null, true, "#!");
-    const s = createHome(router);
-    s.classList.add("screen");
-    body.append(s);
-    router.resolve();
-}
-class Main_EmptyCassette extends dist["Cassette"] {
-}
-// Fresh IDs for inputs so that we can point labels at them. TODO delete?
-let inputIdCounter = 1;
-function makeId() {
-    return "_input" + inputIdCounter++;
-}
 /**
  * Format a long date without a time.
  */
@@ -30120,10 +30227,157 @@ function makeButton(label, iconName, cssClass, clickCallback) {
     }
     return button;
 }
+
+// EXTERNAL MODULE: ./node_modules/strongly-typed-events/dist/index.js
+var strongly_typed_events_dist = __webpack_require__(41);
+
+// CONCATENATED MODULE: ./src/PanelManager.ts
+
+/**
+ * Manages a stack of displayed panels.
+ */
+class PanelManager_PanelManager {
+    constructor() {
+        this.panels = [];
+        this.onOpenClose = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.isOpen = false;
+        const body = document.querySelector("body");
+        this.backgroundNode = document.createElement("div");
+        this.backgroundNode.classList.add("popup-background"); // TODO rename CSS popup->panel
+        this.backgroundNode.addEventListener("click", e => {
+            if (e.target === this.backgroundNode) {
+                this.close();
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        body.append(this.backgroundNode);
+        this.positioningNode = document.createElement("div");
+        this.positioningNode.classList.add("popup-positioning");
+        this.backgroundNode.append(this.positioningNode);
+        // Handler for the ESC key.
+        this.escListener = (e) => {
+            if (e.key === "Escape") {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            }
+        };
+    }
+    /**
+     * Push a new panel and animate it on-screen.
+     */
+    pushPanel(panel) {
+        this.panels.push(panel);
+        this.positioningNode.append(panel.element);
+        if (this.panels.length === 1) {
+            // First panel, position immediately.
+            this.positionPanels(this.panels.length - 1);
+        }
+        else {
+            // Position it instantly at its off-screen position.
+            this.positionPanels(this.panels.length - 2);
+            // Wait for it to be laid out, then position it on-screen so the animation will be used.
+            setTimeout(() => {
+                this.positionPanels(this.panels.length - 1);
+            }, 0);
+        }
+    }
+    /**
+     * Start the animation to pop the most screen panel.
+     */
+    popPanel() {
+        // Slide it off-screen.
+        this.positionPanels(this.panels.length - 2);
+        // Remove it from the DOM.
+        const panel = this.panels.pop();
+        setTimeout(() => {
+            if (panel !== undefined) {
+                panel.element.remove();
+            }
+        }, 1000);
+    }
+    /**
+     * Move the panels to their position so that "active" will be on-screen.
+     */
+    positionPanels(active) {
+        for (let i = 0; i < this.panels.length; i++) {
+            const screen = this.panels[i];
+            const offset = (i - active) * 100;
+            screen.element.style.left = offset + "vw";
+            screen.element.style.right = -offset + "vw";
+        }
+    }
+    /**
+     * Show the panels. Shows them where they were last.
+     */
+    open() {
+        if (!this.isOpen) {
+            this.isOpen = true;
+            document.addEventListener("keydown", this.escListener);
+            this.onOpenClose.dispatch(true);
+            this.backgroundNode.classList.add("popup-shown");
+        }
+    }
+    /**
+     * Hides the panels.
+     */
+    close() {
+        if (this.isOpen) {
+            this.isOpen = false;
+            document.removeEventListener("keydown", this.escListener);
+            this.onOpenClose.dispatch(false);
+            this.backgroundNode.classList.remove("popup-shown");
+        }
+    }
+    /**
+     * Toggle the visibility of the panels.
+     */
+    toggle() {
+        if (this.isOpen) {
+            this.close();
+        }
+        else {
+            this.open();
+        }
+    }
+}
+
+// EXTERNAL MODULE: ../trs80-base/dist/index.js
+var trs80_base_dist = __webpack_require__(9);
+
+// CONCATENATED MODULE: ./src/Panel.ts
+
+/**
+ * Base class for panels.
+ */
+class Panel_Panel {
+    constructor(context) {
+        this.context = context;
+        this.element = document.createElement("div");
+        this.element.classList.add("popup-content");
+    }
+    /**
+     * Run a program and close the panel.
+     */
+    runProgram(file) {
+        const cmdProgram = new trs80_base_dist["CmdProgram"](file.binary);
+        if (cmdProgram.error !== undefined) {
+            // TODO
+        }
+        else {
+            this.context.trs80.runCmdProgram(cmdProgram);
+            this.context.panelManager.close();
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/File.ts
+
 /**
  * Represents a file that the user owns.
  */
-class Main_File {
+class File_File {
     constructor(doc) {
         var _a;
         this.id = doc.id;
@@ -30149,13 +30403,18 @@ class Main_File {
             return "Unknown type";
         }
     }
+    /**
+     * Compare two files for sorting.
+     */
     static compare(a, b) {
+        // Primary sort by name.
         if (a.name < b.name) {
             return -1;
         }
         else if (a.name > b.name) {
             return 1;
         }
+        // Break ties with ID so the sort is stable.
         if (a.id < b.id) {
             return -1;
         }
@@ -30168,73 +30427,33 @@ class Main_File {
         }
     }
 }
+
+// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
+var teamten_ts_utils_dist = __webpack_require__(17);
+
+// CONCATENATED MODULE: ./src/FilePanel.ts
+
+
+
 /**
- * The library of user's files.
+ * Panel to explore a file.
  */
-class Main_Library {
-    constructor(parent, trs80, db) {
-        this.screens = [];
-        this.isOpen = false;
-        this.trs80WasStarted = false;
-        this.backgroundNode = document.createElement("div");
-        this.trs80 = trs80;
-        this.db = db;
-        // Handler for the ESC key.
-        this.escListener = (e) => {
-            if (e.key === "Escape") {
-                e.preventDefault();
-                e.stopPropagation();
-                this.close();
-            }
-        };
-        this.backgroundNode.classList.add("popup-background");
-        this.backgroundNode.addEventListener("click", e => {
-            if (e.target === this.backgroundNode) {
-                this.close();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        });
-        parent.append(this.backgroundNode);
-        this.positioningNode = document.createElement("div");
-        this.positioningNode.classList.add("popup-positioning");
-        this.backgroundNode.append(this.positioningNode);
-        this.libraryNode = document.createElement("div");
-        this.libraryNode.classList.add("popup-content");
-        this.libraryNode.classList.add("library");
-        this.positioningNode.append(this.libraryNode);
+class FilePanel_FilePanel extends Panel_Panel {
+    constructor(context, file) {
+        super(context);
+        this.file = file;
+        this.element.classList.add("file-info");
         const header = document.createElement("h1");
-        header.innerText = "Library";
-        header.append(makeCloseIconButton(() => this.close()));
-        this.libraryNode.append(header);
-        const programsDiv = document.createElement("div");
-        programsDiv.classList.add("programs");
-        this.libraryNode.append(programsDiv);
-        db.collection("files").get().then((querySnapshot) => {
-            const files = querySnapshot.docs.map(d => new Main_File(d));
-            files.sort(Main_File.compare);
-            for (const file of files) {
-                this.addFile(programsDiv, file);
-            }
-        });
-        this.pushScreen(this.libraryNode);
-    }
-    showFileInfo(file) {
-        const fileInfoDiv = document.createElement("div");
-        fileInfoDiv.classList.add("popup-content");
-        fileInfoDiv.classList.add("file-info");
-        this.positioningNode.append(fileInfoDiv);
-        const header = document.createElement("h1");
-        const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.popScreen());
+        const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
         backButton.classList.add("back-button");
         header.append(backButton);
-        header.append(makeCloseIconButton(() => this.close()));
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
         header.append(document.createTextNode(file.name));
-        fileInfoDiv.append(header);
+        this.element.append(header);
         // Form for editing file info.
         const form = document.createElement("form");
         form.classList.add("file-info-form");
-        fileInfoDiv.append(form);
+        this.element.append(form);
         const makeInputBox = (label, cssClass, initialValue, enabled) => {
             const labelElement = document.createElement("label");
             if (cssClass !== undefined) {
@@ -30275,7 +30494,7 @@ class Main_Library {
         form.append(screenshotsDiv);
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        fileInfoDiv.append(actionBar);
+        this.element.append(actionBar);
         const runButton = makeButton("Run", "play_arrow", "play-button", () => {
             this.runProgram(file);
         });
@@ -30311,7 +30530,7 @@ class Main_Library {
         });
         saveButton.addEventListener("click", () => {
             // TODO turn save button into progress.
-            this.db.collection("files").doc(file.id).update({
+            this.context.db.collection("files").doc(file.id).update({
                 name: nameInput.value.trim(),
                 filename: filenameInput.value.trim(),
                 note: noteInput.value.trim(),
@@ -30330,66 +30549,44 @@ class Main_Library {
         });
         setInterfaceFromFile(file);
         updateButtonStatus();
-        this.pushScreen(fileInfoDiv);
     }
-    pushScreen(screen) {
-        this.screens.push(screen);
-        this.positionScreens(this.screens, this.screens.length - 2);
-        setTimeout(() => {
-            this.positionScreens(this.screens, this.screens.length - 1);
-        }, 0);
-    }
-    popScreen() {
-        this.positionScreens(this.screens, this.screens.length - 2);
-        const screen = this.screens.pop();
-        setTimeout(() => {
-            if (screen !== undefined) {
-                screen.remove();
+}
+
+// CONCATENATED MODULE: ./src/LibraryPanel.ts
+
+
+
+
+/**
+ * Panel showing the library of user's files.
+ */
+class LibraryPanel_LibraryPanel extends Panel_Panel {
+    constructor(context, db) {
+        super(context);
+        this.db = db;
+        this.element.classList.add("library");
+        const header = document.createElement("h1");
+        header.innerText = "Library";
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
+        this.element.append(header);
+        const programsDiv = document.createElement("div");
+        programsDiv.classList.add("programs");
+        this.element.append(programsDiv);
+        db.collection("files").get().then((querySnapshot) => {
+            const files = querySnapshot.docs.map(d => new File_File(d));
+            files.sort(File_File.compare);
+            for (const file of files) {
+                this.addFile(programsDiv, file);
             }
-        }, 1000);
-    }
-    positionScreens(screens, active) {
-        for (let i = 0; i < screens.length; i++) {
-            const screen = screens[i];
-            const offset = (i - active) * 100;
-            screen.style.left = offset + "vw";
-            screen.style.right = -offset + "vw";
-        }
-    }
-    open() {
-        if (!this.isOpen) {
-            this.isOpen = true;
-            document.addEventListener("keydown", this.escListener);
-            this.trs80WasStarted = this.trs80.stop();
-            this.backgroundNode.classList.add("popup-shown");
-        }
-    }
-    close() {
-        if (this.isOpen) {
-            this.isOpen = false;
-            document.removeEventListener("keydown", this.escListener);
-            if (this.trs80WasStarted) {
-                this.trs80.start();
-            }
-            this.backgroundNode.classList.remove("popup-shown");
-        }
-    }
-    toggle() {
-        if (this.isOpen) {
-            this.close();
-        }
-        else {
-            this.open();
-        }
+        });
     }
     addFile(parent, file) {
         const programDiv = document.createElement("div");
         programDiv.classList.add("program");
         parent.append(programDiv);
         const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
-            if (this.screens.length === 1) {
-                this.showFileInfo(file);
-            }
+            const filePanel = new FilePanel_FilePanel(this.context, file);
+            this.context.panelManager.pushPanel(filePanel);
         });
         infoButton.classList.add("info-button");
         programDiv.append(infoButton);
@@ -30411,17 +30608,49 @@ class Main_Library {
         noteDiv.innerText = file.note;
         programDiv.append(noteDiv);
     }
-    runProgram(file) {
-        const cmdProgram = new trs80_base_dist["CmdProgram"](file.binary);
-        if (cmdProgram.error !== undefined) {
-            // TODO
-        }
-        else {
-            this.trs80.runCmdProgram(cmdProgram);
-            this.close();
-        }
+}
+
+// CONCATENATED MODULE: ./src/Context.ts
+/**
+ * Context of the whole app, with its global variables.
+ */
+class Context {
+    constructor(trs80, db, panelManager) {
+        this.trs80 = trs80;
+        this.db = db;
+        this.panelManager = panelManager;
     }
 }
+
+// CONCATENATED MODULE: ./src/Main.ts
+
+
+
+
+// These imports load individual services into the firebase namespace.
+
+
+
+
+
+
+
+function configureRoutes() {
+    const body = document.querySelector("body");
+    const router = new navigo_min_default.a(null, true, "#!");
+    const s = createHome(router);
+    s.classList.add("screen");
+    body.append(s);
+    router.resolve();
+}
+class Main_EmptyCassette extends dist["Cassette"] {
+}
+// Fresh IDs for inputs so that we can point labels at them. TODO delete?
+let inputIdCounter = 1;
+function makeId() {
+    return "_input" + inputIdCounter++;
+}
+// For testing.
 function addProgramToFirestore(db, name, url, note) {
     fetch(url)
         .then(response => response.arrayBuffer())
@@ -30468,13 +30697,10 @@ function main() {
     index_esm["a" /* default */].analytics();
     const db = index_esm["a" /* default */].firestore();
     if (false) {}
-    const body = document.querySelector("body");
-    let library = undefined;
-    const navbar = createNavbar(() => library === null || library === void 0 ? void 0 : library.open());
-    body.append(navbar);
+    const panelManager = new PanelManager_PanelManager();
+    const navbar = createNavbar(() => panelManager.open());
     const screenDiv = document.createElement("div");
     screenDiv.classList.add("main-computer-screen");
-    body.append(screenDiv);
     const screen = new dist["CanvasScreen"](screenDiv, false);
     let cassette = new Main_EmptyCassette();
     const trs80 = new dist["Trs80"](screen, cassette);
@@ -30499,15 +30725,31 @@ function main() {
     }*/
     controlPanel.addSettingsButton(hardwareSettingsPanel);
     controlPanel.addSettingsButton(viewPanel);
-    const progressBar = new dist["ProgressBar"](screen.getNode());
+    // const progressBar = new ProgressBar(screen.getNode());
     // cassette.setProgressBar(progressBar);
-    library = new Main_Library(body, trs80, db);
+    const body = document.querySelector("body");
+    body.append(navbar);
+    body.append(screenDiv);
+    let wasTrs80Started = false;
+    panelManager.onOpenClose.subscribe(isOpen => {
+        if (isOpen) {
+            wasTrs80Started = trs80.stop();
+        }
+        else {
+            if (wasTrs80Started) {
+                trs80.start();
+            }
+        }
+    });
     document.addEventListener("keydown", event => {
         if (event.ctrlKey && event.key === "l") {
-            library === null || library === void 0 ? void 0 : library.toggle();
+            panelManager.toggle();
         }
     });
     reboot();
+    const context = new Context(trs80, db, panelManager);
+    const libraryPanel = new LibraryPanel_LibraryPanel(context, db);
+    panelManager.pushPanel(libraryPanel);
 }
 
 // CONCATENATED MODULE: ./src/index.ts
@@ -30516,7 +30758,7 @@ main();
 
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39606,141 +39848,983 @@ class Z80_Z80 {
 
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+/*!
+ * Strongly Typed Events for TypeScript - Core
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Subscription = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = void 0;
+var dispatching_1 = __webpack_require__(42);
+Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return dispatching_1.DispatcherBase; } });
+Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return dispatching_1.DispatcherWrapper; } });
+Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return dispatching_1.EventListBase; } });
+var subscription_1 = __webpack_require__(40);
+Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return subscription_1.Subscription; } });
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Subscription = void 0;
+/**
+ * Stores a handler. Manages execution meta data.
+ * @class Subscription
+ * @template TEventHandler
+ */
+var Subscription = /** @class */ (function () {
+    /**
+     * Creates an instance of Subscription.
+     *
+     * @param {TEventHandler} handler The handler for the subscription.
+     * @param {boolean} isOnce Indicates if the handler should only be executed once.
+     */
+    function Subscription(handler, isOnce) {
+        this.handler = handler;
+        this.isOnce = isOnce;
+        /**
+         * Indicates if the subscription has been executed before.
+         */
+        this.isExecuted = false;
+    }
+    /**
+     * Executes the handler.
+     *
+     * @param {boolean} executeAsync True if the even should be executed async.
+     * @param {*} scope The scope the scope of the event.
+     * @param {IArguments} args The arguments for the event.
+     */
+    Subscription.prototype.execute = function (executeAsync, scope, args) {
+        if (!this.isOnce || !this.isExecuted) {
+            this.isExecuted = true;
+            var fn = this.handler;
+            if (executeAsync) {
+                setTimeout(function () {
+                    fn.apply(scope, args);
+                }, 1);
+            }
+            else {
+                fn.apply(scope, args);
+            }
+        }
+    };
+    return Subscription;
+}());
+exports.Subscription = Subscription;
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = exports.Subscription = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = void 0;
+var ste_core_1 = __webpack_require__(39);
+Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return ste_core_1.DispatcherBase; } });
+Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return ste_core_1.DispatcherWrapper; } });
+Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return ste_core_1.EventListBase; } });
+Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return ste_core_1.Subscription; } });
+var ste_events_1 = __webpack_require__(44);
+Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return ste_events_1.EventDispatcher; } });
+Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return ste_events_1.EventHandlingBase; } });
+Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return ste_events_1.EventList; } });
+Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return ste_events_1.NonUniformEventList; } });
+var ste_simple_events_1 = __webpack_require__(46);
+Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventDispatcher; } });
+Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventHandlingBase; } });
+Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventList; } });
+Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.NonUniformSimpleEventList; } });
+var ste_signals_1 = __webpack_require__(48);
+Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return ste_signals_1.SignalDispatcher; } });
+Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return ste_signals_1.SignalHandlingBase; } });
+Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return ste_signals_1.SignalList; } });
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(37), exports);
-__exportStar(__webpack_require__(38), exports);
+exports.DispatcherWrapper = exports.EventListBase = exports.DispatcherBase = void 0;
+var management_1 = __webpack_require__(43);
+var subscription_1 = __webpack_require__(40);
+/**
+ * Base class for implementation of the dispatcher. It facilitates the subscribe
+ * and unsubscribe methods based on generic handlers. The TEventType specifies
+ * the type of event that should be exposed. Use the asEvent to expose the
+ * dispatcher as event.
+ */
+var DispatcherBase = /** @class */ (function () {
+    function DispatcherBase() {
+        this._wrap = new DispatcherWrapper(this);
+        this._subscriptions = new Array();
+    }
+    Object.defineProperty(DispatcherBase.prototype, "count", {
+        /**
+         * Returns the number of subscriptions.
+         *
+         * @readonly
+         *
+         * @memberOf DispatcherBase
+         */
+        get: function () {
+            return this._subscriptions.length;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    DispatcherBase.prototype.subscribe = function (fn) {
+        var _this = this;
+        if (fn) {
+            this._subscriptions.push(new subscription_1.Subscription(fn, false));
+        }
+        return function () {
+            _this.unsubscribe(fn);
+        };
+    };
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    DispatcherBase.prototype.sub = function (fn) {
+        return this.subscribe(fn);
+    };
+    /**
+     * Subscribe once to the event with the specified name.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    DispatcherBase.prototype.one = function (fn) {
+        var _this = this;
+        if (fn) {
+            this._subscriptions.push(new subscription_1.Subscription(fn, true));
+        }
+        return function () {
+            _this.unsubscribe(fn);
+        };
+    };
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param fn The event handler.
+     */
+    DispatcherBase.prototype.has = function (fn) {
+        if (!fn)
+            return false;
+        return this._subscriptions.some(function (sub) { return sub.handler == fn; });
+    };
+    /**
+     * Unsubscribes the handler from the dispatcher.
+     * @param fn The event handler.
+     */
+    DispatcherBase.prototype.unsubscribe = function (fn) {
+        if (!fn)
+            return;
+        for (var i = 0; i < this._subscriptions.length; i++) {
+            if (this._subscriptions[i].handler == fn) {
+                this._subscriptions.splice(i, 1);
+                break;
+            }
+        }
+    };
+    /**
+     * Unsubscribes the handler from the dispatcher.
+     * @param fn The event handler.
+     */
+    DispatcherBase.prototype.unsub = function (fn) {
+        this.unsubscribe(fn);
+    };
+    /**
+     * Generic dispatch will dispatch the handlers with the given arguments.
+     *
+     * @protected
+     * @param {boolean} executeAsync True if the even should be executed async.
+     * @param {*} The scope the scope of the event. The scope becomes the "this" for handler.
+     * @param {IArguments} args The arguments for the event.
+     */
+    DispatcherBase.prototype._dispatch = function (executeAsync, scope, args) {
+        var _this = this;
+        var _loop_1 = function (sub) {
+            var ev = new management_1.EventManagement(function () { return _this.unsub(sub.handler); });
+            var nargs = Array.prototype.slice.call(args);
+            nargs.push(ev);
+            sub.execute(executeAsync, scope, nargs);
+            //cleanup subs that are no longer needed
+            this_1.cleanup(sub);
+            if (!executeAsync && ev.propagationStopped) {
+                return "break";
+            }
+        };
+        var this_1 = this;
+        //execute on a copy because of bug #9
+        for (var _i = 0, _a = __spreadArrays(this._subscriptions); _i < _a.length; _i++) {
+            var sub = _a[_i];
+            var state_1 = _loop_1(sub);
+            if (state_1 === "break")
+                break;
+        }
+    };
+    /**
+     * Cleans up subs that ran and should run only once.
+     */
+    DispatcherBase.prototype.cleanup = function (sub) {
+        if (sub.isOnce && sub.isExecuted) {
+            var i = this._subscriptions.indexOf(sub);
+            if (i > -1) {
+                this._subscriptions.splice(i, 1);
+            }
+        }
+    };
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    DispatcherBase.prototype.asEvent = function () {
+        return this._wrap;
+    };
+    /**
+     * Clears all the subscriptions.
+     */
+    DispatcherBase.prototype.clear = function () {
+        this._subscriptions.splice(0, this._subscriptions.length);
+    };
+    return DispatcherBase;
+}());
+exports.DispatcherBase = DispatcherBase;
+/**
+ * Base class for event lists classes. Implements the get and remove.
+ */
+var EventListBase = /** @class */ (function () {
+    function EventListBase() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    EventListBase.prototype.get = function (name) {
+        var event = this._events[name];
+        if (event) {
+            return event;
+        }
+        event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    };
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    EventListBase.prototype.remove = function (name) {
+        delete this._events[name];
+    };
+    return EventListBase;
+}());
+exports.EventListBase = EventListBase;
+/**
+ * Hides the implementation of the event dispatcher. Will expose methods that
+ * are relevent to the event.
+ */
+var DispatcherWrapper = /** @class */ (function () {
+    /**
+     * Creates a new EventDispatcherWrapper instance.
+     * @param dispatcher The dispatcher.
+     */
+    function DispatcherWrapper(dispatcher) {
+        this._subscribe = function (fn) { return dispatcher.subscribe(fn); };
+        this._unsubscribe = function (fn) { return dispatcher.unsubscribe(fn); };
+        this._one = function (fn) { return dispatcher.one(fn); };
+        this._has = function (fn) { return dispatcher.has(fn); };
+        this._clear = function () { return dispatcher.clear(); };
+        this._count = function () { return dispatcher.count; };
+    }
+    Object.defineProperty(DispatcherWrapper.prototype, "count", {
+        /**
+         * Returns the number of subscriptions.
+         *
+         * @readonly
+         * @type {number}
+         * @memberOf DispatcherWrapper
+         */
+        get: function () {
+            return this._count();
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    DispatcherWrapper.prototype.subscribe = function (fn) {
+        return this._subscribe(fn);
+    };
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    DispatcherWrapper.prototype.sub = function (fn) {
+        return this.subscribe(fn);
+    };
+    /**
+     * Unsubscribe from the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     */
+    DispatcherWrapper.prototype.unsubscribe = function (fn) {
+        this._unsubscribe(fn);
+    };
+    /**
+     * Unsubscribe from the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     */
+    DispatcherWrapper.prototype.unsub = function (fn) {
+        this.unsubscribe(fn);
+    };
+    /**
+     * Subscribe once to the event with the specified name.
+     * @param fn The event handler that is called when the event is dispatched.
+     */
+    DispatcherWrapper.prototype.one = function (fn) {
+        return this._one(fn);
+    };
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param fn The event handler.
+     */
+    DispatcherWrapper.prototype.has = function (fn) {
+        return this._has(fn);
+    };
+    /**
+     * Clears all the subscriptions.
+     */
+    DispatcherWrapper.prototype.clear = function () {
+        this._clear();
+    };
+    return DispatcherWrapper;
+}());
+exports.DispatcherWrapper = DispatcherWrapper;
 
 
 /***/ }),
-/* 37 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.concatByteArrays = exports.withCommas = exports.clearElement = void 0;
+exports.EventManagement = void 0;
 /**
- * Remove all children from element.
+ * Allows the user to interact with the event.
+ *
+ * @class EventManagement
+ * @implements {IEventManagement}
  */
-function clearElement(e) {
-    while (e.firstChild) {
-        e.removeChild(e.firstChild);
+var EventManagement = /** @class */ (function () {
+    function EventManagement(unsub) {
+        this.unsub = unsub;
+        this.propagationStopped = false;
     }
-}
-exports.clearElement = clearElement;
-/**
- * Generate the string version of a number, in base 10, with commas for thousands groups.
- */
-function withCommas(n) {
-    let s = typeof n === "number" ? Math.round(n).toString(10) : n;
-    const negative = s.length >= 1 && s.charAt(0) === "-";
-    const firstDigit = negative ? 1 : 0;
-    if (s.length - firstDigit > 4) {
-        for (let i = s.length - 3; i > firstDigit; i -= 3) {
-            s = s.substring(0, i) + "," + s.substring(i);
-        }
-    }
-    return s;
-}
-exports.withCommas = withCommas;
-/**
- * Concatenate a list of byte arrays into one.
- */
-function concatByteArrays(samplesList) {
-    const length = samplesList.reduce((sum, samples) => sum + samples.length, 0);
-    const allBytes = new Uint8Array(length);
-    let offset = 0;
-    for (const samples of samplesList) {
-        allBytes.set(samples, offset);
-        offset += samples.length;
-    }
-    return allBytes;
-}
-exports.concatByteArrays = concatByteArrays;
+    EventManagement.prototype.stopPropagation = function () {
+        this.propagationStopped = true;
+    };
+    return EventManagement;
+}());
+exports.EventManagement = EventManagement;
 
 
 /***/ }),
-/* 38 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ByteReader = exports.EOF = void 0;
-exports.EOF = -1;
+exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = void 0;
+var events_1 = __webpack_require__(45);
+Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return events_1.EventDispatcher; } });
+Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return events_1.EventHandlingBase; } });
+Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return events_1.EventList; } });
+Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return events_1.NonUniformEventList; } });
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventHandlingBase = exports.EventList = exports.NonUniformEventList = exports.EventDispatcher = void 0;
+var ste_core_1 = __webpack_require__(39);
 /**
- * Provides an API for reading through a byte array.
+ * Dispatcher implementation for events. Can be used to subscribe, unsubscribe
+ * or dispatch events. Use the ToEvent() method to expose the event.
  */
-class ByteReader {
-    constructor(b) {
-        this.b = b;
-        this.pos = 0;
+var EventDispatcher = /** @class */ (function (_super) {
+    __extends(EventDispatcher, _super);
+    /**
+     * Creates a new EventDispatcher instance.
+     */
+    function EventDispatcher() {
+        return _super.call(this) || this;
     }
     /**
-     * Return the next byte, or EOF on end of array.
-     *
-     * @returns {number}
+     * Dispatches the event.
+     * @param sender The sender.
+     * @param args The arguments object.
      */
-    read() {
-        return this.pos < this.b.length ? this.b[this.pos++] : exports.EOF;
+    EventDispatcher.prototype.dispatch = function (sender, args) {
+        this._dispatch(false, this, arguments);
+    };
+    /**
+     * Dispatches the events thread.
+     * @param sender The sender.
+     * @param args The arguments object.
+     */
+    EventDispatcher.prototype.dispatchAsync = function (sender, args) {
+        this._dispatch(true, this, arguments);
+    };
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    EventDispatcher.prototype.asEvent = function () {
+        return _super.prototype.asEvent.call(this);
+    };
+    return EventDispatcher;
+}(ste_core_1.DispatcherBase));
+exports.EventDispatcher = EventDispatcher;
+/**
+ * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
+ */
+var NonUniformEventList = /** @class */ (function () {
+    function NonUniformEventList() {
+        this._events = {};
     }
     /**
-     * Return the byte address of the next byte to be read.
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
      */
-    addr() {
-        return this.pos;
-    }
-    /**
-     * Reads a little-endian short (two-byte) integer.
-     *
-     * @param allowEofAfterFirstByte if true, an EOF after the first byte will result in just the
-     * first byte. Otherwise an EOF is returned.
-     * @returns the integer, or EOF on end of file.
-     */
-    readShort(allowEofAfterFirstByte) {
-        const low = this.read();
-        if (low === exports.EOF) {
-            return exports.EOF;
+    NonUniformEventList.prototype.get = function (name) {
+        if (this._events[name]) {
+            // @TODO avoid typecasting. Not sure why TS thinks this._events[name] could still be undefined.
+            return this._events[name];
         }
-        const high = this.read();
-        if (high === exports.EOF) {
-            return allowEofAfterFirstByte ? low : exports.EOF;
+        var event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    };
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    NonUniformEventList.prototype.remove = function (name) {
+        delete this._events[name];
+    };
+    /**
+     * Creates a new dispatcher instance.
+     */
+    NonUniformEventList.prototype.createDispatcher = function () {
+        return new EventDispatcher();
+    };
+    return NonUniformEventList;
+}());
+exports.NonUniformEventList = NonUniformEventList;
+/**
+ * Storage class for multiple events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+var EventList = /** @class */ (function (_super) {
+    __extends(EventList, _super);
+    /**
+     * Creates a new EventList instance.
+     */
+    function EventList() {
+        return _super.call(this) || this;
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    EventList.prototype.createDispatcher = function () {
+        return new EventDispatcher();
+    };
+    return EventList;
+}(ste_core_1.EventListBase));
+exports.EventList = EventList;
+/**
+ * Extends objects with event handling capabilities.
+ */
+var EventHandlingBase = /** @class */ (function () {
+    function EventHandlingBase() {
+        this._events = new EventList();
+    }
+    Object.defineProperty(EventHandlingBase.prototype, "events", {
+        /**
+         * Gets the list with all the event dispatchers.
+         */
+        get: function () {
+            return this._events;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    EventHandlingBase.prototype.subscribe = function (name, fn) {
+        this._events.get(name).subscribe(fn);
+    };
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    EventHandlingBase.prototype.sub = function (name, fn) {
+        this.subscribe(name, fn);
+    };
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    EventHandlingBase.prototype.unsubscribe = function (name, fn) {
+        this._events.get(name).unsubscribe(fn);
+    };
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    EventHandlingBase.prototype.unsub = function (name, fn) {
+        this.unsubscribe(name, fn);
+    };
+    /**
+     * Subscribes to once the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    EventHandlingBase.prototype.one = function (name, fn) {
+        this._events.get(name).one(fn);
+    };
+    /**
+     * Subscribes to once the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    EventHandlingBase.prototype.has = function (name, fn) {
+        return this._events.get(name).has(fn);
+    };
+    return EventHandlingBase;
+}());
+exports.EventHandlingBase = EventHandlingBase;
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = void 0;
+var simple_events_1 = __webpack_require__(47);
+Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return simple_events_1.SimpleEventDispatcher; } });
+Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return simple_events_1.SimpleEventHandlingBase; } });
+Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return simple_events_1.SimpleEventList; } });
+Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return simple_events_1.NonUniformSimpleEventList; } });
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SimpleEventHandlingBase = exports.SimpleEventList = exports.NonUniformSimpleEventList = exports.SimpleEventDispatcher = void 0;
+var ste_core_1 = __webpack_require__(39);
+/**
+ * The dispatcher handles the storage of subsciptions and facilitates
+ * subscription, unsubscription and dispatching of a simple event
+ */
+var SimpleEventDispatcher = /** @class */ (function (_super) {
+    __extends(SimpleEventDispatcher, _super);
+    /**
+     * Creates a new SimpleEventDispatcher instance.
+     */
+    function SimpleEventDispatcher() {
+        return _super.call(this) || this;
+    }
+    /**
+     * Dispatches the event.
+     * @param args The arguments object.
+     */
+    SimpleEventDispatcher.prototype.dispatch = function (args) {
+        this._dispatch(false, this, arguments);
+    };
+    /**
+     * Dispatches the events thread.
+     * @param args The arguments object.
+     */
+    SimpleEventDispatcher.prototype.dispatchAsync = function (args) {
+        this._dispatch(true, this, arguments);
+    };
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    SimpleEventDispatcher.prototype.asEvent = function () {
+        return _super.prototype.asEvent.call(this);
+    };
+    return SimpleEventDispatcher;
+}(ste_core_1.DispatcherBase));
+exports.SimpleEventDispatcher = SimpleEventDispatcher;
+/**
+ * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
+ */
+var NonUniformSimpleEventList = /** @class */ (function () {
+    function NonUniformSimpleEventList() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    NonUniformSimpleEventList.prototype.get = function (name) {
+        if (this._events[name]) {
+            // @TODO avoid typecasting. Not sure why TS thinks this._events[name] could still be undefined.
+            return this._events[name];
         }
-        return low + high * 256;
+        var event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    };
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    NonUniformSimpleEventList.prototype.remove = function (name) {
+        delete this._events[name];
+    };
+    /**
+     * Creates a new dispatcher instance.
+     */
+    NonUniformSimpleEventList.prototype.createDispatcher = function () {
+        return new SimpleEventDispatcher();
+    };
+    return NonUniformSimpleEventList;
+}());
+exports.NonUniformSimpleEventList = NonUniformSimpleEventList;
+/**
+ * Storage class for multiple simple events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+var SimpleEventList = /** @class */ (function (_super) {
+    __extends(SimpleEventList, _super);
+    /**
+     * Creates a new SimpleEventList instance.
+     */
+    function SimpleEventList() {
+        return _super.call(this) || this;
     }
     /**
-     * Reads an ASCII string from the stream. If the returned string is shorter than "length", then we hit EOF.
+     * Creates a new dispatcher instance.
      */
-    readString(length) {
-        return new TextDecoder("ascii").decode(this.readBytes(length));
+    SimpleEventList.prototype.createDispatcher = function () {
+        return new SimpleEventDispatcher();
+    };
+    return SimpleEventList;
+}(ste_core_1.EventListBase));
+exports.SimpleEventList = SimpleEventList;
+/**
+ * Extends objects with simple event handling capabilities.
+ */
+var SimpleEventHandlingBase = /** @class */ (function () {
+    function SimpleEventHandlingBase() {
+        this._events = new SimpleEventList();
+    }
+    Object.defineProperty(SimpleEventHandlingBase.prototype, "events", {
+        get: function () {
+            return this._events;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SimpleEventHandlingBase.prototype.subscribe = function (name, fn) {
+        this._events.get(name).subscribe(fn);
+    };
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SimpleEventHandlingBase.prototype.sub = function (name, fn) {
+        this.subscribe(name, fn);
+    };
+    /**
+     * Subscribes once to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SimpleEventHandlingBase.prototype.one = function (name, fn) {
+        this._events.get(name).one(fn);
+    };
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SimpleEventHandlingBase.prototype.has = function (name, fn) {
+        return this._events.get(name).has(fn);
+    };
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SimpleEventHandlingBase.prototype.unsubscribe = function (name, fn) {
+        this._events.get(name).unsubscribe(fn);
+    };
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SimpleEventHandlingBase.prototype.unsub = function (name, fn) {
+        this.unsubscribe(name, fn);
+    };
+    return SimpleEventHandlingBase;
+}());
+exports.SimpleEventHandlingBase = SimpleEventHandlingBase;
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = void 0;
+var signals_1 = __webpack_require__(49);
+Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return signals_1.SignalDispatcher; } });
+Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return signals_1.SignalHandlingBase; } });
+Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return signals_1.SignalList; } });
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalHandlingBase = exports.SignalList = exports.SignalDispatcher = void 0;
+var ste_core_1 = __webpack_require__(39);
+/**
+ * The dispatcher handles the storage of subsciptions and facilitates
+ * subscription, unsubscription and dispatching of a signal event.
+ */
+var SignalDispatcher = /** @class */ (function (_super) {
+    __extends(SignalDispatcher, _super);
+    /**
+     * Creates a new SignalDispatcher instance.
+     */
+    function SignalDispatcher() {
+        return _super.call(this) || this;
     }
     /**
-     * Returns the next "length" bytes. If the returned array is shorter than "length", then we hit EOF.
+     * Dispatches the signal.
      */
-    readBytes(length) {
-        const pos = this.pos;
-        length = Math.min(length, this.b.length - pos);
-        this.pos += length;
-        // So instead make a copy.
-        return this.b.slice(pos, pos + length);
+    SignalDispatcher.prototype.dispatch = function () {
+        this._dispatch(false, this, arguments);
+    };
+    /**
+     * Dispatches the signal threaded.
+     */
+    SignalDispatcher.prototype.dispatchAsync = function () {
+        this._dispatch(true, this, arguments);
+    };
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    SignalDispatcher.prototype.asEvent = function () {
+        return _super.prototype.asEvent.call(this);
+    };
+    return SignalDispatcher;
+}(ste_core_1.DispatcherBase));
+exports.SignalDispatcher = SignalDispatcher;
+/**
+ * Storage class for multiple signal events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+var SignalList = /** @class */ (function (_super) {
+    __extends(SignalList, _super);
+    /**
+     * Creates a new SignalList instance.
+     */
+    function SignalList() {
+        return _super.call(this) || this;
     }
-}
-exports.ByteReader = ByteReader;
+    /**
+     * Creates a new dispatcher instance.
+     */
+    SignalList.prototype.createDispatcher = function () {
+        return new SignalDispatcher();
+    };
+    return SignalList;
+}(ste_core_1.EventListBase));
+exports.SignalList = SignalList;
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+var SignalHandlingBase = /** @class */ (function () {
+    function SignalHandlingBase() {
+        this._events = new SignalList();
+    }
+    Object.defineProperty(SignalHandlingBase.prototype, "events", {
+        get: function () {
+            return this._events;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Subscribes once to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SignalHandlingBase.prototype.one = function (name, fn) {
+        this._events.get(name).one(fn);
+    };
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SignalHandlingBase.prototype.has = function (name, fn) {
+        return this._events.get(name).has(fn);
+    };
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SignalHandlingBase.prototype.subscribe = function (name, fn) {
+        this._events.get(name).subscribe(fn);
+    };
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SignalHandlingBase.prototype.sub = function (name, fn) {
+        this.subscribe(name, fn);
+    };
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SignalHandlingBase.prototype.unsubscribe = function (name, fn) {
+        this._events.get(name).unsubscribe(fn);
+    };
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    SignalHandlingBase.prototype.unsub = function (name, fn) {
+        this.unsubscribe(name, fn);
+    };
+    return SignalHandlingBase;
+}());
+exports.SignalHandlingBase = SignalHandlingBase;
 
 
 /***/ })
