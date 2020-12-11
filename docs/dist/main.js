@@ -30243,7 +30243,7 @@ class PanelManager_PanelManager {
         this.isOpen = false;
         const body = document.querySelector("body");
         this.backgroundNode = document.createElement("div");
-        this.backgroundNode.classList.add("popup-background"); // TODO rename CSS popup->panel
+        this.backgroundNode.classList.add("panel-background");
         this.backgroundNode.addEventListener("click", e => {
             if (e.target === this.backgroundNode) {
                 this.close();
@@ -30253,7 +30253,7 @@ class PanelManager_PanelManager {
         });
         body.append(this.backgroundNode);
         this.positioningNode = document.createElement("div");
-        this.positioningNode.classList.add("popup-positioning");
+        this.positioningNode.classList.add("panel-positioning");
         this.backgroundNode.append(this.positioningNode);
         // Handler for the ESC key.
         this.escListener = (e) => {
@@ -30316,7 +30316,7 @@ class PanelManager_PanelManager {
             this.isOpen = true;
             document.addEventListener("keydown", this.escListener);
             this.onOpenClose.dispatch(true);
-            this.backgroundNode.classList.add("popup-shown");
+            this.backgroundNode.classList.add("panel-shown");
         }
     }
     /**
@@ -30327,7 +30327,7 @@ class PanelManager_PanelManager {
             this.isOpen = false;
             document.removeEventListener("keydown", this.escListener);
             this.onOpenClose.dispatch(false);
-            this.backgroundNode.classList.remove("popup-shown");
+            this.backgroundNode.classList.remove("panel-shown");
         }
     }
     /**
@@ -30355,7 +30355,7 @@ class Panel_Panel {
     constructor(context) {
         this.context = context;
         this.element = document.createElement("div");
-        this.element.classList.add("popup-content");
+        this.element.classList.add("panel");
     }
     /**
      * Run a program and close the panel.
@@ -30561,9 +30561,8 @@ class FilePanel_FilePanel extends Panel_Panel {
  * Panel showing the library of user's files.
  */
 class LibraryPanel_LibraryPanel extends Panel_Panel {
-    constructor(context, db) {
+    constructor(context) {
         super(context);
-        this.db = db;
         this.element.classList.add("library");
         const header = document.createElement("h1");
         header.innerText = "Library";
@@ -30572,7 +30571,8 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
         const programsDiv = document.createElement("div");
         programsDiv.classList.add("programs");
         this.element.append(programsDiv);
-        db.collection("files").get().then((querySnapshot) => {
+        // Fetch all files and display them.
+        this.context.db.collection("files").get().then((querySnapshot) => {
             const files = querySnapshot.docs.map(d => new File_File(d));
             files.sort(File_File.compare);
             for (const file of files) {
@@ -30580,6 +30580,9 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
             }
         });
     }
+    /**
+     * Add a file to the list of files in the library.
+     */
     addFile(parent, file) {
         const programDiv = document.createElement("div");
         programDiv.classList.add("program");
@@ -30748,7 +30751,7 @@ function main() {
     });
     reboot();
     const context = new Context(trs80, db, panelManager);
-    const libraryPanel = new LibraryPanel_LibraryPanel(context, db);
+    const libraryPanel = new LibraryPanel_LibraryPanel(context);
     panelManager.pushPanel(libraryPanel);
 }
 
