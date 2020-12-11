@@ -30662,11 +30662,106 @@ class FilePanel_FilePanel extends Panel_Panel {
     }
 }
 
+// CONCATENATED MODULE: ./src/Library.ts
+
+/**
+ * Base class for library event classes.
+ */
+class LibraryEvent {
+}
+/**
+ * Event for adding a file to the library.
+ */
+class LibraryAddEvent {
+    constructor(newFile) {
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for modifying a file in the library.
+ */
+class LibraryModifyEvent {
+    constructor(oldFile, newFile) {
+        this.oldFile = oldFile;
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for removing a file from the library.
+ */
+class LibraryRemoveEvent {
+    constructor(oldFile) {
+        this.oldFile = oldFile;
+    }
+}
+/**
+ * Keep track of all the files in the user's library. This should be a mirror of the contents
+ * of the database in the cloud.
+ */
+class Library_Library {
+    constructor() {
+        // Map from ID to file.
+        this.files = new Map();
+        // Fires after the map has been updated.
+        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+    }
+    /**
+     * Get a file by its ID, or undefined it not in the library.
+     */
+    getFile(id) {
+        return this.files.get(id);
+    }
+    /**
+     * Add a file to the library.
+     */
+    addFile(file) {
+        if (this.files.has(file.id)) {
+            console.error("Library.add(): Library already has file with ID " + file.id);
+            this.modifyFile(file);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryAddEvent(file));
+        }
+    }
+    /**
+     * Modify a file already in the library.
+     */
+    modifyFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.modify(): Library does not have file with ID " + file.id);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
+        }
+    }
+    /**
+     * Remove a file from the library.
+     */
+    removeFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.remove(): Library does not have file with ID " + file.id);
+        }
+        else {
+            // Here we assume that file and oldFile are the same. We could check, or we could just
+            // have the caller pass in a file ID.
+            this.files.delete(file.id);
+            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
+        }
+    }
+}
+
 // CONCATENATED MODULE: ./src/LibraryPanel.ts
 
 
 
 
+
+
+const FILE_ID_ATTR = "data-file-id";
 /**
  * Panel showing the library of user's files.
  */
@@ -30678,27 +30773,27 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
         header.innerText = "Library";
         header.append(makeCloseIconButton(() => this.context.panelManager.close()));
         this.element.append(header);
-        const programsDiv = document.createElement("div");
-        programsDiv.classList.add("programs");
-        this.element.append(programsDiv);
-        // Fetch all files and display them.
-        this.context.db.collection("files").get().then((querySnapshot) => {
-            const files = querySnapshot.docs.map(d => FileBuilder.fromDoc(d).build());
-            files.sort(File_File.compare);
-            for (const file of files) {
-                this.addFile(programsDiv, file);
-            }
-        });
+        this.filesDiv = document.createElement("div");
+        this.filesDiv.classList.add("files");
+        this.element.append(this.filesDiv);
+        this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
+    }
+    onLibraryEvent(event) {
+        if (event instanceof LibraryAddEvent) {
+            this.addFile(event.newFile);
+        }
+        this.sortFiles();
     }
     /**
      * Add a file to the list of files in the library.
      */
-    addFile(parent, file) {
-        const programDiv = document.createElement("div");
-        programDiv.classList.add("program");
-        parent.append(programDiv);
+    addFile(file) {
+        const fileDiv = document.createElement("div");
+        fileDiv.classList.add("file");
+        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
+        this.filesDiv.append(fileDiv);
         const infoDiv = document.createElement("div");
-        programDiv.append(infoDiv);
+        fileDiv.append(infoDiv);
         const nameDiv = document.createElement("div");
         nameDiv.classList.add("name");
         nameDiv.innerText = file.name;
@@ -30715,13 +30810,30 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
             this.runProgram(file);
         });
         playButton.classList.add("play-button");
-        programDiv.append(playButton);
+        fileDiv.append(playButton);
         const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
             const filePanel = new FilePanel_FilePanel(this.context, file);
             this.context.panelManager.pushPanel(filePanel);
         });
         infoButton.classList.add("info-button");
-        programDiv.append(infoButton);
+        fileDiv.append(infoButton);
+    }
+    sortFiles() {
+        // Sort existing files.
+        const fileElements = [];
+        for (const element of this.filesDiv.children) {
+            const fileId = element.getAttribute(FILE_ID_ATTR);
+            if (fileId !== null) {
+                const file = this.context.library.getFile(fileId);
+                if (file !== undefined) {
+                    fileElements.push({ file: file, element: element });
+                }
+            }
+        }
+        fileElements.sort((a, b) => File_File.compare(a.file, b.file));
+        // Repopulate the UI in the right order.
+        Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
+        this.filesDiv.append(...fileElements.map(e => e.element));
     }
 }
 
@@ -30730,7 +30842,8 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
  * Context of the whole app, with its global variables.
  */
 class Context {
-    constructor(trs80, db, panelManager) {
+    constructor(library, trs80, db, panelManager) {
+        this.library = library;
         this.trs80 = trs80;
         this.db = db;
         this.panelManager = panelManager;
@@ -30743,6 +30856,8 @@ class Context {
 
 
 // These imports load individual services into the firebase namespace.
+
+
 
 
 
@@ -30816,6 +30931,7 @@ function main() {
     const db = index_esm["a" /* default */].firestore();
     if (false) {}
     const panelManager = new PanelManager_PanelManager();
+    const library = new Library_Library();
     const navbar = createNavbar(() => panelManager.open());
     const screenDiv = document.createElement("div");
     screenDiv.classList.add("main-computer-screen");
@@ -30865,9 +30981,16 @@ function main() {
         }
     });
     reboot();
-    const context = new Context(trs80, db, panelManager);
+    const context = new Context(library, trs80, db, panelManager);
     const libraryPanel = new LibraryPanel_LibraryPanel(context);
     panelManager.pushPanel(libraryPanel);
+    // Fetch all files.
+    context.db.collection("files").get().then((querySnapshot) => {
+        for (const doc of querySnapshot.docs) {
+            const file = FileBuilder.fromDoc(doc).build();
+            library.addFile(file);
+        }
+    });
 }
 
 // CONCATENATED MODULE: ./src/index.ts
