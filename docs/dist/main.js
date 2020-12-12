@@ -5531,13 +5531,22 @@ exports.phosphorToRgb = phosphorToRgb;
  * TRS-80 screen based on an HTML canvas element.
  */
 class CanvasScreen extends Trs80Screen_1.Trs80Screen {
-    constructor(parentNode, isThumbnail) {
+    /**
+     * Create a canvas screen.
+     *
+     * @param parentNode note to put the screen into.
+     * @param scale size multiplier. Should be less than 1 for thumbnails, in which
+     * case you shouldn't update too often. If greater than 1, use multiples of 0.5.
+     */
+    constructor(parentNode, scale = 1) {
         super();
-        this.scale = 1.5;
+        this.scale = 1;
         this.memory = new Uint8Array(Utils_1.SCREEN_END - Utils_1.SCREEN_BEGIN);
         this.glyphs = [];
         this.config = Config_1.Config.makeDefault();
         this.glyphWidth = 0;
+        // For thumbnails draw the original at regular resolution.
+        this.scale = Math.max(scale, 1);
         teamten_ts_utils_1.clearElement(parentNode);
         // Make our own sub-node that we have control over.
         this.node = document.createElement("div");
@@ -5548,13 +5557,13 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
         this.canvas.height = 16 * 24 * this.scale;
         this.canvas.style.display = "block";
         this.context = this.canvas.getContext("2d");
-        if (!isThumbnail) {
+        if (scale >= 1) {
             this.node.appendChild(this.canvas);
         }
-        if (isThumbnail) {
+        else {
             this.thumbnailImage = document.createElement("img");
-            this.thumbnailImage.width = 64 * 8 / 3;
-            this.thumbnailImage.height = 16 * 24 / 3;
+            this.thumbnailImage.width = 64 * 8 * scale;
+            this.thumbnailImage.height = 16 * 24 * scale;
             this.node.appendChild(this.thumbnailImage);
         }
         this.updateFromConfig();
@@ -9090,8 +9099,7 @@ const GLOBAL_CSS = `
     margin: 15px;
     cursor: pointer;
     opacity: 0.5;
-    transition: opacity .05s ease-in-out;
-    transition: transform 0.05s ease-in-out;
+    transition: opacity .05s ease-in-out, transform 0.05s ease-in-out;
 }
 
 .${gButtonCssClass}:hover {
@@ -30348,15 +30356,11 @@ class PanelManager_PanelManager {
     }
 }
 
-// EXTERNAL MODULE: ../trs80-base/dist/index.js
-var trs80_base_dist = __webpack_require__(9);
-
 // CONCATENATED MODULE: ./src/Panel.ts
-
 /**
  * Base class for panels.
  */
-class Panel_Panel {
+class Panel {
     constructor(context) {
         this.context = context;
         this.element = document.createElement("div");
@@ -30366,16 +30370,13 @@ class Panel_Panel {
      * Run a program and close the panel.
      */
     runProgram(file) {
-        const cmdProgram = new trs80_base_dist["CmdProgram"](file.binary);
-        if (cmdProgram.error !== undefined) {
-            // TODO
-        }
-        else {
-            this.context.trs80.runCmdProgram(cmdProgram);
-            this.context.panelManager.close();
-        }
+        this.context.runProgram(file);
+        this.context.panelManager.close();
     }
 }
+
+// EXTERNAL MODULE: ../trs80-base/dist/index.js
+var trs80_base_dist = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./src/File.ts
 
@@ -30383,7 +30384,7 @@ class Panel_Panel {
  * Represents a file that the user owns.
  */
 class File_File {
-    constructor(id, uid, name, filename, note, shared, hash, binary, dateAdded, dateModified) {
+    constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, dateAdded, dateModified) {
         this.id = id;
         this.uid = uid;
         this.name = name;
@@ -30391,6 +30392,7 @@ class File_File {
         this.note = note;
         this.shared = shared;
         this.hash = hash;
+        this.screenshots = screenshots;
         this.binary = binary;
         this.dateAdded = dateAdded;
         this.dateModified = dateModified;
@@ -30404,6 +30406,7 @@ class File_File {
         builder.note = this.note;
         builder.shared = this.shared;
         builder.hash = this.hash;
+        builder.screenshots = this.screenshots;
         builder.binary = this.binary;
         builder.dateAdded = this.dateAdded;
         builder.dateModified = this.dateModified;
@@ -30456,12 +30459,13 @@ class FileBuilder {
         this.note = "";
         this.shared = false;
         this.hash = "";
+        this.screenshots = [];
         this.binary = new Uint8Array(0);
         this.dateAdded = new Date();
         this.dateModified = new Date();
     }
     static fromDoc(doc) {
-        var _a;
+        var _a, _b;
         const builder = new FileBuilder();
         builder.id = doc.id;
         const data = doc.data();
@@ -30471,6 +30475,7 @@ class FileBuilder {
         builder.note = data.note;
         builder.shared = (_a = data.shared) !== null && _a !== void 0 ? _a : false;
         builder.hash = data.hash;
+        builder.screenshots = (_b = data.screenshots) !== null && _b !== void 0 ? _b : [];
         builder.binary = data.binary.toUint8Array();
         builder.dateAdded = data.dateAdded.toDate();
         builder.dateModified = data.dateModified.toDate();
@@ -30492,6 +30497,10 @@ class FileBuilder {
         this.note = note;
         return this;
     }
+    withScreenshots(screenshots) {
+        this.screenshots = screenshots;
+        return this;
+    }
     withBinary(binary) {
         this.binary = binary;
         return this;
@@ -30501,7 +30510,7 @@ class FileBuilder {
         return this;
     }
     build() {
-        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.binary, this.dateAdded, this.dateModified);
+        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.dateAdded, this.dateModified);
     }
 }
 
@@ -31031,7 +31040,7 @@ class FilePanel_FileInfoTab {
  */
 class FilePanel_HexdumpTab {
     constructor(filePanel, pageTabs) {
-        this.collapse = false;
+        this.collapse = true;
         this.binary = filePanel.file.binary;
         const infoTab = pageTabs.newTab("Hexdump");
         infoTab.element.classList.add("hexdump-tab");
@@ -31193,7 +31202,7 @@ class FilePanel_HexdumpTab {
 /**
  * Panel to explore a file.
  */
-class FilePanel_FilePanel extends Panel_Panel {
+class FilePanel_FilePanel extends Panel {
     constructor(context, file) {
         super(context);
         this.file = file;
@@ -31316,11 +31325,12 @@ class Library_Library {
 
 
 
+
 const FILE_ID_ATTR = "data-file-id";
 /**
  * Panel showing the library of user's files.
  */
-class LibraryPanel_LibraryPanel extends Panel_Panel {
+class LibraryPanel_LibraryPanel extends Panel {
     constructor(context) {
         super(context);
         this.element.classList.add("library-panel");
@@ -31446,6 +31456,16 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
         noteDiv.classList.add("note");
         noteDiv.innerText = file.note;
         infoDiv.append(noteDiv);
+        const screenshotsDiv = document.createElement("div");
+        screenshotsDiv.classList.add("screenshots");
+        fileDiv.append(screenshotsDiv);
+        for (const screenshot of file.screenshots) {
+            // TODO put limit on this.
+            const screenDiv = document.createElement("div");
+            screenshotsDiv.append(screenDiv);
+            const screen = new dist["CanvasScreen"](screenDiv, 0.10);
+            screen.displayScreenshot(screenshot);
+        }
         const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
             this.runProgram(file);
         });
@@ -31507,15 +31527,30 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
 }
 
 // CONCATENATED MODULE: ./src/Context.ts
+
 /**
  * Context of the whole app, with its global variables.
  */
-class Context {
+class Context_Context {
     constructor(library, trs80, db, panelManager) {
+        this.runningFile = undefined;
         this.library = library;
         this.trs80 = trs80;
         this.db = db;
         this.panelManager = panelManager;
+    }
+    /**
+     * Run a program.
+     */
+    runProgram(file) {
+        const cmdProgram = new trs80_base_dist["CmdProgram"](file.binary);
+        if (cmdProgram.error !== undefined) {
+            // TODO
+        }
+        else {
+            this.runningFile = file;
+            this.trs80.runCmdProgram(cmdProgram);
+        }
     }
 }
 
@@ -31575,7 +31610,7 @@ function main() {
     const navbar = createNavbar(() => panelManager.open());
     const screenDiv = document.createElement("div");
     screenDiv.classList.add("main-computer-screen");
-    const screen = new dist["CanvasScreen"](screenDiv, false);
+    const screen = new dist["CanvasScreen"](screenDiv, 1.5);
     let cassette = new Main_EmptyCassette();
     const trs80 = new dist["Trs80"](screen, cassette);
     const reboot = () => {
@@ -31589,14 +31624,6 @@ function main() {
     controlPanel.addTapeRewindButton(() => {
         // cassette.rewind();
     });
-    /*
-    if (program !== undefined) {
-        controlPanel.addScreenshotButton(() => {
-            const screenshot = trs80.getScreenshot();
-            program.setScreenshot(screenshot);
-            this.tape.saveUserData();
-        });
-    }*/
     controlPanel.addSettingsButton(hardwareSettingsPanel);
     controlPanel.addSettingsButton(viewPanel);
     // const progressBar = new ProgressBar(screen.getNode());
@@ -31621,7 +31648,26 @@ function main() {
         }
     });
     reboot();
-    const context = new Context(library, trs80, db, panelManager);
+    const context = new Context_Context(library, trs80, db, panelManager);
+    // TODO make this button appear and disappear as we have/not have a program.
+    controlPanel.addScreenshotButton(() => {
+        if (context.runningFile !== undefined) {
+            let file = context.runningFile;
+            const screenshot = trs80.getScreenshot();
+            const screenshots = [...file.screenshots, screenshot];
+            file = file.builder().withScreenshots(screenshots).withDateModified(new Date()).build();
+            context.db.collection("files").doc(file.id).update({
+                screenshots: file.screenshots,
+                dateModified: file.dateModified,
+            })
+                .then(() => {
+                context.library.modifyFile(file);
+            })
+                .catch(() => {
+                // TODO.
+            });
+        }
+    });
     const libraryPanel = new LibraryPanel_LibraryPanel(context);
     panelManager.pushPanel(libraryPanel);
     // Fetch all files.
