@@ -30577,8 +30577,290 @@ class PageTabs_PageTabs {
     }
 }
 
-// EXTERNAL MODULE: ./node_modules/z80-base/dist/main/index.js
-var main = __webpack_require__(50);
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Register.js
+/**
+ * List of all word registers.
+ */
+const WORD_REG = new Set(["af", "bc", "de", "hl", "af'", "bc'", "de'", "hl'", "ix", "iy", "sp", "pc"]);
+/**
+ * List of all byte registers.
+ */
+const BYTE_REG = new Set(["a", "f", "b", "c", "d", "e", "h", "l", "ixh", "ixl", "iyh", "iyl", "i", "r"]);
+/**
+ * Determine whether a register stores a word.
+ */
+function isWordReg(s) {
+    return WORD_REG.has(s.toLowerCase());
+}
+/**
+ * Determine whether a register stores a byte.
+ */
+function isByteReg(s) {
+    return BYTE_REG.has(s.toLowerCase());
+}
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Utils.js
+// Various utility functions.
+/**
+ * Convert a number to hex and zero-pad to the specified number of hex digits.
+ */
+function toHex(value, digits) {
+    return value.toString(16).toUpperCase().padStart(digits, "0");
+}
+/**
+ * Convert a byte to hex.
+ */
+function toHexByte(value) {
+    return toHex(value, 2);
+}
+/**
+ * Convert a word to hex.
+ */
+function toHexWord(value) {
+    return toHex(value, 4);
+}
+/**
+ * Return the high byte of a word.
+ */
+function hi(value) {
+    return (value >> 8) & 0xFF;
+}
+/**
+ * Return the low byte of a word.
+ */
+function lo(value) {
+    return value & 0xFF;
+}
+/**
+ * Create a word from a high and low byte.
+ */
+function word(highByte, lowByte) {
+    return ((highByte & 0xFF) << 8) | (lowByte & 0xFF);
+}
+/**
+ * Increment a byte.
+ */
+function inc8(value) {
+    return add8(value, 1);
+}
+/**
+ * Increment a word.
+ */
+function inc16(value) {
+    return add16(value, 1);
+}
+/**
+ * Decrement a byte.
+ */
+function dec8(value) {
+    return sub8(value, 1);
+}
+/**
+ * Decrement a word.
+ */
+function dec16(value) {
+    return sub16(value, 1);
+}
+/**
+ * Add two bytes together.
+ */
+function add8(a, b) {
+    return (a + b) & 0xFF;
+}
+/**
+ * Add two words together.
+ */
+function add16(a, b) {
+    return (a + b) & 0xFFFF;
+}
+/**
+ * Subtract two bytes.
+ */
+function sub8(a, b) {
+    return (a - b) & 0xFF;
+}
+/**
+ * Subtract two words.
+ */
+function sub16(a, b) {
+    return (a - b) & 0xFFFF;
+}
+/**
+ * Convert a byte to a signed number (e.g., 0xff to -1).
+ */
+function signedByte(value) {
+    return value >= 128 ? value - 256 : value;
+}
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/RegisterSet.js
+
+/**
+ * All registers in a Z80.
+ */
+class RegisterSet_RegisterSet {
+    constructor() {
+        // External state:
+        this.af = 0;
+        this.bc = 0;
+        this.de = 0;
+        this.hl = 0;
+        this.afPrime = 0;
+        this.bcPrime = 0;
+        this.dePrime = 0;
+        this.hlPrime = 0;
+        this.ix = 0;
+        this.iy = 0;
+        this.sp = 0;
+        this.pc = 0;
+        // Internal state:
+        this.memptr = 0;
+        this.i = 0;
+        this.r = 0; // Low 7 bits of R.
+        this.r7 = 0; // Bit 7 of R.
+        this.iff1 = 0;
+        this.iff2 = 0;
+        this.im = 0;
+        this.halted = 0;
+    }
+    get a() {
+        return hi(this.af);
+    }
+    set a(value) {
+        this.af = word(value, this.f);
+    }
+    get f() {
+        return lo(this.af);
+    }
+    set f(value) {
+        this.af = word(this.a, value);
+    }
+    get b() {
+        return hi(this.bc);
+    }
+    set b(value) {
+        this.bc = word(value, this.c);
+    }
+    get c() {
+        return lo(this.bc);
+    }
+    set c(value) {
+        this.bc = word(this.b, value);
+    }
+    get d() {
+        return hi(this.de);
+    }
+    set d(value) {
+        this.de = word(value, this.e);
+    }
+    get e() {
+        return lo(this.de);
+    }
+    set e(value) {
+        this.de = word(this.d, value);
+    }
+    get h() {
+        return hi(this.hl);
+    }
+    set h(value) {
+        this.hl = word(value, this.l);
+    }
+    get l() {
+        return lo(this.hl);
+    }
+    set l(value) {
+        this.hl = word(this.h, value);
+    }
+    get ixh() {
+        return hi(this.ix);
+    }
+    set ixh(value) {
+        this.ix = word(value, this.ixl);
+    }
+    get ixl() {
+        return lo(this.ix);
+    }
+    set ixl(value) {
+        this.ix = word(this.ixh, value);
+    }
+    get iyh() {
+        return hi(this.iy);
+    }
+    set iyh(value) {
+        this.iy = word(value, this.iyl);
+    }
+    get iyl() {
+        return lo(this.iy);
+    }
+    set iyl(value) {
+        this.iy = word(this.iyh, value);
+    }
+    /**
+     * Combine the two R parts together.
+     */
+    get rCombined() {
+        return (this.r7 & 0x80) | (this.r & 0xF7);
+    }
+}
+/**
+ * All real fields of RegisterSet, for enumeration.
+ */
+const registerSetFields = [
+    "af", "bc", "de", "hl",
+    "afPrime", "bcPrime", "dePrime", "hlPrime",
+    "ix", "iy", "sp", "pc",
+    "memptr", "i", "r", "iff1", "iff2", "im", "halted"
+];
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Flag.js
+/**
+ * The flag bits in the F register.
+ */
+var Flag;
+(function (Flag) {
+    /**
+     * Carry and borrow. Indicates that the addition or subtraction did not
+     * fit in the register.
+     */
+    Flag[Flag["C"] = 1] = "C";
+    /**
+     * Set if the last operation was a subtraction.
+     */
+    Flag[Flag["N"] = 2] = "N";
+    /**
+     * Parity: Indicates that the result has an even number of bits set.
+     */
+    Flag[Flag["P"] = 4] = "P";
+    /**
+     * Overflow: Indicates that two's complement does not fit in register.
+     */
+    Flag[Flag["V"] = 4] = "V";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X3"] = 8] = "X3";
+    /**
+     * Half carry: Carry from bit 3 to bit 4 during BCD operations.
+     */
+    Flag[Flag["H"] = 16] = "H";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X5"] = 32] = "X5";
+    /**
+     * Set if value is zero.
+     */
+    Flag[Flag["Z"] = 64] = "Z";
+    /**
+     * Set of value is negative.
+     */
+    Flag[Flag["S"] = 128] = "S";
+})(Flag || (Flag = {}));
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/index.js
+
+
+
+
 
 // CONCATENATED MODULE: ./src/FilePanel.ts
 
@@ -30593,7 +30875,7 @@ class FilePanel_FileInfoTab {
     constructor(filePanel, pageTabs) {
         this.filePanel = filePanel;
         const infoTab = pageTabs.newTab("File Info");
-        infoTab.element.classList.add("file-info");
+        infoTab.element.classList.add("file-info-tab");
         // Form for editing file info.
         const form = document.createElement("form");
         form.classList.add("file-panel-form");
@@ -30744,56 +31026,168 @@ class FilePanel_FileInfoTab {
             .build();
     }
 }
+/**
+ * Tab for displaying the hex and ASCII of the binary.
+ */
 class FilePanel_HexdumpTab {
     constructor(filePanel, pageTabs) {
+        this.collapse = false;
+        this.binary = filePanel.file.binary;
         const infoTab = pageTabs.newTab("Hexdump");
-        infoTab.element.classList.add("hexdump");
-        let STRIDE = 16;
-        const binary = filePanel.file.binary;
-        for (let addr = 0; addr < binary.length; addr += STRIDE) {
+        infoTab.element.classList.add("hexdump-tab");
+        const outer = document.createElement("div");
+        outer.classList.add("hexdump-outer");
+        infoTab.element.append(outer);
+        this.hexdumpElement = document.createElement("div");
+        this.hexdumpElement.classList.add("hexdump");
+        outer.append(this.hexdumpElement);
+        this.generateHexdump();
+        const actionBar = document.createElement("div");
+        actionBar.classList.add("action-bar");
+        infoTab.element.append(actionBar);
+        const collapseLabel = document.createElement("label");
+        const collapseCheckbox = document.createElement("input");
+        collapseCheckbox.type = "checkbox";
+        collapseCheckbox.checked = this.collapse;
+        collapseLabel.append(collapseCheckbox);
+        collapseLabel.append(" Collapse duplicate lines");
+        collapseCheckbox.addEventListener("change", () => {
+            this.collapse = collapseCheckbox.checked;
+            this.generateHexdump();
+        });
+        actionBar.append(collapseLabel);
+    }
+    /**
+     * Regenerate the HTML for the hexdump.
+     */
+    generateHexdump() {
+        const lines = [];
+        const STRIDE = 16;
+        const newLine = () => {
             const line = document.createElement("div");
-            let e = document.createElement("span");
-            e.classList.add("address");
-            e.innerText = Object(main["toHexWord"])(addr) + "  ";
+            lines.push(line);
+            return line;
+        };
+        const newSpan = (line, cssClass, text) => {
+            const e = document.createElement("span");
+            e.classList.add(cssClass);
+            e.innerText = text;
             line.append(e);
-            // Hex.
-            let subAddr;
-            let s = "";
-            for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
-                s += Object(main["toHexByte"])(binary[subAddr]) + " ";
-            }
-            for (; subAddr < addr + STRIDE; subAddr++) {
-                s += "   ";
-            }
-            s += "  ";
-            e = document.createElement("span");
-            e.classList.add("hex");
-            e.innerText = s;
-            line.append(e);
-            // ASCII.
-            let currentCssClass = undefined;
-            for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
-                const c = binary[subAddr];
-                let cssClass;
-                let char;
-                if (c >= 32 && c < 127) {
-                    cssClass = "ascii";
-                    char = String.fromCharCode(c);
+            return e;
+        };
+        const binary = this.binary;
+        let lastAddr = undefined;
+        for (let addr = 0; addr < binary.length; addr += STRIDE) {
+            if (this.collapse && lastAddr !== undefined &&
+                binary.length - addr >= STRIDE && FilePanel_HexdumpTab.segmentsEqual(binary, lastAddr, addr, STRIDE)) {
+                if (addr === lastAddr + STRIDE) {
+                    const line = newLine();
+                    if (FilePanel_HexdumpTab.allSameByte(binary, addr, STRIDE)) {
+                        // Lots of the same byte repeated. Say many there are.
+                        const count = FilePanel_HexdumpTab.countConsecutive(binary, addr);
+                        newSpan(line, "address", "      ... ");
+                        newSpan(line, "ascii", count.toString());
+                        newSpan(line, "address", " (");
+                        newSpan(line, "ascii", "0x" + count.toString(16).toUpperCase());
+                        newSpan(line, "address", ") consecutive bytes of ");
+                        newSpan(line, "hex", "0x" + toHexByte(binary[addr]));
+                        newSpan(line, "address", " ...");
+                    }
+                    else {
+                        // A repeating pattern, but not all the same byte. Say how many times repeated.
+                        let count = 1;
+                        for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
+                            if (FilePanel_HexdumpTab.segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
+                                count += 1;
+                            }
+                            else {
+                                break;
+                            }
+                        }
+                        newSpan(line, "address", "      ... ");
+                        newSpan(line, "ascii", count.toString());
+                        const plural = count === 1 ? "" : "s";
+                        newSpan(line, "address", ` repetition${plural} of previous row ...`);
+                    }
                 }
-                else {
-                    cssClass = "ascii-unprintable";
-                    char = ".";
-                }
-                if (cssClass !== currentCssClass) {
-                    e = document.createElement("span");
-                    e.classList.add(cssClass);
-                    line.append(e);
-                    currentCssClass = cssClass;
-                }
-                e.innerText += char;
             }
-            infoTab.element.append(line);
+            else {
+                lastAddr = addr;
+                const line = newLine();
+                newSpan(line, "address", toHexWord(addr) + "  ");
+                // Hex.
+                let subAddr;
+                let s = "";
+                for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
+                    s += toHexByte(binary[subAddr]) + " ";
+                }
+                for (; subAddr < addr + STRIDE; subAddr++) {
+                    s += "   ";
+                }
+                s += "  ";
+                newSpan(line, "hex", s);
+                // ASCII.
+                let e = undefined;
+                let currentCssClass = undefined;
+                for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
+                    const c = binary[subAddr];
+                    let cssClass;
+                    let char;
+                    if (c >= 32 && c < 127) {
+                        cssClass = "ascii";
+                        char = String.fromCharCode(c);
+                    }
+                    else {
+                        cssClass = "ascii-unprintable";
+                        char = ".";
+                    }
+                    if (e === undefined || cssClass !== currentCssClass) {
+                        e = newSpan(line, cssClass, "");
+                        currentCssClass = cssClass;
+                    }
+                    e.innerText += char;
+                }
+            }
         }
+        newSpan(newLine(), "address", toHexWord(binary.length));
+        Object(teamten_ts_utils_dist["clearElement"])(this.hexdumpElement);
+        this.hexdumpElement.append(...lines);
+    }
+    /**
+     * Compare two parts of an array for equality.
+     */
+    static segmentsEqual(binary, start1, start2, length) {
+        while (length-- > 0) {
+            if (binary[start1++] !== binary[start2++]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * Count consecutive bytes that are around "addr".
+     */
+    static countConsecutive(binary, addr) {
+        const value = binary[addr];
+        let startAddr = addr;
+        while (startAddr > 0 && binary[startAddr - 1] === value) {
+            startAddr--;
+        }
+        while (addr < binary.length - 1 && binary[addr + 1] === value) {
+            addr++;
+        }
+        return addr - startAddr + 1;
+    }
+    /**
+     * Whether this segment is made up of the same value.
+     */
+    static allSameByte(binary, addr, length) {
+        for (let i = 1; i < length; i++) {
+            if (binary[addr + i] !== binary[addr]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 /**
@@ -31149,33 +31543,6 @@ function configureRoutes() {
 }
 class Main_EmptyCassette extends dist["Cassette"] {
 }
-// Fresh IDs for inputs so that we can point labels at them. TODO delete?
-let inputIdCounter = 1;
-function makeId() {
-    return "_input" + inputIdCounter++;
-}
-// For testing. TODO delete
-function addProgramToFirestore(db, name, url, note) {
-    fetch(url)
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => db.collection("files").add({
-        uid: "",
-        name: name,
-        filename: url.split("/").pop(),
-        note: note,
-        shared: false,
-        hash: "",
-        binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(new Uint8Array(arrayBuffer)),
-        dateAdded: index_esm["a" /* default */].firestore.Timestamp.fromDate(new Date()),
-        dateModified: index_esm["a" /* default */].firestore.Timestamp.fromDate(new Date()),
-    }))
-        .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-        .catch(function (error) {
-        console.error("Error adding document: ", error);
-    });
-}
 function createNavbar(openLibrary) {
     const navbar = document.createElement("div");
     navbar.classList.add("navbar");
@@ -31192,7 +31559,7 @@ function createNavbar(openLibrary) {
     navbar.append(themeButton);
     return navbar;
 }
-function Main_main() {
+function main() {
     const app = index_esm["a" /* default */].initializeApp({
         apiKey: "AIzaSyAfGZY9BaDUmy4qNtg11JHd_kLd1JmgdBI",
         authDomain: "my-trs-80.firebaseapp.com",
@@ -31203,7 +31570,6 @@ function Main_main() {
     });
     index_esm["a" /* default */].analytics();
     const db = index_esm["a" /* default */].firestore();
-    if (false) {}
     const panelManager = new PanelManager_PanelManager();
     const library = new Library_Library();
     const navbar = createNavbar(() => panelManager.open());
@@ -31269,7 +31635,7 @@ function Main_main() {
 
 // CONCATENATED MODULE: ./src/index.ts
 
-Main_main();
+main();
 
 
 /***/ }),
@@ -41340,347 +41706,6 @@ var SignalHandlingBase = /** @class */ (function () {
     return SignalHandlingBase;
 }());
 exports.SignalHandlingBase = SignalHandlingBase;
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(52));
-__export(__webpack_require__(53));
-__export(__webpack_require__(51));
-__export(__webpack_require__(54));
-
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-// Various utility functions.
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Convert a number to hex and zero-pad to the specified number of hex digits.
- */
-function toHex(value, digits) {
-    return value.toString(16).toUpperCase().padStart(digits, "0");
-}
-exports.toHex = toHex;
-/**
- * Convert a byte to hex.
- */
-function toHexByte(value) {
-    return toHex(value, 2);
-}
-exports.toHexByte = toHexByte;
-/**
- * Convert a word to hex.
- */
-function toHexWord(value) {
-    return toHex(value, 4);
-}
-exports.toHexWord = toHexWord;
-/**
- * Return the high byte of a word.
- */
-function hi(value) {
-    return (value >> 8) & 0xFF;
-}
-exports.hi = hi;
-/**
- * Return the low byte of a word.
- */
-function lo(value) {
-    return value & 0xFF;
-}
-exports.lo = lo;
-/**
- * Create a word from a high and low byte.
- */
-function word(highByte, lowByte) {
-    return ((highByte & 0xFF) << 8) | (lowByte & 0xFF);
-}
-exports.word = word;
-/**
- * Increment a byte.
- */
-function inc8(value) {
-    return add8(value, 1);
-}
-exports.inc8 = inc8;
-/**
- * Increment a word.
- */
-function inc16(value) {
-    return add16(value, 1);
-}
-exports.inc16 = inc16;
-/**
- * Decrement a byte.
- */
-function dec8(value) {
-    return sub8(value, 1);
-}
-exports.dec8 = dec8;
-/**
- * Decrement a word.
- */
-function dec16(value) {
-    return sub16(value, 1);
-}
-exports.dec16 = dec16;
-/**
- * Add two bytes together.
- */
-function add8(a, b) {
-    return (a + b) & 0xFF;
-}
-exports.add8 = add8;
-/**
- * Add two words together.
- */
-function add16(a, b) {
-    return (a + b) & 0xFFFF;
-}
-exports.add16 = add16;
-/**
- * Subtract two bytes.
- */
-function sub8(a, b) {
-    return (a - b) & 0xFF;
-}
-exports.sub8 = sub8;
-/**
- * Subtract two words.
- */
-function sub16(a, b) {
-    return (a - b) & 0xFFFF;
-}
-exports.sub16 = sub16;
-/**
- * Convert a byte to a signed number (e.g., 0xff to -1).
- */
-function signedByte(value) {
-    return value >= 128 ? value - 256 : value;
-}
-exports.signedByte = signedByte;
-
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * List of all word registers.
- */
-const WORD_REG = new Set(["af", "bc", "de", "hl", "af'", "bc'", "de'", "hl'", "ix", "iy", "sp", "pc"]);
-/**
- * List of all byte registers.
- */
-const BYTE_REG = new Set(["a", "f", "b", "c", "d", "e", "h", "l", "ixh", "ixl", "iyh", "iyl", "i", "r"]);
-/**
- * Determine whether a register stores a word.
- */
-function isWordReg(s) {
-    return WORD_REG.has(s.toLowerCase());
-}
-exports.isWordReg = isWordReg;
-/**
- * Determine whether a register stores a byte.
- */
-function isByteReg(s) {
-    return BYTE_REG.has(s.toLowerCase());
-}
-exports.isByteReg = isByteReg;
-
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const Utils_1 = __webpack_require__(51);
-/**
- * All registers in a Z80.
- */
-class RegisterSet {
-    constructor() {
-        // External state:
-        this.af = 0;
-        this.bc = 0;
-        this.de = 0;
-        this.hl = 0;
-        this.afPrime = 0;
-        this.bcPrime = 0;
-        this.dePrime = 0;
-        this.hlPrime = 0;
-        this.ix = 0;
-        this.iy = 0;
-        this.sp = 0;
-        this.pc = 0;
-        // Internal state:
-        this.memptr = 0;
-        this.i = 0;
-        this.r = 0; // Low 7 bits of R.
-        this.r7 = 0; // Bit 7 of R.
-        this.iff1 = 0;
-        this.iff2 = 0;
-        this.im = 0;
-        this.halted = 0;
-    }
-    get a() {
-        return Utils_1.hi(this.af);
-    }
-    set a(value) {
-        this.af = Utils_1.word(value, this.f);
-    }
-    get f() {
-        return Utils_1.lo(this.af);
-    }
-    set f(value) {
-        this.af = Utils_1.word(this.a, value);
-    }
-    get b() {
-        return Utils_1.hi(this.bc);
-    }
-    set b(value) {
-        this.bc = Utils_1.word(value, this.c);
-    }
-    get c() {
-        return Utils_1.lo(this.bc);
-    }
-    set c(value) {
-        this.bc = Utils_1.word(this.b, value);
-    }
-    get d() {
-        return Utils_1.hi(this.de);
-    }
-    set d(value) {
-        this.de = Utils_1.word(value, this.e);
-    }
-    get e() {
-        return Utils_1.lo(this.de);
-    }
-    set e(value) {
-        this.de = Utils_1.word(this.d, value);
-    }
-    get h() {
-        return Utils_1.hi(this.hl);
-    }
-    set h(value) {
-        this.hl = Utils_1.word(value, this.l);
-    }
-    get l() {
-        return Utils_1.lo(this.hl);
-    }
-    set l(value) {
-        this.hl = Utils_1.word(this.h, value);
-    }
-    get ixh() {
-        return Utils_1.hi(this.ix);
-    }
-    set ixh(value) {
-        this.ix = Utils_1.word(value, this.ixl);
-    }
-    get ixl() {
-        return Utils_1.lo(this.ix);
-    }
-    set ixl(value) {
-        this.ix = Utils_1.word(this.ixh, value);
-    }
-    get iyh() {
-        return Utils_1.hi(this.iy);
-    }
-    set iyh(value) {
-        this.iy = Utils_1.word(value, this.iyl);
-    }
-    get iyl() {
-        return Utils_1.lo(this.iy);
-    }
-    set iyl(value) {
-        this.iy = Utils_1.word(this.iyh, value);
-    }
-    /**
-     * Combine the two R parts together.
-     */
-    get rCombined() {
-        return (this.r7 & 0x80) | (this.r & 0xF7);
-    }
-}
-exports.RegisterSet = RegisterSet;
-/**
- * All real fields of RegisterSet, for enumeration.
- */
-exports.registerSetFields = [
-    "af", "bc", "de", "hl",
-    "afPrime", "bcPrime", "dePrime", "hlPrime",
-    "ix", "iy", "sp", "pc",
-    "memptr", "i", "r", "iff1", "iff2", "im", "halted"
-];
-
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * The flag bits in the F register.
- */
-var Flag;
-(function (Flag) {
-    /**
-     * Carry and borrow. Indicates that the addition or subtraction did not
-     * fit in the register.
-     */
-    Flag[Flag["C"] = 1] = "C";
-    /**
-     * Set if the last operation was a subtraction.
-     */
-    Flag[Flag["N"] = 2] = "N";
-    /**
-     * Parity: Indicates that the result has an even number of bits set.
-     */
-    Flag[Flag["P"] = 4] = "P";
-    /**
-     * Overflow: Indicates that two's complement does not fit in register.
-     */
-    Flag[Flag["V"] = 4] = "V";
-    /**
-     * Undocumented bit, but internal state can leak into it.
-     */
-    Flag[Flag["X3"] = 8] = "X3";
-    /**
-     * Half carry: Carry from bit 3 to bit 4 during BCD operations.
-     */
-    Flag[Flag["H"] = 16] = "H";
-    /**
-     * Undocumented bit, but internal state can leak into it.
-     */
-    Flag[Flag["X5"] = 32] = "X5";
-    /**
-     * Set if value is zero.
-     */
-    Flag[Flag["Z"] = 64] = "Z";
-    /**
-     * Set of value is negative.
-     */
-    Flag[Flag["S"] = 128] = "S";
-})(Flag = exports.Flag || (exports.Flag = {}));
 
 
 /***/ })
