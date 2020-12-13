@@ -5469,46 +5469,15 @@ module.exports = g;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CanvasScreen = exports.phosphorToRgb = exports.configureStylesheet = exports.BLACK_BACKGROUND = exports.AUTHENTIC_BACKGROUND = void 0;
+exports.CanvasScreen = exports.phosphorToRgb = exports.BLACK_BACKGROUND = exports.AUTHENTIC_BACKGROUND = void 0;
 const Trs80Screen_1 = __webpack_require__(28);
 const Utils_1 = __webpack_require__(8);
 const Fonts_1 = __webpack_require__(29);
 const Config_1 = __webpack_require__(10);
-const teamten_ts_utils_1 = __webpack_require__(11);
-const gCssPrefix = Utils_1.CSS_PREFIX + "-canvas-screen";
-const gBlackBackgroundClass = gCssPrefix + "-black-background";
 exports.AUTHENTIC_BACKGROUND = "#334843";
 exports.BLACK_BACKGROUND = "#000000";
-const BASE_CSS = `
-
-.${gCssPrefix} {
-    display: inline-block;
-    padding: 10px;
-    background-color: ${exports.AUTHENTIC_BACKGROUND};
-    border-radius: 8px;
-    transition: background-color .5s ease-in-out;
-}
-
-.${gCssPrefix}.${gBlackBackgroundClass} {
-    background-color: ${exports.BLACK_BACKGROUND};
-}
-
-`;
-/**
- * Make a global stylesheet for all TRS-80 emulators on this page. Idempotent.
- */
-function configureStylesheet() {
-    const styleId = gCssPrefix;
-    if (document.getElementById(styleId) !== null) {
-        // Already created.
-        return;
-    }
-    const node = document.createElement("style");
-    node.id = styleId;
-    node.innerHTML = BASE_CSS;
-    document.head.appendChild(node);
-}
-exports.configureStylesheet = configureStylesheet;
+const PADDING = 10;
+const BORDER_RADIUS = 8;
 // Run it on the next event cycle.
 const UPDATE_THUMBNAIL_TIMEOUT_MS = 0;
 const WHITE_PHOSPHOR = [230, 231, 252];
@@ -5534,41 +5503,25 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
     /**
      * Create a canvas screen.
      *
-     * @param parentNode note to put the screen into.
-     * @param scale size multiplier. Should be less than 1 for thumbnails, in which
-     * case you shouldn't update too often. If greater than 1, use multiples of 0.5.
+     * @param scale size multiplier. If greater than 1, use multiples of 0.5.
      */
-    constructor(parentNode, scale = 1) {
+    constructor(scale = 1) {
         super();
         this.scale = 1;
         this.memory = new Uint8Array(Utils_1.SCREEN_END - Utils_1.SCREEN_BEGIN);
         this.glyphs = [];
         this.config = Config_1.Config.makeDefault();
         this.glyphWidth = 0;
-        // For thumbnails draw the original at regular resolution.
-        this.scale = Math.max(scale, 1);
-        teamten_ts_utils_1.clearElement(parentNode);
-        // Make our own sub-node that we have control over.
         this.node = document.createElement("div");
-        this.node.classList.add(gCssPrefix);
-        parentNode.appendChild(this.node);
+        this.scale = scale;
+        this.padding = Math.round(PADDING * this.scale);
         this.canvas = document.createElement("canvas");
-        this.canvas.width = 64 * 8 * this.scale;
-        this.canvas.height = 16 * 24 * this.scale;
-        this.canvas.style.display = "block";
+        this.canvas.width = 64 * 8 * this.scale + 2 * this.padding;
+        this.canvas.height = 16 * 24 * this.scale + 2 * this.padding;
+        this.node.append(this.canvas);
         this.context = this.canvas.getContext("2d");
-        if (scale >= 1) {
-            this.node.appendChild(this.canvas);
-        }
-        else {
-            this.thumbnailImage = document.createElement("img");
-            this.thumbnailImage.width = 64 * 8 * scale;
-            this.thumbnailImage.height = 16 * 24 * scale;
-            this.node.appendChild(this.thumbnailImage);
-        }
+        this.drawBackground();
         this.updateFromConfig();
-        // Make global CSS if necessary.
-        configureStylesheet();
     }
     setConfig(config) {
         this.config = config;
@@ -5596,15 +5549,6 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
                 }
                 break;
         }
-        switch (this.config.background) {
-            case Config_1.Background.BLACK:
-                this.node.classList.add(gBlackBackgroundClass);
-                break;
-            case Config_1.Background.AUTHENTIC:
-            default:
-                this.node.classList.remove(gBlackBackgroundClass);
-                break;
-        }
         const glyphOptions = {
             color: phosphorToRgb(this.config.phosphor),
             scanLines: this.config.scanLines === Config_1.ScanLines.ON,
@@ -5613,28 +5557,41 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
             this.glyphs[i] = font.makeImage(i, this.isExpandedCharacters(), glyphOptions);
         }
         this.glyphWidth = font.width;
+        this.drawBackground();
         this.refresh();
     }
     writeChar(address, value) {
         const offset = address - Utils_1.SCREEN_BEGIN;
         this.memory[offset] = value;
         this.drawChar(offset, value);
-        this.scheduleUpdateThumbnail();
+    }
+    /**
+     * Get the background color as a CSS color based on the current config.
+     */
+    getBackgroundColor() {
+        switch (this.config.background) {
+            case Config_1.Background.BLACK:
+                return exports.BLACK_BACKGROUND;
+            case Config_1.Background.AUTHENTIC:
+            default:
+                return exports.AUTHENTIC_BACKGROUND;
+        }
     }
     /**
      * Draw a single character to the canvas.
      */
     drawChar(offset, value) {
-        const screenX = (offset % 64) * 8 * this.scale;
-        const screenY = Math.floor(offset / 64) * 24 * this.scale;
+        const screenX = (offset % 64) * 8 * this.scale + this.padding;
+        const screenY = Math.floor(offset / 64) * 24 * this.scale + this.padding;
+        this.context.fillStyle = this.getBackgroundColor();
         if (this.isExpandedCharacters()) {
             if (offset % 2 === 0) {
-                this.context.clearRect(screenX, screenY, 16 * this.scale, 24 * this.scale);
+                this.context.fillRect(screenX, screenY, 16 * this.scale, 24 * this.scale);
                 this.context.drawImage(this.glyphs[value], 0, 0, this.glyphWidth * 2, 24, screenX, screenY, 16 * this.scale, 24 * this.scale);
             }
         }
         else {
-            this.context.clearRect(screenX, screenY, 8 * this.scale, 24 * this.scale);
+            this.context.fillRect(screenX, screenY, 8 * this.scale, 24 * this.scale);
             this.context.drawImage(this.glyphs[value], 0, 0, this.glyphWidth, 24, screenX, screenY, 8 * this.scale, 24 * this.scale);
         }
     }
@@ -5654,40 +5611,37 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
         }
     }
     /**
+     * Draw the background of the canvas.
+     */
+    drawBackground() {
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        const radius = BORDER_RADIUS * this.scale;
+        this.context.fillStyle = this.getBackgroundColor();
+        this.context.beginPath();
+        this.context.moveTo(radius, 0);
+        this.context.arcTo(width, 0, width, radius, radius);
+        this.context.arcTo(width, height, width - radius, height, radius);
+        this.context.arcTo(0, height, 0, height - radius, radius);
+        this.context.arcTo(0, 0, radius, 0, radius);
+        this.context.fill();
+    }
+    /**
      * Refresh the display based on what we've kept track of.
      */
     refresh() {
         for (let offset = 0; offset < this.memory.length; offset++) {
             this.drawChar(offset, this.memory[offset]);
         }
-        this.scheduleUpdateThumbnail();
     }
     /**
-     * Schedule a future update of our thumbnail.
+     * Returns the canvas as an <img> element that can be resized. This is relatively
+     * expensive.
      */
-    scheduleUpdateThumbnail() {
-        this.cancelUpdateThumbnail();
-        this.updateThumbnailTimeout = window.setTimeout(() => {
-            this.updateThumbnailTimeout = undefined;
-            this.updateThumbnail();
-        }, UPDATE_THUMBNAIL_TIMEOUT_MS);
-    }
-    /**
-     * Cancel any previously-cancelled scheduled thumbnail update.
-     */
-    cancelUpdateThumbnail() {
-        if (this.updateThumbnailTimeout !== undefined) {
-            window.clearTimeout(this.updateThumbnailTimeout);
-            this.updateThumbnailTimeout = undefined;
-        }
-    }
-    /**
-     * Synchronously update the thumbnail.
-     */
-    updateThumbnail() {
-        if (this.thumbnailImage !== undefined) {
-            this.thumbnailImage.src = this.canvas.toDataURL();
-        }
+    asImage() {
+        const image = document.createElement("img");
+        image.src = this.canvas.toDataURL();
+        return image;
     }
 }
 exports.CanvasScreen = CanvasScreen;
@@ -30877,6 +30831,7 @@ var Flag;
 
 
 
+
 /**
  * Handles the file info tab in the file panel.
  */
@@ -30919,12 +30874,13 @@ class FilePanel_FileInfoTab {
         form.append(miscDiv);
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
-        let s = "screenshots ";
-        for (let i = 0; i < 8; i++) {
-            s = s + s;
-        }
-        screenshotsDiv.innerText = s;
         form.append(screenshotsDiv);
+        for (const screenshot of this.filePanel.file.screenshots) {
+            const screen = new dist["CanvasScreen"]();
+            screen.displayScreenshot(screenshot);
+            const image = screen.asImage();
+            screenshotsDiv.append(image);
+        }
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         infoTab.element.append(actionBar);
@@ -31461,10 +31417,10 @@ class LibraryPanel_LibraryPanel extends Panel {
         fileDiv.append(screenshotsDiv);
         for (const screenshot of file.screenshots) {
             // TODO put limit on this.
-            const screenDiv = document.createElement("div");
-            screenshotsDiv.append(screenDiv);
-            const screen = new dist["CanvasScreen"](screenDiv, 0.10);
+            const screen = new dist["CanvasScreen"]();
             screen.displayScreenshot(screenshot);
+            const image = screen.asImage();
+            screenshotsDiv.append(image);
         }
         const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
             this.runProgram(file);
@@ -31528,6 +31484,7 @@ class LibraryPanel_LibraryPanel extends Panel {
 
 // CONCATENATED MODULE: ./src/Context.ts
 
+
 /**
  * Context of the whole app, with its global variables.
  */
@@ -31538,6 +31495,17 @@ class Context_Context {
         this.trs80 = trs80;
         this.db = db;
         this.panelManager = panelManager;
+        // Listen for changes to the file we're running.
+        this.library.onEvent.subscribe(event => {
+            if (this.runningFile !== undefined) {
+                if (event instanceof LibraryModifyEvent && event.oldFile.id === this.runningFile.id) {
+                    this.runningFile = event.newFile;
+                }
+                if (event instanceof LibraryRemoveEvent && event.oldFile.id === this.runningFile.id) {
+                    this.runningFile = undefined;
+                }
+            }
+        });
     }
     /**
      * Run a program.
@@ -31610,7 +31578,8 @@ function main() {
     const navbar = createNavbar(() => panelManager.open());
     const screenDiv = document.createElement("div");
     screenDiv.classList.add("main-computer-screen");
-    const screen = new dist["CanvasScreen"](screenDiv, 1.5);
+    const screen = new dist["CanvasScreen"](1.5);
+    screenDiv.append(screen.getNode());
     let cassette = new Main_EmptyCassette();
     const trs80 = new dist["Trs80"](screen, cassette);
     const reboot = () => {
