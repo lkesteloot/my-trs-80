@@ -5279,6 +5279,7 @@ __exportStar(__webpack_require__(20), exports);
 __exportStar(__webpack_require__(21), exports);
 __exportStar(__webpack_require__(47), exports);
 __exportStar(__webpack_require__(93), exports);
+__exportStar(__webpack_require__(99), exports);
 
 
 /***/ }),
@@ -5663,7 +5664,10 @@ module.exports = isObjectLike;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeCassette = exports.Cassette = exports.CassetteFile = exports.CassetteSpeed = void 0;
+const RawBinaryFile_1 = __webpack_require__(93);
 const SystemProgram_1 = __webpack_require__(21);
+const Trs80File_1 = __webpack_require__(47);
+// Low-speed header and sync constants.
 const LOW_SPEED_HEADER_BYTE = 0x00;
 const LOW_SPEED_SYNC_BYTE = 0xA5;
 const LOW_SPEED_ACCEPTABLE_HEADER = (LOW_SPEED_HEADER_BYTE << 24) |
@@ -5674,6 +5678,7 @@ const LOW_SPEED_DETECT = (LOW_SPEED_HEADER_BYTE << 24) |
     (LOW_SPEED_HEADER_BYTE << 16) |
     (LOW_SPEED_HEADER_BYTE << 8) |
     (LOW_SPEED_SYNC_BYTE << 0);
+// High-speed header and sync constants.
 const HIGH_SPEED_HEADER_BYTE = 0x55;
 const HIGH_SPEED_SYNC_BYTE = 0x7F;
 const HIGH_SPEED_ACCEPTABLE_HEADER1 = (HIGH_SPEED_HEADER_BYTE << 24) |
@@ -5719,10 +5724,9 @@ exports.CassetteFile = CassetteFile;
 /**
  * Represents a cassette (CAS file).
  */
-class Cassette {
+class Cassette extends Trs80File_1.Trs80File {
     constructor(binary, error, files) {
-        this.binary = binary;
-        this.error = error;
+        super(binary, error, []);
         this.files = files;
     }
     getDescription() {
@@ -5778,6 +5782,7 @@ function decodeCassette(binary) {
         let recentBits = 0xFFFFFFFF;
         let programBinary;
         let speed;
+        let programStartIndex = 0;
         for (let i = start; i < binary.length; i++) {
             const byte = binary[i];
             recentBits = (recentBits << 8) | byte;
@@ -5788,7 +5793,8 @@ function decodeCassette(binary) {
                     throw new Error("We don't yet handle low-speed cassettes with bit offsets of " + lowSpeedBitOffset);
                 }
                 speed = CassetteSpeed.LOW_SPEED;
-                programBinary = binary.subarray(i + 1);
+                programStartIndex = i + 1;
+                programBinary = binary.subarray(programStartIndex);
                 break;
             }
             const highSpeedBitOffset = checkMatch(recentBits, HIGH_SPEED_DETECT);
@@ -5799,7 +5805,8 @@ function decodeCassette(binary) {
                         highSpeedBitOffset);
                 }
                 speed = CassetteSpeed.HIGH_SPEED;
-                programBinary = stripStartBits(binary.subarray(i + 1));
+                programStartIndex = i + 1;
+                programBinary = stripStartBits(binary.subarray(programStartIndex));
                 break;
             }
             if (i >= start + 4 &&
@@ -5822,9 +5829,11 @@ function decodeCassette(binary) {
         }
         else {
             // Unrecognized file. Treat as raw data.
-            // TODO.
+            const rawBinaryFile = new RawBinaryFile_1.RawBinaryFile(programBinary);
+            const cassetteFile = new CassetteFile(speed, rawBinaryFile);
+            cassetteFiles.push(cassetteFile);
         }
-        // TODO handle multiple files.
+        // TODO handle multiple files. See HAUNT.CAS.
         break;
     }
     return new Cassette(binary, undefined, cassetteFiles);
@@ -5848,6 +5857,7 @@ exports.decodeSystemProgram = exports.SystemProgram = exports.SystemChunk = void
 const teamten_ts_utils_1 = __webpack_require__(18);
 const z80_base_1 = __webpack_require__(91);
 const ProgramAnnotation_1 = __webpack_require__(46);
+const Trs80File_1 = __webpack_require__(47);
 const FILE_HEADER = 0x55;
 const DATA_HEADER = 0x3C;
 const END_OF_FILE_MARKER = 0x78;
@@ -5881,10 +5891,9 @@ exports.SystemChunk = SystemChunk;
  * Class representing a SYSTEM (machine language) program. If the "error" field is set, then something
  * went wrong with the program and the data may be partially loaded.
  */
-class SystemProgram {
+class SystemProgram extends Trs80File_1.Trs80File {
     constructor(binary, error, filename, chunks, entryPointAddress, annotations) {
-        this.binary = binary;
-        this.error = error;
+        super(binary, error, annotations);
         this.filename = filename;
         this.chunks = chunks;
         this.entryPointAddress = entryPointAddress;
@@ -5939,7 +5948,7 @@ function decodeSystemProgram(binary) {
         return makeSystemProgram("File is truncated at filename");
     }
     filename = filename.trim();
-    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Filename\n\"" + filename + "\"", b.addr() - FILENAME_LENGTH, b.addr() - 1));
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Filename\n\"" + filename + "\"", b.addr() - FILENAME_LENGTH, b.addr() - 1)); // TODO all these annotations need to have their "end" incremented.
     while (true) {
         annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Data\nHead", b.addr(), b.addr()));
         const marker = b.read();
@@ -8991,6 +9000,9 @@ exports.ByteReader = ByteReader;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeCmdProgram = exports.CmdProgram = exports.CmdLoadModuleHeaderChunk = exports.CmdTransferAddressChunk = exports.CmdLoadBlockChunk = exports.CmdChunk = exports.CMD_MAX_TYPE = exports.CMD_LOAD_MODULE_HEADER = exports.CMD_TRANSFER_ADDRESS = exports.CMD_LOAD_BLOCK = void 0;
 const teamten_ts_utils_1 = __webpack_require__(18);
+const ProgramAnnotation_1 = __webpack_require__(46);
+const Trs80File_1 = __webpack_require__(47);
+const main_1 = __webpack_require__(101);
 // Chunk types.
 exports.CMD_LOAD_BLOCK = 0x01;
 exports.CMD_TRANSFER_ADDRESS = 0x02;
@@ -9004,6 +9016,12 @@ class CmdChunk {
         this.type = type;
         this.rawData = data;
     }
+    /**
+     * Add annotations about this chunk, assuming its data is at "addr".
+     */
+    addAnnotations(annotations, addr) {
+        // Nothing for unknown chunks.
+    }
 }
 exports.CmdChunk = CmdChunk;
 /**
@@ -9015,6 +9033,11 @@ class CmdLoadBlockChunk extends CmdChunk {
         this.address = data[0] + data[1] * 256;
         this.loadData = data.slice(2);
     }
+    addAnnotations(annotations, addr) {
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Load address (0x" + main_1.toHexWord(this.address) + ")", addr, addr + 2));
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Data (" + this.loadData.length + " byte" +
+            (this.loadData.length === 1 ? "" : "s") + ")", addr + 2, addr + 2 + this.loadData.length));
+    }
 }
 exports.CmdLoadBlockChunk = CmdLoadBlockChunk;
 /**
@@ -9024,6 +9047,9 @@ class CmdTransferAddressChunk extends CmdChunk {
     constructor(type, data) {
         super(type, data);
         this.address = data.length === 2 ? (data[0] + data[1] * 256) : 0;
+    }
+    addAnnotations(annotations, addr) {
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Jump address (0x" + main_1.toHexWord(this.address) + ")", addr, addr + 2));
     }
 }
 exports.CmdTransferAddressChunk = CmdTransferAddressChunk;
@@ -9035,16 +9061,37 @@ class CmdLoadModuleHeaderChunk extends CmdChunk {
         super(type, data);
         this.filename = new TextDecoder("ascii").decode(data).trim().replace(/ +/g, " ");
     }
+    addAnnotations(annotations, addr) {
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Name (" + this.filename + ")", addr, addr + this.rawData.length));
+    }
 }
 exports.CmdLoadModuleHeaderChunk = CmdLoadModuleHeaderChunk;
+/**
+ * A friendly (not so technical) name for the block type.
+ * See page 43 of The LDOS Quarterly, Volume 1, Number 4.
+ * https://www.tim-mann.org/trs80/doc/ldosq1-4.pdf
+ */
+const CHUNK_NAME = new Map([
+    [0x01, "data"],
+    [0x02, "jump address"],
+    [0x04, "end of partitioned data set member"],
+    [0x05, "header"],
+    [0x06, "partitioned data set header"],
+    [0x07, "patch name header"],
+    [0x08, "ISAM directory entry"],
+    [0x0A, "end of ISAM directory"],
+    [0x0C, "PDS directory entry"],
+    [0x0E, "end of PDS directory"],
+    [0x10, "yanked load block"],
+    [0x1F, "copyright block"],
+]);
 /**
  * Class representing a CMD (machine language) program. If the "error" field is set, then something
  * went wrong with the program and the data may be partially loaded.
  */
-class CmdProgram {
-    constructor(binary, error, chunks, filename, entryPointAddress) {
-        this.binary = binary;
-        this.error = error;
+class CmdProgram extends Trs80File_1.Trs80File {
+    constructor(binary, error, annotations, chunks, filename, entryPointAddress) {
+        super(binary, error, annotations);
         this.chunks = chunks;
         this.filename = filename;
         this.entryPointAddress = entryPointAddress;
@@ -9079,18 +9126,22 @@ exports.CmdProgram = CmdProgram;
  * partially-decoded binary and sets the "error" field.
  */
 function decodeCmdProgram(binary) {
+    var _a;
     let error;
+    const annotations = [];
     const chunks = [];
     let filename;
     let entryPointAddress = 0;
     const b = new teamten_ts_utils_1.ByteReader(binary);
     // Read each chunk.
     while (true) {
-        // First byte is type.
+        // First byte is type of chunk.
         const type = b.read();
         if (type === teamten_ts_utils_1.EOF || type > exports.CMD_MAX_TYPE || error !== undefined) {
-            return new CmdProgram(binary.subarray(0, b.addr()), error, chunks, filename, entryPointAddress);
+            return new CmdProgram(binary.subarray(0, b.addr()), error, annotations, chunks, filename, entryPointAddress);
         }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Type of chunk (" +
+            ((_a = CHUNK_NAME.get(type)) !== null && _a !== void 0 ? _a : "unknown") + ")", b.addr() - 1, b.addr()));
         // Second byte is length, in bytes.
         let length = b.read();
         if (length === teamten_ts_utils_1.EOF) {
@@ -9101,14 +9152,17 @@ function decodeCmdProgram(binary) {
         if (type === exports.CMD_LOAD_BLOCK && length <= 2) {
             length += 256;
         }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Length of chunk (" + length +
+            " byte" + (length === 1 ? "" : "s") + ")", b.addr() - 1, b.addr()));
         // Read the raw bytes.
+        const dataAddr = b.addr();
         const data = b.readBytes(length);
         if (data.length < length) {
             error = "File is truncated at data";
             // We continue so we can create a partial chunk. The loop will stop at the top of the next
             // iteration. Not sure this is the right thing to do.
         }
-        // Create chunk type-specific objects.
+        // Create type-specific chunk objects.
         let chunk;
         switch (type) {
             case exports.CMD_LOAD_BLOCK:
@@ -9133,6 +9187,7 @@ function decodeCmdProgram(binary) {
                 chunk = new CmdChunk(type, data);
                 break;
         }
+        chunk.addAnnotations(annotations, dataAddr);
         chunks.push(chunk);
     }
 }
@@ -9152,13 +9207,6 @@ exports.ProgramAnnotation = void 0;
  * that the program was parsed from.
  */
 class ProgramAnnotation {
-    /**
-     * Create an object representing a section to annotate.
-     *
-     * @param text any text to display for that section.
-     * @param begin the first index into the binary, inclusive.
-     * @param end the last index into the binary, exclusive.
-     */
     constructor(text, begin, end) {
         this.text = text;
         this.begin = begin;
@@ -9175,28 +9223,24 @@ exports.ProgramAnnotation = ProgramAnnotation;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeTrs80File = void 0;
+exports.Trs80File = void 0;
 /**
- * Interface for the decoded TRS-80 files.
+ * Base class for decoded TRS-80 files.
  */
-const Cassette_1 = __webpack_require__(20);
-const CmdProgram_1 = __webpack_require__(45);
-const RawBinaryFile_1 = __webpack_require__(93);
-function decodeTrs80File(binary) {
-    let trs80File;
-    // TODO not sure this is the right order. If the cassette decoder is going to be first, it
-    // should be stricter. Currently it's happy to find the header/sync byte anywhere in the binary.
-    trs80File = Cassette_1.decodeCassette(binary);
-    if (trs80File !== undefined) {
-        return trs80File;
+class Trs80File {
+    constructor(binary, error, annotations) {
+        this.binary = binary;
+        this.error = error;
+        this.annotations = annotations;
     }
-    trs80File = CmdProgram_1.decodeCmdProgram(binary);
-    if (trs80File !== undefined) {
-        return trs80File;
+    /**
+     * Brief description (e.g., "Basic program").
+     */
+    getDescription() {
+        throw new Error("Trs80File must implement getDescription()");
     }
-    return new RawBinaryFile_1.RawBinaryFile(binary);
 }
-exports.decodeTrs80File = decodeTrs80File;
+exports.Trs80File = Trs80File;
 
 
 /***/ }),
@@ -32815,6 +32859,15 @@ function makeButton(label, iconName, cssClass, clickCallback) {
     }
     return button;
 }
+/**
+ * Returns whether two string arrays are the same.
+ *
+ * Lodash has isEqual(), but it adds about 15 kB after minimization! (It's a deep comparison
+ * that has to deal with all sorts of data types.)
+ */
+function isSameStringArray(a, b) {
+    return a.length === b.length && a.every((value, index) => value === b[index]);
+}
 
 // EXTERNAL MODULE: ./node_modules/strongly-typed-events/dist/index.js
 var strongly_typed_events_dist = __webpack_require__(16);
@@ -32944,19 +32997,11 @@ class Panel {
 }
 
 // CONCATENATED MODULE: ./src/File.ts
-/**
- * Returns whether two string arrays are the same.
- *
- * Lodash has isEqual(), but it adds about 15 kB after minimization! (It's a deep comparison
- * that has to deal with all sorts of data types.)
- */
-function isSameStringArray(a, b) {
-    return a.length === b.length && a.every((value, index) => value === b[index]);
-}
+
 /**
  * Represents a file that the user owns.
  */
-class File {
+class File_File {
     constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, dateAdded, dateModified) {
         this.id = id;
         this.uid = uid;
@@ -33094,7 +33139,7 @@ class FileBuilder {
         return this;
     }
     build() {
-        return new File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.dateAdded, this.dateModified);
+        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.dateAdded, this.dateModified);
     }
 }
 
@@ -33169,6 +33214,105 @@ class PageTabs_PageTabs {
         }
     }
 }
+
+// EXTERNAL MODULE: ./node_modules/lodash/isEmpty.js
+var isEmpty = __webpack_require__(35);
+var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
+
+// CONCATENATED MODULE: ./src/Library.ts
+
+/**
+ * Base class for library event classes.
+ */
+class LibraryEvent {
+}
+/**
+ * Event for adding a file to the library.
+ */
+class LibraryAddEvent {
+    constructor(newFile) {
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for modifying a file in the library.
+ */
+class LibraryModifyEvent {
+    constructor(oldFile, newFile) {
+        this.oldFile = oldFile;
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for removing a file from the library.
+ */
+class LibraryRemoveEvent {
+    constructor(oldFile) {
+        this.oldFile = oldFile;
+    }
+}
+/**
+ * Keep track of all the files in the user's library. This should be a mirror of the contents
+ * of the database in the cloud.
+ */
+class Library_Library {
+    constructor() {
+        // Map from ID to file.
+        this.files = new Map();
+        // Fires after the map has been updated.
+        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+    }
+    /**
+     * Get a file by its ID, or undefined it not in the library.
+     */
+    getFile(id) {
+        return this.files.get(id);
+    }
+    /**
+     * Add a file to the library.
+     */
+    addFile(file) {
+        if (this.files.has(file.id)) {
+            console.error("Library.add(): Library already has file with ID " + file.id);
+            this.modifyFile(file);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryAddEvent(file));
+        }
+    }
+    /**
+     * Modify a file already in the library.
+     */
+    modifyFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.modify(): Library does not have file with ID " + file.id);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
+        }
+    }
+    /**
+     * Remove a file from the library.
+     */
+    removeFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.remove(): Library does not have file with ID " + file.id);
+        }
+        else {
+            // Here we assume that file and oldFile are the same. We could check, or we could just
+            // have the caller pass in a file ID.
+            this.files.delete(file.id);
+            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
+        }
+    }
+}
+
+// EXTERNAL MODULE: ../trs80-base/dist/index.js
+var trs80_base_dist = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Register.js
 /**
@@ -33455,104 +33599,184 @@ var Flag;
 
 
 
-// EXTERNAL MODULE: ./node_modules/lodash/isEmpty.js
-var isEmpty = __webpack_require__(35);
-var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
+// EXTERNAL MODULE: ../trs80-base/dist/ProgramAnnotation.js
+var ProgramAnnotation = __webpack_require__(46);
 
-// CONCATENATED MODULE: ./src/Library.ts
+// CONCATENATED MODULE: ./src/HexdumpGenerator.ts
 
-/**
- * Base class for library event classes.
- */
-class LibraryEvent {
-}
-/**
- * Event for adding a file to the library.
- */
-class LibraryAddEvent {
-    constructor(newFile) {
-        this.newFile = newFile;
-    }
-}
-/**
- * Event for modifying a file in the library.
- */
-class LibraryModifyEvent {
-    constructor(oldFile, newFile) {
-        this.oldFile = oldFile;
-        this.newFile = newFile;
-    }
-}
-/**
- * Event for removing a file from the library.
- */
-class LibraryRemoveEvent {
-    constructor(oldFile) {
-        this.oldFile = oldFile;
-    }
-}
-/**
- * Keep track of all the files in the user's library. This should be a mirror of the contents
- * of the database in the cloud.
- */
-class Library_Library {
-    constructor() {
-        // Map from ID to file.
-        this.files = new Map();
-        // Fires after the map has been updated.
-        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-    }
-    /**
-     * Get a file by its ID, or undefined it not in the library.
-     */
-    getFile(id) {
-        return this.files.get(id);
-    }
-    /**
-     * Add a file to the library.
-     */
-    addFile(file) {
-        if (this.files.has(file.id)) {
-            console.error("Library.add(): Library already has file with ID " + file.id);
-            this.modifyFile(file);
-        }
-        else {
-            this.files.set(file.id, file);
-            this.onEvent.dispatch(new LibraryAddEvent(file));
-        }
-    }
-    /**
-     * Modify a file already in the library.
-     */
-    modifyFile(file) {
-        const oldFile = this.files.get(file.id);
-        if (oldFile === undefined) {
-            console.error("Library.modify(): Library does not have file with ID " + file.id);
-        }
-        else {
-            this.files.set(file.id, file);
-            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
-        }
-    }
-    /**
-     * Remove a file from the library.
-     */
-    removeFile(file) {
-        const oldFile = this.files.get(file.id);
-        if (oldFile === undefined) {
-            console.error("Library.remove(): Library does not have file with ID " + file.id);
-        }
-        else {
-            // Here we assume that file and oldFile are the same. We could check, or we could just
-            // have the caller pass in a file ID.
-            this.files.delete(file.id);
-            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
-        }
-    }
-}
 
-// EXTERNAL MODULE: ../trs80-base/dist/index.js
-var trs80_base_dist = __webpack_require__(10);
+
+const STRIDE = 16;
+function newLine(lines) {
+    const line = document.createElement("div");
+    lines.push(line);
+    return line;
+}
+function newSpan(line, text, ...cssClass) {
+    const e = document.createElement("span");
+    e.classList.add(...cssClass);
+    e.innerText = text;
+    line.append(e);
+    return e;
+}
+/**
+ * Compare two parts of an array for equality.
+ */
+function segmentsEqual(binary, start1, start2, length) {
+    while (length-- > 0) {
+        if (binary[start1++] !== binary[start2++]) {
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * Count consecutive bytes that are around "addr".
+ */
+function countConsecutive(binary, addr) {
+    const value = binary[addr];
+    let startAddr = addr;
+    while (startAddr > 0 && binary[startAddr - 1] === value) {
+        startAddr--;
+    }
+    while (addr < binary.length - 1 && binary[addr + 1] === value) {
+        addr++;
+    }
+    return addr - startAddr + 1;
+}
+/**
+ * Whether this segment is made up of the same value.
+ */
+function allSameByte(binary, addr, length) {
+    for (let i = 1; i < length; i++) {
+        if (binary[addr + i] !== binary[addr]) {
+            return false;
+        }
+    }
+    return true;
+}
+class HexdumpGenerator_HexdumpGenerator {
+    constructor(binary, collapse, annotations) {
+        this.binary = binary;
+        this.collapse = collapse;
+        this.annotations = annotations;
+    }
+    generate() {
+        const lines = [];
+        const binary = this.binary;
+        const generateAnnotation = (annotation) => {
+            const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
+            const endAddr = Math.min(Math.ceil(annotation.end / STRIDE) * STRIDE, binary.length);
+            let lastAddr = undefined;
+            for (let addr = beginAddr; addr < endAddr; addr += STRIDE) {
+                if (this.collapse && lastAddr !== undefined &&
+                    binary.length - addr >= STRIDE && segmentsEqual(binary, lastAddr, addr, STRIDE)) {
+                    if (addr === lastAddr + STRIDE) {
+                        const line = newLine(lines);
+                        if (allSameByte(binary, addr, STRIDE)) {
+                            // Lots of the same byte repeated. Say many there are.
+                            const count = countConsecutive(binary, addr);
+                            newSpan(line, "      ... ", "address");
+                            newSpan(line, count.toString(), "ascii");
+                            newSpan(line, " (", "address");
+                            newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
+                            newSpan(line, ") consecutive bytes of ", "address");
+                            newSpan(line, "0x" + toHexByte(binary[addr]), "hex");
+                            newSpan(line, " ...", "address");
+                        }
+                        else {
+                            // A repeating pattern, but not all the same byte. Say how many times repeated.
+                            let count = 1;
+                            for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
+                                if (segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
+                                    count += 1;
+                                }
+                                else {
+                                    break;
+                                }
+                            }
+                            newSpan(line, "      ... ", "address");
+                            newSpan(line, count.toString(), "ascii");
+                            const plural = count === 1 ? "" : "s";
+                            newSpan(line, ` repetition${plural} of previous row ...`, "address");
+                        }
+                    }
+                }
+                else {
+                    lastAddr = addr;
+                    this.generateRow(lines, addr, annotation.begin, annotation.end, addr === beginAddr ? annotation.text : "");
+                }
+            }
+        };
+        let lastAnnotation = undefined;
+        for (const annotation of this.annotations) {
+            if (lastAnnotation !== undefined && lastAnnotation.end !== annotation.begin) {
+                generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotation.end, annotation.begin));
+            }
+            generateAnnotation(annotation);
+            lastAnnotation = annotation;
+        }
+        const lastAnnotationEnd = lastAnnotation !== undefined ? lastAnnotation.end : 0;
+        if (lastAnnotationEnd !== binary.length) {
+            generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
+        }
+        // Final address to show where file ends.
+        newSpan(newLine(lines), toHexWord(binary.length), "address");
+        return lines;
+    }
+    generateRow(lines, addr, beginAddr, endAddr, label) {
+        const binary = this.binary;
+        const line = newLine(lines);
+        const cssClass = ["address"];
+        if (addr < beginAddr) {
+            cssClass.push("outside-annotation");
+        }
+        newSpan(line, toHexWord(addr) + "  ", ...cssClass);
+        // Utility function for adding text to a line, minimizing the number of needless spans.
+        let currentCssClass = undefined;
+        let e = undefined;
+        const addText = (text, ...cssClass) => {
+            if (e === undefined || currentCssClass === undefined || !isSameStringArray(cssClass, currentCssClass)) {
+                e = newSpan(line, text, ...cssClass);
+                currentCssClass = cssClass.slice();
+            }
+            else {
+                e.innerText += text;
+            }
+        };
+        // Hex.
+        let subAddr;
+        for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
+            const cssClass = ["hex"];
+            if (subAddr < beginAddr || subAddr >= endAddr) {
+                cssClass.push("outside-annotation");
+            }
+            addText(toHexByte(binary[subAddr]) + " ", ...cssClass);
+        }
+        addText("".padStart((addr + STRIDE - subAddr) * 3 + 2, " "), "hex");
+        // ASCII.
+        for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
+            const c = binary[subAddr];
+            const cssClass = ["hex"];
+            let char;
+            if (c >= 32 && c < 127) {
+                cssClass.push("ascii");
+                char = String.fromCharCode(c);
+            }
+            else {
+                cssClass.push("ascii-unprintable");
+                char = ".";
+            }
+            if (subAddr < beginAddr || subAddr >= endAddr) {
+                cssClass.push("outside-annotation");
+            }
+            addText(char, ...cssClass);
+        }
+        if (label !== "") {
+            addText("".padStart(addr + STRIDE - subAddr + 2, " ") + label, "annotation");
+        }
+    }
+}
 
 // CONCATENATED MODULE: ./src/FilePanel.ts
 
@@ -33777,8 +34001,10 @@ class FilePanel_FileInfoTab {
  */
 class FilePanel_HexdumpTab {
     constructor(filePanel, pageTabs, trs80File) {
-        this.collapse = true;
+        this.collapse = false; // TODO re-enable.
+        this.annotate = true;
         this.binary = filePanel.file.binary;
+        this.trs80File = trs80File;
         const infoTab = pageTabs.newTab("Hexdump");
         infoTab.element.classList.add("hexdump-tab");
         const outer = document.createElement("div");
@@ -33802,138 +34028,26 @@ class FilePanel_HexdumpTab {
             this.generateHexdump();
         });
         actionBar.append(collapseLabel);
+        const annotateLabel = document.createElement("label");
+        const annotateCheckbox = document.createElement("input");
+        annotateCheckbox.type = "checkbox";
+        annotateCheckbox.checked = this.annotate;
+        annotateLabel.append(annotateCheckbox);
+        annotateLabel.append(" Show annotations");
+        annotateCheckbox.addEventListener("change", () => {
+            this.annotate = annotateCheckbox.checked;
+            this.generateHexdump();
+        });
+        actionBar.append(annotateLabel);
     }
     /**
      * Regenerate the HTML for the hexdump.
      */
     generateHexdump() {
-        const lines = [];
-        const STRIDE = 16;
-        const newLine = () => {
-            const line = document.createElement("div");
-            lines.push(line);
-            return line;
-        };
-        const newSpan = (line, cssClass, text) => {
-            const e = document.createElement("span");
-            e.classList.add(cssClass);
-            e.innerText = text;
-            line.append(e);
-            return e;
-        };
-        const binary = this.binary;
-        let lastAddr = undefined;
-        for (let addr = 0; addr < binary.length; addr += STRIDE) {
-            if (this.collapse && lastAddr !== undefined &&
-                binary.length - addr >= STRIDE && FilePanel_HexdumpTab.segmentsEqual(binary, lastAddr, addr, STRIDE)) {
-                if (addr === lastAddr + STRIDE) {
-                    const line = newLine();
-                    if (FilePanel_HexdumpTab.allSameByte(binary, addr, STRIDE)) {
-                        // Lots of the same byte repeated. Say many there are.
-                        const count = FilePanel_HexdumpTab.countConsecutive(binary, addr);
-                        newSpan(line, "address", "      ... ");
-                        newSpan(line, "ascii", count.toString());
-                        newSpan(line, "address", " (");
-                        newSpan(line, "ascii", "0x" + count.toString(16).toUpperCase());
-                        newSpan(line, "address", ") consecutive bytes of ");
-                        newSpan(line, "hex", "0x" + toHexByte(binary[addr]));
-                        newSpan(line, "address", " ...");
-                    }
-                    else {
-                        // A repeating pattern, but not all the same byte. Say how many times repeated.
-                        let count = 1;
-                        for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
-                            if (FilePanel_HexdumpTab.segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
-                                count += 1;
-                            }
-                            else {
-                                break;
-                            }
-                        }
-                        newSpan(line, "address", "      ... ");
-                        newSpan(line, "ascii", count.toString());
-                        const plural = count === 1 ? "" : "s";
-                        newSpan(line, "address", ` repetition${plural} of previous row ...`);
-                    }
-                }
-            }
-            else {
-                lastAddr = addr;
-                const line = newLine();
-                newSpan(line, "address", toHexWord(addr) + "  ");
-                // Hex.
-                let subAddr;
-                let s = "";
-                for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
-                    s += toHexByte(binary[subAddr]) + " ";
-                }
-                for (; subAddr < addr + STRIDE; subAddr++) {
-                    s += "   ";
-                }
-                s += "  ";
-                newSpan(line, "hex", s);
-                // ASCII.
-                let e = undefined;
-                let currentCssClass = undefined;
-                for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
-                    const c = binary[subAddr];
-                    let cssClass;
-                    let char;
-                    if (c >= 32 && c < 127) {
-                        cssClass = "ascii";
-                        char = String.fromCharCode(c);
-                    }
-                    else {
-                        cssClass = "ascii-unprintable";
-                        char = ".";
-                    }
-                    if (e === undefined || cssClass !== currentCssClass) {
-                        e = newSpan(line, cssClass, "");
-                        currentCssClass = cssClass;
-                    }
-                    e.innerText += char;
-                }
-            }
-        }
-        newSpan(newLine(), "address", toHexWord(binary.length));
+        const hexdumpGenerator = new HexdumpGenerator_HexdumpGenerator(this.binary, this.collapse, this.annotate ? this.trs80File.annotations : []);
+        const lines = hexdumpGenerator.generate();
         Object(teamten_ts_utils_dist["clearElement"])(this.hexdumpElement);
         this.hexdumpElement.append(...lines);
-    }
-    /**
-     * Compare two parts of an array for equality.
-     */
-    static segmentsEqual(binary, start1, start2, length) {
-        while (length-- > 0) {
-            if (binary[start1++] !== binary[start2++]) {
-                return false;
-            }
-        }
-        return true;
-    }
-    /**
-     * Count consecutive bytes that are around "addr".
-     */
-    static countConsecutive(binary, addr) {
-        const value = binary[addr];
-        let startAddr = addr;
-        while (startAddr > 0 && binary[startAddr - 1] === value) {
-            startAddr--;
-        }
-        while (addr < binary.length - 1 && binary[addr + 1] === value) {
-            addr++;
-        }
-        return addr - startAddr + 1;
-    }
-    /**
-     * Whether this segment is made up of the same value.
-     */
-    static allSameByte(binary, addr, length) {
-        for (let i = 1; i < length; i++) {
-            if (binary[addr + i] !== binary[addr]) {
-                return false;
-            }
-        }
-        return true;
     }
 }
 /**
@@ -34167,7 +34281,7 @@ class LibraryPanel_LibraryPanel extends Panel {
                 }
             }
         }
-        fileElements.sort((a, b) => File.compare(a.file, b.file));
+        fileElements.sort((a, b) => File_File.compare(a.file, b.file));
         // Repopulate the UI in the right order.
         Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
         this.filesDiv.append(...fileElements.map(e => e.element));
@@ -43759,13 +43873,13 @@ class Z80_Z80 {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RawBinaryFile = void 0;
+const Trs80File_1 = __webpack_require__(47);
 /**
  * File when we don't recognize the type.
  */
-class RawBinaryFile {
+class RawBinaryFile extends Trs80File_1.Trs80File {
     constructor(binary) {
-        this.error = undefined;
-        this.binary = binary;
+        super(binary, undefined, []);
     }
     getDescription() {
         return "Unknown file";
@@ -44065,6 +44179,376 @@ exports.registerSetFields = [
 
 /***/ }),
 /* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The flag bits in the F register.
+ */
+var Flag;
+(function (Flag) {
+    /**
+     * Carry and borrow. Indicates that the addition or subtraction did not
+     * fit in the register.
+     */
+    Flag[Flag["C"] = 1] = "C";
+    /**
+     * Set if the last operation was a subtraction.
+     */
+    Flag[Flag["N"] = 2] = "N";
+    /**
+     * Parity: Indicates that the result has an even number of bits set.
+     */
+    Flag[Flag["P"] = 4] = "P";
+    /**
+     * Overflow: Indicates that two's complement does not fit in register.
+     */
+    Flag[Flag["V"] = 4] = "V";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X3"] = 8] = "X3";
+    /**
+     * Half carry: Carry from bit 3 to bit 4 during BCD operations.
+     */
+    Flag[Flag["H"] = 16] = "H";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X5"] = 32] = "X5";
+    /**
+     * Set if value is zero.
+     */
+    Flag[Flag["Z"] = 64] = "Z";
+    /**
+     * Set of value is negative.
+     */
+    Flag[Flag["S"] = 128] = "S";
+})(Flag = exports.Flag || (exports.Flag = {}));
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeTrs80File = void 0;
+const Cassette_1 = __webpack_require__(20);
+const CmdProgram_1 = __webpack_require__(45);
+const RawBinaryFile_1 = __webpack_require__(93);
+/**
+ * Top-level decoder for any TRS-80 file.
+ */
+function decodeTrs80File(binary) {
+    let trs80File;
+    trs80File = Cassette_1.decodeCassette(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    trs80File = CmdProgram_1.decodeCmdProgram(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    return new RawBinaryFile_1.RawBinaryFile(binary);
+}
+exports.decodeTrs80File = decodeTrs80File;
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// Various utility functions.
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Convert a number to hex and zero-pad to the specified number of hex digits.
+ */
+function toHex(value, digits) {
+    return value.toString(16).toUpperCase().padStart(digits, "0");
+}
+exports.toHex = toHex;
+/**
+ * Convert a byte to hex.
+ */
+function toHexByte(value) {
+    return toHex(value, 2);
+}
+exports.toHexByte = toHexByte;
+/**
+ * Convert a word to hex.
+ */
+function toHexWord(value) {
+    return toHex(value, 4);
+}
+exports.toHexWord = toHexWord;
+/**
+ * Return the high byte of a word.
+ */
+function hi(value) {
+    return (value >> 8) & 0xFF;
+}
+exports.hi = hi;
+/**
+ * Return the low byte of a word.
+ */
+function lo(value) {
+    return value & 0xFF;
+}
+exports.lo = lo;
+/**
+ * Create a word from a high and low byte.
+ */
+function word(highByte, lowByte) {
+    return ((highByte & 0xFF) << 8) | (lowByte & 0xFF);
+}
+exports.word = word;
+/**
+ * Increment a byte.
+ */
+function inc8(value) {
+    return add8(value, 1);
+}
+exports.inc8 = inc8;
+/**
+ * Increment a word.
+ */
+function inc16(value) {
+    return add16(value, 1);
+}
+exports.inc16 = inc16;
+/**
+ * Decrement a byte.
+ */
+function dec8(value) {
+    return sub8(value, 1);
+}
+exports.dec8 = dec8;
+/**
+ * Decrement a word.
+ */
+function dec16(value) {
+    return sub16(value, 1);
+}
+exports.dec16 = dec16;
+/**
+ * Add two bytes together.
+ */
+function add8(a, b) {
+    return (a + b) & 0xFF;
+}
+exports.add8 = add8;
+/**
+ * Add two words together.
+ */
+function add16(a, b) {
+    return (a + b) & 0xFFFF;
+}
+exports.add16 = add16;
+/**
+ * Subtract two bytes.
+ */
+function sub8(a, b) {
+    return (a - b) & 0xFF;
+}
+exports.sub8 = sub8;
+/**
+ * Subtract two words.
+ */
+function sub16(a, b) {
+    return (a - b) & 0xFFFF;
+}
+exports.sub16 = sub16;
+/**
+ * Convert a byte to a signed number (e.g., 0xff to -1).
+ */
+function signedByte(value) {
+    return value >= 128 ? value - 256 : value;
+}
+exports.signedByte = signedByte;
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(102));
+__export(__webpack_require__(103));
+__export(__webpack_require__(100));
+__export(__webpack_require__(104));
+
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * List of all word registers.
+ */
+const WORD_REG = new Set(["af", "bc", "de", "hl", "af'", "bc'", "de'", "hl'", "ix", "iy", "sp", "pc"]);
+/**
+ * List of all byte registers.
+ */
+const BYTE_REG = new Set(["a", "f", "b", "c", "d", "e", "h", "l", "ixh", "ixl", "iyh", "iyl", "i", "r"]);
+/**
+ * Determine whether a register stores a word.
+ */
+function isWordReg(s) {
+    return WORD_REG.has(s.toLowerCase());
+}
+exports.isWordReg = isWordReg;
+/**
+ * Determine whether a register stores a byte.
+ */
+function isByteReg(s) {
+    return BYTE_REG.has(s.toLowerCase());
+}
+exports.isByteReg = isByteReg;
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Utils_1 = __webpack_require__(100);
+/**
+ * All registers in a Z80.
+ */
+class RegisterSet {
+    constructor() {
+        // External state:
+        this.af = 0;
+        this.bc = 0;
+        this.de = 0;
+        this.hl = 0;
+        this.afPrime = 0;
+        this.bcPrime = 0;
+        this.dePrime = 0;
+        this.hlPrime = 0;
+        this.ix = 0;
+        this.iy = 0;
+        this.sp = 0;
+        this.pc = 0;
+        // Internal state:
+        this.memptr = 0;
+        this.i = 0;
+        this.r = 0; // Low 7 bits of R.
+        this.r7 = 0; // Bit 7 of R.
+        this.iff1 = 0;
+        this.iff2 = 0;
+        this.im = 0;
+        this.halted = 0;
+    }
+    get a() {
+        return Utils_1.hi(this.af);
+    }
+    set a(value) {
+        this.af = Utils_1.word(value, this.f);
+    }
+    get f() {
+        return Utils_1.lo(this.af);
+    }
+    set f(value) {
+        this.af = Utils_1.word(this.a, value);
+    }
+    get b() {
+        return Utils_1.hi(this.bc);
+    }
+    set b(value) {
+        this.bc = Utils_1.word(value, this.c);
+    }
+    get c() {
+        return Utils_1.lo(this.bc);
+    }
+    set c(value) {
+        this.bc = Utils_1.word(this.b, value);
+    }
+    get d() {
+        return Utils_1.hi(this.de);
+    }
+    set d(value) {
+        this.de = Utils_1.word(value, this.e);
+    }
+    get e() {
+        return Utils_1.lo(this.de);
+    }
+    set e(value) {
+        this.de = Utils_1.word(this.d, value);
+    }
+    get h() {
+        return Utils_1.hi(this.hl);
+    }
+    set h(value) {
+        this.hl = Utils_1.word(value, this.l);
+    }
+    get l() {
+        return Utils_1.lo(this.hl);
+    }
+    set l(value) {
+        this.hl = Utils_1.word(this.h, value);
+    }
+    get ixh() {
+        return Utils_1.hi(this.ix);
+    }
+    set ixh(value) {
+        this.ix = Utils_1.word(value, this.ixl);
+    }
+    get ixl() {
+        return Utils_1.lo(this.ix);
+    }
+    set ixl(value) {
+        this.ix = Utils_1.word(this.ixh, value);
+    }
+    get iyh() {
+        return Utils_1.hi(this.iy);
+    }
+    set iyh(value) {
+        this.iy = Utils_1.word(value, this.iyl);
+    }
+    get iyl() {
+        return Utils_1.lo(this.iy);
+    }
+    set iyl(value) {
+        this.iy = Utils_1.word(this.iyh, value);
+    }
+    /**
+     * Combine the two R parts together.
+     */
+    get rCombined() {
+        return (this.r7 & 0x80) | (this.r & 0xF7);
+    }
+}
+exports.RegisterSet = RegisterSet;
+/**
+ * All real fields of RegisterSet, for enumeration.
+ */
+exports.registerSetFields = [
+    "af", "bc", "de", "hl",
+    "afPrime", "bcPrime", "dePrime", "hlPrime",
+    "ix", "iy", "sp", "pc",
+    "memptr", "i", "r", "iff1", "iff2", "im", "halted"
+];
+
+
+/***/ }),
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
