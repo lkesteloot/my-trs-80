@@ -4882,8 +4882,8 @@ function setUserLogHandler(logCallback, options) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Cassette_1 = __webpack_require__(36);
-Object.defineProperty(exports, "Cassette", { enumerable: true, get: function () { return Cassette_1.Cassette; } });
+var CassettePlayer_1 = __webpack_require__(36);
+Object.defineProperty(exports, "CassettePlayer", { enumerable: true, get: function () { return CassettePlayer_1.CassettePlayer; } });
 var Trs80_1 = __webpack_require__(37);
 Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
 var CanvasScreen_1 = __webpack_require__(22);
@@ -7386,12 +7386,12 @@ module.exports = isEmpty;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Cassette = void 0;
+exports.CassettePlayer = void 0;
 /**
  * Interface for fetching cassette audio data. We make this a concrete
  * class because rollup.js can't handle exported interfaces.
  */
-class Cassette {
+class CassettePlayer {
     constructor() {
         /**
          * The number of samples per second that this audio represents.
@@ -7418,7 +7418,7 @@ class Cassette {
         // Optional function.
     }
 }
-exports.Cassette = Cassette;
+exports.CassettePlayer = CassettePlayer;
 
 
 /***/ }),
@@ -7438,6 +7438,7 @@ const Model3Rom_1 = __webpack_require__(41);
 const Utils_1 = __webpack_require__(11);
 const Config_1 = __webpack_require__(17);
 const trs80_base_1 = __webpack_require__(10);
+const main_1 = __webpack_require__(95);
 // IRQs
 const M1_TIMER_IRQ_MASK = 0x80;
 const M3_CASSETTE_RISE_IRQ_MASK = 0x01;
@@ -7619,6 +7620,9 @@ class Trs80 {
             this.memory[i] = raw.charCodeAt(i);
         }
     }
+    /**
+     * Reset the state of the Z80 and hardware.
+     */
     reset() {
         this.setIrqMask(0);
         this.setNmiMask(0);
@@ -7627,6 +7631,9 @@ class Trs80 {
         this.setTimerInterrupt(false);
         this.z80.reset();
     }
+    /**
+     * Jump the Z80 emulator to the specified address.
+     */
     jumpTo(address) {
         this.z80.regs.pc = address;
     }
@@ -7656,11 +7663,15 @@ class Trs80 {
             return false;
         }
     }
-    // Set the mask for IRQ (regular) interrupts.
+    /**
+     * Set the mask for IRQ (regular) interrupts.
+     */
     setIrqMask(irqMask) {
         this.irqMask = irqMask;
     }
-    // Set the mask for non-maskable interrupts. (Yes.)
+    /**
+     * Set the mask for non-maskable interrupts. (Yes.)
+     */
     setNmiMask(nmiMask) {
         // Reset is always allowed:
         this.nmiMask = nmiMask | RESET_NMI_MASK;
@@ -7677,6 +7688,9 @@ class Trs80 {
             return ~this.irqLatch & 0xFF;
         }
     }
+    /**
+     * Take one Z80 step and update the state of the hardware.
+     */
     step() {
         this.z80.step();
         // Handle non-maskable interrupts.
@@ -7864,11 +7878,23 @@ class Trs80 {
             this.memory[address] = value;
         }
     }
-    // Reset cassette edge interrupts.
+    /**
+     * Write a block of data to memory.
+     */
+    writeMemoryBlock(address, values) {
+        for (const value of values) {
+            this.writeMemory(address++, value);
+        }
+    }
+    /**
+     * Reset cassette edge interrupts.
+     */
     cassetteClearInterrupt() {
         this.irqLatch &= ~CASSETTE_IRQ_MASKS;
     }
-    // Check whether the software has enabled these interrupts.
+    /**
+     * Check whether the software has enabled these interrupts.
+     */
     cassetteInterruptsEnabled() {
         return (this.irqMask & CASSETTE_IRQ_MASKS) !== 0;
     }
@@ -8223,23 +8249,59 @@ class Trs80 {
         this.writeMemory(0x4021, z80_base_1.hi(address));
     }
     /**
+     * Run a TRS-80 program. The exact behavior depends on the type of program.
+     */
+    runTrs80File(trs80File) {
+        if (trs80File instanceof trs80_base_1.CmdProgram) {
+            this.runCmdProgram(trs80File);
+        }
+        else if (trs80File instanceof trs80_base_1.Cassette) {
+            if (trs80File.files.length === 1) {
+                this.runTrs80File(trs80File.files[0].file);
+            }
+            else {
+                // TODO.
+            }
+        }
+        else if (trs80File instanceof trs80_base_1.SystemProgram) {
+            this.runSystemProgram(trs80File);
+        }
+        else {
+            // TODO.
+        }
+    }
+    /**
      * Load a CMD program into memory and run it.
      */
     runCmdProgram(cmdProgram) {
         this.cls();
+        console.log("runCmdProgram: " + cmdProgram.filename);
         for (const chunk of cmdProgram.chunks) {
             if (chunk instanceof trs80_base_1.CmdLoadBlockChunk) {
-                for (let i = 0; i < chunk.loadData.length; i++) {
-                    this.writeMemory(chunk.address + i, chunk.loadData[i]);
-                }
+                console.log("Writing " + chunk.loadData.length + " at " + main_1.toHexWord(chunk.address));
+                this.writeMemoryBlock(chunk.address, chunk.loadData);
             }
             else if (chunk instanceof trs80_base_1.CmdTransferAddressChunk) {
+                console.log("Jumping to " + main_1.toHexWord(chunk.address));
                 this.jumpTo(chunk.address);
                 // Don't load any more after this. I assume on a real machine the jump
                 // happens immediately and CMD parsing ends.
                 break;
             }
         }
+    }
+    /**
+     * Load a system program into memory and run it.
+     */
+    runSystemProgram(systemProgram) {
+        this.cls();
+        console.log("runSystemProgram: " + systemProgram.filename);
+        for (const chunk of systemProgram.chunks) {
+            console.log("Writing " + chunk.data.length + " at " + main_1.toHexWord(chunk.loadAddress));
+            this.writeMemoryBlock(chunk.loadAddress, chunk.data);
+        }
+        console.log("Jumping to " + main_1.toHexWord(systemProgram.entryPointAddress));
+        this.jumpTo(systemProgram.entryPointAddress);
     }
 }
 exports.Trs80 = Trs80;
@@ -32879,13 +32941,6 @@ class Panel {
         this.element = document.createElement("div");
         this.element.classList.add("panel");
     }
-    /**
-     * Run a program and close the panel.
-     */
-    runProgram(file) {
-        this.context.runProgram(file);
-        this.context.panelManager.close();
-    }
 }
 
 // CONCATENATED MODULE: ./src/File.ts
@@ -33558,7 +33613,8 @@ class FilePanel_FileInfoTab {
         actionBar.classList.add("action-bar");
         infoTab.element.append(actionBar);
         const runButton = makeButton("Run", "play_arrow", "play-button", () => {
-            this.filePanel.runProgram(this.filePanel.file);
+            this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
+            this.filePanel.context.panelManager.close();
         });
         actionBar.append(runButton);
         const deleteButton = makeButton("Delete File", "delete", "delete-button", () => {
@@ -34058,7 +34114,8 @@ class LibraryPanel_LibraryPanel extends Panel {
             screenshotsDiv.append(image);
         }
         const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
-            this.runProgram(file);
+            this.context.runProgram(file);
+            this.context.panelManager.close();
         });
         playButton.classList.add("play-button");
         fileDiv.append(playButton);
@@ -34119,6 +34176,7 @@ class LibraryPanel_LibraryPanel extends Panel {
 
 // CONCATENATED MODULE: ./src/Context.ts
 
+
 /**
  * Context of the whole app, with its global variables.
  */
@@ -34144,15 +34202,17 @@ class Context_Context {
     /**
      * Run a program.
      */
-    runProgram(file) {
-        /*
-        const cmdProgram = new CmdProgram(file.binary);
-        if (cmdProgram.error !== undefined) {
+    runProgram(file, trs80File) {
+        if (trs80File === undefined) {
+            trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
+        }
+        if (trs80File.error !== undefined) {
             // TODO
-        } else {
+        }
+        else {
             this.runningFile = file;
-            this.trs80.runCmdProgram(cmdProgram);
-        }*/
+            this.trs80.runTrs80File(trs80File);
+        }
     }
 }
 
@@ -34178,7 +34238,7 @@ function configureRoutes() {
     body.append(s);
     router.resolve();
 }
-class Main_EmptyCassette extends dist["Cassette"] {
+class Main_EmptyCassette extends dist["CassettePlayer"] {
 }
 function createNavbar(openLibrary) {
     const navbar = document.createElement("div");
@@ -43712,6 +43772,347 @@ class RawBinaryFile {
     }
 }
 exports.RawBinaryFile = RawBinaryFile;
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// Various utility functions.
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Convert a number to hex and zero-pad to the specified number of hex digits.
+ */
+function toHex(value, digits) {
+    return value.toString(16).toUpperCase().padStart(digits, "0");
+}
+exports.toHex = toHex;
+/**
+ * Convert a byte to hex.
+ */
+function toHexByte(value) {
+    return toHex(value, 2);
+}
+exports.toHexByte = toHexByte;
+/**
+ * Convert a word to hex.
+ */
+function toHexWord(value) {
+    return toHex(value, 4);
+}
+exports.toHexWord = toHexWord;
+/**
+ * Return the high byte of a word.
+ */
+function hi(value) {
+    return (value >> 8) & 0xFF;
+}
+exports.hi = hi;
+/**
+ * Return the low byte of a word.
+ */
+function lo(value) {
+    return value & 0xFF;
+}
+exports.lo = lo;
+/**
+ * Create a word from a high and low byte.
+ */
+function word(highByte, lowByte) {
+    return ((highByte & 0xFF) << 8) | (lowByte & 0xFF);
+}
+exports.word = word;
+/**
+ * Increment a byte.
+ */
+function inc8(value) {
+    return add8(value, 1);
+}
+exports.inc8 = inc8;
+/**
+ * Increment a word.
+ */
+function inc16(value) {
+    return add16(value, 1);
+}
+exports.inc16 = inc16;
+/**
+ * Decrement a byte.
+ */
+function dec8(value) {
+    return sub8(value, 1);
+}
+exports.dec8 = dec8;
+/**
+ * Decrement a word.
+ */
+function dec16(value) {
+    return sub16(value, 1);
+}
+exports.dec16 = dec16;
+/**
+ * Add two bytes together.
+ */
+function add8(a, b) {
+    return (a + b) & 0xFF;
+}
+exports.add8 = add8;
+/**
+ * Add two words together.
+ */
+function add16(a, b) {
+    return (a + b) & 0xFFFF;
+}
+exports.add16 = add16;
+/**
+ * Subtract two bytes.
+ */
+function sub8(a, b) {
+    return (a - b) & 0xFF;
+}
+exports.sub8 = sub8;
+/**
+ * Subtract two words.
+ */
+function sub16(a, b) {
+    return (a - b) & 0xFFFF;
+}
+exports.sub16 = sub16;
+/**
+ * Convert a byte to a signed number (e.g., 0xff to -1).
+ */
+function signedByte(value) {
+    return value >= 128 ? value - 256 : value;
+}
+exports.signedByte = signedByte;
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(96));
+__export(__webpack_require__(97));
+__export(__webpack_require__(94));
+__export(__webpack_require__(98));
+
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * List of all word registers.
+ */
+const WORD_REG = new Set(["af", "bc", "de", "hl", "af'", "bc'", "de'", "hl'", "ix", "iy", "sp", "pc"]);
+/**
+ * List of all byte registers.
+ */
+const BYTE_REG = new Set(["a", "f", "b", "c", "d", "e", "h", "l", "ixh", "ixl", "iyh", "iyl", "i", "r"]);
+/**
+ * Determine whether a register stores a word.
+ */
+function isWordReg(s) {
+    return WORD_REG.has(s.toLowerCase());
+}
+exports.isWordReg = isWordReg;
+/**
+ * Determine whether a register stores a byte.
+ */
+function isByteReg(s) {
+    return BYTE_REG.has(s.toLowerCase());
+}
+exports.isByteReg = isByteReg;
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Utils_1 = __webpack_require__(94);
+/**
+ * All registers in a Z80.
+ */
+class RegisterSet {
+    constructor() {
+        // External state:
+        this.af = 0;
+        this.bc = 0;
+        this.de = 0;
+        this.hl = 0;
+        this.afPrime = 0;
+        this.bcPrime = 0;
+        this.dePrime = 0;
+        this.hlPrime = 0;
+        this.ix = 0;
+        this.iy = 0;
+        this.sp = 0;
+        this.pc = 0;
+        // Internal state:
+        this.memptr = 0;
+        this.i = 0;
+        this.r = 0; // Low 7 bits of R.
+        this.r7 = 0; // Bit 7 of R.
+        this.iff1 = 0;
+        this.iff2 = 0;
+        this.im = 0;
+        this.halted = 0;
+    }
+    get a() {
+        return Utils_1.hi(this.af);
+    }
+    set a(value) {
+        this.af = Utils_1.word(value, this.f);
+    }
+    get f() {
+        return Utils_1.lo(this.af);
+    }
+    set f(value) {
+        this.af = Utils_1.word(this.a, value);
+    }
+    get b() {
+        return Utils_1.hi(this.bc);
+    }
+    set b(value) {
+        this.bc = Utils_1.word(value, this.c);
+    }
+    get c() {
+        return Utils_1.lo(this.bc);
+    }
+    set c(value) {
+        this.bc = Utils_1.word(this.b, value);
+    }
+    get d() {
+        return Utils_1.hi(this.de);
+    }
+    set d(value) {
+        this.de = Utils_1.word(value, this.e);
+    }
+    get e() {
+        return Utils_1.lo(this.de);
+    }
+    set e(value) {
+        this.de = Utils_1.word(this.d, value);
+    }
+    get h() {
+        return Utils_1.hi(this.hl);
+    }
+    set h(value) {
+        this.hl = Utils_1.word(value, this.l);
+    }
+    get l() {
+        return Utils_1.lo(this.hl);
+    }
+    set l(value) {
+        this.hl = Utils_1.word(this.h, value);
+    }
+    get ixh() {
+        return Utils_1.hi(this.ix);
+    }
+    set ixh(value) {
+        this.ix = Utils_1.word(value, this.ixl);
+    }
+    get ixl() {
+        return Utils_1.lo(this.ix);
+    }
+    set ixl(value) {
+        this.ix = Utils_1.word(this.ixh, value);
+    }
+    get iyh() {
+        return Utils_1.hi(this.iy);
+    }
+    set iyh(value) {
+        this.iy = Utils_1.word(value, this.iyl);
+    }
+    get iyl() {
+        return Utils_1.lo(this.iy);
+    }
+    set iyl(value) {
+        this.iy = Utils_1.word(this.iyh, value);
+    }
+    /**
+     * Combine the two R parts together.
+     */
+    get rCombined() {
+        return (this.r7 & 0x80) | (this.r & 0xF7);
+    }
+}
+exports.RegisterSet = RegisterSet;
+/**
+ * All real fields of RegisterSet, for enumeration.
+ */
+exports.registerSetFields = [
+    "af", "bc", "de", "hl",
+    "afPrime", "bcPrime", "dePrime", "hlPrime",
+    "ix", "iy", "sp", "pc",
+    "memptr", "i", "r", "iff1", "iff2", "im", "halted"
+];
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * The flag bits in the F register.
+ */
+var Flag;
+(function (Flag) {
+    /**
+     * Carry and borrow. Indicates that the addition or subtraction did not
+     * fit in the register.
+     */
+    Flag[Flag["C"] = 1] = "C";
+    /**
+     * Set if the last operation was a subtraction.
+     */
+    Flag[Flag["N"] = 2] = "N";
+    /**
+     * Parity: Indicates that the result has an even number of bits set.
+     */
+    Flag[Flag["P"] = 4] = "P";
+    /**
+     * Overflow: Indicates that two's complement does not fit in register.
+     */
+    Flag[Flag["V"] = 4] = "V";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X3"] = 8] = "X3";
+    /**
+     * Half carry: Carry from bit 3 to bit 4 during BCD operations.
+     */
+    Flag[Flag["H"] = 16] = "H";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X5"] = 32] = "X5";
+    /**
+     * Set if value is zero.
+     */
+    Flag[Flag["Z"] = 64] = "Z";
+    /**
+     * Set of value is negative.
+     */
+    Flag[Flag["S"] = 128] = "S";
+})(Flag = exports.Flag || (exports.Flag = {}));
 
 
 /***/ })
