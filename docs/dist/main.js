@@ -46519,12 +46519,61 @@ class Context_Context {
     }
 }
 
+// CONCATENATED MODULE: ./src/DialogBox.ts
+class DialogBox {
+    constructor(title, content) {
+        this.backgroundNode = undefined;
+        const body = document.querySelector("body");
+        this.backgroundNode = document.createElement("div");
+        this.backgroundNode.classList.add("dialog-box-background");
+        this.backgroundNode.addEventListener("click", e => {
+            if (e.target === this.backgroundNode) {
+                this.close();
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        body.append(this.backgroundNode);
+        const frame = document.createElement("div");
+        frame.classList.add("dialog-box-frame");
+        this.backgroundNode.append(frame);
+        const h1 = document.createElement("h1");
+        h1.innerText = title;
+        frame.append(h1);
+        frame.append(content);
+        // Handler for the ESC key.
+        this.escListener = (e) => {
+            if (e.key === "Escape") {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            }
+        };
+        document.addEventListener("keydown", this.escListener);
+        // Wait a bit to let the initial view render, which enables the fade-in animation.
+        setTimeout(() => { var _a; return (_a = this.backgroundNode) === null || _a === void 0 ? void 0 : _a.classList.add("dialog-box-shown"); }, 10);
+    }
+    /**
+     * Close and destroy the dialog box. The dialog box cannot be re-opened.
+     */
+    close() {
+        if (this.backgroundNode !== undefined) {
+            document.removeEventListener("keydown", this.escListener);
+            const backgroundNode = this.backgroundNode;
+            backgroundNode.classList.remove("dialog-box-shown");
+            this.backgroundNode = undefined;
+            setTimeout(() => backgroundNode.remove(), 500);
+        }
+    }
+}
+
 // CONCATENATED MODULE: ./src/Main.ts
 
 
 
 
 // These imports load individual services into the firebase namespace.
+
 
 
 
@@ -46566,6 +46615,8 @@ function createNavbar(openLibrary, signIn, signOut) {
 function showSignInScreen() {
 }
 function main() {
+    const body = document.querySelector("body");
+    body.classList.add("signed-out");
     // Configuration for Firebase.
     index_esm["a" /* default */].initializeApp({
         apiKey: "AIzaSyAfGZY9BaDUmy4qNtg11JHd_kLd1JmgdBI",
@@ -46601,13 +46652,15 @@ function main() {
     let firebaseAuth = index_esm["a" /* default */].auth();
     const firebaseAuthUi = new esm["a" /* auth */].AuthUI(firebaseAuth);
     const signInDiv = document.createElement("div");
-    signInDiv.classList.add("hidden");
+    let signInDialog = undefined;
     firebaseAuth.onAuthStateChanged(user => {
-        const body = document.querySelector("body");
         if (user !== null) {
             // Show user signed in screen. Reset if user just signed in. (Single page app)
             console.log(user);
-            signInDiv.classList.add("hidden");
+            if (signInDialog !== undefined) {
+                signInDialog.close();
+                signInDialog = undefined;
+            }
         }
         else {
             // No user signed in, render sign-in UI.
@@ -46620,7 +46673,12 @@ function main() {
     const db = index_esm["a" /* default */].firestore();
     const panelManager = new PanelManager_PanelManager();
     const library = new Library_Library();
-    const navbar = createNavbar(() => panelManager.open(), () => signInDiv.classList.remove("hidden"), () => index_esm["a" /* default */].auth().signOut());
+    const navbar = createNavbar(() => panelManager.open(), () => {
+        if (signInDialog !== undefined) {
+            signInDialog.close();
+        }
+        signInDialog = new DialogBox("Sign In", signInDiv);
+    }, () => index_esm["a" /* default */].auth().signOut());
     const screenDiv = document.createElement("div");
     screenDiv.classList.add("main-computer-screen");
     const screen = new dist["CanvasScreen"](1.5);
@@ -46642,9 +46700,7 @@ function main() {
     controlPanel.addSettingsButton(viewPanel);
     // const progressBar = new ProgressBar(screen.getNode());
     // cassette.setProgressBar(progressBar);
-    const body = document.querySelector("body");
     body.append(navbar);
-    body.append(signInDiv);
     body.append(screenDiv);
     let wasTrs80Started = false;
     panelManager.onOpenClose.subscribe(isOpen => {
