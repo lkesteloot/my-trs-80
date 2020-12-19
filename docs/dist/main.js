@@ -46265,8 +46265,6 @@ class FilePanel_FilePanel extends Panel {
         this.file = file;
         this.element.classList.add("file-panel");
         const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
-        console.log(trs80File); // TODO remove
-        console.log(trs80File.getDescription());
         const header = document.createElement("h1");
         const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
         backButton.classList.add("back-button");
@@ -46826,9 +46824,7 @@ function main() {
             //console.log(firebaseUser);
             const authUser = AuthUser.fromFirebaseUser(firebaseUser);
             db.userFromAuthUser(authUser)
-                .then(user => {
-                context.user = user;
-            })
+                .then(user => context.user = user)
                 .catch(error => {
                 // TODO.
             });
@@ -46925,6 +46921,13 @@ function main() {
                 for (const doc of querySnapshot.docs) {
                     const file = FileBuilder.fromDoc(doc).build();
                     library.addFile(file);
+                }
+            })
+                .catch(error => {
+                // TODO
+                if (error.name === "FirebaseError") {
+                    // code can be "permission-denied".
+                    console.log(error.code, error.message);
                 }
             });
         }
