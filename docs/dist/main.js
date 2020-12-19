@@ -46602,11 +46602,46 @@ class DialogBox {
 
 // CONCATENATED MODULE: ./src/User.ts
 /**
- * Represents a user, both basic data such as ID, as well as user preferences.
+ * The user from the perspective of the auth system.
  */
-class User {
-    constructor(uid) {
+class AuthUser {
+    constructor(uid, emailAddress, name) {
         this.uid = uid;
+        this.emailAddress = emailAddress;
+        this.name = name;
+    }
+    /**
+     * Upgrade an authdata to a full user based on data from the database.
+     */
+    toUser(data) {
+        const changed = this.emailAddress !== data.emailAddress || this.name !== data.name;
+        return new User(this.uid, this.emailAddress, this.name, data.isAdmin, data.addedAt, changed ? new Date() : data.modifiedAt, data.lastActiveAt);
+    }
+    /**
+     * Promote a new auth user to a full user.
+     */
+    toNewUser() {
+        const now = new Date();
+        return new User(this.uid, this.emailAddress, this.name, false, now, now, now);
+    }
+    /**
+     * Make a new AuthUser from a Firebase user.
+     */
+    static fromFirebaseUser(firebaseUser) {
+        var _a, _b;
+        return new AuthUser(firebaseUser.uid, (_a = firebaseUser.email) !== null && _a !== void 0 ? _a : "", (_b = firebaseUser.displayName) !== null && _b !== void 0 ? _b : "");
+    }
+}
+/**
+ * Represents a user in our database, both basic data such as ID, as well as user preferences.
+ */
+class User extends AuthUser {
+    constructor(uid, emailAddress, name, isAdmin, addedAt, modifiedAt, lastActiveAt) {
+        super(uid, emailAddress, name);
+        this.isAdmin = isAdmin;
+        this.addedAt = addedAt;
+        this.modifiedAt = modifiedAt;
+        this.lastActiveAt = lastActiveAt;
     }
 }
 
@@ -46660,10 +46695,40 @@ class Database_Database {
         return this.firestore.collection(FILES_COLLECTION_NAME).doc(file.id).delete();
     }
     /**
-     * Get user data for the given ID.
+     * Get or create a user for the given auth user.
      */
-    getUser(uid) {
-        return this.firestore.collection(USERS_COLLECTION_NAME).doc(uid).get();
+    userFromAuthUser(authUser) {
+        const docRef = this.firestore.collection(USERS_COLLECTION_NAME).doc(authUser.uid);
+        return this.firestore.runTransaction(transaction => {
+            return transaction.get(docRef)
+                .then(doc => {
+                let user;
+                if (doc.exists) {
+                    // User already exists. Remember when they last signed in.
+                    user = authUser.toUser(doc.data());
+                    // TODO make delta object.
+                    transaction.update(docRef, {
+                        emailAddress: user.emailAddress,
+                        name: user.name,
+                        modifiedAt: user.modifiedAt,
+                        lastActiveAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(new Date()),
+                    });
+                }
+                else {
+                    // User does not yet exist, create it.
+                    user = authUser.toNewUser();
+                    transaction.set(docRef, {
+                        emailAddress: user.emailAddress,
+                        name: user.name,
+                        isAdmin: user.isAdmin,
+                        addedAt: user.addedAt,
+                        modifiedAt: user.modifiedAt,
+                        lastActiveAt: user.lastActiveAt,
+                    });
+                }
+                return user;
+            });
+        });
     }
 }
 
@@ -46755,11 +46820,18 @@ function main() {
     const firebaseAuthUi = new esm["a" /* auth */].AuthUI(firebaseAuth);
     const signInDiv = document.createElement("div");
     let signInDialog = undefined;
+    const db = new Database_Database(index_esm["a" /* default */].firestore());
     firebaseAuth.onAuthStateChanged(firebaseUser => {
-        let user;
         if (firebaseUser !== null) {
             //console.log(firebaseUser);
-            user = new User(firebaseUser.uid);
+            const authUser = AuthUser.fromFirebaseUser(firebaseUser);
+            db.userFromAuthUser(authUser)
+                .then(user => {
+                context.user = user;
+            })
+                .catch(error => {
+                // TODO.
+            });
             if (signInDialog !== undefined) {
                 signInDialog.close();
                 signInDialog = undefined;
@@ -46769,11 +46841,9 @@ function main() {
             // No user signed in, render sign-in UI.
             firebaseAuthUi.reset();
             firebaseAuthUi.start(signInDiv, uiConfig);
-            user = undefined;
+            context.user = undefined;
         }
-        context.user = user !== null && user !== void 0 ? user : undefined;
     });
-    const db = new Database_Database(index_esm["a" /* default */].firestore());
     const panelManager = new PanelManager_PanelManager();
     const library = new Library_Library();
     const navbar = createNavbar(() => panelManager.open(), () => {
