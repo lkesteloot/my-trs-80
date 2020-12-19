@@ -46023,7 +46023,7 @@ class FilePanel_FileInfoTab {
         this.screenshotsDiv.classList.add("screenshots");
         form.append(this.screenshotsDiv);
         const actionBar = document.createElement("div");
-        actionBar.classList.add("action-bar");
+        actionBar.classList.add("action-bar", "button-set");
         infoTab.element.append(actionBar);
         const runButton = makeButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
@@ -46480,12 +46480,15 @@ class LibraryPanel_LibraryPanel extends Panel {
 // CONCATENATED MODULE: ./src/Context.ts
 
 
+
 /**
  * Context of the whole app, with its global variables.
  */
 class Context_Context {
     constructor(library, trs80, db, panelManager) {
         this.runningFile = undefined;
+        this._user = undefined;
+        this.onUser = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.library = library;
         this.trs80 = trs80;
         this.db = db;
@@ -46517,6 +46520,13 @@ class Context_Context {
             this.trs80.runTrs80File(trs80File);
         }
     }
+    /**
+     * Set the currently signed-in user.
+     */
+    set user(user) {
+        this._user = user;
+        this.onUser.dispatch(user);
+    }
 }
 
 // CONCATENATED MODULE: ./src/DialogBox.ts
@@ -46540,7 +46550,10 @@ class DialogBox {
         const h1 = document.createElement("h1");
         h1.innerText = title;
         frame.append(h1);
-        frame.append(content);
+        const contentFrame = document.createElement("div");
+        contentFrame.classList.add("dialog-box-content-frame");
+        frame.append(contentFrame);
+        contentFrame.append(content);
         // Handler for the ESC key.
         this.escListener = (e) => {
             if (e.key === "Escape") {
@@ -46596,7 +46609,7 @@ class Main_EmptyCassette extends dist["CassettePlayer"] {
 function createNavbar(openLibrary, signIn, signOut) {
     const body = document.querySelector("body");
     const navbar = document.createElement("div");
-    navbar.classList.add("navbar");
+    navbar.classList.add("navbar", "button-set");
     const title = document.createElement("span");
     title.textContent = "My TRS-80";
     navbar.append(title);
@@ -46667,8 +46680,7 @@ function main() {
             firebaseAuthUi.reset();
             firebaseAuthUi.start(signInDiv, uiConfig);
         }
-        body.classList.toggle("signed-in", user !== null);
-        body.classList.toggle("signed-out", user === null);
+        context.user = user !== null && user !== void 0 ? user : undefined;
     });
     const db = index_esm["a" /* default */].firestore();
     const panelManager = new PanelManager_PanelManager();
@@ -46720,6 +46732,10 @@ function main() {
     });
     reboot();
     const context = new Context_Context(library, trs80, db, panelManager);
+    context.onUser.subscribe(user => {
+        body.classList.toggle("signed-in", user !== undefined);
+        body.classList.toggle("signed-out", user === undefined);
+    });
     // TODO make this button appear and disappear as we have/not have a program.
     controlPanel.addScreenshotButton(() => {
         if (context.runningFile !== undefined) {
