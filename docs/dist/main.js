@@ -45303,6 +45303,10 @@ class FileBuilder {
         this.id = id;
         return this;
     }
+    withUid(uid) {
+        this.uid = uid;
+        return this;
+    }
     withName(name) {
         this.name = name;
         return this;
@@ -45496,6 +45500,20 @@ class Library_Library {
             // have the caller pass in a file ID.
             this.files.delete(file.id);
             this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
+        }
+    }
+    /**
+     * Remove all files from the library. One event will be triggered per file.
+     */
+    removeAll() {
+        // Make a separate list first since we'll be modifying the map as we go.
+        const files = [];
+        for (const file of this.files.values()) {
+            files.push(file);
+        }
+        // Then delete each.
+        for (const file of files) {
+            this.removeFile(file);
         }
     }
 }
@@ -46287,6 +46305,7 @@ class LibraryPanel_LibraryPanel extends Panel {
         const headerTextNode = document.createElement("span");
         headerTextNode.innerText = "Library";
         header.append(headerTextNode);
+        // TODO hide upload button if signed out.
         header.append(makeIconButton(makeIcon("add"), "Upload file", () => this.uploadFile()));
         header.append(makeCloseIconButton(() => this.context.panelManager.close()));
         this.element.append(header);
@@ -46323,13 +46342,18 @@ class LibraryPanel_LibraryPanel extends Panel {
         uploadElement.multiple = true;
         uploadElement.addEventListener("change", () => {
             var _a;
+            const user = this.context.user;
+            if (user === undefined) {
+                console.error("Can't import with signed-out user");
+                return;
+            }
             const files = (_a = uploadElement.files) !== null && _a !== void 0 ? _a : [];
             const openFilePanel = files.length === 1;
             for (const f of files) {
                 f.arrayBuffer()
                     .then(arrayBuffer => {
                     const bytes = new Uint8Array(arrayBuffer);
-                    this.importFile(f.name, bytes, openFilePanel);
+                    this.importFile(user.uid, f.name, bytes, openFilePanel);
                 })
                     .catch(() => {
                     // TODO
@@ -46340,11 +46364,12 @@ class LibraryPanel_LibraryPanel extends Panel {
     }
     /**
      * Add an uploaded file to our library.
+     * @param uid user ID.
      * @param filename original filename from the user.
      * @param binary raw binary of the file.
      * @param openFilePanel whether to open the file panel for this file after importing it.
      */
-    importFile(filename, binary, openFilePanel) {
+    importFile(uid, filename, binary, openFilePanel) {
         let name = filename;
         // Remove extension.
         const i = name.lastIndexOf(".");
@@ -46356,6 +46381,7 @@ class LibraryPanel_LibraryPanel extends Panel {
         // All-caps for filename.
         filename = filename.toUpperCase();
         let file = new FileBuilder()
+            .withUid(uid)
             .withName(name)
             .withFilename(filename)
             .withBinary(binary)
@@ -46515,6 +46541,12 @@ class Context_Context {
         this._user = user;
         this.onUser.dispatch(user);
     }
+    /**
+     * Get the currently signed-in user.
+     */
+    get user() {
+        return this._user;
+    }
 }
 
 // CONCATENATED MODULE: ./src/DialogBox.ts
@@ -46590,10 +46622,10 @@ class Database_Database {
         this.firestore = firestore;
     }
     /**
-     * Get all files in the entire database.
+     * Get all files for this user.
      */
-    fetchAllFiles() {
-        return this.firestore.collection(FILES_COLLECTION_NAME).get();
+    getAllFiles(uid) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).where("uid", "==", uid).get();
     }
     /**
      * Add a file to the database.
@@ -46626,6 +46658,12 @@ class Database_Database {
      */
     deleteFile(file) {
         return this.firestore.collection(FILES_COLLECTION_NAME).doc(file.id).delete();
+    }
+    /**
+     * Get user data for the given ID.
+     */
+    getUser(uid) {
+        return this.firestore.collection(USERS_COLLECTION_NAME).doc(uid).get();
     }
 }
 
@@ -46808,12 +46846,17 @@ function main() {
     });
     const libraryPanel = new LibraryPanel_LibraryPanel(context);
     panelManager.pushPanel(libraryPanel);
-    // Fetch all files.
-    context.db.fetchAllFiles()
-        .then((querySnapshot) => {
-        for (const doc of querySnapshot.docs) {
-            const file = FileBuilder.fromDoc(doc).build();
-            library.addFile(file);
+    context.onUser.subscribe(user => {
+        library.removeAll();
+        if (user !== undefined) {
+            // Fetch all files.
+            context.db.getAllFiles(user.uid)
+                .then((querySnapshot) => {
+                for (const doc of querySnapshot.docs) {
+                    const file = FileBuilder.fromDoc(doc).build();
+                    library.addFile(file);
+                }
+            });
         }
     });
 }
