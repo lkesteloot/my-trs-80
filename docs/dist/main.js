@@ -45191,7 +45191,7 @@ class Panel {
  * Represents a file that the user owns.
  */
 class File_File {
-    constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, dateAdded, dateModified) {
+    constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, addedAt, modifiedAt) {
         this.id = id;
         this.uid = uid;
         this.name = name;
@@ -45201,8 +45201,8 @@ class File_File {
         this.hash = hash;
         this.screenshots = screenshots;
         this.binary = binary;
-        this.dateAdded = dateAdded;
-        this.dateModified = dateModified;
+        this.addedAt = addedAt;
+        this.modifiedAt = modifiedAt;
     }
     builder() {
         const builder = new FileBuilder();
@@ -45215,8 +45215,8 @@ class File_File {
         builder.hash = this.hash;
         builder.screenshots = this.screenshots;
         builder.binary = this.binary;
-        builder.dateAdded = this.dateAdded;
-        builder.dateModified = this.dateModified;
+        builder.addedAt = this.addedAt;
+        builder.modifiedAt = this.modifiedAt;
         return builder;
     }
     /**
@@ -45236,8 +45236,8 @@ class File_File {
         if (!isSameStringArray(this.screenshots, oldFile.screenshots)) {
             updateData.screenshots = this.screenshots;
         }
-        if (this.dateModified.getTime() !== oldFile.dateModified.getTime()) {
-            updateData.dateModified = this.dateModified;
+        if (this.modifiedAt.getTime() !== oldFile.modifiedAt.getTime()) {
+            updateData.modifiedAt = this.modifiedAt;
         }
         return updateData;
     }
@@ -45279,8 +45279,8 @@ class FileBuilder {
         this.hash = "";
         this.screenshots = [];
         this.binary = new Uint8Array(0);
-        this.dateAdded = new Date();
-        this.dateModified = new Date();
+        this.addedAt = new Date();
+        this.modifiedAt = new Date();
     }
     static fromDoc(doc) {
         var _a, _b;
@@ -45295,8 +45295,8 @@ class FileBuilder {
         builder.hash = data.hash;
         builder.screenshots = (_b = data.screenshots) !== null && _b !== void 0 ? _b : [];
         builder.binary = data.binary.toUint8Array();
-        builder.dateAdded = data.dateAdded.toDate();
-        builder.dateModified = data.dateModified.toDate();
+        builder.addedAt = data.addedAt.toDate();
+        builder.modifiedAt = data.modifiedAt.toDate();
         return builder;
     }
     withId(id) {
@@ -45323,12 +45323,12 @@ class FileBuilder {
         this.binary = binary;
         return this;
     }
-    withDateModified(dateModified) {
-        this.dateModified = dateModified;
+    withModifiedAt(modifiedAt) {
+        this.modifiedAt = modifiedAt;
         return this;
     }
     build() {
-        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.dateAdded, this.dateModified);
+        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
     }
 }
 
@@ -46015,9 +46015,9 @@ class FilePanel_FileInfoTab {
         const miscDiv = document.createElement("div");
         miscDiv.classList.add("misc");
         this.typeInput = makeInputBox("Type", undefined, false);
-        this.dateAddedInput = makeInputBox("Date added", undefined, false);
+        this.addedAtInput = makeInputBox("Date added", undefined, false);
         this.sizeInput = makeInputBox("Size", undefined, false);
-        this.dateModifiedInput = makeInputBox("Date last modified", undefined, false);
+        this.modifiedAtInput = makeInputBox("Date last modified", undefined, false);
         form.append(miscDiv);
         this.screenshotsDiv = document.createElement("div");
         this.screenshotsDiv.classList.add("screenshots");
@@ -46062,7 +46062,7 @@ class FilePanel_FileInfoTab {
             this.updateUi();
         });
         this.saveButton.addEventListener("click", () => {
-            const newFile = this.fileFromUi().builder().withDateModified(new Date()).build();
+            const newFile = this.fileFromUi().builder().withModifiedAt(new Date()).build();
             this.saveButton.classList.add("saving");
             // Disable right away so it's not clicked again.
             this.saveButton.disabled = true;
@@ -46120,8 +46120,8 @@ class FilePanel_FileInfoTab {
         }
         this.typeInput.value = this.trs80File.getDescription();
         this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
-        this.dateAddedInput.value = formatDate(file.dateAdded);
-        this.dateModifiedInput.value = formatDate(file.dateModified);
+        this.addedAtInput.value = formatDate(file.addedAt);
+        this.modifiedAtInput.value = formatDate(file.modifiedAt);
         if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
             this.populateScreenshots();
         }
@@ -46607,8 +46607,8 @@ class Database_Database {
             shared: file.shared,
             hash: file.hash,
             binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
-            dateAdded: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.dateAdded),
-            dateModified: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.dateModified),
+            addedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.addedAt),
+            modifiedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.modifiedAt),
         });
     }
     /**
@@ -46797,7 +46797,7 @@ function main() {
             const screenshots = [...file.screenshots, screenshot];
             file = file.builder()
                 .withScreenshots(screenshots)
-                .withDateModified(new Date())
+                .withModifiedAt(new Date())
                 .build();
             context.db.updateFile(context.runningFile, file)
                 .then(() => context.library.modifyFile(file))
