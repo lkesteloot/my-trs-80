@@ -46031,7 +46031,7 @@ class FilePanel_FileInfoTab {
         });
         actionBar.append(runButton);
         const deleteButton = makeButton("Delete File", "delete", "delete-button", () => {
-            this.filePanel.context.db.collection("files").doc(this.filePanel.file.id).delete()
+            this.filePanel.context.db.deleteFile(this.filePanel.file)
                 .then(() => {
                 this.filePanel.context.library.removeFile(this.filePanel.file);
                 // We automatically close as a result of the file being removed from the library.
@@ -46066,8 +46066,7 @@ class FilePanel_FileInfoTab {
             this.saveButton.classList.add("saving");
             // Disable right away so it's not clicked again.
             this.saveButton.disabled = true;
-            this.filePanel.context.db.collection("files").doc(this.filePanel.file.id)
-                .update(newFile.getUpdateDataComparedTo(this.filePanel.file))
+            this.filePanel.context.db.updateFile(this.filePanel.file, newFile)
                 .then(() => {
                 this.saveButton.classList.remove("saving");
                 this.saveButton.classList.add("success");
@@ -46276,7 +46275,6 @@ class FilePanel_FilePanel extends Panel {
 
 
 
-
 const FILE_ID_ATTR = "data-file-id";
 /**
  * Panel showing the library of user's files.
@@ -46362,17 +46360,7 @@ class LibraryPanel_LibraryPanel extends Panel {
             .withFilename(filename)
             .withBinary(binary)
             .build();
-        this.context.db.collection("files").add({
-            uid: file.uid,
-            name: file.name,
-            filename: file.filename,
-            note: file.note,
-            shared: file.shared,
-            hash: file.hash,
-            binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
-            dateAdded: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.dateAdded),
-            dateModified: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.dateModified),
-        })
+        this.context.db.addFile(file)
             .then(docRef => {
             file = file.builder().withId(docRef.id).build();
             this.context.library.addFile(file);
@@ -46580,12 +46568,75 @@ class DialogBox {
     }
 }
 
+// CONCATENATED MODULE: ./src/User.ts
+/**
+ * Represents a user, both basic data such as ID, as well as user preferences.
+ */
+class User {
+    constructor(uid) {
+        this.uid = uid;
+    }
+}
+
+// CONCATENATED MODULE: ./src/Database.ts
+
+const FILES_COLLECTION_NAME = "files";
+const USERS_COLLECTION_NAME = "users";
+/**
+ * Interface to the Firestore data.
+ */
+class Database_Database {
+    constructor(firestore) {
+        this.firestore = firestore;
+    }
+    /**
+     * Get all files in the entire database.
+     */
+    fetchAllFiles() {
+        return this.firestore.collection(FILES_COLLECTION_NAME).get();
+    }
+    /**
+     * Add a file to the database.
+     */
+    addFile(file) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).add({
+            uid: file.uid,
+            name: file.name,
+            filename: file.filename,
+            note: file.note,
+            shared: file.shared,
+            hash: file.hash,
+            binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
+            dateAdded: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.dateAdded),
+            dateModified: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.dateModified),
+        });
+    }
+    /**
+     * Updates an existing file in the database. Both files should have the same ID.
+     */
+    updateFile(oldFile, newFile) {
+        if (oldFile.id !== newFile.id) {
+            throw new Error("File IDs must match in updateFile");
+        }
+        return this.firestore.collection(FILES_COLLECTION_NAME).doc(oldFile.id)
+            .update(newFile.getUpdateDataComparedTo(oldFile));
+    }
+    /**
+     * Deletes a file in the database.
+     */
+    deleteFile(file) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).doc(file.id).delete();
+    }
+}
+
 // CONCATENATED MODULE: ./src/Main.ts
 
 
 
 
 // These imports load individual services into the firebase namespace.
+
+
 
 
 
@@ -46666,10 +46717,11 @@ function main() {
     const firebaseAuthUi = new esm["a" /* auth */].AuthUI(firebaseAuth);
     const signInDiv = document.createElement("div");
     let signInDialog = undefined;
-    firebaseAuth.onAuthStateChanged(user => {
-        if (user !== null) {
-            // Show user signed in screen. Reset if user just signed in. (Single page app)
-            console.log(user);
+    firebaseAuth.onAuthStateChanged(firebaseUser => {
+        let user;
+        if (firebaseUser !== null) {
+            //console.log(firebaseUser);
+            user = new User(firebaseUser.uid);
             if (signInDialog !== undefined) {
                 signInDialog.close();
                 signInDialog = undefined;
@@ -46679,10 +46731,11 @@ function main() {
             // No user signed in, render sign-in UI.
             firebaseAuthUi.reset();
             firebaseAuthUi.start(signInDiv, uiConfig);
+            user = undefined;
         }
         context.user = user !== null && user !== void 0 ? user : undefined;
     });
-    const db = index_esm["a" /* default */].firestore();
+    const db = new Database_Database(index_esm["a" /* default */].firestore());
     const panelManager = new PanelManager_PanelManager();
     const library = new Library_Library();
     const navbar = createNavbar(() => panelManager.open(), () => {
@@ -46742,12 +46795,12 @@ function main() {
             let file = context.runningFile;
             const screenshot = trs80.getScreenshot();
             const screenshots = [...file.screenshots, screenshot];
-            file = file.builder().withScreenshots(screenshots).withDateModified(new Date()).build();
-            context.db.collection("files").doc(file.id)
-                .update(file.getUpdateDataComparedTo(context.runningFile))
-                .then(() => {
-                context.library.modifyFile(file);
-            })
+            file = file.builder()
+                .withScreenshots(screenshots)
+                .withDateModified(new Date())
+                .build();
+            context.db.updateFile(context.runningFile, file)
+                .then(() => context.library.modifyFile(file))
                 .catch(() => {
                 // TODO.
             });
@@ -46756,7 +46809,8 @@ function main() {
     const libraryPanel = new LibraryPanel_LibraryPanel(context);
     panelManager.pushPanel(libraryPanel);
     // Fetch all files.
-    context.db.collection("files").get().then((querySnapshot) => {
+    context.db.fetchAllFiles()
+        .then((querySnapshot) => {
         for (const doc of querySnapshot.docs) {
             const file = FileBuilder.fromDoc(doc).build();
             library.addFile(file);
