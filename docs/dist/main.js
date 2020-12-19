@@ -46056,6 +46056,7 @@ class FilePanel_FileInfoTab {
             })
                 .catch(error => {
                 // TODO.
+                console.error(error);
             });
         });
         actionBar.append(deleteButton);
@@ -46353,8 +46354,9 @@ class LibraryPanel_LibraryPanel extends Panel {
                     const bytes = new Uint8Array(arrayBuffer);
                     this.importFile(user.uid, f.name, bytes, openFilePanel);
                 })
-                    .catch(() => {
+                    .catch(error => {
                     // TODO
+                    console.error(error);
                 });
             }
         });
@@ -46613,7 +46615,7 @@ class AuthUser {
      */
     toUser(data) {
         const changed = this.emailAddress !== data.emailAddress || this.name !== data.name;
-        return new User(this.uid, this.emailAddress, this.name, data.isAdmin, data.addedAt, changed ? new Date() : data.modifiedAt, data.lastActiveAt);
+        return new User(this.uid, this.emailAddress, this.name, data.admin, data.addedAt, changed ? new Date() : data.modifiedAt, data.lastActiveAt);
     }
     /**
      * Promote a new auth user to a full user.
@@ -46634,9 +46636,9 @@ class AuthUser {
  * Represents a user in our database, both basic data such as ID, as well as user preferences.
  */
 class User extends AuthUser {
-    constructor(uid, emailAddress, name, isAdmin, addedAt, modifiedAt, lastActiveAt) {
+    constructor(uid, emailAddress, name, admin, addedAt, modifiedAt, lastActiveAt) {
         super(uid, emailAddress, name);
-        this.isAdmin = isAdmin;
+        this.admin = admin;
         this.addedAt = addedAt;
         this.modifiedAt = modifiedAt;
         this.lastActiveAt = lastActiveAt;
@@ -46718,7 +46720,7 @@ class Database_Database {
                     transaction.set(docRef, {
                         emailAddress: user.emailAddress,
                         name: user.name,
-                        isAdmin: user.isAdmin,
+                        admin: user.admin,
                         addedAt: user.addedAt,
                         modifiedAt: user.modifiedAt,
                         lastActiveAt: user.lastActiveAt,
@@ -46827,6 +46829,7 @@ function main() {
                 .then(user => context.user = user)
                 .catch(error => {
                 // TODO.
+                console.error(error);
             });
             if (signInDialog !== undefined) {
                 signInDialog.close();
@@ -46905,8 +46908,9 @@ function main() {
                 .build();
             context.db.updateFile(context.runningFile, file)
                 .then(() => context.library.modifyFile(file))
-                .catch(() => {
+                .catch(error => {
                 // TODO.
+                console.error(error);
             });
         }
     });
@@ -46925,6 +46929,7 @@ function main() {
             })
                 .catch(error => {
                 // TODO
+                console.error(error);
                 if (error.name === "FirebaseError") {
                     // code can be "permission-denied".
                     console.log(error.code, error.message);
