@@ -45058,6 +45058,19 @@ function makeTextButton(label, iconName, cssClass, clickCallback) {
 function isSameStringArray(a, b) {
     return a.length === b.length && a.every((value, index) => value === b[index]);
 }
+/**
+ * Start a timer, and return a function that will evaluate to how many milliseconds
+ * the timer has been running. Calling the function restarts the timer.
+ */
+function startTimer() {
+    let timerStart = new Date().getTime();
+    return () => {
+        const now = new Date().getTime();
+        const elapsed = now - timerStart;
+        timerStart = now;
+        return elapsed;
+    };
+}
 
 // EXTERNAL MODULE: ./node_modules/strongly-typed-events/dist/index.js
 var strongly_typed_events_dist = __webpack_require__(18);
@@ -45189,11 +45202,14 @@ class Panel {
 }
 
 // CONCATENATED MODULE: ./src/PageTab.ts
+
 /**
  * Represents a single page tab and its contents.
  */
-class PageTab {
+class PageTab_PageTab {
     constructor(name) {
+        this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.name = name;
         this.element = document.createElement("div");
         this.element.classList.add("tab-content");
@@ -45212,23 +45228,23 @@ var teamten_ts_utils_dist = __webpack_require__(9);
 class PageTabs_PageTabs {
     constructor(element) {
         this.tabs = [];
-        this.activeIndex = 0;
+        this.activeIndex = undefined;
         this.containerElement = element;
         this.containerElement.classList.add("page-tabs-container");
         // Where we draw the page tabs themselves.
         this.tabElement = document.createElement("div");
         this.tabElement.classList.add("page-tabs");
         this.containerElement.append(this.tabElement);
-        this.setActiveTab(0);
     }
     /**
      * Create a new tab.
      */
     newTab(name) {
-        const tab = new PageTab(name);
+        var _a;
+        const tab = new PageTab_PageTab(name);
         this.tabs.push(tab);
         this.containerElement.append(tab.element);
-        this.setActiveTab(this.activeIndex);
+        this.setActiveTab((_a = this.activeIndex) !== null && _a !== void 0 ? _a : 0);
         return tab;
     }
     /**
@@ -45251,12 +45267,15 @@ class PageTabs_PageTabs {
      * Switch the active tab.
      */
     setActiveTab(activeIndex) {
+        if (this.activeIndex !== undefined) {
+            this.tabs[this.activeIndex].onHide.dispatch();
+        }
         this.activeIndex = activeIndex;
         this.recreateTabs();
         for (let index = 0; index < this.tabs.length; index++) {
-            const tab = this.tabs[index];
-            tab.element.classList.toggle("hidden", index !== this.activeIndex);
+            this.tabs[index].element.classList.toggle("hidden", index !== this.activeIndex);
         }
+        this.tabs[this.activeIndex].onShow.dispatch();
     }
 }
 
@@ -47341,9 +47360,9 @@ class FilePanel_FileInfoTab {
         const miscDiv = document.createElement("div");
         miscDiv.classList.add("misc");
         this.typeInput = makeInputBox("Type", undefined, false);
-        this.addedAtInput = makeInputBox("Date added", undefined, false);
+        this.addedAtInput = makeInputBox("Added", undefined, false);
         this.sizeInput = makeInputBox("Size", undefined, false);
-        this.modifiedAtInput = makeInputBox("Date last modified", undefined, false);
+        this.modifiedAtInput = makeInputBox("Last modified", undefined, false);
         form.append(miscDiv);
         this.screenshotsDiv = document.createElement("div");
         this.screenshotsDiv.classList.add("screenshots");
@@ -47516,7 +47535,8 @@ class FilePanel_FileInfoTab {
  */
 class FilePanel_HexdumpTab {
     constructor(filePanel, pageTabs, trs80File) {
-        this.collapse = false; // TODO re-enable.
+        this.needGeneration = true;
+        this.collapse = true;
         this.annotate = true;
         this.binary = filePanel.file.binary;
         this.trs80File = trs80File;
@@ -47528,7 +47548,15 @@ class FilePanel_HexdumpTab {
         this.hexdumpElement = document.createElement("div");
         this.hexdumpElement.classList.add("hexdump");
         outer.append(this.hexdumpElement);
-        this.generateHexdump();
+        infoTab.onShow.subscribe(() => {
+            // Wait until user switches to tab to compute initial display, so that
+            // it doesn't slow down the animation to the file panel. Also do it
+            // asynchronously so that we don't block the display of the tab change.
+            if (this.needGeneration) {
+                this.needGeneration = false;
+                setTimeout(() => this.generateHexdump(), 0);
+            }
+        });
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         infoTab.element.append(actionBar);
@@ -47587,8 +47615,11 @@ class FilePanel_FilePanel extends Panel {
         content.classList.add("panel-content");
         this.element.append(content);
         const pageTabs = new PageTabs_PageTabs(content);
-        this.fileInfoTab = new FilePanel_FileInfoTab(this, pageTabs, trs80File);
-        this.hexdumpTab = new FilePanel_HexdumpTab(this, pageTabs, trs80File);
+        let timer = startTimer();
+        new FilePanel_FileInfoTab(this, pageTabs, trs80File);
+        console.log("Make file info tab: " + timer());
+        new FilePanel_HexdumpTab(this, pageTabs, trs80File);
+        console.log("Make hexdump tab: " + timer());
     }
 }
 
