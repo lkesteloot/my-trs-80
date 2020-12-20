@@ -45190,14 +45190,37 @@ class PanelManager_PanelManager {
 }
 
 // CONCATENATED MODULE: ./src/Panel.ts
+
 /**
  * Base class for panels.
  */
-class Panel {
-    constructor(context) {
+class Panel_Panel {
+    /**
+     * Construct the panel and its basic UI.
+     *
+     * @param context the app's context object.
+     * @param title title for the header.
+     * @param panelCssClass class for the whole panel.
+     * @param showBackButton whether to show a back button.
+     */
+    constructor(context, title, panelCssClass, showBackButton) {
         this.context = context;
         this.element = document.createElement("div");
-        this.element.classList.add("panel");
+        this.element.classList.add("panel", panelCssClass);
+        const header = document.createElement("h1");
+        if (showBackButton) {
+            const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
+            backButton.classList.add("back-button");
+            header.append(backButton);
+        }
+        this.headerTextNode = document.createElement("span");
+        this.headerTextNode.innerText = title;
+        header.append(this.headerTextNode);
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
+        this.element.append(header);
+        this.content = document.createElement("div");
+        this.content.classList.add("panel-content");
+        this.element.append(this.content);
     }
 }
 
@@ -46821,24 +46844,13 @@ class RetroStoreTab_RetroStoreTab {
 
 
 
-
 /**
  * Panel showing the library of user's files.
  */
-class LibraryPanel_LibraryPanel extends Panel {
+class LibraryPanel_LibraryPanel extends Panel_Panel {
     constructor(context) {
-        super(context);
-        this.element.classList.add("library-panel");
-        const header = document.createElement("h1");
-        const headerTextNode = document.createElement("span");
-        headerTextNode.innerText = "Library";
-        header.append(headerTextNode);
-        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        this.element.append(header);
-        const content = document.createElement("div");
-        content.classList.add("panel-content");
-        this.element.append(content);
-        const pageTabs = new PageTabs_PageTabs(content);
+        super(context, "Library", "library-panel", false);
+        const pageTabs = new PageTabs_PageTabs(this.content);
         new YourFilesTab_YourFilesTab(pageTabs, context);
         new RetroStoreTab_RetroStoreTab(pageTabs, context);
     }
@@ -47596,30 +47608,14 @@ class FilePanel_HexdumpTab {
 /**
  * Panel to explore a file.
  */
-class FilePanel_FilePanel extends Panel {
+class FilePanel_FilePanel extends Panel_Panel {
     constructor(context, file) {
-        super(context);
+        super(context, file.name, "file-panel", true);
         this.file = file;
-        this.element.classList.add("file-panel");
         const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
-        const header = document.createElement("h1");
-        const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
-        backButton.classList.add("back-button");
-        header.append(backButton);
-        this.headerTextNode = document.createElement("span");
-        this.headerTextNode.innerText = file.name;
-        header.append(this.headerTextNode);
-        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        this.element.append(header);
-        const content = document.createElement("div");
-        content.classList.add("panel-content");
-        this.element.append(content);
-        const pageTabs = new PageTabs_PageTabs(content);
-        let timer = startTimer();
+        const pageTabs = new PageTabs_PageTabs(this.content);
         new FilePanel_FileInfoTab(this, pageTabs, trs80File);
-        console.log("Make file info tab: " + timer());
         new FilePanel_HexdumpTab(this, pageTabs, trs80File);
-        console.log("Make hexdump tab: " + timer());
     }
 }
 
