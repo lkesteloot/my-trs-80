@@ -6323,6 +6323,7 @@ exports.SystemProgram = SystemProgram;
 function decodeSystemProgram(binary) {
     const chunks = [];
     const annotations = [];
+    let entryPointAddress = 0;
     const b = new teamten_ts_utils_1.ByteReader(binary);
     annotations.push(new ProgramAnnotation_1.ProgramAnnotation("File\nHead", b.addr(), b.addr()));
     const headerByte = b.read();
@@ -6382,7 +6383,7 @@ function decodeSystemProgram(binary) {
         annotations.push(new ProgramAnnotation_1.ProgramAnnotation("XSum\n0x" + z80_base_1.toHexByte(checksum), b.addr() - 1, b.addr() - 1));
         chunks.push(new SystemChunk(loadAddress, data, checksum));
     }
-    let entryPointAddress = b.readShort(false);
+    entryPointAddress = b.readShort(false);
     if (entryPointAddress === teamten_ts_utils_1.EOF) {
         entryPointAddress = 0;
         return makeSystemProgram("File is truncated at entry point address");
@@ -45117,15 +45118,17 @@ class PanelManager_PanelManager {
      * Start the animation to pop the most screen panel.
      */
     popPanel() {
-        // Slide it off-screen.
-        this.positionPanels(this.panels.length - 2);
-        // Remove it from the DOM.
-        const panel = this.panels.pop();
-        setTimeout(() => {
-            if (panel !== undefined) {
-                panel.element.remove();
-            }
-        }, 1000);
+        if (this.panels.length > 1) {
+            // Slide it off-screen.
+            this.positionPanels(this.panels.length - 2);
+            // Remove it from the DOM.
+            const panel = this.panels.pop();
+            setTimeout(() => {
+                if (panel !== undefined) {
+                    panel.element.remove();
+                }
+            }, 1000);
+        }
     }
     /**
      * Move the panels to their position so that "active" will be on-screen.
@@ -45182,6 +45185,184 @@ class Panel {
         this.context = context;
         this.element = document.createElement("div");
         this.element.classList.add("panel");
+    }
+}
+
+// CONCATENATED MODULE: ./src/PageTab.ts
+/**
+ * Represents a single page tab and its contents.
+ */
+class PageTab {
+    constructor(name) {
+        this.name = name;
+        this.element = document.createElement("div");
+        this.element.classList.add("tab-content");
+    }
+}
+
+// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
+var teamten_ts_utils_dist = __webpack_require__(9);
+
+// CONCATENATED MODULE: ./src/PageTabs.ts
+
+
+/**
+ * Set of page tabs.
+ */
+class PageTabs_PageTabs {
+    constructor(element) {
+        this.tabs = [];
+        this.activeIndex = 0;
+        this.containerElement = element;
+        this.containerElement.classList.add("page-tabs-container");
+        // Where we draw the page tabs themselves.
+        this.tabElement = document.createElement("div");
+        this.tabElement.classList.add("page-tabs");
+        this.containerElement.append(this.tabElement);
+        this.setActiveTab(0);
+    }
+    /**
+     * Create a new tab.
+     */
+    newTab(name) {
+        const tab = new PageTab(name);
+        this.tabs.push(tab);
+        this.containerElement.append(tab.element);
+        this.setActiveTab(this.activeIndex);
+        return tab;
+    }
+    /**
+     * Recreate the set of page tabs (the UI).
+     */
+    recreateTabs() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
+        for (let index = 0; index < this.tabs.length; index++) {
+            const tab = this.tabs[index];
+            const tabDiv = document.createElement("div");
+            tabDiv.innerText = tab.name;
+            tabDiv.classList.toggle("page-tab-active", index === this.activeIndex);
+            tabDiv.addEventListener("click", () => {
+                this.setActiveTab(index);
+            });
+            this.tabElement.append(tabDiv);
+        }
+    }
+    /**
+     * Switch the active tab.
+     */
+    setActiveTab(activeIndex) {
+        this.activeIndex = activeIndex;
+        this.recreateTabs();
+        for (let index = 0; index < this.tabs.length; index++) {
+            const tab = this.tabs[index];
+            tab.element.classList.toggle("hidden", index !== this.activeIndex);
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/Library.ts
+
+/**
+ * Base class for library event classes.
+ */
+class LibraryEvent {
+}
+/**
+ * Event for adding a file to the library.
+ */
+class LibraryAddEvent {
+    constructor(newFile) {
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for modifying a file in the library.
+ */
+class LibraryModifyEvent {
+    constructor(oldFile, newFile) {
+        this.oldFile = oldFile;
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for removing a file from the library.
+ */
+class LibraryRemoveEvent {
+    constructor(oldFile) {
+        this.oldFile = oldFile;
+    }
+}
+/**
+ * Keep track of all the files in the user's library. This should be a mirror of the contents
+ * of the database in the cloud.
+ */
+class Library_Library {
+    constructor() {
+        // Map from ID to file.
+        this.files = new Map();
+        // Fires after the map has been updated.
+        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+    }
+    /**
+     * Get a file by its ID, or undefined it not in the library.
+     */
+    getFile(id) {
+        return this.files.get(id);
+    }
+    /**
+     * Add a file to the library.
+     */
+    addFile(file) {
+        if (this.files.has(file.id)) {
+            console.error("Library.add(): Library already has file with ID " + file.id);
+            this.modifyFile(file);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryAddEvent(file));
+        }
+    }
+    /**
+     * Modify a file already in the library.
+     */
+    modifyFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.modify(): Library does not have file with ID " + file.id);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
+        }
+    }
+    /**
+     * Remove a file from the library.
+     */
+    removeFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.remove(): Library does not have file with ID " + file.id);
+        }
+        else {
+            // Here we assume that file and oldFile are the same. We could check, or we could just
+            // have the caller pass in a file ID.
+            this.files.delete(file.id);
+            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
+        }
+    }
+    /**
+     * Remove all files from the library. One event will be triggered per file.
+     */
+    removeAll() {
+        // Make a separate list first since we'll be modifying the map as we go.
+        const files = [];
+        for (const file of this.files.values()) {
+            files.push(file);
+        }
+        // Then delete each.
+        for (const file of files) {
+            this.removeFile(file);
+        }
     }
 }
 
@@ -45336,190 +45517,1311 @@ class FileBuilder {
     }
 }
 
-// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
-var teamten_ts_utils_dist = __webpack_require__(9);
+// CONCATENATED MODULE: ./src/YourFilesTab.ts
 
-// CONCATENATED MODULE: ./src/PageTab.ts
+
+
+
+
+const FILE_ID_ATTR = "data-file-id";
 /**
- * Represents a single page tab and its contents.
+ * Tap for the Your Files UI.
  */
-class PageTab {
-    constructor(name) {
-        this.name = name;
-        this.element = document.createElement("div");
-        this.element.classList.add("tab-content");
+class YourFilesTab_YourFilesTab {
+    constructor(pageTabs, context) {
+        this.context = context;
+        const tab = pageTabs.newTab("Your Files");
+        tab.element.classList.add("your-files-tab");
+        this.filesDiv = document.createElement("div");
+        this.filesDiv.classList.add("files");
+        tab.element.append(this.filesDiv);
+        this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
+        const actionBar = document.createElement("div");
+        actionBar.classList.add("action-bar", "button-set");
+        tab.element.append(actionBar);
+        const uploadButton = makeButton("Import File", "publish", "import-file-button", () => this.uploadFile());
+        actionBar.append(uploadButton);
+    }
+    /**
+     * Handle change to library files.
+     */
+    onLibraryEvent(event) {
+        if (event instanceof LibraryAddEvent) {
+            this.addFile(event.newFile);
+            this.sortFiles();
+        }
+        if (event instanceof LibraryModifyEvent) {
+            // Probably not worth modifying in-place.
+            this.removeFile(event.oldFile.id);
+            this.addFile(event.newFile);
+            this.sortFiles();
+        }
+        if (event instanceof LibraryRemoveEvent) {
+            this.removeFile(event.oldFile.id);
+        }
+    }
+    /**
+     * Configure and open the "open file" dialog for importing files.
+     */
+    uploadFile() {
+        const uploadElement = document.createElement("input");
+        uploadElement.type = "file";
+        uploadElement.accept = ".cas, .bas, .cmd";
+        uploadElement.multiple = true;
+        uploadElement.addEventListener("change", () => {
+            var _a;
+            const user = this.context.user;
+            if (user === undefined) {
+                console.error("Can't import with signed-out user");
+                return;
+            }
+            const files = (_a = uploadElement.files) !== null && _a !== void 0 ? _a : [];
+            const openFilePanel = files.length === 1;
+            for (const f of files) {
+                f.arrayBuffer()
+                    .then(arrayBuffer => {
+                    const bytes = new Uint8Array(arrayBuffer);
+                    this.importFile(user.uid, f.name, bytes, openFilePanel);
+                })
+                    .catch(error => {
+                    // TODO
+                    console.error(error);
+                });
+            }
+        });
+        uploadElement.click();
+    }
+    /**
+     * Add an uploaded file to our library.
+     * @param uid user ID.
+     * @param filename original filename from the user.
+     * @param binary raw binary of the file.
+     * @param openFilePanel whether to open the file panel for this file after importing it.
+     */
+    importFile(uid, filename, binary, openFilePanel) {
+        let name = filename;
+        // Remove extension.
+        const i = name.lastIndexOf(".");
+        if (i > 0) {
+            name = name.substr(0, i);
+        }
+        // Capitalize.
+        name = name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
+        // All-caps for filename.
+        filename = filename.toUpperCase();
+        let file = new FileBuilder()
+            .withUid(uid)
+            .withName(name)
+            .withFilename(filename)
+            .withBinary(binary)
+            .build();
+        this.context.db.addFile(file)
+            .then(docRef => {
+            file = file.builder().withId(docRef.id).build();
+            this.context.library.addFile(file);
+            if (openFilePanel) {
+                this.context.openFilePanel(file);
+            }
+        })
+            .catch(error => {
+            // TODO
+            console.error("Error adding document: ", error);
+        });
+    }
+    /**
+     * Add a file to the list of files in the library.
+     */
+    addFile(file) {
+        const fileDiv = document.createElement("div");
+        fileDiv.classList.add("file");
+        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
+        this.filesDiv.append(fileDiv);
+        const infoDiv = document.createElement("div");
+        fileDiv.append(infoDiv);
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        nameDiv.innerText = file.name;
+        infoDiv.append(nameDiv);
+        const filenameDiv = document.createElement("div");
+        filenameDiv.classList.add("filename");
+        filenameDiv.innerText = file.filename;
+        infoDiv.append(filenameDiv);
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("note");
+        noteDiv.innerText = file.note;
+        infoDiv.append(noteDiv);
+        const screenshotsDiv = document.createElement("div");
+        screenshotsDiv.classList.add("screenshots");
+        fileDiv.append(screenshotsDiv);
+        for (const screenshot of file.screenshots) {
+            const screen = new dist["CanvasScreen"]();
+            screen.displayScreenshot(screenshot);
+            const image = screen.asImage();
+            screenshotsDiv.append(image);
+        }
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
+            this.context.runProgram(file);
+            this.context.panelManager.close();
+        });
+        playButton.classList.add("play-button");
+        fileDiv.append(playButton);
+        const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
+            this.context.openFilePanel(file);
+        });
+        infoButton.classList.add("info-button");
+        fileDiv.append(infoButton);
+    }
+    /**
+     * Remove a file from the UI by its ID.
+     */
+    removeFile(fileId) {
+        const element = this.getFileElementById(fileId);
+        if (element !== undefined) {
+            element.remove();
+        }
+        else {
+            console.error("removeFile(): No element with file ID " + fileId);
+        }
+    }
+    /**
+     * Return an element for a file given its ID, or undefined if not found.
+     */
+    getFileElementById(fileId) {
+        let selectors = ":scope > [" + FILE_ID_ATTR + "=\"" + fileId + "\"]";
+        const element = this.filesDiv.querySelector(selectors);
+        return element === null ? undefined : element;
+    }
+    /**
+     * Sort files already displayed.
+     */
+    sortFiles() {
+        // Sort existing files.
+        const fileElements = [];
+        for (const element of this.filesDiv.children) {
+            const fileId = element.getAttribute(FILE_ID_ATTR);
+            if (fileId !== null) {
+                const file = this.context.library.getFile(fileId);
+                if (file !== undefined) {
+                    fileElements.push({ file: file, element: element });
+                }
+            }
+        }
+        fileElements.sort((a, b) => File_File.compare(a.file, b.file));
+        // Repopulate the UI in the right order.
+        Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
+        this.filesDiv.append(...fileElements.map(e => e.element));
     }
 }
 
-// CONCATENATED MODULE: ./src/PageTabs.ts
+// CONCATENATED MODULE: ./src/RetroStoreProto.ts
+const encodeTrs80Model = {
+    UNKNOWN_MODEL: 0,
+    MODEL_I: 1,
+    MODEL_III: 2,
+    MODEL_4: 3,
+    MODEL_4P: 4,
+};
+const decodeTrs80Model = {
+    0: "UNKNOWN_MODEL" /* UNKNOWN_MODEL */,
+    1: "MODEL_I" /* MODEL_I */,
+    2: "MODEL_III" /* MODEL_III */,
+    3: "MODEL_4" /* MODEL_4 */,
+    4: "MODEL_4P" /* MODEL_4P */,
+};
+const encodeMediaType = {
+    UNKNOWN: 0,
+    DISK: 1,
+    CASSETTE: 2,
+    COMMAND: 3,
+    BASIC: 4,
+};
+const decodeMediaType = {
+    0: "UNKNOWN" /* UNKNOWN */,
+    1: "DISK" /* DISK */,
+    2: "CASSETTE" /* CASSETTE */,
+    3: "COMMAND" /* COMMAND */,
+    4: "BASIC" /* BASIC */,
+};
+function encodeApiResponseApps(message) {
+    let bb = popByteBuffer();
+    _encodeApiResponseApps(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeApiResponseApps(message, bb) {
+    // optional bool success = 1;
+    let $success = message.success;
+    if ($success !== undefined) {
+        writeVarint32(bb, 8);
+        writeByte(bb, $success ? 1 : 0);
+    }
+    // optional string message = 2;
+    let $message = message.message;
+    if ($message !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $message);
+    }
+    // repeated App app = 3;
+    let array$app = message.app;
+    if (array$app !== undefined) {
+        for (let value of array$app) {
+            writeVarint32(bb, 26);
+            let nested = popByteBuffer();
+            _encodeApp(value, nested);
+            writeVarint32(bb, nested.limit);
+            writeByteBuffer(bb, nested);
+            pushByteBuffer(nested);
+        }
+    }
+}
+function decodeApiResponseApps(binary) {
+    return _decodeApiResponseApps(wrapByteBuffer(binary));
+}
+function _decodeApiResponseApps(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional bool success = 1;
+            case 1: {
+                message.success = !!readByte(bb);
+                break;
+            }
+            // optional string message = 2;
+            case 2: {
+                message.message = readString(bb, readVarint32(bb));
+                break;
+            }
+            // repeated App app = 3;
+            case 3: {
+                let limit = pushTemporaryLength(bb);
+                let values = message.app || (message.app = []);
+                values.push(_decodeApp(bb));
+                bb.limit = limit;
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeApiResponseMediaImages(message) {
+    let bb = popByteBuffer();
+    _encodeApiResponseMediaImages(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeApiResponseMediaImages(message, bb) {
+    // optional bool success = 1;
+    let $success = message.success;
+    if ($success !== undefined) {
+        writeVarint32(bb, 8);
+        writeByte(bb, $success ? 1 : 0);
+    }
+    // optional string message = 2;
+    let $message = message.message;
+    if ($message !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $message);
+    }
+    // repeated MediaImage mediaImage = 3;
+    let array$mediaImage = message.mediaImage;
+    if (array$mediaImage !== undefined) {
+        for (let value of array$mediaImage) {
+            writeVarint32(bb, 26);
+            let nested = popByteBuffer();
+            _encodeMediaImage(value, nested);
+            writeVarint32(bb, nested.limit);
+            writeByteBuffer(bb, nested);
+            pushByteBuffer(nested);
+        }
+    }
+}
+function decodeApiResponseMediaImages(binary) {
+    return _decodeApiResponseMediaImages(wrapByteBuffer(binary));
+}
+function _decodeApiResponseMediaImages(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional bool success = 1;
+            case 1: {
+                message.success = !!readByte(bb);
+                break;
+            }
+            // optional string message = 2;
+            case 2: {
+                message.message = readString(bb, readVarint32(bb));
+                break;
+            }
+            // repeated MediaImage mediaImage = 3;
+            case 3: {
+                let limit = pushTemporaryLength(bb);
+                let values = message.mediaImage || (message.mediaImage = []);
+                values.push(_decodeMediaImage(bb));
+                bb.limit = limit;
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeApp(message) {
+    let bb = popByteBuffer();
+    _encodeApp(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeApp(message, bb) {
+    // optional string id = 1;
+    let $id = message.id;
+    if ($id !== undefined) {
+        writeVarint32(bb, 10);
+        writeString(bb, $id);
+    }
+    // optional string name = 2;
+    let $name = message.name;
+    if ($name !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $name);
+    }
+    // optional string version = 3;
+    let $version = message.version;
+    if ($version !== undefined) {
+        writeVarint32(bb, 26);
+        writeString(bb, $version);
+    }
+    // optional string description = 4;
+    let $description = message.description;
+    if ($description !== undefined) {
+        writeVarint32(bb, 34);
+        writeString(bb, $description);
+    }
+    // optional int32 release_year = 5;
+    let $release_year = message.release_year;
+    if ($release_year !== undefined) {
+        writeVarint32(bb, 40);
+        writeVarint64(bb, intToLong($release_year));
+    }
+    // repeated string screenshot_url = 6;
+    let array$screenshot_url = message.screenshot_url;
+    if (array$screenshot_url !== undefined) {
+        for (let value of array$screenshot_url) {
+            writeVarint32(bb, 50);
+            writeString(bb, value);
+        }
+    }
+    // optional string author = 7;
+    let $author = message.author;
+    if ($author !== undefined) {
+        writeVarint32(bb, 58);
+        writeString(bb, $author);
+    }
+    // optional Trs80Extension ext_trs80 = 8;
+    let $ext_trs80 = message.ext_trs80;
+    if ($ext_trs80 !== undefined) {
+        writeVarint32(bb, 66);
+        let nested = popByteBuffer();
+        _encodeTrs80Extension($ext_trs80, nested);
+        writeVarint32(bb, nested.limit);
+        writeByteBuffer(bb, nested);
+        pushByteBuffer(nested);
+    }
+}
+function decodeApp(binary) {
+    return _decodeApp(wrapByteBuffer(binary));
+}
+function _decodeApp(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional string id = 1;
+            case 1: {
+                message.id = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional string name = 2;
+            case 2: {
+                message.name = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional string version = 3;
+            case 3: {
+                message.version = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional string description = 4;
+            case 4: {
+                message.description = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional int32 release_year = 5;
+            case 5: {
+                message.release_year = readVarint32(bb);
+                break;
+            }
+            // repeated string screenshot_url = 6;
+            case 6: {
+                let values = message.screenshot_url || (message.screenshot_url = []);
+                values.push(readString(bb, readVarint32(bb)));
+                break;
+            }
+            // optional string author = 7;
+            case 7: {
+                message.author = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional Trs80Extension ext_trs80 = 8;
+            case 8: {
+                let limit = pushTemporaryLength(bb);
+                message.ext_trs80 = _decodeTrs80Extension(bb);
+                bb.limit = limit;
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeTrs80Extension(message) {
+    let bb = popByteBuffer();
+    _encodeTrs80Extension(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeTrs80Extension(message, bb) {
+    // optional Trs80Model model = 1;
+    let $model = message.model;
+    if ($model !== undefined) {
+        writeVarint32(bb, 8);
+        writeVarint32(bb, encodeTrs80Model[$model]);
+    }
+}
+function decodeTrs80Extension(binary) {
+    return _decodeTrs80Extension(wrapByteBuffer(binary));
+}
+function _decodeTrs80Extension(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional Trs80Model model = 1;
+            case 1: {
+                message.model = decodeTrs80Model[readVarint32(bb)];
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeMediaImage(message) {
+    let bb = popByteBuffer();
+    _encodeMediaImage(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeMediaImage(message, bb) {
+    // optional MediaType type = 1;
+    let $type = message.type;
+    if ($type !== undefined) {
+        writeVarint32(bb, 8);
+        writeVarint32(bb, encodeMediaType[$type]);
+    }
+    // optional string filename = 2;
+    let $filename = message.filename;
+    if ($filename !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $filename);
+    }
+    // optional bytes data = 3;
+    let $data = message.data;
+    if ($data !== undefined) {
+        writeVarint32(bb, 26);
+        writeVarint32(bb, $data.length), writeBytes(bb, $data);
+    }
+    // optional int64 uploadTime = 4;
+    let $uploadTime = message.uploadTime;
+    if ($uploadTime !== undefined) {
+        writeVarint32(bb, 32);
+        writeVarint64(bb, $uploadTime);
+    }
+    // optional string description = 5;
+    let $description = message.description;
+    if ($description !== undefined) {
+        writeVarint32(bb, 42);
+        writeString(bb, $description);
+    }
+}
+function decodeMediaImage(binary) {
+    return _decodeMediaImage(wrapByteBuffer(binary));
+}
+function _decodeMediaImage(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional MediaType type = 1;
+            case 1: {
+                message.type = decodeMediaType[readVarint32(bb)];
+                break;
+            }
+            // optional string filename = 2;
+            case 2: {
+                message.filename = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional bytes data = 3;
+            case 3: {
+                message.data = readBytes(bb, readVarint32(bb));
+                break;
+            }
+            // optional int64 uploadTime = 4;
+            case 4: {
+                message.uploadTime = readVarint64(bb, /* unsigned */ false);
+                break;
+            }
+            // optional string description = 5;
+            case 5: {
+                message.description = readString(bb, readVarint32(bb));
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function pushTemporaryLength(bb) {
+    let length = readVarint32(bb);
+    let limit = bb.limit;
+    bb.limit = bb.offset + length;
+    return limit;
+}
+function skipUnknownField(bb, type) {
+    switch (type) {
+        case 0:
+            while (readByte(bb) & 0x80) { }
+            break;
+        case 2:
+            skip(bb, readVarint32(bb));
+            break;
+        case 5:
+            skip(bb, 4);
+            break;
+        case 1:
+            skip(bb, 8);
+            break;
+        default: throw new Error("Unimplemented type: " + type);
+    }
+}
+function stringToLong(value) {
+    return {
+        low: value.charCodeAt(0) | (value.charCodeAt(1) << 16),
+        high: value.charCodeAt(2) | (value.charCodeAt(3) << 16),
+        unsigned: false,
+    };
+}
+function longToString(value) {
+    let low = value.low;
+    let high = value.high;
+    return String.fromCharCode(low & 0xFFFF, low >>> 16, high & 0xFFFF, high >>> 16);
+}
+// The code below was modified from https://github.com/protobufjs/bytebuffer.js
+// which is under the Apache License 2.0.
+let f32 = new Float32Array(1);
+let f32_u8 = new Uint8Array(f32.buffer);
+let f64 = new Float64Array(1);
+let f64_u8 = new Uint8Array(f64.buffer);
+function intToLong(value) {
+    value |= 0;
+    return {
+        low: value,
+        high: value >> 31,
+        unsigned: value >= 0,
+    };
+}
+let bbStack = [];
+function popByteBuffer() {
+    const bb = bbStack.pop();
+    if (!bb)
+        return { bytes: new Uint8Array(64), offset: 0, limit: 0 };
+    bb.offset = bb.limit = 0;
+    return bb;
+}
+function pushByteBuffer(bb) {
+    bbStack.push(bb);
+}
+function wrapByteBuffer(bytes) {
+    return { bytes, offset: 0, limit: bytes.length };
+}
+function toUint8Array(bb) {
+    let bytes = bb.bytes;
+    let limit = bb.limit;
+    return bytes.length === limit ? bytes : bytes.subarray(0, limit);
+}
+function skip(bb, offset) {
+    if (bb.offset + offset > bb.limit) {
+        throw new Error('Skip past limit');
+    }
+    bb.offset += offset;
+}
+function isAtEnd(bb) {
+    return bb.offset >= bb.limit;
+}
+function grow(bb, count) {
+    let bytes = bb.bytes;
+    let offset = bb.offset;
+    let limit = bb.limit;
+    let finalOffset = offset + count;
+    if (finalOffset > bytes.length) {
+        let newBytes = new Uint8Array(finalOffset * 2);
+        newBytes.set(bytes);
+        bb.bytes = newBytes;
+    }
+    bb.offset = finalOffset;
+    if (finalOffset > limit) {
+        bb.limit = finalOffset;
+    }
+    return offset;
+}
+function advance(bb, count) {
+    let offset = bb.offset;
+    if (offset + count > bb.limit) {
+        throw new Error('Read past limit');
+    }
+    bb.offset += count;
+    return offset;
+}
+function readBytes(bb, count) {
+    let offset = advance(bb, count);
+    return bb.bytes.subarray(offset, offset + count);
+}
+function writeBytes(bb, buffer) {
+    let offset = grow(bb, buffer.length);
+    bb.bytes.set(buffer, offset);
+}
+function readString(bb, count) {
+    // Sadly a hand-coded UTF8 decoder is much faster than subarray+TextDecoder in V8
+    let offset = advance(bb, count);
+    let fromCharCode = String.fromCharCode;
+    let bytes = bb.bytes;
+    let invalid = '\uFFFD';
+    let text = '';
+    for (let i = 0; i < count; i++) {
+        let c1 = bytes[i + offset], c2, c3, c4, c;
+        // 1 byte
+        if ((c1 & 0x80) === 0) {
+            text += fromCharCode(c1);
+        }
+        // 2 bytes
+        else if ((c1 & 0xE0) === 0xC0) {
+            if (i + 1 >= count)
+                text += invalid;
+            else {
+                c2 = bytes[i + offset + 1];
+                if ((c2 & 0xC0) !== 0x80)
+                    text += invalid;
+                else {
+                    c = ((c1 & 0x1F) << 6) | (c2 & 0x3F);
+                    if (c < 0x80)
+                        text += invalid;
+                    else {
+                        text += fromCharCode(c);
+                        i++;
+                    }
+                }
+            }
+        }
+        // 3 bytes
+        else if ((c1 & 0xF0) == 0xE0) {
+            if (i + 2 >= count)
+                text += invalid;
+            else {
+                c2 = bytes[i + offset + 1];
+                c3 = bytes[i + offset + 2];
+                if (((c2 | (c3 << 8)) & 0xC0C0) !== 0x8080)
+                    text += invalid;
+                else {
+                    c = ((c1 & 0x0F) << 12) | ((c2 & 0x3F) << 6) | (c3 & 0x3F);
+                    if (c < 0x0800 || (c >= 0xD800 && c <= 0xDFFF))
+                        text += invalid;
+                    else {
+                        text += fromCharCode(c);
+                        i += 2;
+                    }
+                }
+            }
+        }
+        // 4 bytes
+        else if ((c1 & 0xF8) == 0xF0) {
+            if (i + 3 >= count)
+                text += invalid;
+            else {
+                c2 = bytes[i + offset + 1];
+                c3 = bytes[i + offset + 2];
+                c4 = bytes[i + offset + 3];
+                if (((c2 | (c3 << 8) | (c4 << 16)) & 0xC0C0C0) !== 0x808080)
+                    text += invalid;
+                else {
+                    c = ((c1 & 0x07) << 0x12) | ((c2 & 0x3F) << 0x0C) | ((c3 & 0x3F) << 0x06) | (c4 & 0x3F);
+                    if (c < 0x10000 || c > 0x10FFFF)
+                        text += invalid;
+                    else {
+                        c -= 0x10000;
+                        text += fromCharCode((c >> 10) + 0xD800, (c & 0x3FF) + 0xDC00);
+                        i += 3;
+                    }
+                }
+            }
+        }
+        else
+            text += invalid;
+    }
+    return text;
+}
+function writeString(bb, text) {
+    // Sadly a hand-coded UTF8 encoder is much faster than TextEncoder+set in V8
+    let n = text.length;
+    let byteCount = 0;
+    // Write the byte count first
+    for (let i = 0; i < n; i++) {
+        let c = text.charCodeAt(i);
+        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < n) {
+            c = (c << 10) + text.charCodeAt(++i) - 0x35FDC00;
+        }
+        byteCount += c < 0x80 ? 1 : c < 0x800 ? 2 : c < 0x10000 ? 3 : 4;
+    }
+    writeVarint32(bb, byteCount);
+    let offset = grow(bb, byteCount);
+    let bytes = bb.bytes;
+    // Then write the bytes
+    for (let i = 0; i < n; i++) {
+        let c = text.charCodeAt(i);
+        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < n) {
+            c = (c << 10) + text.charCodeAt(++i) - 0x35FDC00;
+        }
+        if (c < 0x80) {
+            bytes[offset++] = c;
+        }
+        else {
+            if (c < 0x800) {
+                bytes[offset++] = ((c >> 6) & 0x1F) | 0xC0;
+            }
+            else {
+                if (c < 0x10000) {
+                    bytes[offset++] = ((c >> 12) & 0x0F) | 0xE0;
+                }
+                else {
+                    bytes[offset++] = ((c >> 18) & 0x07) | 0xF0;
+                    bytes[offset++] = ((c >> 12) & 0x3F) | 0x80;
+                }
+                bytes[offset++] = ((c >> 6) & 0x3F) | 0x80;
+            }
+            bytes[offset++] = (c & 0x3F) | 0x80;
+        }
+    }
+}
+function writeByteBuffer(bb, buffer) {
+    let offset = grow(bb, buffer.limit);
+    let from = bb.bytes;
+    let to = buffer.bytes;
+    // This for loop is much faster than subarray+set on V8
+    for (let i = 0, n = buffer.limit; i < n; i++) {
+        from[i + offset] = to[i];
+    }
+}
+function readByte(bb) {
+    return bb.bytes[advance(bb, 1)];
+}
+function writeByte(bb, value) {
+    let offset = grow(bb, 1);
+    bb.bytes[offset] = value;
+}
+function readFloat(bb) {
+    let offset = advance(bb, 4);
+    let bytes = bb.bytes;
+    // Manual copying is much faster than subarray+set in V8
+    f32_u8[0] = bytes[offset++];
+    f32_u8[1] = bytes[offset++];
+    f32_u8[2] = bytes[offset++];
+    f32_u8[3] = bytes[offset++];
+    return f32[0];
+}
+function writeFloat(bb, value) {
+    let offset = grow(bb, 4);
+    let bytes = bb.bytes;
+    f32[0] = value;
+    // Manual copying is much faster than subarray+set in V8
+    bytes[offset++] = f32_u8[0];
+    bytes[offset++] = f32_u8[1];
+    bytes[offset++] = f32_u8[2];
+    bytes[offset++] = f32_u8[3];
+}
+function readDouble(bb) {
+    let offset = advance(bb, 8);
+    let bytes = bb.bytes;
+    // Manual copying is much faster than subarray+set in V8
+    f64_u8[0] = bytes[offset++];
+    f64_u8[1] = bytes[offset++];
+    f64_u8[2] = bytes[offset++];
+    f64_u8[3] = bytes[offset++];
+    f64_u8[4] = bytes[offset++];
+    f64_u8[5] = bytes[offset++];
+    f64_u8[6] = bytes[offset++];
+    f64_u8[7] = bytes[offset++];
+    return f64[0];
+}
+function writeDouble(bb, value) {
+    let offset = grow(bb, 8);
+    let bytes = bb.bytes;
+    f64[0] = value;
+    // Manual copying is much faster than subarray+set in V8
+    bytes[offset++] = f64_u8[0];
+    bytes[offset++] = f64_u8[1];
+    bytes[offset++] = f64_u8[2];
+    bytes[offset++] = f64_u8[3];
+    bytes[offset++] = f64_u8[4];
+    bytes[offset++] = f64_u8[5];
+    bytes[offset++] = f64_u8[6];
+    bytes[offset++] = f64_u8[7];
+}
+function readInt32(bb) {
+    let offset = advance(bb, 4);
+    let bytes = bb.bytes;
+    return (bytes[offset] |
+        (bytes[offset + 1] << 8) |
+        (bytes[offset + 2] << 16) |
+        (bytes[offset + 3] << 24));
+}
+function writeInt32(bb, value) {
+    let offset = grow(bb, 4);
+    let bytes = bb.bytes;
+    bytes[offset] = value;
+    bytes[offset + 1] = value >> 8;
+    bytes[offset + 2] = value >> 16;
+    bytes[offset + 3] = value >> 24;
+}
+function readInt64(bb, unsigned) {
+    return {
+        low: readInt32(bb),
+        high: readInt32(bb),
+        unsigned,
+    };
+}
+function writeInt64(bb, value) {
+    writeInt32(bb, value.low);
+    writeInt32(bb, value.high);
+}
+function readVarint32(bb) {
+    let c = 0;
+    let value = 0;
+    let b;
+    do {
+        b = readByte(bb);
+        if (c < 32)
+            value |= (b & 0x7F) << c;
+        c += 7;
+    } while (b & 0x80);
+    return value;
+}
+function writeVarint32(bb, value) {
+    value >>>= 0;
+    while (value >= 0x80) {
+        writeByte(bb, (value & 0x7f) | 0x80);
+        value >>>= 7;
+    }
+    writeByte(bb, value);
+}
+function readVarint64(bb, unsigned) {
+    let part0 = 0;
+    let part1 = 0;
+    let part2 = 0;
+    let b;
+    b = readByte(bb);
+    part0 = (b & 0x7F);
+    if (b & 0x80) {
+        b = readByte(bb);
+        part0 |= (b & 0x7F) << 7;
+        if (b & 0x80) {
+            b = readByte(bb);
+            part0 |= (b & 0x7F) << 14;
+            if (b & 0x80) {
+                b = readByte(bb);
+                part0 |= (b & 0x7F) << 21;
+                if (b & 0x80) {
+                    b = readByte(bb);
+                    part1 = (b & 0x7F);
+                    if (b & 0x80) {
+                        b = readByte(bb);
+                        part1 |= (b & 0x7F) << 7;
+                        if (b & 0x80) {
+                            b = readByte(bb);
+                            part1 |= (b & 0x7F) << 14;
+                            if (b & 0x80) {
+                                b = readByte(bb);
+                                part1 |= (b & 0x7F) << 21;
+                                if (b & 0x80) {
+                                    b = readByte(bb);
+                                    part2 = (b & 0x7F);
+                                    if (b & 0x80) {
+                                        b = readByte(bb);
+                                        part2 |= (b & 0x7F) << 7;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return {
+        low: part0 | (part1 << 28),
+        high: (part1 >>> 4) | (part2 << 24),
+        unsigned,
+    };
+}
+function writeVarint64(bb, value) {
+    let part0 = value.low >>> 0;
+    let part1 = ((value.low >>> 28) | (value.high << 4)) >>> 0;
+    let part2 = value.high >>> 24;
+    // ref: src/google/protobuf/io/coded_stream.cc
+    let size = part2 === 0 ?
+        part1 === 0 ?
+            part0 < 1 << 14 ?
+                part0 < 1 << 7 ? 1 : 2 :
+                part0 < 1 << 21 ? 3 : 4 :
+            part1 < 1 << 14 ?
+                part1 < 1 << 7 ? 5 : 6 :
+                part1 < 1 << 21 ? 7 : 8 :
+        part2 < 1 << 7 ? 9 : 10;
+    let offset = grow(bb, size);
+    let bytes = bb.bytes;
+    switch (size) {
+        case 10: bytes[offset + 9] = (part2 >>> 7) & 0x01;
+        case 9: bytes[offset + 8] = size !== 9 ? part2 | 0x80 : part2 & 0x7F;
+        case 8: bytes[offset + 7] = size !== 8 ? (part1 >>> 21) | 0x80 : (part1 >>> 21) & 0x7F;
+        case 7: bytes[offset + 6] = size !== 7 ? (part1 >>> 14) | 0x80 : (part1 >>> 14) & 0x7F;
+        case 6: bytes[offset + 5] = size !== 6 ? (part1 >>> 7) | 0x80 : (part1 >>> 7) & 0x7F;
+        case 5: bytes[offset + 4] = size !== 5 ? part1 | 0x80 : part1 & 0x7F;
+        case 4: bytes[offset + 3] = size !== 4 ? (part0 >>> 21) | 0x80 : (part0 >>> 21) & 0x7F;
+        case 3: bytes[offset + 2] = size !== 3 ? (part0 >>> 14) | 0x80 : (part0 >>> 14) & 0x7F;
+        case 2: bytes[offset + 1] = size !== 2 ? (part0 >>> 7) | 0x80 : (part0 >>> 7) & 0x7F;
+        case 1: bytes[offset] = size !== 1 ? part0 | 0x80 : part0 & 0x7F;
+    }
+}
+function readVarint32ZigZag(bb) {
+    let value = readVarint32(bb);
+    // ref: src/google/protobuf/wire_format_lite.h
+    return (value >>> 1) ^ -(value & 1);
+}
+function writeVarint32ZigZag(bb, value) {
+    // ref: src/google/protobuf/wire_format_lite.h
+    writeVarint32(bb, (value << 1) ^ (value >> 31));
+}
+function readVarint64ZigZag(bb) {
+    let value = readVarint64(bb, /* unsigned */ false);
+    let low = value.low;
+    let high = value.high;
+    let flip = -(low & 1);
+    // ref: src/google/protobuf/wire_format_lite.h
+    return {
+        low: ((low >>> 1) | (high << 31)) ^ flip,
+        high: (high >>> 1) ^ flip,
+        unsigned: false,
+    };
+}
+function writeVarint64ZigZag(bb, value) {
+    let low = value.low;
+    let high = value.high;
+    let flip = high >> 31;
+    // ref: src/google/protobuf/wire_format_lite.h
+    writeVarint64(bb, {
+        low: (low << 1) ^ flip,
+        high: ((high << 1) | (low >>> 31)) ^ flip,
+        unsigned: false,
+    });
+}
+
+// EXTERNAL MODULE: ../trs80-base/dist/index.js
+var trs80_base_dist = __webpack_require__(13);
+
+// CONCATENATED MODULE: ./src/RetroStoreTab.ts
+
+
+
+
+
+const RETRO_STORE_API_URL = "https://retrostore.org/api/";
+/**
+ * Fetch all apps from RetroStore. If an error occurs, returns an empty list.
+ */
+function fetchApps() {
+    const start = 0;
+    const num = 10;
+    const query = "";
+    const apiRequest = {
+        start: start,
+        num: num,
+        query: query,
+        trs80: {
+            mediaTypes: [],
+        },
+    };
+    const fetchOptions = {
+        method: "POST",
+        cache: "no-cache",
+        body: JSON.stringify(apiRequest),
+    };
+    return fetch(RETRO_STORE_API_URL + "listApps", fetchOptions)
+        .then(response => {
+        if (response.status === 200) {
+            return response.arrayBuffer();
+        }
+        else {
+            throw new Error("Error code " + response.status);
+        }
+    })
+        .then(array => {
+        var _a;
+        const apps = decodeApiResponseApps(new Uint8Array(array));
+        if (apps.success) {
+            return Promise.resolve((_a = apps.app) !== null && _a !== void 0 ? _a : []);
+        }
+        else {
+            // TODO.
+            console.error("Can't get apps: " + apps.message);
+            return Promise.resolve([]);
+        }
+    })
+        .catch(error => {
+        // TODO
+        console.error(error);
+        return Promise.resolve([]);
+    });
+}
+/**
+ * Fetch all media images for the specified app ID. If an error occurs, returns an empty list.
+ */
+function fetchMediaImages(appId) {
+    const apiRequest = {
+        appId: appId,
+    };
+    const fetchOptions = {
+        method: "POST",
+        cache: "no-cache",
+        body: JSON.stringify(apiRequest),
+    };
+    return fetch(RETRO_STORE_API_URL + "fetchMediaImages", fetchOptions)
+        .then(response => {
+        if (response.status === 200) {
+            return response.arrayBuffer();
+        }
+        else {
+            throw new Error("Error code " + response.status);
+        }
+    })
+        .then(array => {
+        var _a;
+        const mediaImages = decodeApiResponseMediaImages(new Uint8Array(array));
+        if (mediaImages.success) {
+            return Promise.resolve((_a = mediaImages.mediaImage) !== null && _a !== void 0 ? _a : []);
+        }
+        else {
+            // TODO.
+            console.error("Can't get media images for " + appId + ": " + mediaImages.message);
+            return Promise.resolve([]);
+        }
+    })
+        .catch(error => {
+        // TODO
+        console.error(error);
+        return Promise.resolve([]);
+    });
+}
+/**
+ * The tab for showing apps from RetroStore.org.
+ */
+class RetroStoreTab_RetroStoreTab {
+    constructor(pageTabs, context) {
+        this.context = context;
+        const tab = pageTabs.newTab("RetroStore");
+        tab.element.classList.add("retro-store-tab");
+        this.appsDiv = document.createElement("div");
+        this.appsDiv.classList.add("retro-store-apps");
+        tab.element.append(this.appsDiv);
+        fetchApps()
+            .then(apps => {
+            this.populateApps(apps);
+        })
+            .catch(error => {
+            // TODO. We already catch errors in fetchApps.
+            console.error(error);
+        });
+    }
+    /**
+     * Populate the UI with a list of apps.
+     */
+    populateApps(apps) {
+        Object(teamten_ts_utils_dist["clearElement"])(this.appsDiv);
+        for (const app of apps) {
+            this.addApp(app);
+        }
+    }
+    /**
+     * Add a specific app to the UI.
+     */
+    addApp(app) {
+        var _a;
+        const appDiv = document.createElement("div");
+        appDiv.classList.add("retro-store-app");
+        this.appsDiv.append(appDiv);
+        const screenshotDiv = document.createElement("img");
+        screenshotDiv.classList.add("screenshot");
+        if (app.screenshot_url !== undefined && app.screenshot_url.length > 0) {
+            screenshotDiv.src = app.screenshot_url[0];
+        }
+        appDiv.append(screenshotDiv);
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        const appName = (_a = app.name) !== null && _a !== void 0 ? _a : "Unknown name";
+        nameDiv.innerText = appName;
+        if (app.release_year !== undefined) {
+            const releaseYearSpan = document.createElement("span");
+            releaseYearSpan.classList.add("release-year");
+            releaseYearSpan.innerText = " (" + app.release_year + ")";
+            nameDiv.append(releaseYearSpan);
+        }
+        appDiv.append(nameDiv);
+        if (app.author !== undefined && app.author !== "") {
+            const authorDiv = document.createElement("div");
+            authorDiv.classList.add("author");
+            authorDiv.innerText = app.author;
+            appDiv.append(authorDiv);
+        }
+        if (app.version !== undefined && app.version !== "") {
+            const versionDiv = document.createElement("div");
+            versionDiv.classList.add("version");
+            versionDiv.innerText = "Version " + app.version;
+            appDiv.append(versionDiv);
+        }
+        if (app.description !== undefined && app.description !== "") {
+            const descriptionDiv = document.createElement("div");
+            descriptionDiv.classList.add("description");
+            descriptionDiv.innerText = app.description;
+            appDiv.append(descriptionDiv);
+        }
+        const buttonDiv = document.createElement("div");
+        buttonDiv.classList.add("button-set");
+        appDiv.append(buttonDiv);
+        let cmdProgramMediaImage = undefined;
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run app", () => {
+            if (cmdProgramMediaImage !== undefined && cmdProgramMediaImage.data !== undefined) {
+                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(cmdProgramMediaImage.data);
+                // TODO should set context.runningFile
+                this.context.trs80.runTrs80File(cmdProgram);
+                this.context.panelManager.close();
+            }
+        });
+        playButton.classList.add("disabled");
+        buttonDiv.append(playButton);
+        const importButton = makeIconButton(makeIcon("get_app"), "Import app", () => {
+            var _a;
+            if (cmdProgramMediaImage !== undefined && cmdProgramMediaImage.data !== undefined && this.context.user !== undefined) {
+                const noteParts = [];
+                if (app.description !== undefined && app.description !== "") {
+                    noteParts.push(app.description);
+                }
+                if (cmdProgramMediaImage.description !== undefined && cmdProgramMediaImage.description !== "") {
+                    noteParts.push(cmdProgramMediaImage.description);
+                }
+                noteParts.push("Imported from RetroStore.org.");
+                const note = noteParts.join("\n\n");
+                let file = new FileBuilder()
+                    .withUid(this.context.user.uid)
+                    .withName(appName)
+                    .withNote(note)
+                    .withFilename((_a = cmdProgramMediaImage.filename) !== null && _a !== void 0 ? _a : "UNKNOWN")
+                    .withBinary(cmdProgramMediaImage.data)
+                    .build();
+                this.context.db.addFile(file)
+                    .then(docRef => {
+                    file = file.builder().withId(docRef.id).build();
+                    this.context.library.addFile(file);
+                    this.context.openFilePanel(file);
+                })
+                    .catch(error => {
+                    // TODO
+                    console.error("Error adding document: ", error);
+                });
+            }
+        });
+        importButton.classList.add("import-button", "disabled");
+        buttonDiv.append(importButton);
+        if (app.id !== undefined) {
+            fetchMediaImages(app.id)
+                .then(mediaImages => {
+                console.log(app.id, app.name, mediaImages);
+                for (const mediaImage of mediaImages) {
+                    if (mediaImage.type === "COMMAND" /* COMMAND */) {
+                        cmdProgramMediaImage = mediaImage;
+                        playButton.classList.remove("disabled");
+                        importButton.classList.remove("disabled");
+                    }
+                }
+            })
+                .catch(error => {
+                // TODO. Caught already?
+                console.error(error);
+            });
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/LibraryPanel.ts
+
+
+
 
 
 /**
- * Set of page tabs.
+ * Panel showing the library of user's files.
  */
-class PageTabs_PageTabs {
-    constructor(element) {
-        this.tabs = [];
-        this.activeIndex = 0;
-        this.containerElement = element;
-        this.containerElement.classList.add("page-tabs-container");
-        // Where we draw the page tabs themselves.
-        this.tabElement = document.createElement("div");
-        this.tabElement.classList.add("page-tabs");
-        this.containerElement.append(this.tabElement);
-        this.setActiveTab(0);
-    }
-    /**
-     * Create a new tab.
-     */
-    newTab(name) {
-        const tab = new PageTab(name);
-        this.tabs.push(tab);
-        this.containerElement.append(tab.element);
-        this.setActiveTab(this.activeIndex);
-        return tab;
-    }
-    /**
-     * Recreate the set of page tabs (the UI).
-     */
-    recreateTabs() {
-        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
-        for (let index = 0; index < this.tabs.length; index++) {
-            const tab = this.tabs[index];
-            const tabDiv = document.createElement("div");
-            tabDiv.innerText = tab.name;
-            tabDiv.classList.toggle("page-tab-active", index === this.activeIndex);
-            tabDiv.addEventListener("click", () => {
-                this.setActiveTab(index);
-            });
-            this.tabElement.append(tabDiv);
-        }
-    }
-    /**
-     * Switch the active tab.
-     */
-    setActiveTab(activeIndex) {
-        this.activeIndex = activeIndex;
-        this.recreateTabs();
-        for (let index = 0; index < this.tabs.length; index++) {
-            const tab = this.tabs[index];
-            tab.element.classList.toggle("hidden", index !== this.activeIndex);
-        }
+class LibraryPanel_LibraryPanel extends Panel {
+    constructor(context) {
+        super(context);
+        this.element.classList.add("library-panel");
+        const header = document.createElement("h1");
+        const headerTextNode = document.createElement("span");
+        headerTextNode.innerText = "Library";
+        header.append(headerTextNode);
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
+        this.element.append(header);
+        const content = document.createElement("div");
+        content.classList.add("panel-content");
+        this.element.append(content);
+        const pageTabs = new PageTabs_PageTabs(content);
+        new RetroStoreTab_RetroStoreTab(pageTabs, context);
+        new YourFilesTab_YourFilesTab(pageTabs, context);
     }
 }
 
 // EXTERNAL MODULE: ./node_modules/lodash/isEmpty.js
 var isEmpty = __webpack_require__(40);
 var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
-
-// CONCATENATED MODULE: ./src/Library.ts
-
-/**
- * Base class for library event classes.
- */
-class LibraryEvent {
-}
-/**
- * Event for adding a file to the library.
- */
-class LibraryAddEvent {
-    constructor(newFile) {
-        this.newFile = newFile;
-    }
-}
-/**
- * Event for modifying a file in the library.
- */
-class LibraryModifyEvent {
-    constructor(oldFile, newFile) {
-        this.oldFile = oldFile;
-        this.newFile = newFile;
-    }
-}
-/**
- * Event for removing a file from the library.
- */
-class LibraryRemoveEvent {
-    constructor(oldFile) {
-        this.oldFile = oldFile;
-    }
-}
-/**
- * Keep track of all the files in the user's library. This should be a mirror of the contents
- * of the database in the cloud.
- */
-class Library_Library {
-    constructor() {
-        // Map from ID to file.
-        this.files = new Map();
-        // Fires after the map has been updated.
-        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-    }
-    /**
-     * Get a file by its ID, or undefined it not in the library.
-     */
-    getFile(id) {
-        return this.files.get(id);
-    }
-    /**
-     * Add a file to the library.
-     */
-    addFile(file) {
-        if (this.files.has(file.id)) {
-            console.error("Library.add(): Library already has file with ID " + file.id);
-            this.modifyFile(file);
-        }
-        else {
-            this.files.set(file.id, file);
-            this.onEvent.dispatch(new LibraryAddEvent(file));
-        }
-    }
-    /**
-     * Modify a file already in the library.
-     */
-    modifyFile(file) {
-        const oldFile = this.files.get(file.id);
-        if (oldFile === undefined) {
-            console.error("Library.modify(): Library does not have file with ID " + file.id);
-        }
-        else {
-            this.files.set(file.id, file);
-            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
-        }
-    }
-    /**
-     * Remove a file from the library.
-     */
-    removeFile(file) {
-        const oldFile = this.files.get(file.id);
-        if (oldFile === undefined) {
-            console.error("Library.remove(): Library does not have file with ID " + file.id);
-        }
-        else {
-            // Here we assume that file and oldFile are the same. We could check, or we could just
-            // have the caller pass in a file ID.
-            this.files.delete(file.id);
-            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
-        }
-    }
-    /**
-     * Remove all files from the library. One event will be triggered per file.
-     */
-    removeAll() {
-        // Make a separate list first since we'll be modifying the map as we go.
-        const files = [];
-        for (const file of this.files.values()) {
-            files.push(file);
-        }
-        // Then delete each.
-        for (const file of files) {
-            this.removeFile(file);
-        }
-    }
-}
-
-// EXTERNAL MODULE: ../trs80-base/dist/index.js
-var trs80_base_dist = __webpack_require__(13);
 
 // CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Register.js
 /**
@@ -46284,214 +47586,8 @@ class FilePanel_FilePanel extends Panel {
     }
 }
 
-// CONCATENATED MODULE: ./src/LibraryPanel.ts
-
-
-
-
-
-
-
-const FILE_ID_ATTR = "data-file-id";
-/**
- * Panel showing the library of user's files.
- */
-class LibraryPanel_LibraryPanel extends Panel {
-    constructor(context) {
-        super(context);
-        this.element.classList.add("library-panel");
-        const header = document.createElement("h1");
-        const headerTextNode = document.createElement("span");
-        headerTextNode.innerText = "Library";
-        header.append(headerTextNode);
-        // TODO hide upload button if signed out.
-        header.append(makeIconButton(makeIcon("add"), "Upload file", () => this.uploadFile()));
-        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        this.element.append(header);
-        this.filesDiv = document.createElement("div");
-        this.filesDiv.classList.add("files");
-        this.element.append(this.filesDiv);
-        this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
-    }
-    /**
-     * Handle change to library files.
-     */
-    onLibraryEvent(event) {
-        if (event instanceof LibraryAddEvent) {
-            this.addFile(event.newFile);
-            this.sortFiles();
-        }
-        if (event instanceof LibraryModifyEvent) {
-            // Probably not worth modifying in-place.
-            this.removeFile(event.oldFile.id);
-            this.addFile(event.newFile);
-            this.sortFiles();
-        }
-        if (event instanceof LibraryRemoveEvent) {
-            this.removeFile(event.oldFile.id);
-        }
-    }
-    /**
-     * Configure and open the "open file" dialog for importing files.
-     */
-    uploadFile() {
-        const uploadElement = document.createElement("input");
-        uploadElement.type = "file";
-        uploadElement.accept = ".cas, .bas, .cmd";
-        uploadElement.multiple = true;
-        uploadElement.addEventListener("change", () => {
-            var _a;
-            const user = this.context.user;
-            if (user === undefined) {
-                console.error("Can't import with signed-out user");
-                return;
-            }
-            const files = (_a = uploadElement.files) !== null && _a !== void 0 ? _a : [];
-            const openFilePanel = files.length === 1;
-            for (const f of files) {
-                f.arrayBuffer()
-                    .then(arrayBuffer => {
-                    const bytes = new Uint8Array(arrayBuffer);
-                    this.importFile(user.uid, f.name, bytes, openFilePanel);
-                })
-                    .catch(error => {
-                    // TODO
-                    console.error(error);
-                });
-            }
-        });
-        uploadElement.click();
-    }
-    /**
-     * Add an uploaded file to our library.
-     * @param uid user ID.
-     * @param filename original filename from the user.
-     * @param binary raw binary of the file.
-     * @param openFilePanel whether to open the file panel for this file after importing it.
-     */
-    importFile(uid, filename, binary, openFilePanel) {
-        let name = filename;
-        // Remove extension.
-        const i = name.lastIndexOf(".");
-        if (i > 0) {
-            name = name.substr(0, i);
-        }
-        // Capitalize.
-        name = name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
-        // All-caps for filename.
-        filename = filename.toUpperCase();
-        let file = new FileBuilder()
-            .withUid(uid)
-            .withName(name)
-            .withFilename(filename)
-            .withBinary(binary)
-            .build();
-        this.context.db.addFile(file)
-            .then(docRef => {
-            file = file.builder().withId(docRef.id).build();
-            this.context.library.addFile(file);
-            if (openFilePanel) {
-                this.openFilePanel(file);
-            }
-        })
-            .catch(error => {
-            // TODO
-            console.error("Error adding document: ", error);
-        });
-    }
-    /**
-     * Add a file to the list of files in the library.
-     */
-    addFile(file) {
-        const fileDiv = document.createElement("div");
-        fileDiv.classList.add("file");
-        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
-        this.filesDiv.append(fileDiv);
-        const infoDiv = document.createElement("div");
-        fileDiv.append(infoDiv);
-        const nameDiv = document.createElement("div");
-        nameDiv.classList.add("name");
-        nameDiv.innerText = file.name;
-        infoDiv.append(nameDiv);
-        const filenameDiv = document.createElement("div");
-        filenameDiv.classList.add("filename");
-        filenameDiv.innerText = file.filename;
-        infoDiv.append(filenameDiv);
-        const noteDiv = document.createElement("div");
-        noteDiv.classList.add("note");
-        noteDiv.innerText = file.note;
-        infoDiv.append(noteDiv);
-        const screenshotsDiv = document.createElement("div");
-        screenshotsDiv.classList.add("screenshots");
-        fileDiv.append(screenshotsDiv);
-        for (const screenshot of file.screenshots) {
-            const screen = new dist["CanvasScreen"]();
-            screen.displayScreenshot(screenshot);
-            const image = screen.asImage();
-            screenshotsDiv.append(image);
-        }
-        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
-            this.context.runProgram(file);
-            this.context.panelManager.close();
-        });
-        playButton.classList.add("play-button");
-        fileDiv.append(playButton);
-        const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
-            this.openFilePanel(file);
-        });
-        infoButton.classList.add("info-button");
-        fileDiv.append(infoButton);
-    }
-    /**
-     * Open a file panel on the given file.
-     */
-    openFilePanel(file) {
-        const filePanel = new FilePanel_FilePanel(this.context, file);
-        this.context.panelManager.pushPanel(filePanel);
-    }
-    /**
-     * Remove a file from the UI by its ID.
-     */
-    removeFile(fileId) {
-        const element = this.getFileElementById(fileId);
-        if (element !== undefined) {
-            element.remove();
-        }
-        else {
-            console.error("removeFile(): No element with file ID " + fileId);
-        }
-    }
-    /**
-     * Return an element for a file given its ID, or undefined if not found.
-     */
-    getFileElementById(fileId) {
-        let selectors = ":scope > [" + FILE_ID_ATTR + "=\"" + fileId + "\"]";
-        const element = this.filesDiv.querySelector(selectors);
-        return element === null ? undefined : element;
-    }
-    /**
-     * Sort files already displayed.
-     */
-    sortFiles() {
-        // Sort existing files.
-        const fileElements = [];
-        for (const element of this.filesDiv.children) {
-            const fileId = element.getAttribute(FILE_ID_ATTR);
-            if (fileId !== null) {
-                const file = this.context.library.getFile(fileId);
-                if (file !== undefined) {
-                    fileElements.push({ file: file, element: element });
-                }
-            }
-        }
-        fileElements.sort((a, b) => File_File.compare(a.file, b.file));
-        // Repopulate the UI in the right order.
-        Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
-        this.filesDiv.append(...fileElements.map(e => e.element));
-    }
-}
-
 // CONCATENATED MODULE: ./src/Context.ts
+
 
 
 
@@ -46533,6 +47629,13 @@ class Context_Context {
             this.runningFile = file;
             this.trs80.runTrs80File(trs80File);
         }
+    }
+    /**
+     * Open a file panel on the given file.
+     */
+    openFilePanel(file) {
+        const filePanel = new FilePanel_FilePanel(this, file);
+        this.panelManager.pushPanel(filePanel);
     }
     /**
      * Set the currently signed-in user.
