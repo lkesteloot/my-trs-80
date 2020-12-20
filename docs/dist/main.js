@@ -46560,6 +46560,7 @@ function writeVarint64ZigZag(bb, value) {
 var trs80_base_dist = __webpack_require__(13);
 
 // CONCATENATED MODULE: ./src/RetroStoreTab.ts
+// Generate this with: npx pbjs ApiProtos.proto --ts RetroStoreProto.ts
 
 
 
@@ -46727,10 +46728,10 @@ class RetroStoreTab_RetroStoreTab {
         const buttonDiv = document.createElement("div");
         buttonDiv.classList.add("button-set");
         appDiv.append(buttonDiv);
-        let cmdProgramMediaImage = undefined;
+        let validMediaImage = undefined;
         const playButton = makeIconButton(makeIcon("play_arrow"), "Run app", () => {
-            if (cmdProgramMediaImage !== undefined && cmdProgramMediaImage.data !== undefined) {
-                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(cmdProgramMediaImage.data);
+            if (validMediaImage !== undefined && validMediaImage.data !== undefined) {
+                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(validMediaImage.data);
                 // TODO should set context.runningFile
                 this.context.trs80.runTrs80File(cmdProgram);
                 this.context.panelManager.close();
@@ -46740,13 +46741,13 @@ class RetroStoreTab_RetroStoreTab {
         buttonDiv.append(playButton);
         const importButton = makeIconButton(makeIcon("get_app"), "Import app", () => {
             var _a;
-            if (cmdProgramMediaImage !== undefined && cmdProgramMediaImage.data !== undefined && this.context.user !== undefined) {
+            if (validMediaImage !== undefined && validMediaImage.data !== undefined && this.context.user !== undefined) {
                 const noteParts = [];
                 if (app.description !== undefined && app.description !== "") {
                     noteParts.push(app.description);
                 }
-                if (cmdProgramMediaImage.description !== undefined && cmdProgramMediaImage.description !== "") {
-                    noteParts.push(cmdProgramMediaImage.description);
+                if (validMediaImage.description !== undefined && validMediaImage.description !== "") {
+                    noteParts.push(validMediaImage.description);
                 }
                 noteParts.push("Imported from RetroStore.org.");
                 const note = noteParts.join("\n\n");
@@ -46754,8 +46755,8 @@ class RetroStoreTab_RetroStoreTab {
                     .withUid(this.context.user.uid)
                     .withName(appName)
                     .withNote(note)
-                    .withFilename((_a = cmdProgramMediaImage.filename) !== null && _a !== void 0 ? _a : "UNKNOWN")
-                    .withBinary(cmdProgramMediaImage.data)
+                    .withFilename((_a = validMediaImage.filename) !== null && _a !== void 0 ? _a : "UNKNOWN")
+                    .withBinary(validMediaImage.data)
                     .build();
                 this.context.db.addFile(file)
                     .then(docRef => {
@@ -46777,8 +46778,12 @@ class RetroStoreTab_RetroStoreTab {
                 console.log(app.id, app.name, mediaImages);
                 for (const mediaImage of mediaImages) {
                     if (mediaImage.type === "COMMAND" /* COMMAND */) {
-                        cmdProgramMediaImage = mediaImage;
+                        validMediaImage = mediaImage;
                         playButton.classList.remove("disabled");
+                        importButton.classList.remove("disabled");
+                    }
+                    else if (mediaImage.type === "BASIC" /* BASIC */) {
+                        validMediaImage = mediaImage;
                         importButton.classList.remove("disabled");
                     }
                 }
@@ -46814,8 +46819,8 @@ class LibraryPanel_LibraryPanel extends Panel {
         content.classList.add("panel-content");
         this.element.append(content);
         const pageTabs = new PageTabs_PageTabs(content);
-        new RetroStoreTab_RetroStoreTab(pageTabs, context);
         new YourFilesTab_YourFilesTab(pageTabs, context);
+        new RetroStoreTab_RetroStoreTab(pageTabs, context);
     }
 }
 
