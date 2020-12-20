@@ -45014,7 +45014,7 @@ function makeIcon(name) {
  * Make a generic round button.
  */
 function makeIconButton(icon, title, clickCallback) {
-    const button = document.createElement("div");
+    const button = document.createElement("button");
     button.classList.add("icon-button");
     button.title = title;
     button.append(icon);
@@ -45029,10 +45029,10 @@ function makeCloseIconButton(closeCallback) {
     button.classList.add("close-button");
     return button;
 }
-function makeButton(label, iconName, cssClass, clickCallback) {
+function makeTextButton(label, iconName, cssClass, clickCallback) {
     const button = document.createElement("button");
     button.innerText = label;
-    button.classList.add(cssClass);
+    button.classList.add("text-button", cssClass);
     if (iconName !== undefined) {
         if (typeof iconName === "string") {
             iconName = [iconName];
@@ -45537,9 +45537,9 @@ class YourFilesTab_YourFilesTab {
         tab.element.append(this.filesDiv);
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
         const actionBar = document.createElement("div");
-        actionBar.classList.add("action-bar", "button-set");
+        actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
-        const uploadButton = makeButton("Import File", "publish", "import-file-button", () => this.uploadFile());
+        const uploadButton = makeTextButton("Import File", "publish", "import-file-button", () => this.uploadFile());
         actionBar.append(uploadButton);
     }
     /**
@@ -46737,7 +46737,7 @@ class RetroStoreTab_RetroStoreTab {
                 this.context.panelManager.close();
             }
         });
-        playButton.classList.add("disabled");
+        playButton.disabled = true;
         buttonDiv.append(playButton);
         const importButton = makeIconButton(makeIcon("get_app"), "Import app", () => {
             var _a;
@@ -46770,7 +46770,8 @@ class RetroStoreTab_RetroStoreTab {
                 });
             }
         });
-        importButton.classList.add("import-button", "disabled");
+        importButton.classList.add("import-button");
+        importButton.disabled = true;
         buttonDiv.append(importButton);
         if (app.id !== undefined) {
             fetchMediaImages(app.id)
@@ -46779,12 +46780,12 @@ class RetroStoreTab_RetroStoreTab {
                 for (const mediaImage of mediaImages) {
                     if (mediaImage.type === "COMMAND" /* COMMAND */) {
                         validMediaImage = mediaImage;
-                        playButton.classList.remove("disabled");
-                        importButton.classList.remove("disabled");
+                        playButton.disabled = false;
+                        importButton.disabled = false;
                     }
                     else if (mediaImage.type === "BASIC" /* BASIC */) {
                         validMediaImage = mediaImage;
-                        importButton.classList.remove("disabled");
+                        importButton.disabled = false;
                     }
                 }
             })
@@ -47348,14 +47349,14 @@ class FilePanel_FileInfoTab {
         this.screenshotsDiv.classList.add("screenshots");
         form.append(this.screenshotsDiv);
         const actionBar = document.createElement("div");
-        actionBar.classList.add("action-bar", "button-set");
+        actionBar.classList.add("action-bar");
         infoTab.element.append(actionBar);
-        const runButton = makeButton("Run", "play_arrow", "play-button", () => {
+        const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
             this.filePanel.context.panelManager.close();
         });
         actionBar.append(runButton);
-        const deleteButton = makeButton("Delete File", "delete", "delete-button", () => {
+        const deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
             this.filePanel.context.db.deleteFile(this.filePanel.file)
                 .then(() => {
                 this.filePanel.context.library.removeFile(this.filePanel.file);
@@ -47367,9 +47368,9 @@ class FilePanel_FileInfoTab {
             });
         });
         actionBar.append(deleteButton);
-        this.revertButton = makeButton("Revert", "undo", "revert-button", undefined);
+        this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
         actionBar.append(this.revertButton);
-        this.saveButton = makeButton("Save", ["save", "cached", "check"], "save-button", undefined);
+        this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
         actionBar.append(this.saveButton);
         for (const input of [this.nameInput, this.filenameInput, this.noteInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
@@ -47871,7 +47872,7 @@ class Main_EmptyCassette extends dist["CassettePlayer"] {
 function createNavbar(openLibrary, signIn, signOut) {
     const body = document.querySelector("body");
     const navbar = document.createElement("div");
-    navbar.classList.add("navbar", "button-set");
+    navbar.classList.add("navbar");
     const title = document.createElement("span");
     title.textContent = "My TRS-80";
     navbar.append(title);
@@ -47882,8 +47883,8 @@ function createNavbar(openLibrary, signIn, signOut) {
         body.classList.toggle("dark-mode");
     });
     navbar.append(themeButton);
-    const signInButton = makeButton("Sign In", undefined, "sign-in-button", signIn);
-    const signOutButton = makeButton("Sign Out", undefined, "sign-out-button", signOut);
+    const signInButton = makeTextButton("Sign In", undefined, "sign-in-button", signIn);
+    const signOutButton = makeTextButton("Sign Out", undefined, "sign-out-button", signOut);
     navbar.append(signInButton, signOutButton);
     return navbar;
 }
