@@ -45230,10 +45230,11 @@ class Panel_Panel {
  * Represents a single page tab and its contents.
  */
 class PageTab_PageTab {
-    constructor(name) {
+    constructor(name, visible = true) {
         this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.name = name;
+        this.visible = visible;
         this.element = document.createElement("div");
         this.element.classList.add("tab-content");
     }
@@ -45251,7 +45252,11 @@ var teamten_ts_utils_dist = __webpack_require__(9);
 class PageTabs_PageTabs {
     constructor(element) {
         this.tabs = [];
-        this.activeIndex = undefined;
+        // The tab last selected by the user.
+        this.activeIndex = 0;
+        // Same as activeIndex, unless it's not visible, in which case some other
+        // visible tab, or undefined if no tab is visible.
+        this.effectiveActiveIndex = undefined;
         this.containerElement = element;
         this.containerElement.classList.add("page-tabs-container");
         // Where we draw the page tabs themselves.
@@ -45262,13 +45267,63 @@ class PageTabs_PageTabs {
     /**
      * Create a new tab.
      */
-    newTab(name) {
-        var _a;
-        const tab = new PageTab_PageTab(name);
+    newTab(name, visible = true) {
+        const tab = new PageTab_PageTab(name, visible);
         this.tabs.push(tab);
         this.containerElement.append(tab.element);
-        this.setActiveTab((_a = this.activeIndex) !== null && _a !== void 0 ? _a : 0);
+        this.configurationChanged();
         return tab;
+    }
+    /**
+     * Set the visibility of a tab.
+     */
+    setVisible(tab, visible) {
+        tab.visible = visible;
+        this.configurationChanged();
+    }
+    /**
+     * Switch the active tab.
+     */
+    setActiveTab(activeIndex) {
+        if (activeIndex !== this.activeIndex) {
+            this.activeIndex = activeIndex;
+            this.configurationChanged();
+        }
+    }
+    /**
+     * Update all tabs given a new configuration.
+     */
+    configurationChanged() {
+        const oldEffectiveActiveIndex = this.effectiveActiveIndex;
+        this.computeEffectiveActiveIndex();
+        if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
+            if (oldEffectiveActiveIndex !== undefined) {
+                this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
+            }
+            if (this.effectiveActiveIndex !== undefined) {
+                this.tabs[this.effectiveActiveIndex].onShow.dispatch();
+            }
+        }
+        this.recreateTabs();
+        this.updateTabContentVisibility();
+    }
+    /**
+     * Get the current active index. If it's hidden, return another one. If none
+     * exist, return undefined.
+     */
+    computeEffectiveActiveIndex() {
+        this.effectiveActiveIndex = this.activeIndex;
+        // If the active tab is hidden, find another one.
+        if (this.effectiveActiveIndex >= this.tabs.length || !this.tabs[this.effectiveActiveIndex].visible) {
+            // Pick any.
+            this.effectiveActiveIndex = undefined;
+            for (let i = 0; i < this.tabs.length; i++) {
+                if (this.tabs[i].visible) {
+                    this.effectiveActiveIndex = i;
+                    break;
+                }
+            }
+        }
     }
     /**
      * Recreate the set of page tabs (the UI).
@@ -45277,28 +45332,24 @@ class PageTabs_PageTabs {
         Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
         for (let index = 0; index < this.tabs.length; index++) {
             const tab = this.tabs[index];
-            const tabDiv = document.createElement("div");
-            tabDiv.innerText = tab.name;
-            tabDiv.classList.toggle("page-tab-active", index === this.activeIndex);
-            tabDiv.addEventListener("click", () => {
-                this.setActiveTab(index);
-            });
-            this.tabElement.append(tabDiv);
+            if (tab.visible) {
+                const tabDiv = document.createElement("div");
+                tabDiv.innerText = tab.name;
+                tabDiv.classList.toggle("page-tab-active", index === this.effectiveActiveIndex);
+                tabDiv.addEventListener("click", () => {
+                    this.setActiveTab(index);
+                });
+                this.tabElement.append(tabDiv);
+            }
         }
     }
     /**
-     * Switch the active tab.
+     * Update which tab contents are visible based on which is selected.
      */
-    setActiveTab(activeIndex) {
-        if (this.activeIndex !== undefined) {
-            this.tabs[this.activeIndex].onHide.dispatch();
-        }
-        this.activeIndex = activeIndex;
-        this.recreateTabs();
+    updateTabContentVisibility() {
         for (let index = 0; index < this.tabs.length; index++) {
-            this.tabs[index].element.classList.toggle("hidden", index !== this.activeIndex);
+            this.tabs[index].element.classList.toggle("hidden", index !== this.effectiveActiveIndex);
         }
-        this.tabs[this.activeIndex].onShow.dispatch();
     }
 }
 
@@ -45572,8 +45623,9 @@ const FILE_ID_ATTR = "data-file-id";
 class YourFilesTab_YourFilesTab {
     constructor(pageTabs, context) {
         this.context = context;
-        const tab = pageTabs.newTab("Your Files");
+        const tab = pageTabs.newTab("Your Files", context.user !== undefined);
         tab.element.classList.add("your-files-tab");
+        context.onUser.subscribe(user => pageTabs.setVisible(tab, user !== undefined));
         this.filesDiv = document.createElement("div");
         this.filesDiv.classList.add("files");
         tab.element.append(this.filesDiv);
