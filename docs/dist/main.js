@@ -45395,12 +45395,21 @@ class Library_Library {
         this.files = new Map();
         // Fires after the map has been updated.
         this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        // Whether the library is in sync with the cloud database. This starts out false
+        // and emits a "true" once the first fetch has completed.
+        this.onInSync = new strongly_typed_events_dist["SimpleEventDispatcher"]();
     }
     /**
      * Get a file by its ID, or undefined it not in the library.
      */
     getFile(id) {
         return this.files.get(id);
+    }
+    /**
+     * Specify whether the in-memory library is now in sync with the cloud database.
+     */
+    setInSync(inSync) {
+        this.onInSync.dispatch(inSync);
     }
     /**
      * Add a file to the library.
@@ -45617,11 +45626,13 @@ class FileBuilder {
 
 
 const FILE_ID_ATTR = "data-file-id";
+const IMPORT_FILE_LABEL = "Import File";
 /**
  * Tap for the Your Files UI.
  */
 class YourFilesTab_YourFilesTab {
     constructor(pageTabs, context) {
+        this.libraryInSync = false;
         this.context = context;
         const tab = pageTabs.newTab("Your Files", context.user !== undefined);
         tab.element.classList.add("your-files-tab");
@@ -45629,12 +45640,24 @@ class YourFilesTab_YourFilesTab {
         this.filesDiv = document.createElement("div");
         this.filesDiv.classList.add("files");
         tab.element.append(this.filesDiv);
+        this.emptyLibrary = document.createElement("div");
+        this.emptyLibrary.classList.add("empty-library");
+        tab.element.append(this.emptyLibrary);
+        const emptyTitle = document.createElement("h2");
+        emptyTitle.innerText = "You have no files in your library!";
+        const emptyBody = document.createElement("article");
+        emptyBody.innerHTML = `Upload a <code>CAS</code> or <code>CMD</code> file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import it from the RetroStore tab.`;
+        const demon = document.createElement("img");
+        demon.src = "/demon.png";
+        this.emptyLibrary.append(emptyTitle, emptyBody, demon);
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
+        this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
-        const uploadButton = makeTextButton("Import File", "publish", "import-file-button", () => this.uploadFile());
+        const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
         actionBar.append(uploadButton);
+        this.updateSplashScreen();
     }
     /**
      * Handle change to library files.
@@ -45653,6 +45676,22 @@ class YourFilesTab_YourFilesTab {
         if (event instanceof LibraryRemoveEvent) {
             this.removeFile(event.oldFile.id);
         }
+        this.updateSplashScreen();
+    }
+    /**
+     * React to whether library is now fully in sync.
+     */
+    onLibraryInSync(inSync) {
+        this.libraryInSync = inSync;
+        this.updateSplashScreen();
+    }
+    /**
+     * Update whether the splash screen is shown.
+     */
+    updateSplashScreen() {
+        const displaySplashScreen = this.libraryInSync && this.filesDiv.children.length === 0;
+        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
+        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
     }
     /**
      * Configure and open the "open file" dialog for importing files.
@@ -48114,6 +48153,8 @@ function main() {
                     const file = FileBuilder.fromDoc(doc).build();
                     library.addFile(file);
                 }
+                // We should now be in sync with the cloud database.
+                library.setInSync(true);
             })
                 .catch(error => {
                 // TODO
