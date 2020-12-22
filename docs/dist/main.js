@@ -47983,7 +47983,7 @@ class Context_Context {
 
 // CONCATENATED MODULE: ./src/DialogBox.ts
 class DialogBox {
-    constructor(title, content) {
+    constructor(title, content, cssClass) {
         this.backgroundNode = undefined;
         const body = document.querySelector("body");
         this.backgroundNode = document.createElement("div");
@@ -47998,6 +47998,9 @@ class DialogBox {
         body.append(this.backgroundNode);
         const frame = document.createElement("div");
         frame.classList.add("dialog-box-frame");
+        if (cssClass !== undefined) {
+            frame.classList.add(cssClass);
+        }
         this.backgroundNode.append(frame);
         const h1 = document.createElement("h1");
         h1.innerText = title;
@@ -48255,9 +48258,6 @@ function main() {
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             index_esm["a" /* default */].auth.GoogleAuthProvider.PROVIDER_ID,
-            index_esm["a" /* default */].auth.FacebookAuthProvider.PROVIDER_ID,
-            index_esm["a" /* default */].auth.TwitterAuthProvider.PROVIDER_ID,
-            index_esm["a" /* default */].auth.GithubAuthProvider.PROVIDER_ID,
         ],
         // Pop up a browser window for the actual sign-in page:
         signInFlow: "popup",
@@ -48274,6 +48274,11 @@ function main() {
     let firebaseAuth = index_esm["a" /* default */].auth();
     const firebaseAuthUi = new esm["a" /* auth */].AuthUI(firebaseAuth);
     const signInDiv = document.createElement("div");
+    const signInInstructions = document.createElement("div");
+    signInInstructions.classList.add("sign-in-instructions");
+    signInInstructions.innerText = "Sign in to My TRS-80 to have a persistent place to store your files.";
+    const signInFirebase = document.createElement("div");
+    signInDiv.append(signInInstructions, signInFirebase);
     let signInDialog = undefined;
     const db = new Database_Database(index_esm["a" /* default */].firestore());
     firebaseAuth.onAuthStateChanged(firebaseUser => {
@@ -48294,7 +48299,7 @@ function main() {
         else {
             // No user signed in, render sign-in UI.
             firebaseAuthUi.reset();
-            firebaseAuthUi.start(signInDiv, uiConfig);
+            firebaseAuthUi.start(signInFirebase, uiConfig);
             context.user = undefined;
         }
     });
@@ -48304,7 +48309,7 @@ function main() {
         if (signInDialog !== undefined) {
             signInDialog.close();
         }
-        signInDialog = new DialogBox("Sign In", signInDiv);
+        signInDialog = new DialogBox("Sign In", signInDiv, "sign-in-dialog-box");
     }, () => index_esm["a" /* default */].auth().signOut());
     const screenDiv = document.createElement("div");
     screenDiv.classList.add("main-computer-screen");
@@ -48359,7 +48364,7 @@ function main() {
         if (context.runningFile !== undefined) {
             let file = context.runningFile;
             const screenshot = trs80.getScreenshot();
-            const screenshots = [...file.screenshots, screenshot];
+            const screenshots = [...file.screenshots, screenshot]; // Don't modify original array.
             file = file.builder()
                 .withScreenshots(screenshots)
                 .withModifiedAt(new Date())
