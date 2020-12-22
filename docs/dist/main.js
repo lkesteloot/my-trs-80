@@ -45693,6 +45693,7 @@ class FileBuilder {
         var _a, _b;
         const builder = new FileBuilder();
         builder.id = doc.id;
+        // Assume data() is valid, either because it's a query or because we checked "exists".
         const data = doc.data();
         builder.uid = data.uid;
         builder.name = data.name;
@@ -47859,25 +47860,30 @@ class FilePanel_FilePanel extends Panel_Panel {
 
 
 
+const FRAGMENT_PREFIX = "#!";
 /**
  * Context of the whole app, with its global variables.
  */
 class Context_Context {
     constructor(library, trs80, db, panelManager) {
-        this.runningFile = undefined;
+        this._runningFile = undefined;
         this._user = undefined;
+        this.userResolved = false;
         this.onUser = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.onFragment = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        // Dispatched when we initially figure out if we're signed in or not.
+        this.onUserResolved = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.library = library;
         this.trs80 = trs80;
         this.db = db;
         this.panelManager = panelManager;
         // Listen for changes to the file we're running.
         this.library.onEvent.subscribe(event => {
-            if (this.runningFile !== undefined) {
-                if (event instanceof LibraryModifyEvent && event.oldFile.id === this.runningFile.id) {
+            if (this._runningFile !== undefined) {
+                if (event instanceof LibraryModifyEvent && event.oldFile.id === this._runningFile.id) {
                     this.runningFile = event.newFile;
                 }
-                if (event instanceof LibraryRemoveEvent && event.oldFile.id === this.runningFile.id) {
+                if (event instanceof LibraryRemoveEvent && event.oldFile.id === this._runningFile.id) {
                     this.runningFile = undefined;
                 }
             }
@@ -47906,17 +47912,72 @@ class Context_Context {
         this.panelManager.pushPanel(filePanel);
     }
     /**
+     * Get the currently-running file, if any.
+     */
+    get runningFile() {
+        return this._runningFile;
+    }
+    /**
+     * Set the currently-running file, if any.
+     */
+    set runningFile(value) {
+        this._runningFile = value;
+        this.onFragment.dispatch(this.getFragment());
+    }
+    /**
      * Set the currently signed-in user.
      */
     set user(user) {
         this._user = user;
         this.onUser.dispatch(user);
+        if (!this.userResolved) {
+            this.userResolved = true;
+            this.onUserResolved.dispatch();
+        }
     }
     /**
      * Get the currently signed-in user.
      */
     get user() {
         return this._user;
+    }
+    /**
+     * Return the URL fragment for this context, including the leading hash.
+     */
+    getFragment() {
+        const parts = [];
+        if (this._runningFile !== undefined) {
+            parts.push("runFile=" + this._runningFile.id);
+        }
+        const fragment = parts.join(",");
+        return fragment === "" ? "" : FRAGMENT_PREFIX + fragment;
+    }
+    /**
+     * Returns a map of variables in the fragment. Every value array will have at least one element.
+     */
+    static parseFragment(fragment) {
+        const args = new Map();
+        if (fragment.startsWith(FRAGMENT_PREFIX)) {
+            fragment = fragment.substr(FRAGMENT_PREFIX.length);
+            const parts = fragment.split(",");
+            for (const part of parts) {
+                const subparts = part.split("=");
+                if (subparts.length !== 2) {
+                    console.error(`Fragment part "${part}" is malformed.`);
+                }
+                else {
+                    const key = subparts[0];
+                    const value = subparts[1];
+                    let values = args.get(key);
+                    if (values === undefined) {
+                        values = [];
+                        args.set(key, values);
+                    }
+                    values.push(value);
+                }
+            }
+        }
+        return args;
     }
 }
 
@@ -48018,6 +48079,7 @@ class User extends AuthUser {
 
 // CONCATENATED MODULE: ./src/Database.ts
 
+
 const FILES_COLLECTION_NAME = "files";
 const USERS_COLLECTION_NAME = "users";
 /**
@@ -48032,6 +48094,26 @@ class Database_Database {
      */
     getAllFiles(uid) {
         return this.firestore.collection(FILES_COLLECTION_NAME).where("uid", "==", uid).get();
+    }
+    /**
+     * Get a file by its ID. Rejects without argument if can't be found or has insufficient permission.
+     */
+    getFile(fileId) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).doc(fileId).get()
+            .then(snapshot => {
+            if (snapshot.exists) {
+                return Promise.resolve(FileBuilder.fromDoc(snapshot).build());
+            }
+            else {
+                // I don't know when this can happen because both missing and non-shared
+                // files show up in the catch clause.
+                return Promise.reject();
+            }
+        })
+            .catch(error => {
+            console.error(`Can't get file ${fileId}`, error);
+            return Promise.reject();
+        });
     }
     /**
      * Add a file to the database.
@@ -48135,8 +48217,9 @@ function createNavbar(openLibrary, signIn, signOut) {
     const body = document.querySelector("body");
     const navbar = document.createElement("div");
     navbar.classList.add("navbar");
-    const title = document.createElement("span");
+    const title = document.createElement("a");
     title.textContent = "My TRS-80";
+    title.href = "/";
     navbar.append(title);
     const libraryButton = makeIconButton(makeIcon("folder_open"), "Open library (Ctrl-L)", openLibrary);
     navbar.append(libraryButton);
@@ -48153,6 +48236,7 @@ function createNavbar(openLibrary, signIn, signOut) {
 function showSignInScreen() {
 }
 function main() {
+    var _a;
     const body = document.querySelector("body");
     body.classList.add("signed-out");
     // Configuration for Firebase.
@@ -48263,6 +48347,9 @@ function main() {
     });
     reboot();
     const context = new Context_Context(library, trs80, db, panelManager);
+    context.onFragment.subscribe(fragment => {
+        window.location.hash = fragment;
+    });
     context.onUser.subscribe(user => {
         body.classList.toggle("signed-in", user !== undefined);
         body.classList.toggle("signed-out", user === undefined);
@@ -48305,8 +48392,23 @@ function main() {
                 console.error(error);
                 if (error.name === "FirebaseError") {
                     // code can be "permission-denied".
-                    console.log(error.code, error.message);
+                    console.error(error.code, error.message);
                 }
+            });
+        }
+    });
+    // See if we should run an app right away.
+    const args = Context_Context.parseFragment(window.location.hash);
+    const runFileId = (_a = args.get("runFile")) === null || _a === void 0 ? void 0 : _a[0];
+    context.onUserResolved.subscribe(() => {
+        // We're signed in, or not, and can now read the database.
+        if (runFileId !== undefined) {
+            db.getFile(runFileId)
+                .then(file => {
+                context.runProgram(file);
+            })
+                .catch(() => {
+                // TODO Should probably display error message.
             });
         }
     });
