@@ -5880,6 +5880,9 @@ function decodeCmdProgram(binary) {
         // First byte is type of chunk.
         const type = b.read();
         if (type === teamten_ts_utils_1.EOF || type > exports.CMD_MAX_TYPE || error !== undefined) {
+            if (chunks.length === 0) {
+                return undefined;
+            }
             return new CmdProgram(binary.subarray(0, b.addr()), error, annotations, chunks, filename, entryPointAddress);
         }
         annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Type of chunk (" +
@@ -7843,6 +7846,7 @@ const Model3Rom_1 = __webpack_require__(46);
 const Utils_1 = __webpack_require__(10);
 const Config_1 = __webpack_require__(19);
 const trs80_base_1 = __webpack_require__(13);
+const z80_base_2 = __webpack_require__(0);
 // IRQs
 const M1_TIMER_IRQ_MASK = 0x80;
 const M3_CASSETTE_RISE_IRQ_MASK = 0x01;
@@ -7904,7 +7908,7 @@ function computeVideoBit6(value) {
 class ScheduledEvent {
     constructor(handle, tStateCount, callback) {
         this.handle = handle;
-        this.tStateCount = tStateCount;
+        this.tStateCount = Math.round(tStateCount);
         this.callback = callback;
     }
 }
@@ -8115,6 +8119,7 @@ class Trs80 {
         }
         // Update cassette state.
         this.updateCassette();
+        // Dispatch scheduled events.
         while (this.scheduledEvents.length > 0 && this.tStateCount >= this.scheduledEvents[0].tStateCount) {
             const scheduledEvent = this.scheduledEvents.shift();
             scheduledEvent.callback();
@@ -8284,11 +8289,15 @@ class Trs80 {
     }
     /**
      * Write a block of data to memory.
+     *
+     * @return the address just past the block.
      */
-    writeMemoryBlock(address, values) {
-        for (const value of values) {
-            this.writeMemory(address++, value);
+    writeMemoryBlock(address, values, startIndex = 0, length) {
+        length = length !== null && length !== void 0 ? length : values.length;
+        for (let i = 0; i < length; i++) {
+            this.writeMemory(address++, values[startIndex + i]);
         }
+        return address;
     }
     /**
      * Reset cassette edge interrupts.
@@ -8670,6 +8679,9 @@ class Trs80 {
         else if (trs80File instanceof trs80_base_1.SystemProgram) {
             this.runSystemProgram(trs80File);
         }
+        else if (trs80File instanceof trs80_base_1.BasicProgram) {
+            this.runBasicProgram(trs80File);
+        }
         else {
             // TODO.
         }
@@ -8680,7 +8692,6 @@ class Trs80 {
     runCmdProgram(cmdProgram) {
         this.reset();
         this.setScheduledEvent(this.clockHz * 0.1, () => {
-            //            this.keyboard.simulateKeyboardText("L0\nPRINT 5\n");
             this.cls();
             for (const chunk of cmdProgram.chunks) {
                 if (chunk instanceof trs80_base_1.CmdLoadBlockChunk) {
@@ -8700,12 +8711,68 @@ class Trs80 {
      */
     runSystemProgram(systemProgram) {
         this.reset();
-        this.setScheduledEvent(this.clockHz / 30, () => {
+        this.setScheduledEvent(this.clockHz * 0.1, () => {
             this.cls();
             for (const chunk of systemProgram.chunks) {
                 this.writeMemoryBlock(chunk.loadAddress, chunk.data);
             }
             this.jumpTo(systemProgram.entryPointAddress);
+        });
+    }
+    /**
+     * Load a Basic program into memory and run it.
+     */
+    runBasicProgram(basicProgram) {
+        this.reset();
+        // Wait for Cass?
+        this.setScheduledEvent(this.clockHz * 0.1, () => {
+            this.keyboard.simulateKeyboardText("\n0\n");
+            // Wait for Ready prompt.
+            this.setScheduledEvent(this.clockHz * 0.2, () => {
+                // Find address to load to.
+                let addr = this.readMemory(0x40A4) + (this.readMemory(0x40A5) << 8);
+                if (addr < 0x4200 || addr >= 0x4500) {
+                    console.error("Basic load address (0x" + z80_base_2.toHexWord(addr) + ") is uninitialized");
+                    return;
+                }
+                // Terminate current line (if any) and set up the new one.
+                let lineStart;
+                const newLine = () => {
+                    if (lineStart !== undefined) {
+                        // End-of-line marker.
+                        this.writeMemory(addr++, 0);
+                        // Update previous line's next-line pointer.
+                        this.writeMemory(lineStart, z80_base_1.lo(addr));
+                        this.writeMemory(lineStart + 1, z80_base_1.hi(addr));
+                    }
+                    // Remember address of next-line pointer.
+                    lineStart = addr;
+                    // Next-line pointer.
+                    this.writeMemory(addr++, 0);
+                    this.writeMemory(addr++, 0);
+                };
+                // Write elements to memory.
+                for (const e of basicProgram.elements) {
+                    if (e.offset !== undefined) {
+                        if (e.elementType === trs80_base_1.ElementType.LINE_NUMBER) {
+                            newLine();
+                        }
+                        // Write element.
+                        addr = this.writeMemoryBlock(addr, basicProgram.binary, e.offset, e.length);
+                    }
+                }
+                newLine();
+                // End of Basic program pointer.
+                this.writeMemory(0x40F9, z80_base_1.lo(addr));
+                this.writeMemory(0x40FA, z80_base_1.hi(addr));
+                // Start of array variables pointer.
+                this.writeMemory(0x40FB, z80_base_1.lo(addr));
+                this.writeMemory(0x40FC, z80_base_1.hi(addr));
+                // Start of free memory pointer.
+                this.writeMemory(0x40FD, z80_base_1.lo(addr));
+                this.writeMemory(0x40FE, z80_base_1.hi(addr));
+                this.keyboard.simulateKeyboardText("RUN\n");
+            });
         });
     }
 }
@@ -8868,8 +8935,8 @@ class Keyboard {
     }
     // Read a byte from the keyboard memory bank. This is an odd system where
     // bits in the address map to the various bytes, and you can read the OR'ed
-    // addresses to read more than one byte at a time. This isn't used by the
-    // ROM, I don't think. For the last byte we fake the Shift key if necessary.
+    // addresses to read more than one byte at a time. For the last byte we fake
+    // the Shift key if necessary.
     readKeyboard(addr, clock) {
         addr -= BEGIN_ADDR;
         let b = 0;
@@ -9034,9 +9101,13 @@ exports.model3Rom = `
 
 // Tools for decoding Basic programs.
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fromTokenized = exports.wrapBasic = exports.BasicElement = exports.ElementType = exports.getToken = void 0;
+exports.decodeBasicProgram = exports.wrapBasic = exports.BasicProgram = exports.BasicElement = exports.ElementType = exports.getToken = void 0;
 const teamten_ts_utils_1 = __webpack_require__(20);
-const BASIC_HEADER_BYTE = 0xD3;
+const z80_base_1 = __webpack_require__(98);
+const ProgramAnnotation_1 = __webpack_require__(14);
+const Trs80File_1 = __webpack_require__(11);
+const BASIC_TAPE_HEADER_BYTE = 0xD3;
+const BASIC_HEADER_BYTE = 0xFF;
 // Starts at 0x80.
 const TOKENS = [
     "END", "FOR", "RESET", "SET", "CLS", "CMD", "RANDOM", "NEXT",
@@ -9114,12 +9185,27 @@ class BasicElement {
 }
 exports.BasicElement = BasicElement;
 /**
+ * Class representing a Basic program. If the "error" field is set, then something
+ * went wrong with the program and the data may be partially loaded.
+ */
+class BasicProgram extends Trs80File_1.Trs80File {
+    constructor(binary, error, annotations, elements) {
+        super(binary, error, annotations);
+        this.elements = elements;
+    }
+    getDescription() {
+        // Don't include filename, it's usually worthless.
+        return "Basic program";
+    }
+}
+exports.BasicProgram = BasicProgram;
+/**
  * Adds the header bytes necessary for writing Basic cassettes.
  */
 function wrapBasic(bytes) {
     // Add Basic header.
     const buffers = [
-        new Uint8Array([BASIC_HEADER_BYTE, BASIC_HEADER_BYTE, BASIC_HEADER_BYTE]),
+        new Uint8Array([BASIC_TAPE_HEADER_BYTE, BASIC_TAPE_HEADER_BYTE, BASIC_TAPE_HEADER_BYTE]),
         bytes,
     ];
     return teamten_ts_utils_1.concatByteArrays(buffers);
@@ -9127,44 +9213,63 @@ function wrapBasic(bytes) {
 exports.wrapBasic = wrapBasic;
 /**
  * Decode a tokenized Basic program.
- * @param bytes tokenized program.
- * @return array of generated BasicElements, index by byte index.
+ * @param bytes tokenized program. May be in tape format (D3 D3 D3 followed by a one-letter program
+ * name) or not (FF).
+ * @return the Basic program, or undefined if the header did not indicate that this was a Basic program.
  */
-function fromTokenized(bytes) {
+function decodeBasicProgram(bytes) {
     const b = new teamten_ts_utils_1.ByteReader(bytes);
     let state;
+    let error;
+    const annotations = [];
     // Map from byte address to BasicElement for that byte.
     const elements = [];
-    if (b.read() !== BASIC_HEADER_BYTE || b.read() !== BASIC_HEADER_BYTE || b.read() !== BASIC_HEADER_BYTE) {
-        elements.push(new BasicElement(undefined, "Basic: missing magic -- not a BASIC file.", ElementType.ERROR));
-        return elements;
+    const firstByte = b.read();
+    if (firstByte === BASIC_TAPE_HEADER_BYTE) {
+        if (b.read() !== BASIC_TAPE_HEADER_BYTE || b.read() !== BASIC_TAPE_HEADER_BYTE) {
+            return undefined;
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Header", 0, b.addr()));
+        // One-byte ASCII program name. This is nearly always meaningless, so we do nothing with it.
+        b.read();
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Name", b.addr() - 1, b.addr()));
     }
-    // One-byte ASCII program name. This is nearly always meaningless, so we do nothing with it.
-    b.read();
+    else if (firstByte === BASIC_HEADER_BYTE) {
+        // All good.
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Header", 0, b.addr()));
+    }
+    else {
+        return undefined;
+    }
     while (true) {
         // Read the address of the next line. We ignore this (as does Basic when
         // loading programs), only using it to detect end of program. (In the real
         // Basic these are regenerated after loading.)
         const address = b.readShort(true);
         if (address === teamten_ts_utils_1.EOF) {
-            elements.push(new BasicElement(undefined, "[EOF in next line's address]", ElementType.ERROR));
+            error = "EOF in next line's address";
             break;
         }
         // Zero address indicates end of program.
         if (address === 0) {
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("End-of-program marker", b.addr() - 2, b.addr()));
             break;
         }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Address of next line (0x" + z80_base_1.toHexWord(address) + ")", b.addr() - 2, b.addr()));
         // Read current line number.
         const lineNumber = b.readShort(false);
         if (lineNumber === teamten_ts_utils_1.EOF) {
-            elements.push(new BasicElement(undefined, "[EOF in line number]", ElementType.ERROR));
+            error = "EOF in line number";
             break;
         }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Line number (" + lineNumber + ")", b.addr() - 2, b.addr()));
         const lineNumberElement = new BasicElement(b.addr() - 2, lineNumber.toString(), ElementType.LINE_NUMBER);
         lineNumberElement.length = 2;
         elements.push(lineNumberElement);
         elements.push(new BasicElement(undefined, " ", ElementType.REGULAR));
         // Read rest of line.
+        const lineAddr = b.addr();
+        const lineElementsIndex = elements.length;
         let c; // Uint8 value.
         let ch; // String value.
         let colonAddr = 0;
@@ -9253,7 +9358,8 @@ function fromTokenized(bytes) {
             }
         }
         if (c === teamten_ts_utils_1.EOF) {
-            elements.push(new BasicElement(undefined, "[EOF in line]", ElementType.ERROR));
+            error = "EOF in line";
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Partial line", lineAddr, b.addr()));
             break;
         }
         // Deal with eaten tokens.
@@ -9265,10 +9371,20 @@ function fromTokenized(bytes) {
             /// state = NORMAL;
             /// colonAddr = 0;
         }
+        const textLineParts = [];
+        for (let i = lineElementsIndex; i < elements.length; i++) {
+            textLineParts.push(elements[i].text);
+        }
+        let textLine = textLineParts.join("");
+        if (textLine.length > 33) {
+            textLine = textLine.substr(0, 30) + "...";
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Line: " + textLine, lineAddr, b.addr() - 1));
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("End-of-line marker", b.addr() - 1, b.addr()));
     }
-    return elements;
+    return new BasicProgram(bytes, error, annotations, elements);
 }
-exports.fromTokenized = fromTokenized;
+exports.decodeBasicProgram = decodeBasicProgram;
 
 
 /***/ }),
@@ -9622,6 +9738,7 @@ var Flag;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeTrs80File = void 0;
+const Basic_1 = __webpack_require__(47);
 const Cassette_1 = __webpack_require__(25);
 const CmdProgram_1 = __webpack_require__(23);
 const RawBinaryFile_1 = __webpack_require__(21);
@@ -9635,6 +9752,10 @@ function decodeTrs80File(binary) {
         return trs80File;
     }
     trs80File = CmdProgram_1.decodeCmdProgram(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    trs80File = Basic_1.decodeBasicProgram(binary);
     if (trs80File !== undefined) {
         return trs80File;
     }
@@ -45516,6 +45637,9 @@ class File_File {
         if (this.note !== oldFile.note) {
             updateData.note = this.note;
         }
+        if (this.shared !== oldFile.shared) {
+            updateData.shared = this.shared;
+        }
         if (!isSameStringArray(this.screenshots, oldFile.screenshots)) {
             updateData.screenshots = this.screenshots;
         }
@@ -45600,6 +45724,10 @@ class FileBuilder {
     }
     withNote(note) {
         this.note = note;
+        return this;
+    }
+    withShared(shared) {
+        this.shared = shared;
         return this;
     }
     withScreenshots(screenshots) {
@@ -47466,6 +47594,19 @@ class FilePanel_FileInfoTab {
         this.addedAtInput = makeInputBox("Added", undefined, false);
         this.sizeInput = makeInputBox("Size", undefined, false);
         this.modifiedAtInput = makeInputBox("Last modified", undefined, false);
+        {
+            const labelElement = document.createElement("label");
+            labelElement.classList.add("shared");
+            labelElement.innerText = "Shared";
+            form.append(labelElement);
+            this.sharedInput = document.createElement("input");
+            this.sharedInput.type = "checkbox";
+            const offIcon = makeIcon("toggle_off");
+            offIcon.classList.add("off-state");
+            const onIcon = makeIcon("toggle_on");
+            onIcon.classList.add("on-state");
+            labelElement.append(this.sharedInput, offIcon, onIcon);
+        }
         form.append(miscDiv);
         this.screenshotsDiv = document.createElement("div");
         this.screenshotsDiv.classList.add("screenshots");
@@ -47497,6 +47638,7 @@ class FilePanel_FileInfoTab {
         for (const input of [this.nameInput, this.filenameInput, this.noteInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
         }
+        this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
         this.nameInput.addEventListener("input", () => {
             let name = this.fileFromUi().name;
             if (name === "") {
@@ -47571,6 +47713,7 @@ class FilePanel_FileInfoTab {
         this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
         this.addedAtInput.value = formatDate(file.addedAt);
         this.modifiedAtInput.value = formatDate(file.modifiedAt);
+        this.sharedInput.checked = file.shared;
         if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
             this.populateScreenshots();
         }
@@ -47629,6 +47772,7 @@ class FilePanel_FileInfoTab {
             .withName(this.nameInput.value.trim())
             .withFilename(this.filenameInput.value.trim())
             .withNote(this.noteInput.value.trim())
+            .withShared(this.sharedInput.checked)
             .withScreenshots(screenshots)
             .build();
     }
