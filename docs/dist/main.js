@@ -13767,15 +13767,18 @@ function createNavbar(openLibrary, signIn, signOut) {
     const navbar = document.createElement("div");
     navbar.classList.add("navbar");
     const title = document.createElement("a");
+    title.classList.add("home-button");
     title.textContent = "My TRS-80";
     title.href = "/";
     navbar.append(title);
     const libraryButton = makeIconButton(makeIcon("folder_open"), "Open library (Ctrl-L)", openLibrary);
+    libraryButton.classList.add("library-button");
     navbar.append(libraryButton);
     const themeButton = makeIconButton(makeIcon("brightness_medium"), "Toggle theme", () => {
         body.classList.toggle("light-mode");
         body.classList.toggle("dark-mode");
     });
+    themeButton.classList.add("theme-button");
     navbar.append(themeButton);
     const signInButton = makeTextButton("Sign In", undefined, "sign-in-button", signIn);
     const signOutButton = makeTextButton("Sign Out", undefined, "sign-out-button", signOut);
