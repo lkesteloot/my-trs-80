@@ -12320,16 +12320,24 @@ var trs80_base_dist = __webpack_require__(12);
 
 
 const RETRO_STORE_API_URL = "https://retrostore.org/api/";
+const APP_FETCH_COUNT = 10;
+/**
+ * Stores info about a RetroStore app and its media.
+ */
+class RetroStoreApp {
+    constructor(app) {
+        this.element = undefined;
+        this.app = app;
+    }
+}
 /**
  * Fetch all apps from RetroStore. If an error occurs, returns an empty list.
  */
-function fetchApps() {
-    const start = 0;
-    const num = 10;
+function fetchApps(start, count) {
     const query = "";
     const apiRequest = {
         start: start,
-        num: num,
+        num: count,
         query: query,
         trs80: {
             mediaTypes: [],
@@ -12397,13 +12405,13 @@ function fetchMediaImages(appId) {
         else {
             // TODO.
             console.error("Can't get media images for " + appId + ": " + mediaImages.message);
-            return Promise.resolve([]);
+            return Promise.reject();
         }
     })
         .catch(error => {
         // TODO
         console.error(error);
-        return Promise.resolve([]);
+        return Promise.reject();
     });
 }
 /**
@@ -12411,38 +12419,78 @@ function fetchMediaImages(appId) {
  */
 class RetroStoreTab_RetroStoreTab {
     constructor(pageTabs, context) {
+        this.apps = [];
+        this.complete = false;
+        this.fetching = false;
         this.context = context;
         const tab = pageTabs.newTab("RetroStore");
         tab.element.classList.add("retro-store-tab");
         this.appsDiv = document.createElement("div");
         this.appsDiv.classList.add("retro-store-apps");
+        this.appsDiv.addEventListener("scroll", () => this.fetchNextBatchIfNecessary());
         tab.element.append(this.appsDiv);
-        fetchApps()
-            .then(apps => {
-            this.populateApps(apps);
-        })
-            .catch(error => {
-            // TODO. We already catch errors in fetchApps.
-            console.error(error);
-        });
+        this.moreDiv = document.createElement("div");
+        this.moreDiv.classList.add("retro-store-more");
+        this.moreDiv.append(makeIcon("cached"));
+        // When showing the tab, wait for laying and maybe fetch more.
+        tab.onShow.subscribe(() => setTimeout(() => this.fetchNextBatchIfNecessary(), 0));
+        this.populateApps();
     }
     /**
-     * Populate the UI with a list of apps.
+     * If the "More" section is visible, fetch more apps.
      */
-    populateApps(apps) {
-        Object(teamten_ts_utils_dist["clearElement"])(this.appsDiv);
-        for (const app of apps) {
-            this.addApp(app);
+    fetchNextBatchIfNecessary() {
+        const moreVisible = this.moreDiv.getBoundingClientRect().top < this.appsDiv.getBoundingClientRect().bottom;
+        if (moreVisible && !this.complete && !this.fetching) {
+            this.fetchNextBatch();
         }
     }
     /**
-     * Add a specific app to the UI.
+     * Get the next batch of apps if necessary.
      */
-    addApp(app) {
+    fetchNextBatch() {
+        if (!this.complete) {
+            this.fetching = true;
+            fetchApps(this.apps.length, APP_FETCH_COUNT)
+                .then(apps => {
+                this.fetching = false;
+                if (apps.length !== APP_FETCH_COUNT) {
+                    // Got all apps.
+                    this.complete = true;
+                }
+                this.apps.push(...apps.map(a => new RetroStoreApp(a)));
+                this.populateApps();
+            })
+                .catch(error => {
+                // TODO.
+                console.error(error);
+                this.fetching = false;
+                this.complete = true;
+            });
+        }
+    }
+    /**
+     * Populate the UI with the apps we have.
+     */
+    populateApps() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.appsDiv);
+        for (const app of this.apps) {
+            if (app.element === undefined) {
+                app.element = this.createAppTile(app.app);
+            }
+            this.appsDiv.append(app.element);
+        }
+        if (!this.complete) {
+            this.appsDiv.append(this.moreDiv);
+        }
+    }
+    /**
+     * Create a tile for an app.
+     */
+    createAppTile(app) {
         var _a;
         const appDiv = document.createElement("div");
         appDiv.classList.add("retro-store-app");
-        this.appsDiv.append(appDiv);
         const screenshotDiv = document.createElement("img");
         screenshotDiv.classList.add("screenshot");
         if (app.screenshot_url !== undefined && app.screenshot_url.length > 0) {
@@ -12544,6 +12592,7 @@ class RetroStoreTab_RetroStoreTab {
                 console.error(error);
             });
         }
+        return appDiv;
     }
 }
 
