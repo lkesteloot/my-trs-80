@@ -10836,27 +10836,10 @@ class Panel_Panel {
     }
 }
 
-// CONCATENATED MODULE: ./src/PageTab.ts
-
-/**
- * Represents a single page tab and its contents.
- */
-class PageTab_PageTab {
-    constructor(name, visible = true) {
-        this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.name = name;
-        this.visible = visible;
-        this.element = document.createElement("div");
-        this.element.classList.add("tab-content");
-    }
-}
-
 // EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
 var teamten_ts_utils_dist = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./src/PageTabs.ts
-
 
 /**
  * Set of page tabs.
@@ -10877,14 +10860,13 @@ class PageTabs_PageTabs {
         this.containerElement.append(this.tabElement);
     }
     /**
-     * Create a new tab.
+     * Add a new tab. Be sure it's fully configured, because its onShow
+     * listener might be called synchronously.
      */
-    newTab(name, visible = true) {
-        const tab = new PageTab_PageTab(name, visible);
+    addTab(tab) {
         this.tabs.push(tab);
         this.containerElement.append(tab.element);
         this.configurationChanged();
-        return tab;
     }
     /**
      * Set the visibility of a tab.
@@ -10908,6 +10890,7 @@ class PageTabs_PageTabs {
     configurationChanged() {
         const oldEffectiveActiveIndex = this.effectiveActiveIndex;
         this.computeEffectiveActiveIndex();
+        console.log(oldEffectiveActiveIndex, this.effectiveActiveIndex);
         if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
             if (oldEffectiveActiveIndex !== undefined) {
                 this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
@@ -11239,7 +11222,24 @@ class FileBuilder {
     }
 }
 
+// CONCATENATED MODULE: ./src/PageTab.ts
+
+/**
+ * Represents a single page tab and its contents.
+ */
+class PageTab_PageTab {
+    constructor(name, visible = true) {
+        this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.name = name;
+        this.visible = visible;
+        this.element = document.createElement("div");
+        this.element.classList.add("tab-content");
+    }
+}
+
 // CONCATENATED MODULE: ./src/YourFilesTab.ts
+
 
 
 
@@ -11254,7 +11254,7 @@ class YourFilesTab_YourFilesTab {
     constructor(pageTabs, context) {
         this.libraryInSync = false;
         this.context = context;
-        const tab = pageTabs.newTab("Your Files", context.user !== undefined);
+        const tab = new PageTab_PageTab("Your Files", context.user !== undefined);
         tab.element.classList.add("your-files-tab");
         context.onUser.subscribe(user => pageTabs.setVisible(tab, user !== undefined));
         this.filesDiv = document.createElement("div");
@@ -11278,6 +11278,7 @@ class YourFilesTab_YourFilesTab {
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
         actionBar.append(uploadButton);
         this.updateSplashScreen();
+        pageTabs.addTab(tab);
     }
     /**
      * Handle change to library files.
@@ -12319,6 +12320,7 @@ var trs80_base_dist = __webpack_require__(12);
 
 
 
+
 const RETRO_STORE_API_URL = "https://retrostore.org/api/";
 const APP_FETCH_COUNT = 10;
 /**
@@ -12423,7 +12425,7 @@ class RetroStoreTab_RetroStoreTab {
         this.complete = false;
         this.fetching = false;
         this.context = context;
-        const tab = pageTabs.newTab("RetroStore");
+        const tab = new PageTab_PageTab("RetroStore");
         tab.element.classList.add("retro-store-tab");
         this.appsDiv = document.createElement("div");
         this.appsDiv.classList.add("retro-store-apps");
@@ -12435,6 +12437,7 @@ class RetroStoreTab_RetroStoreTab {
         // When showing the tab, wait for laying and maybe fetch more.
         tab.onShow.subscribe(() => setTimeout(() => this.fetchNextBatchIfNecessary(), 0));
         this.populateApps();
+        pageTabs.addTab(tab);
     }
     /**
      * If the "More" section is visible, fetch more apps.
@@ -13091,6 +13094,7 @@ class HexdumpGenerator_HexdumpGenerator {
 
 
 
+
 const SCREENSHOT_ATTR = "data-screenshot";
 /**
  * Handles the file info tab in the file panel.
@@ -13099,12 +13103,12 @@ class FilePanel_FileInfoTab {
     constructor(filePanel, pageTabs, trs80File) {
         this.filePanel = filePanel;
         this.trs80File = trs80File;
-        const infoTab = pageTabs.newTab("File Info");
-        infoTab.element.classList.add("file-info-tab");
+        const tab = new PageTab_PageTab("File Info");
+        tab.element.classList.add("file-info-tab");
         // Form for editing file info.
         const form = document.createElement("form");
         form.classList.add("file-panel-form");
-        infoTab.element.append(form);
+        tab.element.append(form);
         const makeInputBox = (label, cssClass, enabled) => {
             const labelElement = document.createElement("label");
             if (cssClass !== undefined) {
@@ -13151,7 +13155,7 @@ class FilePanel_FileInfoTab {
         form.append(this.screenshotsDiv);
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        infoTab.element.append(actionBar);
+        tab.element.append(actionBar);
         const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
             this.filePanel.context.panelManager.close();
@@ -13227,6 +13231,7 @@ class FilePanel_FileInfoTab {
             }
         });
         this.updateUi();
+        pageTabs.addTab(tab);
     }
     /**
      * Update UI after a change to file.
@@ -13325,15 +13330,15 @@ class FilePanel_HexdumpTab {
         this.annotate = true;
         this.binary = filePanel.file.binary;
         this.trs80File = trs80File;
-        const infoTab = pageTabs.newTab("Hexdump");
-        infoTab.element.classList.add("hexdump-tab");
+        const tab = new PageTab_PageTab("Hexdump");
+        tab.element.classList.add("hexdump-tab");
         const outer = document.createElement("div");
         outer.classList.add("hexdump-outer");
-        infoTab.element.append(outer);
+        tab.element.append(outer);
         this.hexdumpElement = document.createElement("div");
         this.hexdumpElement.classList.add("hexdump");
         outer.append(this.hexdumpElement);
-        infoTab.onShow.subscribe(() => {
+        tab.onShow.subscribe(() => {
             // Wait until user switches to tab to compute initial display, so that
             // it doesn't slow down the animation to the file panel. Also do it
             // asynchronously so that we don't block the display of the tab change.
@@ -13344,7 +13349,7 @@ class FilePanel_HexdumpTab {
         });
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        infoTab.element.append(actionBar);
+        tab.element.append(actionBar);
         const collapseLabel = document.createElement("label");
         const collapseCheckbox = document.createElement("input");
         collapseCheckbox.type = "checkbox";
@@ -13385,6 +13390,7 @@ class FilePanel_HexdumpTab {
                 hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
             }
         });
+        pageTabs.addTab(tab);
     }
     /**
      * Regenerate the HTML for the hexdump.
