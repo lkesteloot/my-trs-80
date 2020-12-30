@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 108);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4915,15 +4915,15 @@ function setUserLogHandler(logCallback, options) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var CassettePlayer_1 = __webpack_require__(47);
+var CassettePlayer_1 = __webpack_require__(48);
 Object.defineProperty(exports, "CassettePlayer", { enumerable: true, get: function () { return CassettePlayer_1.CassettePlayer; } });
-var Trs80_1 = __webpack_require__(48);
+var Trs80_1 = __webpack_require__(49);
 Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
-var CanvasScreen_1 = __webpack_require__(29);
+var CanvasScreen_1 = __webpack_require__(30);
 Object.defineProperty(exports, "CanvasScreen", { enumerable: true, get: function () { return CanvasScreen_1.CanvasScreen; } });
 var ControlPanel_1 = __webpack_require__(62);
 Object.defineProperty(exports, "ControlPanel", { enumerable: true, get: function () { return ControlPanel_1.ControlPanel; } });
-var SettingsPanel_1 = __webpack_require__(30);
+var SettingsPanel_1 = __webpack_require__(31);
 Object.defineProperty(exports, "SettingsPanel", { enumerable: true, get: function () { return SettingsPanel_1.SettingsPanel; } });
 Object.defineProperty(exports, "PanelType", { enumerable: true, get: function () { return SettingsPanel_1.PanelType; } });
 var ProgressBar_1 = __webpack_require__(63);
@@ -5315,7 +5315,7 @@ __exportStar(__webpack_require__(82), exports);
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(36);
+var freeGlobal = __webpack_require__(37);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -5343,13 +5343,13 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(23), exports);
 __exportStar(__webpack_require__(24), exports);
-__exportStar(__webpack_require__(25), exports);
+__exportStar(__webpack_require__(26), exports);
 __exportStar(__webpack_require__(27), exports);
-__exportStar(__webpack_require__(28), exports);
 __exportStar(__webpack_require__(14), exports);
-__exportStar(__webpack_require__(22), exports);
-__exportStar(__webpack_require__(59), exports);
+__exportStar(__webpack_require__(29), exports);
+__exportStar(__webpack_require__(28), exports);
 
 
 /***/ }),
@@ -5484,7 +5484,7 @@ var dispatching_1 = __webpack_require__(73);
 Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return dispatching_1.DispatcherBase; } });
 Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return dispatching_1.DispatcherWrapper; } });
 Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return dispatching_1.EventListBase; } });
-var subscription_1 = __webpack_require__(32);
+var subscription_1 = __webpack_require__(33);
 Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return subscription_1.Subscription; } });
 
 
@@ -5492,7 +5492,7 @@ Object.defineProperty(exports, "Subscription", { enumerable: true, get: function
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(35),
+var Symbol = __webpack_require__(36),
     getRawTag = __webpack_require__(89),
     objectToString = __webpack_require__(90);
 
@@ -5699,35 +5699,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(53), exports);
 __exportStar(__webpack_require__(54), exports);
+__exportStar(__webpack_require__(55), exports);
 
 
 /***/ }),
 /* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RawBinaryFile = void 0;
-const Trs80File_1 = __webpack_require__(14);
-/**
- * File when we don't recognize the type.
- */
-class RawBinaryFile extends Trs80File_1.Trs80File {
-    constructor(binary) {
-        super(binary, undefined, []);
-    }
-    getDescription() {
-        return "Unknown file";
-    }
-}
-exports.RawBinaryFile = RawBinaryFile;
-
-
-/***/ }),
-/* 23 */
 /***/ (function(module, exports) {
 
 /**
@@ -5762,7 +5739,7 @@ module.exports = isObjectLike;
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5771,7 +5748,7 @@ module.exports = isObjectLike;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeBasicProgram = exports.wrapBasic = exports.BasicProgram = exports.BasicElement = exports.ElementType = exports.getToken = void 0;
 const teamten_ts_utils_1 = __webpack_require__(21);
-const z80_base_1 = __webpack_require__(41);
+const z80_base_1 = __webpack_require__(42);
 const ProgramAnnotation_1 = __webpack_require__(15);
 const Trs80File_1 = __webpack_require__(14);
 const BASIC_TAPE_HEADER_BYTE = 0xD3;
@@ -5940,7 +5917,7 @@ function decodeBasicProgram(binary) {
                 break;
             }
             ch = String.fromCharCode(c);
-            // Special handling of chunks of characters that start with a colon.
+            // Special handling of sequences of characters that start with a colon.
             if (ch === ":" && state === NORMAL) {
                 const colonAddr = b.addr() - 1;
                 if (b.peek(0) === ELSE) {
@@ -5956,9 +5933,6 @@ function decodeBasicProgram(binary) {
                     b.read(); // REM
                     b.read(); // REMQUOT
                     elements.push(new BasicElement(colonAddr, "'", ElementType.COMMENT, b.addr() - colonAddr));
-                    if (lineNumber === 25) {
-                        console.log(elements[elements.length - 1]);
-                    }
                 }
                 else {
                     elements.push(new BasicElement(colonAddr, ":", ElementType.PUNCTUATION));
@@ -6028,7 +6002,7 @@ exports.decodeBasicProgram = decodeBasicProgram;
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6043,7 +6017,7 @@ exports.decodeCmdProgram = exports.CmdProgram = exports.CmdLoadModuleHeaderChunk
 const teamten_ts_utils_1 = __webpack_require__(21);
 const ProgramAnnotation_1 = __webpack_require__(15);
 const Trs80File_1 = __webpack_require__(14);
-const main_1 = __webpack_require__(55);
+const main_1 = __webpack_require__(56);
 // Chunk types.
 exports.CMD_LOAD_BLOCK = 0x01;
 exports.CMD_TRANSFER_ADDRESS = 0x02;
@@ -6239,7 +6213,7 @@ exports.decodeCmdProgram = decodeCmdProgram;
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6354,16 +6328,16 @@ exports.signedByte = signedByte;
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeCassette = exports.Cassette = exports.CassetteFile = exports.CassetteSpeed = void 0;
-const RawBinaryFile_1 = __webpack_require__(22);
-const SystemProgram_1 = __webpack_require__(28);
+const SystemProgram_1 = __webpack_require__(27);
 const Trs80File_1 = __webpack_require__(14);
+const Trs80FileDecoder_1 = __webpack_require__(28);
 // Low-speed header and sync constants.
 const LOW_SPEED_HEADER_BYTE = 0x00;
 const LOW_SPEED_SYNC_BYTE = 0xA5;
@@ -6519,17 +6493,11 @@ function decodeCassette(binary) {
             return undefined;
         }
         // See what kind of file it is.
-        const systemProgram = SystemProgram_1.decodeSystemProgram(programBinary);
-        if (systemProgram !== undefined) {
-            const cassetteFile = new CassetteFile(speed, systemProgram);
-            cassetteFiles.push(cassetteFile);
+        let file = SystemProgram_1.decodeSystemProgram(programBinary);
+        if (file === undefined) {
+            file = Trs80FileDecoder_1.decodeTrs80File(programBinary);
         }
-        else {
-            // Unrecognized file. Treat as raw data.
-            const rawBinaryFile = new RawBinaryFile_1.RawBinaryFile(programBinary);
-            const cassetteFile = new CassetteFile(speed, rawBinaryFile);
-            cassetteFiles.push(cassetteFile);
-        }
+        cassetteFiles.push(new CassetteFile(speed, file));
         // TODO handle multiple files. See HAUNT.CAS.
         break;
     }
@@ -6539,7 +6507,7 @@ exports.decodeCassette = decodeCassette;
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6552,7 +6520,7 @@ exports.decodeCassette = decodeCassette;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeSystemProgram = exports.SystemProgram = exports.SystemChunk = void 0;
 const teamten_ts_utils_1 = __webpack_require__(21);
-const z80_base_1 = __webpack_require__(41);
+const z80_base_1 = __webpack_require__(42);
 const ProgramAnnotation_1 = __webpack_require__(15);
 const Trs80File_1 = __webpack_require__(14);
 const FILE_HEADER = 0x55;
@@ -6697,7 +6665,64 @@ exports.decodeSystemProgram = decodeSystemProgram;
 
 
 /***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeTrs80File = void 0;
+const Basic_1 = __webpack_require__(23);
+const Cassette_1 = __webpack_require__(26);
+const CmdProgram_1 = __webpack_require__(24);
+const RawBinaryFile_1 = __webpack_require__(29);
+/**
+ * Top-level decoder for any TRS-80 file.
+ */
+function decodeTrs80File(binary) {
+    let trs80File;
+    trs80File = Cassette_1.decodeCassette(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    trs80File = CmdProgram_1.decodeCmdProgram(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    trs80File = Basic_1.decodeBasicProgram(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    return new RawBinaryFile_1.RawBinaryFile(binary);
+}
+exports.decodeTrs80File = decodeTrs80File;
+
+
+/***/ }),
 /* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RawBinaryFile = void 0;
+const Trs80File_1 = __webpack_require__(14);
+/**
+ * File when we don't recognize the type.
+ */
+class RawBinaryFile extends Trs80File_1.Trs80File {
+    constructor(binary) {
+        super(binary, undefined, []);
+    }
+    getDescription() {
+        return "Unknown file";
+    }
+}
+exports.RawBinaryFile = RawBinaryFile;
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6712,8 +6737,6 @@ exports.AUTHENTIC_BACKGROUND = "#334843";
 exports.BLACK_BACKGROUND = "#000000";
 const PADDING = 10;
 const BORDER_RADIUS = 8;
-// Run it on the next event cycle.
-const UPDATE_THUMBNAIL_TIMEOUT_MS = 0;
 const WHITE_PHOSPHOR = [230, 231, 252];
 const AMBER_PHOSPHOR = [247, 190, 64];
 const GREEN_PHOSPHOR = [122, 244, 96];
@@ -6747,6 +6770,9 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
         this.config = Config_1.Config.makeDefault();
         this.glyphWidth = 0;
         this.node = document.createElement("div");
+        // Fit canvas horizontally so that the nested objects (panels and progress bars) are
+        // displayed in the canvas.
+        this.node.style.maxWidth = "max-content";
         this.scale = scale;
         this.padding = Math.round(PADDING * this.scale);
         this.canvas = document.createElement("canvas");
@@ -6882,7 +6908,7 @@ exports.CanvasScreen = CanvasScreen;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6891,7 +6917,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SettingsPanel = exports.PanelType = void 0;
 const Utils_1 = __webpack_require__(13);
 const Config_1 = __webpack_require__(20);
-const CanvasScreen_1 = __webpack_require__(29);
+const CanvasScreen_1 = __webpack_require__(30);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-settings-panel";
 const gScreenNodeCssClass = gCssPrefix + "-screen-node";
 const gPanelCssClass = gCssPrefix + "-panel";
@@ -7394,7 +7420,7 @@ exports.SettingsPanel = SettingsPanel;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7403,7 +7429,7 @@ exports.SettingsPanel = SettingsPanel;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7457,7 +7483,7 @@ exports.Subscription = Subscription;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -7481,11 +7507,11 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(19),
-    isObject = __webpack_require__(37);
+    isObject = __webpack_require__(38);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -7524,7 +7550,7 @@ module.exports = isFunction;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(11);
@@ -7536,7 +7562,7 @@ module.exports = Symbol;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -7547,7 +7573,7 @@ module.exports = freeGlobal;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 /**
@@ -7584,7 +7610,7 @@ module.exports = isObject;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -7616,7 +7642,7 @@ module.exports = toSource;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -7657,7 +7683,7 @@ module.exports = isLength;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -7685,7 +7711,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7998,5983 +8024,6 @@ var Flag;
 
 
 
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ../trs80-emulator/dist/index.js
-var dist = __webpack_require__(7);
-
-// EXTERNAL MODULE: ./node_modules/firebase/app/dist/index.esm.js
-var index_esm = __webpack_require__(2);
-
-// EXTERNAL MODULE: ./node_modules/firebase/auth/dist/index.esm.js
-var dist_index_esm = __webpack_require__(31);
-
-// EXTERNAL MODULE: ./node_modules/@firebase/firestore/dist/index.esm.js
-var firestore_dist_index_esm = __webpack_require__(65);
-
-// CONCATENATED MODULE: ./node_modules/firebase/firestore/dist/index.esm.js
-
-
-// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
-var tslib_es6 = __webpack_require__(1);
-
-// EXTERNAL MODULE: ./node_modules/@firebase/app/dist/index.esm.js
-var app_dist_index_esm = __webpack_require__(3);
-
-// EXTERNAL MODULE: ./node_modules/@firebase/component/dist/index.esm.js
-var component_dist_index_esm = __webpack_require__(8);
-
-// EXTERNAL MODULE: ./node_modules/@firebase/util/dist/index.esm.js
-var util_dist_index_esm = __webpack_require__(4);
-
-// EXTERNAL MODULE: ./node_modules/idb/build/idb.js
-var idb = __webpack_require__(43);
-
-// CONCATENATED MODULE: ./node_modules/@firebase/installations/dist/index.esm.js
-
-
-
-
-
-
-var index_esm_name = "@firebase/installations";
-var version = "0.4.19";
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var PENDING_TIMEOUT_MS = 10000;
-var PACKAGE_VERSION = "w:" + version;
-var INTERNAL_AUTH_VERSION = 'FIS_v2';
-var INSTALLATIONS_API_URL = 'https://firebaseinstallations.googleapis.com/v1';
-var TOKEN_EXPIRATION_BUFFER = 60 * 60 * 1000; // One hour
-var SERVICE = 'installations';
-var SERVICE_NAME = 'Installations';
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var index_esm_a;
-var ERROR_DESCRIPTION_MAP = (index_esm_a = {},
-    index_esm_a["missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */] = 'Missing App configuration value: "{$valueName}"',
-    index_esm_a["not-registered" /* NOT_REGISTERED */] = 'Firebase Installation is not registered.',
-    index_esm_a["installation-not-found" /* INSTALLATION_NOT_FOUND */] = 'Firebase Installation not found.',
-    index_esm_a["request-failed" /* REQUEST_FAILED */] = '{$requestName} request failed with error "{$serverCode} {$serverStatus}: {$serverMessage}"',
-    index_esm_a["app-offline" /* APP_OFFLINE */] = 'Could not process request. Application offline.',
-    index_esm_a["delete-pending-registration" /* DELETE_PENDING_REGISTRATION */] = "Can't delete installation while there is a pending registration request.",
-    index_esm_a);
-var ERROR_FACTORY = new util_dist_index_esm["b" /* ErrorFactory */](SERVICE, SERVICE_NAME, ERROR_DESCRIPTION_MAP);
-/** Returns true if error is a FirebaseError that is based on an error from the server. */
-function isServerError(error) {
-    return (error instanceof util_dist_index_esm["c" /* FirebaseError */] &&
-        error.code.includes("request-failed" /* REQUEST_FAILED */));
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function getInstallationsEndpoint(_a) {
-    var projectId = _a.projectId;
-    return INSTALLATIONS_API_URL + "/projects/" + projectId + "/installations";
-}
-function extractAuthTokenInfoFromResponse(response) {
-    return {
-        token: response.token,
-        requestStatus: 2 /* COMPLETED */,
-        expiresIn: getExpiresInFromResponseExpiresIn(response.expiresIn),
-        creationTime: Date.now()
-    };
-}
-function getErrorFromResponse(requestName, response) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var responseJson, errorData;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, response.json()];
-                case 1:
-                    responseJson = _a.sent();
-                    errorData = responseJson.error;
-                    return [2 /*return*/, ERROR_FACTORY.create("request-failed" /* REQUEST_FAILED */, {
-                            requestName: requestName,
-                            serverCode: errorData.code,
-                            serverMessage: errorData.message,
-                            serverStatus: errorData.status
-                        })];
-            }
-        });
-    });
-}
-function getHeaders(_a) {
-    var apiKey = _a.apiKey;
-    return new Headers({
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'x-goog-api-key': apiKey
-    });
-}
-function getHeadersWithAuth(appConfig, _a) {
-    var refreshToken = _a.refreshToken;
-    var headers = getHeaders(appConfig);
-    headers.append('Authorization', getAuthorizationHeader(refreshToken));
-    return headers;
-}
-/**
- * Calls the passed in fetch wrapper and returns the response.
- * If the returned response has a status of 5xx, re-runs the function once and
- * returns the response.
- */
-function retryIfServerError(fn) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var result;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, fn()];
-                case 1:
-                    result = _a.sent();
-                    if (result.status >= 500 && result.status < 600) {
-                        // Internal Server Error. Retry request.
-                        return [2 /*return*/, fn()];
-                    }
-                    return [2 /*return*/, result];
-            }
-        });
-    });
-}
-function getExpiresInFromResponseExpiresIn(responseExpiresIn) {
-    // This works because the server will never respond with fractions of a second.
-    return Number(responseExpiresIn.replace('s', '000'));
-}
-function getAuthorizationHeader(refreshToken) {
-    return INTERNAL_AUTH_VERSION + " " + refreshToken;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function createInstallationRequest(appConfig, _a) {
-    var fid = _a.fid;
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var endpoint, headers, body, request, response, responseValue, registeredInstallationEntry;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    endpoint = getInstallationsEndpoint(appConfig);
-                    headers = getHeaders(appConfig);
-                    body = {
-                        fid: fid,
-                        authVersion: INTERNAL_AUTH_VERSION,
-                        appId: appConfig.appId,
-                        sdkVersion: PACKAGE_VERSION
-                    };
-                    request = {
-                        method: 'POST',
-                        headers: headers,
-                        body: JSON.stringify(body)
-                    };
-                    return [4 /*yield*/, retryIfServerError(function () { return fetch(endpoint, request); })];
-                case 1:
-                    response = _b.sent();
-                    if (!response.ok) return [3 /*break*/, 3];
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    responseValue = _b.sent();
-                    registeredInstallationEntry = {
-                        fid: responseValue.fid || fid,
-                        registrationStatus: 2 /* COMPLETED */,
-                        refreshToken: responseValue.refreshToken,
-                        authToken: extractAuthTokenInfoFromResponse(responseValue.authToken)
-                    };
-                    return [2 /*return*/, registeredInstallationEntry];
-                case 3: return [4 /*yield*/, getErrorFromResponse('Create Installation', response)];
-                case 4: throw _b.sent();
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/** Returns a promise that resolves after given time passes. */
-function sleep(ms) {
-    return new Promise(function (resolve) {
-        setTimeout(resolve, ms);
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function bufferToBase64UrlSafe(array) {
-    var b64 = btoa(String.fromCharCode.apply(String, Object(tslib_es6["f" /* __spread */])(array)));
-    return b64.replace(/\+/g, '-').replace(/\//g, '_');
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var VALID_FID_PATTERN = /^[cdef][\w-]{21}$/;
-var INVALID_FID = '';
-/**
- * Generates a new FID using random values from Web Crypto API.
- * Returns an empty string if FID generation fails for any reason.
- */
-function generateFid() {
-    try {
-        // A valid FID has exactly 22 base64 characters, which is 132 bits, or 16.5
-        // bytes. our implementation generates a 17 byte array instead.
-        var fidByteArray = new Uint8Array(17);
-        var crypto_1 = self.crypto || self.msCrypto;
-        crypto_1.getRandomValues(fidByteArray);
-        // Replace the first 4 random bits with the constant FID header of 0b0111.
-        fidByteArray[0] = 112 + (fidByteArray[0] % 16);
-        var fid = encode(fidByteArray);
-        return VALID_FID_PATTERN.test(fid) ? fid : INVALID_FID;
-    }
-    catch (_a) {
-        // FID generation errored
-        return INVALID_FID;
-    }
-}
-/** Converts a FID Uint8Array to a base64 string representation. */
-function encode(fidByteArray) {
-    var b64String = bufferToBase64UrlSafe(fidByteArray);
-    // Remove the 23rd character that was added because of the extra 4 bits at the
-    // end of our 17 byte array, and the '=' padding.
-    return b64String.substr(0, 22);
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/** Returns a string key that can be used to identify the app. */
-function getKey(appConfig) {
-    return appConfig.appName + "!" + appConfig.appId;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var fidChangeCallbacks = new Map();
-/**
- * Calls the onIdChange callbacks with the new FID value, and broadcasts the
- * change to other tabs.
- */
-function fidChanged(appConfig, fid) {
-    var key = getKey(appConfig);
-    callFidChangeCallbacks(key, fid);
-    broadcastFidChange(key, fid);
-}
-function addCallback(appConfig, callback) {
-    // Open the broadcast channel if it's not already open,
-    // to be able to listen to change events from other tabs.
-    getBroadcastChannel();
-    var key = getKey(appConfig);
-    var callbackSet = fidChangeCallbacks.get(key);
-    if (!callbackSet) {
-        callbackSet = new Set();
-        fidChangeCallbacks.set(key, callbackSet);
-    }
-    callbackSet.add(callback);
-}
-function removeCallback(appConfig, callback) {
-    var key = getKey(appConfig);
-    var callbackSet = fidChangeCallbacks.get(key);
-    if (!callbackSet) {
-        return;
-    }
-    callbackSet.delete(callback);
-    if (callbackSet.size === 0) {
-        fidChangeCallbacks.delete(key);
-    }
-    // Close broadcast channel if there are no more callbacks.
-    closeBroadcastChannel();
-}
-function callFidChangeCallbacks(key, fid) {
-    var e_1, _a;
-    var callbacks = fidChangeCallbacks.get(key);
-    if (!callbacks) {
-        return;
-    }
-    try {
-        for (var callbacks_1 = Object(tslib_es6["h" /* __values */])(callbacks), callbacks_1_1 = callbacks_1.next(); !callbacks_1_1.done; callbacks_1_1 = callbacks_1.next()) {
-            var callback = callbacks_1_1.value;
-            callback(fid);
-        }
-    }
-    catch (e_1_1) { e_1 = { error: e_1_1 }; }
-    finally {
-        try {
-            if (callbacks_1_1 && !callbacks_1_1.done && (_a = callbacks_1.return)) _a.call(callbacks_1);
-        }
-        finally { if (e_1) throw e_1.error; }
-    }
-}
-function broadcastFidChange(key, fid) {
-    var channel = getBroadcastChannel();
-    if (channel) {
-        channel.postMessage({ key: key, fid: fid });
-    }
-    closeBroadcastChannel();
-}
-var broadcastChannel = null;
-/** Opens and returns a BroadcastChannel if it is supported by the browser. */
-function getBroadcastChannel() {
-    if (!broadcastChannel && 'BroadcastChannel' in self) {
-        broadcastChannel = new BroadcastChannel('[Firebase] FID Change');
-        broadcastChannel.onmessage = function (e) {
-            callFidChangeCallbacks(e.data.key, e.data.fid);
-        };
-    }
-    return broadcastChannel;
-}
-function closeBroadcastChannel() {
-    if (fidChangeCallbacks.size === 0 && broadcastChannel) {
-        broadcastChannel.close();
-        broadcastChannel = null;
-    }
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var DATABASE_NAME = 'firebase-installations-database';
-var DATABASE_VERSION = 1;
-var OBJECT_STORE_NAME = 'firebase-installations-store';
-var dbPromise = null;
-function getDbPromise() {
-    if (!dbPromise) {
-        dbPromise = Object(idb["openDb"])(DATABASE_NAME, DATABASE_VERSION, function (upgradeDB) {
-            // We don't use 'break' in this switch statement, the fall-through
-            // behavior is what we want, because if there are multiple versions between
-            // the old version and the current version, we want ALL the migrations
-            // that correspond to those versions to run, not only the last one.
-            // eslint-disable-next-line default-case
-            switch (upgradeDB.oldVersion) {
-                case 0:
-                    upgradeDB.createObjectStore(OBJECT_STORE_NAME);
-            }
-        });
-    }
-    return dbPromise;
-}
-/** Assigns or overwrites the record for the given key with the given value. */
-function set(appConfig, value) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var key, db, tx, objectStore, oldValue;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    key = getKey(appConfig);
-                    return [4 /*yield*/, getDbPromise()];
-                case 1:
-                    db = _a.sent();
-                    tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-                    objectStore = tx.objectStore(OBJECT_STORE_NAME);
-                    return [4 /*yield*/, objectStore.get(key)];
-                case 2:
-                    oldValue = _a.sent();
-                    return [4 /*yield*/, objectStore.put(value, key)];
-                case 3:
-                    _a.sent();
-                    return [4 /*yield*/, tx.complete];
-                case 4:
-                    _a.sent();
-                    if (!oldValue || oldValue.fid !== value.fid) {
-                        fidChanged(appConfig, value.fid);
-                    }
-                    return [2 /*return*/, value];
-            }
-        });
-    });
-}
-/** Removes record(s) from the objectStore that match the given key. */
-function remove(appConfig) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var key, db, tx;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    key = getKey(appConfig);
-                    return [4 /*yield*/, getDbPromise()];
-                case 1:
-                    db = _a.sent();
-                    tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-                    return [4 /*yield*/, tx.objectStore(OBJECT_STORE_NAME).delete(key)];
-                case 2:
-                    _a.sent();
-                    return [4 /*yield*/, tx.complete];
-                case 3:
-                    _a.sent();
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Atomically updates a record with the result of updateFn, which gets
- * called with the current value. If newValue is undefined, the record is
- * deleted instead.
- * @return Updated value
- */
-function update(appConfig, updateFn) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var key, db, tx, store, oldValue, newValue;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    key = getKey(appConfig);
-                    return [4 /*yield*/, getDbPromise()];
-                case 1:
-                    db = _a.sent();
-                    tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
-                    store = tx.objectStore(OBJECT_STORE_NAME);
-                    return [4 /*yield*/, store.get(key)];
-                case 2:
-                    oldValue = _a.sent();
-                    newValue = updateFn(oldValue);
-                    if (!(newValue === undefined)) return [3 /*break*/, 4];
-                    return [4 /*yield*/, store.delete(key)];
-                case 3:
-                    _a.sent();
-                    return [3 /*break*/, 6];
-                case 4: return [4 /*yield*/, store.put(newValue, key)];
-                case 5:
-                    _a.sent();
-                    _a.label = 6;
-                case 6: return [4 /*yield*/, tx.complete];
-                case 7:
-                    _a.sent();
-                    if (newValue && (!oldValue || oldValue.fid !== newValue.fid)) {
-                        fidChanged(appConfig, newValue.fid);
-                    }
-                    return [2 /*return*/, newValue];
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Updates and returns the InstallationEntry from the database.
- * Also triggers a registration request if it is necessary and possible.
- */
-function getInstallationEntry(appConfig) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var registrationPromise, installationEntry;
-        var _a;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, update(appConfig, function (oldEntry) {
-                        var installationEntry = updateOrCreateInstallationEntry(oldEntry);
-                        var entryWithPromise = triggerRegistrationIfNecessary(appConfig, installationEntry);
-                        registrationPromise = entryWithPromise.registrationPromise;
-                        return entryWithPromise.installationEntry;
-                    })];
-                case 1:
-                    installationEntry = _b.sent();
-                    if (!(installationEntry.fid === INVALID_FID)) return [3 /*break*/, 3];
-                    _a = {};
-                    return [4 /*yield*/, registrationPromise];
-                case 2: 
-                // FID generation failed. Waiting for the FID from the server.
-                return [2 /*return*/, (_a.installationEntry = _b.sent(), _a)];
-                case 3: return [2 /*return*/, {
-                        installationEntry: installationEntry,
-                        registrationPromise: registrationPromise
-                    }];
-            }
-        });
-    });
-}
-/**
- * Creates a new Installation Entry if one does not exist.
- * Also clears timed out pending requests.
- */
-function updateOrCreateInstallationEntry(oldEntry) {
-    var entry = oldEntry || {
-        fid: generateFid(),
-        registrationStatus: 0 /* NOT_STARTED */
-    };
-    return clearTimedOutRequest(entry);
-}
-/**
- * If the Firebase Installation is not registered yet, this will trigger the
- * registration and return an InProgressInstallationEntry.
- *
- * If registrationPromise does not exist, the installationEntry is guaranteed
- * to be registered.
- */
-function triggerRegistrationIfNecessary(appConfig, installationEntry) {
-    if (installationEntry.registrationStatus === 0 /* NOT_STARTED */) {
-        if (!navigator.onLine) {
-            // Registration required but app is offline.
-            var registrationPromiseWithError = Promise.reject(ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */));
-            return {
-                installationEntry: installationEntry,
-                registrationPromise: registrationPromiseWithError
-            };
-        }
-        // Try registering. Change status to IN_PROGRESS.
-        var inProgressEntry = {
-            fid: installationEntry.fid,
-            registrationStatus: 1 /* IN_PROGRESS */,
-            registrationTime: Date.now()
-        };
-        var registrationPromise = registerInstallation(appConfig, inProgressEntry);
-        return { installationEntry: inProgressEntry, registrationPromise: registrationPromise };
-    }
-    else if (installationEntry.registrationStatus === 1 /* IN_PROGRESS */) {
-        return {
-            installationEntry: installationEntry,
-            registrationPromise: waitUntilFidRegistration(appConfig)
-        };
-    }
-    else {
-        return { installationEntry: installationEntry };
-    }
-}
-/** This will be executed only once for each new Firebase Installation. */
-function registerInstallation(appConfig, installationEntry) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var registeredInstallationEntry, e_1;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 7]);
-                    return [4 /*yield*/, createInstallationRequest(appConfig, installationEntry)];
-                case 1:
-                    registeredInstallationEntry = _a.sent();
-                    return [2 /*return*/, set(appConfig, registeredInstallationEntry)];
-                case 2:
-                    e_1 = _a.sent();
-                    if (!(isServerError(e_1) && e_1.customData.serverCode === 409)) return [3 /*break*/, 4];
-                    // Server returned a "FID can not be used" error.
-                    // Generate a new ID next time.
-                    return [4 /*yield*/, remove(appConfig)];
-                case 3:
-                    // Server returned a "FID can not be used" error.
-                    // Generate a new ID next time.
-                    _a.sent();
-                    return [3 /*break*/, 6];
-                case 4: 
-                // Registration failed. Set FID as not registered.
-                return [4 /*yield*/, set(appConfig, {
-                        fid: installationEntry.fid,
-                        registrationStatus: 0 /* NOT_STARTED */
-                    })];
-                case 5:
-                    // Registration failed. Set FID as not registered.
-                    _a.sent();
-                    _a.label = 6;
-                case 6: throw e_1;
-                case 7: return [2 /*return*/];
-            }
-        });
-    });
-}
-/** Call if FID registration is pending in another request. */
-function waitUntilFidRegistration(appConfig) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var entry, _a, installationEntry, registrationPromise;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, updateInstallationRequest(appConfig)];
-                case 1:
-                    entry = _b.sent();
-                    _b.label = 2;
-                case 2:
-                    if (!(entry.registrationStatus === 1 /* IN_PROGRESS */)) return [3 /*break*/, 5];
-                    // createInstallation request still in progress.
-                    return [4 /*yield*/, sleep(100)];
-                case 3:
-                    // createInstallation request still in progress.
-                    _b.sent();
-                    return [4 /*yield*/, updateInstallationRequest(appConfig)];
-                case 4:
-                    entry = _b.sent();
-                    return [3 /*break*/, 2];
-                case 5:
-                    if (!(entry.registrationStatus === 0 /* NOT_STARTED */)) return [3 /*break*/, 7];
-                    return [4 /*yield*/, getInstallationEntry(appConfig)];
-                case 6:
-                    _a = _b.sent(), installationEntry = _a.installationEntry, registrationPromise = _a.registrationPromise;
-                    if (registrationPromise) {
-                        return [2 /*return*/, registrationPromise];
-                    }
-                    else {
-                        // if there is no registrationPromise, entry is registered.
-                        return [2 /*return*/, installationEntry];
-                    }
-                case 7: return [2 /*return*/, entry];
-            }
-        });
-    });
-}
-/**
- * Called only if there is a CreateInstallation request in progress.
- *
- * Updates the InstallationEntry in the DB based on the status of the
- * CreateInstallation request.
- *
- * Returns the updated InstallationEntry.
- */
-function updateInstallationRequest(appConfig) {
-    return update(appConfig, function (oldEntry) {
-        if (!oldEntry) {
-            throw ERROR_FACTORY.create("installation-not-found" /* INSTALLATION_NOT_FOUND */);
-        }
-        return clearTimedOutRequest(oldEntry);
-    });
-}
-function clearTimedOutRequest(entry) {
-    if (hasInstallationRequestTimedOut(entry)) {
-        return {
-            fid: entry.fid,
-            registrationStatus: 0 /* NOT_STARTED */
-        };
-    }
-    return entry;
-}
-function hasInstallationRequestTimedOut(installationEntry) {
-    return (installationEntry.registrationStatus === 1 /* IN_PROGRESS */ &&
-        installationEntry.registrationTime + PENDING_TIMEOUT_MS < Date.now());
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function generateAuthTokenRequest(_a, installationEntry) {
-    var appConfig = _a.appConfig, platformLoggerProvider = _a.platformLoggerProvider;
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var endpoint, headers, platformLogger, body, request, response, responseValue, completedAuthToken;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    endpoint = getGenerateAuthTokenEndpoint(appConfig, installationEntry);
-                    headers = getHeadersWithAuth(appConfig, installationEntry);
-                    platformLogger = platformLoggerProvider.getImmediate({
-                        optional: true
-                    });
-                    if (platformLogger) {
-                        headers.append('x-firebase-client', platformLogger.getPlatformInfoString());
-                    }
-                    body = {
-                        installation: {
-                            sdkVersion: PACKAGE_VERSION
-                        }
-                    };
-                    request = {
-                        method: 'POST',
-                        headers: headers,
-                        body: JSON.stringify(body)
-                    };
-                    return [4 /*yield*/, retryIfServerError(function () { return fetch(endpoint, request); })];
-                case 1:
-                    response = _b.sent();
-                    if (!response.ok) return [3 /*break*/, 3];
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    responseValue = _b.sent();
-                    completedAuthToken = extractAuthTokenInfoFromResponse(responseValue);
-                    return [2 /*return*/, completedAuthToken];
-                case 3: return [4 /*yield*/, getErrorFromResponse('Generate Auth Token', response)];
-                case 4: throw _b.sent();
-            }
-        });
-    });
-}
-function getGenerateAuthTokenEndpoint(appConfig, _a) {
-    var fid = _a.fid;
-    return getInstallationsEndpoint(appConfig) + "/" + fid + "/authTokens:generate";
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Returns a valid authentication token for the installation. Generates a new
- * token if one doesn't exist, is expired or about to expire.
- *
- * Should only be called if the Firebase Installation is registered.
- */
-function refreshAuthToken(dependencies, forceRefresh) {
-    if (forceRefresh === void 0) { forceRefresh = false; }
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var tokenPromise, entry, authToken, _a;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, update(dependencies.appConfig, function (oldEntry) {
-                        if (!isEntryRegistered(oldEntry)) {
-                            throw ERROR_FACTORY.create("not-registered" /* NOT_REGISTERED */);
-                        }
-                        var oldAuthToken = oldEntry.authToken;
-                        if (!forceRefresh && isAuthTokenValid(oldAuthToken)) {
-                            // There is a valid token in the DB.
-                            return oldEntry;
-                        }
-                        else if (oldAuthToken.requestStatus === 1 /* IN_PROGRESS */) {
-                            // There already is a token request in progress.
-                            tokenPromise = waitUntilAuthTokenRequest(dependencies, forceRefresh);
-                            return oldEntry;
-                        }
-                        else {
-                            // No token or token expired.
-                            if (!navigator.onLine) {
-                                throw ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */);
-                            }
-                            var inProgressEntry = makeAuthTokenRequestInProgressEntry(oldEntry);
-                            tokenPromise = fetchAuthTokenFromServer(dependencies, inProgressEntry);
-                            return inProgressEntry;
-                        }
-                    })];
-                case 1:
-                    entry = _b.sent();
-                    if (!tokenPromise) return [3 /*break*/, 3];
-                    return [4 /*yield*/, tokenPromise];
-                case 2:
-                    _a = _b.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    _a = entry.authToken;
-                    _b.label = 4;
-                case 4:
-                    authToken = _a;
-                    return [2 /*return*/, authToken];
-            }
-        });
-    });
-}
-/**
- * Call only if FID is registered and Auth Token request is in progress.
- *
- * Waits until the current pending request finishes. If the request times out,
- * tries once in this thread as well.
- */
-function waitUntilAuthTokenRequest(dependencies, forceRefresh) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var entry, authToken;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, updateAuthTokenRequest(dependencies.appConfig)];
-                case 1:
-                    entry = _a.sent();
-                    _a.label = 2;
-                case 2:
-                    if (!(entry.authToken.requestStatus === 1 /* IN_PROGRESS */)) return [3 /*break*/, 5];
-                    // generateAuthToken still in progress.
-                    return [4 /*yield*/, sleep(100)];
-                case 3:
-                    // generateAuthToken still in progress.
-                    _a.sent();
-                    return [4 /*yield*/, updateAuthTokenRequest(dependencies.appConfig)];
-                case 4:
-                    entry = _a.sent();
-                    return [3 /*break*/, 2];
-                case 5:
-                    authToken = entry.authToken;
-                    if (authToken.requestStatus === 0 /* NOT_STARTED */) {
-                        // The request timed out or failed in a different call. Try again.
-                        return [2 /*return*/, refreshAuthToken(dependencies, forceRefresh)];
-                    }
-                    else {
-                        return [2 /*return*/, authToken];
-                    }
-            }
-        });
-    });
-}
-/**
- * Called only if there is a GenerateAuthToken request in progress.
- *
- * Updates the InstallationEntry in the DB based on the status of the
- * GenerateAuthToken request.
- *
- * Returns the updated InstallationEntry.
- */
-function updateAuthTokenRequest(appConfig) {
-    return update(appConfig, function (oldEntry) {
-        if (!isEntryRegistered(oldEntry)) {
-            throw ERROR_FACTORY.create("not-registered" /* NOT_REGISTERED */);
-        }
-        var oldAuthToken = oldEntry.authToken;
-        if (hasAuthTokenRequestTimedOut(oldAuthToken)) {
-            return Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, oldEntry), { authToken: { requestStatus: 0 /* NOT_STARTED */ } });
-        }
-        return oldEntry;
-    });
-}
-function fetchAuthTokenFromServer(dependencies, installationEntry) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var authToken, updatedInstallationEntry, e_1, updatedInstallationEntry;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 3, , 8]);
-                    return [4 /*yield*/, generateAuthTokenRequest(dependencies, installationEntry)];
-                case 1:
-                    authToken = _a.sent();
-                    updatedInstallationEntry = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, installationEntry), { authToken: authToken });
-                    return [4 /*yield*/, set(dependencies.appConfig, updatedInstallationEntry)];
-                case 2:
-                    _a.sent();
-                    return [2 /*return*/, authToken];
-                case 3:
-                    e_1 = _a.sent();
-                    if (!(isServerError(e_1) &&
-                        (e_1.customData.serverCode === 401 || e_1.customData.serverCode === 404))) return [3 /*break*/, 5];
-                    // Server returned a "FID not found" or a "Invalid authentication" error.
-                    // Generate a new ID next time.
-                    return [4 /*yield*/, remove(dependencies.appConfig)];
-                case 4:
-                    // Server returned a "FID not found" or a "Invalid authentication" error.
-                    // Generate a new ID next time.
-                    _a.sent();
-                    return [3 /*break*/, 7];
-                case 5:
-                    updatedInstallationEntry = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, installationEntry), { authToken: { requestStatus: 0 /* NOT_STARTED */ } });
-                    return [4 /*yield*/, set(dependencies.appConfig, updatedInstallationEntry)];
-                case 6:
-                    _a.sent();
-                    _a.label = 7;
-                case 7: throw e_1;
-                case 8: return [2 /*return*/];
-            }
-        });
-    });
-}
-function isEntryRegistered(installationEntry) {
-    return (installationEntry !== undefined &&
-        installationEntry.registrationStatus === 2 /* COMPLETED */);
-}
-function isAuthTokenValid(authToken) {
-    return (authToken.requestStatus === 2 /* COMPLETED */ &&
-        !isAuthTokenExpired(authToken));
-}
-function isAuthTokenExpired(authToken) {
-    var now = Date.now();
-    return (now < authToken.creationTime ||
-        authToken.creationTime + authToken.expiresIn < now + TOKEN_EXPIRATION_BUFFER);
-}
-/** Returns an updated InstallationEntry with an InProgressAuthToken. */
-function makeAuthTokenRequestInProgressEntry(oldEntry) {
-    var inProgressAuthToken = {
-        requestStatus: 1 /* IN_PROGRESS */,
-        requestTime: Date.now()
-    };
-    return Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, oldEntry), { authToken: inProgressAuthToken });
-}
-function hasAuthTokenRequestTimedOut(authToken) {
-    return (authToken.requestStatus === 1 /* IN_PROGRESS */ &&
-        authToken.requestTime + PENDING_TIMEOUT_MS < Date.now());
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function getId(dependencies) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var _a, installationEntry, registrationPromise;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, getInstallationEntry(dependencies.appConfig)];
-                case 1:
-                    _a = _b.sent(), installationEntry = _a.installationEntry, registrationPromise = _a.registrationPromise;
-                    if (registrationPromise) {
-                        registrationPromise.catch(console.error);
-                    }
-                    else {
-                        // If the installation is already registered, update the authentication
-                        // token if needed.
-                        refreshAuthToken(dependencies).catch(console.error);
-                    }
-                    return [2 /*return*/, installationEntry.fid];
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function getToken(dependencies, forceRefresh) {
-    if (forceRefresh === void 0) { forceRefresh = false; }
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var authToken;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, completeInstallationRegistration(dependencies.appConfig)];
-                case 1:
-                    _a.sent();
-                    return [4 /*yield*/, refreshAuthToken(dependencies, forceRefresh)];
-                case 2:
-                    authToken = _a.sent();
-                    return [2 /*return*/, authToken.token];
-            }
-        });
-    });
-}
-function completeInstallationRegistration(appConfig) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var registrationPromise;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getInstallationEntry(appConfig)];
-                case 1:
-                    registrationPromise = (_a.sent()).registrationPromise;
-                    if (!registrationPromise) return [3 /*break*/, 3];
-                    // A createInstallation request is in progress. Wait until it finishes.
-                    return [4 /*yield*/, registrationPromise];
-                case 2:
-                    // A createInstallation request is in progress. Wait until it finishes.
-                    _a.sent();
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function deleteInstallationRequest(appConfig, installationEntry) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var endpoint, headers, request, response;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    endpoint = getDeleteEndpoint(appConfig, installationEntry);
-                    headers = getHeadersWithAuth(appConfig, installationEntry);
-                    request = {
-                        method: 'DELETE',
-                        headers: headers
-                    };
-                    return [4 /*yield*/, retryIfServerError(function () { return fetch(endpoint, request); })];
-                case 1:
-                    response = _a.sent();
-                    if (!!response.ok) return [3 /*break*/, 3];
-                    return [4 /*yield*/, getErrorFromResponse('Delete Installation', response)];
-                case 2: throw _a.sent();
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-function getDeleteEndpoint(appConfig, _a) {
-    var fid = _a.fid;
-    return getInstallationsEndpoint(appConfig) + "/" + fid;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function deleteInstallation(dependencies) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var appConfig, entry;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    appConfig = dependencies.appConfig;
-                    return [4 /*yield*/, update(appConfig, function (oldEntry) {
-                            if (oldEntry && oldEntry.registrationStatus === 0 /* NOT_STARTED */) {
-                                // Delete the unregistered entry without sending a deleteInstallation request.
-                                return undefined;
-                            }
-                            return oldEntry;
-                        })];
-                case 1:
-                    entry = _a.sent();
-                    if (!entry) return [3 /*break*/, 6];
-                    if (!(entry.registrationStatus === 1 /* IN_PROGRESS */)) return [3 /*break*/, 2];
-                    // Can't delete while trying to register.
-                    throw ERROR_FACTORY.create("delete-pending-registration" /* DELETE_PENDING_REGISTRATION */);
-                case 2:
-                    if (!(entry.registrationStatus === 2 /* COMPLETED */)) return [3 /*break*/, 6];
-                    if (!!navigator.onLine) return [3 /*break*/, 3];
-                    throw ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */);
-                case 3: return [4 /*yield*/, deleteInstallationRequest(appConfig, entry)];
-                case 4:
-                    _a.sent();
-                    return [4 /*yield*/, remove(appConfig)];
-                case 5:
-                    _a.sent();
-                    _a.label = 6;
-                case 6: return [2 /*return*/];
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Sets a new callback that will get called when Installation ID changes.
- * Returns an unsubscribe function that will remove the callback when called.
- */
-function onIdChange(_a, callback) {
-    var appConfig = _a.appConfig;
-    addCallback(appConfig, callback);
-    return function () {
-        removeCallback(appConfig, callback);
-    };
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function extractAppConfig(app) {
-    var e_1, _a;
-    if (!app || !app.options) {
-        throw getMissingValueError('App Configuration');
-    }
-    if (!app.name) {
-        throw getMissingValueError('App Name');
-    }
-    // Required app config keys
-    var configKeys = [
-        'projectId',
-        'apiKey',
-        'appId'
-    ];
-    try {
-        for (var configKeys_1 = Object(tslib_es6["h" /* __values */])(configKeys), configKeys_1_1 = configKeys_1.next(); !configKeys_1_1.done; configKeys_1_1 = configKeys_1.next()) {
-            var keyName = configKeys_1_1.value;
-            if (!app.options[keyName]) {
-                throw getMissingValueError(keyName);
-            }
-        }
-    }
-    catch (e_1_1) { e_1 = { error: e_1_1 }; }
-    finally {
-        try {
-            if (configKeys_1_1 && !configKeys_1_1.done && (_a = configKeys_1.return)) _a.call(configKeys_1);
-        }
-        finally { if (e_1) throw e_1.error; }
-    }
-    return {
-        appName: app.name,
-        projectId: app.options.projectId,
-        apiKey: app.options.apiKey,
-        appId: app.options.appId
-    };
-}
-function getMissingValueError(valueName) {
-    return ERROR_FACTORY.create("missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */, {
-        valueName: valueName
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function registerInstallations(instance) {
-    var installationsName = 'installations';
-    instance.INTERNAL.registerComponent(new component_dist_index_esm["a" /* Component */](installationsName, function (container) {
-        var app = container.getProvider('app').getImmediate();
-        // Throws if app isn't configured properly.
-        var appConfig = extractAppConfig(app);
-        var platformLoggerProvider = container.getProvider('platform-logger');
-        var dependencies = {
-            appConfig: appConfig,
-            platformLoggerProvider: platformLoggerProvider
-        };
-        var installations = {
-            app: app,
-            getId: function () { return getId(dependencies); },
-            getToken: function (forceRefresh) {
-                return getToken(dependencies, forceRefresh);
-            },
-            delete: function () { return deleteInstallation(dependencies); },
-            onIdChange: function (callback) {
-                return onIdChange(dependencies, callback);
-            }
-        };
-        return installations;
-    }, "PUBLIC" /* PUBLIC */));
-    instance.registerVersion(index_esm_name, version);
-}
-registerInstallations(app_dist_index_esm["a" /* default */]);
-
-
-
-// EXTERNAL MODULE: ./node_modules/@firebase/logger/dist/index.esm.js
-var logger_dist_index_esm = __webpack_require__(6);
-
-// CONCATENATED MODULE: ./node_modules/@firebase/analytics/dist/index.esm.js
-
-
-
-
-
-
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-// Key to attach FID to in gtag params.
-var GA_FID_KEY = 'firebase_id';
-var ORIGIN_KEY = 'origin';
-var FETCH_TIMEOUT_MILLIS = 60 * 1000;
-var DYNAMIC_CONFIG_URL = 'https://firebase.googleapis.com/v1alpha/projects/-/apps/{app-id}/webConfig';
-var GTAG_URL = 'https://www.googletagmanager.com/gtag/js';
-var GtagCommand;
-(function (GtagCommand) {
-    GtagCommand["EVENT"] = "event";
-    GtagCommand["SET"] = "set";
-    GtagCommand["CONFIG"] = "config";
-})(GtagCommand || (GtagCommand = {}));
-/*
- * Officially recommended event names for gtag.js
- * Any other string is also allowed.
- */
-var EventName;
-(function (EventName) {
-    EventName["ADD_SHIPPING_INFO"] = "add_shipping_info";
-    EventName["ADD_PAYMENT_INFO"] = "add_payment_info";
-    EventName["ADD_TO_CART"] = "add_to_cart";
-    EventName["ADD_TO_WISHLIST"] = "add_to_wishlist";
-    EventName["BEGIN_CHECKOUT"] = "begin_checkout";
-    /** @deprecated */
-    EventName["CHECKOUT_PROGRESS"] = "checkout_progress";
-    EventName["EXCEPTION"] = "exception";
-    EventName["GENERATE_LEAD"] = "generate_lead";
-    EventName["LOGIN"] = "login";
-    EventName["PAGE_VIEW"] = "page_view";
-    EventName["PURCHASE"] = "purchase";
-    EventName["REFUND"] = "refund";
-    EventName["REMOVE_FROM_CART"] = "remove_from_cart";
-    EventName["SCREEN_VIEW"] = "screen_view";
-    EventName["SEARCH"] = "search";
-    EventName["SELECT_CONTENT"] = "select_content";
-    EventName["SELECT_ITEM"] = "select_item";
-    EventName["SELECT_PROMOTION"] = "select_promotion";
-    /** @deprecated */
-    EventName["SET_CHECKOUT_OPTION"] = "set_checkout_option";
-    EventName["SHARE"] = "share";
-    EventName["SIGN_UP"] = "sign_up";
-    EventName["TIMING_COMPLETE"] = "timing_complete";
-    EventName["VIEW_CART"] = "view_cart";
-    EventName["VIEW_ITEM"] = "view_item";
-    EventName["VIEW_ITEM_LIST"] = "view_item_list";
-    EventName["VIEW_PROMOTION"] = "view_promotion";
-    EventName["VIEW_SEARCH_RESULTS"] = "view_search_results";
-})(EventName || (EventName = {}));
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Logs an analytics event through the Firebase SDK.
- *
- * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
- * @param eventName Google Analytics event name, choose from standard list or use a custom string.
- * @param eventParams Analytics event parameters.
- */
-function logEvent(gtagFunction, initializationPromise, eventName, eventParams, options) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var measurementId, params;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!(options && options.global)) return [3 /*break*/, 1];
-                    gtagFunction(GtagCommand.EVENT, eventName, eventParams);
-                    return [2 /*return*/];
-                case 1: return [4 /*yield*/, initializationPromise];
-                case 2:
-                    measurementId = _a.sent();
-                    params = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, eventParams), { 'send_to': measurementId });
-                    gtagFunction(GtagCommand.EVENT, eventName, params);
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Set screen_name parameter for this Google Analytics ID.
- *
- * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
- * @param screenName Screen name string to set.
- */
-function setCurrentScreen(gtagFunction, initializationPromise, screenName, options) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var measurementId;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!(options && options.global)) return [3 /*break*/, 1];
-                    gtagFunction(GtagCommand.SET, { 'screen_name': screenName });
-                    return [2 /*return*/, Promise.resolve()];
-                case 1: return [4 /*yield*/, initializationPromise];
-                case 2:
-                    measurementId = _a.sent();
-                    gtagFunction(GtagCommand.CONFIG, measurementId, {
-                        update: true,
-                        'screen_name': screenName
-                    });
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Set user_id parameter for this Google Analytics ID.
- *
- * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
- * @param id User ID string to set
- */
-function setUserId(gtagFunction, initializationPromise, id, options) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var measurementId;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!(options && options.global)) return [3 /*break*/, 1];
-                    gtagFunction(GtagCommand.SET, { 'user_id': id });
-                    return [2 /*return*/, Promise.resolve()];
-                case 1: return [4 /*yield*/, initializationPromise];
-                case 2:
-                    measurementId = _a.sent();
-                    gtagFunction(GtagCommand.CONFIG, measurementId, {
-                        update: true,
-                        'user_id': id
-                    });
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Set all other user properties other than user_id and screen_name.
- *
- * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
- * @param properties Map of user properties to set
- */
-function setUserProperties(gtagFunction, initializationPromise, properties, options) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var flatProperties, _i, _a, key, measurementId;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    if (!(options && options.global)) return [3 /*break*/, 1];
-                    flatProperties = {};
-                    for (_i = 0, _a = Object.keys(properties); _i < _a.length; _i++) {
-                        key = _a[_i];
-                        // use dot notation for merge behavior in gtag.js
-                        flatProperties["user_properties." + key] = properties[key];
-                    }
-                    gtagFunction(GtagCommand.SET, flatProperties);
-                    return [2 /*return*/, Promise.resolve()];
-                case 1: return [4 /*yield*/, initializationPromise];
-                case 2:
-                    measurementId = _b.sent();
-                    gtagFunction(GtagCommand.CONFIG, measurementId, {
-                        update: true,
-                        'user_properties': properties
-                    });
-                    _b.label = 3;
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Set whether collection is enabled for this ID.
- *
- * @param enabled If true, collection is enabled for this ID.
- */
-function setAnalyticsCollectionEnabled(initializationPromise, enabled) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var measurementId;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, initializationPromise];
-                case 1:
-                    measurementId = _a.sent();
-                    window["ga-disable-" + measurementId] = !enabled;
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var logger = new logger_dist_index_esm["b" /* Logger */]('@firebase/analytics');
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Inserts gtag script tag into the page to asynchronously download gtag.
- * @param dataLayerName Name of datalayer (most often the default, "_dataLayer").
- */
-function insertScriptTag(dataLayerName) {
-    var script = document.createElement('script');
-    // We are not providing an analyticsId in the URL because it would trigger a `page_view`
-    // without fid. We will initialize ga-id using gtag (config) command together with fid.
-    script.src = GTAG_URL + "?l=" + dataLayerName;
-    script.async = true;
-    document.head.appendChild(script);
-}
-/**
- * Get reference to, or create, global datalayer.
- * @param dataLayerName Name of datalayer (most often the default, "_dataLayer").
- */
-function getOrCreateDataLayer(dataLayerName) {
-    // Check for existing dataLayer and create if needed.
-    var dataLayer = [];
-    if (Array.isArray(window[dataLayerName])) {
-        dataLayer = window[dataLayerName];
-    }
-    else {
-        window[dataLayerName] = dataLayer;
-    }
-    return dataLayer;
-}
-/**
- * Wrapped gtag logic when gtag is called with 'config' command.
- *
- * @param gtagCore Basic gtag function that just appends to dataLayer.
- * @param initializationPromisesMap Map of appIds to their initialization promises.
- * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
- * @param measurementIdToAppId Map of GA measurementIDs to corresponding Firebase appId.
- * @param measurementId GA Measurement ID to set config for.
- * @param gtagParams Gtag config params to set.
- */
-function gtagOnConfig(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId, measurementId, gtagParams) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var correspondingAppId, dynamicConfigResults, foundConfig, e_1;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    correspondingAppId = measurementIdToAppId[measurementId];
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 7, , 8]);
-                    if (!correspondingAppId) return [3 /*break*/, 3];
-                    return [4 /*yield*/, initializationPromisesMap[correspondingAppId]];
-                case 2:
-                    _a.sent();
-                    return [3 /*break*/, 6];
-                case 3: return [4 /*yield*/, Promise.all(dynamicConfigPromisesList)];
-                case 4:
-                    dynamicConfigResults = _a.sent();
-                    foundConfig = dynamicConfigResults.find(function (config) { return config.measurementId === measurementId; });
-                    if (!foundConfig) return [3 /*break*/, 6];
-                    return [4 /*yield*/, initializationPromisesMap[foundConfig.appId]];
-                case 5:
-                    _a.sent();
-                    _a.label = 6;
-                case 6: return [3 /*break*/, 8];
-                case 7:
-                    e_1 = _a.sent();
-                    logger.error(e_1);
-                    return [3 /*break*/, 8];
-                case 8:
-                    gtagCore(GtagCommand.CONFIG, measurementId, gtagParams);
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Wrapped gtag logic when gtag is called with 'event' command.
- *
- * @param gtagCore Basic gtag function that just appends to dataLayer.
- * @param initializationPromisesMap Map of appIds to their initialization promises.
- * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
- * @param measurementId GA Measurement ID to log event to.
- * @param gtagParams Params to log with this event.
- */
-function gtagOnEvent(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementId, gtagParams) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var initializationPromisesToWaitFor, gaSendToList, dynamicConfigResults, _loop_1, _i, gaSendToList_1, sendToId, state_1, e_2;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 4, , 5]);
-                    initializationPromisesToWaitFor = [];
-                    if (!(gtagParams && gtagParams['send_to'])) return [3 /*break*/, 2];
-                    gaSendToList = gtagParams['send_to'];
-                    // Make it an array if is isn't, so it can be dealt with the same way.
-                    if (!Array.isArray(gaSendToList)) {
-                        gaSendToList = [gaSendToList];
-                    }
-                    return [4 /*yield*/, Promise.all(dynamicConfigPromisesList)];
-                case 1:
-                    dynamicConfigResults = _a.sent();
-                    _loop_1 = function (sendToId) {
-                        // Any fetched dynamic measurement ID that matches this 'send_to' ID
-                        var foundConfig = dynamicConfigResults.find(function (config) { return config.measurementId === sendToId; });
-                        var initializationPromise = foundConfig && initializationPromisesMap[foundConfig.appId];
-                        if (initializationPromise) {
-                            initializationPromisesToWaitFor.push(initializationPromise);
-                        }
-                        else {
-                            // Found an item in 'send_to' that is not associated
-                            // directly with an FID, possibly a group.  Empty this array,
-                            // exit the loop early, and let it get populated below.
-                            initializationPromisesToWaitFor = [];
-                            return "break";
-                        }
-                    };
-                    for (_i = 0, gaSendToList_1 = gaSendToList; _i < gaSendToList_1.length; _i++) {
-                        sendToId = gaSendToList_1[_i];
-                        state_1 = _loop_1(sendToId);
-                        if (state_1 === "break")
-                            break;
-                    }
-                    _a.label = 2;
-                case 2:
-                    // This will be unpopulated if there was no 'send_to' field , or
-                    // if not all entries in the 'send_to' field could be mapped to
-                    // a FID. In these cases, wait on all pending initialization promises.
-                    if (initializationPromisesToWaitFor.length === 0) {
-                        initializationPromisesToWaitFor = Object.values(initializationPromisesMap);
-                    }
-                    // Run core gtag function with args after all relevant initialization
-                    // promises have been resolved.
-                    return [4 /*yield*/, Promise.all(initializationPromisesToWaitFor)];
-                case 3:
-                    // Run core gtag function with args after all relevant initialization
-                    // promises have been resolved.
-                    _a.sent();
-                    // Workaround for http://b/141370449 - third argument cannot be undefined.
-                    gtagCore(GtagCommand.EVENT, measurementId, gtagParams || {});
-                    return [3 /*break*/, 5];
-                case 4:
-                    e_2 = _a.sent();
-                    logger.error(e_2);
-                    return [3 /*break*/, 5];
-                case 5: return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Wraps a standard gtag function with extra code to wait for completion of
- * relevant initialization promises before sending requests.
- *
- * @param gtagCore Basic gtag function that just appends to dataLayer.
- * @param initializationPromisesMap Map of appIds to their initialization promises.
- * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
- * @param measurementIdToAppId Map of GA measurementIDs to corresponding Firebase appId.
- */
-function wrapGtag(gtagCore, 
-/**
- * Allows wrapped gtag calls to wait on whichever intialization promises are required,
- * depending on the contents of the gtag params' `send_to` field, if any.
- */
-initializationPromisesMap, 
-/**
- * Wrapped gtag calls sometimes require all dynamic config fetches to have returned
- * before determining what initialization promises (which include FIDs) to wait for.
- */
-dynamicConfigPromisesList, 
-/**
- * Wrapped gtag config calls can narrow down which initialization promise (with FID)
- * to wait for if the measurementId is already fetched, by getting the corresponding appId,
- * which is the key for the initialization promises map.
- */
-measurementIdToAppId) {
-    /**
-     * Wrapper around gtag that ensures FID is sent with gtag calls.
-     * @param command Gtag command type.
-     * @param idOrNameOrParams Measurement ID if command is EVENT/CONFIG, params if command is SET.
-     * @param gtagParams Params if event is EVENT/CONFIG.
-     */
-    function gtagWrapper(command, idOrNameOrParams, gtagParams) {
-        return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-            var e_3;
-            return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 6, , 7]);
-                        if (!(command === GtagCommand.EVENT)) return [3 /*break*/, 2];
-                        // If EVENT, second arg must be measurementId.
-                        return [4 /*yield*/, gtagOnEvent(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, idOrNameOrParams, gtagParams)];
-                    case 1:
-                        // If EVENT, second arg must be measurementId.
-                        _a.sent();
-                        return [3 /*break*/, 5];
-                    case 2:
-                        if (!(command === GtagCommand.CONFIG)) return [3 /*break*/, 4];
-                        // If CONFIG, second arg must be measurementId.
-                        return [4 /*yield*/, gtagOnConfig(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId, idOrNameOrParams, gtagParams)];
-                    case 3:
-                        // If CONFIG, second arg must be measurementId.
-                        _a.sent();
-                        return [3 /*break*/, 5];
-                    case 4:
-                        // If SET, second arg must be params.
-                        gtagCore(GtagCommand.SET, idOrNameOrParams);
-                        _a.label = 5;
-                    case 5: return [3 /*break*/, 7];
-                    case 6:
-                        e_3 = _a.sent();
-                        logger.error(e_3);
-                        return [3 /*break*/, 7];
-                    case 7: return [2 /*return*/];
-                }
-            });
-        });
-    }
-    return gtagWrapper;
-}
-/**
- * Creates global gtag function or wraps existing one if found.
- * This wrapped function attaches Firebase instance ID (FID) to gtag 'config' and
- * 'event' calls that belong to the GAID associated with this Firebase instance.
- *
- * @param initializationPromisesMap Map of appIds to their initialization promises.
- * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
- * @param measurementIdToAppId Map of GA measurementIDs to corresponding Firebase appId.
- * @param dataLayerName Name of global GA datalayer array.
- * @param gtagFunctionName Name of global gtag function ("gtag" if not user-specified).
- */
-function wrapOrCreateGtag(initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId, dataLayerName, gtagFunctionName) {
-    // Create a basic core gtag function
-    var gtagCore = function () {
-        var _args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            _args[_i] = arguments[_i];
-        }
-        // Must push IArguments object, not an array.
-        window[dataLayerName].push(arguments);
-    };
-    // Replace it with existing one if found
-    if (window[gtagFunctionName] &&
-        typeof window[gtagFunctionName] === 'function') {
-        // @ts-ignore
-        gtagCore = window[gtagFunctionName];
-    }
-    window[gtagFunctionName] = wrapGtag(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId);
-    return {
-        gtagCore: gtagCore,
-        wrappedGtag: window[gtagFunctionName]
-    };
-}
-/**
- * Returns first script tag in DOM matching our gtag url pattern.
- */
-function findGtagScriptOnPage() {
-    var scriptTags = window.document.getElementsByTagName('script');
-    for (var _i = 0, _a = Object.values(scriptTags); _i < _a.length; _i++) {
-        var tag = _a[_i];
-        if (tag.src && tag.src.includes(GTAG_URL)) {
-            return tag;
-        }
-    }
-    return null;
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-var dist_index_esm_a;
-var ERRORS = (dist_index_esm_a = {},
-    dist_index_esm_a["already-exists" /* ALREADY_EXISTS */] = 'A Firebase Analytics instance with the appId {$id} ' +
-        ' already exists. ' +
-        'Only one Firebase Analytics instance can be created for each appId.',
-    dist_index_esm_a["already-initialized" /* ALREADY_INITIALIZED */] = 'Firebase Analytics has already been initialized.' +
-        'settings() must be called before initializing any Analytics instance' +
-        'or it will have no effect.',
-    dist_index_esm_a["interop-component-reg-failed" /* INTEROP_COMPONENT_REG_FAILED */] = 'Firebase Analytics Interop Component failed to instantiate: {$reason}',
-    dist_index_esm_a["invalid-analytics-context" /* INVALID_ANALYTICS_CONTEXT */] = 'Firebase Analytics is not supported in this environment. ' +
-        'Wrap initialization of analytics in analytics.isSupported() ' +
-        'to prevent initialization in unsupported environments. Details: {$errorInfo}',
-    dist_index_esm_a["indexeddb-unavailable" /* INDEXEDDB_UNAVAILABLE */] = 'IndexedDB unavailable or restricted in this environment. ' +
-        'Wrap initialization of analytics in analytics.isSupported() ' +
-        'to prevent initialization in unsupported environments. Details: {$errorInfo}',
-    dist_index_esm_a["fetch-throttle" /* FETCH_THROTTLE */] = 'The config fetch request timed out while in an exponential backoff state.' +
-        ' Unix timestamp in milliseconds when fetch request throttling ends: {$throttleEndTimeMillis}.',
-    dist_index_esm_a["config-fetch-failed" /* CONFIG_FETCH_FAILED */] = 'Dynamic config fetch failed: [{$httpStatus}] {$responseMessage}',
-    dist_index_esm_a["no-api-key" /* NO_API_KEY */] = 'The "apiKey" field is empty in the local Firebase config. Firebase Analytics requires this field to' +
-        'contain a valid API key.',
-    dist_index_esm_a["no-app-id" /* NO_APP_ID */] = 'The "appId" field is empty in the local Firebase config. Firebase Analytics requires this field to' +
-        'contain a valid app ID.',
-    dist_index_esm_a);
-var index_esm_ERROR_FACTORY = new util_dist_index_esm["b" /* ErrorFactory */]('analytics', 'Analytics', ERRORS);
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Backoff factor for 503 errors, which we want to be conservative about
- * to avoid overloading servers. Each retry interval will be
- * BASE_INTERVAL_MILLIS * LONG_RETRY_FACTOR ^ retryCount, so the second one
- * will be ~30 seconds (with fuzzing).
- */
-var LONG_RETRY_FACTOR = 30;
-/**
- * Base wait interval to multiplied by backoffFactor^backoffCount.
- */
-var BASE_INTERVAL_MILLIS = 1000;
-/**
- * Stubbable retry data storage class.
- */
-var RetryData = /** @class */ (function () {
-    function RetryData(throttleMetadata, intervalMillis) {
-        if (throttleMetadata === void 0) { throttleMetadata = {}; }
-        if (intervalMillis === void 0) { intervalMillis = BASE_INTERVAL_MILLIS; }
-        this.throttleMetadata = throttleMetadata;
-        this.intervalMillis = intervalMillis;
-    }
-    RetryData.prototype.getThrottleMetadata = function (appId) {
-        return this.throttleMetadata[appId];
-    };
-    RetryData.prototype.setThrottleMetadata = function (appId, metadata) {
-        this.throttleMetadata[appId] = metadata;
-    };
-    RetryData.prototype.deleteThrottleMetadata = function (appId) {
-        delete this.throttleMetadata[appId];
-    };
-    return RetryData;
-}());
-var defaultRetryData = new RetryData();
-/**
- * Set GET request headers.
- * @param apiKey App API key.
- */
-function index_esm_getHeaders(apiKey) {
-    return new Headers({
-        Accept: 'application/json',
-        'x-goog-api-key': apiKey
-    });
-}
-/**
- * Fetches dynamic config from backend.
- * @param app Firebase app to fetch config for.
- */
-function fetchDynamicConfig(appFields) {
-    var _a;
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var appId, apiKey, request, appUrl, response, errorMessage, jsonResponse, _ignored_1;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    appId = appFields.appId, apiKey = appFields.apiKey;
-                    request = {
-                        method: 'GET',
-                        headers: index_esm_getHeaders(apiKey)
-                    };
-                    appUrl = DYNAMIC_CONFIG_URL.replace('{app-id}', appId);
-                    return [4 /*yield*/, fetch(appUrl, request)];
-                case 1:
-                    response = _b.sent();
-                    if (!(response.status !== 200 && response.status !== 304)) return [3 /*break*/, 6];
-                    errorMessage = '';
-                    _b.label = 2;
-                case 2:
-                    _b.trys.push([2, 4, , 5]);
-                    return [4 /*yield*/, response.json()];
-                case 3:
-                    jsonResponse = (_b.sent());
-                    if ((_a = jsonResponse.error) === null || _a === void 0 ? void 0 : _a.message) {
-                        errorMessage = jsonResponse.error.message;
-                    }
-                    return [3 /*break*/, 5];
-                case 4:
-                    _ignored_1 = _b.sent();
-                    return [3 /*break*/, 5];
-                case 5: throw index_esm_ERROR_FACTORY.create("config-fetch-failed" /* CONFIG_FETCH_FAILED */, {
-                    httpStatus: response.status,
-                    responseMessage: errorMessage
-                });
-                case 6: return [2 /*return*/, response.json()];
-            }
-        });
-    });
-}
-/**
- * Fetches dynamic config from backend, retrying if failed.
- * @param app Firebase app to fetch config for.
- */
-function fetchDynamicConfigWithRetry(app, 
-// retryData and timeoutMillis are parameterized to allow passing a different value for testing.
-retryData, timeoutMillis) {
-    if (retryData === void 0) { retryData = defaultRetryData; }
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var _a, appId, apiKey, measurementId, throttleMetadata, signal;
-        var _this = this;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            _a = app.options, appId = _a.appId, apiKey = _a.apiKey, measurementId = _a.measurementId;
-            if (!appId) {
-                throw index_esm_ERROR_FACTORY.create("no-app-id" /* NO_APP_ID */);
-            }
-            if (!apiKey) {
-                if (measurementId) {
-                    return [2 /*return*/, {
-                            measurementId: measurementId,
-                            appId: appId
-                        }];
-                }
-                throw index_esm_ERROR_FACTORY.create("no-api-key" /* NO_API_KEY */);
-            }
-            throttleMetadata = retryData.getThrottleMetadata(appId) || {
-                backoffCount: 0,
-                throttleEndTimeMillis: Date.now()
-            };
-            signal = new AnalyticsAbortSignal();
-            setTimeout(function () { return Object(tslib_es6["b" /* __awaiter */])(_this, void 0, void 0, function () {
-                return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-                    // Note a very low delay, eg < 10ms, can elapse before listeners are initialized.
-                    signal.abort();
-                    return [2 /*return*/];
-                });
-            }); }, timeoutMillis !== undefined ? timeoutMillis : FETCH_TIMEOUT_MILLIS);
-            return [2 /*return*/, attemptFetchDynamicConfigWithRetry({ appId: appId, apiKey: apiKey, measurementId: measurementId }, throttleMetadata, signal, retryData)];
-        });
-    });
-}
-/**
- * Runs one retry attempt.
- * @param appFields Necessary app config fields.
- * @param throttleMetadata Ongoing metadata to determine throttling times.
- * @param signal Abort signal.
- */
-function attemptFetchDynamicConfigWithRetry(appFields, _a, signal, retryData // for testing
-) {
-    var throttleEndTimeMillis = _a.throttleEndTimeMillis, backoffCount = _a.backoffCount;
-    if (retryData === void 0) { retryData = defaultRetryData; }
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var appId, measurementId, e_1, response, e_2, backoffMillis, throttleMetadata;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    appId = appFields.appId, measurementId = appFields.measurementId;
-                    _b.label = 1;
-                case 1:
-                    _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, setAbortableTimeout(signal, throttleEndTimeMillis)];
-                case 2:
-                    _b.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    e_1 = _b.sent();
-                    if (measurementId) {
-                        logger.warn("Timed out fetching this Firebase app's measurement ID from the server." +
-                            (" Falling back to the measurement ID " + measurementId) +
-                            (" provided in the \"measurementId\" field in the local Firebase config. [" + e_1.message + "]"));
-                        return [2 /*return*/, { appId: appId, measurementId: measurementId }];
-                    }
-                    throw e_1;
-                case 4:
-                    _b.trys.push([4, 6, , 7]);
-                    return [4 /*yield*/, fetchDynamicConfig(appFields)];
-                case 5:
-                    response = _b.sent();
-                    // Note the SDK only clears throttle state if response is success or non-retriable.
-                    retryData.deleteThrottleMetadata(appId);
-                    return [2 /*return*/, response];
-                case 6:
-                    e_2 = _b.sent();
-                    if (!isRetriableError(e_2)) {
-                        retryData.deleteThrottleMetadata(appId);
-                        if (measurementId) {
-                            logger.warn("Failed to fetch this Firebase app's measurement ID from the server." +
-                                (" Falling back to the measurement ID " + measurementId) +
-                                (" provided in the \"measurementId\" field in the local Firebase config. [" + e_2.message + "]"));
-                            return [2 /*return*/, { appId: appId, measurementId: measurementId }];
-                        }
-                        else {
-                            throw e_2;
-                        }
-                    }
-                    backoffMillis = Number(e_2.customData.httpStatus) === 503
-                        ? Object(util_dist_index_esm["e" /* calculateBackoffMillis */])(backoffCount, retryData.intervalMillis, LONG_RETRY_FACTOR)
-                        : Object(util_dist_index_esm["e" /* calculateBackoffMillis */])(backoffCount, retryData.intervalMillis);
-                    throttleMetadata = {
-                        throttleEndTimeMillis: Date.now() + backoffMillis,
-                        backoffCount: backoffCount + 1
-                    };
-                    // Persists state.
-                    retryData.setThrottleMetadata(appId, throttleMetadata);
-                    logger.debug("Calling attemptFetch again in " + backoffMillis + " millis");
-                    return [2 /*return*/, attemptFetchDynamicConfigWithRetry(appFields, throttleMetadata, signal, retryData)];
-                case 7: return [2 /*return*/];
-            }
-        });
-    });
-}
-/**
- * Supports waiting on a backoff by:
- *
- * <ul>
- *   <li>Promisifying setTimeout, so we can set a timeout in our Promise chain</li>
- *   <li>Listening on a signal bus for abort events, just like the Fetch API</li>
- *   <li>Failing in the same way the Fetch API fails, so timing out a live request and a throttled
- *       request appear the same.</li>
- * </ul>
- *
- * <p>Visible for testing.
- */
-function setAbortableTimeout(signal, throttleEndTimeMillis) {
-    return new Promise(function (resolve, reject) {
-        // Derives backoff from given end time, normalizing negative numbers to zero.
-        var backoffMillis = Math.max(throttleEndTimeMillis - Date.now(), 0);
-        var timeout = setTimeout(resolve, backoffMillis);
-        // Adds listener, rather than sets onabort, because signal is a shared object.
-        signal.addEventListener(function () {
-            clearTimeout(timeout);
-            // If the request completes before this timeout, the rejection has no effect.
-            reject(index_esm_ERROR_FACTORY.create("fetch-throttle" /* FETCH_THROTTLE */, {
-                throttleEndTimeMillis: throttleEndTimeMillis
-            }));
-        });
-    });
-}
-/**
- * Returns true if the {@link Error} indicates a fetch request may succeed later.
- */
-function isRetriableError(e) {
-    if (!(e instanceof util_dist_index_esm["c" /* FirebaseError */]) || !e.customData) {
-        return false;
-    }
-    // Uses string index defined by ErrorData, which FirebaseError implements.
-    var httpStatus = Number(e.customData['httpStatus']);
-    return (httpStatus === 429 ||
-        httpStatus === 500 ||
-        httpStatus === 503 ||
-        httpStatus === 504);
-}
-/**
- * Shims a minimal AbortSignal (copied from Remote Config).
- *
- * <p>AbortController's AbortSignal conveniently decouples fetch timeout logic from other aspects
- * of networking, such as retries. Firebase doesn't use AbortController enough to justify a
- * polyfill recommendation, like we do with the Fetch API, but this minimal shim can easily be
- * swapped out if/when we do.
- */
-var AnalyticsAbortSignal = /** @class */ (function () {
-    function AnalyticsAbortSignal() {
-        this.listeners = [];
-    }
-    AnalyticsAbortSignal.prototype.addEventListener = function (listener) {
-        this.listeners.push(listener);
-    };
-    AnalyticsAbortSignal.prototype.abort = function () {
-        this.listeners.forEach(function (listener) { return listener(); });
-    };
-    return AnalyticsAbortSignal;
-}());
-
-/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-function validateIndexedDB() {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var e_1;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!!Object(util_dist_index_esm["o" /* isIndexedDBAvailable */])()) return [3 /*break*/, 1];
-                    logger.warn(index_esm_ERROR_FACTORY.create("indexeddb-unavailable" /* INDEXEDDB_UNAVAILABLE */, {
-                        errorInfo: 'IndexedDB is not available in this environment.'
-                    }).message);
-                    return [2 /*return*/, false];
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, Object(util_dist_index_esm["t" /* validateIndexedDBOpenable */])()];
-                case 2:
-                    _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    e_1 = _a.sent();
-                    logger.warn(index_esm_ERROR_FACTORY.create("indexeddb-unavailable" /* INDEXEDDB_UNAVAILABLE */, {
-                        errorInfo: e_1
-                    }).message);
-                    return [2 /*return*/, false];
-                case 4: return [2 /*return*/, true];
-            }
-        });
-    });
-}
-/**
- * Initialize the analytics instance in gtag.js by calling config command with fid.
- *
- * NOTE: We combine analytics initialization and setting fid together because we want fid to be
- * part of the `page_view` event that's sent during the initialization
- * @param app Firebase app
- * @param gtagCore The gtag function that's not wrapped.
- * @param dynamicConfigPromisesList Array of all dynamic config promises.
- * @param measurementIdToAppId Maps measurementID to appID.
- * @param installations FirebaseInstallations instance.
- *
- * @returns Measurement ID.
- */
-function initializeIds(app, dynamicConfigPromisesList, measurementIdToAppId, installations, gtagCore) {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var dynamicConfigPromise, fidPromise, _a, dynamicConfig, fid, configProperties;
-        var _b;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_c) {
-            switch (_c.label) {
-                case 0:
-                    dynamicConfigPromise = fetchDynamicConfigWithRetry(app);
-                    // Once fetched, map measurementIds to appId, for ease of lookup in wrapped gtag function.
-                    dynamicConfigPromise
-                        .then(function (config) {
-                        measurementIdToAppId[config.measurementId] = config.appId;
-                        if (app.options.measurementId &&
-                            config.measurementId !== app.options.measurementId) {
-                            logger.warn("The measurement ID in the local Firebase config (" + app.options.measurementId + ")" +
-                                (" does not match the measurement ID fetched from the server (" + config.measurementId + ").") +
-                                " To ensure analytics events are always sent to the correct Analytics property," +
-                                " update the" +
-                                " measurement ID field in the local config or remove it from the local config.");
-                        }
-                    })
-                        .catch(function (e) { return logger.error(e); });
-                    // Add to list to track state of all dynamic config promises.
-                    dynamicConfigPromisesList.push(dynamicConfigPromise);
-                    fidPromise = validateIndexedDB().then(function (envIsValid) {
-                        if (envIsValid) {
-                            return installations.getId();
-                        }
-                        else {
-                            return undefined;
-                        }
-                    });
-                    return [4 /*yield*/, Promise.all([
-                            dynamicConfigPromise,
-                            fidPromise
-                        ])];
-                case 1:
-                    _a = _c.sent(), dynamicConfig = _a[0], fid = _a[1];
-                    // This command initializes gtag.js and only needs to be called once for the entire web app,
-                    // but since it is idempotent, we can call it multiple times.
-                    // We keep it together with other initialization logic for better code structure.
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    gtagCore('js', new Date());
-                    configProperties = (_b = {},
-                        // guard against developers accidentally setting properties with prefix `firebase_`
-                        _b[ORIGIN_KEY] = 'firebase',
-                        _b.update = true,
-                        _b);
-                    if (fid != null) {
-                        configProperties[GA_FID_KEY] = fid;
-                    }
-                    // It should be the first config command called on this GA-ID
-                    // Initialize this GA-ID and set FID on it using the gtag config API.
-                    gtagCore(GtagCommand.CONFIG, dynamicConfig.measurementId, configProperties);
-                    return [2 /*return*/, dynamicConfig.measurementId];
-            }
-        });
-    });
-}
-
-/**
- * @license
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/**
- * Maps appId to full initialization promise. Wrapped gtag calls must wait on
- * all or some of these, depending on the call's `send_to` param and the status
- * of the dynamic config fetches (see below).
- */
-var index_esm_initializationPromisesMap = {};
-/**
- * List of dynamic config fetch promises. In certain cases, wrapped gtag calls
- * wait on all these to be complete in order to determine if it can selectively
- * wait for only certain initialization (FID) promises or if it must wait for all.
- */
-var index_esm_dynamicConfigPromisesList = [];
-/**
- * Maps fetched measurementIds to appId. Populated when the app's dynamic config
- * fetch completes. If already populated, gtag config calls can use this to
- * selectively wait for only this app's initialization promise (FID) instead of all
- * initialization promises.
- */
-var index_esm_measurementIdToAppId = {};
-/**
- * Name for window global data layer array used by GA: defaults to 'dataLayer'.
- */
-var dataLayerName = 'dataLayer';
-/**
- * Name for window global gtag function used by GA: defaults to 'gtag'.
- */
-var gtagName = 'gtag';
-/**
- * Reproduction of standard gtag function or reference to existing
- * gtag function on window object.
- */
-var gtagCoreFunction;
-/**
- * Wrapper around gtag function that ensures FID is sent with all
- * relevant event and config calls.
- */
-var wrappedGtagFunction;
-/**
- * Flag to ensure page initialization steps (creation or wrapping of
- * dataLayer and gtag script) are only run once per page load.
- */
-var globalInitDone = false;
-/**
- * For testing
- */
-function resetGlobalVars(newGlobalInitDone, newInitializationPromisesMap, newDynamicPromises) {
-    if (newGlobalInitDone === void 0) { newGlobalInitDone = false; }
-    if (newInitializationPromisesMap === void 0) { newInitializationPromisesMap = {}; }
-    if (newDynamicPromises === void 0) { newDynamicPromises = []; }
-    globalInitDone = newGlobalInitDone;
-    index_esm_initializationPromisesMap = newInitializationPromisesMap;
-    index_esm_dynamicConfigPromisesList = newDynamicPromises;
-    dataLayerName = 'dataLayer';
-    gtagName = 'gtag';
-}
-/**
- * For testing
- */
-function getGlobalVars() {
-    return {
-        initializationPromisesMap: index_esm_initializationPromisesMap,
-        dynamicConfigPromisesList: index_esm_dynamicConfigPromisesList
-    };
-}
-/**
- * This must be run before calling firebase.analytics() or it won't
- * have any effect.
- * @param options Custom gtag and dataLayer names.
- */
-function settings(options) {
-    if (globalInitDone) {
-        throw index_esm_ERROR_FACTORY.create("already-initialized" /* ALREADY_INITIALIZED */);
-    }
-    if (options.dataLayerName) {
-        dataLayerName = options.dataLayerName;
-    }
-    if (options.gtagName) {
-        gtagName = options.gtagName;
-    }
-}
-/**
- * Returns true if no environment mismatch is found.
- * If environment mismatches are found, throws an INVALID_ANALYTICS_CONTEXT
- * error that also lists details for each mismatch found.
- */
-function warnOnBrowserContextMismatch() {
-    var mismatchedEnvMessages = [];
-    if (Object(util_dist_index_esm["l" /* isBrowserExtension */])()) {
-        mismatchedEnvMessages.push('This is a browser extension environment.');
-    }
-    if (!Object(util_dist_index_esm["d" /* areCookiesEnabled */])()) {
-        mismatchedEnvMessages.push('Cookies are not available.');
-    }
-    if (mismatchedEnvMessages.length > 0) {
-        var details = mismatchedEnvMessages
-            .map(function (message, index) { return "(" + (index + 1) + ") " + message; })
-            .join(' ');
-        var err = index_esm_ERROR_FACTORY.create("invalid-analytics-context" /* INVALID_ANALYTICS_CONTEXT */, {
-            errorInfo: details
-        });
-        logger.warn(err.message);
-    }
-}
-function factory(app, installations) {
-    warnOnBrowserContextMismatch();
-    var appId = app.options.appId;
-    if (!appId) {
-        throw index_esm_ERROR_FACTORY.create("no-app-id" /* NO_APP_ID */);
-    }
-    if (!app.options.apiKey) {
-        if (app.options.measurementId) {
-            logger.warn("The \"apiKey\" field is empty in the local Firebase config. This is needed to fetch the latest" +
-                (" measurement ID for this Firebase app. Falling back to the measurement ID " + app.options.measurementId) +
-                " provided in the \"measurementId\" field in the local Firebase config.");
-        }
-        else {
-            throw index_esm_ERROR_FACTORY.create("no-api-key" /* NO_API_KEY */);
-        }
-    }
-    if (index_esm_initializationPromisesMap[appId] != null) {
-        throw index_esm_ERROR_FACTORY.create("already-exists" /* ALREADY_EXISTS */, {
-            id: appId
-        });
-    }
-    if (!globalInitDone) {
-        // Steps here should only be done once per page: creation or wrapping
-        // of dataLayer and global gtag function.
-        // Detect if user has already put the gtag <script> tag on this page.
-        if (!findGtagScriptOnPage()) {
-            insertScriptTag(dataLayerName);
-        }
-        getOrCreateDataLayer(dataLayerName);
-        var _a = wrapOrCreateGtag(index_esm_initializationPromisesMap, index_esm_dynamicConfigPromisesList, index_esm_measurementIdToAppId, dataLayerName, gtagName), wrappedGtag = _a.wrappedGtag, gtagCore = _a.gtagCore;
-        wrappedGtagFunction = wrappedGtag;
-        gtagCoreFunction = gtagCore;
-        globalInitDone = true;
-    }
-    // Async but non-blocking.
-    // This map reflects the completion state of all promises for each appId.
-    index_esm_initializationPromisesMap[appId] = initializeIds(app, index_esm_dynamicConfigPromisesList, index_esm_measurementIdToAppId, installations, gtagCoreFunction);
-    var analyticsInstance = {
-        app: app,
-        // Public methods return void for API simplicity and to better match gtag,
-        // while internal implementations return promises.
-        logEvent: function (eventName, eventParams, options) {
-            logEvent(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], eventName, eventParams, options).catch(function (e) { return logger.error(e); });
-        },
-        setCurrentScreen: function (screenName, options) {
-            setCurrentScreen(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], screenName, options).catch(function (e) { return logger.error(e); });
-        },
-        setUserId: function (id, options) {
-            setUserId(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], id, options).catch(function (e) { return logger.error(e); });
-        },
-        setUserProperties: function (properties, options) {
-            setUserProperties(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], properties, options).catch(function (e) { return logger.error(e); });
-        },
-        setAnalyticsCollectionEnabled: function (enabled) {
-            setAnalyticsCollectionEnabled(index_esm_initializationPromisesMap[appId], enabled).catch(function (e) { return logger.error(e); });
-        },
-        INTERNAL: {
-            delete: function () {
-                delete index_esm_initializationPromisesMap[appId];
-                return Promise.resolve();
-            }
-        }
-    };
-    return analyticsInstance;
-}
-
-var dist_index_esm_name = "@firebase/analytics";
-var index_esm_version = "0.6.2";
-
-/**
- * Type constant for Firebase Analytics.
- */
-var ANALYTICS_TYPE = 'analytics';
-function registerAnalytics(instance) {
-    instance.INTERNAL.registerComponent(new component_dist_index_esm["a" /* Component */](ANALYTICS_TYPE, function (container) {
-        // getImmediate for FirebaseApp will always succeed
-        var app = container.getProvider('app').getImmediate();
-        var installations = container
-            .getProvider('installations')
-            .getImmediate();
-        return factory(app, installations);
-    }, "PUBLIC" /* PUBLIC */).setServiceProps({
-        settings: settings,
-        EventName: EventName,
-        isSupported: isSupported
-    }));
-    instance.INTERNAL.registerComponent(new component_dist_index_esm["a" /* Component */]('analytics-internal', internalFactory, "PRIVATE" /* PRIVATE */));
-    instance.registerVersion(dist_index_esm_name, index_esm_version);
-    function internalFactory(container) {
-        try {
-            var analytics = container.getProvider(ANALYTICS_TYPE).getImmediate();
-            return {
-                logEvent: analytics.logEvent
-            };
-        }
-        catch (e) {
-            throw index_esm_ERROR_FACTORY.create("interop-component-reg-failed" /* INTEROP_COMPONENT_REG_FAILED */, {
-                reason: e
-            });
-        }
-    }
-}
-registerAnalytics(app_dist_index_esm["a" /* default */]);
-/**
- * this is a public static method provided to users that wraps four different checks:
- *
- * 1. check if it's not a browser extension environment.
- * 1. check if cookie is enabled in current browser.
- * 3. check if IndexedDB is supported by the browser environment.
- * 4. check if the current browser context is valid for using IndexedDB.
- *
- */
-function isSupported() {
-    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
-        var isDBOpenable, error_1;
-        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (Object(util_dist_index_esm["l" /* isBrowserExtension */])()) {
-                        return [2 /*return*/, false];
-                    }
-                    if (!Object(util_dist_index_esm["d" /* areCookiesEnabled */])()) {
-                        return [2 /*return*/, false];
-                    }
-                    if (!Object(util_dist_index_esm["o" /* isIndexedDBAvailable */])()) {
-                        return [2 /*return*/, false];
-                    }
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, Object(util_dist_index_esm["t" /* validateIndexedDBOpenable */])()];
-                case 2:
-                    isDBOpenable = _a.sent();
-                    return [2 /*return*/, isDBOpenable];
-                case 3:
-                    error_1 = _a.sent();
-                    return [2 /*return*/, false];
-                case 4: return [2 /*return*/];
-            }
-        });
-    });
-}
-
-
-
-// CONCATENATED MODULE: ./node_modules/firebase/analytics/dist/index.esm.js
-
-
-// EXTERNAL MODULE: ./node_modules/firebaseui/dist/esm.js
-var esm = __webpack_require__(44);
-
-// CONCATENATED MODULE: ./src/Utils.ts
-const MATERIAL_ICONS_CLASS = "material-icons-round";
-/**
- * Format a long date without a time.
- */
-function formatDate(date) {
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString(undefined, options);
-}
-/**
- * Make a material design icon with the given name.
- *
- * https://google.github.io/material-design-icons/
- * https://material.io/resources/icons/?style=round
- */
-function makeIcon(name) {
-    const icon = document.createElement("i");
-    icon.classList.add(MATERIAL_ICONS_CLASS);
-    icon.classList.add("material-icons-override");
-    icon.innerText = name;
-    return icon;
-}
-/**
- * Make a generic round button.
- */
-function makeIconButton(icon, title, clickCallback) {
-    const button = document.createElement("button");
-    button.classList.add("icon-button");
-    button.title = title;
-    button.append(icon);
-    button.addEventListener("click", clickCallback);
-    return button;
-}
-/**
- * Make a float-right close button for dialog boxes.
- */
-function makeCloseIconButton(closeCallback) {
-    const button = makeIconButton(makeIcon("close"), "Close window", closeCallback);
-    button.classList.add("close-button");
-    return button;
-}
-function makeTextButton(label, iconName, cssClass, clickCallback) {
-    const button = document.createElement("button");
-    button.innerText = label;
-    button.classList.add("text-button", cssClass);
-    if (iconName !== undefined) {
-        if (typeof iconName === "string") {
-            iconName = [iconName];
-        }
-        for (const i of iconName) {
-            const icon = document.createElement("i");
-            icon.classList.add(MATERIAL_ICONS_CLASS);
-            icon.innerText = i;
-            button.append(icon);
-        }
-    }
-    if (clickCallback !== undefined) {
-        button.addEventListener("click", clickCallback);
-    }
-    return button;
-}
-/**
- * Returns whether two string arrays are the same.
- *
- * Lodash has isEqual(), but it adds about 15 kB after minimization! (It's a deep comparison
- * that has to deal with all sorts of data types.)
- */
-function isSameStringArray(a, b) {
-    return a.length === b.length && a.every((value, index) => value === b[index]);
-}
-/**
- * Start a timer, and return a function that will evaluate to how many milliseconds
- * the timer has been running. Calling the function restarts the timer.
- */
-function startTimer() {
-    let timerStart = new Date().getTime();
-    return () => {
-        const now = new Date().getTime();
-        const elapsed = now - timerStart;
-        timerStart = now;
-        return elapsed;
-    };
-}
-
-// EXTERNAL MODULE: ./node_modules/strongly-typed-events/dist/index.js
-var strongly_typed_events_dist = __webpack_require__(9);
-
-// CONCATENATED MODULE: ./src/PanelManager.ts
-
-/**
- * Manages a stack of displayed panels.
- */
-class PanelManager_PanelManager {
-    constructor() {
-        this.panels = [];
-        this.onOpenClose = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.isOpen = false;
-        const body = document.querySelector("body");
-        this.backgroundNode = document.createElement("div");
-        this.backgroundNode.classList.add("panel-background");
-        this.backgroundNode.addEventListener("click", e => {
-            if (e.target === this.backgroundNode) {
-                this.close();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        });
-        body.append(this.backgroundNode);
-        this.positioningNode = document.createElement("div");
-        this.positioningNode.classList.add("panel-positioning");
-        this.backgroundNode.append(this.positioningNode);
-        // Handler for the ESC key.
-        this.escListener = (e) => {
-            if (e.key === "Escape") {
-                e.preventDefault();
-                e.stopPropagation();
-                this.close();
-            }
-        };
-    }
-    /**
-     * Push a new panel and animate it on-screen.
-     */
-    pushPanel(panel) {
-        this.panels.push(panel);
-        this.positioningNode.append(panel.element);
-        if (this.panels.length === 1) {
-            // First panel, position immediately.
-            this.positionPanels(this.panels.length - 1);
-        }
-        else {
-            // Position it instantly at its off-screen position.
-            this.positionPanels(this.panels.length - 2);
-            // Wait for it to be laid out, then position it on-screen so the animation will be used.
-            setTimeout(() => {
-                this.positionPanels(this.panels.length - 1);
-            }, 0);
-        }
-    }
-    /**
-     * Start the animation to pop the most screen panel.
-     */
-    popPanel() {
-        if (this.panels.length > 1) {
-            // Slide it off-screen.
-            this.positionPanels(this.panels.length - 2);
-            // Remove it from the DOM.
-            const panel = this.panels.pop();
-            setTimeout(() => {
-                if (panel !== undefined) {
-                    panel.element.remove();
-                }
-            }, 1000);
-        }
-    }
-    /**
-     * Move the panels to their position so that "active" will be on-screen.
-     */
-    positionPanels(active) {
-        for (let i = 0; i < this.panels.length; i++) {
-            const screen = this.panels[i];
-            const offset = (i - active) * 100;
-            screen.element.style.left = offset + "vw";
-            screen.element.style.right = -offset + "vw";
-        }
-    }
-    /**
-     * Show the panels. Shows them where they were last.
-     */
-    open() {
-        if (!this.isOpen) {
-            this.isOpen = true;
-            document.addEventListener("keydown", this.escListener);
-            this.onOpenClose.dispatch(true);
-            this.backgroundNode.classList.add("panel-shown");
-        }
-    }
-    /**
-     * Hides the panels.
-     */
-    close() {
-        if (this.isOpen) {
-            this.isOpen = false;
-            document.removeEventListener("keydown", this.escListener);
-            this.onOpenClose.dispatch(false);
-            this.backgroundNode.classList.remove("panel-shown");
-        }
-    }
-    /**
-     * Toggle the visibility of the panels.
-     */
-    toggle() {
-        if (this.isOpen) {
-            this.close();
-        }
-        else {
-            this.open();
-        }
-    }
-}
-
-// CONCATENATED MODULE: ./src/Panel.ts
-
-/**
- * Base class for panels.
- */
-class Panel_Panel {
-    /**
-     * Construct the panel and its basic UI.
-     *
-     * @param context the app's context object.
-     * @param title title for the header.
-     * @param panelCssClass class for the whole panel.
-     * @param showBackButton whether to show a back button.
-     */
-    constructor(context, title, panelCssClass, showBackButton) {
-        this.context = context;
-        this.element = document.createElement("div");
-        this.element.classList.add("panel", panelCssClass);
-        const header = document.createElement("h1");
-        if (showBackButton) {
-            const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
-            backButton.classList.add("back-button");
-            header.append(backButton);
-        }
-        this.headerTextNode = document.createElement("span");
-        this.headerTextNode.innerText = title;
-        header.append(this.headerTextNode);
-        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        this.element.append(header);
-        this.content = document.createElement("div");
-        this.content.classList.add("panel-content");
-        this.element.append(this.content);
-    }
-}
-
-// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
-var teamten_ts_utils_dist = __webpack_require__(10);
-
-// CONCATENATED MODULE: ./src/PageTabs.ts
-
-/**
- * Set of page tabs.
- */
-class PageTabs_PageTabs {
-    constructor(element) {
-        this.tabs = [];
-        // The tab last selected by the user.
-        this.activeIndex = 0;
-        // Same as activeIndex, unless it's not visible, in which case some other
-        // visible tab, or undefined if no tab is visible.
-        this.effectiveActiveIndex = undefined;
-        this.containerElement = element;
-        this.containerElement.classList.add("page-tabs-container");
-        // Where we draw the page tabs themselves.
-        this.tabElement = document.createElement("div");
-        this.tabElement.classList.add("page-tabs");
-        this.containerElement.append(this.tabElement);
-    }
-    /**
-     * Add a new tab. Be sure it's fully configured, because its onShow
-     * listener might be called synchronously.
-     */
-    addTab(tab) {
-        this.tabs.push(tab);
-        this.containerElement.append(tab.element);
-        this.configurationChanged();
-    }
-    /**
-     * Set the visibility of a tab.
-     */
-    setVisible(tab, visible) {
-        tab.visible = visible;
-        this.configurationChanged();
-    }
-    /**
-     * Switch the active tab.
-     */
-    setActiveTab(activeIndex) {
-        if (activeIndex !== this.activeIndex) {
-            this.activeIndex = activeIndex;
-            this.configurationChanged();
-        }
-    }
-    /**
-     * Update all tabs given a new configuration.
-     */
-    configurationChanged() {
-        const oldEffectiveActiveIndex = this.effectiveActiveIndex;
-        this.computeEffectiveActiveIndex();
-        console.log(oldEffectiveActiveIndex, this.effectiveActiveIndex);
-        if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
-            if (oldEffectiveActiveIndex !== undefined) {
-                this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
-            }
-            if (this.effectiveActiveIndex !== undefined) {
-                this.tabs[this.effectiveActiveIndex].onShow.dispatch();
-            }
-        }
-        this.recreateTabs();
-        this.updateTabContentVisibility();
-    }
-    /**
-     * Get the current active index. If it's hidden, return another one. If none
-     * exist, return undefined.
-     */
-    computeEffectiveActiveIndex() {
-        this.effectiveActiveIndex = this.activeIndex;
-        // If the active tab is hidden, find another one.
-        if (this.effectiveActiveIndex >= this.tabs.length || !this.tabs[this.effectiveActiveIndex].visible) {
-            // Pick any.
-            this.effectiveActiveIndex = undefined;
-            for (let i = 0; i < this.tabs.length; i++) {
-                if (this.tabs[i].visible) {
-                    this.effectiveActiveIndex = i;
-                    break;
-                }
-            }
-        }
-    }
-    /**
-     * Recreate the set of page tabs (the UI).
-     */
-    recreateTabs() {
-        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
-        for (let index = 0; index < this.tabs.length; index++) {
-            const tab = this.tabs[index];
-            if (tab.visible) {
-                const tabDiv = document.createElement("div");
-                tabDiv.innerText = tab.name;
-                tabDiv.classList.toggle("page-tab-active", index === this.effectiveActiveIndex);
-                tabDiv.addEventListener("click", () => {
-                    this.setActiveTab(index);
-                });
-                this.tabElement.append(tabDiv);
-            }
-        }
-    }
-    /**
-     * Update which tab contents are visible based on which is selected.
-     */
-    updateTabContentVisibility() {
-        for (let index = 0; index < this.tabs.length; index++) {
-            this.tabs[index].element.classList.toggle("hidden", index !== this.effectiveActiveIndex);
-        }
-    }
-}
-
-// CONCATENATED MODULE: ./src/Library.ts
-
-/**
- * Base class for library event classes.
- */
-class LibraryEvent {
-}
-/**
- * Event for adding a file to the library.
- */
-class LibraryAddEvent {
-    constructor(newFile) {
-        this.newFile = newFile;
-    }
-}
-/**
- * Event for modifying a file in the library.
- */
-class LibraryModifyEvent {
-    constructor(oldFile, newFile) {
-        this.oldFile = oldFile;
-        this.newFile = newFile;
-    }
-}
-/**
- * Event for removing a file from the library.
- */
-class LibraryRemoveEvent {
-    constructor(oldFile) {
-        this.oldFile = oldFile;
-    }
-}
-/**
- * Keep track of all the files in the user's library. This should be a mirror of the contents
- * of the database in the cloud.
- */
-class Library_Library {
-    constructor() {
-        // Map from ID to file.
-        this.files = new Map();
-        // Fires after the map has been updated.
-        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        // Whether the library is in sync with the cloud database. This starts out false
-        // and emits a "true" once the first fetch has completed.
-        this.onInSync = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-    }
-    /**
-     * Get a file by its ID, or undefined it not in the library.
-     */
-    getFile(id) {
-        return this.files.get(id);
-    }
-    /**
-     * Specify whether the in-memory library is now in sync with the cloud database.
-     */
-    setInSync(inSync) {
-        this.onInSync.dispatch(inSync);
-    }
-    /**
-     * Add a file to the library.
-     */
-    addFile(file) {
-        if (this.files.has(file.id)) {
-            console.error("Library.add(): Library already has file with ID " + file.id);
-            this.modifyFile(file);
-        }
-        else {
-            this.files.set(file.id, file);
-            this.onEvent.dispatch(new LibraryAddEvent(file));
-        }
-    }
-    /**
-     * Modify a file already in the library.
-     */
-    modifyFile(file) {
-        const oldFile = this.files.get(file.id);
-        if (oldFile === undefined) {
-            console.error("Library.modify(): Library does not have file with ID " + file.id);
-        }
-        else {
-            this.files.set(file.id, file);
-            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
-        }
-    }
-    /**
-     * Remove a file from the library.
-     */
-    removeFile(file) {
-        const oldFile = this.files.get(file.id);
-        if (oldFile === undefined) {
-            console.error("Library.remove(): Library does not have file with ID " + file.id);
-        }
-        else {
-            // Here we assume that file and oldFile are the same. We could check, or we could just
-            // have the caller pass in a file ID.
-            this.files.delete(file.id);
-            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
-        }
-    }
-    /**
-     * Remove all files from the library. One event will be triggered per file.
-     */
-    removeAll() {
-        // Make a separate list first since we'll be modifying the map as we go.
-        const files = [];
-        for (const file of this.files.values()) {
-            files.push(file);
-        }
-        // Then delete each.
-        for (const file of files) {
-            this.removeFile(file);
-        }
-    }
-}
-
-// CONCATENATED MODULE: ./src/File.ts
-
-/**
- * Represents a file that the user owns.
- */
-class File_File {
-    constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, addedAt, modifiedAt) {
-        this.id = id;
-        this.uid = uid;
-        this.name = name;
-        this.filename = filename;
-        this.note = note;
-        this.shared = shared;
-        this.hash = hash;
-        this.screenshots = screenshots;
-        this.binary = binary;
-        this.addedAt = addedAt;
-        this.modifiedAt = modifiedAt;
-    }
-    builder() {
-        const builder = new FileBuilder();
-        builder.id = this.id;
-        builder.uid = this.uid;
-        builder.name = this.name;
-        builder.filename = this.filename;
-        builder.note = this.note;
-        builder.shared = this.shared;
-        builder.hash = this.hash;
-        builder.screenshots = this.screenshots;
-        builder.binary = this.binary;
-        builder.addedAt = this.addedAt;
-        builder.modifiedAt = this.modifiedAt;
-        return builder;
-    }
-    /**
-     * Returns a Firestore update object to convert oldFile to this.
-     */
-    getUpdateDataComparedTo(oldFile) {
-        const updateData = {};
-        if (this.name !== oldFile.name) {
-            updateData.name = this.name;
-        }
-        if (this.filename !== oldFile.filename) {
-            updateData.filename = this.filename;
-        }
-        if (this.note !== oldFile.note) {
-            updateData.note = this.note;
-        }
-        if (this.shared !== oldFile.shared) {
-            updateData.shared = this.shared;
-        }
-        if (!isSameStringArray(this.screenshots, oldFile.screenshots)) {
-            updateData.screenshots = this.screenshots;
-        }
-        if (this.modifiedAt.getTime() !== oldFile.modifiedAt.getTime()) {
-            updateData.modifiedAt = this.modifiedAt;
-        }
-        return updateData;
-    }
-    /**
-     * Compare two files for sorting.
-     */
-    static compare(a, b) {
-        // Primary sort by name.
-        if (a.name < b.name) {
-            return -1;
-        }
-        else if (a.name > b.name) {
-            return 1;
-        }
-        // Break ties with ID so the sort is stable.
-        if (a.id < b.id) {
-            return -1;
-        }
-        else if (a.id > b.id) {
-            return 1;
-        }
-        else {
-            // Shouldn't happen.
-            return 0;
-        }
-    }
-}
-/**
- * Builder to help construct File objects.
- */
-class FileBuilder {
-    constructor() {
-        this.id = "";
-        this.uid = "";
-        this.name = "";
-        this.filename = "";
-        this.note = "";
-        this.shared = false;
-        this.hash = "";
-        this.screenshots = [];
-        this.binary = new Uint8Array(0);
-        this.addedAt = new Date();
-        this.modifiedAt = new Date();
-    }
-    static fromDoc(doc) {
-        var _a, _b;
-        const builder = new FileBuilder();
-        builder.id = doc.id;
-        // Assume data() is valid, either because it's a query or because we checked "exists".
-        const data = doc.data();
-        builder.uid = data.uid;
-        builder.name = data.name;
-        builder.filename = data.filename;
-        builder.note = data.note;
-        builder.shared = (_a = data.shared) !== null && _a !== void 0 ? _a : false;
-        builder.hash = data.hash;
-        builder.screenshots = (_b = data.screenshots) !== null && _b !== void 0 ? _b : [];
-        builder.binary = data.binary.toUint8Array();
-        builder.addedAt = data.addedAt.toDate();
-        builder.modifiedAt = data.modifiedAt.toDate();
-        return builder;
-    }
-    withId(id) {
-        this.id = id;
-        return this;
-    }
-    withUid(uid) {
-        this.uid = uid;
-        return this;
-    }
-    withName(name) {
-        this.name = name;
-        return this;
-    }
-    withFilename(filename) {
-        this.filename = filename;
-        return this;
-    }
-    withNote(note) {
-        this.note = note;
-        return this;
-    }
-    withShared(shared) {
-        this.shared = shared;
-        return this;
-    }
-    withScreenshots(screenshots) {
-        this.screenshots = screenshots;
-        return this;
-    }
-    withBinary(binary) {
-        this.binary = binary;
-        return this;
-    }
-    withModifiedAt(modifiedAt) {
-        this.modifiedAt = modifiedAt;
-        return this;
-    }
-    build() {
-        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
-    }
-}
-
-// CONCATENATED MODULE: ./src/PageTab.ts
-
-/**
- * Represents a single page tab and its contents.
- */
-class PageTab_PageTab {
-    constructor(name, visible = true) {
-        this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.name = name;
-        this.visible = visible;
-        this.element = document.createElement("div");
-        this.element.classList.add("tab-content");
-    }
-}
-
-// CONCATENATED MODULE: ./src/YourFilesTab.ts
-
-
-
-
-
-
-const FILE_ID_ATTR = "data-file-id";
-const IMPORT_FILE_LABEL = "Import File";
-/**
- * Tap for the Your Files UI.
- */
-class YourFilesTab_YourFilesTab {
-    constructor(pageTabs, context) {
-        this.libraryInSync = false;
-        this.context = context;
-        const tab = new PageTab_PageTab("Your Files", context.user !== undefined);
-        tab.element.classList.add("your-files-tab");
-        context.onUser.subscribe(user => pageTabs.setVisible(tab, user !== undefined));
-        this.filesDiv = document.createElement("div");
-        this.filesDiv.classList.add("files");
-        tab.element.append(this.filesDiv);
-        this.emptyLibrary = document.createElement("div");
-        this.emptyLibrary.classList.add("empty-library");
-        tab.element.append(this.emptyLibrary);
-        const emptyTitle = document.createElement("h2");
-        emptyTitle.innerText = "You have no files in your library!";
-        const emptyBody = document.createElement("article");
-        emptyBody.innerHTML = `Upload a <code>CAS</code> or <code>CMD</code> file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import it from the RetroStore tab.`;
-        const demon = document.createElement("img");
-        demon.src = "/demon.png";
-        this.emptyLibrary.append(emptyTitle, emptyBody, demon);
-        this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
-        this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
-        const actionBar = document.createElement("div");
-        actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
-        const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
-        actionBar.append(uploadButton);
-        this.updateSplashScreen();
-        pageTabs.addTab(tab);
-    }
-    /**
-     * Handle change to library files.
-     */
-    onLibraryEvent(event) {
-        if (event instanceof LibraryAddEvent) {
-            this.addFile(event.newFile);
-            this.sortFiles();
-        }
-        if (event instanceof LibraryModifyEvent) {
-            // Probably not worth modifying in-place.
-            this.removeFile(event.oldFile.id);
-            this.addFile(event.newFile);
-            this.sortFiles();
-        }
-        if (event instanceof LibraryRemoveEvent) {
-            this.removeFile(event.oldFile.id);
-        }
-        this.updateSplashScreen();
-    }
-    /**
-     * React to whether library is now fully in sync.
-     */
-    onLibraryInSync(inSync) {
-        this.libraryInSync = inSync;
-        this.updateSplashScreen();
-    }
-    /**
-     * Update whether the splash screen is shown.
-     */
-    updateSplashScreen() {
-        const displaySplashScreen = this.libraryInSync && this.filesDiv.children.length === 0;
-        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
-        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
-    }
-    /**
-     * Configure and open the "open file" dialog for importing files.
-     */
-    uploadFile() {
-        const uploadElement = document.createElement("input");
-        uploadElement.type = "file";
-        uploadElement.accept = ".cas, .bas, .cmd";
-        uploadElement.multiple = true;
-        uploadElement.addEventListener("change", () => {
-            var _a;
-            const user = this.context.user;
-            if (user === undefined) {
-                console.error("Can't import with signed-out user");
-                return;
-            }
-            const files = (_a = uploadElement.files) !== null && _a !== void 0 ? _a : [];
-            const openFilePanel = files.length === 1;
-            for (const f of files) {
-                f.arrayBuffer()
-                    .then(arrayBuffer => {
-                    const bytes = new Uint8Array(arrayBuffer);
-                    this.importFile(user.uid, f.name, bytes, openFilePanel);
-                })
-                    .catch(error => {
-                    // TODO
-                    console.error(error);
-                });
-            }
-        });
-        uploadElement.click();
-    }
-    /**
-     * Add an uploaded file to our library.
-     * @param uid user ID.
-     * @param filename original filename from the user.
-     * @param binary raw binary of the file.
-     * @param openFilePanel whether to open the file panel for this file after importing it.
-     */
-    importFile(uid, filename, binary, openFilePanel) {
-        let name = filename;
-        // Remove extension.
-        const i = name.lastIndexOf(".");
-        if (i > 0) {
-            name = name.substr(0, i);
-        }
-        // Capitalize.
-        name = name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
-        // All-caps for filename.
-        filename = filename.toUpperCase();
-        let file = new FileBuilder()
-            .withUid(uid)
-            .withName(name)
-            .withFilename(filename)
-            .withBinary(binary)
-            .build();
-        this.context.db.addFile(file)
-            .then(docRef => {
-            file = file.builder().withId(docRef.id).build();
-            this.context.library.addFile(file);
-            if (openFilePanel) {
-                this.context.openFilePanel(file);
-            }
-        })
-            .catch(error => {
-            // TODO
-            console.error("Error adding document: ", error);
-        });
-    }
-    /**
-     * Add a file to the list of files in the library.
-     */
-    addFile(file) {
-        const fileDiv = document.createElement("div");
-        fileDiv.classList.add("file");
-        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
-        this.filesDiv.append(fileDiv);
-        const infoDiv = document.createElement("div");
-        fileDiv.append(infoDiv);
-        const nameDiv = document.createElement("div");
-        nameDiv.classList.add("name");
-        nameDiv.innerText = file.name;
-        infoDiv.append(nameDiv);
-        const filenameDiv = document.createElement("div");
-        filenameDiv.classList.add("filename");
-        filenameDiv.innerText = file.filename;
-        infoDiv.append(filenameDiv);
-        const noteDiv = document.createElement("div");
-        noteDiv.classList.add("note");
-        noteDiv.innerText = file.note;
-        infoDiv.append(noteDiv);
-        const screenshotsDiv = document.createElement("div");
-        screenshotsDiv.classList.add("screenshots");
-        fileDiv.append(screenshotsDiv);
-        for (const screenshot of file.screenshots) {
-            const screen = new dist["CanvasScreen"]();
-            screen.displayScreenshot(screenshot);
-            const image = screen.asImage();
-            screenshotsDiv.append(image);
-        }
-        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
-            this.context.runProgram(file);
-            this.context.panelManager.close();
-        });
-        playButton.classList.add("play-button");
-        fileDiv.append(playButton);
-        const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
-            this.context.openFilePanel(file);
-        });
-        infoButton.classList.add("info-button");
-        fileDiv.append(infoButton);
-    }
-    /**
-     * Remove a file from the UI by its ID.
-     */
-    removeFile(fileId) {
-        const element = this.getFileElementById(fileId);
-        if (element !== undefined) {
-            element.remove();
-        }
-        else {
-            console.error("removeFile(): No element with file ID " + fileId);
-        }
-    }
-    /**
-     * Return an element for a file given its ID, or undefined if not found.
-     */
-    getFileElementById(fileId) {
-        let selectors = ":scope > [" + FILE_ID_ATTR + "=\"" + fileId + "\"]";
-        const element = this.filesDiv.querySelector(selectors);
-        return element === null ? undefined : element;
-    }
-    /**
-     * Sort files already displayed.
-     */
-    sortFiles() {
-        // Sort existing files.
-        const fileElements = [];
-        for (const element of this.filesDiv.children) {
-            const fileId = element.getAttribute(FILE_ID_ATTR);
-            if (fileId !== null) {
-                const file = this.context.library.getFile(fileId);
-                if (file !== undefined) {
-                    fileElements.push({ file: file, element: element });
-                }
-            }
-        }
-        fileElements.sort((a, b) => File_File.compare(a.file, b.file));
-        // Repopulate the UI in the right order.
-        Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
-        this.filesDiv.append(...fileElements.map(e => e.element));
-    }
-}
-
-// CONCATENATED MODULE: ./src/RetroStoreProto.ts
-const encodeTrs80Model = {
-    UNKNOWN_MODEL: 0,
-    MODEL_I: 1,
-    MODEL_III: 2,
-    MODEL_4: 3,
-    MODEL_4P: 4,
-};
-const decodeTrs80Model = {
-    0: "UNKNOWN_MODEL" /* UNKNOWN_MODEL */,
-    1: "MODEL_I" /* MODEL_I */,
-    2: "MODEL_III" /* MODEL_III */,
-    3: "MODEL_4" /* MODEL_4 */,
-    4: "MODEL_4P" /* MODEL_4P */,
-};
-const encodeMediaType = {
-    UNKNOWN: 0,
-    DISK: 1,
-    CASSETTE: 2,
-    COMMAND: 3,
-    BASIC: 4,
-};
-const decodeMediaType = {
-    0: "UNKNOWN" /* UNKNOWN */,
-    1: "DISK" /* DISK */,
-    2: "CASSETTE" /* CASSETTE */,
-    3: "COMMAND" /* COMMAND */,
-    4: "BASIC" /* BASIC */,
-};
-function encodeApiResponseApps(message) {
-    let bb = popByteBuffer();
-    _encodeApiResponseApps(message, bb);
-    return toUint8Array(bb);
-}
-function _encodeApiResponseApps(message, bb) {
-    // optional bool success = 1;
-    let $success = message.success;
-    if ($success !== undefined) {
-        writeVarint32(bb, 8);
-        writeByte(bb, $success ? 1 : 0);
-    }
-    // optional string message = 2;
-    let $message = message.message;
-    if ($message !== undefined) {
-        writeVarint32(bb, 18);
-        writeString(bb, $message);
-    }
-    // repeated App app = 3;
-    let array$app = message.app;
-    if (array$app !== undefined) {
-        for (let value of array$app) {
-            writeVarint32(bb, 26);
-            let nested = popByteBuffer();
-            _encodeApp(value, nested);
-            writeVarint32(bb, nested.limit);
-            writeByteBuffer(bb, nested);
-            pushByteBuffer(nested);
-        }
-    }
-}
-function decodeApiResponseApps(binary) {
-    return _decodeApiResponseApps(wrapByteBuffer(binary));
-}
-function _decodeApiResponseApps(bb) {
-    let message = {};
-    end_of_message: while (!isAtEnd(bb)) {
-        let tag = readVarint32(bb);
-        switch (tag >>> 3) {
-            case 0:
-                break end_of_message;
-            // optional bool success = 1;
-            case 1: {
-                message.success = !!readByte(bb);
-                break;
-            }
-            // optional string message = 2;
-            case 2: {
-                message.message = readString(bb, readVarint32(bb));
-                break;
-            }
-            // repeated App app = 3;
-            case 3: {
-                let limit = pushTemporaryLength(bb);
-                let values = message.app || (message.app = []);
-                values.push(_decodeApp(bb));
-                bb.limit = limit;
-                break;
-            }
-            default:
-                skipUnknownField(bb, tag & 7);
-        }
-    }
-    return message;
-}
-function encodeApiResponseMediaImages(message) {
-    let bb = popByteBuffer();
-    _encodeApiResponseMediaImages(message, bb);
-    return toUint8Array(bb);
-}
-function _encodeApiResponseMediaImages(message, bb) {
-    // optional bool success = 1;
-    let $success = message.success;
-    if ($success !== undefined) {
-        writeVarint32(bb, 8);
-        writeByte(bb, $success ? 1 : 0);
-    }
-    // optional string message = 2;
-    let $message = message.message;
-    if ($message !== undefined) {
-        writeVarint32(bb, 18);
-        writeString(bb, $message);
-    }
-    // repeated MediaImage mediaImage = 3;
-    let array$mediaImage = message.mediaImage;
-    if (array$mediaImage !== undefined) {
-        for (let value of array$mediaImage) {
-            writeVarint32(bb, 26);
-            let nested = popByteBuffer();
-            _encodeMediaImage(value, nested);
-            writeVarint32(bb, nested.limit);
-            writeByteBuffer(bb, nested);
-            pushByteBuffer(nested);
-        }
-    }
-}
-function decodeApiResponseMediaImages(binary) {
-    return _decodeApiResponseMediaImages(wrapByteBuffer(binary));
-}
-function _decodeApiResponseMediaImages(bb) {
-    let message = {};
-    end_of_message: while (!isAtEnd(bb)) {
-        let tag = readVarint32(bb);
-        switch (tag >>> 3) {
-            case 0:
-                break end_of_message;
-            // optional bool success = 1;
-            case 1: {
-                message.success = !!readByte(bb);
-                break;
-            }
-            // optional string message = 2;
-            case 2: {
-                message.message = readString(bb, readVarint32(bb));
-                break;
-            }
-            // repeated MediaImage mediaImage = 3;
-            case 3: {
-                let limit = pushTemporaryLength(bb);
-                let values = message.mediaImage || (message.mediaImage = []);
-                values.push(_decodeMediaImage(bb));
-                bb.limit = limit;
-                break;
-            }
-            default:
-                skipUnknownField(bb, tag & 7);
-        }
-    }
-    return message;
-}
-function encodeApp(message) {
-    let bb = popByteBuffer();
-    _encodeApp(message, bb);
-    return toUint8Array(bb);
-}
-function _encodeApp(message, bb) {
-    // optional string id = 1;
-    let $id = message.id;
-    if ($id !== undefined) {
-        writeVarint32(bb, 10);
-        writeString(bb, $id);
-    }
-    // optional string name = 2;
-    let $name = message.name;
-    if ($name !== undefined) {
-        writeVarint32(bb, 18);
-        writeString(bb, $name);
-    }
-    // optional string version = 3;
-    let $version = message.version;
-    if ($version !== undefined) {
-        writeVarint32(bb, 26);
-        writeString(bb, $version);
-    }
-    // optional string description = 4;
-    let $description = message.description;
-    if ($description !== undefined) {
-        writeVarint32(bb, 34);
-        writeString(bb, $description);
-    }
-    // optional int32 release_year = 5;
-    let $release_year = message.release_year;
-    if ($release_year !== undefined) {
-        writeVarint32(bb, 40);
-        writeVarint64(bb, intToLong($release_year));
-    }
-    // repeated string screenshot_url = 6;
-    let array$screenshot_url = message.screenshot_url;
-    if (array$screenshot_url !== undefined) {
-        for (let value of array$screenshot_url) {
-            writeVarint32(bb, 50);
-            writeString(bb, value);
-        }
-    }
-    // optional string author = 7;
-    let $author = message.author;
-    if ($author !== undefined) {
-        writeVarint32(bb, 58);
-        writeString(bb, $author);
-    }
-    // optional Trs80Extension ext_trs80 = 8;
-    let $ext_trs80 = message.ext_trs80;
-    if ($ext_trs80 !== undefined) {
-        writeVarint32(bb, 66);
-        let nested = popByteBuffer();
-        _encodeTrs80Extension($ext_trs80, nested);
-        writeVarint32(bb, nested.limit);
-        writeByteBuffer(bb, nested);
-        pushByteBuffer(nested);
-    }
-}
-function decodeApp(binary) {
-    return _decodeApp(wrapByteBuffer(binary));
-}
-function _decodeApp(bb) {
-    let message = {};
-    end_of_message: while (!isAtEnd(bb)) {
-        let tag = readVarint32(bb);
-        switch (tag >>> 3) {
-            case 0:
-                break end_of_message;
-            // optional string id = 1;
-            case 1: {
-                message.id = readString(bb, readVarint32(bb));
-                break;
-            }
-            // optional string name = 2;
-            case 2: {
-                message.name = readString(bb, readVarint32(bb));
-                break;
-            }
-            // optional string version = 3;
-            case 3: {
-                message.version = readString(bb, readVarint32(bb));
-                break;
-            }
-            // optional string description = 4;
-            case 4: {
-                message.description = readString(bb, readVarint32(bb));
-                break;
-            }
-            // optional int32 release_year = 5;
-            case 5: {
-                message.release_year = readVarint32(bb);
-                break;
-            }
-            // repeated string screenshot_url = 6;
-            case 6: {
-                let values = message.screenshot_url || (message.screenshot_url = []);
-                values.push(readString(bb, readVarint32(bb)));
-                break;
-            }
-            // optional string author = 7;
-            case 7: {
-                message.author = readString(bb, readVarint32(bb));
-                break;
-            }
-            // optional Trs80Extension ext_trs80 = 8;
-            case 8: {
-                let limit = pushTemporaryLength(bb);
-                message.ext_trs80 = _decodeTrs80Extension(bb);
-                bb.limit = limit;
-                break;
-            }
-            default:
-                skipUnknownField(bb, tag & 7);
-        }
-    }
-    return message;
-}
-function encodeTrs80Extension(message) {
-    let bb = popByteBuffer();
-    _encodeTrs80Extension(message, bb);
-    return toUint8Array(bb);
-}
-function _encodeTrs80Extension(message, bb) {
-    // optional Trs80Model model = 1;
-    let $model = message.model;
-    if ($model !== undefined) {
-        writeVarint32(bb, 8);
-        writeVarint32(bb, encodeTrs80Model[$model]);
-    }
-}
-function decodeTrs80Extension(binary) {
-    return _decodeTrs80Extension(wrapByteBuffer(binary));
-}
-function _decodeTrs80Extension(bb) {
-    let message = {};
-    end_of_message: while (!isAtEnd(bb)) {
-        let tag = readVarint32(bb);
-        switch (tag >>> 3) {
-            case 0:
-                break end_of_message;
-            // optional Trs80Model model = 1;
-            case 1: {
-                message.model = decodeTrs80Model[readVarint32(bb)];
-                break;
-            }
-            default:
-                skipUnknownField(bb, tag & 7);
-        }
-    }
-    return message;
-}
-function encodeMediaImage(message) {
-    let bb = popByteBuffer();
-    _encodeMediaImage(message, bb);
-    return toUint8Array(bb);
-}
-function _encodeMediaImage(message, bb) {
-    // optional MediaType type = 1;
-    let $type = message.type;
-    if ($type !== undefined) {
-        writeVarint32(bb, 8);
-        writeVarint32(bb, encodeMediaType[$type]);
-    }
-    // optional string filename = 2;
-    let $filename = message.filename;
-    if ($filename !== undefined) {
-        writeVarint32(bb, 18);
-        writeString(bb, $filename);
-    }
-    // optional bytes data = 3;
-    let $data = message.data;
-    if ($data !== undefined) {
-        writeVarint32(bb, 26);
-        writeVarint32(bb, $data.length), writeBytes(bb, $data);
-    }
-    // optional int64 uploadTime = 4;
-    let $uploadTime = message.uploadTime;
-    if ($uploadTime !== undefined) {
-        writeVarint32(bb, 32);
-        writeVarint64(bb, $uploadTime);
-    }
-    // optional string description = 5;
-    let $description = message.description;
-    if ($description !== undefined) {
-        writeVarint32(bb, 42);
-        writeString(bb, $description);
-    }
-}
-function decodeMediaImage(binary) {
-    return _decodeMediaImage(wrapByteBuffer(binary));
-}
-function _decodeMediaImage(bb) {
-    let message = {};
-    end_of_message: while (!isAtEnd(bb)) {
-        let tag = readVarint32(bb);
-        switch (tag >>> 3) {
-            case 0:
-                break end_of_message;
-            // optional MediaType type = 1;
-            case 1: {
-                message.type = decodeMediaType[readVarint32(bb)];
-                break;
-            }
-            // optional string filename = 2;
-            case 2: {
-                message.filename = readString(bb, readVarint32(bb));
-                break;
-            }
-            // optional bytes data = 3;
-            case 3: {
-                message.data = readBytes(bb, readVarint32(bb));
-                break;
-            }
-            // optional int64 uploadTime = 4;
-            case 4: {
-                message.uploadTime = readVarint64(bb, /* unsigned */ false);
-                break;
-            }
-            // optional string description = 5;
-            case 5: {
-                message.description = readString(bb, readVarint32(bb));
-                break;
-            }
-            default:
-                skipUnknownField(bb, tag & 7);
-        }
-    }
-    return message;
-}
-function pushTemporaryLength(bb) {
-    let length = readVarint32(bb);
-    let limit = bb.limit;
-    bb.limit = bb.offset + length;
-    return limit;
-}
-function skipUnknownField(bb, type) {
-    switch (type) {
-        case 0:
-            while (readByte(bb) & 0x80) { }
-            break;
-        case 2:
-            skip(bb, readVarint32(bb));
-            break;
-        case 5:
-            skip(bb, 4);
-            break;
-        case 1:
-            skip(bb, 8);
-            break;
-        default: throw new Error("Unimplemented type: " + type);
-    }
-}
-function stringToLong(value) {
-    return {
-        low: value.charCodeAt(0) | (value.charCodeAt(1) << 16),
-        high: value.charCodeAt(2) | (value.charCodeAt(3) << 16),
-        unsigned: false,
-    };
-}
-function longToString(value) {
-    let low = value.low;
-    let high = value.high;
-    return String.fromCharCode(low & 0xFFFF, low >>> 16, high & 0xFFFF, high >>> 16);
-}
-// The code below was modified from https://github.com/protobufjs/bytebuffer.js
-// which is under the Apache License 2.0.
-let f32 = new Float32Array(1);
-let f32_u8 = new Uint8Array(f32.buffer);
-let f64 = new Float64Array(1);
-let f64_u8 = new Uint8Array(f64.buffer);
-function intToLong(value) {
-    value |= 0;
-    return {
-        low: value,
-        high: value >> 31,
-        unsigned: value >= 0,
-    };
-}
-let bbStack = [];
-function popByteBuffer() {
-    const bb = bbStack.pop();
-    if (!bb)
-        return { bytes: new Uint8Array(64), offset: 0, limit: 0 };
-    bb.offset = bb.limit = 0;
-    return bb;
-}
-function pushByteBuffer(bb) {
-    bbStack.push(bb);
-}
-function wrapByteBuffer(bytes) {
-    return { bytes, offset: 0, limit: bytes.length };
-}
-function toUint8Array(bb) {
-    let bytes = bb.bytes;
-    let limit = bb.limit;
-    return bytes.length === limit ? bytes : bytes.subarray(0, limit);
-}
-function skip(bb, offset) {
-    if (bb.offset + offset > bb.limit) {
-        throw new Error('Skip past limit');
-    }
-    bb.offset += offset;
-}
-function isAtEnd(bb) {
-    return bb.offset >= bb.limit;
-}
-function grow(bb, count) {
-    let bytes = bb.bytes;
-    let offset = bb.offset;
-    let limit = bb.limit;
-    let finalOffset = offset + count;
-    if (finalOffset > bytes.length) {
-        let newBytes = new Uint8Array(finalOffset * 2);
-        newBytes.set(bytes);
-        bb.bytes = newBytes;
-    }
-    bb.offset = finalOffset;
-    if (finalOffset > limit) {
-        bb.limit = finalOffset;
-    }
-    return offset;
-}
-function advance(bb, count) {
-    let offset = bb.offset;
-    if (offset + count > bb.limit) {
-        throw new Error('Read past limit');
-    }
-    bb.offset += count;
-    return offset;
-}
-function readBytes(bb, count) {
-    let offset = advance(bb, count);
-    return bb.bytes.subarray(offset, offset + count);
-}
-function writeBytes(bb, buffer) {
-    let offset = grow(bb, buffer.length);
-    bb.bytes.set(buffer, offset);
-}
-function readString(bb, count) {
-    // Sadly a hand-coded UTF8 decoder is much faster than subarray+TextDecoder in V8
-    let offset = advance(bb, count);
-    let fromCharCode = String.fromCharCode;
-    let bytes = bb.bytes;
-    let invalid = '\uFFFD';
-    let text = '';
-    for (let i = 0; i < count; i++) {
-        let c1 = bytes[i + offset], c2, c3, c4, c;
-        // 1 byte
-        if ((c1 & 0x80) === 0) {
-            text += fromCharCode(c1);
-        }
-        // 2 bytes
-        else if ((c1 & 0xE0) === 0xC0) {
-            if (i + 1 >= count)
-                text += invalid;
-            else {
-                c2 = bytes[i + offset + 1];
-                if ((c2 & 0xC0) !== 0x80)
-                    text += invalid;
-                else {
-                    c = ((c1 & 0x1F) << 6) | (c2 & 0x3F);
-                    if (c < 0x80)
-                        text += invalid;
-                    else {
-                        text += fromCharCode(c);
-                        i++;
-                    }
-                }
-            }
-        }
-        // 3 bytes
-        else if ((c1 & 0xF0) == 0xE0) {
-            if (i + 2 >= count)
-                text += invalid;
-            else {
-                c2 = bytes[i + offset + 1];
-                c3 = bytes[i + offset + 2];
-                if (((c2 | (c3 << 8)) & 0xC0C0) !== 0x8080)
-                    text += invalid;
-                else {
-                    c = ((c1 & 0x0F) << 12) | ((c2 & 0x3F) << 6) | (c3 & 0x3F);
-                    if (c < 0x0800 || (c >= 0xD800 && c <= 0xDFFF))
-                        text += invalid;
-                    else {
-                        text += fromCharCode(c);
-                        i += 2;
-                    }
-                }
-            }
-        }
-        // 4 bytes
-        else if ((c1 & 0xF8) == 0xF0) {
-            if (i + 3 >= count)
-                text += invalid;
-            else {
-                c2 = bytes[i + offset + 1];
-                c3 = bytes[i + offset + 2];
-                c4 = bytes[i + offset + 3];
-                if (((c2 | (c3 << 8) | (c4 << 16)) & 0xC0C0C0) !== 0x808080)
-                    text += invalid;
-                else {
-                    c = ((c1 & 0x07) << 0x12) | ((c2 & 0x3F) << 0x0C) | ((c3 & 0x3F) << 0x06) | (c4 & 0x3F);
-                    if (c < 0x10000 || c > 0x10FFFF)
-                        text += invalid;
-                    else {
-                        c -= 0x10000;
-                        text += fromCharCode((c >> 10) + 0xD800, (c & 0x3FF) + 0xDC00);
-                        i += 3;
-                    }
-                }
-            }
-        }
-        else
-            text += invalid;
-    }
-    return text;
-}
-function writeString(bb, text) {
-    // Sadly a hand-coded UTF8 encoder is much faster than TextEncoder+set in V8
-    let n = text.length;
-    let byteCount = 0;
-    // Write the byte count first
-    for (let i = 0; i < n; i++) {
-        let c = text.charCodeAt(i);
-        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < n) {
-            c = (c << 10) + text.charCodeAt(++i) - 0x35FDC00;
-        }
-        byteCount += c < 0x80 ? 1 : c < 0x800 ? 2 : c < 0x10000 ? 3 : 4;
-    }
-    writeVarint32(bb, byteCount);
-    let offset = grow(bb, byteCount);
-    let bytes = bb.bytes;
-    // Then write the bytes
-    for (let i = 0; i < n; i++) {
-        let c = text.charCodeAt(i);
-        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < n) {
-            c = (c << 10) + text.charCodeAt(++i) - 0x35FDC00;
-        }
-        if (c < 0x80) {
-            bytes[offset++] = c;
-        }
-        else {
-            if (c < 0x800) {
-                bytes[offset++] = ((c >> 6) & 0x1F) | 0xC0;
-            }
-            else {
-                if (c < 0x10000) {
-                    bytes[offset++] = ((c >> 12) & 0x0F) | 0xE0;
-                }
-                else {
-                    bytes[offset++] = ((c >> 18) & 0x07) | 0xF0;
-                    bytes[offset++] = ((c >> 12) & 0x3F) | 0x80;
-                }
-                bytes[offset++] = ((c >> 6) & 0x3F) | 0x80;
-            }
-            bytes[offset++] = (c & 0x3F) | 0x80;
-        }
-    }
-}
-function writeByteBuffer(bb, buffer) {
-    let offset = grow(bb, buffer.limit);
-    let from = bb.bytes;
-    let to = buffer.bytes;
-    // This for loop is much faster than subarray+set on V8
-    for (let i = 0, n = buffer.limit; i < n; i++) {
-        from[i + offset] = to[i];
-    }
-}
-function readByte(bb) {
-    return bb.bytes[advance(bb, 1)];
-}
-function writeByte(bb, value) {
-    let offset = grow(bb, 1);
-    bb.bytes[offset] = value;
-}
-function readFloat(bb) {
-    let offset = advance(bb, 4);
-    let bytes = bb.bytes;
-    // Manual copying is much faster than subarray+set in V8
-    f32_u8[0] = bytes[offset++];
-    f32_u8[1] = bytes[offset++];
-    f32_u8[2] = bytes[offset++];
-    f32_u8[3] = bytes[offset++];
-    return f32[0];
-}
-function writeFloat(bb, value) {
-    let offset = grow(bb, 4);
-    let bytes = bb.bytes;
-    f32[0] = value;
-    // Manual copying is much faster than subarray+set in V8
-    bytes[offset++] = f32_u8[0];
-    bytes[offset++] = f32_u8[1];
-    bytes[offset++] = f32_u8[2];
-    bytes[offset++] = f32_u8[3];
-}
-function readDouble(bb) {
-    let offset = advance(bb, 8);
-    let bytes = bb.bytes;
-    // Manual copying is much faster than subarray+set in V8
-    f64_u8[0] = bytes[offset++];
-    f64_u8[1] = bytes[offset++];
-    f64_u8[2] = bytes[offset++];
-    f64_u8[3] = bytes[offset++];
-    f64_u8[4] = bytes[offset++];
-    f64_u8[5] = bytes[offset++];
-    f64_u8[6] = bytes[offset++];
-    f64_u8[7] = bytes[offset++];
-    return f64[0];
-}
-function writeDouble(bb, value) {
-    let offset = grow(bb, 8);
-    let bytes = bb.bytes;
-    f64[0] = value;
-    // Manual copying is much faster than subarray+set in V8
-    bytes[offset++] = f64_u8[0];
-    bytes[offset++] = f64_u8[1];
-    bytes[offset++] = f64_u8[2];
-    bytes[offset++] = f64_u8[3];
-    bytes[offset++] = f64_u8[4];
-    bytes[offset++] = f64_u8[5];
-    bytes[offset++] = f64_u8[6];
-    bytes[offset++] = f64_u8[7];
-}
-function readInt32(bb) {
-    let offset = advance(bb, 4);
-    let bytes = bb.bytes;
-    return (bytes[offset] |
-        (bytes[offset + 1] << 8) |
-        (bytes[offset + 2] << 16) |
-        (bytes[offset + 3] << 24));
-}
-function writeInt32(bb, value) {
-    let offset = grow(bb, 4);
-    let bytes = bb.bytes;
-    bytes[offset] = value;
-    bytes[offset + 1] = value >> 8;
-    bytes[offset + 2] = value >> 16;
-    bytes[offset + 3] = value >> 24;
-}
-function readInt64(bb, unsigned) {
-    return {
-        low: readInt32(bb),
-        high: readInt32(bb),
-        unsigned,
-    };
-}
-function writeInt64(bb, value) {
-    writeInt32(bb, value.low);
-    writeInt32(bb, value.high);
-}
-function readVarint32(bb) {
-    let c = 0;
-    let value = 0;
-    let b;
-    do {
-        b = readByte(bb);
-        if (c < 32)
-            value |= (b & 0x7F) << c;
-        c += 7;
-    } while (b & 0x80);
-    return value;
-}
-function writeVarint32(bb, value) {
-    value >>>= 0;
-    while (value >= 0x80) {
-        writeByte(bb, (value & 0x7f) | 0x80);
-        value >>>= 7;
-    }
-    writeByte(bb, value);
-}
-function readVarint64(bb, unsigned) {
-    let part0 = 0;
-    let part1 = 0;
-    let part2 = 0;
-    let b;
-    b = readByte(bb);
-    part0 = (b & 0x7F);
-    if (b & 0x80) {
-        b = readByte(bb);
-        part0 |= (b & 0x7F) << 7;
-        if (b & 0x80) {
-            b = readByte(bb);
-            part0 |= (b & 0x7F) << 14;
-            if (b & 0x80) {
-                b = readByte(bb);
-                part0 |= (b & 0x7F) << 21;
-                if (b & 0x80) {
-                    b = readByte(bb);
-                    part1 = (b & 0x7F);
-                    if (b & 0x80) {
-                        b = readByte(bb);
-                        part1 |= (b & 0x7F) << 7;
-                        if (b & 0x80) {
-                            b = readByte(bb);
-                            part1 |= (b & 0x7F) << 14;
-                            if (b & 0x80) {
-                                b = readByte(bb);
-                                part1 |= (b & 0x7F) << 21;
-                                if (b & 0x80) {
-                                    b = readByte(bb);
-                                    part2 = (b & 0x7F);
-                                    if (b & 0x80) {
-                                        b = readByte(bb);
-                                        part2 |= (b & 0x7F) << 7;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return {
-        low: part0 | (part1 << 28),
-        high: (part1 >>> 4) | (part2 << 24),
-        unsigned,
-    };
-}
-function writeVarint64(bb, value) {
-    let part0 = value.low >>> 0;
-    let part1 = ((value.low >>> 28) | (value.high << 4)) >>> 0;
-    let part2 = value.high >>> 24;
-    // ref: src/google/protobuf/io/coded_stream.cc
-    let size = part2 === 0 ?
-        part1 === 0 ?
-            part0 < 1 << 14 ?
-                part0 < 1 << 7 ? 1 : 2 :
-                part0 < 1 << 21 ? 3 : 4 :
-            part1 < 1 << 14 ?
-                part1 < 1 << 7 ? 5 : 6 :
-                part1 < 1 << 21 ? 7 : 8 :
-        part2 < 1 << 7 ? 9 : 10;
-    let offset = grow(bb, size);
-    let bytes = bb.bytes;
-    switch (size) {
-        case 10: bytes[offset + 9] = (part2 >>> 7) & 0x01;
-        case 9: bytes[offset + 8] = size !== 9 ? part2 | 0x80 : part2 & 0x7F;
-        case 8: bytes[offset + 7] = size !== 8 ? (part1 >>> 21) | 0x80 : (part1 >>> 21) & 0x7F;
-        case 7: bytes[offset + 6] = size !== 7 ? (part1 >>> 14) | 0x80 : (part1 >>> 14) & 0x7F;
-        case 6: bytes[offset + 5] = size !== 6 ? (part1 >>> 7) | 0x80 : (part1 >>> 7) & 0x7F;
-        case 5: bytes[offset + 4] = size !== 5 ? part1 | 0x80 : part1 & 0x7F;
-        case 4: bytes[offset + 3] = size !== 4 ? (part0 >>> 21) | 0x80 : (part0 >>> 21) & 0x7F;
-        case 3: bytes[offset + 2] = size !== 3 ? (part0 >>> 14) | 0x80 : (part0 >>> 14) & 0x7F;
-        case 2: bytes[offset + 1] = size !== 2 ? (part0 >>> 7) | 0x80 : (part0 >>> 7) & 0x7F;
-        case 1: bytes[offset] = size !== 1 ? part0 | 0x80 : part0 & 0x7F;
-    }
-}
-function readVarint32ZigZag(bb) {
-    let value = readVarint32(bb);
-    // ref: src/google/protobuf/wire_format_lite.h
-    return (value >>> 1) ^ -(value & 1);
-}
-function writeVarint32ZigZag(bb, value) {
-    // ref: src/google/protobuf/wire_format_lite.h
-    writeVarint32(bb, (value << 1) ^ (value >> 31));
-}
-function readVarint64ZigZag(bb) {
-    let value = readVarint64(bb, /* unsigned */ false);
-    let low = value.low;
-    let high = value.high;
-    let flip = -(low & 1);
-    // ref: src/google/protobuf/wire_format_lite.h
-    return {
-        low: ((low >>> 1) | (high << 31)) ^ flip,
-        high: (high >>> 1) ^ flip,
-        unsigned: false,
-    };
-}
-function writeVarint64ZigZag(bb, value) {
-    let low = value.low;
-    let high = value.high;
-    let flip = high >> 31;
-    // ref: src/google/protobuf/wire_format_lite.h
-    writeVarint64(bb, {
-        low: (low << 1) ^ flip,
-        high: ((high << 1) | (low >>> 31)) ^ flip,
-        unsigned: false,
-    });
-}
-
-// EXTERNAL MODULE: ../trs80-base/dist/index.js
-var trs80_base_dist = __webpack_require__(12);
-
-// CONCATENATED MODULE: ./src/RetroStoreTab.ts
-// Generate this with: npx pbjs ApiProtos.proto --ts RetroStoreProto.ts
-
-
-
-
-
-
-const RETRO_STORE_API_URL = "https://retrostore.org/api/";
-const APP_FETCH_COUNT = 10;
-/**
- * Stores info about a RetroStore app and its media.
- */
-class RetroStoreApp {
-    constructor(app) {
-        this.element = undefined;
-        this.app = app;
-    }
-}
-/**
- * Fetch all apps from RetroStore. If an error occurs, returns an empty list.
- */
-function fetchApps(start, count) {
-    const query = "";
-    const apiRequest = {
-        start: start,
-        num: count,
-        query: query,
-        trs80: {
-            mediaTypes: [],
-        },
-    };
-    const fetchOptions = {
-        method: "POST",
-        cache: "no-cache",
-        body: JSON.stringify(apiRequest),
-    };
-    return fetch(RETRO_STORE_API_URL + "listApps", fetchOptions)
-        .then(response => {
-        if (response.status === 200) {
-            return response.arrayBuffer();
-        }
-        else {
-            throw new Error("Error code " + response.status);
-        }
-    })
-        .then(array => {
-        var _a;
-        const apps = decodeApiResponseApps(new Uint8Array(array));
-        if (apps.success) {
-            return Promise.resolve((_a = apps.app) !== null && _a !== void 0 ? _a : []);
-        }
-        else {
-            // TODO.
-            console.error("Can't get apps: " + apps.message);
-            return Promise.resolve([]);
-        }
-    })
-        .catch(error => {
-        // TODO
-        console.error(error);
-        return Promise.resolve([]);
-    });
-}
-/**
- * Fetch all media images for the specified app ID. If an error occurs, returns an empty list.
- */
-function fetchMediaImages(appId) {
-    const apiRequest = {
-        appId: appId,
-    };
-    const fetchOptions = {
-        method: "POST",
-        cache: "no-cache",
-        body: JSON.stringify(apiRequest),
-    };
-    return fetch(RETRO_STORE_API_URL + "fetchMediaImages", fetchOptions)
-        .then(response => {
-        if (response.status === 200) {
-            return response.arrayBuffer();
-        }
-        else {
-            throw new Error("Error code " + response.status);
-        }
-    })
-        .then(array => {
-        var _a;
-        const mediaImages = decodeApiResponseMediaImages(new Uint8Array(array));
-        if (mediaImages.success) {
-            return Promise.resolve((_a = mediaImages.mediaImage) !== null && _a !== void 0 ? _a : []);
-        }
-        else {
-            // TODO.
-            console.error("Can't get media images for " + appId + ": " + mediaImages.message);
-            return Promise.reject();
-        }
-    })
-        .catch(error => {
-        // TODO
-        console.error(error);
-        return Promise.reject();
-    });
-}
-/**
- * The tab for showing apps from RetroStore.org.
- */
-class RetroStoreTab_RetroStoreTab {
-    constructor(pageTabs, context) {
-        this.apps = [];
-        this.complete = false;
-        this.fetching = false;
-        this.context = context;
-        const tab = new PageTab_PageTab("RetroStore");
-        tab.element.classList.add("retro-store-tab");
-        this.appsDiv = document.createElement("div");
-        this.appsDiv.classList.add("retro-store-apps");
-        this.appsDiv.addEventListener("scroll", () => this.fetchNextBatchIfNecessary());
-        tab.element.append(this.appsDiv);
-        this.moreDiv = document.createElement("div");
-        this.moreDiv.classList.add("retro-store-more");
-        this.moreDiv.append(makeIcon("cached"));
-        // When showing the tab, wait for laying and maybe fetch more.
-        tab.onShow.subscribe(() => setTimeout(() => this.fetchNextBatchIfNecessary(), 0));
-        this.populateApps();
-        pageTabs.addTab(tab);
-    }
-    /**
-     * If the "More" section is visible, fetch more apps.
-     */
-    fetchNextBatchIfNecessary() {
-        const moreVisible = this.moreDiv.getBoundingClientRect().top < this.appsDiv.getBoundingClientRect().bottom;
-        if (moreVisible && !this.complete && !this.fetching) {
-            this.fetchNextBatch();
-        }
-    }
-    /**
-     * Get the next batch of apps if necessary.
-     */
-    fetchNextBatch() {
-        if (!this.complete) {
-            this.fetching = true;
-            fetchApps(this.apps.length, APP_FETCH_COUNT)
-                .then(apps => {
-                this.fetching = false;
-                if (apps.length !== APP_FETCH_COUNT) {
-                    // Got all apps.
-                    this.complete = true;
-                }
-                this.apps.push(...apps.map(a => new RetroStoreApp(a)));
-                this.populateApps();
-            })
-                .catch(error => {
-                // TODO.
-                console.error(error);
-                this.fetching = false;
-                this.complete = true;
-            });
-        }
-    }
-    /**
-     * Populate the UI with the apps we have.
-     */
-    populateApps() {
-        Object(teamten_ts_utils_dist["clearElement"])(this.appsDiv);
-        for (const app of this.apps) {
-            if (app.element === undefined) {
-                app.element = this.createAppTile(app.app);
-            }
-            this.appsDiv.append(app.element);
-        }
-        if (!this.complete) {
-            this.appsDiv.append(this.moreDiv);
-        }
-    }
-    /**
-     * Create a tile for an app.
-     */
-    createAppTile(app) {
-        var _a;
-        const appDiv = document.createElement("div");
-        appDiv.classList.add("retro-store-app");
-        const screenshotDiv = document.createElement("img");
-        screenshotDiv.classList.add("screenshot");
-        if (app.screenshot_url !== undefined && app.screenshot_url.length > 0) {
-            screenshotDiv.src = app.screenshot_url[0];
-        }
-        appDiv.append(screenshotDiv);
-        const nameDiv = document.createElement("div");
-        nameDiv.classList.add("name");
-        const appName = (_a = app.name) !== null && _a !== void 0 ? _a : "Unknown name";
-        nameDiv.innerText = appName;
-        if (app.release_year !== undefined) {
-            const releaseYearSpan = document.createElement("span");
-            releaseYearSpan.classList.add("release-year");
-            releaseYearSpan.innerText = " (" + app.release_year + ")";
-            nameDiv.append(releaseYearSpan);
-        }
-        appDiv.append(nameDiv);
-        if (app.author !== undefined && app.author !== "") {
-            const authorDiv = document.createElement("div");
-            authorDiv.classList.add("author");
-            authorDiv.innerText = app.author;
-            appDiv.append(authorDiv);
-        }
-        if (app.version !== undefined && app.version !== "") {
-            const versionDiv = document.createElement("div");
-            versionDiv.classList.add("version");
-            versionDiv.innerText = "Version " + app.version;
-            appDiv.append(versionDiv);
-        }
-        if (app.description !== undefined && app.description !== "") {
-            const descriptionDiv = document.createElement("div");
-            descriptionDiv.classList.add("description");
-            descriptionDiv.innerText = app.description;
-            appDiv.append(descriptionDiv);
-        }
-        const buttonDiv = document.createElement("div");
-        buttonDiv.classList.add("button-set");
-        appDiv.append(buttonDiv);
-        let validMediaImage = undefined;
-        const playButton = makeIconButton(makeIcon("play_arrow"), "Run app", () => {
-            if (validMediaImage !== undefined && validMediaImage.data !== undefined) {
-                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(validMediaImage.data);
-                // TODO should set context.runningFile
-                this.context.trs80.runTrs80File(cmdProgram);
-                this.context.panelManager.close();
-            }
-        });
-        playButton.disabled = true;
-        buttonDiv.append(playButton);
-        const importButton = makeIconButton(makeIcon("get_app"), "Import app", () => {
-            var _a;
-            if (validMediaImage !== undefined && validMediaImage.data !== undefined && this.context.user !== undefined) {
-                const noteParts = [];
-                if (app.description !== undefined && app.description !== "") {
-                    noteParts.push(app.description);
-                }
-                if (validMediaImage.description !== undefined && validMediaImage.description !== "") {
-                    noteParts.push(validMediaImage.description);
-                }
-                noteParts.push("Imported from RetroStore.org.");
-                const note = noteParts.join("\n\n");
-                let file = new FileBuilder()
-                    .withUid(this.context.user.uid)
-                    .withName(appName)
-                    .withNote(note)
-                    .withFilename((_a = validMediaImage.filename) !== null && _a !== void 0 ? _a : "UNKNOWN")
-                    .withBinary(validMediaImage.data)
-                    .build();
-                this.context.db.addFile(file)
-                    .then(docRef => {
-                    file = file.builder().withId(docRef.id).build();
-                    this.context.library.addFile(file);
-                    this.context.openFilePanel(file);
-                })
-                    .catch(error => {
-                    // TODO
-                    console.error("Error adding document: ", error);
-                });
-            }
-        });
-        importButton.classList.add("import-button");
-        importButton.disabled = true;
-        buttonDiv.append(importButton);
-        if (app.id !== undefined) {
-            fetchMediaImages(app.id)
-                .then(mediaImages => {
-                console.log(app.id, app.name, mediaImages);
-                for (const mediaImage of mediaImages) {
-                    if (mediaImage.type === "COMMAND" /* COMMAND */ ||
-                        mediaImage.type === "BASIC" /* BASIC */) {
-                        validMediaImage = mediaImage;
-                        playButton.disabled = false;
-                        importButton.disabled = false;
-                    }
-                }
-            })
-                .catch(error => {
-                // TODO. Caught already?
-                console.error(error);
-            });
-        }
-        return appDiv;
-    }
-}
-
-// CONCATENATED MODULE: ./src/LibraryPanel.ts
-
-
-
-
-/**
- * Panel showing the library of user's files.
- */
-class LibraryPanel_LibraryPanel extends Panel_Panel {
-    constructor(context) {
-        super(context, "Library", "library-panel", false);
-        const pageTabs = new PageTabs_PageTabs(this.content);
-        new YourFilesTab_YourFilesTab(pageTabs, context);
-        new RetroStoreTab_RetroStoreTab(pageTabs, context);
-    }
-}
-
-// EXTERNAL MODULE: ./node_modules/lodash/isEmpty.js
-var isEmpty = __webpack_require__(46);
-var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
-
-// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Register.js
-/**
- * List of all word registers.
- */
-const WORD_REG = new Set(["af", "bc", "de", "hl", "af'", "bc'", "de'", "hl'", "ix", "iy", "sp", "pc"]);
-/**
- * List of all byte registers.
- */
-const BYTE_REG = new Set(["a", "f", "b", "c", "d", "e", "h", "l", "ixh", "ixl", "iyh", "iyl", "i", "r"]);
-/**
- * Determine whether a register stores a word.
- */
-function isWordReg(s) {
-    return WORD_REG.has(s.toLowerCase());
-}
-/**
- * Determine whether a register stores a byte.
- */
-function isByteReg(s) {
-    return BYTE_REG.has(s.toLowerCase());
-}
-
-// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Utils.js
-// Various utility functions.
-/**
- * Convert a number to hex and zero-pad to the specified number of hex digits.
- */
-function toHex(value, digits) {
-    return value.toString(16).toUpperCase().padStart(digits, "0");
-}
-/**
- * Convert a byte to hex.
- */
-function toHexByte(value) {
-    return toHex(value, 2);
-}
-/**
- * Convert a word to hex.
- */
-function toHexWord(value) {
-    return toHex(value, 4);
-}
-/**
- * Return the high byte of a word.
- */
-function hi(value) {
-    return (value >> 8) & 0xFF;
-}
-/**
- * Return the low byte of a word.
- */
-function lo(value) {
-    return value & 0xFF;
-}
-/**
- * Create a word from a high and low byte.
- */
-function word(highByte, lowByte) {
-    return ((highByte & 0xFF) << 8) | (lowByte & 0xFF);
-}
-/**
- * Increment a byte.
- */
-function inc8(value) {
-    return add8(value, 1);
-}
-/**
- * Increment a word.
- */
-function inc16(value) {
-    return add16(value, 1);
-}
-/**
- * Decrement a byte.
- */
-function dec8(value) {
-    return sub8(value, 1);
-}
-/**
- * Decrement a word.
- */
-function dec16(value) {
-    return sub16(value, 1);
-}
-/**
- * Add two bytes together.
- */
-function add8(a, b) {
-    return (a + b) & 0xFF;
-}
-/**
- * Add two words together.
- */
-function add16(a, b) {
-    return (a + b) & 0xFFFF;
-}
-/**
- * Subtract two bytes.
- */
-function sub8(a, b) {
-    return (a - b) & 0xFF;
-}
-/**
- * Subtract two words.
- */
-function sub16(a, b) {
-    return (a - b) & 0xFFFF;
-}
-/**
- * Convert a byte to a signed number (e.g., 0xff to -1).
- */
-function signedByte(value) {
-    return value >= 128 ? value - 256 : value;
-}
-
-// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/RegisterSet.js
-
-/**
- * All registers in a Z80.
- */
-class RegisterSet_RegisterSet {
-    constructor() {
-        // External state:
-        this.af = 0;
-        this.bc = 0;
-        this.de = 0;
-        this.hl = 0;
-        this.afPrime = 0;
-        this.bcPrime = 0;
-        this.dePrime = 0;
-        this.hlPrime = 0;
-        this.ix = 0;
-        this.iy = 0;
-        this.sp = 0;
-        this.pc = 0;
-        // Internal state:
-        this.memptr = 0;
-        this.i = 0;
-        this.r = 0; // Low 7 bits of R.
-        this.r7 = 0; // Bit 7 of R.
-        this.iff1 = 0;
-        this.iff2 = 0;
-        this.im = 0;
-        this.halted = 0;
-    }
-    get a() {
-        return hi(this.af);
-    }
-    set a(value) {
-        this.af = word(value, this.f);
-    }
-    get f() {
-        return lo(this.af);
-    }
-    set f(value) {
-        this.af = word(this.a, value);
-    }
-    get b() {
-        return hi(this.bc);
-    }
-    set b(value) {
-        this.bc = word(value, this.c);
-    }
-    get c() {
-        return lo(this.bc);
-    }
-    set c(value) {
-        this.bc = word(this.b, value);
-    }
-    get d() {
-        return hi(this.de);
-    }
-    set d(value) {
-        this.de = word(value, this.e);
-    }
-    get e() {
-        return lo(this.de);
-    }
-    set e(value) {
-        this.de = word(this.d, value);
-    }
-    get h() {
-        return hi(this.hl);
-    }
-    set h(value) {
-        this.hl = word(value, this.l);
-    }
-    get l() {
-        return lo(this.hl);
-    }
-    set l(value) {
-        this.hl = word(this.h, value);
-    }
-    get ixh() {
-        return hi(this.ix);
-    }
-    set ixh(value) {
-        this.ix = word(value, this.ixl);
-    }
-    get ixl() {
-        return lo(this.ix);
-    }
-    set ixl(value) {
-        this.ix = word(this.ixh, value);
-    }
-    get iyh() {
-        return hi(this.iy);
-    }
-    set iyh(value) {
-        this.iy = word(value, this.iyl);
-    }
-    get iyl() {
-        return lo(this.iy);
-    }
-    set iyl(value) {
-        this.iy = word(this.iyh, value);
-    }
-    /**
-     * Combine the two R parts together.
-     */
-    get rCombined() {
-        return (this.r7 & 0x80) | (this.r & 0xF7);
-    }
-}
-/**
- * All real fields of RegisterSet, for enumeration.
- */
-const registerSetFields = [
-    "af", "bc", "de", "hl",
-    "afPrime", "bcPrime", "dePrime", "hlPrime",
-    "ix", "iy", "sp", "pc",
-    "memptr", "i", "r", "iff1", "iff2", "im", "halted"
-];
-
-// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Flag.js
-/**
- * The flag bits in the F register.
- */
-var Flag;
-(function (Flag) {
-    /**
-     * Carry and borrow. Indicates that the addition or subtraction did not
-     * fit in the register.
-     */
-    Flag[Flag["C"] = 1] = "C";
-    /**
-     * Set if the last operation was a subtraction.
-     */
-    Flag[Flag["N"] = 2] = "N";
-    /**
-     * Parity: Indicates that the result has an even number of bits set.
-     */
-    Flag[Flag["P"] = 4] = "P";
-    /**
-     * Overflow: Indicates that two's complement does not fit in register.
-     */
-    Flag[Flag["V"] = 4] = "V";
-    /**
-     * Undocumented bit, but internal state can leak into it.
-     */
-    Flag[Flag["X3"] = 8] = "X3";
-    /**
-     * Half carry: Carry from bit 3 to bit 4 during BCD operations.
-     */
-    Flag[Flag["H"] = 16] = "H";
-    /**
-     * Undocumented bit, but internal state can leak into it.
-     */
-    Flag[Flag["X5"] = 32] = "X5";
-    /**
-     * Set if value is zero.
-     */
-    Flag[Flag["Z"] = 64] = "Z";
-    /**
-     * Set of value is negative.
-     */
-    Flag[Flag["S"] = 128] = "S";
-})(Flag || (Flag = {}));
-
-// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/index.js
-
-
-
-
-
-// EXTERNAL MODULE: ../trs80-base/dist/ProgramAnnotation.js
-var ProgramAnnotation = __webpack_require__(15);
-
-// CONCATENATED MODULE: ./src/HexdumpGenerator.ts
-
-
-
-const STRIDE = 16;
-function newLine(lines) {
-    const line = document.createElement("div");
-    lines.push(line);
-    return line;
-}
-function newSpan(line, text, ...cssClass) {
-    const e = document.createElement("span");
-    e.classList.add(...cssClass);
-    e.innerText = text;
-    line.append(e);
-    return e;
-}
-/**
- * Compare two parts of an array for equality.
- */
-function segmentsEqual(binary, start1, start2, length) {
-    while (length-- > 0) {
-        if (binary[start1++] !== binary[start2++]) {
-            return false;
-        }
-    }
-    return true;
-}
-/**
- * Count consecutive bytes that are around "addr".
- */
-function countConsecutive(binary, addr) {
-    const value = binary[addr];
-    let startAddr = addr;
-    while (startAddr > 0 && binary[startAddr - 1] === value) {
-        startAddr--;
-    }
-    while (addr < binary.length - 1 && binary[addr + 1] === value) {
-        addr++;
-    }
-    return addr - startAddr + 1;
-}
-/**
- * Whether this segment is made up of the same value.
- */
-function allSameByte(binary, addr, length) {
-    for (let i = 1; i < length; i++) {
-        if (binary[addr + i] !== binary[addr]) {
-            return false;
-        }
-    }
-    return true;
-}
-class HexdumpGenerator_HexdumpGenerator {
-    constructor(binary, collapse, annotations) {
-        this.binary = binary;
-        this.collapse = collapse;
-        this.annotations = annotations;
-    }
-    generate() {
-        const lines = [];
-        const binary = this.binary;
-        const generateAnnotation = (annotation) => {
-            const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
-            const endAddr = Math.min(Math.ceil(annotation.end / STRIDE) * STRIDE, binary.length);
-            let lastAddr = undefined;
-            for (let addr = beginAddr; addr < endAddr; addr += STRIDE) {
-                if (this.collapse && lastAddr !== undefined &&
-                    binary.length - addr >= STRIDE && segmentsEqual(binary, lastAddr, addr, STRIDE)) {
-                    if (addr === lastAddr + STRIDE) {
-                        const line = newLine(lines);
-                        if (allSameByte(binary, addr, STRIDE)) {
-                            // Lots of the same byte repeated. Say many there are.
-                            const count = countConsecutive(binary, addr);
-                            newSpan(line, "      ... ", "address");
-                            newSpan(line, count.toString(), "ascii");
-                            newSpan(line, " (", "address");
-                            newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
-                            newSpan(line, ") consecutive bytes of ", "address");
-                            newSpan(line, "0x" + toHexByte(binary[addr]), "hex");
-                            newSpan(line, " ...", "address");
-                        }
-                        else {
-                            // A repeating pattern, but not all the same byte. Say how many times repeated.
-                            let count = 1;
-                            for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
-                                if (segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
-                                    count += 1;
-                                }
-                                else {
-                                    break;
-                                }
-                            }
-                            newSpan(line, "      ... ", "address");
-                            newSpan(line, count.toString(), "ascii");
-                            const plural = count === 1 ? "" : "s";
-                            newSpan(line, ` repetition${plural} of previous row ...`, "address");
-                        }
-                    }
-                }
-                else {
-                    lastAddr = addr;
-                    this.generateRow(lines, addr, annotation.begin, annotation.end, addr === beginAddr ? annotation.text : "");
-                }
-            }
-        };
-        let lastAnnotation = undefined;
-        for (const annotation of this.annotations) {
-            if (lastAnnotation !== undefined && lastAnnotation.end !== annotation.begin) {
-                generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotation.end, annotation.begin));
-            }
-            generateAnnotation(annotation);
-            lastAnnotation = annotation;
-        }
-        const lastAnnotationEnd = lastAnnotation !== undefined ? lastAnnotation.end : 0;
-        if (lastAnnotationEnd !== binary.length) {
-            generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
-        }
-        // Final address to show where file ends.
-        newSpan(newLine(lines), toHexWord(binary.length), "address");
-        return lines;
-    }
-    generateRow(lines, addr, beginAddr, endAddr, label) {
-        const binary = this.binary;
-        const line = newLine(lines);
-        const cssClass = ["address"];
-        if (addr < beginAddr) {
-            cssClass.push("outside-annotation");
-        }
-        newSpan(line, toHexWord(addr) + "  ", ...cssClass);
-        // Utility function for adding text to a line, minimizing the number of needless spans.
-        let currentCssClass = undefined;
-        let e = undefined;
-        const addText = (text, ...cssClass) => {
-            if (e === undefined || currentCssClass === undefined || !isSameStringArray(cssClass, currentCssClass)) {
-                e = newSpan(line, text, ...cssClass);
-                currentCssClass = cssClass.slice();
-            }
-            else {
-                e.innerText += text;
-            }
-        };
-        // Hex.
-        let subAddr;
-        for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
-            const cssClass = ["hex"];
-            if (subAddr < beginAddr || subAddr >= endAddr) {
-                cssClass.push("outside-annotation");
-            }
-            addText(toHexByte(binary[subAddr]) + " ", ...cssClass);
-        }
-        addText("".padStart((addr + STRIDE - subAddr) * 3 + 2, " "), "hex");
-        // ASCII.
-        for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
-            const c = binary[subAddr];
-            const cssClass = ["hex"];
-            let char;
-            if (c >= 32 && c < 127) {
-                cssClass.push("ascii");
-                char = String.fromCharCode(c);
-            }
-            else {
-                cssClass.push("ascii-unprintable");
-                char = ".";
-            }
-            if (subAddr < beginAddr || subAddr >= endAddr) {
-                cssClass.push("outside-annotation");
-            }
-            addText(char, ...cssClass);
-        }
-        if (label !== "") {
-            addText("".padStart(addr + STRIDE - subAddr + 2, " ") + label, "annotation");
-        }
-    }
-}
-
-// CONCATENATED MODULE: ./src/FilePanel.ts
-
-
-
-
-
-
-
-
-
-
-const SCREENSHOT_ATTR = "data-screenshot";
-/**
- * Handles the file info tab in the file panel.
- */
-class FilePanel_FileInfoTab {
-    constructor(filePanel, pageTabs, trs80File) {
-        this.filePanel = filePanel;
-        this.trs80File = trs80File;
-        const tab = new PageTab_PageTab("File Info");
-        tab.element.classList.add("file-info-tab");
-        // Form for editing file info.
-        const form = document.createElement("form");
-        form.classList.add("file-panel-form");
-        tab.element.append(form);
-        const makeInputBox = (label, cssClass, enabled) => {
-            const labelElement = document.createElement("label");
-            if (cssClass !== undefined) {
-                labelElement.classList.add(cssClass);
-            }
-            labelElement.innerText = label;
-            form.append(labelElement);
-            const inputElement = document.createElement("input");
-            inputElement.disabled = !enabled;
-            labelElement.append(inputElement);
-            return inputElement;
-        };
-        this.nameInput = makeInputBox("Name", "name", true);
-        this.filenameInput = makeInputBox("Filename", "filename", true);
-        const noteLabel = document.createElement("label");
-        noteLabel.classList.add("note");
-        noteLabel.innerText = "Note";
-        form.append(noteLabel);
-        this.noteInput = document.createElement("textarea");
-        this.noteInput.rows = 10;
-        noteLabel.append(this.noteInput);
-        const miscDiv = document.createElement("div");
-        miscDiv.classList.add("misc");
-        this.typeInput = makeInputBox("Type", undefined, false);
-        this.addedAtInput = makeInputBox("Added", undefined, false);
-        this.sizeInput = makeInputBox("Size", undefined, false);
-        this.modifiedAtInput = makeInputBox("Last modified", undefined, false);
-        {
-            const labelElement = document.createElement("label");
-            labelElement.classList.add("shared");
-            labelElement.innerText = "Shared";
-            form.append(labelElement);
-            this.sharedInput = document.createElement("input");
-            this.sharedInput.type = "checkbox";
-            const offIcon = makeIcon("toggle_off");
-            offIcon.classList.add("off-state");
-            const onIcon = makeIcon("toggle_on");
-            onIcon.classList.add("on-state");
-            labelElement.append(this.sharedInput, offIcon, onIcon);
-        }
-        form.append(miscDiv);
-        this.screenshotsDiv = document.createElement("div");
-        this.screenshotsDiv.classList.add("screenshots");
-        form.append(this.screenshotsDiv);
-        const actionBar = document.createElement("div");
-        actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
-        const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
-            this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
-            this.filePanel.context.panelManager.close();
-        });
-        actionBar.append(runButton);
-        const deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
-            this.filePanel.context.db.deleteFile(this.filePanel.file)
-                .then(() => {
-                this.filePanel.context.library.removeFile(this.filePanel.file);
-                // We automatically close as a result of the file being removed from the library.
-            })
-                .catch(error => {
-                // TODO.
-                console.error(error);
-            });
-        });
-        actionBar.append(deleteButton);
-        this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
-        actionBar.append(this.revertButton);
-        this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
-        actionBar.append(this.saveButton);
-        for (const input of [this.nameInput, this.filenameInput, this.noteInput]) {
-            input.addEventListener("input", () => this.updateButtonStatus());
-        }
-        this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
-        this.nameInput.addEventListener("input", () => {
-            let name = this.fileFromUi().name;
-            if (name === "") {
-                // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
-                this.filePanel.headerTextNode.innerHTML = "&nbsp;";
-            }
-            else {
-                this.filePanel.headerTextNode.innerText = name;
-            }
-        });
-        this.revertButton.addEventListener("click", () => {
-            this.updateUi();
-        });
-        this.saveButton.addEventListener("click", () => {
-            const newFile = this.fileFromUi().builder().withModifiedAt(new Date()).build();
-            this.saveButton.classList.add("saving");
-            // Disable right away so it's not clicked again.
-            this.saveButton.disabled = true;
-            this.filePanel.context.db.updateFile(this.filePanel.file, newFile)
-                .then(() => {
-                this.saveButton.classList.remove("saving");
-                this.saveButton.classList.add("success");
-                setTimeout(() => {
-                    this.saveButton.classList.remove("success");
-                }, 2000);
-                this.filePanel.file = newFile;
-                this.filePanel.context.library.modifyFile(newFile);
-                this.updateUi();
-            })
-                .catch(error => {
-                this.saveButton.classList.remove("saving");
-                // TODO show error.
-                // The document probably doesn't exist.
-                console.error("Error updating document: ", error);
-                this.updateUi();
-            });
-        });
-        this.filePanel.context.library.onEvent.subscribe(event => {
-            if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
-                // Make sure we don't clobber any user-entered data in the input fields.
-                const updateData = this.filePanel.file.getUpdateDataComparedTo(event.newFile);
-                this.filePanel.file = event.newFile;
-                this.updateUi(updateData);
-            }
-            if (event instanceof LibraryRemoveEvent && event.oldFile.id === this.filePanel.file.id) {
-                // We've been deleted.
-                this.filePanel.context.panelManager.popPanel();
-            }
-        });
-        this.updateUi();
-        pageTabs.addTab(tab);
-    }
-    /**
-     * Update UI after a change to file.
-     *
-     * @param updateData if specified, only fields defined in the object will be updated. (The _values_ of
-     * those fields are ignored -- only their presence is important because that indicates that the data
-     * is fresh in the file object.) The purpose is to avoid clobbering user-entered data in the various
-     * input fields when the file object changes elsewhere in unrelated ways, such as new screenshots.
-     */
-    updateUi(updateData) {
-        const file = this.filePanel.file;
-        if (updateData === undefined || updateData.hasOwnProperty("name")) {
-            this.nameInput.value = file.name;
-        }
-        if (updateData === undefined || updateData.hasOwnProperty("filename")) {
-            this.filenameInput.value = file.filename;
-        }
-        if (updateData === undefined || updateData.hasOwnProperty("note")) {
-            this.noteInput.value = file.note;
-        }
-        this.typeInput.value = this.trs80File.getDescription();
-        this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
-        this.addedAtInput.value = formatDate(file.addedAt);
-        this.modifiedAtInput.value = formatDate(file.modifiedAt);
-        this.sharedInput.checked = file.shared;
-        if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
-            this.populateScreenshots();
-        }
-        this.updateButtonStatus();
-    }
-    /**
-     * Fill the screenshots UI with those from the file.
-     */
-    populateScreenshots() {
-        Object(teamten_ts_utils_dist["clearElement"])(this.screenshotsDiv);
-        for (const screenshot of this.filePanel.file.screenshots) {
-            const screen = new dist["CanvasScreen"]();
-            screen.displayScreenshot(screenshot);
-            const image = screen.asImage();
-            const screenshotDiv = document.createElement("div");
-            screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
-            screenshotDiv.classList.add("screenshot");
-            screenshotDiv.append(image);
-            const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
-                screenshotDiv.remove();
-                this.updateButtonStatus();
-            });
-            screenshotDiv.append(deleteButton);
-            this.screenshotsDiv.append(screenshotDiv);
-        }
-    }
-    /**
-     * Update the save/restore buttons' enabled status based on input fields.
-     */
-    updateButtonStatus() {
-        const file = this.filePanel.file;
-        const newFile = this.fileFromUi();
-        const isSame = isEmpty_default()(newFile.getUpdateDataComparedTo(file));
-        const isValid = newFile.name.length > 0 &&
-            newFile.filename.length > 0;
-        const isDisabled = isSame || !isValid;
-        this.revertButton.disabled = isDisabled;
-        this.saveButton.disabled = isDisabled;
-    }
-    /**
-     * Make a new File object based on the user's inputs.
-     */
-    fileFromUi() {
-        // Collect screenshots from UI.
-        const screenshots = [];
-        for (const screenshotDiv of this.screenshotsDiv.children) {
-            let screenshot = screenshotDiv.getAttribute(SCREENSHOT_ATTR);
-            if (screenshot === null) {
-                console.error("Screenshot attribute " + SCREENSHOT_ATTR + " is null");
-            }
-            else {
-                screenshots.push(screenshot);
-            }
-        }
-        return this.filePanel.file.builder()
-            .withName(this.nameInput.value.trim())
-            .withFilename(this.filenameInput.value.trim())
-            .withNote(this.noteInput.value.trim())
-            .withShared(this.sharedInput.checked)
-            .withScreenshots(screenshots)
-            .build();
-    }
-}
-/**
- * Tab for displaying the hex and ASCII of the binary.
- */
-class FilePanel_HexdumpTab {
-    constructor(filePanel, pageTabs, trs80File) {
-        this.needGeneration = true;
-        this.collapse = true;
-        this.annotate = true;
-        this.binary = filePanel.file.binary;
-        this.trs80File = trs80File;
-        const tab = new PageTab_PageTab("Hexdump");
-        tab.element.classList.add("hexdump-tab");
-        const outer = document.createElement("div");
-        outer.classList.add("hexdump-outer");
-        tab.element.append(outer);
-        this.hexdumpElement = document.createElement("div");
-        this.hexdumpElement.classList.add("hexdump");
-        outer.append(this.hexdumpElement);
-        tab.onShow.subscribe(() => {
-            // Wait until user switches to tab to compute initial display, so that
-            // it doesn't slow down the animation to the file panel. Also do it
-            // asynchronously so that we don't block the display of the tab change.
-            if (this.needGeneration) {
-                this.needGeneration = false;
-                setTimeout(() => this.generateHexdump(), 0);
-            }
-        });
-        const actionBar = document.createElement("div");
-        actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
-        const collapseLabel = document.createElement("label");
-        const collapseCheckbox = document.createElement("input");
-        collapseCheckbox.type = "checkbox";
-        collapseCheckbox.checked = this.collapse;
-        collapseLabel.append(collapseCheckbox);
-        collapseLabel.append(" Collapse duplicate lines");
-        collapseCheckbox.addEventListener("change", () => {
-            this.collapse = collapseCheckbox.checked;
-            this.generateHexdump();
-        });
-        actionBar.append(collapseLabel);
-        const annotateLabel = document.createElement("label");
-        const annotateCheckbox = document.createElement("input");
-        annotateCheckbox.type = "checkbox";
-        annotateCheckbox.checked = this.annotate;
-        annotateLabel.append(annotateCheckbox);
-        annotateLabel.append(" Show annotations");
-        annotateCheckbox.addEventListener("change", () => {
-            this.annotate = annotateCheckbox.checked;
-            this.generateHexdump();
-        });
-        actionBar.append(annotateLabel);
-        // Take the hexdump out of the dom when the panel is hidden because it slows down things
-        // like changing themes (the animations aren't smooth).
-        let hideHandle = undefined;
-        const cancelHide = () => {
-            if (hideHandle !== undefined) {
-                window.clearTimeout(hideHandle);
-                hideHandle = undefined;
-            }
-        };
-        filePanel.context.panelManager.onOpenClose.subscribe(isOpen => {
-            cancelHide();
-            if (isOpen) {
-                this.hexdumpElement.classList.remove("hidden");
-            }
-            else {
-                hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
-            }
-        });
-        pageTabs.addTab(tab);
-    }
-    /**
-     * Regenerate the HTML for the hexdump.
-     */
-    generateHexdump() {
-        const hexdumpGenerator = new HexdumpGenerator_HexdumpGenerator(this.binary, this.collapse, this.annotate ? this.trs80File.annotations : []);
-        const lines = hexdumpGenerator.generate();
-        Object(teamten_ts_utils_dist["clearElement"])(this.hexdumpElement);
-        this.hexdumpElement.append(...lines);
-    }
-}
-/**
- * Panel to explore a file.
- */
-class FilePanel_FilePanel extends Panel_Panel {
-    constructor(context, file) {
-        super(context, file.name, "file-panel", true);
-        this.file = file;
-        const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
-        const pageTabs = new PageTabs_PageTabs(this.content);
-        new FilePanel_FileInfoTab(this, pageTabs, trs80File);
-        new FilePanel_HexdumpTab(this, pageTabs, trs80File);
-    }
-}
-
-// CONCATENATED MODULE: ./src/Context.ts
-
-
-
-
-const FRAGMENT_PREFIX = "#!";
-/**
- * Context of the whole app, with its global variables.
- */
-class Context_Context {
-    constructor(library, trs80, db, panelManager) {
-        this._runningFile = undefined;
-        this._user = undefined;
-        this.userResolved = false;
-        this.onUser = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.onFragment = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        // Dispatched when we initially figure out if we're signed in or not.
-        this.onUserResolved = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.library = library;
-        this.trs80 = trs80;
-        this.db = db;
-        this.panelManager = panelManager;
-        // Listen for changes to the file we're running.
-        this.library.onEvent.subscribe(event => {
-            if (this._runningFile !== undefined) {
-                if (event instanceof LibraryModifyEvent && event.oldFile.id === this._runningFile.id) {
-                    this.runningFile = event.newFile;
-                }
-                if (event instanceof LibraryRemoveEvent && event.oldFile.id === this._runningFile.id) {
-                    this.runningFile = undefined;
-                }
-            }
-        });
-    }
-    /**
-     * Run a program.
-     */
-    runProgram(file, trs80File) {
-        if (trs80File === undefined) {
-            trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
-        }
-        if (trs80File.error !== undefined) {
-            // TODO
-        }
-        else {
-            this.runningFile = file;
-            this.trs80.runTrs80File(trs80File);
-        }
-    }
-    /**
-     * Open a file panel on the given file.
-     */
-    openFilePanel(file) {
-        const filePanel = new FilePanel_FilePanel(this, file);
-        this.panelManager.pushPanel(filePanel);
-    }
-    /**
-     * Get the currently-running file, if any.
-     */
-    get runningFile() {
-        return this._runningFile;
-    }
-    /**
-     * Set the currently-running file, if any.
-     */
-    set runningFile(value) {
-        this._runningFile = value;
-        this.onFragment.dispatch(this.getFragment());
-    }
-    /**
-     * Set the currently signed-in user.
-     */
-    set user(user) {
-        this._user = user;
-        this.onUser.dispatch(user);
-        if (!this.userResolved) {
-            this.userResolved = true;
-            this.onUserResolved.dispatch();
-        }
-    }
-    /**
-     * Get the currently signed-in user.
-     */
-    get user() {
-        return this._user;
-    }
-    /**
-     * Return the URL fragment for this context, including the leading hash.
-     */
-    getFragment() {
-        const parts = [];
-        if (this._runningFile !== undefined) {
-            parts.push("runFile=" + this._runningFile.id);
-        }
-        const fragment = parts.join(",");
-        return fragment === "" ? "" : FRAGMENT_PREFIX + fragment;
-    }
-    /**
-     * Returns a map of variables in the fragment. Every value array will have at least one element.
-     */
-    static parseFragment(fragment) {
-        const args = new Map();
-        if (fragment.startsWith(FRAGMENT_PREFIX)) {
-            fragment = fragment.substr(FRAGMENT_PREFIX.length);
-            const parts = fragment.split(",");
-            for (const part of parts) {
-                const subparts = part.split("=");
-                if (subparts.length !== 2) {
-                    console.error(`Fragment part "${part}" is malformed.`);
-                }
-                else {
-                    const key = subparts[0];
-                    const value = subparts[1];
-                    let values = args.get(key);
-                    if (values === undefined) {
-                        values = [];
-                        args.set(key, values);
-                    }
-                    values.push(value);
-                }
-            }
-        }
-        return args;
-    }
-}
-
-// CONCATENATED MODULE: ./src/DialogBox.ts
-class DialogBox {
-    constructor(title, content, cssClass) {
-        this.backgroundNode = undefined;
-        const body = document.querySelector("body");
-        this.backgroundNode = document.createElement("div");
-        this.backgroundNode.classList.add("dialog-box-background");
-        this.backgroundNode.addEventListener("click", e => {
-            if (e.target === this.backgroundNode) {
-                this.close();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        });
-        body.append(this.backgroundNode);
-        const frame = document.createElement("div");
-        frame.classList.add("dialog-box-frame");
-        if (cssClass !== undefined) {
-            frame.classList.add(cssClass);
-        }
-        this.backgroundNode.append(frame);
-        const h1 = document.createElement("h1");
-        h1.innerText = title;
-        frame.append(h1);
-        const contentFrame = document.createElement("div");
-        contentFrame.classList.add("dialog-box-content-frame");
-        frame.append(contentFrame);
-        contentFrame.append(content);
-        // Handler for the ESC key.
-        this.escListener = (e) => {
-            if (e.key === "Escape") {
-                e.preventDefault();
-                e.stopPropagation();
-                this.close();
-            }
-        };
-        document.addEventListener("keydown", this.escListener);
-        // Wait a bit to let the initial view render, which enables the fade-in animation.
-        setTimeout(() => { var _a; return (_a = this.backgroundNode) === null || _a === void 0 ? void 0 : _a.classList.add("dialog-box-shown"); }, 10);
-    }
-    /**
-     * Close and destroy the dialog box. The dialog box cannot be re-opened.
-     */
-    close() {
-        if (this.backgroundNode !== undefined) {
-            document.removeEventListener("keydown", this.escListener);
-            const backgroundNode = this.backgroundNode;
-            backgroundNode.classList.remove("dialog-box-shown");
-            this.backgroundNode = undefined;
-            setTimeout(() => backgroundNode.remove(), 500);
-        }
-    }
-}
-
-// CONCATENATED MODULE: ./src/User.ts
-/**
- * The user from the perspective of the auth system.
- */
-class AuthUser {
-    constructor(uid, emailAddress, name) {
-        this.uid = uid;
-        this.emailAddress = emailAddress;
-        this.name = name;
-    }
-    /**
-     * Upgrade an authdata to a full user based on data from the database.
-     */
-    toUser(data) {
-        const changed = this.emailAddress !== data.emailAddress || this.name !== data.name;
-        return new User(this.uid, this.emailAddress, this.name, data.admin, data.addedAt, changed ? new Date() : data.modifiedAt, data.lastActiveAt);
-    }
-    /**
-     * Promote a new auth user to a full user.
-     */
-    toNewUser() {
-        const now = new Date();
-        return new User(this.uid, this.emailAddress, this.name, false, now, now, now);
-    }
-    /**
-     * Make a new AuthUser from a Firebase user.
-     */
-    static fromFirebaseUser(firebaseUser) {
-        var _a, _b;
-        return new AuthUser(firebaseUser.uid, (_a = firebaseUser.email) !== null && _a !== void 0 ? _a : "", (_b = firebaseUser.displayName) !== null && _b !== void 0 ? _b : "");
-    }
-}
-/**
- * Represents a user in our database, both basic data such as ID, as well as user preferences.
- */
-class User extends AuthUser {
-    constructor(uid, emailAddress, name, admin, addedAt, modifiedAt, lastActiveAt) {
-        super(uid, emailAddress, name);
-        this.admin = admin;
-        this.addedAt = addedAt;
-        this.modifiedAt = modifiedAt;
-        this.lastActiveAt = lastActiveAt;
-    }
-}
-
-// CONCATENATED MODULE: ./src/Database.ts
-
-
-const FILES_COLLECTION_NAME = "files";
-const USERS_COLLECTION_NAME = "users";
-/**
- * Interface to the Firestore data.
- */
-class Database_Database {
-    constructor(firestore) {
-        this.firestore = firestore;
-    }
-    /**
-     * Get all files for this user.
-     */
-    getAllFiles(uid) {
-        return this.firestore.collection(FILES_COLLECTION_NAME).where("uid", "==", uid).get();
-    }
-    /**
-     * Get a file by its ID. Rejects without argument if can't be found or has insufficient permission.
-     */
-    getFile(fileId) {
-        return this.firestore.collection(FILES_COLLECTION_NAME).doc(fileId).get()
-            .then(snapshot => {
-            if (snapshot.exists) {
-                return Promise.resolve(FileBuilder.fromDoc(snapshot).build());
-            }
-            else {
-                // I don't know when this can happen because both missing and non-shared
-                // files show up in the catch clause.
-                return Promise.reject();
-            }
-        })
-            .catch(error => {
-            console.error(`Can't get file ${fileId}`, error);
-            return Promise.reject();
-        });
-    }
-    /**
-     * Add a file to the database.
-     */
-    addFile(file) {
-        return this.firestore.collection(FILES_COLLECTION_NAME).add({
-            uid: file.uid,
-            name: file.name,
-            filename: file.filename,
-            note: file.note,
-            shared: file.shared,
-            hash: file.hash,
-            binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
-            addedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.addedAt),
-            modifiedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.modifiedAt),
-        });
-    }
-    /**
-     * Updates an existing file in the database. Both files should have the same ID.
-     */
-    updateFile(oldFile, newFile) {
-        if (oldFile.id !== newFile.id) {
-            throw new Error("File IDs must match in updateFile");
-        }
-        return this.firestore.collection(FILES_COLLECTION_NAME).doc(oldFile.id)
-            .update(newFile.getUpdateDataComparedTo(oldFile));
-    }
-    /**
-     * Deletes a file in the database.
-     */
-    deleteFile(file) {
-        return this.firestore.collection(FILES_COLLECTION_NAME).doc(file.id).delete();
-    }
-    /**
-     * Get or create a user for the given auth user.
-     */
-    userFromAuthUser(authUser) {
-        const docRef = this.firestore.collection(USERS_COLLECTION_NAME).doc(authUser.uid);
-        return this.firestore.runTransaction(transaction => {
-            return transaction.get(docRef)
-                .then(doc => {
-                let user;
-                if (doc.exists) {
-                    // User already exists. Remember when they last signed in.
-                    user = authUser.toUser(doc.data());
-                    // TODO make delta object.
-                    transaction.update(docRef, {
-                        emailAddress: user.emailAddress,
-                        name: user.name,
-                        modifiedAt: user.modifiedAt,
-                        lastActiveAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(new Date()),
-                    });
-                }
-                else {
-                    // User does not yet exist, create it.
-                    user = authUser.toNewUser();
-                    transaction.set(docRef, {
-                        emailAddress: user.emailAddress,
-                        name: user.name,
-                        admin: user.admin,
-                        addedAt: user.addedAt,
-                        modifiedAt: user.modifiedAt,
-                        lastActiveAt: user.lastActiveAt,
-                    });
-                }
-                return user;
-            });
-        });
-    }
-}
-
-// CONCATENATED MODULE: ./src/Main.ts
-
-
-// These imports load individual services into the firebase namespace.
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Main_EmptyCassette extends dist["CassettePlayer"] {
-}
-function createNavbar(openLibrary, signIn, signOut) {
-    const body = document.querySelector("body");
-    const navbar = document.createElement("div");
-    navbar.classList.add("navbar");
-    const title = document.createElement("a");
-    title.classList.add("home-button");
-    title.textContent = "My TRS-80";
-    title.href = "/";
-    navbar.append(title);
-    const libraryButton = makeIconButton(makeIcon("folder_open"), "Open library (Ctrl-L)", openLibrary);
-    libraryButton.classList.add("library-button");
-    navbar.append(libraryButton);
-    const themeButton = makeIconButton(makeIcon("brightness_medium"), "Toggle theme", () => {
-        body.classList.toggle("light-mode");
-        body.classList.toggle("dark-mode");
-    });
-    themeButton.classList.add("theme-button");
-    navbar.append(themeButton);
-    const signInButton = makeTextButton("Sign In", undefined, "sign-in-button", signIn);
-    const signOutButton = makeTextButton("Sign Out", undefined, "sign-out-button", signOut);
-    navbar.append(signInButton, signOutButton);
-    return navbar;
-}
-function main() {
-    var _a;
-    const body = document.querySelector("body");
-    body.classList.add("signed-out");
-    // Configuration for Firebase.
-    index_esm["a" /* default */].initializeApp({
-        apiKey: "AIzaSyAfGZY9BaDUmy4qNtg11JHd_kLd1JmgdBI",
-        authDomain: "my-trs-80.firebaseapp.com",
-        projectId: "my-trs-80",
-        storageBucket: "my-trs-80.appspot.com",
-        messagingSenderId: "438103442091",
-        appId: "1:438103442091:web:0fe42c43917ba1add52dee"
-    });
-    index_esm["a" /* default */].analytics();
-    // Configuration for Firebase sign-in screen.
-    const uiConfig = {
-        signInSuccessUrl: '/',
-        signInOptions: [
-            // Leave the lines as is for the providers you want to offer your users.
-            index_esm["a" /* default */].auth.GoogleAuthProvider.PROVIDER_ID,
-        ],
-        // Pop up a browser window for the actual sign-in page:
-        signInFlow: "popup",
-        callbacks: {
-            signInSuccessWithAuthResult: (authResult) => {
-                // Don't use stuff here, the user will get passed to onAuthStateChanged().
-                // I don't see much else useful in authResult.
-                // console.log(authResult);
-                // Don't redirect, we've taken care of it.
-                return false;
-            },
-        },
-    };
-    let firebaseAuth = index_esm["a" /* default */].auth();
-    const firebaseAuthUi = new esm["a" /* auth */].AuthUI(firebaseAuth);
-    const signInDiv = document.createElement("div");
-    const signInInstructions = document.createElement("div");
-    signInInstructions.classList.add("sign-in-instructions");
-    signInInstructions.innerText = "Sign in to My TRS-80 to have a persistent place to store your files.";
-    const signInFirebase = document.createElement("div");
-    signInDiv.append(signInInstructions, signInFirebase);
-    let signInDialog = undefined;
-    const db = new Database_Database(index_esm["a" /* default */].firestore());
-    firebaseAuth.onAuthStateChanged(firebaseUser => {
-        if (firebaseUser !== null) {
-            //console.log(firebaseUser);
-            const authUser = AuthUser.fromFirebaseUser(firebaseUser);
-            db.userFromAuthUser(authUser)
-                .then(user => context.user = user)
-                .catch(error => {
-                // TODO.
-                console.error(error);
-            });
-            if (signInDialog !== undefined) {
-                signInDialog.close();
-                signInDialog = undefined;
-            }
-        }
-        else {
-            // No user signed in, render sign-in UI.
-            firebaseAuthUi.reset();
-            firebaseAuthUi.start(signInFirebase, uiConfig);
-            context.user = undefined;
-        }
-    });
-    const panelManager = new PanelManager_PanelManager();
-    const library = new Library_Library();
-    const navbar = createNavbar(() => panelManager.open(), () => {
-        if (signInDialog !== undefined) {
-            signInDialog.close();
-        }
-        signInDialog = new DialogBox("Sign In", signInDiv, "sign-in-dialog-box");
-    }, () => index_esm["a" /* default */].auth().signOut());
-    const screenDiv = document.createElement("div");
-    screenDiv.classList.add("main-computer-screen");
-    const screen = new dist["CanvasScreen"](1.5);
-    screenDiv.append(screen.getNode());
-    let cassette = new Main_EmptyCassette();
-    const trs80 = new dist["Trs80"](screen, cassette);
-    const reboot = () => {
-        trs80.reset();
-        trs80.start();
-    };
-    const hardwareSettingsPanel = new dist["SettingsPanel"](screen.getNode(), trs80, dist["PanelType"].HARDWARE);
-    const viewPanel = new dist["SettingsPanel"](screen.getNode(), trs80, dist["PanelType"].VIEW);
-    const controlPanel = new dist["ControlPanel"](screen.getNode());
-    controlPanel.addResetButton(reboot);
-    controlPanel.addTapeRewindButton(() => {
-        // cassette.rewind();
-    });
-    controlPanel.addSettingsButton(hardwareSettingsPanel);
-    controlPanel.addSettingsButton(viewPanel);
-    // const progressBar = new ProgressBar(screen.getNode());
-    // cassette.setProgressBar(progressBar);
-    body.append(navbar);
-    body.append(screenDiv);
-    let wasTrs80Started = false;
-    panelManager.onOpenClose.subscribe(isOpen => {
-        if (isOpen) {
-            wasTrs80Started = trs80.stop();
-        }
-        else {
-            if (wasTrs80Started) {
-                trs80.start();
-            }
-        }
-    });
-    document.addEventListener("keydown", event => {
-        if (event.ctrlKey && event.key === "l") {
-            panelManager.toggle();
-        }
-    });
-    reboot();
-    const context = new Context_Context(library, trs80, db, panelManager);
-    context.onFragment.subscribe(fragment => {
-        window.location.hash = fragment;
-    });
-    context.onUser.subscribe(user => {
-        body.classList.toggle("signed-in", user !== undefined);
-        body.classList.toggle("signed-out", user === undefined);
-    });
-    // TODO make this button appear and disappear as we have/not have a program.
-    controlPanel.addScreenshotButton(() => {
-        if (context.runningFile !== undefined) {
-            let file = context.runningFile;
-            const screenshot = trs80.getScreenshot();
-            const screenshots = [...file.screenshots, screenshot]; // Don't modify original array.
-            file = file.builder()
-                .withScreenshots(screenshots)
-                .withModifiedAt(new Date())
-                .build();
-            context.db.updateFile(context.runningFile, file)
-                .then(() => context.library.modifyFile(file))
-                .catch(error => {
-                // TODO.
-                console.error(error);
-            });
-        }
-    });
-    const libraryPanel = new LibraryPanel_LibraryPanel(context);
-    panelManager.pushPanel(libraryPanel);
-    context.onUser.subscribe(user => {
-        library.removeAll();
-        if (user !== undefined) {
-            // Fetch all files.
-            context.db.getAllFiles(user.uid)
-                .then((querySnapshot) => {
-                for (const doc of querySnapshot.docs) {
-                    const file = FileBuilder.fromDoc(doc).build();
-                    library.addFile(file);
-                }
-                // We should now be in sync with the cloud database.
-                library.setInSync(true);
-            })
-                .catch(error => {
-                // TODO
-                console.error(error);
-                if (error.name === "FirebaseError") {
-                    // code can be "permission-denied".
-                    console.error(error.code, error.message);
-                }
-            });
-        }
-    });
-    // See if we should run an app right away.
-    const args = Context_Context.parseFragment(window.location.hash);
-    const runFileId = (_a = args.get("runFile")) === null || _a === void 0 ? void 0 : _a[0];
-    context.onUserResolved.subscribe(() => {
-        // We're signed in, or not, and can now read the database.
-        if (runFileId !== undefined) {
-            db.getFile(runFileId)
-                .then(file => {
-                context.runProgram(file);
-            })
-                .catch(() => {
-                // TODO Should probably display error message.
-            });
-        }
-    });
-}
-
-// CONCATENATED MODULE: ./src/index.ts
-
-main();
 
 
 /***/ }),
@@ -14305,7 +8354,7 @@ main();
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return auth; });
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(31);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(32);
 /* harmony import */ var dialog_polyfill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45);
 /* harmony import */ var dialog_polyfill__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dialog_polyfill__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var material_design_lite_src_mdlComponentHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(68);
@@ -15447,13 +9496,170 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function() {
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+exports.byteLength = byteLength
+exports.toByteArray = toByteArray
+exports.fromByteArray = fromByteArray
+
+var lookup = []
+var revLookup = []
+var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
+
+var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+for (var i = 0, len = code.length; i < len; ++i) {
+  lookup[i] = code[i]
+  revLookup[code.charCodeAt(i)] = i
+}
+
+// Support decoding URL-safe base64 strings, as Node.js does.
+// See: https://en.wikipedia.org/wiki/Base64#URL_applications
+revLookup['-'.charCodeAt(0)] = 62
+revLookup['_'.charCodeAt(0)] = 63
+
+function getLens (b64) {
+  var len = b64.length
+
+  if (len % 4 > 0) {
+    throw new Error('Invalid string. Length must be a multiple of 4')
+  }
+
+  // Trim off extra bytes after placeholder bytes are found
+  // See: https://github.com/beatgammit/base64-js/issues/42
+  var validLen = b64.indexOf('=')
+  if (validLen === -1) validLen = len
+
+  var placeHoldersLen = validLen === len
+    ? 0
+    : 4 - (validLen % 4)
+
+  return [validLen, placeHoldersLen]
+}
+
+// base64 is 4/3 + up to two characters of the original data
+function byteLength (b64) {
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function _byteLength (b64, validLen, placeHoldersLen) {
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function toByteArray (b64) {
+  var tmp
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+
+  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
+
+  var curByte = 0
+
+  // if there are placeholders, only get up to the last complete 4 chars
+  var len = placeHoldersLen > 0
+    ? validLen - 4
+    : validLen
+
+  var i
+  for (i = 0; i < len; i += 4) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 18) |
+      (revLookup[b64.charCodeAt(i + 1)] << 12) |
+      (revLookup[b64.charCodeAt(i + 2)] << 6) |
+      revLookup[b64.charCodeAt(i + 3)]
+    arr[curByte++] = (tmp >> 16) & 0xFF
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 2) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 2) |
+      (revLookup[b64.charCodeAt(i + 1)] >> 4)
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 1) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 10) |
+      (revLookup[b64.charCodeAt(i + 1)] << 4) |
+      (revLookup[b64.charCodeAt(i + 2)] >> 2)
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  return arr
+}
+
+function tripletToBase64 (num) {
+  return lookup[num >> 18 & 0x3F] +
+    lookup[num >> 12 & 0x3F] +
+    lookup[num >> 6 & 0x3F] +
+    lookup[num & 0x3F]
+}
+
+function encodeChunk (uint8, start, end) {
+  var tmp
+  var output = []
+  for (var i = start; i < end; i += 3) {
+    tmp =
+      ((uint8[i] << 16) & 0xFF0000) +
+      ((uint8[i + 1] << 8) & 0xFF00) +
+      (uint8[i + 2] & 0xFF)
+    output.push(tripletToBase64(tmp))
+  }
+  return output.join('')
+}
+
+function fromByteArray (uint8) {
+  var tmp
+  var len = uint8.length
+  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+  var parts = []
+  var maxChunkLength = 16383 // must be multiple of 3
+
+  // go through the array every three bytes, we'll deal with trailing stuff later
+  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
+    parts.push(encodeChunk(uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)))
+  }
+
+  // pad the end with zeros, but make sure to not forget the extra bytes
+  if (extraBytes === 1) {
+    tmp = uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 2] +
+      lookup[(tmp << 4) & 0x3F] +
+      '=='
+    )
+  } else if (extraBytes === 2) {
+    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 10] +
+      lookup[(tmp >> 4) & 0x3F] +
+      lookup[(tmp << 2) & 0x3F] +
+      '='
+    )
+  }
+
+  return parts.join('')
+}
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var baseKeys = __webpack_require__(83),
     getTag = __webpack_require__(86),
     isArguments = __webpack_require__(98),
     isArray = __webpack_require__(100),
     isArrayLike = __webpack_require__(101),
     isBuffer = __webpack_require__(102),
-    isPrototype = __webpack_require__(33),
+    isPrototype = __webpack_require__(34),
     isTypedArray = __webpack_require__(104);
 
 /** `Object#toString` result references. */
@@ -15527,7 +9733,7 @@ module.exports = isEmpty;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15569,7 +9775,7 @@ exports.CassettePlayer = CassettePlayer;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15578,10 +9784,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Trs80 = void 0;
 const z80_base_1 = __webpack_require__(0);
 const z80_emulator_1 = __webpack_require__(109);
-const Keyboard_1 = __webpack_require__(49);
-const Model1Level1Rom_1 = __webpack_require__(50);
-const Model1Level2Rom_1 = __webpack_require__(51);
-const Model3Rom_1 = __webpack_require__(52);
+const Keyboard_1 = __webpack_require__(50);
+const Model1Level1Rom_1 = __webpack_require__(51);
+const Model1Level2Rom_1 = __webpack_require__(52);
+const Model3Rom_1 = __webpack_require__(53);
 const Utils_1 = __webpack_require__(13);
 const Config_1 = __webpack_require__(20);
 const trs80_base_1 = __webpack_require__(12);
@@ -16404,15 +10610,20 @@ class Trs80 {
      * Run a TRS-80 program. The exact behavior depends on the type of program.
      */
     runTrs80File(trs80File) {
+        console.log("runTrs80File");
+        console.log(trs80File);
+        console.log(trs80_base_1.Cassette);
         if (trs80File instanceof trs80_base_1.CmdProgram) {
             this.runCmdProgram(trs80File);
         }
         else if (trs80File instanceof trs80_base_1.Cassette) {
+            console.log("instance of cassette");
             if (trs80File.files.length === 1) {
                 this.runTrs80File(trs80File.files[0].file);
             }
             else {
                 // TODO.
+                console.error("Can't currently run multiple cassette files");
             }
         }
         else if (trs80File instanceof trs80_base_1.SystemProgram) {
@@ -16423,6 +10634,7 @@ class Trs80 {
         }
         else {
             // TODO.
+            console.error("Don't know how to run", trs80File);
         }
     }
     /**
@@ -16519,7 +10731,7 @@ exports.Trs80 = Trs80;
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16794,7 +11006,7 @@ exports.Keyboard = Keyboard;
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16807,7 +11019,7 @@ exports.model1Level1Rom = `
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16820,7 +11032,7 @@ exports.model1Level2Rom = `
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16833,7 +11045,7 @@ exports.model3Rom = `
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16881,7 +11093,7 @@ exports.concatByteArrays = concatByteArrays;
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16960,7 +11172,7 @@ exports.ByteReader = ByteReader;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16969,14 +11181,14 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(56));
 __export(__webpack_require__(57));
-__export(__webpack_require__(26));
 __export(__webpack_require__(58));
+__export(__webpack_require__(25));
+__export(__webpack_require__(59));
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17007,13 +11219,13 @@ exports.isByteReg = isByteReg;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Utils_1 = __webpack_require__(26);
+const Utils_1 = __webpack_require__(25);
 /**
  * All registers in a Z80.
  */
@@ -17134,7 +11346,7 @@ exports.registerSetFields = [
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17183,40 +11395,6 @@ var Flag;
      */
     Flag[Flag["S"] = 128] = "S";
 })(Flag = exports.Flag || (exports.Flag = {}));
-
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeTrs80File = void 0;
-const Basic_1 = __webpack_require__(24);
-const Cassette_1 = __webpack_require__(27);
-const CmdProgram_1 = __webpack_require__(25);
-const RawBinaryFile_1 = __webpack_require__(22);
-/**
- * Top-level decoder for any TRS-80 file.
- */
-function decodeTrs80File(binary) {
-    let trs80File;
-    trs80File = Cassette_1.decodeCassette(binary);
-    if (trs80File !== undefined) {
-        return trs80File;
-    }
-    trs80File = CmdProgram_1.decodeCmdProgram(binary);
-    if (trs80File !== undefined) {
-        return trs80File;
-    }
-    trs80File = Basic_1.decodeBasicProgram(binary);
-    if (trs80File !== undefined) {
-        return trs80File;
-    }
-    return new RawBinaryFile_1.RawBinaryFile(binary);
-}
-exports.decodeTrs80File = decodeTrs80File;
 
 
 /***/ }),
@@ -17994,7 +12172,7 @@ exports.MODEL3_ALT_FONT = new Font(GLYPH_CG4, 8, 12, [0, 64, -1, 192]);
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ControlPanel = void 0;
 const Utils_1 = __webpack_require__(13);
-const SettingsPanel_1 = __webpack_require__(30);
+const SettingsPanel_1 = __webpack_require__(31);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-control-panel";
 const gScreenNodeCssClass = gCssPrefix + "-screen-node";
 const gPanelCssClass = gCssPrefix + "-panel";
@@ -37633,7 +31811,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DispatcherWrapper = exports.EventListBase = exports.DispatcherBase = void 0;
 var management_1 = __webpack_require__(74);
-var subscription_1 = __webpack_require__(32);
+var subscription_1 = __webpack_require__(33);
 /**
  * Base class for implementation of the dispatcher. It facilitates the subscribe
  * and unsubscribe methods based on generic handlers. The TEventType specifies
@@ -38603,7 +32781,7 @@ exports.ByteReader = ByteReader;
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(33),
+var isPrototype = __webpack_require__(34),
     nativeKeys = __webpack_require__(84);
 
 /** Used for built-in method references. */
@@ -38678,7 +32856,7 @@ var DataView = __webpack_require__(87),
     Set = __webpack_require__(96),
     WeakMap = __webpack_require__(97),
     baseGetTag = __webpack_require__(19),
-    toSource = __webpack_require__(38);
+    toSource = __webpack_require__(39);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -38749,10 +32927,10 @@ module.exports = DataView;
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(34),
+var isFunction = __webpack_require__(35),
     isMasked = __webpack_require__(91),
-    isObject = __webpack_require__(37),
-    toSource = __webpack_require__(38);
+    isObject = __webpack_require__(38),
+    toSource = __webpack_require__(39);
 
 /**
  * Used to match `RegExp`
@@ -38802,7 +32980,7 @@ module.exports = baseIsNative;
 /* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(35);
+var Symbol = __webpack_require__(36);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -38992,7 +33170,7 @@ module.exports = WeakMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(99),
-    isObjectLike = __webpack_require__(23);
+    isObjectLike = __webpack_require__(22);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -39034,7 +33212,7 @@ module.exports = isArguments;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(19),
-    isObjectLike = __webpack_require__(23);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -39089,8 +33267,8 @@ module.exports = isArray;
 /* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(34),
-    isLength = __webpack_require__(39);
+var isFunction = __webpack_require__(35),
+    isLength = __webpack_require__(40);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -39167,7 +33345,7 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(40)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(41)(module)))
 
 /***/ }),
 /* 103 */
@@ -39231,8 +33409,8 @@ module.exports = isTypedArray;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(19),
-    isLength = __webpack_require__(39),
-    isObjectLike = __webpack_require__(23);
+    isLength = __webpack_require__(40),
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -39316,7 +33494,7 @@ module.exports = baseUnary;
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(36);
+/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(37);
 
 /** Detect free variable `exports`. */
 var freeExports =  true && exports && !exports.nodeType && exports;
@@ -39347,10 +33525,6031 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(40)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(41)(module)))
 
 /***/ }),
-/* 108 */,
+/* 108 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ../trs80-emulator/dist/index.js
+var dist = __webpack_require__(7);
+
+// EXTERNAL MODULE: ./node_modules/firebase/app/dist/index.esm.js
+var index_esm = __webpack_require__(2);
+
+// EXTERNAL MODULE: ./node_modules/firebase/auth/dist/index.esm.js
+var dist_index_esm = __webpack_require__(32);
+
+// EXTERNAL MODULE: ./node_modules/@firebase/firestore/dist/index.esm.js
+var firestore_dist_index_esm = __webpack_require__(65);
+
+// CONCATENATED MODULE: ./node_modules/firebase/firestore/dist/index.esm.js
+
+
+// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
+var tslib_es6 = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./node_modules/@firebase/app/dist/index.esm.js
+var app_dist_index_esm = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./node_modules/@firebase/component/dist/index.esm.js
+var component_dist_index_esm = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./node_modules/@firebase/util/dist/index.esm.js
+var util_dist_index_esm = __webpack_require__(4);
+
+// EXTERNAL MODULE: ./node_modules/idb/build/idb.js
+var idb = __webpack_require__(43);
+
+// CONCATENATED MODULE: ./node_modules/@firebase/installations/dist/index.esm.js
+
+
+
+
+
+
+var index_esm_name = "@firebase/installations";
+var version = "0.4.19";
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var PENDING_TIMEOUT_MS = 10000;
+var PACKAGE_VERSION = "w:" + version;
+var INTERNAL_AUTH_VERSION = 'FIS_v2';
+var INSTALLATIONS_API_URL = 'https://firebaseinstallations.googleapis.com/v1';
+var TOKEN_EXPIRATION_BUFFER = 60 * 60 * 1000; // One hour
+var SERVICE = 'installations';
+var SERVICE_NAME = 'Installations';
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var index_esm_a;
+var ERROR_DESCRIPTION_MAP = (index_esm_a = {},
+    index_esm_a["missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */] = 'Missing App configuration value: "{$valueName}"',
+    index_esm_a["not-registered" /* NOT_REGISTERED */] = 'Firebase Installation is not registered.',
+    index_esm_a["installation-not-found" /* INSTALLATION_NOT_FOUND */] = 'Firebase Installation not found.',
+    index_esm_a["request-failed" /* REQUEST_FAILED */] = '{$requestName} request failed with error "{$serverCode} {$serverStatus}: {$serverMessage}"',
+    index_esm_a["app-offline" /* APP_OFFLINE */] = 'Could not process request. Application offline.',
+    index_esm_a["delete-pending-registration" /* DELETE_PENDING_REGISTRATION */] = "Can't delete installation while there is a pending registration request.",
+    index_esm_a);
+var ERROR_FACTORY = new util_dist_index_esm["b" /* ErrorFactory */](SERVICE, SERVICE_NAME, ERROR_DESCRIPTION_MAP);
+/** Returns true if error is a FirebaseError that is based on an error from the server. */
+function isServerError(error) {
+    return (error instanceof util_dist_index_esm["c" /* FirebaseError */] &&
+        error.code.includes("request-failed" /* REQUEST_FAILED */));
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function getInstallationsEndpoint(_a) {
+    var projectId = _a.projectId;
+    return INSTALLATIONS_API_URL + "/projects/" + projectId + "/installations";
+}
+function extractAuthTokenInfoFromResponse(response) {
+    return {
+        token: response.token,
+        requestStatus: 2 /* COMPLETED */,
+        expiresIn: getExpiresInFromResponseExpiresIn(response.expiresIn),
+        creationTime: Date.now()
+    };
+}
+function getErrorFromResponse(requestName, response) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var responseJson, errorData;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, response.json()];
+                case 1:
+                    responseJson = _a.sent();
+                    errorData = responseJson.error;
+                    return [2 /*return*/, ERROR_FACTORY.create("request-failed" /* REQUEST_FAILED */, {
+                            requestName: requestName,
+                            serverCode: errorData.code,
+                            serverMessage: errorData.message,
+                            serverStatus: errorData.status
+                        })];
+            }
+        });
+    });
+}
+function getHeaders(_a) {
+    var apiKey = _a.apiKey;
+    return new Headers({
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'x-goog-api-key': apiKey
+    });
+}
+function getHeadersWithAuth(appConfig, _a) {
+    var refreshToken = _a.refreshToken;
+    var headers = getHeaders(appConfig);
+    headers.append('Authorization', getAuthorizationHeader(refreshToken));
+    return headers;
+}
+/**
+ * Calls the passed in fetch wrapper and returns the response.
+ * If the returned response has a status of 5xx, re-runs the function once and
+ * returns the response.
+ */
+function retryIfServerError(fn) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var result;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fn()];
+                case 1:
+                    result = _a.sent();
+                    if (result.status >= 500 && result.status < 600) {
+                        // Internal Server Error. Retry request.
+                        return [2 /*return*/, fn()];
+                    }
+                    return [2 /*return*/, result];
+            }
+        });
+    });
+}
+function getExpiresInFromResponseExpiresIn(responseExpiresIn) {
+    // This works because the server will never respond with fractions of a second.
+    return Number(responseExpiresIn.replace('s', '000'));
+}
+function getAuthorizationHeader(refreshToken) {
+    return INTERNAL_AUTH_VERSION + " " + refreshToken;
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function createInstallationRequest(appConfig, _a) {
+    var fid = _a.fid;
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var endpoint, headers, body, request, response, responseValue, registeredInstallationEntry;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    endpoint = getInstallationsEndpoint(appConfig);
+                    headers = getHeaders(appConfig);
+                    body = {
+                        fid: fid,
+                        authVersion: INTERNAL_AUTH_VERSION,
+                        appId: appConfig.appId,
+                        sdkVersion: PACKAGE_VERSION
+                    };
+                    request = {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify(body)
+                    };
+                    return [4 /*yield*/, retryIfServerError(function () { return fetch(endpoint, request); })];
+                case 1:
+                    response = _b.sent();
+                    if (!response.ok) return [3 /*break*/, 3];
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    responseValue = _b.sent();
+                    registeredInstallationEntry = {
+                        fid: responseValue.fid || fid,
+                        registrationStatus: 2 /* COMPLETED */,
+                        refreshToken: responseValue.refreshToken,
+                        authToken: extractAuthTokenInfoFromResponse(responseValue.authToken)
+                    };
+                    return [2 /*return*/, registeredInstallationEntry];
+                case 3: return [4 /*yield*/, getErrorFromResponse('Create Installation', response)];
+                case 4: throw _b.sent();
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/** Returns a promise that resolves after given time passes. */
+function sleep(ms) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, ms);
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function bufferToBase64UrlSafe(array) {
+    var b64 = btoa(String.fromCharCode.apply(String, Object(tslib_es6["f" /* __spread */])(array)));
+    return b64.replace(/\+/g, '-').replace(/\//g, '_');
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var VALID_FID_PATTERN = /^[cdef][\w-]{21}$/;
+var INVALID_FID = '';
+/**
+ * Generates a new FID using random values from Web Crypto API.
+ * Returns an empty string if FID generation fails for any reason.
+ */
+function generateFid() {
+    try {
+        // A valid FID has exactly 22 base64 characters, which is 132 bits, or 16.5
+        // bytes. our implementation generates a 17 byte array instead.
+        var fidByteArray = new Uint8Array(17);
+        var crypto_1 = self.crypto || self.msCrypto;
+        crypto_1.getRandomValues(fidByteArray);
+        // Replace the first 4 random bits with the constant FID header of 0b0111.
+        fidByteArray[0] = 112 + (fidByteArray[0] % 16);
+        var fid = encode(fidByteArray);
+        return VALID_FID_PATTERN.test(fid) ? fid : INVALID_FID;
+    }
+    catch (_a) {
+        // FID generation errored
+        return INVALID_FID;
+    }
+}
+/** Converts a FID Uint8Array to a base64 string representation. */
+function encode(fidByteArray) {
+    var b64String = bufferToBase64UrlSafe(fidByteArray);
+    // Remove the 23rd character that was added because of the extra 4 bits at the
+    // end of our 17 byte array, and the '=' padding.
+    return b64String.substr(0, 22);
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/** Returns a string key that can be used to identify the app. */
+function getKey(appConfig) {
+    return appConfig.appName + "!" + appConfig.appId;
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var fidChangeCallbacks = new Map();
+/**
+ * Calls the onIdChange callbacks with the new FID value, and broadcasts the
+ * change to other tabs.
+ */
+function fidChanged(appConfig, fid) {
+    var key = getKey(appConfig);
+    callFidChangeCallbacks(key, fid);
+    broadcastFidChange(key, fid);
+}
+function addCallback(appConfig, callback) {
+    // Open the broadcast channel if it's not already open,
+    // to be able to listen to change events from other tabs.
+    getBroadcastChannel();
+    var key = getKey(appConfig);
+    var callbackSet = fidChangeCallbacks.get(key);
+    if (!callbackSet) {
+        callbackSet = new Set();
+        fidChangeCallbacks.set(key, callbackSet);
+    }
+    callbackSet.add(callback);
+}
+function removeCallback(appConfig, callback) {
+    var key = getKey(appConfig);
+    var callbackSet = fidChangeCallbacks.get(key);
+    if (!callbackSet) {
+        return;
+    }
+    callbackSet.delete(callback);
+    if (callbackSet.size === 0) {
+        fidChangeCallbacks.delete(key);
+    }
+    // Close broadcast channel if there are no more callbacks.
+    closeBroadcastChannel();
+}
+function callFidChangeCallbacks(key, fid) {
+    var e_1, _a;
+    var callbacks = fidChangeCallbacks.get(key);
+    if (!callbacks) {
+        return;
+    }
+    try {
+        for (var callbacks_1 = Object(tslib_es6["h" /* __values */])(callbacks), callbacks_1_1 = callbacks_1.next(); !callbacks_1_1.done; callbacks_1_1 = callbacks_1.next()) {
+            var callback = callbacks_1_1.value;
+            callback(fid);
+        }
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (callbacks_1_1 && !callbacks_1_1.done && (_a = callbacks_1.return)) _a.call(callbacks_1);
+        }
+        finally { if (e_1) throw e_1.error; }
+    }
+}
+function broadcastFidChange(key, fid) {
+    var channel = getBroadcastChannel();
+    if (channel) {
+        channel.postMessage({ key: key, fid: fid });
+    }
+    closeBroadcastChannel();
+}
+var broadcastChannel = null;
+/** Opens and returns a BroadcastChannel if it is supported by the browser. */
+function getBroadcastChannel() {
+    if (!broadcastChannel && 'BroadcastChannel' in self) {
+        broadcastChannel = new BroadcastChannel('[Firebase] FID Change');
+        broadcastChannel.onmessage = function (e) {
+            callFidChangeCallbacks(e.data.key, e.data.fid);
+        };
+    }
+    return broadcastChannel;
+}
+function closeBroadcastChannel() {
+    if (fidChangeCallbacks.size === 0 && broadcastChannel) {
+        broadcastChannel.close();
+        broadcastChannel = null;
+    }
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var DATABASE_NAME = 'firebase-installations-database';
+var DATABASE_VERSION = 1;
+var OBJECT_STORE_NAME = 'firebase-installations-store';
+var dbPromise = null;
+function getDbPromise() {
+    if (!dbPromise) {
+        dbPromise = Object(idb["openDb"])(DATABASE_NAME, DATABASE_VERSION, function (upgradeDB) {
+            // We don't use 'break' in this switch statement, the fall-through
+            // behavior is what we want, because if there are multiple versions between
+            // the old version and the current version, we want ALL the migrations
+            // that correspond to those versions to run, not only the last one.
+            // eslint-disable-next-line default-case
+            switch (upgradeDB.oldVersion) {
+                case 0:
+                    upgradeDB.createObjectStore(OBJECT_STORE_NAME);
+            }
+        });
+    }
+    return dbPromise;
+}
+/** Assigns or overwrites the record for the given key with the given value. */
+function set(appConfig, value) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var key, db, tx, objectStore, oldValue;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    key = getKey(appConfig);
+                    return [4 /*yield*/, getDbPromise()];
+                case 1:
+                    db = _a.sent();
+                    tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
+                    objectStore = tx.objectStore(OBJECT_STORE_NAME);
+                    return [4 /*yield*/, objectStore.get(key)];
+                case 2:
+                    oldValue = _a.sent();
+                    return [4 /*yield*/, objectStore.put(value, key)];
+                case 3:
+                    _a.sent();
+                    return [4 /*yield*/, tx.complete];
+                case 4:
+                    _a.sent();
+                    if (!oldValue || oldValue.fid !== value.fid) {
+                        fidChanged(appConfig, value.fid);
+                    }
+                    return [2 /*return*/, value];
+            }
+        });
+    });
+}
+/** Removes record(s) from the objectStore that match the given key. */
+function remove(appConfig) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var key, db, tx;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    key = getKey(appConfig);
+                    return [4 /*yield*/, getDbPromise()];
+                case 1:
+                    db = _a.sent();
+                    tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
+                    return [4 /*yield*/, tx.objectStore(OBJECT_STORE_NAME).delete(key)];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, tx.complete];
+                case 3:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Atomically updates a record with the result of updateFn, which gets
+ * called with the current value. If newValue is undefined, the record is
+ * deleted instead.
+ * @return Updated value
+ */
+function update(appConfig, updateFn) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var key, db, tx, store, oldValue, newValue;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    key = getKey(appConfig);
+                    return [4 /*yield*/, getDbPromise()];
+                case 1:
+                    db = _a.sent();
+                    tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
+                    store = tx.objectStore(OBJECT_STORE_NAME);
+                    return [4 /*yield*/, store.get(key)];
+                case 2:
+                    oldValue = _a.sent();
+                    newValue = updateFn(oldValue);
+                    if (!(newValue === undefined)) return [3 /*break*/, 4];
+                    return [4 /*yield*/, store.delete(key)];
+                case 3:
+                    _a.sent();
+                    return [3 /*break*/, 6];
+                case 4: return [4 /*yield*/, store.put(newValue, key)];
+                case 5:
+                    _a.sent();
+                    _a.label = 6;
+                case 6: return [4 /*yield*/, tx.complete];
+                case 7:
+                    _a.sent();
+                    if (newValue && (!oldValue || oldValue.fid !== newValue.fid)) {
+                        fidChanged(appConfig, newValue.fid);
+                    }
+                    return [2 /*return*/, newValue];
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Updates and returns the InstallationEntry from the database.
+ * Also triggers a registration request if it is necessary and possible.
+ */
+function getInstallationEntry(appConfig) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var registrationPromise, installationEntry;
+        var _a;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, update(appConfig, function (oldEntry) {
+                        var installationEntry = updateOrCreateInstallationEntry(oldEntry);
+                        var entryWithPromise = triggerRegistrationIfNecessary(appConfig, installationEntry);
+                        registrationPromise = entryWithPromise.registrationPromise;
+                        return entryWithPromise.installationEntry;
+                    })];
+                case 1:
+                    installationEntry = _b.sent();
+                    if (!(installationEntry.fid === INVALID_FID)) return [3 /*break*/, 3];
+                    _a = {};
+                    return [4 /*yield*/, registrationPromise];
+                case 2: 
+                // FID generation failed. Waiting for the FID from the server.
+                return [2 /*return*/, (_a.installationEntry = _b.sent(), _a)];
+                case 3: return [2 /*return*/, {
+                        installationEntry: installationEntry,
+                        registrationPromise: registrationPromise
+                    }];
+            }
+        });
+    });
+}
+/**
+ * Creates a new Installation Entry if one does not exist.
+ * Also clears timed out pending requests.
+ */
+function updateOrCreateInstallationEntry(oldEntry) {
+    var entry = oldEntry || {
+        fid: generateFid(),
+        registrationStatus: 0 /* NOT_STARTED */
+    };
+    return clearTimedOutRequest(entry);
+}
+/**
+ * If the Firebase Installation is not registered yet, this will trigger the
+ * registration and return an InProgressInstallationEntry.
+ *
+ * If registrationPromise does not exist, the installationEntry is guaranteed
+ * to be registered.
+ */
+function triggerRegistrationIfNecessary(appConfig, installationEntry) {
+    if (installationEntry.registrationStatus === 0 /* NOT_STARTED */) {
+        if (!navigator.onLine) {
+            // Registration required but app is offline.
+            var registrationPromiseWithError = Promise.reject(ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */));
+            return {
+                installationEntry: installationEntry,
+                registrationPromise: registrationPromiseWithError
+            };
+        }
+        // Try registering. Change status to IN_PROGRESS.
+        var inProgressEntry = {
+            fid: installationEntry.fid,
+            registrationStatus: 1 /* IN_PROGRESS */,
+            registrationTime: Date.now()
+        };
+        var registrationPromise = registerInstallation(appConfig, inProgressEntry);
+        return { installationEntry: inProgressEntry, registrationPromise: registrationPromise };
+    }
+    else if (installationEntry.registrationStatus === 1 /* IN_PROGRESS */) {
+        return {
+            installationEntry: installationEntry,
+            registrationPromise: waitUntilFidRegistration(appConfig)
+        };
+    }
+    else {
+        return { installationEntry: installationEntry };
+    }
+}
+/** This will be executed only once for each new Firebase Installation. */
+function registerInstallation(appConfig, installationEntry) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var registeredInstallationEntry, e_1;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 7]);
+                    return [4 /*yield*/, createInstallationRequest(appConfig, installationEntry)];
+                case 1:
+                    registeredInstallationEntry = _a.sent();
+                    return [2 /*return*/, set(appConfig, registeredInstallationEntry)];
+                case 2:
+                    e_1 = _a.sent();
+                    if (!(isServerError(e_1) && e_1.customData.serverCode === 409)) return [3 /*break*/, 4];
+                    // Server returned a "FID can not be used" error.
+                    // Generate a new ID next time.
+                    return [4 /*yield*/, remove(appConfig)];
+                case 3:
+                    // Server returned a "FID can not be used" error.
+                    // Generate a new ID next time.
+                    _a.sent();
+                    return [3 /*break*/, 6];
+                case 4: 
+                // Registration failed. Set FID as not registered.
+                return [4 /*yield*/, set(appConfig, {
+                        fid: installationEntry.fid,
+                        registrationStatus: 0 /* NOT_STARTED */
+                    })];
+                case 5:
+                    // Registration failed. Set FID as not registered.
+                    _a.sent();
+                    _a.label = 6;
+                case 6: throw e_1;
+                case 7: return [2 /*return*/];
+            }
+        });
+    });
+}
+/** Call if FID registration is pending in another request. */
+function waitUntilFidRegistration(appConfig) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var entry, _a, installationEntry, registrationPromise;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, updateInstallationRequest(appConfig)];
+                case 1:
+                    entry = _b.sent();
+                    _b.label = 2;
+                case 2:
+                    if (!(entry.registrationStatus === 1 /* IN_PROGRESS */)) return [3 /*break*/, 5];
+                    // createInstallation request still in progress.
+                    return [4 /*yield*/, sleep(100)];
+                case 3:
+                    // createInstallation request still in progress.
+                    _b.sent();
+                    return [4 /*yield*/, updateInstallationRequest(appConfig)];
+                case 4:
+                    entry = _b.sent();
+                    return [3 /*break*/, 2];
+                case 5:
+                    if (!(entry.registrationStatus === 0 /* NOT_STARTED */)) return [3 /*break*/, 7];
+                    return [4 /*yield*/, getInstallationEntry(appConfig)];
+                case 6:
+                    _a = _b.sent(), installationEntry = _a.installationEntry, registrationPromise = _a.registrationPromise;
+                    if (registrationPromise) {
+                        return [2 /*return*/, registrationPromise];
+                    }
+                    else {
+                        // if there is no registrationPromise, entry is registered.
+                        return [2 /*return*/, installationEntry];
+                    }
+                case 7: return [2 /*return*/, entry];
+            }
+        });
+    });
+}
+/**
+ * Called only if there is a CreateInstallation request in progress.
+ *
+ * Updates the InstallationEntry in the DB based on the status of the
+ * CreateInstallation request.
+ *
+ * Returns the updated InstallationEntry.
+ */
+function updateInstallationRequest(appConfig) {
+    return update(appConfig, function (oldEntry) {
+        if (!oldEntry) {
+            throw ERROR_FACTORY.create("installation-not-found" /* INSTALLATION_NOT_FOUND */);
+        }
+        return clearTimedOutRequest(oldEntry);
+    });
+}
+function clearTimedOutRequest(entry) {
+    if (hasInstallationRequestTimedOut(entry)) {
+        return {
+            fid: entry.fid,
+            registrationStatus: 0 /* NOT_STARTED */
+        };
+    }
+    return entry;
+}
+function hasInstallationRequestTimedOut(installationEntry) {
+    return (installationEntry.registrationStatus === 1 /* IN_PROGRESS */ &&
+        installationEntry.registrationTime + PENDING_TIMEOUT_MS < Date.now());
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function generateAuthTokenRequest(_a, installationEntry) {
+    var appConfig = _a.appConfig, platformLoggerProvider = _a.platformLoggerProvider;
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var endpoint, headers, platformLogger, body, request, response, responseValue, completedAuthToken;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    endpoint = getGenerateAuthTokenEndpoint(appConfig, installationEntry);
+                    headers = getHeadersWithAuth(appConfig, installationEntry);
+                    platformLogger = platformLoggerProvider.getImmediate({
+                        optional: true
+                    });
+                    if (platformLogger) {
+                        headers.append('x-firebase-client', platformLogger.getPlatformInfoString());
+                    }
+                    body = {
+                        installation: {
+                            sdkVersion: PACKAGE_VERSION
+                        }
+                    };
+                    request = {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify(body)
+                    };
+                    return [4 /*yield*/, retryIfServerError(function () { return fetch(endpoint, request); })];
+                case 1:
+                    response = _b.sent();
+                    if (!response.ok) return [3 /*break*/, 3];
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    responseValue = _b.sent();
+                    completedAuthToken = extractAuthTokenInfoFromResponse(responseValue);
+                    return [2 /*return*/, completedAuthToken];
+                case 3: return [4 /*yield*/, getErrorFromResponse('Generate Auth Token', response)];
+                case 4: throw _b.sent();
+            }
+        });
+    });
+}
+function getGenerateAuthTokenEndpoint(appConfig, _a) {
+    var fid = _a.fid;
+    return getInstallationsEndpoint(appConfig) + "/" + fid + "/authTokens:generate";
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Returns a valid authentication token for the installation. Generates a new
+ * token if one doesn't exist, is expired or about to expire.
+ *
+ * Should only be called if the Firebase Installation is registered.
+ */
+function refreshAuthToken(dependencies, forceRefresh) {
+    if (forceRefresh === void 0) { forceRefresh = false; }
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var tokenPromise, entry, authToken, _a;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, update(dependencies.appConfig, function (oldEntry) {
+                        if (!isEntryRegistered(oldEntry)) {
+                            throw ERROR_FACTORY.create("not-registered" /* NOT_REGISTERED */);
+                        }
+                        var oldAuthToken = oldEntry.authToken;
+                        if (!forceRefresh && isAuthTokenValid(oldAuthToken)) {
+                            // There is a valid token in the DB.
+                            return oldEntry;
+                        }
+                        else if (oldAuthToken.requestStatus === 1 /* IN_PROGRESS */) {
+                            // There already is a token request in progress.
+                            tokenPromise = waitUntilAuthTokenRequest(dependencies, forceRefresh);
+                            return oldEntry;
+                        }
+                        else {
+                            // No token or token expired.
+                            if (!navigator.onLine) {
+                                throw ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */);
+                            }
+                            var inProgressEntry = makeAuthTokenRequestInProgressEntry(oldEntry);
+                            tokenPromise = fetchAuthTokenFromServer(dependencies, inProgressEntry);
+                            return inProgressEntry;
+                        }
+                    })];
+                case 1:
+                    entry = _b.sent();
+                    if (!tokenPromise) return [3 /*break*/, 3];
+                    return [4 /*yield*/, tokenPromise];
+                case 2:
+                    _a = _b.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    _a = entry.authToken;
+                    _b.label = 4;
+                case 4:
+                    authToken = _a;
+                    return [2 /*return*/, authToken];
+            }
+        });
+    });
+}
+/**
+ * Call only if FID is registered and Auth Token request is in progress.
+ *
+ * Waits until the current pending request finishes. If the request times out,
+ * tries once in this thread as well.
+ */
+function waitUntilAuthTokenRequest(dependencies, forceRefresh) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var entry, authToken;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, updateAuthTokenRequest(dependencies.appConfig)];
+                case 1:
+                    entry = _a.sent();
+                    _a.label = 2;
+                case 2:
+                    if (!(entry.authToken.requestStatus === 1 /* IN_PROGRESS */)) return [3 /*break*/, 5];
+                    // generateAuthToken still in progress.
+                    return [4 /*yield*/, sleep(100)];
+                case 3:
+                    // generateAuthToken still in progress.
+                    _a.sent();
+                    return [4 /*yield*/, updateAuthTokenRequest(dependencies.appConfig)];
+                case 4:
+                    entry = _a.sent();
+                    return [3 /*break*/, 2];
+                case 5:
+                    authToken = entry.authToken;
+                    if (authToken.requestStatus === 0 /* NOT_STARTED */) {
+                        // The request timed out or failed in a different call. Try again.
+                        return [2 /*return*/, refreshAuthToken(dependencies, forceRefresh)];
+                    }
+                    else {
+                        return [2 /*return*/, authToken];
+                    }
+            }
+        });
+    });
+}
+/**
+ * Called only if there is a GenerateAuthToken request in progress.
+ *
+ * Updates the InstallationEntry in the DB based on the status of the
+ * GenerateAuthToken request.
+ *
+ * Returns the updated InstallationEntry.
+ */
+function updateAuthTokenRequest(appConfig) {
+    return update(appConfig, function (oldEntry) {
+        if (!isEntryRegistered(oldEntry)) {
+            throw ERROR_FACTORY.create("not-registered" /* NOT_REGISTERED */);
+        }
+        var oldAuthToken = oldEntry.authToken;
+        if (hasAuthTokenRequestTimedOut(oldAuthToken)) {
+            return Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, oldEntry), { authToken: { requestStatus: 0 /* NOT_STARTED */ } });
+        }
+        return oldEntry;
+    });
+}
+function fetchAuthTokenFromServer(dependencies, installationEntry) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var authToken, updatedInstallationEntry, e_1, updatedInstallationEntry;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 8]);
+                    return [4 /*yield*/, generateAuthTokenRequest(dependencies, installationEntry)];
+                case 1:
+                    authToken = _a.sent();
+                    updatedInstallationEntry = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, installationEntry), { authToken: authToken });
+                    return [4 /*yield*/, set(dependencies.appConfig, updatedInstallationEntry)];
+                case 2:
+                    _a.sent();
+                    return [2 /*return*/, authToken];
+                case 3:
+                    e_1 = _a.sent();
+                    if (!(isServerError(e_1) &&
+                        (e_1.customData.serverCode === 401 || e_1.customData.serverCode === 404))) return [3 /*break*/, 5];
+                    // Server returned a "FID not found" or a "Invalid authentication" error.
+                    // Generate a new ID next time.
+                    return [4 /*yield*/, remove(dependencies.appConfig)];
+                case 4:
+                    // Server returned a "FID not found" or a "Invalid authentication" error.
+                    // Generate a new ID next time.
+                    _a.sent();
+                    return [3 /*break*/, 7];
+                case 5:
+                    updatedInstallationEntry = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, installationEntry), { authToken: { requestStatus: 0 /* NOT_STARTED */ } });
+                    return [4 /*yield*/, set(dependencies.appConfig, updatedInstallationEntry)];
+                case 6:
+                    _a.sent();
+                    _a.label = 7;
+                case 7: throw e_1;
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+function isEntryRegistered(installationEntry) {
+    return (installationEntry !== undefined &&
+        installationEntry.registrationStatus === 2 /* COMPLETED */);
+}
+function isAuthTokenValid(authToken) {
+    return (authToken.requestStatus === 2 /* COMPLETED */ &&
+        !isAuthTokenExpired(authToken));
+}
+function isAuthTokenExpired(authToken) {
+    var now = Date.now();
+    return (now < authToken.creationTime ||
+        authToken.creationTime + authToken.expiresIn < now + TOKEN_EXPIRATION_BUFFER);
+}
+/** Returns an updated InstallationEntry with an InProgressAuthToken. */
+function makeAuthTokenRequestInProgressEntry(oldEntry) {
+    var inProgressAuthToken = {
+        requestStatus: 1 /* IN_PROGRESS */,
+        requestTime: Date.now()
+    };
+    return Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, oldEntry), { authToken: inProgressAuthToken });
+}
+function hasAuthTokenRequestTimedOut(authToken) {
+    return (authToken.requestStatus === 1 /* IN_PROGRESS */ &&
+        authToken.requestTime + PENDING_TIMEOUT_MS < Date.now());
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function getId(dependencies) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var _a, installationEntry, registrationPromise;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, getInstallationEntry(dependencies.appConfig)];
+                case 1:
+                    _a = _b.sent(), installationEntry = _a.installationEntry, registrationPromise = _a.registrationPromise;
+                    if (registrationPromise) {
+                        registrationPromise.catch(console.error);
+                    }
+                    else {
+                        // If the installation is already registered, update the authentication
+                        // token if needed.
+                        refreshAuthToken(dependencies).catch(console.error);
+                    }
+                    return [2 /*return*/, installationEntry.fid];
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function getToken(dependencies, forceRefresh) {
+    if (forceRefresh === void 0) { forceRefresh = false; }
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var authToken;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, completeInstallationRegistration(dependencies.appConfig)];
+                case 1:
+                    _a.sent();
+                    return [4 /*yield*/, refreshAuthToken(dependencies, forceRefresh)];
+                case 2:
+                    authToken = _a.sent();
+                    return [2 /*return*/, authToken.token];
+            }
+        });
+    });
+}
+function completeInstallationRegistration(appConfig) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var registrationPromise;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getInstallationEntry(appConfig)];
+                case 1:
+                    registrationPromise = (_a.sent()).registrationPromise;
+                    if (!registrationPromise) return [3 /*break*/, 3];
+                    // A createInstallation request is in progress. Wait until it finishes.
+                    return [4 /*yield*/, registrationPromise];
+                case 2:
+                    // A createInstallation request is in progress. Wait until it finishes.
+                    _a.sent();
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function deleteInstallationRequest(appConfig, installationEntry) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var endpoint, headers, request, response;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    endpoint = getDeleteEndpoint(appConfig, installationEntry);
+                    headers = getHeadersWithAuth(appConfig, installationEntry);
+                    request = {
+                        method: 'DELETE',
+                        headers: headers
+                    };
+                    return [4 /*yield*/, retryIfServerError(function () { return fetch(endpoint, request); })];
+                case 1:
+                    response = _a.sent();
+                    if (!!response.ok) return [3 /*break*/, 3];
+                    return [4 /*yield*/, getErrorFromResponse('Delete Installation', response)];
+                case 2: throw _a.sent();
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getDeleteEndpoint(appConfig, _a) {
+    var fid = _a.fid;
+    return getInstallationsEndpoint(appConfig) + "/" + fid;
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function deleteInstallation(dependencies) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var appConfig, entry;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    appConfig = dependencies.appConfig;
+                    return [4 /*yield*/, update(appConfig, function (oldEntry) {
+                            if (oldEntry && oldEntry.registrationStatus === 0 /* NOT_STARTED */) {
+                                // Delete the unregistered entry without sending a deleteInstallation request.
+                                return undefined;
+                            }
+                            return oldEntry;
+                        })];
+                case 1:
+                    entry = _a.sent();
+                    if (!entry) return [3 /*break*/, 6];
+                    if (!(entry.registrationStatus === 1 /* IN_PROGRESS */)) return [3 /*break*/, 2];
+                    // Can't delete while trying to register.
+                    throw ERROR_FACTORY.create("delete-pending-registration" /* DELETE_PENDING_REGISTRATION */);
+                case 2:
+                    if (!(entry.registrationStatus === 2 /* COMPLETED */)) return [3 /*break*/, 6];
+                    if (!!navigator.onLine) return [3 /*break*/, 3];
+                    throw ERROR_FACTORY.create("app-offline" /* APP_OFFLINE */);
+                case 3: return [4 /*yield*/, deleteInstallationRequest(appConfig, entry)];
+                case 4:
+                    _a.sent();
+                    return [4 /*yield*/, remove(appConfig)];
+                case 5:
+                    _a.sent();
+                    _a.label = 6;
+                case 6: return [2 /*return*/];
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Sets a new callback that will get called when Installation ID changes.
+ * Returns an unsubscribe function that will remove the callback when called.
+ */
+function onIdChange(_a, callback) {
+    var appConfig = _a.appConfig;
+    addCallback(appConfig, callback);
+    return function () {
+        removeCallback(appConfig, callback);
+    };
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function extractAppConfig(app) {
+    var e_1, _a;
+    if (!app || !app.options) {
+        throw getMissingValueError('App Configuration');
+    }
+    if (!app.name) {
+        throw getMissingValueError('App Name');
+    }
+    // Required app config keys
+    var configKeys = [
+        'projectId',
+        'apiKey',
+        'appId'
+    ];
+    try {
+        for (var configKeys_1 = Object(tslib_es6["h" /* __values */])(configKeys), configKeys_1_1 = configKeys_1.next(); !configKeys_1_1.done; configKeys_1_1 = configKeys_1.next()) {
+            var keyName = configKeys_1_1.value;
+            if (!app.options[keyName]) {
+                throw getMissingValueError(keyName);
+            }
+        }
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (configKeys_1_1 && !configKeys_1_1.done && (_a = configKeys_1.return)) _a.call(configKeys_1);
+        }
+        finally { if (e_1) throw e_1.error; }
+    }
+    return {
+        appName: app.name,
+        projectId: app.options.projectId,
+        apiKey: app.options.apiKey,
+        appId: app.options.appId
+    };
+}
+function getMissingValueError(valueName) {
+    return ERROR_FACTORY.create("missing-app-config-values" /* MISSING_APP_CONFIG_VALUES */, {
+        valueName: valueName
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function registerInstallations(instance) {
+    var installationsName = 'installations';
+    instance.INTERNAL.registerComponent(new component_dist_index_esm["a" /* Component */](installationsName, function (container) {
+        var app = container.getProvider('app').getImmediate();
+        // Throws if app isn't configured properly.
+        var appConfig = extractAppConfig(app);
+        var platformLoggerProvider = container.getProvider('platform-logger');
+        var dependencies = {
+            appConfig: appConfig,
+            platformLoggerProvider: platformLoggerProvider
+        };
+        var installations = {
+            app: app,
+            getId: function () { return getId(dependencies); },
+            getToken: function (forceRefresh) {
+                return getToken(dependencies, forceRefresh);
+            },
+            delete: function () { return deleteInstallation(dependencies); },
+            onIdChange: function (callback) {
+                return onIdChange(dependencies, callback);
+            }
+        };
+        return installations;
+    }, "PUBLIC" /* PUBLIC */));
+    instance.registerVersion(index_esm_name, version);
+}
+registerInstallations(app_dist_index_esm["a" /* default */]);
+
+
+
+// EXTERNAL MODULE: ./node_modules/@firebase/logger/dist/index.esm.js
+var logger_dist_index_esm = __webpack_require__(6);
+
+// CONCATENATED MODULE: ./node_modules/@firebase/analytics/dist/index.esm.js
+
+
+
+
+
+
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+// Key to attach FID to in gtag params.
+var GA_FID_KEY = 'firebase_id';
+var ORIGIN_KEY = 'origin';
+var FETCH_TIMEOUT_MILLIS = 60 * 1000;
+var DYNAMIC_CONFIG_URL = 'https://firebase.googleapis.com/v1alpha/projects/-/apps/{app-id}/webConfig';
+var GTAG_URL = 'https://www.googletagmanager.com/gtag/js';
+var GtagCommand;
+(function (GtagCommand) {
+    GtagCommand["EVENT"] = "event";
+    GtagCommand["SET"] = "set";
+    GtagCommand["CONFIG"] = "config";
+})(GtagCommand || (GtagCommand = {}));
+/*
+ * Officially recommended event names for gtag.js
+ * Any other string is also allowed.
+ */
+var EventName;
+(function (EventName) {
+    EventName["ADD_SHIPPING_INFO"] = "add_shipping_info";
+    EventName["ADD_PAYMENT_INFO"] = "add_payment_info";
+    EventName["ADD_TO_CART"] = "add_to_cart";
+    EventName["ADD_TO_WISHLIST"] = "add_to_wishlist";
+    EventName["BEGIN_CHECKOUT"] = "begin_checkout";
+    /** @deprecated */
+    EventName["CHECKOUT_PROGRESS"] = "checkout_progress";
+    EventName["EXCEPTION"] = "exception";
+    EventName["GENERATE_LEAD"] = "generate_lead";
+    EventName["LOGIN"] = "login";
+    EventName["PAGE_VIEW"] = "page_view";
+    EventName["PURCHASE"] = "purchase";
+    EventName["REFUND"] = "refund";
+    EventName["REMOVE_FROM_CART"] = "remove_from_cart";
+    EventName["SCREEN_VIEW"] = "screen_view";
+    EventName["SEARCH"] = "search";
+    EventName["SELECT_CONTENT"] = "select_content";
+    EventName["SELECT_ITEM"] = "select_item";
+    EventName["SELECT_PROMOTION"] = "select_promotion";
+    /** @deprecated */
+    EventName["SET_CHECKOUT_OPTION"] = "set_checkout_option";
+    EventName["SHARE"] = "share";
+    EventName["SIGN_UP"] = "sign_up";
+    EventName["TIMING_COMPLETE"] = "timing_complete";
+    EventName["VIEW_CART"] = "view_cart";
+    EventName["VIEW_ITEM"] = "view_item";
+    EventName["VIEW_ITEM_LIST"] = "view_item_list";
+    EventName["VIEW_PROMOTION"] = "view_promotion";
+    EventName["VIEW_SEARCH_RESULTS"] = "view_search_results";
+})(EventName || (EventName = {}));
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Logs an analytics event through the Firebase SDK.
+ *
+ * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
+ * @param eventName Google Analytics event name, choose from standard list or use a custom string.
+ * @param eventParams Analytics event parameters.
+ */
+function logEvent(gtagFunction, initializationPromise, eventName, eventParams, options) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var measurementId, params;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!(options && options.global)) return [3 /*break*/, 1];
+                    gtagFunction(GtagCommand.EVENT, eventName, eventParams);
+                    return [2 /*return*/];
+                case 1: return [4 /*yield*/, initializationPromise];
+                case 2:
+                    measurementId = _a.sent();
+                    params = Object(tslib_es6["a" /* __assign */])(Object(tslib_es6["a" /* __assign */])({}, eventParams), { 'send_to': measurementId });
+                    gtagFunction(GtagCommand.EVENT, eventName, params);
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Set screen_name parameter for this Google Analytics ID.
+ *
+ * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
+ * @param screenName Screen name string to set.
+ */
+function setCurrentScreen(gtagFunction, initializationPromise, screenName, options) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var measurementId;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!(options && options.global)) return [3 /*break*/, 1];
+                    gtagFunction(GtagCommand.SET, { 'screen_name': screenName });
+                    return [2 /*return*/, Promise.resolve()];
+                case 1: return [4 /*yield*/, initializationPromise];
+                case 2:
+                    measurementId = _a.sent();
+                    gtagFunction(GtagCommand.CONFIG, measurementId, {
+                        update: true,
+                        'screen_name': screenName
+                    });
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Set user_id parameter for this Google Analytics ID.
+ *
+ * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
+ * @param id User ID string to set
+ */
+function setUserId(gtagFunction, initializationPromise, id, options) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var measurementId;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!(options && options.global)) return [3 /*break*/, 1];
+                    gtagFunction(GtagCommand.SET, { 'user_id': id });
+                    return [2 /*return*/, Promise.resolve()];
+                case 1: return [4 /*yield*/, initializationPromise];
+                case 2:
+                    measurementId = _a.sent();
+                    gtagFunction(GtagCommand.CONFIG, measurementId, {
+                        update: true,
+                        'user_id': id
+                    });
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Set all other user properties other than user_id and screen_name.
+ *
+ * @param gtagFunction Wrapped gtag function that waits for fid to be set before sending an event
+ * @param properties Map of user properties to set
+ */
+function setUserProperties(gtagFunction, initializationPromise, properties, options) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var flatProperties, _i, _a, key, measurementId;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    if (!(options && options.global)) return [3 /*break*/, 1];
+                    flatProperties = {};
+                    for (_i = 0, _a = Object.keys(properties); _i < _a.length; _i++) {
+                        key = _a[_i];
+                        // use dot notation for merge behavior in gtag.js
+                        flatProperties["user_properties." + key] = properties[key];
+                    }
+                    gtagFunction(GtagCommand.SET, flatProperties);
+                    return [2 /*return*/, Promise.resolve()];
+                case 1: return [4 /*yield*/, initializationPromise];
+                case 2:
+                    measurementId = _b.sent();
+                    gtagFunction(GtagCommand.CONFIG, measurementId, {
+                        update: true,
+                        'user_properties': properties
+                    });
+                    _b.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Set whether collection is enabled for this ID.
+ *
+ * @param enabled If true, collection is enabled for this ID.
+ */
+function setAnalyticsCollectionEnabled(initializationPromise, enabled) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var measurementId;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, initializationPromise];
+                case 1:
+                    measurementId = _a.sent();
+                    window["ga-disable-" + measurementId] = !enabled;
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var logger = new logger_dist_index_esm["b" /* Logger */]('@firebase/analytics');
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Inserts gtag script tag into the page to asynchronously download gtag.
+ * @param dataLayerName Name of datalayer (most often the default, "_dataLayer").
+ */
+function insertScriptTag(dataLayerName) {
+    var script = document.createElement('script');
+    // We are not providing an analyticsId in the URL because it would trigger a `page_view`
+    // without fid. We will initialize ga-id using gtag (config) command together with fid.
+    script.src = GTAG_URL + "?l=" + dataLayerName;
+    script.async = true;
+    document.head.appendChild(script);
+}
+/**
+ * Get reference to, or create, global datalayer.
+ * @param dataLayerName Name of datalayer (most often the default, "_dataLayer").
+ */
+function getOrCreateDataLayer(dataLayerName) {
+    // Check for existing dataLayer and create if needed.
+    var dataLayer = [];
+    if (Array.isArray(window[dataLayerName])) {
+        dataLayer = window[dataLayerName];
+    }
+    else {
+        window[dataLayerName] = dataLayer;
+    }
+    return dataLayer;
+}
+/**
+ * Wrapped gtag logic when gtag is called with 'config' command.
+ *
+ * @param gtagCore Basic gtag function that just appends to dataLayer.
+ * @param initializationPromisesMap Map of appIds to their initialization promises.
+ * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
+ * @param measurementIdToAppId Map of GA measurementIDs to corresponding Firebase appId.
+ * @param measurementId GA Measurement ID to set config for.
+ * @param gtagParams Gtag config params to set.
+ */
+function gtagOnConfig(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId, measurementId, gtagParams) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var correspondingAppId, dynamicConfigResults, foundConfig, e_1;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    correspondingAppId = measurementIdToAppId[measurementId];
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 7, , 8]);
+                    if (!correspondingAppId) return [3 /*break*/, 3];
+                    return [4 /*yield*/, initializationPromisesMap[correspondingAppId]];
+                case 2:
+                    _a.sent();
+                    return [3 /*break*/, 6];
+                case 3: return [4 /*yield*/, Promise.all(dynamicConfigPromisesList)];
+                case 4:
+                    dynamicConfigResults = _a.sent();
+                    foundConfig = dynamicConfigResults.find(function (config) { return config.measurementId === measurementId; });
+                    if (!foundConfig) return [3 /*break*/, 6];
+                    return [4 /*yield*/, initializationPromisesMap[foundConfig.appId]];
+                case 5:
+                    _a.sent();
+                    _a.label = 6;
+                case 6: return [3 /*break*/, 8];
+                case 7:
+                    e_1 = _a.sent();
+                    logger.error(e_1);
+                    return [3 /*break*/, 8];
+                case 8:
+                    gtagCore(GtagCommand.CONFIG, measurementId, gtagParams);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Wrapped gtag logic when gtag is called with 'event' command.
+ *
+ * @param gtagCore Basic gtag function that just appends to dataLayer.
+ * @param initializationPromisesMap Map of appIds to their initialization promises.
+ * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
+ * @param measurementId GA Measurement ID to log event to.
+ * @param gtagParams Params to log with this event.
+ */
+function gtagOnEvent(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementId, gtagParams) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var initializationPromisesToWaitFor, gaSendToList, dynamicConfigResults, _loop_1, _i, gaSendToList_1, sendToId, state_1, e_2;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 4, , 5]);
+                    initializationPromisesToWaitFor = [];
+                    if (!(gtagParams && gtagParams['send_to'])) return [3 /*break*/, 2];
+                    gaSendToList = gtagParams['send_to'];
+                    // Make it an array if is isn't, so it can be dealt with the same way.
+                    if (!Array.isArray(gaSendToList)) {
+                        gaSendToList = [gaSendToList];
+                    }
+                    return [4 /*yield*/, Promise.all(dynamicConfigPromisesList)];
+                case 1:
+                    dynamicConfigResults = _a.sent();
+                    _loop_1 = function (sendToId) {
+                        // Any fetched dynamic measurement ID that matches this 'send_to' ID
+                        var foundConfig = dynamicConfigResults.find(function (config) { return config.measurementId === sendToId; });
+                        var initializationPromise = foundConfig && initializationPromisesMap[foundConfig.appId];
+                        if (initializationPromise) {
+                            initializationPromisesToWaitFor.push(initializationPromise);
+                        }
+                        else {
+                            // Found an item in 'send_to' that is not associated
+                            // directly with an FID, possibly a group.  Empty this array,
+                            // exit the loop early, and let it get populated below.
+                            initializationPromisesToWaitFor = [];
+                            return "break";
+                        }
+                    };
+                    for (_i = 0, gaSendToList_1 = gaSendToList; _i < gaSendToList_1.length; _i++) {
+                        sendToId = gaSendToList_1[_i];
+                        state_1 = _loop_1(sendToId);
+                        if (state_1 === "break")
+                            break;
+                    }
+                    _a.label = 2;
+                case 2:
+                    // This will be unpopulated if there was no 'send_to' field , or
+                    // if not all entries in the 'send_to' field could be mapped to
+                    // a FID. In these cases, wait on all pending initialization promises.
+                    if (initializationPromisesToWaitFor.length === 0) {
+                        initializationPromisesToWaitFor = Object.values(initializationPromisesMap);
+                    }
+                    // Run core gtag function with args after all relevant initialization
+                    // promises have been resolved.
+                    return [4 /*yield*/, Promise.all(initializationPromisesToWaitFor)];
+                case 3:
+                    // Run core gtag function with args after all relevant initialization
+                    // promises have been resolved.
+                    _a.sent();
+                    // Workaround for http://b/141370449 - third argument cannot be undefined.
+                    gtagCore(GtagCommand.EVENT, measurementId, gtagParams || {});
+                    return [3 /*break*/, 5];
+                case 4:
+                    e_2 = _a.sent();
+                    logger.error(e_2);
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Wraps a standard gtag function with extra code to wait for completion of
+ * relevant initialization promises before sending requests.
+ *
+ * @param gtagCore Basic gtag function that just appends to dataLayer.
+ * @param initializationPromisesMap Map of appIds to their initialization promises.
+ * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
+ * @param measurementIdToAppId Map of GA measurementIDs to corresponding Firebase appId.
+ */
+function wrapGtag(gtagCore, 
+/**
+ * Allows wrapped gtag calls to wait on whichever intialization promises are required,
+ * depending on the contents of the gtag params' `send_to` field, if any.
+ */
+initializationPromisesMap, 
+/**
+ * Wrapped gtag calls sometimes require all dynamic config fetches to have returned
+ * before determining what initialization promises (which include FIDs) to wait for.
+ */
+dynamicConfigPromisesList, 
+/**
+ * Wrapped gtag config calls can narrow down which initialization promise (with FID)
+ * to wait for if the measurementId is already fetched, by getting the corresponding appId,
+ * which is the key for the initialization promises map.
+ */
+measurementIdToAppId) {
+    /**
+     * Wrapper around gtag that ensures FID is sent with gtag calls.
+     * @param command Gtag command type.
+     * @param idOrNameOrParams Measurement ID if command is EVENT/CONFIG, params if command is SET.
+     * @param gtagParams Params if event is EVENT/CONFIG.
+     */
+    function gtagWrapper(command, idOrNameOrParams, gtagParams) {
+        return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+            var e_3;
+            return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 6, , 7]);
+                        if (!(command === GtagCommand.EVENT)) return [3 /*break*/, 2];
+                        // If EVENT, second arg must be measurementId.
+                        return [4 /*yield*/, gtagOnEvent(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, idOrNameOrParams, gtagParams)];
+                    case 1:
+                        // If EVENT, second arg must be measurementId.
+                        _a.sent();
+                        return [3 /*break*/, 5];
+                    case 2:
+                        if (!(command === GtagCommand.CONFIG)) return [3 /*break*/, 4];
+                        // If CONFIG, second arg must be measurementId.
+                        return [4 /*yield*/, gtagOnConfig(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId, idOrNameOrParams, gtagParams)];
+                    case 3:
+                        // If CONFIG, second arg must be measurementId.
+                        _a.sent();
+                        return [3 /*break*/, 5];
+                    case 4:
+                        // If SET, second arg must be params.
+                        gtagCore(GtagCommand.SET, idOrNameOrParams);
+                        _a.label = 5;
+                    case 5: return [3 /*break*/, 7];
+                    case 6:
+                        e_3 = _a.sent();
+                        logger.error(e_3);
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        });
+    }
+    return gtagWrapper;
+}
+/**
+ * Creates global gtag function or wraps existing one if found.
+ * This wrapped function attaches Firebase instance ID (FID) to gtag 'config' and
+ * 'event' calls that belong to the GAID associated with this Firebase instance.
+ *
+ * @param initializationPromisesMap Map of appIds to their initialization promises.
+ * @param dynamicConfigPromisesList Array of dynamic config fetch promises.
+ * @param measurementIdToAppId Map of GA measurementIDs to corresponding Firebase appId.
+ * @param dataLayerName Name of global GA datalayer array.
+ * @param gtagFunctionName Name of global gtag function ("gtag" if not user-specified).
+ */
+function wrapOrCreateGtag(initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId, dataLayerName, gtagFunctionName) {
+    // Create a basic core gtag function
+    var gtagCore = function () {
+        var _args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            _args[_i] = arguments[_i];
+        }
+        // Must push IArguments object, not an array.
+        window[dataLayerName].push(arguments);
+    };
+    // Replace it with existing one if found
+    if (window[gtagFunctionName] &&
+        typeof window[gtagFunctionName] === 'function') {
+        // @ts-ignore
+        gtagCore = window[gtagFunctionName];
+    }
+    window[gtagFunctionName] = wrapGtag(gtagCore, initializationPromisesMap, dynamicConfigPromisesList, measurementIdToAppId);
+    return {
+        gtagCore: gtagCore,
+        wrappedGtag: window[gtagFunctionName]
+    };
+}
+/**
+ * Returns first script tag in DOM matching our gtag url pattern.
+ */
+function findGtagScriptOnPage() {
+    var scriptTags = window.document.getElementsByTagName('script');
+    for (var _i = 0, _a = Object.values(scriptTags); _i < _a.length; _i++) {
+        var tag = _a[_i];
+        if (tag.src && tag.src.includes(GTAG_URL)) {
+            return tag;
+        }
+    }
+    return null;
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var dist_index_esm_a;
+var ERRORS = (dist_index_esm_a = {},
+    dist_index_esm_a["already-exists" /* ALREADY_EXISTS */] = 'A Firebase Analytics instance with the appId {$id} ' +
+        ' already exists. ' +
+        'Only one Firebase Analytics instance can be created for each appId.',
+    dist_index_esm_a["already-initialized" /* ALREADY_INITIALIZED */] = 'Firebase Analytics has already been initialized.' +
+        'settings() must be called before initializing any Analytics instance' +
+        'or it will have no effect.',
+    dist_index_esm_a["interop-component-reg-failed" /* INTEROP_COMPONENT_REG_FAILED */] = 'Firebase Analytics Interop Component failed to instantiate: {$reason}',
+    dist_index_esm_a["invalid-analytics-context" /* INVALID_ANALYTICS_CONTEXT */] = 'Firebase Analytics is not supported in this environment. ' +
+        'Wrap initialization of analytics in analytics.isSupported() ' +
+        'to prevent initialization in unsupported environments. Details: {$errorInfo}',
+    dist_index_esm_a["indexeddb-unavailable" /* INDEXEDDB_UNAVAILABLE */] = 'IndexedDB unavailable or restricted in this environment. ' +
+        'Wrap initialization of analytics in analytics.isSupported() ' +
+        'to prevent initialization in unsupported environments. Details: {$errorInfo}',
+    dist_index_esm_a["fetch-throttle" /* FETCH_THROTTLE */] = 'The config fetch request timed out while in an exponential backoff state.' +
+        ' Unix timestamp in milliseconds when fetch request throttling ends: {$throttleEndTimeMillis}.',
+    dist_index_esm_a["config-fetch-failed" /* CONFIG_FETCH_FAILED */] = 'Dynamic config fetch failed: [{$httpStatus}] {$responseMessage}',
+    dist_index_esm_a["no-api-key" /* NO_API_KEY */] = 'The "apiKey" field is empty in the local Firebase config. Firebase Analytics requires this field to' +
+        'contain a valid API key.',
+    dist_index_esm_a["no-app-id" /* NO_APP_ID */] = 'The "appId" field is empty in the local Firebase config. Firebase Analytics requires this field to' +
+        'contain a valid app ID.',
+    dist_index_esm_a);
+var index_esm_ERROR_FACTORY = new util_dist_index_esm["b" /* ErrorFactory */]('analytics', 'Analytics', ERRORS);
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Backoff factor for 503 errors, which we want to be conservative about
+ * to avoid overloading servers. Each retry interval will be
+ * BASE_INTERVAL_MILLIS * LONG_RETRY_FACTOR ^ retryCount, so the second one
+ * will be ~30 seconds (with fuzzing).
+ */
+var LONG_RETRY_FACTOR = 30;
+/**
+ * Base wait interval to multiplied by backoffFactor^backoffCount.
+ */
+var BASE_INTERVAL_MILLIS = 1000;
+/**
+ * Stubbable retry data storage class.
+ */
+var RetryData = /** @class */ (function () {
+    function RetryData(throttleMetadata, intervalMillis) {
+        if (throttleMetadata === void 0) { throttleMetadata = {}; }
+        if (intervalMillis === void 0) { intervalMillis = BASE_INTERVAL_MILLIS; }
+        this.throttleMetadata = throttleMetadata;
+        this.intervalMillis = intervalMillis;
+    }
+    RetryData.prototype.getThrottleMetadata = function (appId) {
+        return this.throttleMetadata[appId];
+    };
+    RetryData.prototype.setThrottleMetadata = function (appId, metadata) {
+        this.throttleMetadata[appId] = metadata;
+    };
+    RetryData.prototype.deleteThrottleMetadata = function (appId) {
+        delete this.throttleMetadata[appId];
+    };
+    return RetryData;
+}());
+var defaultRetryData = new RetryData();
+/**
+ * Set GET request headers.
+ * @param apiKey App API key.
+ */
+function index_esm_getHeaders(apiKey) {
+    return new Headers({
+        Accept: 'application/json',
+        'x-goog-api-key': apiKey
+    });
+}
+/**
+ * Fetches dynamic config from backend.
+ * @param app Firebase app to fetch config for.
+ */
+function fetchDynamicConfig(appFields) {
+    var _a;
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var appId, apiKey, request, appUrl, response, errorMessage, jsonResponse, _ignored_1;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    appId = appFields.appId, apiKey = appFields.apiKey;
+                    request = {
+                        method: 'GET',
+                        headers: index_esm_getHeaders(apiKey)
+                    };
+                    appUrl = DYNAMIC_CONFIG_URL.replace('{app-id}', appId);
+                    return [4 /*yield*/, fetch(appUrl, request)];
+                case 1:
+                    response = _b.sent();
+                    if (!(response.status !== 200 && response.status !== 304)) return [3 /*break*/, 6];
+                    errorMessage = '';
+                    _b.label = 2;
+                case 2:
+                    _b.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, response.json()];
+                case 3:
+                    jsonResponse = (_b.sent());
+                    if ((_a = jsonResponse.error) === null || _a === void 0 ? void 0 : _a.message) {
+                        errorMessage = jsonResponse.error.message;
+                    }
+                    return [3 /*break*/, 5];
+                case 4:
+                    _ignored_1 = _b.sent();
+                    return [3 /*break*/, 5];
+                case 5: throw index_esm_ERROR_FACTORY.create("config-fetch-failed" /* CONFIG_FETCH_FAILED */, {
+                    httpStatus: response.status,
+                    responseMessage: errorMessage
+                });
+                case 6: return [2 /*return*/, response.json()];
+            }
+        });
+    });
+}
+/**
+ * Fetches dynamic config from backend, retrying if failed.
+ * @param app Firebase app to fetch config for.
+ */
+function fetchDynamicConfigWithRetry(app, 
+// retryData and timeoutMillis are parameterized to allow passing a different value for testing.
+retryData, timeoutMillis) {
+    if (retryData === void 0) { retryData = defaultRetryData; }
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var _a, appId, apiKey, measurementId, throttleMetadata, signal;
+        var _this = this;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            _a = app.options, appId = _a.appId, apiKey = _a.apiKey, measurementId = _a.measurementId;
+            if (!appId) {
+                throw index_esm_ERROR_FACTORY.create("no-app-id" /* NO_APP_ID */);
+            }
+            if (!apiKey) {
+                if (measurementId) {
+                    return [2 /*return*/, {
+                            measurementId: measurementId,
+                            appId: appId
+                        }];
+                }
+                throw index_esm_ERROR_FACTORY.create("no-api-key" /* NO_API_KEY */);
+            }
+            throttleMetadata = retryData.getThrottleMetadata(appId) || {
+                backoffCount: 0,
+                throttleEndTimeMillis: Date.now()
+            };
+            signal = new AnalyticsAbortSignal();
+            setTimeout(function () { return Object(tslib_es6["b" /* __awaiter */])(_this, void 0, void 0, function () {
+                return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+                    // Note a very low delay, eg < 10ms, can elapse before listeners are initialized.
+                    signal.abort();
+                    return [2 /*return*/];
+                });
+            }); }, timeoutMillis !== undefined ? timeoutMillis : FETCH_TIMEOUT_MILLIS);
+            return [2 /*return*/, attemptFetchDynamicConfigWithRetry({ appId: appId, apiKey: apiKey, measurementId: measurementId }, throttleMetadata, signal, retryData)];
+        });
+    });
+}
+/**
+ * Runs one retry attempt.
+ * @param appFields Necessary app config fields.
+ * @param throttleMetadata Ongoing metadata to determine throttling times.
+ * @param signal Abort signal.
+ */
+function attemptFetchDynamicConfigWithRetry(appFields, _a, signal, retryData // for testing
+) {
+    var throttleEndTimeMillis = _a.throttleEndTimeMillis, backoffCount = _a.backoffCount;
+    if (retryData === void 0) { retryData = defaultRetryData; }
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var appId, measurementId, e_1, response, e_2, backoffMillis, throttleMetadata;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    appId = appFields.appId, measurementId = appFields.measurementId;
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, setAbortableTimeout(signal, throttleEndTimeMillis)];
+                case 2:
+                    _b.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_1 = _b.sent();
+                    if (measurementId) {
+                        logger.warn("Timed out fetching this Firebase app's measurement ID from the server." +
+                            (" Falling back to the measurement ID " + measurementId) +
+                            (" provided in the \"measurementId\" field in the local Firebase config. [" + e_1.message + "]"));
+                        return [2 /*return*/, { appId: appId, measurementId: measurementId }];
+                    }
+                    throw e_1;
+                case 4:
+                    _b.trys.push([4, 6, , 7]);
+                    return [4 /*yield*/, fetchDynamicConfig(appFields)];
+                case 5:
+                    response = _b.sent();
+                    // Note the SDK only clears throttle state if response is success or non-retriable.
+                    retryData.deleteThrottleMetadata(appId);
+                    return [2 /*return*/, response];
+                case 6:
+                    e_2 = _b.sent();
+                    if (!isRetriableError(e_2)) {
+                        retryData.deleteThrottleMetadata(appId);
+                        if (measurementId) {
+                            logger.warn("Failed to fetch this Firebase app's measurement ID from the server." +
+                                (" Falling back to the measurement ID " + measurementId) +
+                                (" provided in the \"measurementId\" field in the local Firebase config. [" + e_2.message + "]"));
+                            return [2 /*return*/, { appId: appId, measurementId: measurementId }];
+                        }
+                        else {
+                            throw e_2;
+                        }
+                    }
+                    backoffMillis = Number(e_2.customData.httpStatus) === 503
+                        ? Object(util_dist_index_esm["e" /* calculateBackoffMillis */])(backoffCount, retryData.intervalMillis, LONG_RETRY_FACTOR)
+                        : Object(util_dist_index_esm["e" /* calculateBackoffMillis */])(backoffCount, retryData.intervalMillis);
+                    throttleMetadata = {
+                        throttleEndTimeMillis: Date.now() + backoffMillis,
+                        backoffCount: backoffCount + 1
+                    };
+                    // Persists state.
+                    retryData.setThrottleMetadata(appId, throttleMetadata);
+                    logger.debug("Calling attemptFetch again in " + backoffMillis + " millis");
+                    return [2 /*return*/, attemptFetchDynamicConfigWithRetry(appFields, throttleMetadata, signal, retryData)];
+                case 7: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Supports waiting on a backoff by:
+ *
+ * <ul>
+ *   <li>Promisifying setTimeout, so we can set a timeout in our Promise chain</li>
+ *   <li>Listening on a signal bus for abort events, just like the Fetch API</li>
+ *   <li>Failing in the same way the Fetch API fails, so timing out a live request and a throttled
+ *       request appear the same.</li>
+ * </ul>
+ *
+ * <p>Visible for testing.
+ */
+function setAbortableTimeout(signal, throttleEndTimeMillis) {
+    return new Promise(function (resolve, reject) {
+        // Derives backoff from given end time, normalizing negative numbers to zero.
+        var backoffMillis = Math.max(throttleEndTimeMillis - Date.now(), 0);
+        var timeout = setTimeout(resolve, backoffMillis);
+        // Adds listener, rather than sets onabort, because signal is a shared object.
+        signal.addEventListener(function () {
+            clearTimeout(timeout);
+            // If the request completes before this timeout, the rejection has no effect.
+            reject(index_esm_ERROR_FACTORY.create("fetch-throttle" /* FETCH_THROTTLE */, {
+                throttleEndTimeMillis: throttleEndTimeMillis
+            }));
+        });
+    });
+}
+/**
+ * Returns true if the {@link Error} indicates a fetch request may succeed later.
+ */
+function isRetriableError(e) {
+    if (!(e instanceof util_dist_index_esm["c" /* FirebaseError */]) || !e.customData) {
+        return false;
+    }
+    // Uses string index defined by ErrorData, which FirebaseError implements.
+    var httpStatus = Number(e.customData['httpStatus']);
+    return (httpStatus === 429 ||
+        httpStatus === 500 ||
+        httpStatus === 503 ||
+        httpStatus === 504);
+}
+/**
+ * Shims a minimal AbortSignal (copied from Remote Config).
+ *
+ * <p>AbortController's AbortSignal conveniently decouples fetch timeout logic from other aspects
+ * of networking, such as retries. Firebase doesn't use AbortController enough to justify a
+ * polyfill recommendation, like we do with the Fetch API, but this minimal shim can easily be
+ * swapped out if/when we do.
+ */
+var AnalyticsAbortSignal = /** @class */ (function () {
+    function AnalyticsAbortSignal() {
+        this.listeners = [];
+    }
+    AnalyticsAbortSignal.prototype.addEventListener = function (listener) {
+        this.listeners.push(listener);
+    };
+    AnalyticsAbortSignal.prototype.abort = function () {
+        this.listeners.forEach(function (listener) { return listener(); });
+    };
+    return AnalyticsAbortSignal;
+}());
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function validateIndexedDB() {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var e_1;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!!Object(util_dist_index_esm["o" /* isIndexedDBAvailable */])()) return [3 /*break*/, 1];
+                    logger.warn(index_esm_ERROR_FACTORY.create("indexeddb-unavailable" /* INDEXEDDB_UNAVAILABLE */, {
+                        errorInfo: 'IndexedDB is not available in this environment.'
+                    }).message);
+                    return [2 /*return*/, false];
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, Object(util_dist_index_esm["t" /* validateIndexedDBOpenable */])()];
+                case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_1 = _a.sent();
+                    logger.warn(index_esm_ERROR_FACTORY.create("indexeddb-unavailable" /* INDEXEDDB_UNAVAILABLE */, {
+                        errorInfo: e_1
+                    }).message);
+                    return [2 /*return*/, false];
+                case 4: return [2 /*return*/, true];
+            }
+        });
+    });
+}
+/**
+ * Initialize the analytics instance in gtag.js by calling config command with fid.
+ *
+ * NOTE: We combine analytics initialization and setting fid together because we want fid to be
+ * part of the `page_view` event that's sent during the initialization
+ * @param app Firebase app
+ * @param gtagCore The gtag function that's not wrapped.
+ * @param dynamicConfigPromisesList Array of all dynamic config promises.
+ * @param measurementIdToAppId Maps measurementID to appID.
+ * @param installations FirebaseInstallations instance.
+ *
+ * @returns Measurement ID.
+ */
+function initializeIds(app, dynamicConfigPromisesList, measurementIdToAppId, installations, gtagCore) {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var dynamicConfigPromise, fidPromise, _a, dynamicConfig, fid, configProperties;
+        var _b;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_c) {
+            switch (_c.label) {
+                case 0:
+                    dynamicConfigPromise = fetchDynamicConfigWithRetry(app);
+                    // Once fetched, map measurementIds to appId, for ease of lookup in wrapped gtag function.
+                    dynamicConfigPromise
+                        .then(function (config) {
+                        measurementIdToAppId[config.measurementId] = config.appId;
+                        if (app.options.measurementId &&
+                            config.measurementId !== app.options.measurementId) {
+                            logger.warn("The measurement ID in the local Firebase config (" + app.options.measurementId + ")" +
+                                (" does not match the measurement ID fetched from the server (" + config.measurementId + ").") +
+                                " To ensure analytics events are always sent to the correct Analytics property," +
+                                " update the" +
+                                " measurement ID field in the local config or remove it from the local config.");
+                        }
+                    })
+                        .catch(function (e) { return logger.error(e); });
+                    // Add to list to track state of all dynamic config promises.
+                    dynamicConfigPromisesList.push(dynamicConfigPromise);
+                    fidPromise = validateIndexedDB().then(function (envIsValid) {
+                        if (envIsValid) {
+                            return installations.getId();
+                        }
+                        else {
+                            return undefined;
+                        }
+                    });
+                    return [4 /*yield*/, Promise.all([
+                            dynamicConfigPromise,
+                            fidPromise
+                        ])];
+                case 1:
+                    _a = _c.sent(), dynamicConfig = _a[0], fid = _a[1];
+                    // This command initializes gtag.js and only needs to be called once for the entire web app,
+                    // but since it is idempotent, we can call it multiple times.
+                    // We keep it together with other initialization logic for better code structure.
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    gtagCore('js', new Date());
+                    configProperties = (_b = {},
+                        // guard against developers accidentally setting properties with prefix `firebase_`
+                        _b[ORIGIN_KEY] = 'firebase',
+                        _b.update = true,
+                        _b);
+                    if (fid != null) {
+                        configProperties[GA_FID_KEY] = fid;
+                    }
+                    // It should be the first config command called on this GA-ID
+                    // Initialize this GA-ID and set FID on it using the gtag config API.
+                    gtagCore(GtagCommand.CONFIG, dynamicConfig.measurementId, configProperties);
+                    return [2 /*return*/, dynamicConfig.measurementId];
+            }
+        });
+    });
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Maps appId to full initialization promise. Wrapped gtag calls must wait on
+ * all or some of these, depending on the call's `send_to` param and the status
+ * of the dynamic config fetches (see below).
+ */
+var index_esm_initializationPromisesMap = {};
+/**
+ * List of dynamic config fetch promises. In certain cases, wrapped gtag calls
+ * wait on all these to be complete in order to determine if it can selectively
+ * wait for only certain initialization (FID) promises or if it must wait for all.
+ */
+var index_esm_dynamicConfigPromisesList = [];
+/**
+ * Maps fetched measurementIds to appId. Populated when the app's dynamic config
+ * fetch completes. If already populated, gtag config calls can use this to
+ * selectively wait for only this app's initialization promise (FID) instead of all
+ * initialization promises.
+ */
+var index_esm_measurementIdToAppId = {};
+/**
+ * Name for window global data layer array used by GA: defaults to 'dataLayer'.
+ */
+var dataLayerName = 'dataLayer';
+/**
+ * Name for window global gtag function used by GA: defaults to 'gtag'.
+ */
+var gtagName = 'gtag';
+/**
+ * Reproduction of standard gtag function or reference to existing
+ * gtag function on window object.
+ */
+var gtagCoreFunction;
+/**
+ * Wrapper around gtag function that ensures FID is sent with all
+ * relevant event and config calls.
+ */
+var wrappedGtagFunction;
+/**
+ * Flag to ensure page initialization steps (creation or wrapping of
+ * dataLayer and gtag script) are only run once per page load.
+ */
+var globalInitDone = false;
+/**
+ * For testing
+ */
+function resetGlobalVars(newGlobalInitDone, newInitializationPromisesMap, newDynamicPromises) {
+    if (newGlobalInitDone === void 0) { newGlobalInitDone = false; }
+    if (newInitializationPromisesMap === void 0) { newInitializationPromisesMap = {}; }
+    if (newDynamicPromises === void 0) { newDynamicPromises = []; }
+    globalInitDone = newGlobalInitDone;
+    index_esm_initializationPromisesMap = newInitializationPromisesMap;
+    index_esm_dynamicConfigPromisesList = newDynamicPromises;
+    dataLayerName = 'dataLayer';
+    gtagName = 'gtag';
+}
+/**
+ * For testing
+ */
+function getGlobalVars() {
+    return {
+        initializationPromisesMap: index_esm_initializationPromisesMap,
+        dynamicConfigPromisesList: index_esm_dynamicConfigPromisesList
+    };
+}
+/**
+ * This must be run before calling firebase.analytics() or it won't
+ * have any effect.
+ * @param options Custom gtag and dataLayer names.
+ */
+function settings(options) {
+    if (globalInitDone) {
+        throw index_esm_ERROR_FACTORY.create("already-initialized" /* ALREADY_INITIALIZED */);
+    }
+    if (options.dataLayerName) {
+        dataLayerName = options.dataLayerName;
+    }
+    if (options.gtagName) {
+        gtagName = options.gtagName;
+    }
+}
+/**
+ * Returns true if no environment mismatch is found.
+ * If environment mismatches are found, throws an INVALID_ANALYTICS_CONTEXT
+ * error that also lists details for each mismatch found.
+ */
+function warnOnBrowserContextMismatch() {
+    var mismatchedEnvMessages = [];
+    if (Object(util_dist_index_esm["l" /* isBrowserExtension */])()) {
+        mismatchedEnvMessages.push('This is a browser extension environment.');
+    }
+    if (!Object(util_dist_index_esm["d" /* areCookiesEnabled */])()) {
+        mismatchedEnvMessages.push('Cookies are not available.');
+    }
+    if (mismatchedEnvMessages.length > 0) {
+        var details = mismatchedEnvMessages
+            .map(function (message, index) { return "(" + (index + 1) + ") " + message; })
+            .join(' ');
+        var err = index_esm_ERROR_FACTORY.create("invalid-analytics-context" /* INVALID_ANALYTICS_CONTEXT */, {
+            errorInfo: details
+        });
+        logger.warn(err.message);
+    }
+}
+function factory(app, installations) {
+    warnOnBrowserContextMismatch();
+    var appId = app.options.appId;
+    if (!appId) {
+        throw index_esm_ERROR_FACTORY.create("no-app-id" /* NO_APP_ID */);
+    }
+    if (!app.options.apiKey) {
+        if (app.options.measurementId) {
+            logger.warn("The \"apiKey\" field is empty in the local Firebase config. This is needed to fetch the latest" +
+                (" measurement ID for this Firebase app. Falling back to the measurement ID " + app.options.measurementId) +
+                " provided in the \"measurementId\" field in the local Firebase config.");
+        }
+        else {
+            throw index_esm_ERROR_FACTORY.create("no-api-key" /* NO_API_KEY */);
+        }
+    }
+    if (index_esm_initializationPromisesMap[appId] != null) {
+        throw index_esm_ERROR_FACTORY.create("already-exists" /* ALREADY_EXISTS */, {
+            id: appId
+        });
+    }
+    if (!globalInitDone) {
+        // Steps here should only be done once per page: creation or wrapping
+        // of dataLayer and global gtag function.
+        // Detect if user has already put the gtag <script> tag on this page.
+        if (!findGtagScriptOnPage()) {
+            insertScriptTag(dataLayerName);
+        }
+        getOrCreateDataLayer(dataLayerName);
+        var _a = wrapOrCreateGtag(index_esm_initializationPromisesMap, index_esm_dynamicConfigPromisesList, index_esm_measurementIdToAppId, dataLayerName, gtagName), wrappedGtag = _a.wrappedGtag, gtagCore = _a.gtagCore;
+        wrappedGtagFunction = wrappedGtag;
+        gtagCoreFunction = gtagCore;
+        globalInitDone = true;
+    }
+    // Async but non-blocking.
+    // This map reflects the completion state of all promises for each appId.
+    index_esm_initializationPromisesMap[appId] = initializeIds(app, index_esm_dynamicConfigPromisesList, index_esm_measurementIdToAppId, installations, gtagCoreFunction);
+    var analyticsInstance = {
+        app: app,
+        // Public methods return void for API simplicity and to better match gtag,
+        // while internal implementations return promises.
+        logEvent: function (eventName, eventParams, options) {
+            logEvent(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], eventName, eventParams, options).catch(function (e) { return logger.error(e); });
+        },
+        setCurrentScreen: function (screenName, options) {
+            setCurrentScreen(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], screenName, options).catch(function (e) { return logger.error(e); });
+        },
+        setUserId: function (id, options) {
+            setUserId(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], id, options).catch(function (e) { return logger.error(e); });
+        },
+        setUserProperties: function (properties, options) {
+            setUserProperties(wrappedGtagFunction, index_esm_initializationPromisesMap[appId], properties, options).catch(function (e) { return logger.error(e); });
+        },
+        setAnalyticsCollectionEnabled: function (enabled) {
+            setAnalyticsCollectionEnabled(index_esm_initializationPromisesMap[appId], enabled).catch(function (e) { return logger.error(e); });
+        },
+        INTERNAL: {
+            delete: function () {
+                delete index_esm_initializationPromisesMap[appId];
+                return Promise.resolve();
+            }
+        }
+    };
+    return analyticsInstance;
+}
+
+var dist_index_esm_name = "@firebase/analytics";
+var index_esm_version = "0.6.2";
+
+/**
+ * Type constant for Firebase Analytics.
+ */
+var ANALYTICS_TYPE = 'analytics';
+function registerAnalytics(instance) {
+    instance.INTERNAL.registerComponent(new component_dist_index_esm["a" /* Component */](ANALYTICS_TYPE, function (container) {
+        // getImmediate for FirebaseApp will always succeed
+        var app = container.getProvider('app').getImmediate();
+        var installations = container
+            .getProvider('installations')
+            .getImmediate();
+        return factory(app, installations);
+    }, "PUBLIC" /* PUBLIC */).setServiceProps({
+        settings: settings,
+        EventName: EventName,
+        isSupported: isSupported
+    }));
+    instance.INTERNAL.registerComponent(new component_dist_index_esm["a" /* Component */]('analytics-internal', internalFactory, "PRIVATE" /* PRIVATE */));
+    instance.registerVersion(dist_index_esm_name, index_esm_version);
+    function internalFactory(container) {
+        try {
+            var analytics = container.getProvider(ANALYTICS_TYPE).getImmediate();
+            return {
+                logEvent: analytics.logEvent
+            };
+        }
+        catch (e) {
+            throw index_esm_ERROR_FACTORY.create("interop-component-reg-failed" /* INTEROP_COMPONENT_REG_FAILED */, {
+                reason: e
+            });
+        }
+    }
+}
+registerAnalytics(app_dist_index_esm["a" /* default */]);
+/**
+ * this is a public static method provided to users that wraps four different checks:
+ *
+ * 1. check if it's not a browser extension environment.
+ * 1. check if cookie is enabled in current browser.
+ * 3. check if IndexedDB is supported by the browser environment.
+ * 4. check if the current browser context is valid for using IndexedDB.
+ *
+ */
+function isSupported() {
+    return Object(tslib_es6["b" /* __awaiter */])(this, void 0, void 0, function () {
+        var isDBOpenable, error_1;
+        return Object(tslib_es6["d" /* __generator */])(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (Object(util_dist_index_esm["l" /* isBrowserExtension */])()) {
+                        return [2 /*return*/, false];
+                    }
+                    if (!Object(util_dist_index_esm["d" /* areCookiesEnabled */])()) {
+                        return [2 /*return*/, false];
+                    }
+                    if (!Object(util_dist_index_esm["o" /* isIndexedDBAvailable */])()) {
+                        return [2 /*return*/, false];
+                    }
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, Object(util_dist_index_esm["t" /* validateIndexedDBOpenable */])()];
+                case 2:
+                    isDBOpenable = _a.sent();
+                    return [2 /*return*/, isDBOpenable];
+                case 3:
+                    error_1 = _a.sent();
+                    return [2 /*return*/, false];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+
+
+
+// CONCATENATED MODULE: ./node_modules/firebase/analytics/dist/index.esm.js
+
+
+// EXTERNAL MODULE: ./node_modules/firebaseui/dist/esm.js
+var esm = __webpack_require__(44);
+
+// CONCATENATED MODULE: ./src/Utils.ts
+const MATERIAL_ICONS_CLASS = "material-icons-round";
+/**
+ * Format a long date without a time.
+ */
+function formatDate(date) {
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString(undefined, options);
+}
+/**
+ * Make a material design icon with the given name.
+ *
+ * https://google.github.io/material-design-icons/
+ * https://material.io/resources/icons/?style=round
+ */
+function makeIcon(name) {
+    const icon = document.createElement("i");
+    icon.classList.add(MATERIAL_ICONS_CLASS);
+    icon.classList.add("material-icons-override");
+    icon.innerText = name;
+    return icon;
+}
+/**
+ * Make a generic round button.
+ */
+function makeIconButton(icon, title, clickCallback) {
+    const button = document.createElement("button");
+    button.classList.add("icon-button");
+    button.title = title;
+    button.append(icon);
+    button.addEventListener("click", clickCallback);
+    return button;
+}
+/**
+ * Make a float-right close button for dialog boxes.
+ */
+function makeCloseIconButton(closeCallback) {
+    const button = makeIconButton(makeIcon("close"), "Close window", closeCallback);
+    button.classList.add("close-button");
+    return button;
+}
+function makeTextButton(label, iconName, cssClass, clickCallback) {
+    const button = document.createElement("button");
+    button.innerText = label;
+    button.classList.add("text-button", cssClass);
+    if (iconName !== undefined) {
+        if (typeof iconName === "string") {
+            iconName = [iconName];
+        }
+        for (const i of iconName) {
+            const icon = document.createElement("i");
+            icon.classList.add(MATERIAL_ICONS_CLASS);
+            icon.innerText = i;
+            button.append(icon);
+        }
+    }
+    if (clickCallback !== undefined) {
+        button.addEventListener("click", clickCallback);
+    }
+    return button;
+}
+/**
+ * Returns whether two string arrays are the same.
+ *
+ * Lodash has isEqual(), but it adds about 15 kB after minimization! (It's a deep comparison
+ * that has to deal with all sorts of data types.)
+ */
+function isSameStringArray(a, b) {
+    return a.length === b.length && a.every((value, index) => value === b[index]);
+}
+/**
+ * Start a timer, and return a function that will evaluate to how many milliseconds
+ * the timer has been running. Calling the function restarts the timer.
+ */
+function startTimer() {
+    let timerStart = new Date().getTime();
+    return () => {
+        const now = new Date().getTime();
+        const elapsed = now - timerStart;
+        timerStart = now;
+        return elapsed;
+    };
+}
+
+// EXTERNAL MODULE: ./node_modules/strongly-typed-events/dist/index.js
+var strongly_typed_events_dist = __webpack_require__(9);
+
+// CONCATENATED MODULE: ./src/PanelManager.ts
+
+/**
+ * Manages a stack of displayed panels.
+ */
+class PanelManager_PanelManager {
+    constructor() {
+        this.panels = [];
+        this.onOpenClose = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.isOpen = false;
+        const body = document.querySelector("body");
+        this.backgroundNode = document.createElement("div");
+        this.backgroundNode.classList.add("panel-background");
+        this.backgroundNode.addEventListener("click", e => {
+            if (e.target === this.backgroundNode) {
+                this.close();
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        body.append(this.backgroundNode);
+        this.positioningNode = document.createElement("div");
+        this.positioningNode.classList.add("panel-positioning");
+        this.backgroundNode.append(this.positioningNode);
+        // Handler for the ESC key.
+        this.escListener = (e) => {
+            if (e.key === "Escape") {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            }
+        };
+    }
+    /**
+     * Push a new panel and animate it on-screen.
+     */
+    pushPanel(panel) {
+        this.panels.push(panel);
+        this.positioningNode.append(panel.element);
+        if (this.panels.length === 1) {
+            // First panel, position immediately.
+            this.positionPanels(this.panels.length - 1);
+        }
+        else {
+            // Position it instantly at its off-screen position.
+            this.positionPanels(this.panels.length - 2);
+            // Wait for it to be laid out, then position it on-screen so the animation will be used.
+            setTimeout(() => {
+                this.positionPanels(this.panels.length - 1);
+            }, 0);
+        }
+    }
+    /**
+     * Start the animation to pop the most screen panel.
+     */
+    popPanel() {
+        if (this.panels.length > 1) {
+            // Slide it off-screen.
+            this.positionPanels(this.panels.length - 2);
+            // Remove it from the DOM.
+            const panel = this.panels.pop();
+            setTimeout(() => {
+                if (panel !== undefined) {
+                    panel.element.remove();
+                }
+            }, 1000);
+        }
+    }
+    /**
+     * Move the panels to their position so that "active" will be on-screen.
+     */
+    positionPanels(active) {
+        for (let i = 0; i < this.panels.length; i++) {
+            const screen = this.panels[i];
+            const offset = (i - active) * 100;
+            screen.element.style.left = offset + "vw";
+            screen.element.style.right = -offset + "vw";
+        }
+    }
+    /**
+     * Show the panels. Shows them where they were last.
+     */
+    open() {
+        if (!this.isOpen) {
+            this.isOpen = true;
+            document.addEventListener("keydown", this.escListener);
+            this.onOpenClose.dispatch(true);
+            this.backgroundNode.classList.add("panel-shown");
+        }
+    }
+    /**
+     * Hides the panels.
+     */
+    close() {
+        if (this.isOpen) {
+            this.isOpen = false;
+            document.removeEventListener("keydown", this.escListener);
+            this.onOpenClose.dispatch(false);
+            this.backgroundNode.classList.remove("panel-shown");
+        }
+    }
+    /**
+     * Toggle the visibility of the panels.
+     */
+    toggle() {
+        if (this.isOpen) {
+            this.close();
+        }
+        else {
+            this.open();
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/Panel.ts
+
+/**
+ * Base class for panels.
+ */
+class Panel_Panel {
+    /**
+     * Construct the panel and its basic UI.
+     *
+     * @param context the app's context object.
+     * @param title title for the header.
+     * @param panelCssClass class for the whole panel.
+     * @param showBackButton whether to show a back button.
+     */
+    constructor(context, title, panelCssClass, showBackButton) {
+        this.context = context;
+        this.element = document.createElement("div");
+        this.element.classList.add("panel", panelCssClass);
+        const header = document.createElement("h1");
+        if (showBackButton) {
+            const backButton = makeIconButton(makeIcon("arrow_back"), "Back", () => this.context.panelManager.popPanel());
+            backButton.classList.add("back-button");
+            header.append(backButton);
+        }
+        this.headerTextNode = document.createElement("span");
+        this.headerTextNode.innerText = title;
+        header.append(this.headerTextNode);
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
+        this.element.append(header);
+        this.content = document.createElement("div");
+        this.content.classList.add("panel-content");
+        this.element.append(this.content);
+    }
+}
+
+// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
+var teamten_ts_utils_dist = __webpack_require__(10);
+
+// CONCATENATED MODULE: ./src/PageTabs.ts
+
+/**
+ * Set of page tabs.
+ */
+class PageTabs_PageTabs {
+    constructor(element) {
+        this.tabs = [];
+        // The tab last selected by the user.
+        this.activeIndex = 0;
+        // Same as activeIndex, unless it's not visible, in which case some other
+        // visible tab, or undefined if no tab is visible.
+        this.effectiveActiveIndex = undefined;
+        this.containerElement = element;
+        this.containerElement.classList.add("page-tabs-container");
+        // Where we draw the page tabs themselves.
+        this.tabElement = document.createElement("div");
+        this.tabElement.classList.add("page-tabs");
+        this.containerElement.append(this.tabElement);
+    }
+    /**
+     * Add a new tab. Be sure it's fully configured, because its onShow
+     * listener might be called synchronously.
+     */
+    addTab(tab) {
+        this.tabs.push(tab);
+        this.containerElement.append(tab.element);
+        this.configurationChanged();
+    }
+    /**
+     * Set the visibility of a tab.
+     */
+    setVisible(tab, visible) {
+        tab.visible = visible;
+        this.configurationChanged();
+    }
+    /**
+     * Switch the active tab.
+     */
+    setActiveTab(activeIndex) {
+        if (activeIndex !== this.activeIndex) {
+            this.activeIndex = activeIndex;
+            this.configurationChanged();
+        }
+    }
+    /**
+     * Update all tabs given a new configuration.
+     */
+    configurationChanged() {
+        const oldEffectiveActiveIndex = this.effectiveActiveIndex;
+        this.computeEffectiveActiveIndex();
+        console.log(oldEffectiveActiveIndex, this.effectiveActiveIndex);
+        if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
+            if (oldEffectiveActiveIndex !== undefined) {
+                this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
+            }
+            if (this.effectiveActiveIndex !== undefined) {
+                this.tabs[this.effectiveActiveIndex].onShow.dispatch();
+            }
+        }
+        this.recreateTabs();
+        this.updateTabContentVisibility();
+    }
+    /**
+     * Get the current active index. If it's hidden, return another one. If none
+     * exist, return undefined.
+     */
+    computeEffectiveActiveIndex() {
+        this.effectiveActiveIndex = this.activeIndex;
+        // If the active tab is hidden, find another one.
+        if (this.effectiveActiveIndex >= this.tabs.length || !this.tabs[this.effectiveActiveIndex].visible) {
+            // Pick any.
+            this.effectiveActiveIndex = undefined;
+            for (let i = 0; i < this.tabs.length; i++) {
+                if (this.tabs[i].visible) {
+                    this.effectiveActiveIndex = i;
+                    break;
+                }
+            }
+        }
+    }
+    /**
+     * Recreate the set of page tabs (the UI).
+     */
+    recreateTabs() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
+        for (let index = 0; index < this.tabs.length; index++) {
+            const tab = this.tabs[index];
+            if (tab.visible) {
+                const tabDiv = document.createElement("div");
+                tabDiv.innerText = tab.name;
+                tabDiv.classList.toggle("page-tab-active", index === this.effectiveActiveIndex);
+                tabDiv.addEventListener("click", () => {
+                    this.setActiveTab(index);
+                });
+                this.tabElement.append(tabDiv);
+            }
+        }
+    }
+    /**
+     * Update which tab contents are visible based on which is selected.
+     */
+    updateTabContentVisibility() {
+        for (let index = 0; index < this.tabs.length; index++) {
+            this.tabs[index].element.classList.toggle("hidden", index !== this.effectiveActiveIndex);
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/Library.ts
+
+/**
+ * Base class for library event classes.
+ */
+class LibraryEvent {
+}
+/**
+ * Event for adding a file to the library.
+ */
+class LibraryAddEvent {
+    constructor(newFile) {
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for modifying a file in the library.
+ */
+class LibraryModifyEvent {
+    constructor(oldFile, newFile) {
+        this.oldFile = oldFile;
+        this.newFile = newFile;
+    }
+}
+/**
+ * Event for removing a file from the library.
+ */
+class LibraryRemoveEvent {
+    constructor(oldFile) {
+        this.oldFile = oldFile;
+    }
+}
+/**
+ * Keep track of all the files in the user's library. This should be a mirror of the contents
+ * of the database in the cloud.
+ */
+class Library_Library {
+    constructor() {
+        // Map from ID to file.
+        this.files = new Map();
+        // Fires after the map has been updated.
+        this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        // Whether the library is in sync with the cloud database. This starts out false
+        // and emits a "true" once the first fetch has completed.
+        this.onInSync = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+    }
+    /**
+     * Get a file by its ID, or undefined it not in the library.
+     */
+    getFile(id) {
+        return this.files.get(id);
+    }
+    /**
+     * Return all the files we currently know about.
+     */
+    getAllFiles() {
+        return Array.from(this.files.values());
+    }
+    /**
+     * Specify whether the in-memory library is now in sync with the cloud database.
+     */
+    setInSync(inSync) {
+        this.onInSync.dispatch(inSync);
+    }
+    /**
+     * Add a file to the library.
+     */
+    addFile(file) {
+        if (this.files.has(file.id)) {
+            console.error("Library.add(): Library already has file with ID " + file.id);
+            this.modifyFile(file);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryAddEvent(file));
+        }
+    }
+    /**
+     * Modify a file already in the library.
+     */
+    modifyFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.modify(): Library does not have file with ID " + file.id);
+        }
+        else {
+            this.files.set(file.id, file);
+            this.onEvent.dispatch(new LibraryModifyEvent(oldFile, file));
+        }
+    }
+    /**
+     * Remove a file from the library.
+     */
+    removeFile(file) {
+        const oldFile = this.files.get(file.id);
+        if (oldFile === undefined) {
+            console.error("Library.remove(): Library does not have file with ID " + file.id);
+        }
+        else {
+            // Here we assume that file and oldFile are the same. We could check, or we could just
+            // have the caller pass in a file ID.
+            this.files.delete(file.id);
+            this.onEvent.dispatch(new LibraryRemoveEvent(oldFile));
+        }
+    }
+    /**
+     * Remove all files from the library. One event will be triggered per file.
+     */
+    removeAll() {
+        // Make a separate list first since we'll be modifying the map as we go.
+        const files = [];
+        for (const file of this.files.values()) {
+            files.push(file);
+        }
+        // Then delete each.
+        for (const file of files) {
+            this.removeFile(file);
+        }
+    }
+}
+
+// EXTERNAL MODULE: ./node_modules/base64-js/index.js
+var base64_js = __webpack_require__(46);
+
+// CONCATENATED MODULE: ./src/File.ts
+
+
+/**
+ * Represents a file that the user owns.
+ */
+class File_File {
+    constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, addedAt, modifiedAt) {
+        this.id = id;
+        this.uid = uid;
+        this.name = name;
+        this.filename = filename;
+        this.note = note;
+        this.shared = shared;
+        this.hash = hash;
+        this.screenshots = screenshots;
+        this.binary = binary;
+        this.addedAt = addedAt;
+        this.modifiedAt = modifiedAt;
+    }
+    /**
+     * Return the file as an object that can be converted to JSON and exported.
+     */
+    asMap() {
+        return {
+            id: this.id,
+            uid: this.uid,
+            name: this.name,
+            filename: this.filename,
+            note: this.note,
+            shared: this.shared,
+            screenshots: this.screenshots,
+            binary: base64_js["fromByteArray"](this.binary),
+            addedAt: this.addedAt.getTime(),
+            modifiedAt: this.modifiedAt.getTime(),
+        };
+    }
+    builder() {
+        const builder = new FileBuilder();
+        builder.id = this.id;
+        builder.uid = this.uid;
+        builder.name = this.name;
+        builder.filename = this.filename;
+        builder.note = this.note;
+        builder.shared = this.shared;
+        builder.hash = this.hash;
+        builder.screenshots = this.screenshots;
+        builder.binary = this.binary;
+        builder.addedAt = this.addedAt;
+        builder.modifiedAt = this.modifiedAt;
+        return builder;
+    }
+    /**
+     * Returns a Firestore update object to convert oldFile to this.
+     */
+    getUpdateDataComparedTo(oldFile) {
+        const updateData = {};
+        if (this.name !== oldFile.name) {
+            updateData.name = this.name;
+        }
+        if (this.filename !== oldFile.filename) {
+            updateData.filename = this.filename;
+        }
+        if (this.note !== oldFile.note) {
+            updateData.note = this.note;
+        }
+        if (this.shared !== oldFile.shared) {
+            updateData.shared = this.shared;
+        }
+        if (!isSameStringArray(this.screenshots, oldFile.screenshots)) {
+            updateData.screenshots = this.screenshots;
+        }
+        if (this.modifiedAt.getTime() !== oldFile.modifiedAt.getTime()) {
+            updateData.modifiedAt = this.modifiedAt;
+        }
+        return updateData;
+    }
+    /**
+     * Compare two files for sorting.
+     */
+    static compare(a, b) {
+        // Primary sort by name.
+        if (a.name < b.name) {
+            return -1;
+        }
+        else if (a.name > b.name) {
+            return 1;
+        }
+        // Break ties with ID so the sort is stable.
+        if (a.id < b.id) {
+            return -1;
+        }
+        else if (a.id > b.id) {
+            return 1;
+        }
+        else {
+            // Shouldn't happen.
+            return 0;
+        }
+    }
+}
+/**
+ * Builder to help construct File objects.
+ */
+class FileBuilder {
+    constructor() {
+        this.id = "";
+        this.uid = "";
+        this.name = "";
+        this.filename = "";
+        this.note = "";
+        this.shared = false;
+        this.hash = "";
+        this.screenshots = [];
+        this.binary = new Uint8Array(0);
+        this.addedAt = new Date();
+        this.modifiedAt = new Date();
+    }
+    static fromDoc(doc) {
+        var _a, _b;
+        const builder = new FileBuilder();
+        builder.id = doc.id;
+        // Assume data() is valid, either because it's a query or because we checked "exists".
+        const data = doc.data();
+        builder.uid = data.uid;
+        builder.name = data.name;
+        builder.filename = data.filename;
+        builder.note = data.note;
+        builder.shared = (_a = data.shared) !== null && _a !== void 0 ? _a : false;
+        builder.hash = data.hash;
+        builder.screenshots = (_b = data.screenshots) !== null && _b !== void 0 ? _b : [];
+        builder.binary = data.binary.toUint8Array();
+        builder.addedAt = data.addedAt.toDate();
+        builder.modifiedAt = data.modifiedAt.toDate();
+        return builder;
+    }
+    withId(id) {
+        this.id = id;
+        return this;
+    }
+    withUid(uid) {
+        this.uid = uid;
+        return this;
+    }
+    withName(name) {
+        this.name = name;
+        return this;
+    }
+    withFilename(filename) {
+        this.filename = filename;
+        return this;
+    }
+    withNote(note) {
+        this.note = note;
+        return this;
+    }
+    withShared(shared) {
+        this.shared = shared;
+        return this;
+    }
+    withScreenshots(screenshots) {
+        this.screenshots = screenshots;
+        return this;
+    }
+    withBinary(binary) {
+        this.binary = binary;
+        return this;
+    }
+    withModifiedAt(modifiedAt) {
+        this.modifiedAt = modifiedAt;
+        return this;
+    }
+    build() {
+        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
+    }
+}
+
+// CONCATENATED MODULE: ./src/PageTab.ts
+
+/**
+ * Represents a single page tab and its contents.
+ */
+class PageTab_PageTab {
+    constructor(name, visible = true) {
+        this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.name = name;
+        this.visible = visible;
+        this.element = document.createElement("div");
+        this.element.classList.add("tab-content");
+    }
+}
+
+// CONCATENATED MODULE: ./src/YourFilesTab.ts
+
+
+
+
+
+
+const FILE_ID_ATTR = "data-file-id";
+const IMPORT_FILE_LABEL = "Import File";
+/**
+ * Tap for the Your Files UI.
+ */
+class YourFilesTab_YourFilesTab {
+    constructor(pageTabs, context) {
+        this.libraryInSync = false;
+        this.context = context;
+        const tab = new PageTab_PageTab("Your Files", context.user !== undefined);
+        tab.element.classList.add("your-files-tab");
+        context.onUser.subscribe(user => pageTabs.setVisible(tab, user !== undefined));
+        this.filesDiv = document.createElement("div");
+        this.filesDiv.classList.add("files");
+        tab.element.append(this.filesDiv);
+        this.emptyLibrary = document.createElement("div");
+        this.emptyLibrary.classList.add("empty-library");
+        tab.element.append(this.emptyLibrary);
+        const emptyTitle = document.createElement("h2");
+        emptyTitle.innerText = "You have no files in your library!";
+        const emptyBody = document.createElement("article");
+        emptyBody.innerHTML = `Upload a <code>CAS</code> or <code>CMD</code> file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import it from the RetroStore tab.`;
+        const demon = document.createElement("img");
+        demon.src = "/demon.png";
+        this.emptyLibrary.append(emptyTitle, emptyBody, demon);
+        this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
+        this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
+        const actionBar = document.createElement("div");
+        actionBar.classList.add("action-bar");
+        tab.element.append(actionBar);
+        const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button", () => this.exportAll());
+        actionBar.append(exportAllButton);
+        const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
+        actionBar.append(uploadButton);
+        this.updateSplashScreen();
+        pageTabs.addTab(tab);
+    }
+    /**
+     * Handle change to library files.
+     */
+    onLibraryEvent(event) {
+        if (event instanceof LibraryAddEvent) {
+            this.addFile(event.newFile);
+            this.sortFiles();
+        }
+        if (event instanceof LibraryModifyEvent) {
+            // Probably not worth modifying in-place.
+            this.removeFile(event.oldFile.id);
+            this.addFile(event.newFile);
+            this.sortFiles();
+        }
+        if (event instanceof LibraryRemoveEvent) {
+            this.removeFile(event.oldFile.id);
+        }
+        this.updateSplashScreen();
+    }
+    /**
+     * React to whether library is now fully in sync.
+     */
+    onLibraryInSync(inSync) {
+        this.libraryInSync = inSync;
+        this.updateSplashScreen();
+    }
+    /**
+     * Update whether the splash screen is shown.
+     */
+    updateSplashScreen() {
+        const displaySplashScreen = this.libraryInSync && this.filesDiv.children.length === 0;
+        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
+        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
+    }
+    /**
+     * Start a download of all data in the database.
+     */
+    exportAll() {
+        // Download info about all files.
+        const allFiles = {
+            version: 1,
+            files: this.context.library.getAllFiles().map(f => f.asMap()),
+        };
+        const contents = JSON.stringify(allFiles);
+        const blob = new Blob([contents], { type: "application/json" });
+        const a = document.createElement("a");
+        a.href = window.URL.createObjectURL(blob);
+        a.download = "my-trs-80.json";
+        a.click();
+    }
+    /**
+     * Configure and open the "open file" dialog for importing files.
+     */
+    uploadFile() {
+        const uploadElement = document.createElement("input");
+        uploadElement.type = "file";
+        uploadElement.accept = ".cas, .bas, .cmd";
+        uploadElement.multiple = true;
+        uploadElement.addEventListener("change", () => {
+            var _a;
+            const user = this.context.user;
+            if (user === undefined) {
+                console.error("Can't import with signed-out user");
+                return;
+            }
+            const files = (_a = uploadElement.files) !== null && _a !== void 0 ? _a : [];
+            const openFilePanel = files.length === 1;
+            for (const f of files) {
+                f.arrayBuffer()
+                    .then(arrayBuffer => {
+                    const bytes = new Uint8Array(arrayBuffer);
+                    this.importFile(user.uid, f.name, bytes, openFilePanel);
+                })
+                    .catch(error => {
+                    // TODO
+                    console.error(error);
+                });
+            }
+        });
+        uploadElement.click();
+    }
+    /**
+     * Add an uploaded file to our library.
+     * @param uid user ID.
+     * @param filename original filename from the user.
+     * @param binary raw binary of the file.
+     * @param openFilePanel whether to open the file panel for this file after importing it.
+     */
+    importFile(uid, filename, binary, openFilePanel) {
+        let name = filename;
+        // Remove extension.
+        const i = name.lastIndexOf(".");
+        if (i > 0) {
+            name = name.substr(0, i);
+        }
+        // Capitalize.
+        name = name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
+        // All-caps for filename.
+        filename = filename.toUpperCase();
+        let file = new FileBuilder()
+            .withUid(uid)
+            .withName(name)
+            .withFilename(filename)
+            .withBinary(binary)
+            .build();
+        this.context.db.addFile(file)
+            .then(docRef => {
+            file = file.builder().withId(docRef.id).build();
+            this.context.library.addFile(file);
+            if (openFilePanel) {
+                this.context.openFilePanel(file);
+            }
+        })
+            .catch(error => {
+            // TODO
+            console.error("Error adding document: ", error);
+        });
+    }
+    /**
+     * Add a file to the list of files in the library.
+     */
+    addFile(file) {
+        const fileDiv = document.createElement("div");
+        fileDiv.classList.add("file");
+        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
+        this.filesDiv.append(fileDiv);
+        const infoDiv = document.createElement("div");
+        fileDiv.append(infoDiv);
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        nameDiv.innerText = file.name;
+        infoDiv.append(nameDiv);
+        const filenameDiv = document.createElement("div");
+        filenameDiv.classList.add("filename");
+        filenameDiv.innerText = file.filename;
+        infoDiv.append(filenameDiv);
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("note");
+        noteDiv.innerText = file.note;
+        infoDiv.append(noteDiv);
+        const screenshotsDiv = document.createElement("div");
+        screenshotsDiv.classList.add("screenshots");
+        fileDiv.append(screenshotsDiv);
+        for (const screenshot of file.screenshots) {
+            const screen = new dist["CanvasScreen"]();
+            screen.displayScreenshot(screenshot);
+            const image = screen.asImage();
+            screenshotsDiv.append(image);
+        }
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
+            this.context.runProgram(file);
+            this.context.panelManager.close();
+        });
+        playButton.classList.add("play-button");
+        fileDiv.append(playButton);
+        const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
+            this.context.openFilePanel(file);
+        });
+        infoButton.classList.add("info-button");
+        fileDiv.append(infoButton);
+    }
+    /**
+     * Remove a file from the UI by its ID.
+     */
+    removeFile(fileId) {
+        const element = this.getFileElementById(fileId);
+        if (element !== undefined) {
+            element.remove();
+        }
+        else {
+            console.error("removeFile(): No element with file ID " + fileId);
+        }
+    }
+    /**
+     * Return an element for a file given its ID, or undefined if not found.
+     */
+    getFileElementById(fileId) {
+        let selectors = ":scope > [" + FILE_ID_ATTR + "=\"" + fileId + "\"]";
+        const element = this.filesDiv.querySelector(selectors);
+        return element === null ? undefined : element;
+    }
+    /**
+     * Sort files already displayed.
+     */
+    sortFiles() {
+        // Sort existing files.
+        const fileElements = [];
+        for (const element of this.filesDiv.children) {
+            const fileId = element.getAttribute(FILE_ID_ATTR);
+            if (fileId !== null) {
+                const file = this.context.library.getFile(fileId);
+                if (file !== undefined) {
+                    fileElements.push({ file: file, element: element });
+                }
+            }
+        }
+        fileElements.sort((a, b) => File_File.compare(a.file, b.file));
+        // Repopulate the UI in the right order.
+        Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
+        this.filesDiv.append(...fileElements.map(e => e.element));
+    }
+}
+
+// CONCATENATED MODULE: ./src/RetroStoreProto.ts
+const encodeTrs80Model = {
+    UNKNOWN_MODEL: 0,
+    MODEL_I: 1,
+    MODEL_III: 2,
+    MODEL_4: 3,
+    MODEL_4P: 4,
+};
+const decodeTrs80Model = {
+    0: "UNKNOWN_MODEL" /* UNKNOWN_MODEL */,
+    1: "MODEL_I" /* MODEL_I */,
+    2: "MODEL_III" /* MODEL_III */,
+    3: "MODEL_4" /* MODEL_4 */,
+    4: "MODEL_4P" /* MODEL_4P */,
+};
+const encodeMediaType = {
+    UNKNOWN: 0,
+    DISK: 1,
+    CASSETTE: 2,
+    COMMAND: 3,
+    BASIC: 4,
+};
+const decodeMediaType = {
+    0: "UNKNOWN" /* UNKNOWN */,
+    1: "DISK" /* DISK */,
+    2: "CASSETTE" /* CASSETTE */,
+    3: "COMMAND" /* COMMAND */,
+    4: "BASIC" /* BASIC */,
+};
+function encodeApiResponseApps(message) {
+    let bb = popByteBuffer();
+    _encodeApiResponseApps(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeApiResponseApps(message, bb) {
+    // optional bool success = 1;
+    let $success = message.success;
+    if ($success !== undefined) {
+        writeVarint32(bb, 8);
+        writeByte(bb, $success ? 1 : 0);
+    }
+    // optional string message = 2;
+    let $message = message.message;
+    if ($message !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $message);
+    }
+    // repeated App app = 3;
+    let array$app = message.app;
+    if (array$app !== undefined) {
+        for (let value of array$app) {
+            writeVarint32(bb, 26);
+            let nested = popByteBuffer();
+            _encodeApp(value, nested);
+            writeVarint32(bb, nested.limit);
+            writeByteBuffer(bb, nested);
+            pushByteBuffer(nested);
+        }
+    }
+}
+function decodeApiResponseApps(binary) {
+    return _decodeApiResponseApps(wrapByteBuffer(binary));
+}
+function _decodeApiResponseApps(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional bool success = 1;
+            case 1: {
+                message.success = !!readByte(bb);
+                break;
+            }
+            // optional string message = 2;
+            case 2: {
+                message.message = readString(bb, readVarint32(bb));
+                break;
+            }
+            // repeated App app = 3;
+            case 3: {
+                let limit = pushTemporaryLength(bb);
+                let values = message.app || (message.app = []);
+                values.push(_decodeApp(bb));
+                bb.limit = limit;
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeApiResponseMediaImages(message) {
+    let bb = popByteBuffer();
+    _encodeApiResponseMediaImages(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeApiResponseMediaImages(message, bb) {
+    // optional bool success = 1;
+    let $success = message.success;
+    if ($success !== undefined) {
+        writeVarint32(bb, 8);
+        writeByte(bb, $success ? 1 : 0);
+    }
+    // optional string message = 2;
+    let $message = message.message;
+    if ($message !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $message);
+    }
+    // repeated MediaImage mediaImage = 3;
+    let array$mediaImage = message.mediaImage;
+    if (array$mediaImage !== undefined) {
+        for (let value of array$mediaImage) {
+            writeVarint32(bb, 26);
+            let nested = popByteBuffer();
+            _encodeMediaImage(value, nested);
+            writeVarint32(bb, nested.limit);
+            writeByteBuffer(bb, nested);
+            pushByteBuffer(nested);
+        }
+    }
+}
+function decodeApiResponseMediaImages(binary) {
+    return _decodeApiResponseMediaImages(wrapByteBuffer(binary));
+}
+function _decodeApiResponseMediaImages(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional bool success = 1;
+            case 1: {
+                message.success = !!readByte(bb);
+                break;
+            }
+            // optional string message = 2;
+            case 2: {
+                message.message = readString(bb, readVarint32(bb));
+                break;
+            }
+            // repeated MediaImage mediaImage = 3;
+            case 3: {
+                let limit = pushTemporaryLength(bb);
+                let values = message.mediaImage || (message.mediaImage = []);
+                values.push(_decodeMediaImage(bb));
+                bb.limit = limit;
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeApp(message) {
+    let bb = popByteBuffer();
+    _encodeApp(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeApp(message, bb) {
+    // optional string id = 1;
+    let $id = message.id;
+    if ($id !== undefined) {
+        writeVarint32(bb, 10);
+        writeString(bb, $id);
+    }
+    // optional string name = 2;
+    let $name = message.name;
+    if ($name !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $name);
+    }
+    // optional string version = 3;
+    let $version = message.version;
+    if ($version !== undefined) {
+        writeVarint32(bb, 26);
+        writeString(bb, $version);
+    }
+    // optional string description = 4;
+    let $description = message.description;
+    if ($description !== undefined) {
+        writeVarint32(bb, 34);
+        writeString(bb, $description);
+    }
+    // optional int32 release_year = 5;
+    let $release_year = message.release_year;
+    if ($release_year !== undefined) {
+        writeVarint32(bb, 40);
+        writeVarint64(bb, intToLong($release_year));
+    }
+    // repeated string screenshot_url = 6;
+    let array$screenshot_url = message.screenshot_url;
+    if (array$screenshot_url !== undefined) {
+        for (let value of array$screenshot_url) {
+            writeVarint32(bb, 50);
+            writeString(bb, value);
+        }
+    }
+    // optional string author = 7;
+    let $author = message.author;
+    if ($author !== undefined) {
+        writeVarint32(bb, 58);
+        writeString(bb, $author);
+    }
+    // optional Trs80Extension ext_trs80 = 8;
+    let $ext_trs80 = message.ext_trs80;
+    if ($ext_trs80 !== undefined) {
+        writeVarint32(bb, 66);
+        let nested = popByteBuffer();
+        _encodeTrs80Extension($ext_trs80, nested);
+        writeVarint32(bb, nested.limit);
+        writeByteBuffer(bb, nested);
+        pushByteBuffer(nested);
+    }
+}
+function decodeApp(binary) {
+    return _decodeApp(wrapByteBuffer(binary));
+}
+function _decodeApp(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional string id = 1;
+            case 1: {
+                message.id = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional string name = 2;
+            case 2: {
+                message.name = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional string version = 3;
+            case 3: {
+                message.version = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional string description = 4;
+            case 4: {
+                message.description = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional int32 release_year = 5;
+            case 5: {
+                message.release_year = readVarint32(bb);
+                break;
+            }
+            // repeated string screenshot_url = 6;
+            case 6: {
+                let values = message.screenshot_url || (message.screenshot_url = []);
+                values.push(readString(bb, readVarint32(bb)));
+                break;
+            }
+            // optional string author = 7;
+            case 7: {
+                message.author = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional Trs80Extension ext_trs80 = 8;
+            case 8: {
+                let limit = pushTemporaryLength(bb);
+                message.ext_trs80 = _decodeTrs80Extension(bb);
+                bb.limit = limit;
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeTrs80Extension(message) {
+    let bb = popByteBuffer();
+    _encodeTrs80Extension(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeTrs80Extension(message, bb) {
+    // optional Trs80Model model = 1;
+    let $model = message.model;
+    if ($model !== undefined) {
+        writeVarint32(bb, 8);
+        writeVarint32(bb, encodeTrs80Model[$model]);
+    }
+}
+function decodeTrs80Extension(binary) {
+    return _decodeTrs80Extension(wrapByteBuffer(binary));
+}
+function _decodeTrs80Extension(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional Trs80Model model = 1;
+            case 1: {
+                message.model = decodeTrs80Model[readVarint32(bb)];
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function encodeMediaImage(message) {
+    let bb = popByteBuffer();
+    _encodeMediaImage(message, bb);
+    return toUint8Array(bb);
+}
+function _encodeMediaImage(message, bb) {
+    // optional MediaType type = 1;
+    let $type = message.type;
+    if ($type !== undefined) {
+        writeVarint32(bb, 8);
+        writeVarint32(bb, encodeMediaType[$type]);
+    }
+    // optional string filename = 2;
+    let $filename = message.filename;
+    if ($filename !== undefined) {
+        writeVarint32(bb, 18);
+        writeString(bb, $filename);
+    }
+    // optional bytes data = 3;
+    let $data = message.data;
+    if ($data !== undefined) {
+        writeVarint32(bb, 26);
+        writeVarint32(bb, $data.length), writeBytes(bb, $data);
+    }
+    // optional int64 uploadTime = 4;
+    let $uploadTime = message.uploadTime;
+    if ($uploadTime !== undefined) {
+        writeVarint32(bb, 32);
+        writeVarint64(bb, $uploadTime);
+    }
+    // optional string description = 5;
+    let $description = message.description;
+    if ($description !== undefined) {
+        writeVarint32(bb, 42);
+        writeString(bb, $description);
+    }
+}
+function decodeMediaImage(binary) {
+    return _decodeMediaImage(wrapByteBuffer(binary));
+}
+function _decodeMediaImage(bb) {
+    let message = {};
+    end_of_message: while (!isAtEnd(bb)) {
+        let tag = readVarint32(bb);
+        switch (tag >>> 3) {
+            case 0:
+                break end_of_message;
+            // optional MediaType type = 1;
+            case 1: {
+                message.type = decodeMediaType[readVarint32(bb)];
+                break;
+            }
+            // optional string filename = 2;
+            case 2: {
+                message.filename = readString(bb, readVarint32(bb));
+                break;
+            }
+            // optional bytes data = 3;
+            case 3: {
+                message.data = readBytes(bb, readVarint32(bb));
+                break;
+            }
+            // optional int64 uploadTime = 4;
+            case 4: {
+                message.uploadTime = readVarint64(bb, /* unsigned */ false);
+                break;
+            }
+            // optional string description = 5;
+            case 5: {
+                message.description = readString(bb, readVarint32(bb));
+                break;
+            }
+            default:
+                skipUnknownField(bb, tag & 7);
+        }
+    }
+    return message;
+}
+function pushTemporaryLength(bb) {
+    let length = readVarint32(bb);
+    let limit = bb.limit;
+    bb.limit = bb.offset + length;
+    return limit;
+}
+function skipUnknownField(bb, type) {
+    switch (type) {
+        case 0:
+            while (readByte(bb) & 0x80) { }
+            break;
+        case 2:
+            skip(bb, readVarint32(bb));
+            break;
+        case 5:
+            skip(bb, 4);
+            break;
+        case 1:
+            skip(bb, 8);
+            break;
+        default: throw new Error("Unimplemented type: " + type);
+    }
+}
+function stringToLong(value) {
+    return {
+        low: value.charCodeAt(0) | (value.charCodeAt(1) << 16),
+        high: value.charCodeAt(2) | (value.charCodeAt(3) << 16),
+        unsigned: false,
+    };
+}
+function longToString(value) {
+    let low = value.low;
+    let high = value.high;
+    return String.fromCharCode(low & 0xFFFF, low >>> 16, high & 0xFFFF, high >>> 16);
+}
+// The code below was modified from https://github.com/protobufjs/bytebuffer.js
+// which is under the Apache License 2.0.
+let f32 = new Float32Array(1);
+let f32_u8 = new Uint8Array(f32.buffer);
+let f64 = new Float64Array(1);
+let f64_u8 = new Uint8Array(f64.buffer);
+function intToLong(value) {
+    value |= 0;
+    return {
+        low: value,
+        high: value >> 31,
+        unsigned: value >= 0,
+    };
+}
+let bbStack = [];
+function popByteBuffer() {
+    const bb = bbStack.pop();
+    if (!bb)
+        return { bytes: new Uint8Array(64), offset: 0, limit: 0 };
+    bb.offset = bb.limit = 0;
+    return bb;
+}
+function pushByteBuffer(bb) {
+    bbStack.push(bb);
+}
+function wrapByteBuffer(bytes) {
+    return { bytes, offset: 0, limit: bytes.length };
+}
+function toUint8Array(bb) {
+    let bytes = bb.bytes;
+    let limit = bb.limit;
+    return bytes.length === limit ? bytes : bytes.subarray(0, limit);
+}
+function skip(bb, offset) {
+    if (bb.offset + offset > bb.limit) {
+        throw new Error('Skip past limit');
+    }
+    bb.offset += offset;
+}
+function isAtEnd(bb) {
+    return bb.offset >= bb.limit;
+}
+function grow(bb, count) {
+    let bytes = bb.bytes;
+    let offset = bb.offset;
+    let limit = bb.limit;
+    let finalOffset = offset + count;
+    if (finalOffset > bytes.length) {
+        let newBytes = new Uint8Array(finalOffset * 2);
+        newBytes.set(bytes);
+        bb.bytes = newBytes;
+    }
+    bb.offset = finalOffset;
+    if (finalOffset > limit) {
+        bb.limit = finalOffset;
+    }
+    return offset;
+}
+function advance(bb, count) {
+    let offset = bb.offset;
+    if (offset + count > bb.limit) {
+        throw new Error('Read past limit');
+    }
+    bb.offset += count;
+    return offset;
+}
+function readBytes(bb, count) {
+    let offset = advance(bb, count);
+    return bb.bytes.subarray(offset, offset + count);
+}
+function writeBytes(bb, buffer) {
+    let offset = grow(bb, buffer.length);
+    bb.bytes.set(buffer, offset);
+}
+function readString(bb, count) {
+    // Sadly a hand-coded UTF8 decoder is much faster than subarray+TextDecoder in V8
+    let offset = advance(bb, count);
+    let fromCharCode = String.fromCharCode;
+    let bytes = bb.bytes;
+    let invalid = '\uFFFD';
+    let text = '';
+    for (let i = 0; i < count; i++) {
+        let c1 = bytes[i + offset], c2, c3, c4, c;
+        // 1 byte
+        if ((c1 & 0x80) === 0) {
+            text += fromCharCode(c1);
+        }
+        // 2 bytes
+        else if ((c1 & 0xE0) === 0xC0) {
+            if (i + 1 >= count)
+                text += invalid;
+            else {
+                c2 = bytes[i + offset + 1];
+                if ((c2 & 0xC0) !== 0x80)
+                    text += invalid;
+                else {
+                    c = ((c1 & 0x1F) << 6) | (c2 & 0x3F);
+                    if (c < 0x80)
+                        text += invalid;
+                    else {
+                        text += fromCharCode(c);
+                        i++;
+                    }
+                }
+            }
+        }
+        // 3 bytes
+        else if ((c1 & 0xF0) == 0xE0) {
+            if (i + 2 >= count)
+                text += invalid;
+            else {
+                c2 = bytes[i + offset + 1];
+                c3 = bytes[i + offset + 2];
+                if (((c2 | (c3 << 8)) & 0xC0C0) !== 0x8080)
+                    text += invalid;
+                else {
+                    c = ((c1 & 0x0F) << 12) | ((c2 & 0x3F) << 6) | (c3 & 0x3F);
+                    if (c < 0x0800 || (c >= 0xD800 && c <= 0xDFFF))
+                        text += invalid;
+                    else {
+                        text += fromCharCode(c);
+                        i += 2;
+                    }
+                }
+            }
+        }
+        // 4 bytes
+        else if ((c1 & 0xF8) == 0xF0) {
+            if (i + 3 >= count)
+                text += invalid;
+            else {
+                c2 = bytes[i + offset + 1];
+                c3 = bytes[i + offset + 2];
+                c4 = bytes[i + offset + 3];
+                if (((c2 | (c3 << 8) | (c4 << 16)) & 0xC0C0C0) !== 0x808080)
+                    text += invalid;
+                else {
+                    c = ((c1 & 0x07) << 0x12) | ((c2 & 0x3F) << 0x0C) | ((c3 & 0x3F) << 0x06) | (c4 & 0x3F);
+                    if (c < 0x10000 || c > 0x10FFFF)
+                        text += invalid;
+                    else {
+                        c -= 0x10000;
+                        text += fromCharCode((c >> 10) + 0xD800, (c & 0x3FF) + 0xDC00);
+                        i += 3;
+                    }
+                }
+            }
+        }
+        else
+            text += invalid;
+    }
+    return text;
+}
+function writeString(bb, text) {
+    // Sadly a hand-coded UTF8 encoder is much faster than TextEncoder+set in V8
+    let n = text.length;
+    let byteCount = 0;
+    // Write the byte count first
+    for (let i = 0; i < n; i++) {
+        let c = text.charCodeAt(i);
+        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < n) {
+            c = (c << 10) + text.charCodeAt(++i) - 0x35FDC00;
+        }
+        byteCount += c < 0x80 ? 1 : c < 0x800 ? 2 : c < 0x10000 ? 3 : 4;
+    }
+    writeVarint32(bb, byteCount);
+    let offset = grow(bb, byteCount);
+    let bytes = bb.bytes;
+    // Then write the bytes
+    for (let i = 0; i < n; i++) {
+        let c = text.charCodeAt(i);
+        if (c >= 0xD800 && c <= 0xDBFF && i + 1 < n) {
+            c = (c << 10) + text.charCodeAt(++i) - 0x35FDC00;
+        }
+        if (c < 0x80) {
+            bytes[offset++] = c;
+        }
+        else {
+            if (c < 0x800) {
+                bytes[offset++] = ((c >> 6) & 0x1F) | 0xC0;
+            }
+            else {
+                if (c < 0x10000) {
+                    bytes[offset++] = ((c >> 12) & 0x0F) | 0xE0;
+                }
+                else {
+                    bytes[offset++] = ((c >> 18) & 0x07) | 0xF0;
+                    bytes[offset++] = ((c >> 12) & 0x3F) | 0x80;
+                }
+                bytes[offset++] = ((c >> 6) & 0x3F) | 0x80;
+            }
+            bytes[offset++] = (c & 0x3F) | 0x80;
+        }
+    }
+}
+function writeByteBuffer(bb, buffer) {
+    let offset = grow(bb, buffer.limit);
+    let from = bb.bytes;
+    let to = buffer.bytes;
+    // This for loop is much faster than subarray+set on V8
+    for (let i = 0, n = buffer.limit; i < n; i++) {
+        from[i + offset] = to[i];
+    }
+}
+function readByte(bb) {
+    return bb.bytes[advance(bb, 1)];
+}
+function writeByte(bb, value) {
+    let offset = grow(bb, 1);
+    bb.bytes[offset] = value;
+}
+function readFloat(bb) {
+    let offset = advance(bb, 4);
+    let bytes = bb.bytes;
+    // Manual copying is much faster than subarray+set in V8
+    f32_u8[0] = bytes[offset++];
+    f32_u8[1] = bytes[offset++];
+    f32_u8[2] = bytes[offset++];
+    f32_u8[3] = bytes[offset++];
+    return f32[0];
+}
+function writeFloat(bb, value) {
+    let offset = grow(bb, 4);
+    let bytes = bb.bytes;
+    f32[0] = value;
+    // Manual copying is much faster than subarray+set in V8
+    bytes[offset++] = f32_u8[0];
+    bytes[offset++] = f32_u8[1];
+    bytes[offset++] = f32_u8[2];
+    bytes[offset++] = f32_u8[3];
+}
+function readDouble(bb) {
+    let offset = advance(bb, 8);
+    let bytes = bb.bytes;
+    // Manual copying is much faster than subarray+set in V8
+    f64_u8[0] = bytes[offset++];
+    f64_u8[1] = bytes[offset++];
+    f64_u8[2] = bytes[offset++];
+    f64_u8[3] = bytes[offset++];
+    f64_u8[4] = bytes[offset++];
+    f64_u8[5] = bytes[offset++];
+    f64_u8[6] = bytes[offset++];
+    f64_u8[7] = bytes[offset++];
+    return f64[0];
+}
+function writeDouble(bb, value) {
+    let offset = grow(bb, 8);
+    let bytes = bb.bytes;
+    f64[0] = value;
+    // Manual copying is much faster than subarray+set in V8
+    bytes[offset++] = f64_u8[0];
+    bytes[offset++] = f64_u8[1];
+    bytes[offset++] = f64_u8[2];
+    bytes[offset++] = f64_u8[3];
+    bytes[offset++] = f64_u8[4];
+    bytes[offset++] = f64_u8[5];
+    bytes[offset++] = f64_u8[6];
+    bytes[offset++] = f64_u8[7];
+}
+function readInt32(bb) {
+    let offset = advance(bb, 4);
+    let bytes = bb.bytes;
+    return (bytes[offset] |
+        (bytes[offset + 1] << 8) |
+        (bytes[offset + 2] << 16) |
+        (bytes[offset + 3] << 24));
+}
+function writeInt32(bb, value) {
+    let offset = grow(bb, 4);
+    let bytes = bb.bytes;
+    bytes[offset] = value;
+    bytes[offset + 1] = value >> 8;
+    bytes[offset + 2] = value >> 16;
+    bytes[offset + 3] = value >> 24;
+}
+function readInt64(bb, unsigned) {
+    return {
+        low: readInt32(bb),
+        high: readInt32(bb),
+        unsigned,
+    };
+}
+function writeInt64(bb, value) {
+    writeInt32(bb, value.low);
+    writeInt32(bb, value.high);
+}
+function readVarint32(bb) {
+    let c = 0;
+    let value = 0;
+    let b;
+    do {
+        b = readByte(bb);
+        if (c < 32)
+            value |= (b & 0x7F) << c;
+        c += 7;
+    } while (b & 0x80);
+    return value;
+}
+function writeVarint32(bb, value) {
+    value >>>= 0;
+    while (value >= 0x80) {
+        writeByte(bb, (value & 0x7f) | 0x80);
+        value >>>= 7;
+    }
+    writeByte(bb, value);
+}
+function readVarint64(bb, unsigned) {
+    let part0 = 0;
+    let part1 = 0;
+    let part2 = 0;
+    let b;
+    b = readByte(bb);
+    part0 = (b & 0x7F);
+    if (b & 0x80) {
+        b = readByte(bb);
+        part0 |= (b & 0x7F) << 7;
+        if (b & 0x80) {
+            b = readByte(bb);
+            part0 |= (b & 0x7F) << 14;
+            if (b & 0x80) {
+                b = readByte(bb);
+                part0 |= (b & 0x7F) << 21;
+                if (b & 0x80) {
+                    b = readByte(bb);
+                    part1 = (b & 0x7F);
+                    if (b & 0x80) {
+                        b = readByte(bb);
+                        part1 |= (b & 0x7F) << 7;
+                        if (b & 0x80) {
+                            b = readByte(bb);
+                            part1 |= (b & 0x7F) << 14;
+                            if (b & 0x80) {
+                                b = readByte(bb);
+                                part1 |= (b & 0x7F) << 21;
+                                if (b & 0x80) {
+                                    b = readByte(bb);
+                                    part2 = (b & 0x7F);
+                                    if (b & 0x80) {
+                                        b = readByte(bb);
+                                        part2 |= (b & 0x7F) << 7;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return {
+        low: part0 | (part1 << 28),
+        high: (part1 >>> 4) | (part2 << 24),
+        unsigned,
+    };
+}
+function writeVarint64(bb, value) {
+    let part0 = value.low >>> 0;
+    let part1 = ((value.low >>> 28) | (value.high << 4)) >>> 0;
+    let part2 = value.high >>> 24;
+    // ref: src/google/protobuf/io/coded_stream.cc
+    let size = part2 === 0 ?
+        part1 === 0 ?
+            part0 < 1 << 14 ?
+                part0 < 1 << 7 ? 1 : 2 :
+                part0 < 1 << 21 ? 3 : 4 :
+            part1 < 1 << 14 ?
+                part1 < 1 << 7 ? 5 : 6 :
+                part1 < 1 << 21 ? 7 : 8 :
+        part2 < 1 << 7 ? 9 : 10;
+    let offset = grow(bb, size);
+    let bytes = bb.bytes;
+    switch (size) {
+        case 10: bytes[offset + 9] = (part2 >>> 7) & 0x01;
+        case 9: bytes[offset + 8] = size !== 9 ? part2 | 0x80 : part2 & 0x7F;
+        case 8: bytes[offset + 7] = size !== 8 ? (part1 >>> 21) | 0x80 : (part1 >>> 21) & 0x7F;
+        case 7: bytes[offset + 6] = size !== 7 ? (part1 >>> 14) | 0x80 : (part1 >>> 14) & 0x7F;
+        case 6: bytes[offset + 5] = size !== 6 ? (part1 >>> 7) | 0x80 : (part1 >>> 7) & 0x7F;
+        case 5: bytes[offset + 4] = size !== 5 ? part1 | 0x80 : part1 & 0x7F;
+        case 4: bytes[offset + 3] = size !== 4 ? (part0 >>> 21) | 0x80 : (part0 >>> 21) & 0x7F;
+        case 3: bytes[offset + 2] = size !== 3 ? (part0 >>> 14) | 0x80 : (part0 >>> 14) & 0x7F;
+        case 2: bytes[offset + 1] = size !== 2 ? (part0 >>> 7) | 0x80 : (part0 >>> 7) & 0x7F;
+        case 1: bytes[offset] = size !== 1 ? part0 | 0x80 : part0 & 0x7F;
+    }
+}
+function readVarint32ZigZag(bb) {
+    let value = readVarint32(bb);
+    // ref: src/google/protobuf/wire_format_lite.h
+    return (value >>> 1) ^ -(value & 1);
+}
+function writeVarint32ZigZag(bb, value) {
+    // ref: src/google/protobuf/wire_format_lite.h
+    writeVarint32(bb, (value << 1) ^ (value >> 31));
+}
+function readVarint64ZigZag(bb) {
+    let value = readVarint64(bb, /* unsigned */ false);
+    let low = value.low;
+    let high = value.high;
+    let flip = -(low & 1);
+    // ref: src/google/protobuf/wire_format_lite.h
+    return {
+        low: ((low >>> 1) | (high << 31)) ^ flip,
+        high: (high >>> 1) ^ flip,
+        unsigned: false,
+    };
+}
+function writeVarint64ZigZag(bb, value) {
+    let low = value.low;
+    let high = value.high;
+    let flip = high >> 31;
+    // ref: src/google/protobuf/wire_format_lite.h
+    writeVarint64(bb, {
+        low: (low << 1) ^ flip,
+        high: ((high << 1) | (low >>> 31)) ^ flip,
+        unsigned: false,
+    });
+}
+
+// EXTERNAL MODULE: ../trs80-base/dist/index.js
+var trs80_base_dist = __webpack_require__(12);
+
+// CONCATENATED MODULE: ./src/RetroStoreTab.ts
+// Generate this with: npx pbjs ApiProtos.proto --ts RetroStoreProto.ts
+
+
+
+
+
+
+const RETRO_STORE_API_URL = "https://retrostore.org/api/";
+const APP_FETCH_COUNT = 10;
+/**
+ * Stores info about a RetroStore app and its media.
+ */
+class RetroStoreApp {
+    constructor(app) {
+        this.element = undefined;
+        this.app = app;
+    }
+}
+/**
+ * Fetch all apps from RetroStore. If an error occurs, returns an empty list.
+ */
+function fetchApps(start, count) {
+    const query = "";
+    const apiRequest = {
+        start: start,
+        num: count,
+        query: query,
+        trs80: {
+            mediaTypes: [],
+        },
+    };
+    const fetchOptions = {
+        method: "POST",
+        cache: "no-cache",
+        body: JSON.stringify(apiRequest),
+    };
+    return fetch(RETRO_STORE_API_URL + "listApps", fetchOptions)
+        .then(response => {
+        if (response.status === 200) {
+            return response.arrayBuffer();
+        }
+        else {
+            throw new Error("Error code " + response.status);
+        }
+    })
+        .then(array => {
+        var _a;
+        const apps = decodeApiResponseApps(new Uint8Array(array));
+        if (apps.success) {
+            return Promise.resolve((_a = apps.app) !== null && _a !== void 0 ? _a : []);
+        }
+        else {
+            // TODO.
+            console.error("Can't get apps: " + apps.message);
+            return Promise.resolve([]);
+        }
+    })
+        .catch(error => {
+        // TODO
+        console.error(error);
+        return Promise.resolve([]);
+    });
+}
+/**
+ * Fetch all media images for the specified app ID. If an error occurs, returns an empty list.
+ */
+function fetchMediaImages(appId) {
+    const apiRequest = {
+        appId: appId,
+    };
+    const fetchOptions = {
+        method: "POST",
+        cache: "no-cache",
+        body: JSON.stringify(apiRequest),
+    };
+    return fetch(RETRO_STORE_API_URL + "fetchMediaImages", fetchOptions)
+        .then(response => {
+        if (response.status === 200) {
+            return response.arrayBuffer();
+        }
+        else {
+            throw new Error("Error code " + response.status);
+        }
+    })
+        .then(array => {
+        var _a;
+        const mediaImages = decodeApiResponseMediaImages(new Uint8Array(array));
+        if (mediaImages.success) {
+            return Promise.resolve((_a = mediaImages.mediaImage) !== null && _a !== void 0 ? _a : []);
+        }
+        else {
+            // TODO.
+            console.error("Can't get media images for " + appId + ": " + mediaImages.message);
+            return Promise.reject();
+        }
+    })
+        .catch(error => {
+        // TODO
+        console.error(error);
+        return Promise.reject();
+    });
+}
+/**
+ * The tab for showing apps from RetroStore.org.
+ */
+class RetroStoreTab_RetroStoreTab {
+    constructor(pageTabs, context) {
+        this.apps = [];
+        this.complete = false;
+        this.fetching = false;
+        this.context = context;
+        const tab = new PageTab_PageTab("RetroStore");
+        tab.element.classList.add("retro-store-tab");
+        this.appsDiv = document.createElement("div");
+        this.appsDiv.classList.add("retro-store-apps");
+        this.appsDiv.addEventListener("scroll", () => this.fetchNextBatchIfNecessary());
+        tab.element.append(this.appsDiv);
+        this.moreDiv = document.createElement("div");
+        this.moreDiv.classList.add("retro-store-more");
+        this.moreDiv.append(makeIcon("cached"));
+        // When showing the tab, wait for laying and maybe fetch more.
+        tab.onShow.subscribe(() => setTimeout(() => this.fetchNextBatchIfNecessary(), 0));
+        this.populateApps();
+        pageTabs.addTab(tab);
+    }
+    /**
+     * If the "More" section is visible, fetch more apps.
+     */
+    fetchNextBatchIfNecessary() {
+        const moreVisible = this.moreDiv.getBoundingClientRect().top < this.appsDiv.getBoundingClientRect().bottom;
+        if (moreVisible && !this.complete && !this.fetching) {
+            this.fetchNextBatch();
+        }
+    }
+    /**
+     * Get the next batch of apps if necessary.
+     */
+    fetchNextBatch() {
+        if (!this.complete) {
+            this.fetching = true;
+            fetchApps(this.apps.length, APP_FETCH_COUNT)
+                .then(apps => {
+                this.fetching = false;
+                if (apps.length !== APP_FETCH_COUNT) {
+                    // Got all apps.
+                    this.complete = true;
+                }
+                this.apps.push(...apps.map(a => new RetroStoreApp(a)));
+                this.populateApps();
+            })
+                .catch(error => {
+                // TODO.
+                console.error(error);
+                this.fetching = false;
+                this.complete = true;
+            });
+        }
+    }
+    /**
+     * Populate the UI with the apps we have.
+     */
+    populateApps() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.appsDiv);
+        for (const app of this.apps) {
+            if (app.element === undefined) {
+                app.element = this.createAppTile(app.app);
+            }
+            this.appsDiv.append(app.element);
+        }
+        if (!this.complete) {
+            this.appsDiv.append(this.moreDiv);
+        }
+    }
+    /**
+     * Create a tile for an app.
+     */
+    createAppTile(app) {
+        var _a;
+        const appDiv = document.createElement("div");
+        appDiv.classList.add("retro-store-app");
+        const screenshotDiv = document.createElement("img");
+        screenshotDiv.classList.add("screenshot");
+        if (app.screenshot_url !== undefined && app.screenshot_url.length > 0) {
+            screenshotDiv.src = app.screenshot_url[0];
+        }
+        appDiv.append(screenshotDiv);
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        const appName = (_a = app.name) !== null && _a !== void 0 ? _a : "Unknown name";
+        nameDiv.innerText = appName;
+        if (app.release_year !== undefined) {
+            const releaseYearSpan = document.createElement("span");
+            releaseYearSpan.classList.add("release-year");
+            releaseYearSpan.innerText = " (" + app.release_year + ")";
+            nameDiv.append(releaseYearSpan);
+        }
+        appDiv.append(nameDiv);
+        if (app.author !== undefined && app.author !== "") {
+            const authorDiv = document.createElement("div");
+            authorDiv.classList.add("author");
+            authorDiv.innerText = app.author;
+            appDiv.append(authorDiv);
+        }
+        if (app.version !== undefined && app.version !== "") {
+            const versionDiv = document.createElement("div");
+            versionDiv.classList.add("version");
+            versionDiv.innerText = "Version " + app.version;
+            appDiv.append(versionDiv);
+        }
+        if (app.description !== undefined && app.description !== "") {
+            const descriptionDiv = document.createElement("div");
+            descriptionDiv.classList.add("description");
+            descriptionDiv.innerText = app.description;
+            appDiv.append(descriptionDiv);
+        }
+        const buttonDiv = document.createElement("div");
+        buttonDiv.classList.add("button-set");
+        appDiv.append(buttonDiv);
+        let validMediaImage = undefined;
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run app", () => {
+            if (validMediaImage !== undefined && validMediaImage.data !== undefined) {
+                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(validMediaImage.data);
+                // TODO should set context.runningFile
+                this.context.trs80.runTrs80File(cmdProgram);
+                this.context.panelManager.close();
+            }
+        });
+        playButton.disabled = true;
+        buttonDiv.append(playButton);
+        const importButton = makeIconButton(makeIcon("get_app"), "Import app", () => {
+            var _a;
+            if (validMediaImage !== undefined && validMediaImage.data !== undefined && this.context.user !== undefined) {
+                const noteParts = [];
+                if (app.description !== undefined && app.description !== "") {
+                    noteParts.push(app.description);
+                }
+                if (validMediaImage.description !== undefined && validMediaImage.description !== "") {
+                    noteParts.push(validMediaImage.description);
+                }
+                noteParts.push("Imported from RetroStore.org.");
+                const note = noteParts.join("\n\n");
+                let file = new FileBuilder()
+                    .withUid(this.context.user.uid)
+                    .withName(appName)
+                    .withNote(note)
+                    .withFilename((_a = validMediaImage.filename) !== null && _a !== void 0 ? _a : "UNKNOWN")
+                    .withBinary(validMediaImage.data)
+                    .build();
+                this.context.db.addFile(file)
+                    .then(docRef => {
+                    file = file.builder().withId(docRef.id).build();
+                    this.context.library.addFile(file);
+                    this.context.openFilePanel(file);
+                })
+                    .catch(error => {
+                    // TODO
+                    console.error("Error adding document: ", error);
+                });
+            }
+        });
+        importButton.classList.add("import-button");
+        importButton.disabled = true;
+        buttonDiv.append(importButton);
+        if (app.id !== undefined) {
+            fetchMediaImages(app.id)
+                .then(mediaImages => {
+                console.log(app.id, app.name, mediaImages);
+                for (const mediaImage of mediaImages) {
+                    if (mediaImage.type === "COMMAND" /* COMMAND */ ||
+                        mediaImage.type === "BASIC" /* BASIC */) {
+                        validMediaImage = mediaImage;
+                        playButton.disabled = false;
+                        importButton.disabled = false;
+                    }
+                }
+            })
+                .catch(error => {
+                // TODO. Caught already?
+                console.error(error);
+            });
+        }
+        return appDiv;
+    }
+}
+
+// CONCATENATED MODULE: ./src/LibraryPanel.ts
+
+
+
+
+/**
+ * Panel showing the library of user's files.
+ */
+class LibraryPanel_LibraryPanel extends Panel_Panel {
+    constructor(context) {
+        super(context, "Library", "library-panel", false);
+        const pageTabs = new PageTabs_PageTabs(this.content);
+        new YourFilesTab_YourFilesTab(pageTabs, context);
+        new RetroStoreTab_RetroStoreTab(pageTabs, context);
+    }
+}
+
+// EXTERNAL MODULE: ./node_modules/lodash/isEmpty.js
+var isEmpty = __webpack_require__(47);
+var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Register.js
+/**
+ * List of all word registers.
+ */
+const WORD_REG = new Set(["af", "bc", "de", "hl", "af'", "bc'", "de'", "hl'", "ix", "iy", "sp", "pc"]);
+/**
+ * List of all byte registers.
+ */
+const BYTE_REG = new Set(["a", "f", "b", "c", "d", "e", "h", "l", "ixh", "ixl", "iyh", "iyl", "i", "r"]);
+/**
+ * Determine whether a register stores a word.
+ */
+function isWordReg(s) {
+    return WORD_REG.has(s.toLowerCase());
+}
+/**
+ * Determine whether a register stores a byte.
+ */
+function isByteReg(s) {
+    return BYTE_REG.has(s.toLowerCase());
+}
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Utils.js
+// Various utility functions.
+/**
+ * Convert a number to hex and zero-pad to the specified number of hex digits.
+ */
+function toHex(value, digits) {
+    return value.toString(16).toUpperCase().padStart(digits, "0");
+}
+/**
+ * Convert a byte to hex.
+ */
+function toHexByte(value) {
+    return toHex(value, 2);
+}
+/**
+ * Convert a word to hex.
+ */
+function toHexWord(value) {
+    return toHex(value, 4);
+}
+/**
+ * Return the high byte of a word.
+ */
+function hi(value) {
+    return (value >> 8) & 0xFF;
+}
+/**
+ * Return the low byte of a word.
+ */
+function lo(value) {
+    return value & 0xFF;
+}
+/**
+ * Create a word from a high and low byte.
+ */
+function word(highByte, lowByte) {
+    return ((highByte & 0xFF) << 8) | (lowByte & 0xFF);
+}
+/**
+ * Increment a byte.
+ */
+function inc8(value) {
+    return add8(value, 1);
+}
+/**
+ * Increment a word.
+ */
+function inc16(value) {
+    return add16(value, 1);
+}
+/**
+ * Decrement a byte.
+ */
+function dec8(value) {
+    return sub8(value, 1);
+}
+/**
+ * Decrement a word.
+ */
+function dec16(value) {
+    return sub16(value, 1);
+}
+/**
+ * Add two bytes together.
+ */
+function add8(a, b) {
+    return (a + b) & 0xFF;
+}
+/**
+ * Add two words together.
+ */
+function add16(a, b) {
+    return (a + b) & 0xFFFF;
+}
+/**
+ * Subtract two bytes.
+ */
+function sub8(a, b) {
+    return (a - b) & 0xFF;
+}
+/**
+ * Subtract two words.
+ */
+function sub16(a, b) {
+    return (a - b) & 0xFFFF;
+}
+/**
+ * Convert a byte to a signed number (e.g., 0xff to -1).
+ */
+function signedByte(value) {
+    return value >= 128 ? value - 256 : value;
+}
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/RegisterSet.js
+
+/**
+ * All registers in a Z80.
+ */
+class RegisterSet_RegisterSet {
+    constructor() {
+        // External state:
+        this.af = 0;
+        this.bc = 0;
+        this.de = 0;
+        this.hl = 0;
+        this.afPrime = 0;
+        this.bcPrime = 0;
+        this.dePrime = 0;
+        this.hlPrime = 0;
+        this.ix = 0;
+        this.iy = 0;
+        this.sp = 0;
+        this.pc = 0;
+        // Internal state:
+        this.memptr = 0;
+        this.i = 0;
+        this.r = 0; // Low 7 bits of R.
+        this.r7 = 0; // Bit 7 of R.
+        this.iff1 = 0;
+        this.iff2 = 0;
+        this.im = 0;
+        this.halted = 0;
+    }
+    get a() {
+        return hi(this.af);
+    }
+    set a(value) {
+        this.af = word(value, this.f);
+    }
+    get f() {
+        return lo(this.af);
+    }
+    set f(value) {
+        this.af = word(this.a, value);
+    }
+    get b() {
+        return hi(this.bc);
+    }
+    set b(value) {
+        this.bc = word(value, this.c);
+    }
+    get c() {
+        return lo(this.bc);
+    }
+    set c(value) {
+        this.bc = word(this.b, value);
+    }
+    get d() {
+        return hi(this.de);
+    }
+    set d(value) {
+        this.de = word(value, this.e);
+    }
+    get e() {
+        return lo(this.de);
+    }
+    set e(value) {
+        this.de = word(this.d, value);
+    }
+    get h() {
+        return hi(this.hl);
+    }
+    set h(value) {
+        this.hl = word(value, this.l);
+    }
+    get l() {
+        return lo(this.hl);
+    }
+    set l(value) {
+        this.hl = word(this.h, value);
+    }
+    get ixh() {
+        return hi(this.ix);
+    }
+    set ixh(value) {
+        this.ix = word(value, this.ixl);
+    }
+    get ixl() {
+        return lo(this.ix);
+    }
+    set ixl(value) {
+        this.ix = word(this.ixh, value);
+    }
+    get iyh() {
+        return hi(this.iy);
+    }
+    set iyh(value) {
+        this.iy = word(value, this.iyl);
+    }
+    get iyl() {
+        return lo(this.iy);
+    }
+    set iyl(value) {
+        this.iy = word(this.iyh, value);
+    }
+    /**
+     * Combine the two R parts together.
+     */
+    get rCombined() {
+        return (this.r7 & 0x80) | (this.r & 0xF7);
+    }
+}
+/**
+ * All real fields of RegisterSet, for enumeration.
+ */
+const registerSetFields = [
+    "af", "bc", "de", "hl",
+    "afPrime", "bcPrime", "dePrime", "hlPrime",
+    "ix", "iy", "sp", "pc",
+    "memptr", "i", "r", "iff1", "iff2", "im", "halted"
+];
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/Flag.js
+/**
+ * The flag bits in the F register.
+ */
+var Flag;
+(function (Flag) {
+    /**
+     * Carry and borrow. Indicates that the addition or subtraction did not
+     * fit in the register.
+     */
+    Flag[Flag["C"] = 1] = "C";
+    /**
+     * Set if the last operation was a subtraction.
+     */
+    Flag[Flag["N"] = 2] = "N";
+    /**
+     * Parity: Indicates that the result has an even number of bits set.
+     */
+    Flag[Flag["P"] = 4] = "P";
+    /**
+     * Overflow: Indicates that two's complement does not fit in register.
+     */
+    Flag[Flag["V"] = 4] = "V";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X3"] = 8] = "X3";
+    /**
+     * Half carry: Carry from bit 3 to bit 4 during BCD operations.
+     */
+    Flag[Flag["H"] = 16] = "H";
+    /**
+     * Undocumented bit, but internal state can leak into it.
+     */
+    Flag[Flag["X5"] = 32] = "X5";
+    /**
+     * Set if value is zero.
+     */
+    Flag[Flag["Z"] = 64] = "Z";
+    /**
+     * Set of value is negative.
+     */
+    Flag[Flag["S"] = 128] = "S";
+})(Flag || (Flag = {}));
+
+// CONCATENATED MODULE: ./node_modules/z80-base/dist/module/index.js
+
+
+
+
+
+// EXTERNAL MODULE: ../trs80-base/dist/ProgramAnnotation.js
+var ProgramAnnotation = __webpack_require__(15);
+
+// CONCATENATED MODULE: ./src/HexdumpGenerator.ts
+
+
+
+const STRIDE = 16;
+function newLine(lines) {
+    const line = document.createElement("div");
+    lines.push(line);
+    return line;
+}
+function newSpan(line, text, ...cssClass) {
+    const e = document.createElement("span");
+    e.classList.add(...cssClass);
+    e.innerText = text;
+    line.append(e);
+    return e;
+}
+/**
+ * Compare two parts of an array for equality.
+ */
+function segmentsEqual(binary, start1, start2, length) {
+    while (length-- > 0) {
+        if (binary[start1++] !== binary[start2++]) {
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * Count consecutive bytes that are around "addr".
+ */
+function countConsecutive(binary, addr) {
+    const value = binary[addr];
+    let startAddr = addr;
+    while (startAddr > 0 && binary[startAddr - 1] === value) {
+        startAddr--;
+    }
+    while (addr < binary.length - 1 && binary[addr + 1] === value) {
+        addr++;
+    }
+    return addr - startAddr + 1;
+}
+/**
+ * Whether this segment is made up of the same value.
+ */
+function allSameByte(binary, addr, length) {
+    for (let i = 1; i < length; i++) {
+        if (binary[addr + i] !== binary[addr]) {
+            return false;
+        }
+    }
+    return true;
+}
+class HexdumpGenerator_HexdumpGenerator {
+    constructor(binary, collapse, annotations) {
+        this.binary = binary;
+        this.collapse = collapse;
+        this.annotations = annotations;
+    }
+    generate() {
+        const lines = [];
+        const binary = this.binary;
+        const generateAnnotation = (annotation) => {
+            const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
+            const endAddr = Math.min(Math.ceil(annotation.end / STRIDE) * STRIDE, binary.length);
+            let lastAddr = undefined;
+            for (let addr = beginAddr; addr < endAddr; addr += STRIDE) {
+                if (this.collapse && lastAddr !== undefined &&
+                    binary.length - addr >= STRIDE && segmentsEqual(binary, lastAddr, addr, STRIDE)) {
+                    if (addr === lastAddr + STRIDE) {
+                        const line = newLine(lines);
+                        if (allSameByte(binary, addr, STRIDE)) {
+                            // Lots of the same byte repeated. Say many there are.
+                            const count = countConsecutive(binary, addr);
+                            newSpan(line, "      ... ", "address");
+                            newSpan(line, count.toString(), "ascii");
+                            newSpan(line, " (", "address");
+                            newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
+                            newSpan(line, ") consecutive bytes of ", "address");
+                            newSpan(line, "0x" + toHexByte(binary[addr]), "hex");
+                            newSpan(line, " ...", "address");
+                        }
+                        else {
+                            // A repeating pattern, but not all the same byte. Say how many times repeated.
+                            let count = 1;
+                            for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
+                                if (segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
+                                    count += 1;
+                                }
+                                else {
+                                    break;
+                                }
+                            }
+                            newSpan(line, "      ... ", "address");
+                            newSpan(line, count.toString(), "ascii");
+                            const plural = count === 1 ? "" : "s";
+                            newSpan(line, ` repetition${plural} of previous row ...`, "address");
+                        }
+                    }
+                }
+                else {
+                    lastAddr = addr;
+                    this.generateRow(lines, addr, annotation.begin, annotation.end, addr === beginAddr ? annotation.text : "");
+                }
+            }
+        };
+        let lastAnnotation = undefined;
+        for (const annotation of this.annotations) {
+            if (lastAnnotation !== undefined && lastAnnotation.end !== annotation.begin) {
+                generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotation.end, annotation.begin));
+            }
+            generateAnnotation(annotation);
+            lastAnnotation = annotation;
+        }
+        const lastAnnotationEnd = lastAnnotation !== undefined ? lastAnnotation.end : 0;
+        if (lastAnnotationEnd !== binary.length) {
+            generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
+        }
+        // Final address to show where file ends.
+        newSpan(newLine(lines), toHexWord(binary.length), "address");
+        return lines;
+    }
+    generateRow(lines, addr, beginAddr, endAddr, label) {
+        const binary = this.binary;
+        const line = newLine(lines);
+        const cssClass = ["address"];
+        if (addr < beginAddr) {
+            cssClass.push("outside-annotation");
+        }
+        newSpan(line, toHexWord(addr) + "  ", ...cssClass);
+        // Utility function for adding text to a line, minimizing the number of needless spans.
+        let currentCssClass = undefined;
+        let e = undefined;
+        const addText = (text, ...cssClass) => {
+            if (e === undefined || currentCssClass === undefined || !isSameStringArray(cssClass, currentCssClass)) {
+                e = newSpan(line, text, ...cssClass);
+                currentCssClass = cssClass.slice();
+            }
+            else {
+                e.innerText += text;
+            }
+        };
+        // Hex.
+        let subAddr;
+        for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
+            const cssClass = ["hex"];
+            if (subAddr < beginAddr || subAddr >= endAddr) {
+                cssClass.push("outside-annotation");
+            }
+            addText(toHexByte(binary[subAddr]) + " ", ...cssClass);
+        }
+        addText("".padStart((addr + STRIDE - subAddr) * 3 + 2, " "), "hex");
+        // ASCII.
+        for (subAddr = addr; subAddr < binary.length && subAddr < addr + STRIDE; subAddr++) {
+            const c = binary[subAddr];
+            const cssClass = ["hex"];
+            let char;
+            if (c >= 32 && c < 127) {
+                cssClass.push("ascii");
+                char = String.fromCharCode(c);
+            }
+            else {
+                cssClass.push("ascii-unprintable");
+                char = ".";
+            }
+            if (subAddr < beginAddr || subAddr >= endAddr) {
+                cssClass.push("outside-annotation");
+            }
+            addText(char, ...cssClass);
+        }
+        if (label !== "") {
+            addText("".padStart(addr + STRIDE - subAddr + 2, " ") + label, "annotation");
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/FilePanel.ts
+
+
+
+
+
+
+
+
+
+
+const SCREENSHOT_ATTR = "data-screenshot";
+/**
+ * Handles the file info tab in the file panel.
+ */
+class FilePanel_FileInfoTab {
+    constructor(filePanel, pageTabs, trs80File) {
+        this.filePanel = filePanel;
+        this.trs80File = trs80File;
+        const tab = new PageTab_PageTab("File Info");
+        tab.element.classList.add("file-info-tab");
+        // Form for editing file info.
+        const form = document.createElement("form");
+        form.classList.add("file-panel-form");
+        tab.element.append(form);
+        const makeInputBox = (label, cssClass, enabled) => {
+            const labelElement = document.createElement("label");
+            if (cssClass !== undefined) {
+                labelElement.classList.add(cssClass);
+            }
+            labelElement.innerText = label;
+            form.append(labelElement);
+            const inputElement = document.createElement("input");
+            inputElement.disabled = !enabled;
+            labelElement.append(inputElement);
+            return inputElement;
+        };
+        this.nameInput = makeInputBox("Name", "name", true);
+        this.filenameInput = makeInputBox("Filename", "filename", true);
+        const noteLabel = document.createElement("label");
+        noteLabel.classList.add("note");
+        noteLabel.innerText = "Note";
+        form.append(noteLabel);
+        this.noteInput = document.createElement("textarea");
+        this.noteInput.rows = 10;
+        noteLabel.append(this.noteInput);
+        const miscDiv = document.createElement("div");
+        miscDiv.classList.add("misc");
+        this.typeInput = makeInputBox("Type", undefined, false);
+        this.addedAtInput = makeInputBox("Added", undefined, false);
+        this.sizeInput = makeInputBox("Size", undefined, false);
+        this.modifiedAtInput = makeInputBox("Last modified", undefined, false);
+        {
+            const labelElement = document.createElement("label");
+            labelElement.classList.add("shared");
+            labelElement.innerText = "Shared";
+            form.append(labelElement);
+            this.sharedInput = document.createElement("input");
+            this.sharedInput.type = "checkbox";
+            const offIcon = makeIcon("toggle_off");
+            offIcon.classList.add("off-state");
+            const onIcon = makeIcon("toggle_on");
+            onIcon.classList.add("on-state");
+            labelElement.append(this.sharedInput, offIcon, onIcon);
+        }
+        form.append(miscDiv);
+        this.screenshotsDiv = document.createElement("div");
+        this.screenshotsDiv.classList.add("screenshots");
+        form.append(this.screenshotsDiv);
+        const actionBar = document.createElement("div");
+        actionBar.classList.add("action-bar");
+        tab.element.append(actionBar);
+        const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
+            this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
+            this.filePanel.context.panelManager.close();
+        });
+        actionBar.append(runButton);
+        const deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
+            this.filePanel.context.db.deleteFile(this.filePanel.file)
+                .then(() => {
+                this.filePanel.context.library.removeFile(this.filePanel.file);
+                // We automatically close as a result of the file being removed from the library.
+            })
+                .catch(error => {
+                // TODO.
+                console.error(error);
+            });
+        });
+        actionBar.append(deleteButton);
+        this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
+        actionBar.append(this.revertButton);
+        this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
+        actionBar.append(this.saveButton);
+        for (const input of [this.nameInput, this.filenameInput, this.noteInput]) {
+            input.addEventListener("input", () => this.updateButtonStatus());
+        }
+        this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
+        this.nameInput.addEventListener("input", () => {
+            let name = this.fileFromUi().name;
+            if (name === "") {
+                // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
+                this.filePanel.headerTextNode.innerHTML = "&nbsp;";
+            }
+            else {
+                this.filePanel.headerTextNode.innerText = name;
+            }
+        });
+        this.revertButton.addEventListener("click", () => {
+            this.updateUi();
+        });
+        this.saveButton.addEventListener("click", () => {
+            const newFile = this.fileFromUi().builder().withModifiedAt(new Date()).build();
+            this.saveButton.classList.add("saving");
+            // Disable right away so it's not clicked again.
+            this.saveButton.disabled = true;
+            this.filePanel.context.db.updateFile(this.filePanel.file, newFile)
+                .then(() => {
+                this.saveButton.classList.remove("saving");
+                this.saveButton.classList.add("success");
+                setTimeout(() => {
+                    this.saveButton.classList.remove("success");
+                }, 2000);
+                this.filePanel.file = newFile;
+                this.filePanel.context.library.modifyFile(newFile);
+                this.updateUi();
+            })
+                .catch(error => {
+                this.saveButton.classList.remove("saving");
+                // TODO show error.
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+                this.updateUi();
+            });
+        });
+        this.filePanel.context.library.onEvent.subscribe(event => {
+            if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
+                // Make sure we don't clobber any user-entered data in the input fields.
+                const updateData = this.filePanel.file.getUpdateDataComparedTo(event.newFile);
+                this.filePanel.file = event.newFile;
+                this.updateUi(updateData);
+            }
+            if (event instanceof LibraryRemoveEvent && event.oldFile.id === this.filePanel.file.id) {
+                // We've been deleted.
+                this.filePanel.context.panelManager.popPanel();
+            }
+        });
+        this.updateUi();
+        pageTabs.addTab(tab);
+    }
+    /**
+     * Update UI after a change to file.
+     *
+     * @param updateData if specified, only fields defined in the object will be updated. (The _values_ of
+     * those fields are ignored -- only their presence is important because that indicates that the data
+     * is fresh in the file object.) The purpose is to avoid clobbering user-entered data in the various
+     * input fields when the file object changes elsewhere in unrelated ways, such as new screenshots.
+     */
+    updateUi(updateData) {
+        const file = this.filePanel.file;
+        if (updateData === undefined || updateData.hasOwnProperty("name")) {
+            this.nameInput.value = file.name;
+        }
+        if (updateData === undefined || updateData.hasOwnProperty("filename")) {
+            this.filenameInput.value = file.filename;
+        }
+        if (updateData === undefined || updateData.hasOwnProperty("note")) {
+            this.noteInput.value = file.note;
+        }
+        this.typeInput.value = this.trs80File.getDescription();
+        this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
+        this.addedAtInput.value = formatDate(file.addedAt);
+        this.modifiedAtInput.value = formatDate(file.modifiedAt);
+        this.sharedInput.checked = file.shared;
+        if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
+            this.populateScreenshots();
+        }
+        this.updateButtonStatus();
+    }
+    /**
+     * Fill the screenshots UI with those from the file.
+     */
+    populateScreenshots() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.screenshotsDiv);
+        for (const screenshot of this.filePanel.file.screenshots) {
+            const screen = new dist["CanvasScreen"]();
+            screen.displayScreenshot(screenshot);
+            const image = screen.asImage();
+            const screenshotDiv = document.createElement("div");
+            screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
+            screenshotDiv.classList.add("screenshot");
+            screenshotDiv.append(image);
+            const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
+                screenshotDiv.remove();
+                this.updateButtonStatus();
+            });
+            screenshotDiv.append(deleteButton);
+            this.screenshotsDiv.append(screenshotDiv);
+        }
+    }
+    /**
+     * Update the save/restore buttons' enabled status based on input fields.
+     */
+    updateButtonStatus() {
+        const file = this.filePanel.file;
+        const newFile = this.fileFromUi();
+        const isSame = isEmpty_default()(newFile.getUpdateDataComparedTo(file));
+        const isValid = newFile.name.length > 0 &&
+            newFile.filename.length > 0;
+        const isDisabled = isSame || !isValid;
+        this.revertButton.disabled = isDisabled;
+        this.saveButton.disabled = isDisabled;
+    }
+    /**
+     * Make a new File object based on the user's inputs.
+     */
+    fileFromUi() {
+        // Collect screenshots from UI.
+        const screenshots = [];
+        for (const screenshotDiv of this.screenshotsDiv.children) {
+            let screenshot = screenshotDiv.getAttribute(SCREENSHOT_ATTR);
+            if (screenshot === null) {
+                console.error("Screenshot attribute " + SCREENSHOT_ATTR + " is null");
+            }
+            else {
+                screenshots.push(screenshot);
+            }
+        }
+        return this.filePanel.file.builder()
+            .withName(this.nameInput.value.trim())
+            .withFilename(this.filenameInput.value.trim())
+            .withNote(this.noteInput.value.trim())
+            .withShared(this.sharedInput.checked)
+            .withScreenshots(screenshots)
+            .build();
+    }
+}
+/**
+ * Tab for displaying the hex and ASCII of the binary.
+ */
+class FilePanel_HexdumpTab {
+    constructor(filePanel, pageTabs, trs80File) {
+        this.needGeneration = true;
+        this.collapse = true;
+        this.annotate = true;
+        this.binary = filePanel.file.binary;
+        this.trs80File = trs80File;
+        const tab = new PageTab_PageTab("Hexdump");
+        tab.element.classList.add("hexdump-tab");
+        const outer = document.createElement("div");
+        outer.classList.add("hexdump-outer");
+        tab.element.append(outer);
+        this.hexdumpElement = document.createElement("div");
+        this.hexdumpElement.classList.add("hexdump");
+        outer.append(this.hexdumpElement);
+        tab.onShow.subscribe(() => {
+            // Wait until user switches to tab to compute initial display, so that
+            // it doesn't slow down the animation to the file panel. Also do it
+            // asynchronously so that we don't block the display of the tab change.
+            if (this.needGeneration) {
+                this.needGeneration = false;
+                setTimeout(() => this.generateHexdump(), 0);
+            }
+        });
+        const actionBar = document.createElement("div");
+        actionBar.classList.add("action-bar");
+        tab.element.append(actionBar);
+        const collapseLabel = document.createElement("label");
+        const collapseCheckbox = document.createElement("input");
+        collapseCheckbox.type = "checkbox";
+        collapseCheckbox.checked = this.collapse;
+        collapseLabel.append(collapseCheckbox);
+        collapseLabel.append(" Collapse duplicate lines");
+        collapseCheckbox.addEventListener("change", () => {
+            this.collapse = collapseCheckbox.checked;
+            this.generateHexdump();
+        });
+        actionBar.append(collapseLabel);
+        const annotateLabel = document.createElement("label");
+        const annotateCheckbox = document.createElement("input");
+        annotateCheckbox.type = "checkbox";
+        annotateCheckbox.checked = this.annotate;
+        annotateLabel.append(annotateCheckbox);
+        annotateLabel.append(" Show annotations");
+        annotateCheckbox.addEventListener("change", () => {
+            this.annotate = annotateCheckbox.checked;
+            this.generateHexdump();
+        });
+        actionBar.append(annotateLabel);
+        // Take the hexdump out of the dom when the panel is hidden because it slows down things
+        // like changing themes (the animations aren't smooth).
+        let hideHandle = undefined;
+        const cancelHide = () => {
+            if (hideHandle !== undefined) {
+                window.clearTimeout(hideHandle);
+                hideHandle = undefined;
+            }
+        };
+        filePanel.context.panelManager.onOpenClose.subscribe(isOpen => {
+            cancelHide();
+            if (isOpen) {
+                this.hexdumpElement.classList.remove("hidden");
+            }
+            else {
+                hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
+            }
+        });
+        pageTabs.addTab(tab);
+    }
+    /**
+     * Regenerate the HTML for the hexdump.
+     */
+    generateHexdump() {
+        const hexdumpGenerator = new HexdumpGenerator_HexdumpGenerator(this.binary, this.collapse, this.annotate ? this.trs80File.annotations : []);
+        const lines = hexdumpGenerator.generate();
+        Object(teamten_ts_utils_dist["clearElement"])(this.hexdumpElement);
+        this.hexdumpElement.append(...lines);
+    }
+}
+/**
+ * Panel to explore a file.
+ */
+class FilePanel_FilePanel extends Panel_Panel {
+    constructor(context, file) {
+        super(context, file.name, "file-panel", true);
+        this.file = file;
+        const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
+        const pageTabs = new PageTabs_PageTabs(this.content);
+        new FilePanel_FileInfoTab(this, pageTabs, trs80File);
+        new FilePanel_HexdumpTab(this, pageTabs, trs80File);
+    }
+}
+
+// CONCATENATED MODULE: ./src/Context.ts
+
+
+
+
+const FRAGMENT_PREFIX = "#!";
+/**
+ * Context of the whole app, with its global variables.
+ */
+class Context_Context {
+    constructor(library, trs80, db, panelManager) {
+        this._runningFile = undefined;
+        this._user = undefined;
+        this.userResolved = false;
+        this.onUser = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.onFragment = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        // Dispatched when we initially figure out if we're signed in or not.
+        this.onUserResolved = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.library = library;
+        this.trs80 = trs80;
+        this.db = db;
+        this.panelManager = panelManager;
+        // Listen for changes to the file we're running.
+        this.library.onEvent.subscribe(event => {
+            if (this._runningFile !== undefined) {
+                if (event instanceof LibraryModifyEvent && event.oldFile.id === this._runningFile.id) {
+                    this.runningFile = event.newFile;
+                }
+                if (event instanceof LibraryRemoveEvent && event.oldFile.id === this._runningFile.id) {
+                    this.runningFile = undefined;
+                }
+            }
+        });
+    }
+    /**
+     * Run a program.
+     */
+    runProgram(file, trs80File) {
+        if (trs80File === undefined) {
+            trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
+        }
+        if (trs80File.error !== undefined) {
+            // TODO
+        }
+        else {
+            this.runningFile = file;
+            this.trs80.runTrs80File(trs80File);
+        }
+    }
+    /**
+     * Open a file panel on the given file.
+     */
+    openFilePanel(file) {
+        const filePanel = new FilePanel_FilePanel(this, file);
+        this.panelManager.pushPanel(filePanel);
+    }
+    /**
+     * Get the currently-running file, if any.
+     */
+    get runningFile() {
+        return this._runningFile;
+    }
+    /**
+     * Set the currently-running file, if any.
+     */
+    set runningFile(value) {
+        this._runningFile = value;
+        this.onFragment.dispatch(this.getFragment());
+    }
+    /**
+     * Set the currently signed-in user.
+     */
+    set user(user) {
+        this._user = user;
+        this.onUser.dispatch(user);
+        if (!this.userResolved) {
+            this.userResolved = true;
+            this.onUserResolved.dispatch();
+        }
+    }
+    /**
+     * Get the currently signed-in user.
+     */
+    get user() {
+        return this._user;
+    }
+    /**
+     * Return the URL fragment for this context, including the leading hash.
+     */
+    getFragment() {
+        const parts = [];
+        if (this._runningFile !== undefined) {
+            parts.push("runFile=" + this._runningFile.id);
+        }
+        const fragment = parts.join(",");
+        return fragment === "" ? "" : FRAGMENT_PREFIX + fragment;
+    }
+    /**
+     * Returns a map of variables in the fragment. Every value array will have at least one element.
+     */
+    static parseFragment(fragment) {
+        const args = new Map();
+        if (fragment.startsWith(FRAGMENT_PREFIX)) {
+            fragment = fragment.substr(FRAGMENT_PREFIX.length);
+            const parts = fragment.split(",");
+            for (const part of parts) {
+                const subparts = part.split("=");
+                if (subparts.length !== 2) {
+                    console.error(`Fragment part "${part}" is malformed.`);
+                }
+                else {
+                    const key = subparts[0];
+                    const value = subparts[1];
+                    let values = args.get(key);
+                    if (values === undefined) {
+                        values = [];
+                        args.set(key, values);
+                    }
+                    values.push(value);
+                }
+            }
+        }
+        return args;
+    }
+}
+
+// CONCATENATED MODULE: ./src/DialogBox.ts
+class DialogBox {
+    constructor(title, content, cssClass) {
+        this.backgroundNode = undefined;
+        const body = document.querySelector("body");
+        this.backgroundNode = document.createElement("div");
+        this.backgroundNode.classList.add("dialog-box-background");
+        this.backgroundNode.addEventListener("click", e => {
+            if (e.target === this.backgroundNode) {
+                this.close();
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+        body.append(this.backgroundNode);
+        const frame = document.createElement("div");
+        frame.classList.add("dialog-box-frame");
+        if (cssClass !== undefined) {
+            frame.classList.add(cssClass);
+        }
+        this.backgroundNode.append(frame);
+        const h1 = document.createElement("h1");
+        h1.innerText = title;
+        frame.append(h1);
+        const contentFrame = document.createElement("div");
+        contentFrame.classList.add("dialog-box-content-frame");
+        frame.append(contentFrame);
+        contentFrame.append(content);
+        // Handler for the ESC key.
+        this.escListener = (e) => {
+            if (e.key === "Escape") {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            }
+        };
+        document.addEventListener("keydown", this.escListener);
+        // Wait a bit to let the initial view render, which enables the fade-in animation.
+        setTimeout(() => { var _a; return (_a = this.backgroundNode) === null || _a === void 0 ? void 0 : _a.classList.add("dialog-box-shown"); }, 10);
+    }
+    /**
+     * Close and destroy the dialog box. The dialog box cannot be re-opened.
+     */
+    close() {
+        if (this.backgroundNode !== undefined) {
+            document.removeEventListener("keydown", this.escListener);
+            const backgroundNode = this.backgroundNode;
+            backgroundNode.classList.remove("dialog-box-shown");
+            this.backgroundNode = undefined;
+            setTimeout(() => backgroundNode.remove(), 500);
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/User.ts
+/**
+ * The user from the perspective of the auth system.
+ */
+class AuthUser {
+    constructor(uid, emailAddress, name) {
+        this.uid = uid;
+        this.emailAddress = emailAddress;
+        this.name = name;
+    }
+    /**
+     * Upgrade an authdata to a full user based on data from the database.
+     */
+    toUser(data) {
+        const changed = this.emailAddress !== data.emailAddress || this.name !== data.name;
+        return new User(this.uid, this.emailAddress, this.name, data.admin, data.addedAt, changed ? new Date() : data.modifiedAt, data.lastActiveAt);
+    }
+    /**
+     * Promote a new auth user to a full user.
+     */
+    toNewUser() {
+        const now = new Date();
+        return new User(this.uid, this.emailAddress, this.name, false, now, now, now);
+    }
+    /**
+     * Make a new AuthUser from a Firebase user.
+     */
+    static fromFirebaseUser(firebaseUser) {
+        var _a, _b;
+        return new AuthUser(firebaseUser.uid, (_a = firebaseUser.email) !== null && _a !== void 0 ? _a : "", (_b = firebaseUser.displayName) !== null && _b !== void 0 ? _b : "");
+    }
+}
+/**
+ * Represents a user in our database, both basic data such as ID, as well as user preferences.
+ */
+class User extends AuthUser {
+    constructor(uid, emailAddress, name, admin, addedAt, modifiedAt, lastActiveAt) {
+        super(uid, emailAddress, name);
+        this.admin = admin;
+        this.addedAt = addedAt;
+        this.modifiedAt = modifiedAt;
+        this.lastActiveAt = lastActiveAt;
+    }
+}
+
+// CONCATENATED MODULE: ./src/Database.ts
+
+
+const FILES_COLLECTION_NAME = "files";
+const USERS_COLLECTION_NAME = "users";
+/**
+ * Interface to the Firestore data.
+ */
+class Database_Database {
+    constructor(firestore) {
+        this.firestore = firestore;
+    }
+    /**
+     * Get all files for this user.
+     */
+    getAllFiles(uid) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).where("uid", "==", uid).get();
+    }
+    /**
+     * Get a file by its ID. Rejects without argument if can't be found or has insufficient permission.
+     */
+    getFile(fileId) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).doc(fileId).get()
+            .then(snapshot => {
+            if (snapshot.exists) {
+                return Promise.resolve(FileBuilder.fromDoc(snapshot).build());
+            }
+            else {
+                // I don't know when this can happen because both missing and non-shared
+                // files show up in the catch clause.
+                return Promise.reject();
+            }
+        })
+            .catch(error => {
+            console.error(`Can't get file ${fileId}`, error);
+            return Promise.reject();
+        });
+    }
+    /**
+     * Add a file to the database.
+     */
+    addFile(file) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).add({
+            uid: file.uid,
+            name: file.name,
+            filename: file.filename,
+            note: file.note,
+            shared: file.shared,
+            hash: file.hash,
+            binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
+            addedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.addedAt),
+            modifiedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.modifiedAt),
+        });
+    }
+    /**
+     * Updates an existing file in the database. Both files should have the same ID.
+     */
+    updateFile(oldFile, newFile) {
+        if (oldFile.id !== newFile.id) {
+            throw new Error("File IDs must match in updateFile");
+        }
+        return this.firestore.collection(FILES_COLLECTION_NAME).doc(oldFile.id)
+            .update(newFile.getUpdateDataComparedTo(oldFile));
+    }
+    /**
+     * Deletes a file in the database.
+     */
+    deleteFile(file) {
+        return this.firestore.collection(FILES_COLLECTION_NAME).doc(file.id).delete();
+    }
+    /**
+     * Get or create a user for the given auth user.
+     */
+    userFromAuthUser(authUser) {
+        const docRef = this.firestore.collection(USERS_COLLECTION_NAME).doc(authUser.uid);
+        return this.firestore.runTransaction(transaction => {
+            return transaction.get(docRef)
+                .then(doc => {
+                let user;
+                if (doc.exists) {
+                    // User already exists. Remember when they last signed in.
+                    user = authUser.toUser(doc.data());
+                    // TODO make delta object.
+                    transaction.update(docRef, {
+                        emailAddress: user.emailAddress,
+                        name: user.name,
+                        modifiedAt: user.modifiedAt,
+                        lastActiveAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(new Date()),
+                    });
+                }
+                else {
+                    // User does not yet exist, create it.
+                    user = authUser.toNewUser();
+                    transaction.set(docRef, {
+                        emailAddress: user.emailAddress,
+                        name: user.name,
+                        admin: user.admin,
+                        addedAt: user.addedAt,
+                        modifiedAt: user.modifiedAt,
+                        lastActiveAt: user.lastActiveAt,
+                    });
+                }
+                return user;
+            });
+        });
+    }
+}
+
+// CONCATENATED MODULE: ./src/Main.ts
+
+
+// These imports load individual services into the firebase namespace.
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Main_EmptyCassette extends dist["CassettePlayer"] {
+}
+function createNavbar(openLibrary, signIn, signOut) {
+    const body = document.querySelector("body");
+    const navbar = document.createElement("div");
+    navbar.classList.add("navbar");
+    const title = document.createElement("a");
+    title.classList.add("home-button");
+    title.textContent = "My TRS-80";
+    title.href = "/";
+    navbar.append(title);
+    const libraryButton = makeIconButton(makeIcon("folder_open"), "Open library (Ctrl-L)", openLibrary);
+    libraryButton.classList.add("library-button");
+    navbar.append(libraryButton);
+    const themeButton = makeIconButton(makeIcon("brightness_medium"), "Toggle theme", () => {
+        body.classList.toggle("light-mode");
+        body.classList.toggle("dark-mode");
+    });
+    themeButton.classList.add("theme-button");
+    navbar.append(themeButton);
+    const signInButton = makeTextButton("Sign In", undefined, "sign-in-button", signIn);
+    const signOutButton = makeTextButton("Sign Out", undefined, "sign-out-button", signOut);
+    navbar.append(signInButton, signOutButton);
+    return navbar;
+}
+function main() {
+    var _a;
+    const body = document.querySelector("body");
+    body.classList.add("signed-out");
+    // Configuration for Firebase.
+    index_esm["a" /* default */].initializeApp({
+        apiKey: "AIzaSyAfGZY9BaDUmy4qNtg11JHd_kLd1JmgdBI",
+        authDomain: "my-trs-80.firebaseapp.com",
+        projectId: "my-trs-80",
+        storageBucket: "my-trs-80.appspot.com",
+        messagingSenderId: "438103442091",
+        appId: "1:438103442091:web:0fe42c43917ba1add52dee"
+    });
+    index_esm["a" /* default */].analytics();
+    // Configuration for Firebase sign-in screen.
+    const uiConfig = {
+        signInSuccessUrl: '/',
+        signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            index_esm["a" /* default */].auth.GoogleAuthProvider.PROVIDER_ID,
+        ],
+        // Pop up a browser window for the actual sign-in page:
+        signInFlow: "popup",
+        callbacks: {
+            signInSuccessWithAuthResult: (authResult) => {
+                // Don't use stuff here, the user will get passed to onAuthStateChanged().
+                // I don't see much else useful in authResult.
+                // console.log(authResult);
+                // Don't redirect, we've taken care of it.
+                return false;
+            },
+        },
+    };
+    let firebaseAuth = index_esm["a" /* default */].auth();
+    const firebaseAuthUi = new esm["a" /* auth */].AuthUI(firebaseAuth);
+    const signInDiv = document.createElement("div");
+    const signInInstructions = document.createElement("div");
+    signInInstructions.classList.add("sign-in-instructions");
+    signInInstructions.innerText = "Sign in to My TRS-80 to have a persistent place to store your files.";
+    const signInFirebase = document.createElement("div");
+    signInDiv.append(signInInstructions, signInFirebase);
+    let signInDialog = undefined;
+    const db = new Database_Database(index_esm["a" /* default */].firestore());
+    firebaseAuth.onAuthStateChanged(firebaseUser => {
+        if (firebaseUser !== null) {
+            //console.log(firebaseUser);
+            const authUser = AuthUser.fromFirebaseUser(firebaseUser);
+            db.userFromAuthUser(authUser)
+                .then(user => context.user = user)
+                .catch(error => {
+                // TODO.
+                console.error(error);
+            });
+            if (signInDialog !== undefined) {
+                signInDialog.close();
+                signInDialog = undefined;
+            }
+        }
+        else {
+            // No user signed in, render sign-in UI.
+            firebaseAuthUi.reset();
+            firebaseAuthUi.start(signInFirebase, uiConfig);
+            context.user = undefined;
+        }
+    });
+    const panelManager = new PanelManager_PanelManager();
+    const library = new Library_Library();
+    const navbar = createNavbar(() => panelManager.open(), () => {
+        if (signInDialog !== undefined) {
+            signInDialog.close();
+        }
+        signInDialog = new DialogBox("Sign In", signInDiv, "sign-in-dialog-box");
+    }, () => index_esm["a" /* default */].auth().signOut());
+    const screenDiv = document.createElement("div");
+    screenDiv.classList.add("main-computer-screen");
+    const screen = new dist["CanvasScreen"](1.5);
+    screenDiv.append(screen.getNode());
+    let cassette = new Main_EmptyCassette();
+    const trs80 = new dist["Trs80"](screen, cassette);
+    const reboot = () => {
+        trs80.reset();
+        trs80.start();
+    };
+    const hardwareSettingsPanel = new dist["SettingsPanel"](screen.getNode(), trs80, dist["PanelType"].HARDWARE);
+    const viewPanel = new dist["SettingsPanel"](screen.getNode(), trs80, dist["PanelType"].VIEW);
+    const controlPanel = new dist["ControlPanel"](screen.getNode());
+    controlPanel.addResetButton(reboot);
+    controlPanel.addTapeRewindButton(() => {
+        // cassette.rewind();
+    });
+    controlPanel.addSettingsButton(hardwareSettingsPanel);
+    controlPanel.addSettingsButton(viewPanel);
+    // const progressBar = new ProgressBar(screen.getNode());
+    // cassette.setProgressBar(progressBar);
+    body.append(navbar);
+    body.append(screenDiv);
+    let wasTrs80Started = false;
+    panelManager.onOpenClose.subscribe(isOpen => {
+        if (isOpen) {
+            wasTrs80Started = trs80.stop();
+        }
+        else {
+            if (wasTrs80Started) {
+                trs80.start();
+            }
+        }
+    });
+    document.addEventListener("keydown", event => {
+        if (event.ctrlKey && event.key === "l") {
+            panelManager.toggle();
+        }
+    });
+    reboot();
+    const context = new Context_Context(library, trs80, db, panelManager);
+    context.onFragment.subscribe(fragment => {
+        window.location.hash = fragment;
+    });
+    context.onUser.subscribe(user => {
+        body.classList.toggle("signed-in", user !== undefined);
+        body.classList.toggle("signed-out", user === undefined);
+    });
+    // TODO make this button appear and disappear as we have/not have a program.
+    controlPanel.addScreenshotButton(() => {
+        if (context.runningFile !== undefined) {
+            let file = context.runningFile;
+            const screenshot = trs80.getScreenshot();
+            const screenshots = [...file.screenshots, screenshot]; // Don't modify original array.
+            file = file.builder()
+                .withScreenshots(screenshots)
+                .withModifiedAt(new Date())
+                .build();
+            context.db.updateFile(context.runningFile, file)
+                .then(() => context.library.modifyFile(file))
+                .catch(error => {
+                // TODO.
+                console.error(error);
+            });
+        }
+    });
+    const libraryPanel = new LibraryPanel_LibraryPanel(context);
+    panelManager.pushPanel(libraryPanel);
+    context.onUser.subscribe(user => {
+        library.removeAll();
+        if (user !== undefined) {
+            // Fetch all files.
+            context.db.getAllFiles(user.uid)
+                .then((querySnapshot) => {
+                for (const doc of querySnapshot.docs) {
+                    const file = FileBuilder.fromDoc(doc).build();
+                    library.addFile(file);
+                }
+                // We should now be in sync with the cloud database.
+                library.setInSync(true);
+            })
+                .catch(error => {
+                // TODO
+                console.error(error);
+                if (error.name === "FirebaseError") {
+                    // code can be "permission-denied".
+                    console.error(error.code, error.message);
+                }
+            });
+        }
+    });
+    // See if we should run an app right away.
+    const args = Context_Context.parseFragment(window.location.hash);
+    const runFileId = (_a = args.get("runFile")) === null || _a === void 0 ? void 0 : _a[0];
+    context.onUserResolved.subscribe(() => {
+        // We're signed in, or not, and can now read the database.
+        if (runFileId !== undefined) {
+            db.getFile(runFileId)
+                .then(file => {
+                context.runProgram(file);
+            })
+                .catch(() => {
+                // TODO Should probably display error message.
+            });
+        }
+    });
+}
+
+// CONCATENATED MODULE: ./src/index.ts
+
+main();
+
+
+/***/ }),
 /* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
