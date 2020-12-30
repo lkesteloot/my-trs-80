@@ -36417,7 +36417,6 @@ class PageTabs_PageTabs {
     configurationChanged() {
         const oldEffectiveActiveIndex = this.effectiveActiveIndex;
         this.computeEffectiveActiveIndex();
-        console.log(oldEffectiveActiveIndex, this.effectiveActiveIndex);
         if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
             if (oldEffectiveActiveIndex !== undefined) {
                 this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
@@ -36824,8 +36823,12 @@ class YourFilesTab_YourFilesTab {
         const demon = document.createElement("img");
         demon.src = "/demon.png";
         this.emptyLibrary.append(emptyTitle, emptyBody, demon);
+        // Register for changes to library.
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
         this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
+        // Populate initial library state.
+        this.context.library.getAllFiles().forEach(f => this.addFile(f));
+        this.sortFiles();
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
@@ -39459,8 +39462,13 @@ function main() {
     // cassette.setProgressBar(progressBar);
     body.append(navbar);
     body.append(screenDiv);
+    let createdLibraryPanel = false;
     let wasTrs80Started = false;
     panelManager.onOpenClose.subscribe(isOpen => {
+        if (isOpen && !createdLibraryPanel) {
+            panelManager.pushPanel(new LibraryPanel_LibraryPanel(context));
+            createdLibraryPanel = true;
+        }
         if (isOpen) {
             wasTrs80Started = trs80.stop();
         }
@@ -39502,8 +39510,6 @@ function main() {
             });
         }
     });
-    const libraryPanel = new LibraryPanel_LibraryPanel(context);
-    panelManager.pushPanel(libraryPanel);
     context.onUser.subscribe(user => {
         library.removeAll();
         if (user !== undefined) {
