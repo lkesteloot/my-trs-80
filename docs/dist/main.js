@@ -36144,33 +36144,27 @@ var esm = __webpack_require__(44);
 
 // CONCATENATED MODULE: ./src/Utils.ts
 const MATERIAL_ICONS_CLASS = "material-icons-round";
-// Next function to call in the deferred chain.
-let nextDeferredFunction = undefined;
-// Whether we've already created a timer to call the deferred function.
-let deferredFunctionScheduled = false;
+// Functions to call.
+const deferredFunctions = [];
+// Whether we've already created a timer to call the deferred functions.
+let deferredFunctionsScheduled = false;
 /**
  * Defer a function until later. All deferred functions are queued up and
- * executed sequentially, but not necessarily in the order that defer()
- * was called.
+ * executed sequentially, in order.
  */
 function defer(f) {
-    // Get the current function to call next.
-    const nextDeferredFunctionCopy = nextDeferredFunction;
-    // Set ourselves up to be called next.
-    nextDeferredFunction = () => {
-        // Restore the previous pointer first in case f() calls defer().
-        nextDeferredFunction = nextDeferredFunctionCopy;
-        f();
-    };
+    // Add our function in order.
+    deferredFunctions.push(f);
     // Call the next deferred function.
     const timeoutCallback = () => {
-        if (nextDeferredFunction === undefined) {
-            deferredFunctionScheduled = false;
+        const deferredFunction = deferredFunctions.shift();
+        if (deferredFunction === undefined) {
+            deferredFunctionsScheduled = false;
         }
         else {
-            // Make sure we don't kill the process if the function fails.
+            // Make sure we don't kill the process if the function throws.
             try {
-                nextDeferredFunction();
+                deferredFunction();
             }
             finally {
                 setTimeout(timeoutCallback, 0);
@@ -36178,9 +36172,9 @@ function defer(f) {
         }
     };
     // Kick it all off if necessary.
-    if (!deferredFunctionScheduled) {
+    if (!deferredFunctionsScheduled) {
         setTimeout(timeoutCallback, 0);
-        deferredFunctionScheduled = true;
+        deferredFunctionsScheduled = true;
     }
 }
 /**
@@ -38991,22 +38985,21 @@ class FilePanel_FileInfoTab {
     populateScreenshots() {
         Object(teamten_ts_utils_dist["clearElement"])(this.screenshotsDiv);
         for (const screenshot of this.filePanel.file.screenshots) {
+            const screenshotDiv = document.createElement("div");
+            screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
+            screenshotDiv.classList.add("screenshot");
+            const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
+                screenshotDiv.remove();
+                this.updateButtonStatus();
+            });
+            screenshotDiv.append(deleteButton);
+            this.screenshotsDiv.append(screenshotDiv);
             // Defer this so that if we have a lot of screenshots it doesn't hang the browser when
             // creating this panel.
             defer(() => {
                 const screen = new dist["CanvasScreen"]();
                 screen.displayScreenshot(screenshot);
-                const image = screen.asImage();
-                const screenshotDiv = document.createElement("div");
-                screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
-                screenshotDiv.classList.add("screenshot");
-                screenshotDiv.append(image);
-                const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
-                    screenshotDiv.remove();
-                    this.updateButtonStatus();
-                });
-                screenshotDiv.append(deleteButton);
-                this.screenshotsDiv.append(screenshotDiv);
+                screenshotDiv.append(screen.asImage());
             });
         }
     }
