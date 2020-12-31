@@ -10959,6 +10959,10 @@ class Keyboard {
         body.addEventListener("keydown", (event) => keyEvent(event, true));
         body.addEventListener("keyup", (event) => keyEvent(event, false));
         body.addEventListener("paste", (event) => {
+            // Don't do anything if we're not active.
+            if (!this.interceptKeys) {
+                return;
+            }
             if (event.clipboardData) {
                 const pastedText = event.clipboardData.getData("text/plain");
                 if (pastedText) {
@@ -36734,12 +36738,14 @@ function sha1(bytes) {
  * Represents a file that the user owns.
  */
 class File_File {
-    constructor(id, uid, name, filename, note, shared, hash, screenshots, binary, addedAt, modifiedAt) {
+    constructor(id, uid, name, filename, note, author, releaseYear, shared, hash, screenshots, binary, addedAt, modifiedAt) {
         this.id = id;
         this.uid = uid;
         this.name = name;
         this.filename = filename;
         this.note = note;
+        this.author = author;
+        this.releaseYear = releaseYear;
         this.shared = shared;
         this.hash = hash;
         this.screenshots = screenshots;
@@ -36757,6 +36763,8 @@ class File_File {
             name: this.name,
             filename: this.filename,
             note: this.note,
+            author: this.author,
+            releaseYear: this.releaseYear,
             shared: this.shared,
             hash: this.hash,
             screenshots: this.screenshots,
@@ -36772,6 +36780,8 @@ class File_File {
         builder.name = this.name;
         builder.filename = this.filename;
         builder.note = this.note;
+        builder.author = this.author;
+        builder.releaseYear = this.releaseYear;
         builder.shared = this.shared;
         builder.hash = this.hash;
         builder.screenshots = this.screenshots;
@@ -36793,6 +36803,12 @@ class File_File {
         }
         if (this.note !== oldFile.note) {
             updateData.note = this.note;
+        }
+        if (this.author !== oldFile.author) {
+            updateData.author = this.author;
+        }
+        if (this.releaseYear !== oldFile.releaseYear) {
+            updateData.releaseYear = this.releaseYear;
         }
         if (this.shared !== oldFile.shared) {
             updateData.shared = this.shared;
@@ -36842,6 +36858,8 @@ class File_FileBuilder {
         this.name = "";
         this.filename = "";
         this.note = "";
+        this.author = "";
+        this.releaseYear = "";
         this.shared = false;
         this.hash = "";
         this.screenshots = [];
@@ -36850,7 +36868,7 @@ class File_FileBuilder {
         this.modifiedAt = new Date();
     }
     static fromDoc(doc) {
-        var _a, _b;
+        var _a, _b, _c, _d;
         const builder = new File_FileBuilder();
         builder.id = doc.id;
         // Assume data() is valid, either because it's a query or because we checked "exists".
@@ -36859,9 +36877,11 @@ class File_FileBuilder {
         builder.name = data.name;
         builder.filename = data.filename;
         builder.note = data.note;
-        builder.shared = (_a = data.shared) !== null && _a !== void 0 ? _a : false;
+        builder.author = (_a = data.author) !== null && _a !== void 0 ? _a : "";
+        builder.releaseYear = (_b = data.releaseYear) !== null && _b !== void 0 ? _b : "";
+        builder.shared = (_c = data.shared) !== null && _c !== void 0 ? _c : false;
         builder.hash = data.hash;
-        builder.screenshots = (_b = data.screenshots) !== null && _b !== void 0 ? _b : [];
+        builder.screenshots = (_d = data.screenshots) !== null && _d !== void 0 ? _d : [];
         builder.binary = data.binary.toUint8Array();
         builder.addedAt = data.addedAt.toDate();
         builder.modifiedAt = data.modifiedAt.toDate();
@@ -36887,6 +36907,14 @@ class File_FileBuilder {
         this.note = note;
         return this;
     }
+    withAuthor(author) {
+        this.author = author;
+        return this;
+    }
+    withReleaseYear(releaseYear) {
+        this.releaseYear = releaseYear;
+        return this;
+    }
     withShared(shared) {
         this.shared = shared;
         return this;
@@ -36905,7 +36933,7 @@ class File_FileBuilder {
         return this;
     }
     build() {
-        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.shared, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
+        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.author, this.releaseYear, this.shared, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
     }
 }
 
@@ -38261,7 +38289,7 @@ class RetroStoreTab_RetroStoreTab {
         playButton.disabled = true;
         buttonDiv.append(playButton);
         const importButton = makeIconButton(makeIcon("get_app"), "Import app", () => {
-            var _a;
+            var _a, _b;
             if (validMediaImage !== undefined && validMediaImage.data !== undefined && this.context.user !== undefined) {
                 const noteParts = [];
                 if (app.description !== undefined && app.description !== "") {
@@ -38276,7 +38304,9 @@ class RetroStoreTab_RetroStoreTab {
                     .withUid(this.context.user.uid)
                     .withName(appName)
                     .withNote(note)
-                    .withFilename((_a = validMediaImage.filename) !== null && _a !== void 0 ? _a : "UNKNOWN")
+                    .withAuthor((_a = app.author) !== null && _a !== void 0 ? _a : "")
+                    .withReleaseYear(app.release_year === undefined ? "" : app.release_year.toString())
+                    .withFilename((_b = validMediaImage.filename) !== null && _b !== void 0 ? _b : "UNKNOWN")
                     .withBinary(validMediaImage.data)
                     .build();
                 this.context.db.addFile(file)
@@ -38847,8 +38877,8 @@ class FilePanel_FileInfoTab {
         this.noteInput = document.createElement("textarea");
         this.noteInput.rows = 10;
         noteLabel.append(this.noteInput);
-        const miscDiv = document.createElement("div");
-        miscDiv.classList.add("misc");
+        this.authorInput = makeInputBox("Author", undefined, true);
+        this.releaseYearInput = makeInputBox("Release year", undefined, true);
         this.typeInput = makeInputBox("Type", undefined, false);
         this.addedAtInput = makeInputBox("Added", undefined, false);
         this.sizeInput = makeInputBox("Size", undefined, false);
@@ -38866,7 +38896,6 @@ class FilePanel_FileInfoTab {
             onIcon.classList.add("on-state");
             labelElement.append(this.sharedInput, offIcon, onIcon);
         }
-        form.append(miscDiv);
         this.screenshotsDiv = document.createElement("div");
         this.screenshotsDiv.classList.add("screenshots");
         form.append(this.screenshotsDiv);
@@ -38894,7 +38923,7 @@ class FilePanel_FileInfoTab {
         actionBar.append(this.revertButton);
         this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
         actionBar.append(this.saveButton);
-        for (const input of [this.nameInput, this.filenameInput, this.noteInput]) {
+        for (const input of [this.nameInput, this.filenameInput, this.noteInput, this.authorInput, this.releaseYearInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
         }
         this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
@@ -38969,6 +38998,12 @@ class FilePanel_FileInfoTab {
         if (updateData === undefined || updateData.hasOwnProperty("note")) {
             this.noteInput.value = file.note;
         }
+        if (updateData === undefined || updateData.hasOwnProperty("author")) {
+            this.authorInput.value = file.author;
+        }
+        if (updateData === undefined || updateData.hasOwnProperty("releaseYear")) {
+            this.releaseYearInput.value = file.releaseYear;
+        }
         this.typeInput.value = this.trs80File.getDescription();
         this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
         this.addedAtInput.value = formatDate(file.addedAt);
@@ -39035,6 +39070,8 @@ class FilePanel_FileInfoTab {
             .withName(this.nameInput.value.trim())
             .withFilename(this.filenameInput.value.trim())
             .withNote(this.noteInput.value.trim())
+            .withAuthor(this.authorInput.value.trim())
+            .withReleaseYear(this.releaseYearInput.value.trim())
             .withShared(this.sharedInput.checked)
             .withScreenshots(screenshots)
             .build();
@@ -39408,6 +39445,8 @@ class Database_Database {
             name: file.name,
             filename: file.filename,
             note: file.note,
+            author: file.author,
+            releaseYear: file.releaseYear,
             shared: file.shared,
             hash: file.hash,
             binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
