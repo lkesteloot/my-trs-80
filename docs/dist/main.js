@@ -37132,6 +37132,12 @@ class YourFilesTab_YourFilesTab {
         const nameDiv = document.createElement("div");
         nameDiv.classList.add("name");
         nameDiv.innerText = file.name;
+        if (file.releaseYear !== "") {
+            const releaseYearSpan = document.createElement("span");
+            releaseYearSpan.classList.add("release-year");
+            releaseYearSpan.innerText = " (" + file.releaseYear + ")";
+            nameDiv.append(releaseYearSpan);
+        }
         infoDiv.append(nameDiv);
         const filenameDiv = document.createElement("div");
         filenameDiv.classList.add("filename");
@@ -37139,7 +37145,7 @@ class YourFilesTab_YourFilesTab {
         infoDiv.append(filenameDiv);
         const noteDiv = document.createElement("div");
         noteDiv.classList.add("note");
-        noteDiv.innerText = file.note;
+        noteDiv.innerText = [file.author, file.note].filter(field => field !== "").join(" — ");
         infoDiv.append(noteDiv);
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
