@@ -6780,7 +6780,6 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
         this.canvas.height = 16 * 24 * this.scale + 2 * this.padding;
         this.node.append(this.canvas);
         this.context = this.canvas.getContext("2d");
-        this.drawBackground();
         this.updateFromConfig();
     }
     setConfig(config) {
@@ -10610,14 +10609,10 @@ class Trs80 {
      * Run a TRS-80 program. The exact behavior depends on the type of program.
      */
     runTrs80File(trs80File) {
-        console.log("runTrs80File");
-        console.log(trs80File);
-        console.log(trs80_base_1.Cassette);
         if (trs80File instanceof trs80_base_1.CmdProgram) {
             this.runCmdProgram(trs80File);
         }
         else if (trs80File instanceof trs80_base_1.Cassette) {
-            console.log("instance of cassette");
             if (trs80File.files.length === 1) {
                 this.runTrs80File(trs80File.files[0].file);
             }
@@ -12093,6 +12088,8 @@ const GLYPH_CG4 = [
  */
 class Font {
     constructor(bits, width, height, banks) {
+        // Cache from glyph key (see makeImage()) to the canvas element for it.
+        this.glyphCache = new Map();
         this.bits = bits;
         this.width = width;
         this.height = height;
@@ -12103,6 +12100,24 @@ class Font {
      * specified color, "off" pixels are fully transparent.
      */
     makeImage(char, expanded, options) {
+        const key = {
+            char: char,
+            expanded: expanded,
+            options: options,
+        };
+        const stringKey = JSON.stringify(key);
+        // Cache the glyph since we create a set of these for each created canvas.
+        let glyph = this.glyphCache.get(stringKey);
+        if (glyph === undefined) {
+            glyph = this.makeImageInternal(char, expanded, options);
+            this.glyphCache.set(stringKey, glyph);
+        }
+        return glyph;
+    }
+    /**
+     * Actually creates the glyph.
+     */
+    makeImageInternal(char, expanded, options) {
         const canvas = document.createElement("canvas");
         let expandedMultiplier = expanded ? 2 : 1;
         canvas.width = this.width * expandedMultiplier;
@@ -36129,6 +36144,39 @@ var esm = __webpack_require__(44);
 
 // CONCATENATED MODULE: ./src/Utils.ts
 const MATERIAL_ICONS_CLASS = "material-icons-round";
+// Next function to call in the deferred chain.
+let nextDeferredFunction = undefined;
+// Whether we've already created a timer to call the deferred function.
+let deferredFunctionScheduled = false;
+/**
+ * Defer a function until later. All deferred functions are queued up and
+ * executed sequentially, but not necessarily in the order that defer()
+ * was called.
+ */
+function defer(f) {
+    // Get the current function to call next.
+    const nextDeferredFunctionCopy = nextDeferredFunction;
+    // Set ourselves up to be called next, but restore the previous pointer when done.
+    nextDeferredFunction = () => {
+        f();
+        nextDeferredFunction = nextDeferredFunctionCopy;
+    };
+    // Call the next deferred function.
+    const callback = () => {
+        if (nextDeferredFunction === undefined) {
+            deferredFunctionScheduled = false;
+        }
+        else {
+            nextDeferredFunction();
+            setTimeout(callback, 0);
+        }
+    };
+    // Kick it all off if necessary.
+    if (!deferredFunctionScheduled) {
+        setTimeout(callback, 0);
+        deferredFunctionScheduled = true;
+    }
+}
 /**
  * Format a long date without a time.
  */
@@ -36983,10 +37031,14 @@ class YourFilesTab_YourFilesTab {
         screenshotsDiv.classList.add("screenshots");
         fileDiv.append(screenshotsDiv);
         for (const screenshot of file.screenshots) {
-            const screen = new dist["CanvasScreen"]();
-            screen.displayScreenshot(screenshot);
-            const image = screen.asImage();
-            screenshotsDiv.append(image);
+            // Don't do these all at once, they can take tens of milliseconds each, and in a large
+            // library that can hang the page for several seconds. Dribble them in later.
+            defer(() => {
+                const screen = new dist["CanvasScreen"]();
+                screen.displayScreenshot(screenshot);
+                const image = screen.asImage();
+                screenshotsDiv.append(image);
+            });
         }
         const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
             this.context.runProgram(file);
@@ -38843,19 +38895,23 @@ class FilePanel_FileInfoTab {
     populateScreenshots() {
         Object(teamten_ts_utils_dist["clearElement"])(this.screenshotsDiv);
         for (const screenshot of this.filePanel.file.screenshots) {
-            const screen = new dist["CanvasScreen"]();
-            screen.displayScreenshot(screenshot);
-            const image = screen.asImage();
-            const screenshotDiv = document.createElement("div");
-            screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
-            screenshotDiv.classList.add("screenshot");
-            screenshotDiv.append(image);
-            const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
-                screenshotDiv.remove();
-                this.updateButtonStatus();
+            // Defer this so that if we have a lot of screenshots it doesn't hang the browser when
+            // creating this panel.
+            defer(() => {
+                const screen = new dist["CanvasScreen"]();
+                screen.displayScreenshot(screenshot);
+                const image = screen.asImage();
+                const screenshotDiv = document.createElement("div");
+                screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
+                screenshotDiv.classList.add("screenshot");
+                screenshotDiv.append(image);
+                const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
+                    screenshotDiv.remove();
+                    this.updateButtonStatus();
+                });
+                screenshotDiv.append(deleteButton);
+                this.screenshotsDiv.append(screenshotDiv);
             });
-            screenshotDiv.append(deleteButton);
-            this.screenshotsDiv.append(screenshotDiv);
         }
     }
     /**
