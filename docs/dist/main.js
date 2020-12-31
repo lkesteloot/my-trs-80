@@ -36639,7 +36639,101 @@ class Library_Library {
 // EXTERNAL MODULE: ./node_modules/base64-js/index.js
 var base64_js = __webpack_require__(46);
 
+// CONCATENATED MODULE: ./src/sha1.ts
+// Convert a 32-bit unsigned number to a hex string.
+// TODO use the z80-base version of this.
+function toHexLong(value) {
+    value &= 0xFFFFFFFF;
+    if (value < 0) {
+        value = 0xFFFFFFFF + value + 1;
+    }
+    return value.toString(16).padStart(8, "0").toUpperCase();
+}
+/**
+ * Rotate the 32-bit value left "count" bits.
+ */
+function rotateLeft(value, count) {
+    return ((value << count) | (value >>> (32 - count))) & 0xFFFFFFFF;
+}
+/**
+ * Compute the SHA-1 hash of the byte array.
+ *
+ * https://en.wikipedia.org/wiki/SHA-1
+ *
+ * @return the hash as a hex string.
+ */
+function sha1(bytes) {
+    // Make sure we have a multiple of 64 bytes. Make space for the 0x80 byte and the 64-bit length.
+    let newLength = bytes.length + 9;
+    if (newLength % 64 !== 0) {
+        newLength += 64 - newLength % 64;
+    }
+    const newBytes = new Uint8Array(newLength);
+    newBytes.set(bytes);
+    const view = new DataView(newBytes.buffer);
+    // Add the 0x80 byte.
+    newBytes[bytes.length] = 0x80;
+    // Add the length. This is a 64-bit number but we don't have binaries that need more than 32 bits.
+    view.setUint32(newBytes.length - 4, bytes.length * 8, false);
+    // Reusable array for each chunk.
+    const w = new Uint32Array(80);
+    // Initial hash value.
+    let h0 = 0x67452301;
+    let h1 = 0xEFCDAB89;
+    let h2 = 0x98BADCFE;
+    let h3 = 0x10325476;
+    let h4 = 0xC3D2E1F0;
+    // Process in 512-bit chunks.
+    const wordCount = newBytes.length / 4;
+    for (let wordOffset = 0; wordOffset < wordCount; wordOffset += 16) {
+        // Hash value for this chunk.
+        let a = h0;
+        let b = h1;
+        let c = h2;
+        let d = h3;
+        let e = h4;
+        for (let i = 0; i < 80; i++) {
+            w[i] = i < 16
+                ? view.getUint32((wordOffset + i) * 4, false)
+                : rotateLeft(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
+            let f;
+            let k;
+            if (i < 20) {
+                f = (b & c) | (~b & d);
+                k = 0x5A827999;
+            }
+            else if (i < 40) {
+                f = b ^ c ^ d;
+                k = 0x6ED9EBA1;
+            }
+            else if (i < 60) {
+                f = (b & c) | (b & d) | (c & d);
+                k = 0x8F1BBCDC;
+            }
+            else {
+                f = b ^ c ^ d;
+                k = 0xCA62C1D6;
+            }
+            const temp = rotateLeft(a, 5) + f + e + k + w[i];
+            e = d;
+            d = c;
+            c = rotateLeft(b, 30);
+            b = a;
+            a = temp;
+        }
+        // Add this chunk's hash to result so far.
+        h0 = (h0 + a) & 0xFFFFFFFF;
+        h1 = (h1 + b) & 0xFFFFFFFF;
+        h2 = (h2 + c) & 0xFFFFFFFF;
+        h3 = (h3 + d) & 0xFFFFFFFF;
+        h4 = (h4 + e) & 0xFFFFFFFF;
+    }
+    // Convert to a string.
+    return [h0, h1, h2, h3, h4].map(toHexLong).join("");
+}
+
 // CONCATENATED MODULE: ./src/File.ts
+
 
 
 /**
@@ -36670,6 +36764,7 @@ class File_File {
             filename: this.filename,
             note: this.note,
             shared: this.shared,
+            hash: this.hash,
             screenshots: this.screenshots,
             binary: base64_js["fromByteArray"](this.binary),
             addedAt: this.addedAt.getTime(),
@@ -36677,7 +36772,7 @@ class File_File {
         };
     }
     builder() {
-        const builder = new FileBuilder();
+        const builder = new File_FileBuilder();
         builder.id = this.id;
         builder.uid = this.uid;
         builder.name = this.name;
@@ -36707,6 +36802,9 @@ class File_File {
         }
         if (this.shared !== oldFile.shared) {
             updateData.shared = this.shared;
+        }
+        if (this.hash !== oldFile.hash) {
+            updateData.hash = this.hash;
         }
         if (!isSameStringArray(this.screenshots, oldFile.screenshots)) {
             updateData.screenshots = this.screenshots;
@@ -36743,7 +36841,7 @@ class File_File {
 /**
  * Builder to help construct File objects.
  */
-class FileBuilder {
+class File_FileBuilder {
     constructor() {
         this.id = "";
         this.uid = "";
@@ -36759,7 +36857,7 @@ class FileBuilder {
     }
     static fromDoc(doc) {
         var _a, _b;
-        const builder = new FileBuilder();
+        const builder = new File_FileBuilder();
         builder.id = doc.id;
         // Assume data() is valid, either because it's a query or because we checked "exists".
         const data = doc.data();
@@ -36805,6 +36903,7 @@ class FileBuilder {
     }
     withBinary(binary) {
         this.binary = binary;
+        this.hash = sha1(binary);
         return this;
     }
     withModifiedAt(modifiedAt) {
@@ -36979,7 +37078,7 @@ class YourFilesTab_YourFilesTab {
         name = name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
         // All-caps for filename.
         filename = filename.toUpperCase();
-        let file = new FileBuilder()
+        let file = new File_FileBuilder()
             .withUid(uid)
             .withName(name)
             .withFilename(filename)
@@ -38179,7 +38278,7 @@ class RetroStoreTab_RetroStoreTab {
                 }
                 noteParts.push("Imported from RetroStore.org.");
                 const note = noteParts.join("\n\n");
-                let file = new FileBuilder()
+                let file = new File_FileBuilder()
                     .withUid(this.context.user.uid)
                     .withName(appName)
                     .withNote(note)
@@ -39294,7 +39393,7 @@ class Database_Database {
         return this.firestore.collection(FILES_COLLECTION_NAME).doc(fileId).get()
             .then(snapshot => {
             if (snapshot.exists) {
-                return Promise.resolve(FileBuilder.fromDoc(snapshot).build());
+                return Promise.resolve(File_FileBuilder.fromDoc(snapshot).build());
             }
             else {
                 // I don't know when this can happen because both missing and non-shared
@@ -39570,8 +39669,18 @@ function main() {
             context.db.getAllFiles(user.uid)
                 .then((querySnapshot) => {
                 for (const doc of querySnapshot.docs) {
-                    const file = FileBuilder.fromDoc(doc).build();
+                    const file = File_FileBuilder.fromDoc(doc).build();
                     library.addFile(file);
+                    // Update hash if necessary. We can probably remove this now that all files
+                    // have a hash in the DB and we make one when we import.
+                    if (file.hash === "" && file.binary.length !== 0) {
+                        // This updates the hash.
+                        const newFile = file.builder().withBinary(file.binary).build();
+                        context.db.updateFile(file, newFile)
+                            .then(() => {
+                            library.modifyFile(newFile);
+                        });
+                    }
                 }
                 // We should now be in sync with the cloud database.
                 library.setInSync(true);
