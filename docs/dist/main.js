@@ -5350,6 +5350,8 @@ __exportStar(__webpack_require__(27), exports);
 __exportStar(__webpack_require__(14), exports);
 __exportStar(__webpack_require__(29), exports);
 __exportStar(__webpack_require__(28), exports);
+__exportStar(__webpack_require__(111), exports);
+__exportStar(__webpack_require__(110), exports);
 
 
 /***/ }),
@@ -5381,13 +5383,9 @@ class Trs80File {
     constructor(binary, error, annotations) {
         this.binary = binary;
         this.error = error;
+        // Sort in case they were generated out of order.
+        annotations.sort((a, b) => a.begin - b.begin);
         this.annotations = annotations;
-    }
-    /**
-     * Brief description (e.g., "Basic program").
-     */
-    getDescription() {
-        throw new Error("Trs80File must implement getDescription()");
     }
 }
 exports.Trs80File = Trs80File;
@@ -6495,7 +6493,7 @@ function decodeCassette(binary) {
         // See what kind of file it is.
         let file = SystemProgram_1.decodeSystemProgram(programBinary);
         if (file === undefined) {
-            file = Trs80FileDecoder_1.decodeTrs80File(programBinary);
+            file = Trs80FileDecoder_1.decodeTrs80File(programBinary, undefined);
         }
         cassetteFiles.push(new CassetteFile(speed, file));
         // TODO handle multiple files. See HAUNT.CAS.
@@ -6676,11 +6674,56 @@ const Basic_1 = __webpack_require__(23);
 const Cassette_1 = __webpack_require__(26);
 const CmdProgram_1 = __webpack_require__(24);
 const RawBinaryFile_1 = __webpack_require__(29);
+const Jv1FloppyDisk_1 = __webpack_require__(110);
+const Jv3FloppyDisk_1 = __webpack_require__(158);
+/**
+ * Get the extension of the filename, including the dot, in upper case, or
+ * an empty string if the filename does not contain an extension.
+ */
+function getExtension(filename) {
+    // Strip pathname, in case the filename has no dot but a path component does.
+    // Not sure if we need to support backslash here.
+    const slash = filename.lastIndexOf("/");
+    if (slash >= 0) {
+        filename = filename.substr(slash + 1);
+    }
+    // Look for extension.
+    const dot = filename.lastIndexOf(".");
+    // If the dot is at position 0, then it's just a hidden file, not an extension.
+    return dot > 0 ? filename.substr(dot).toUpperCase() : "";
+}
+/**
+ * Decode a file that's known to be a floppy disk, but not what kind specifically.
+ */
+function decodeDsk(binary) {
+    // TODO see trs_disk.c:trs_disk_emutype()
+    // TODO see DiskDrive.cpp:Dectect_JV1, etc.
+    let trs80File = Jv1FloppyDisk_1.decodeJv1FloppyDisk(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    trs80File = Jv3FloppyDisk_1.decodeJv3FloppyDisk(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    return undefined;
+}
 /**
  * Top-level decoder for any TRS-80 file.
+ *
+ * @param binary the bytes of the file.
+ * @param filename optional filename to help with detection.
  */
-function decodeTrs80File(binary) {
+function decodeTrs80File(binary, filename) {
+    var _a, _b;
     let trs80File;
+    const extension = filename === undefined ? "" : getExtension(filename);
+    if (extension === ".JV1") {
+        return (_a = Jv1FloppyDisk_1.decodeJv1FloppyDisk(binary)) !== null && _a !== void 0 ? _a : new RawBinaryFile_1.RawBinaryFile(binary);
+    }
+    if (extension === ".DSK") {
+        return (_b = decodeDsk(binary)) !== null && _b !== void 0 ? _b : new RawBinaryFile_1.RawBinaryFile(binary);
+    }
     trs80File = Cassette_1.decodeCassette(binary);
     if (trs80File !== undefined) {
         return trs80File;
@@ -9791,6 +9834,9 @@ const Utils_1 = __webpack_require__(13);
 const Config_1 = __webpack_require__(20);
 const trs80_base_1 = __webpack_require__(12);
 const z80_base_2 = __webpack_require__(0);
+const FloppyDisk_1 = __webpack_require__(111);
+const FloppyDiskController_1 = __webpack_require__(125);
+const EventScheduler_1 = __webpack_require__(157);
 // IRQs
 const M1_TIMER_IRQ_MASK = 0x80;
 const M3_CASSETTE_RISE_IRQ_MASK = 0x01;
@@ -9847,16 +9893,6 @@ function computeVideoBit6(value) {
     return (value & 0xBF) | (bit6 << 6);
 }
 /**
- * An event scheduled for the future.
- */
-class ScheduledEvent {
-    constructor(handle, tStateCount, callback) {
-        this.handle = handle;
-        this.tStateCount = Math.round(tStateCount);
-        this.callback = callback;
-    }
-}
-/**
  * HAL for the TRS-80 Model III.
  */
 class Trs80 {
@@ -9864,6 +9900,7 @@ class Trs80 {
         this.timerHz = M3_TIMER_HZ;
         this.clockHz = M3_CLOCK_HZ;
         this.tStateCount = 0;
+        this.fdc = new FloppyDiskController_1.FloppyDiskController(this);
         this.memory = new Uint8Array(0);
         this.keyboard = new Keyboard_1.Keyboard();
         this.modeImage = 0x80;
@@ -9897,9 +9934,7 @@ class Trs80 {
         this.cassetteSamplesRead = 0;
         this.cassetteRiseInterruptCount = 0;
         this.cassetteFallInterruptCount = 0;
-        // The list is sorted by tStateCount.
-        this.scheduledEventCounter = 1;
-        this.scheduledEvents = [];
+        this.eventScheduler = new EventScheduler_1.EventScheduler();
         this.screen = screen;
         this.cassette = cassette;
         this.config = Config_1.Config.makeDefault();
@@ -9907,6 +9942,7 @@ class Trs80 {
         this.loadRom();
         this.tStateCount = 0;
         this.keyboard.configureKeyboard();
+        this.fdc.onMotorOn.subscribe(drive => console.log("Drive " + drive));
     }
     /**
      * Get the current emulator's configuration.
@@ -10049,8 +10085,8 @@ class Trs80 {
         if ((this.nmiLatch & this.nmiMask) !== 0 && !this.nmiSeen) {
             this.z80.nonMaskableInterrupt();
             this.nmiSeen = true;
-            // Simulate the reset button being released. TODO
-            // this.resetButtonInterrupt(false);
+            // Simulate the reset button being released.
+            this.resetButtonInterrupt(false);
         }
         // Handle interrupts.
         if ((this.irqLatch & this.irqMask) !== 0) {
@@ -10064,10 +10100,7 @@ class Trs80 {
         // Update cassette state.
         this.updateCassette();
         // Dispatch scheduled events.
-        while (this.scheduledEvents.length > 0 && this.tStateCount >= this.scheduledEvents[0].tStateCount) {
-            const scheduledEvent = this.scheduledEvents.shift();
-            scheduledEvent.callback();
-        }
+        this.eventScheduler.dispatch(this.tStateCount);
     }
     contendMemory(address) {
         // Ignore.
@@ -10089,7 +10122,7 @@ class Trs80 {
         }
         else {
             // Unmapped memory.
-            console.log("Reading from unmapped memory at 0x" + z80_base_1.toHex(address, 4));
+            console.error("Reading from unmapped memory at 0x" + z80_base_1.toHex(address, 4));
             return 0;
         }
     }
@@ -10124,9 +10157,20 @@ class Trs80 {
                 }
                 break;
             case 0xF0:
-                // No diskette.
-                value = 0xFF;
+                value = this.fdc.readStatus();
                 break;
+            case 0xF1:
+                value = this.fdc.readTrack();
+                break;
+            case 0xF2:
+                value = this.fdc.readSector();
+                break;
+            case 0xF3:
+                value = this.fdc.readData();
+                break;
+            case 0xF8:
+                // Printer status. Printer selected, ready, with paper, not busy.
+                return 0x30;
             case 0xFF:
                 // Cassette and various flags.
                 if (this.config.modelType === Config_1.ModelType.MODEL1) {
@@ -10141,7 +10185,7 @@ class Trs80 {
                 value |= this.getCassetteByte();
                 break;
             default:
-                console.log("Reading from unknown port 0x" + z80_base_1.toHex(z80_base_1.lo(address), 2));
+                console.error("Reading from unknown port 0x" + z80_base_1.toHex(z80_base_1.lo(address), 2));
                 return 0;
         }
         // console.log("Reading 0x" + toHex(value, 2) + " from port 0x" + toHex(lo(address), 2));
@@ -10178,17 +10222,29 @@ class Trs80 {
                 }
                 break;
             case 0xF0:
-                // Disk command.
-                // TODO
-                // this.writeDiskCommand(value)
+                this.fdc.writeCommand(value);
+                break;
+            case 0xF1:
+                this.fdc.writeTrack(value);
+                break;
+            case 0xF2:
+                this.fdc.writeSector(value);
+                break;
+            case 0xF3:
+                this.fdc.writeData(value);
                 break;
             case 0xF4:
             case 0xF5:
             case 0xF6:
             case 0xF7:
-                // Disk select.
-                // TODO
-                // this.writeDiskSelect(value)
+                this.fdc.writeSelect(value);
+                break;
+            case 0xF8:
+            case 0xF9:
+            case 0xFA:
+            case 0xFB:
+                // Printer write.
+                console.log("Writing \"" + String.fromCodePoint(value) + "\" to printer");
                 break;
             case 0xFC:
             case 0xFD:
@@ -10375,39 +10431,6 @@ class Trs80 {
         }, delay);
     }
     /**
-     * Schedule an event to happen tStateCount clocks in the future. The callback will be called
-     * at the end of an instruction step.
-     *
-     * @return a handle that can be passed to cancelScheduledEvent().
-     */
-    setScheduledEvent(tStateCount, callback) {
-        let handle = this.scheduledEventCounter++;
-        this.scheduledEvents.push(new ScheduledEvent(handle, this.tStateCount + tStateCount, callback));
-        this.scheduledEvents.sort((a, b) => {
-            if (a.tStateCount < b.tStateCount) {
-                return -1;
-            }
-            else if (a.tStateCount > b.tStateCount) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        });
-        return handle;
-    }
-    /**
-     * Cancel an event scheduled by setScheduledEvent().
-     */
-    cancelScheduledEvent(handle) {
-        for (let i = 0; i < this.scheduledEvents.length; i++) {
-            if (this.scheduledEvents[i].handle === handle) {
-                this.scheduledEvents.splice(i, 1);
-                break;
-            }
-        }
-    }
-    /**
      * Stop the tick timeout, if it's running.
      */
     cancelTickTimeout() {
@@ -10438,6 +10461,40 @@ class Trs80 {
     // What to do when the hardware timer goes off.
     handleTimer() {
         this.setTimerInterrupt(true);
+    }
+    // Set the state of the reset button interrupt.
+    resetButtonInterrupt(state) {
+        if (state) {
+            this.nmiLatch |= RESET_NMI_MASK;
+        }
+        else {
+            this.nmiLatch &= ~RESET_NMI_MASK;
+        }
+        this.updateNmiSeen();
+    }
+    // Set the state of the disk motor off interrupt.
+    diskMotorOffInterrupt(state) {
+        if (state) {
+            this.nmiLatch |= DISK_MOTOR_OFF_NMI_MASK;
+        }
+        else {
+            this.nmiLatch &= ~DISK_MOTOR_OFF_NMI_MASK;
+        }
+        this.updateNmiSeen();
+    }
+    // Set the state of the disk interrupt.
+    diskIntrqInterrupt(state) {
+        if (state) {
+            this.nmiLatch |= DISK_INTRQ_NMI_MASK;
+        }
+        else {
+            this.nmiLatch &= ~DISK_INTRQ_NMI_MASK;
+        }
+        this.updateNmiSeen();
+    }
+    // Set the state of the disk interrupt.
+    diskDrqInterrupt(state) {
+        // No effect.
     }
     // Reset the controller to a known state.
     resetCassette() {
@@ -10627,6 +10684,9 @@ class Trs80 {
         else if (trs80File instanceof trs80_base_1.BasicProgram) {
             this.runBasicProgram(trs80File);
         }
+        else if (trs80File instanceof FloppyDisk_1.FloppyDisk) {
+            this.runFloppyDisk(trs80File);
+        }
         else {
             // TODO.
             console.error("Don't know how to run", trs80File);
@@ -10637,7 +10697,7 @@ class Trs80 {
      */
     runCmdProgram(cmdProgram) {
         this.reset();
-        this.setScheduledEvent(this.clockHz * 0.1, () => {
+        this.eventScheduler.add(undefined, this.tStateCount + this.clockHz * 0.1, () => {
             this.cls();
             for (const chunk of cmdProgram.chunks) {
                 if (chunk instanceof trs80_base_1.CmdLoadBlockChunk) {
@@ -10657,7 +10717,7 @@ class Trs80 {
      */
     runSystemProgram(systemProgram) {
         this.reset();
-        this.setScheduledEvent(this.clockHz * 0.1, () => {
+        this.eventScheduler.add(undefined, this.tStateCount + this.clockHz * 0.1, () => {
             this.cls();
             for (const chunk of systemProgram.chunks) {
                 this.writeMemoryBlock(chunk.loadAddress, chunk.data);
@@ -10671,10 +10731,10 @@ class Trs80 {
     runBasicProgram(basicProgram) {
         this.reset();
         // Wait for Cass?
-        this.setScheduledEvent(this.clockHz * 0.1, () => {
+        this.eventScheduler.add(undefined, this.tStateCount + this.clockHz * 0.1, () => {
             this.keyboard.simulateKeyboardText("\n0\n");
             // Wait for Ready prompt.
-            this.setScheduledEvent(this.clockHz * 0.2, () => {
+            this.eventScheduler.add(undefined, this.tStateCount + this.clockHz * 0.2, () => {
                 // Find address to load to.
                 let addr = this.readMemory(0x40A4) + (this.readMemory(0x40A5) << 8);
                 if (addr < 0x4200 || addr >= 0x4500) {
@@ -10720,6 +10780,15 @@ class Trs80 {
                 this.keyboard.simulateKeyboardText("RUN\n");
             });
         });
+    }
+    /**
+     * Load a floppy and reboot into it.
+     */
+    runFloppyDisk(floppyDisk) {
+        // Mount floppy.
+        this.fdc.loadFloppyDisk(floppyDisk, 0);
+        // Reboot.
+        this.reset();
     }
 }
 exports.Trs80 = Trs80;
@@ -37057,7 +37126,7 @@ class YourFilesTab_YourFilesTab {
     uploadFile() {
         const uploadElement = document.createElement("input");
         uploadElement.type = "file";
-        uploadElement.accept = ".cas, .bas, .cmd";
+        uploadElement.accept = ".cas, .bas, .cmd, .dmk, .dsk, .jv1, .jv3";
         uploadElement.multiple = true;
         uploadElement.addEventListener("change", () => {
             var _a;
@@ -38286,7 +38355,7 @@ class RetroStoreTab_RetroStoreTab {
         let validMediaImage = undefined;
         const playButton = makeIconButton(makeIcon("play_arrow"), "Run app", () => {
             if (validMediaImage !== undefined && validMediaImage.data !== undefined) {
-                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(validMediaImage.data);
+                const cmdProgram = Object(trs80_base_dist["decodeTrs80File"])(validMediaImage.data, validMediaImage.filename);
                 // TODO should set context.runningFile
                 this.context.trs80.runTrs80File(cmdProgram);
                 this.context.panelManager.close();
@@ -39172,7 +39241,7 @@ class FilePanel_FilePanel extends Panel_Panel {
     constructor(context, file) {
         super(context, file.name, "file-panel", true);
         this.file = file;
-        const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
+        const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary, file.filename);
         const pageTabs = new PageTabs_PageTabs(this.content);
         new FilePanel_FileInfoTab(this, pageTabs, trs80File);
         new FilePanel_HexdumpTab(this, pageTabs, trs80File);
@@ -39218,10 +39287,11 @@ class Context_Context {
      */
     runProgram(file, trs80File) {
         if (trs80File === undefined) {
-            trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary);
+            trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary, file.filename);
         }
         if (trs80File.error !== undefined) {
             // TODO
+            console.error("Error in TRS-80 file: " + trs80File.error);
         }
         else {
             this.runningFile = file;
@@ -48843,6 +48913,2654 @@ class Z80_Z80 {
 
 // CONCATENATED MODULE: ../trs80-emulator/node_modules/z80-emulator/dist/module/index.js
 
+
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeJv1FloppyDisk = exports.Jv1FloppyDisk = void 0;
+const FloppyDisk_1 = __webpack_require__(111);
+const ProgramAnnotation_1 = __webpack_require__(15);
+const BYTES_PER_SECTOR = 256;
+const SECTORS_PER_TRACK = 10;
+const BYTES_PER_TRACK = BYTES_PER_SECTOR * SECTORS_PER_TRACK;
+const DIRECTORY_TRACK = 17;
+/**
+ * Floppy disk in the JV1 format.
+ */
+class Jv1FloppyDisk extends FloppyDisk_1.FloppyDisk {
+    constructor(binary, error, annotations) {
+        super(binary, error, annotations, false);
+    }
+    getDescription() {
+        return "Floppy disk (JV1)";
+    }
+    readSector(track, sector, side) {
+        sector = sector !== null && sector !== void 0 ? sector : 0;
+        // Check for errors.
+        if (track < 0 ||
+            side === FloppyDisk_1.Side.BACK ||
+            sector >= SECTORS_PER_TRACK) {
+            return undefined;
+        }
+        // Offset straight into data.
+        const offset = (SECTORS_PER_TRACK * track + sector) * BYTES_PER_SECTOR;
+        const data = this.padSector(this.binary.subarray(offset, offset + BYTES_PER_SECTOR), BYTES_PER_SECTOR);
+        const sectorData = new FloppyDisk_1.SectorData(data);
+        if (track === DIRECTORY_TRACK) {
+            // I don't know why "deleted" is used for the directory track.
+            sectorData.deleted = true;
+        }
+        return sectorData;
+    }
+}
+exports.Jv1FloppyDisk = Jv1FloppyDisk;
+/**
+ * Decode a JV1 floppy disk file.
+ */
+function decodeJv1FloppyDisk(binary) {
+    let error;
+    const annotations = [];
+    const length = binary.length;
+    // Magic number check.
+    if (length < 2 || binary[0] !== 0x00 || binary[1] !== 0xFE) {
+        return undefined;
+    }
+    // Basic sanity check.
+    if (length % BYTES_PER_TRACK !== 0) {
+        error = "Length is not a multiple of track size (" + BYTES_PER_TRACK + " bytes)";
+    }
+    // Create annotations.
+    for (let byteOffset = 0; byteOffset < length; byteOffset += BYTES_PER_SECTOR) {
+        const track = Math.floor(byteOffset / BYTES_PER_TRACK);
+        const sector = (byteOffset - track * BYTES_PER_TRACK) / BYTES_PER_SECTOR;
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Track " + track + ", sector " + sector, byteOffset, Math.min(byteOffset + BYTES_PER_SECTOR, length)));
+    }
+    return new Jv1FloppyDisk(binary, error, annotations);
+}
+exports.decodeJv1FloppyDisk = decodeJv1FloppyDisk;
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FloppyDisk = exports.SectorData = exports.Side = void 0;
+const Trs80File_1 = __webpack_require__(14);
+// Side of a floppy disk.
+var Side;
+(function (Side) {
+    Side[Side["FRONT"] = 0] = "FRONT";
+    Side[Side["BACK"] = 1] = "BACK";
+})(Side = exports.Side || (exports.Side = {}));
+/**
+ * Byte for filling sector data when reading off the end.
+ */
+const FILL_BYTE = 0xE5;
+/**
+ * Data from a sector that was read from a disk.
+ */
+class SectorData {
+    constructor(data) {
+        /**
+         * Whether the sector data is invalid. This is indicated on the floppy by having a 0xF8 data
+         * address mark (DAM) byte, instead of the normal 0xFB. For JV1 this is set to true for the directory track.
+         */
+        this.deleted = false;
+        /**
+         * Whether there was a CRC error when reading the physical disk.
+         */
+        this.crcError = false;
+        this.data = data;
+    }
+}
+exports.SectorData = SectorData;
+/**
+ * Abstract class for virtual floppy disk file formats.
+ */
+class FloppyDisk extends Trs80File_1.Trs80File {
+    constructor(binary, error, annotations, supportsDoubleDensity) {
+        super(binary, error, annotations);
+        this.supportsDoubleDensity = supportsDoubleDensity;
+    }
+    /**
+     * Pad a sector to its full length.
+     */
+    padSector(data, sectorSize) {
+        if (data.length < sectorSize) {
+            const newData = new Uint8Array(sectorSize);
+            newData.set(data);
+            newData.fill(FILL_BYTE, data.length);
+            data = newData;
+        }
+        return data;
+    }
+}
+exports.FloppyDisk = FloppyDisk;
+
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript - Core
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HandlingBase = exports.PromiseDispatcherBase = exports.PromiseSubscription = exports.DispatchError = exports.EventManagement = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = exports.Subscription = void 0;
+const DispatcherBase_1 = __webpack_require__(127);
+Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return DispatcherBase_1.DispatcherBase; } });
+const DispatchError_1 = __webpack_require__(128);
+Object.defineProperty(exports, "DispatchError", { enumerable: true, get: function () { return DispatchError_1.DispatchError; } });
+const DispatcherWrapper_1 = __webpack_require__(129);
+Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return DispatcherWrapper_1.DispatcherWrapper; } });
+const EventListBase_1 = __webpack_require__(130);
+Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return EventListBase_1.EventListBase; } });
+const EventManagement_1 = __webpack_require__(131);
+Object.defineProperty(exports, "EventManagement", { enumerable: true, get: function () { return EventManagement_1.EventManagement; } });
+const HandlingBase_1 = __webpack_require__(132);
+Object.defineProperty(exports, "HandlingBase", { enumerable: true, get: function () { return HandlingBase_1.HandlingBase; } });
+const PromiseDispatcherBase_1 = __webpack_require__(133);
+Object.defineProperty(exports, "PromiseDispatcherBase", { enumerable: true, get: function () { return PromiseDispatcherBase_1.PromiseDispatcherBase; } });
+const PromiseSubscription_1 = __webpack_require__(134);
+Object.defineProperty(exports, "PromiseSubscription", { enumerable: true, get: function () { return PromiseSubscription_1.PromiseSubscription; } });
+const Subscription_1 = __webpack_require__(135);
+Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return Subscription_1.Subscription; } });
+
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventDispatcher = void 0;
+const ste_core_1 = __webpack_require__(112);
+/**
+ * Dispatcher implementation for events. Can be used to subscribe, unsubscribe
+ * or dispatch events. Use the ToEvent() method to expose the event.
+ *
+ * @export
+ * @class EventDispatcher
+ * @extends {DispatcherBase<IEventHandler<TSender, TArgs>>}
+ * @implements {IEvent<TSender, TArgs>}
+ * @template TSender
+ * @template TArgs
+ */
+class EventDispatcher extends ste_core_1.DispatcherBase {
+    /**
+     * Creates an instance of EventDispatcher.
+     *
+     * @memberOf EventDispatcher
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Dispatches the event.
+     *
+     * @param {TSender} sender The sender object.
+     * @param {TArgs} args The arguments object.
+     * @returns {IPropagationStatus} The event status.
+     *
+     * @memberOf EventDispatcher
+     */
+    dispatch(sender, args) {
+        const result = this._dispatch(false, this, arguments);
+        if (result == null) {
+            throw new ste_core_1.DispatchError("Got `null` back from dispatch.");
+        }
+        return result;
+    }
+    /**
+     * Dispatches the events thread.
+     * @param sender The sender.
+     * @param args The arguments object.
+     */
+    dispatchAsync(sender, args) {
+        this._dispatch(true, this, arguments);
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     *
+     * @returns {IEvent<TSender, TArgs>} The event.
+     *
+     * @memberOf EventDispatcher
+     */
+    asEvent() {
+        return super.asEvent();
+    }
+}
+exports.EventDispatcher = EventDispatcher;
+
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SimpleEventDispatcher = void 0;
+const ste_core_1 = __webpack_require__(112);
+/**
+ * The dispatcher handles the storage of subsciptions and facilitates
+ * subscription, unsubscription and dispatching of a simple event
+ *
+ * @export
+ * @class SimpleEventDispatcher
+ * @extends {DispatcherBase<ISimpleEventHandler<TArgs>>}
+ * @implements {ISimpleEvent<TArgs>}
+ * @template TArgs
+ */
+class SimpleEventDispatcher extends ste_core_1.DispatcherBase {
+    /**
+     * Creates an instance of SimpleEventDispatcher.
+     *
+     * @memberOf SimpleEventDispatcher
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Dispatches the event.
+     *
+     * @param {TArgs} args The arguments object.
+     * @returns {IPropagationStatus} The status of the event.
+     *
+     * @memberOf SimpleEventDispatcher
+     */
+    dispatch(args) {
+        const result = this._dispatch(false, this, arguments);
+        if (result == null) {
+            throw new ste_core_1.DispatchError("Got `null` back from dispatch.");
+        }
+        return result;
+    }
+    /**
+     * Dispatches the event without waiting for the result.
+     *
+     * @param {TArgs} args The arguments object.
+     *
+     * @memberOf SimpleEventDispatcher
+     */
+    dispatchAsync(args) {
+        this._dispatch(true, this, arguments);
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     *
+     * @returns {ISimpleEvent<TArgs>} The event.
+     *
+     * @memberOf SimpleEventDispatcher
+     */
+    asEvent() {
+        return super.asEvent();
+    }
+}
+exports.SimpleEventDispatcher = SimpleEventDispatcher;
+
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseEventDispatcher = void 0;
+const ste_core_1 = __webpack_require__(112);
+/**
+ * Dispatcher implementation for events. Can be used to subscribe, unsubscribe
+ * or dispatch events. Use the ToEvent() method to expose the event.
+ *
+ * @export
+ * @class PromiseEventDispatcher
+ * @extends {PromiseDispatcherBase<IPromiseEventHandler<TSender, TArgs>>}
+ * @implements {IPromiseEvent<TSender, TArgs>}
+ * @template TSender
+ * @template TArgs
+ */
+class PromiseEventDispatcher extends ste_core_1.PromiseDispatcherBase {
+    /**
+     * Creates a new EventDispatcher instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Dispatches the event.
+     *
+     * @param {TSender} sender The sender object.
+     * @param {TArgs} args The argument object.
+     * @returns {Promise<IPropagationStatus>} The status.
+     *
+     * @memberOf PromiseEventDispatcher
+     */
+    async dispatch(sender, args) {
+        const result = await this._dispatchAsPromise(false, this, arguments);
+        if (result == null) {
+            throw new ste_core_1.DispatchError("Got `null` back from dispatch.");
+        }
+        return result;
+    }
+    /**
+     * Dispatches the event without waiting for the result.
+     *
+     * @param {TSender} sender The sender object.
+     * @param {TArgs} args The argument object.
+     *
+     * @memberOf PromiseEventDispatcher
+     */
+    dispatchAsync(sender, args) {
+        this._dispatchAsPromise(true, this, arguments);
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    asEvent() {
+        return super.asEvent();
+    }
+}
+exports.PromiseEventDispatcher = PromiseEventDispatcher;
+
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSimpleEventDispatcher = void 0;
+const ste_core_1 = __webpack_require__(112);
+/**
+ * The dispatcher handles the storage of subsciptions and facilitates
+ * subscription, unsubscription and dispatching of a simple event
+ *
+ * @export
+ * @class PromiseSimpleEventDispatcher
+ * @extends {PromiseDispatcherBase<IPromiseSimpleEventHandler<TArgs>>}
+ * @implements {IPromiseSimpleEvent<TArgs>}
+ * @template TArgs
+ */
+class PromiseSimpleEventDispatcher extends ste_core_1.PromiseDispatcherBase {
+    /**
+     * Creates a new SimpleEventDispatcher instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Dispatches the event.
+     * @param args The arguments object.
+     * @returns {IPropagationStatus} The status of the dispatch.
+     * @memberOf PromiseSimpleEventDispatcher
+     */
+    async dispatch(args) {
+        const result = await this._dispatchAsPromise(false, this, arguments);
+        if (result == null) {
+            throw new ste_core_1.DispatchError("Got `null` back from dispatch.");
+        }
+        return result;
+    }
+    /**
+     * Dispatches the event without waiting for it to complete.
+     * @param args The argument object.
+     * @memberOf PromiseSimpleEventDispatcher
+     */
+    dispatchAsync(args) {
+        this._dispatchAsPromise(true, this, arguments);
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    asEvent() {
+        return super.asEvent();
+    }
+}
+exports.PromiseSimpleEventDispatcher = PromiseSimpleEventDispatcher;
+
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventList = void 0;
+const ste_core_1 = __webpack_require__(112);
+const EventDispatcher_1 = __webpack_require__(113);
+/**
+ * Storage class for multiple events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+class EventList extends ste_core_1.EventListBase {
+    /**
+     * Creates a new EventList instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new EventDispatcher_1.EventDispatcher();
+    }
+}
+exports.EventList = EventList;
+
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SimpleEventList = void 0;
+const ste_core_1 = __webpack_require__(112);
+const SimpleEventDispatcher_1 = __webpack_require__(114);
+/**
+ * Storage class for multiple simple events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+class SimpleEventList extends ste_core_1.EventListBase {
+    /**
+     * Creates a new SimpleEventList instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new SimpleEventDispatcher_1.SimpleEventDispatcher();
+    }
+}
+exports.SimpleEventList = SimpleEventList;
+
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalDispatcher = void 0;
+const ste_core_1 = __webpack_require__(112);
+/**
+ * The dispatcher handles the storage of subsciptions and facilitates
+ * subscription, unsubscription and dispatching of a signal event.
+ *
+ * @export
+ * @class SignalDispatcher
+ * @extends {DispatcherBase<ISignalHandler>}
+ * @implements {ISignal}
+ */
+class SignalDispatcher extends ste_core_1.DispatcherBase {
+    /**
+     * Creates an instance of SignalDispatcher.
+     *
+     * @memberOf SignalDispatcher
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Dispatches the signal.
+     *
+     * @returns {IPropagationStatus} The status of the signal.
+     *
+     * @memberOf SignalDispatcher
+     */
+    dispatch() {
+        const result = this._dispatch(false, this, arguments);
+        if (result == null) {
+            throw new ste_core_1.DispatchError("Got `null` back from dispatch.");
+        }
+        return result;
+    }
+    /**
+     * Dispatches the signal without waiting for the result.
+     *
+     * @memberOf SignalDispatcher
+     */
+    dispatchAsync() {
+        this._dispatch(true, this, arguments);
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     *
+     * @returns {ISignal} The signal.
+     *
+     * @memberOf SignalDispatcher
+     */
+    asEvent() {
+        return super.asEvent();
+    }
+}
+exports.SignalDispatcher = SignalDispatcher;
+
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalList = void 0;
+const ste_core_1 = __webpack_require__(112);
+const SignalDispatcher_1 = __webpack_require__(119);
+/**
+ * Storage class for multiple signal events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+class SignalList extends ste_core_1.EventListBase {
+    /**
+     * Creates a new SignalList instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new SignalDispatcher_1.SignalDispatcher();
+    }
+}
+exports.SignalList = SignalList;
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseEventList = void 0;
+const ste_core_1 = __webpack_require__(112);
+const PromiseEventDispatcher_1 = __webpack_require__(115);
+/**
+ * Storage class for multiple events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+class PromiseEventList extends ste_core_1.EventListBase {
+    /**
+     * Creates a new EventList instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new PromiseEventDispatcher_1.PromiseEventDispatcher();
+    }
+}
+exports.PromiseEventList = PromiseEventList;
+
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript - Promise Signals
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSignalList = exports.PromiseSignalHandlingBase = exports.PromiseSignalDispatcher = void 0;
+const PromiseSignalDispatcher_1 = __webpack_require__(147);
+Object.defineProperty(exports, "PromiseSignalDispatcher", { enumerable: true, get: function () { return PromiseSignalDispatcher_1.PromiseSignalDispatcher; } });
+const PromiseSignalHandlingBase_1 = __webpack_require__(148);
+Object.defineProperty(exports, "PromiseSignalHandlingBase", { enumerable: true, get: function () { return PromiseSignalHandlingBase_1.PromiseSignalHandlingBase; } });
+const PromiseSignalList_1 = __webpack_require__(123);
+Object.defineProperty(exports, "PromiseSignalList", { enumerable: true, get: function () { return PromiseSignalList_1.PromiseSignalList; } });
+
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSignalList = void 0;
+const ste_core_1 = __webpack_require__(112);
+const _1 = __webpack_require__(122);
+/**
+ * Storage class for multiple signal events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+class PromiseSignalList extends ste_core_1.EventListBase {
+    /**
+     * Creates a new SignalList instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new _1.PromiseSignalDispatcher();
+    }
+}
+exports.PromiseSignalList = PromiseSignalList;
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSimpleEventList = void 0;
+const ste_core_1 = __webpack_require__(112);
+const PromiseSimpleEventDispatcher_1 = __webpack_require__(116);
+/**
+ * Storage class for multiple simple events that are accessible by name.
+ * Events dispatchers are automatically created.
+ */
+class PromiseSimpleEventList extends ste_core_1.EventListBase {
+    /**
+     * Creates a new SimpleEventList instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new PromiseSimpleEventDispatcher_1.PromiseSimpleEventDispatcher();
+    }
+}
+exports.PromiseSimpleEventList = PromiseSimpleEventList;
+
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * Floppy disk controller for the TRS-80.
+ *
+ * References:
+ *
+ * https://hansotten.file-hunter.com/technical-info/wd1793/
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FloppyDiskController = void 0;
+const FloppyDisk_1 = __webpack_require__(111);
+const strongly_typed_events_1 = __webpack_require__(126);
+const z80_base_1 = __webpack_require__(0);
+const EventScheduler_1 = __webpack_require__(157);
+const DRIVE_COUNT = 4;
+// Width of the index hole as a fraction of the circumference.
+const HOLE_WIDTH = 0.01;
+// Speed of disk.
+const RPM = 300;
+// How long the disk motor stays on after drive selected, in seconds.
+const MOTOR_TIME_AFTER_SELECT = 2;
+/**
+ * Converts boolean for "back" to a Side.
+ */
+function booleanToSide(back) {
+    return back ? FloppyDisk_1.Side.BACK : FloppyDisk_1.Side.FRONT;
+}
+// Type I status bits.
+const STATUS_BUSY = 0x01; // Whether a command is in progress.
+const STATUS_INDEX = 0x02; // The head is currently over the index hole.
+const STATUS_TRACK_ZERO = 0x04; // Head is on track 0.
+const STATUS_CRC_ERROR = 0x08; // CRC error.
+const STATUS_SEEK_ERROR = 0x10; // Seek error.
+const STATUS_HEAD_ENGAGED = 0x20; // Head engaged.
+const STATUS_WRITE_PROTECTED = 0x40; // Write-protected.
+const STATUS_NOT_READY = 0x80; // Disk not ready (motor not running).
+// Type II and III status bits.
+//    STATUS_BUSY = 0x01;
+const STATUS_DRQ = 0x02; // Data is ready to be read or written.
+const STATUS_LOST_DATA = 0x04; // CPU was too slow to read.
+//    STATUS_CRC_ERROR = 0x08;
+const STATUS_NOT_FOUND = 0x10; // Track, sector, or side were not found.
+const STATUS_DELETED = 0x20; // On read: Sector was deleted (data is invalid, 0xF8 DAM).
+const STATUS_FAULT = 0x20; // On write: Indicates a write fault.
+const STATUS_REC_TYPE = 0x60;
+//    STATUS_WRITE_PROTECTED = 0x40;
+//    STATUS_NOT_READY = 0x80;
+// Select register bits for writeSelect().
+const SELECT_DRIVE_0 = 0x01;
+const SELECT_DRIVE_1 = 0x02;
+const SELECT_DRIVE_2 = 0x04;
+const SELECT_DRIVE_3 = 0x08;
+const SELECT_SIDE = 0x10; // 0 = front, 1 = back.
+const SELECT_PRECOMP = 0x20;
+const SELECT_WAIT = 0x40; // Controller should block OUT until operation is done.
+const SELECT_MFM = 0x80; // Double density.
+const SELECT_DRIVE_MASK = SELECT_DRIVE_0 | SELECT_DRIVE_1 | SELECT_DRIVE_2 | SELECT_DRIVE_3;
+// Type of command (see below for specific commands in each type).
+var CommandType;
+(function (CommandType) {
+    CommandType[CommandType["TYPE_I"] = 0] = "TYPE_I";
+    CommandType[CommandType["TYPE_II"] = 1] = "TYPE_II";
+    CommandType[CommandType["TYPE_III"] = 2] = "TYPE_III";
+    CommandType[CommandType["TYPE_IV"] = 3] = "TYPE_IV";
+})(CommandType || (CommandType = {}));
+// Commands and various sub-flags.
+const COMMAND_MASK = 0xF0;
+// Type I commands: cccchvrr, where
+//     cccc = command number
+//     h = head load
+//     v = verify (i.e., read next address to check we're on the right track)
+//     rr = step rate:  00=6ms, 01=12ms, 10=20ms, 11=40ms
+const COMMAND_RESTORE = 0x00;
+const COMMAND_SEEK = 0x10;
+const COMMAND_STEP = 0x20; // Doesn't update track register.
+const COMMAND_STEPU = 0x30; // Updates track register.
+const COMMAND_STEP_IN = 0x40;
+const COMMAND_STEP_INU = 0x50;
+const COMMAND_STEP_OUT = 0x60;
+const COMMAND_STEP_OUTU = 0x70;
+const MASK_H = 0x08;
+const MASK_V = 0x04;
+// Type II commands: ccccbecd, where
+//     cccc = command number
+//     e = delay for head engage (10ms)
+//     b = side expected
+//     c = side compare (0=disable, 1=enable)
+//     d = select data address mark (writes only, 0 for reads):
+//         0=FB (normal), 1=F8 (deleted)
+const COMMAND_READ = 0x80; // Single sector.
+const COMMAND_READM = 0x90; // Multiple sectors.
+const COMMAND_WRITE = 0xA0;
+const COMMAND_WRITEM = 0xB0;
+const MASK_B = 0x08;
+const MASK_E = 0x04;
+const MASK_C = 0x02;
+const MASK_D = 0x01;
+// Type III commands: ccccxxxs (?), where
+//     cccc = command number
+//     xxx = ?? (usually 010)
+//     s = 1=READ_TRACK no synchronize; otherwise 0
+const COMMAND_READ_ADDRESS = 0xC0;
+const COMMAND_READ_TRACK = 0xE0;
+const COMMAND_WRITE_TRACK = 0xF0;
+// Type IV command: cccciiii, where
+//     cccc = command number
+//     iiii = bitmask of events to terminate and interrupt on (unused on TRS-80).
+//            0000 for immediate terminate with no interrupt.
+const COMMAND_FORCE_INTERRUPT = 0xD0;
+/**
+ * Given a command, returns its type.
+ */
+function getCommandType(command) {
+    switch (command & COMMAND_MASK) {
+        case COMMAND_RESTORE:
+        case COMMAND_SEEK:
+        case COMMAND_STEP:
+        case COMMAND_STEPU:
+        case COMMAND_STEP_IN:
+        case COMMAND_STEP_INU:
+        case COMMAND_STEP_OUT:
+        case COMMAND_STEP_OUTU:
+            return CommandType.TYPE_I;
+        case COMMAND_READ:
+        case COMMAND_READM:
+        case COMMAND_WRITE:
+        case COMMAND_WRITEM:
+            return CommandType.TYPE_II;
+        case COMMAND_READ_ADDRESS:
+        case COMMAND_READ_TRACK:
+        case COMMAND_WRITE_TRACK:
+            return CommandType.TYPE_III;
+        case COMMAND_FORCE_INTERRUPT:
+            return CommandType.TYPE_IV;
+        default:
+            throw new Error("Unknown command 0x" + z80_base_1.toHexByte(command));
+    }
+}
+/**
+ * Whether a command is for reading or writing.
+ */
+function isReadWriteCommand(command) {
+    switch (getCommandType(command)) {
+        case CommandType.TYPE_II:
+        case CommandType.TYPE_III:
+            return true;
+        default:
+            return false;
+    }
+}
+/**
+ * State of a physical drive.
+ */
+class FloppyDrive {
+    constructor() {
+        this.physicalTrack = 0;
+        this.writeProtected = true;
+        this.floppyDisk = undefined;
+    }
+}
+/**
+ * The disk controller. We only emulate the WD1791/93, not the Model I's WD1771.
+ */
+class FloppyDiskController {
+    constructor(foo) {
+        // Registers.
+        this.status = STATUS_TRACK_ZERO | STATUS_NOT_READY;
+        this.track = 0;
+        this.sector = 0;
+        this.data = 0;
+        // Internal state.
+        this.currentCommand = COMMAND_RESTORE;
+        this.side = FloppyDisk_1.Side.FRONT;
+        this.doubleDensity = false;
+        this.currentDrive = 0;
+        this.motorOn = false;
+        // ID index found in by last COMMAND_READ_ADDRESS.
+        this.lastReadAddress = undefined;
+        // State for current command.
+        this.dataIndex = 0;
+        this.sectorData = undefined;
+        // Floppy drives.
+        this.drives = [];
+        // Timeout handle for turning off the motor.
+        this.motorOffTimeoutHandle = undefined;
+        // Which drive is currently active, for lighting up an LED.
+        this.onMotorOn = new strongly_typed_events_1.SimpleEventDispatcher();
+        this.machine = foo;
+        for (let i = 0; i < DRIVE_COUNT; i++) {
+            this.drives.push(new FloppyDrive());
+        }
+    }
+    /**
+     * Put a floppy in the specified drive (0 to 3).
+     */
+    loadFloppyDisk(floppyDisk, driveNumber) {
+        if (driveNumber < 0 || driveNumber >= this.drives.length) {
+            throw new Error("Invalid drive number " + driveNumber);
+        }
+        this.drives[driveNumber].floppyDisk = floppyDisk;
+    }
+    readStatus() {
+        // If no disk was loaded into drive 0, just pretend that we don't
+        // have a disk system. Otherwise we have to hold down Break while
+        // booting (to get to cassette BASIC) and that's annoying.
+        if (this.drives[0].floppyDisk === undefined) {
+            return 0xFF;
+        }
+        this.updateStatus();
+        // Clear interrupt.
+        this.machine.diskIntrqInterrupt(false);
+        return this.status;
+    }
+    readTrack() {
+        return this.track;
+    }
+    readSector() {
+        return this.sector;
+    }
+    /**
+     * Read a byte of data from the sector.
+     */
+    readData() {
+        const drive = this.drives[this.currentDrive];
+        // The read command can do various things depending on the specific
+        // current command, but we only support reading from the diskette.
+        switch (this.currentCommand & COMMAND_MASK) {
+            case COMMAND_READ:
+                // Keep reading from the buffer.
+                if (this.sectorData !== undefined && (this.status & STATUS_DRQ) !== 0 && drive.floppyDisk !== undefined) {
+                    this.data = this.sectorData.data[this.dataIndex];
+                    this.dataIndex++;
+                    if (this.dataIndex >= this.sectorData.data.length) {
+                        this.sectorData = undefined;
+                        this.status &= ~STATUS_DRQ;
+                        this.machine.diskDrqInterrupt(false);
+                        this.machine.eventScheduler.cancelByEventTypeMask(EventScheduler_1.EventType.DISK_LOST_DATA);
+                        this.machine.eventScheduler.add(EventScheduler_1.EventType.DISK_DONE, this.machine.tStateCount + 64, () => this.done(0));
+                    }
+                }
+                break;
+            default:
+                // Might be okay, not sure.
+                throw new Error("Unhandled case in readData()");
+        }
+        return this.data;
+    }
+    /**
+     * Set current command.
+     */
+    writeCommand(cmd) {
+        const drive = this.drives[this.currentDrive];
+        // Cancel "lost data" event.
+        this.machine.eventScheduler.cancelByEventTypeMask(EventScheduler_1.EventType.DISK_LOST_DATA);
+        this.machine.diskIntrqInterrupt(false);
+        this.sectorData = undefined;
+        this.currentCommand = cmd;
+        // Kick off anything that's based on the command.
+        switch (cmd & COMMAND_MASK) {
+            case COMMAND_RESTORE:
+                this.lastReadAddress = undefined;
+                drive.physicalTrack = 0;
+                this.track = 0;
+                this.status = STATUS_TRACK_ZERO | STATUS_BUSY;
+                if ((cmd & MASK_V) != 0) {
+                    this.verify();
+                }
+                this.machine.eventScheduler.add(EventScheduler_1.EventType.DISK_DONE, this.machine.tStateCount + 2000, () => this.done(0));
+                break;
+            case COMMAND_SEEK:
+                this.lastReadAddress = undefined;
+                drive.physicalTrack += this.data - this.track;
+                this.track = this.data;
+                if (drive.physicalTrack <= 0) {
+                    // this.track too?
+                    drive.physicalTrack = 0;
+                    this.status = STATUS_TRACK_ZERO | STATUS_BUSY;
+                }
+                else {
+                    this.status = STATUS_BUSY;
+                }
+                // Should this set lastDirection?
+                if ((cmd & MASK_V) != 0) {
+                    this.verify();
+                }
+                this.machine.eventScheduler.add(EventScheduler_1.EventType.DISK_DONE, this.machine.tStateCount + 2000, () => this.done(0));
+                break;
+            case COMMAND_READ:
+                // Read the sector. The bytes will be read later.
+                this.lastReadAddress = undefined;
+                this.status = STATUS_BUSY;
+                const goalSide = (cmd & MASK_C) === 0 ? undefined : booleanToSide((cmd & MASK_B) !== 0);
+                const sectorData = drive.floppyDisk === undefined
+                    ? undefined
+                    : drive.floppyDisk.readSector(drive.physicalTrack, this.sector, goalSide);
+                if (sectorData === undefined) {
+                    this.machine.eventScheduler.add(EventScheduler_1.EventType.DISK_DONE, this.machine.tStateCount + 512, () => this.done(0));
+                    console.error(`Didn't find sector ${this.sector} on track ${drive.physicalTrack}`);
+                }
+                else {
+                    let newStatus = 0;
+                    if (sectorData.deleted) {
+                        newStatus |= STATUS_DELETED;
+                    }
+                    if (sectorData.crcError) {
+                        newStatus |= STATUS_CRC_ERROR;
+                    }
+                    this.sectorData = sectorData;
+                    this.dataIndex = 0;
+                    this.machine.eventScheduler.add(EventScheduler_1.EventType.DISK_FIRST_DRQ, this.machine.tStateCount + 64, () => this.firstDrq(newStatus));
+                }
+                break;
+            case COMMAND_FORCE_INTERRUPT:
+                // Stop whatever is going on and forget it.
+                this.machine.eventScheduler.cancelByEventTypeMask(EventScheduler_1.EventType.DISK_ALL);
+                this.status = 0;
+                this.updateStatus();
+                if ((cmd & 0x07) !== 0) {
+                    throw new Error("Conditional interrupt features not implemented");
+                }
+                else if ((cmd & 0x08) !== 0) {
+                    // Immediate interrupt.
+                    this.machine.diskIntrqInterrupt(true);
+                }
+                else {
+                    this.machine.diskIntrqInterrupt(false);
+                }
+                break;
+            default:
+                throw new Error("Don't handle command 0x" + z80_base_1.toHexByte(cmd));
+        }
+    }
+    writeTrack(track) {
+        this.track = track;
+    }
+    writeSector(sector) {
+        this.sector = sector;
+    }
+    writeData(data) {
+        const command = this.currentCommand & COMMAND_MASK;
+        if (command === COMMAND_WRITE || command === COMMAND_WRITE_TRACK) {
+            throw new Error("Can't yet write data");
+        }
+        this.data = data;
+    }
+    /**
+     * Select a drive.
+     */
+    writeSelect(value) {
+        this.status &= ~STATUS_NOT_READY;
+        this.side = booleanToSide((value & SELECT_SIDE) !== 0);
+        this.doubleDensity = (value & SELECT_MFM) != 0;
+        if ((value & SELECT_WAIT) != 0) {
+            // If there was an event pending, simulate waiting until it was due.
+            const event = this.machine.eventScheduler.getFirstEvent(EventScheduler_1.EventType.DISK_ALL & ~EventScheduler_1.EventType.DISK_LOST_DATA);
+            if (event !== undefined) {
+                // This puts the clock ahead immediately, but the main loop of the emulator
+                // will then sleep to make the real-time correct.
+                // TODO is this legit? Can we use another method?
+                this.machine.tStateCount = event.tStateCount;
+                this.machine.eventScheduler.dispatch(this.machine.tStateCount);
+            }
+        }
+        // Which drive is being enabled?
+        const previousDrive = this.currentDrive;
+        switch (value & SELECT_DRIVE_MASK) {
+            case 0:
+                this.status |= STATUS_NOT_READY;
+                break;
+            case SELECT_DRIVE_0:
+                this.currentDrive = 0;
+                break;
+            case SELECT_DRIVE_1:
+                this.currentDrive = 1;
+                break;
+            case SELECT_DRIVE_2:
+                this.currentDrive = 2;
+                break;
+            case SELECT_DRIVE_3:
+                this.currentDrive = 3;
+                break;
+            default:
+                throw new Error("Not drive specified in select: 0x" + z80_base_1.toHexByte(value));
+        }
+        if (this.currentDrive !== previousDrive) {
+            this.updateMotorOn();
+        }
+        // If a drive was selected, turn on its motor.
+        if ((this.status & STATUS_NOT_READY) == 0) {
+            this.setMotorOn(true);
+            // Set timer to later turn off motor.
+            if (this.motorOffTimeoutHandle !== undefined) {
+                this.machine.eventScheduler.cancel(this.motorOffTimeoutHandle);
+            }
+            this.motorOffTimeoutHandle = this.machine.eventScheduler.add(undefined, this.machine.tStateCount + MOTOR_TIME_AFTER_SELECT * this.machine.clockHz, () => {
+                this.motorOffTimeoutHandle = undefined;
+                this.status |= STATUS_NOT_READY;
+                this.setMotorOn(false);
+            });
+        }
+    }
+    /**
+     * Verify that head is on the expected track. Set either STATUS_NOT_FOUND or
+     * STATUS_SEEK_ERROR if a problem is found.
+     */
+    verify() {
+        const drive = this.drives[this.currentDrive];
+        if (drive.floppyDisk === undefined) {
+            this.status |= STATUS_NOT_FOUND;
+        }
+        else if (drive.physicalTrack !== this.track) {
+            this.status |= STATUS_SEEK_ERROR;
+        }
+        else {
+            // Make sure a sector exists on this track.
+            const sectorData = drive.floppyDisk.readSector(this.track, undefined, undefined);
+            if (sectorData === undefined) {
+                this.status |= STATUS_NOT_FOUND;
+            }
+            if (this.doubleDensity && !drive.floppyDisk.supportsDoubleDensity) {
+                this.status |= STATUS_NOT_FOUND;
+            }
+        }
+    }
+    /**
+     * If we're doing a non-read/write command, update the status with the state
+     * of the disk, track, and head position.
+     */
+    updateStatus() {
+        if (isReadWriteCommand(this.currentCommand)) {
+            // Don't modify status.
+            return;
+        }
+        const drive = this.drives[this.currentDrive];
+        if (drive.floppyDisk === undefined) {
+            this.status |= STATUS_INDEX;
+        }
+        else {
+            // See if we're over the index hole.
+            if (this.angle() < HOLE_WIDTH) {
+                this.status |= STATUS_INDEX;
+            }
+            else {
+                this.status &= ~STATUS_INDEX;
+            }
+            // See if the diskette is write protected.
+            if (drive.writeProtected) {
+                this.status |= STATUS_WRITE_PROTECTED;
+            }
+            else {
+                this.status &= ~STATUS_WRITE_PROTECTED;
+            }
+        }
+        // See if we're on track 0, which for some reason has a special bit.
+        if (drive.physicalTrack === 0) {
+            this.status |= STATUS_TRACK_ZERO;
+        }
+        else {
+            this.status &= ~STATUS_TRACK_ZERO;
+        }
+        // RDY and HLT inputs are wired together on TRS-80 I/III/4/4P.
+        if ((this.status & STATUS_NOT_READY) !== 0) {
+            this.status &= ~STATUS_HEAD_ENGAGED;
+        }
+        else {
+            this.status |= STATUS_HEAD_ENGAGED;
+        }
+    }
+    /**
+     * Turn motor on or off.
+     */
+    setMotorOn(motorOn) {
+        if (motorOn !== this.motorOn) {
+            this.motorOn = motorOn;
+            this.machine.diskMotorOffInterrupt(!motorOn);
+            this.updateMotorOn();
+        }
+    }
+    /**
+     * Dispatch a change to the motor light.
+     */
+    updateMotorOn() {
+        this.onMotorOn.dispatch(this.motorOn ? this.currentDrive : undefined);
+    }
+    // Return a value in [0,1) indicating how far we've rotated
+    // from the leading edge of the index hole. For the first HOLE_WIDTH we're
+    // on the hole itself.
+    angle() {
+        // Use simulated time.
+        const clocksPerRevolution = Math.round(this.machine.clockHz / (RPM / 60));
+        return (this.machine.tStateCount % clocksPerRevolution) / clocksPerRevolution;
+    }
+    /**
+     * Event used for delayed command completion.  Clears BUSY,
+     * sets any additional bits specified, and generates a command
+     * completion interrupt.
+     */
+    done(bits) {
+        this.status &= ~STATUS_BUSY;
+        this.status |= bits;
+        this.machine.diskIntrqInterrupt(true);
+    }
+    /**
+     * Event to abort the last command with LOST_DATA if it is
+     * still in progress.
+     */
+    lostData(cmd) {
+        if (this.currentCommand === cmd) {
+            this.status &= ~STATUS_BUSY;
+            this.status |= STATUS_LOST_DATA;
+            this.sectorData = undefined;
+            this.machine.diskIntrqInterrupt(true);
+        }
+    }
+    /**
+     * Event used as a delayed command start. Sets DRQ, generates a DRQ interrupt,
+     * sets any additional bits specified, and schedules a lostData() event.
+     */
+    firstDrq(bits) {
+        this.status |= STATUS_DRQ | bits;
+        this.machine.diskDrqInterrupt(true);
+        // Evaluate this now, not when the callback is run.
+        const currentCommand = this.currentCommand;
+        // If we've not finished our work within half a second, trigger a lost data interrupt.
+        this.machine.eventScheduler.add(EventScheduler_1.EventType.DISK_LOST_DATA, this.machine.tStateCount + this.machine.clockHz / 2, () => this.lostData(currentCommand));
+    }
+}
+exports.FloppyDiskController = FloppyDiskController;
+
+
+/***/ }),
+/* 126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformPromiseSimpleEventList = exports.PromiseSimpleEventList = exports.PromiseSimpleEventHandlingBase = exports.PromiseSimpleEventDispatcher = exports.PromiseSignalList = exports.PromiseSignalHandlingBase = exports.PromiseSignalDispatcher = exports.NonUniformPromiseEventList = exports.PromiseEventList = exports.PromiseEventHandlingBase = exports.PromiseEventDispatcher = exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = exports.HandlingBase = exports.PromiseDispatcherBase = exports.PromiseSubscription = exports.DispatchError = exports.EventManagement = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = exports.Subscription = void 0;
+var ste_core_1 = __webpack_require__(112);
+Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return ste_core_1.Subscription; } });
+Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return ste_core_1.DispatcherBase; } });
+Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return ste_core_1.DispatcherWrapper; } });
+Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return ste_core_1.EventListBase; } });
+Object.defineProperty(exports, "EventManagement", { enumerable: true, get: function () { return ste_core_1.EventManagement; } });
+Object.defineProperty(exports, "DispatchError", { enumerable: true, get: function () { return ste_core_1.DispatchError; } });
+Object.defineProperty(exports, "PromiseSubscription", { enumerable: true, get: function () { return ste_core_1.PromiseSubscription; } });
+Object.defineProperty(exports, "PromiseDispatcherBase", { enumerable: true, get: function () { return ste_core_1.PromiseDispatcherBase; } });
+Object.defineProperty(exports, "HandlingBase", { enumerable: true, get: function () { return ste_core_1.HandlingBase; } });
+var ste_events_1 = __webpack_require__(136);
+Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return ste_events_1.EventDispatcher; } });
+Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return ste_events_1.EventHandlingBase; } });
+Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return ste_events_1.EventList; } });
+Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return ste_events_1.NonUniformEventList; } });
+var ste_simple_events_1 = __webpack_require__(139);
+Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventDispatcher; } });
+Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventHandlingBase; } });
+Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventList; } });
+Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.NonUniformSimpleEventList; } });
+var ste_signals_1 = __webpack_require__(142);
+Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return ste_signals_1.SignalDispatcher; } });
+Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return ste_signals_1.SignalHandlingBase; } });
+Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return ste_signals_1.SignalList; } });
+var ste_promise_events_1 = __webpack_require__(144);
+Object.defineProperty(exports, "PromiseEventDispatcher", { enumerable: true, get: function () { return ste_promise_events_1.PromiseEventDispatcher; } });
+Object.defineProperty(exports, "PromiseEventHandlingBase", { enumerable: true, get: function () { return ste_promise_events_1.PromiseEventHandlingBase; } });
+Object.defineProperty(exports, "PromiseEventList", { enumerable: true, get: function () { return ste_promise_events_1.PromiseEventList; } });
+Object.defineProperty(exports, "NonUniformPromiseEventList", { enumerable: true, get: function () { return ste_promise_events_1.NonUniformPromiseEventList; } });
+var ste_promise_signals_1 = __webpack_require__(122);
+Object.defineProperty(exports, "PromiseSignalDispatcher", { enumerable: true, get: function () { return ste_promise_signals_1.PromiseSignalDispatcher; } });
+Object.defineProperty(exports, "PromiseSignalHandlingBase", { enumerable: true, get: function () { return ste_promise_signals_1.PromiseSignalHandlingBase; } });
+Object.defineProperty(exports, "PromiseSignalList", { enumerable: true, get: function () { return ste_promise_signals_1.PromiseSignalList; } });
+var ste_promise_simple_events_1 = __webpack_require__(149);
+Object.defineProperty(exports, "PromiseSimpleEventDispatcher", { enumerable: true, get: function () { return ste_promise_simple_events_1.PromiseSimpleEventDispatcher; } });
+Object.defineProperty(exports, "PromiseSimpleEventHandlingBase", { enumerable: true, get: function () { return ste_promise_simple_events_1.PromiseSimpleEventHandlingBase; } });
+Object.defineProperty(exports, "PromiseSimpleEventList", { enumerable: true, get: function () { return ste_promise_simple_events_1.PromiseSimpleEventList; } });
+Object.defineProperty(exports, "NonUniformPromiseSimpleEventList", { enumerable: true, get: function () { return ste_promise_simple_events_1.NonUniformPromiseSimpleEventList; } });
+
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DispatcherBase = void 0;
+const __1 = __webpack_require__(112);
+/**
+ * Base class for implementation of the dispatcher. It facilitates the subscribe
+ * and unsubscribe methods based on generic handlers. The TEventType specifies
+ * the type of event that should be exposed. Use the asEvent to expose the
+ * dispatcher as event.
+ */
+class DispatcherBase {
+    constructor() {
+        this._wrap = new __1.DispatcherWrapper(this);
+        this._subscriptions = new Array();
+    }
+    /**
+     * Returns the number of subscriptions.
+     *
+     * @readonly
+     *
+     * @memberOf DispatcherBase
+     */
+    get count() {
+        return this._subscriptions.length;
+    }
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    subscribe(fn) {
+        if (fn) {
+            this._subscriptions.push(this.createSubscription(fn, false));
+        }
+        return () => {
+            this.unsubscribe(fn);
+        };
+    }
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    sub(fn) {
+        return this.subscribe(fn);
+    }
+    /**
+     * Subscribe once to the event with the specified name.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    one(fn) {
+        if (fn) {
+            this._subscriptions.push(this.createSubscription(fn, true));
+        }
+        return () => {
+            this.unsubscribe(fn);
+        };
+    }
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param fn The event handler.
+     */
+    has(fn) {
+        if (!fn)
+            return false;
+        return this._subscriptions.some((sub) => sub.handler == fn);
+    }
+    /**
+     * Unsubscribes the handler from the dispatcher.
+     * @param fn The event handler.
+     */
+    unsubscribe(fn) {
+        if (!fn)
+            return;
+        for (let i = 0; i < this._subscriptions.length; i++) {
+            if (this._subscriptions[i].handler == fn) {
+                this._subscriptions.splice(i, 1);
+                break;
+            }
+        }
+    }
+    /**
+     * Unsubscribes the handler from the dispatcher.
+     * @param fn The event handler.
+     */
+    unsub(fn) {
+        this.unsubscribe(fn);
+    }
+    /**
+     * Generic dispatch will dispatch the handlers with the given arguments.
+     *
+     * @protected
+     * @param {boolean} executeAsync `True` if the even should be executed async.
+     * @param {*} scrop The scope of the event. The scope becomes the `this` for handler.
+     * @param {IArguments} args The arguments for the event.
+     * @returns {(IPropagationStatus | null)} The propagation status, or if an `executeAsync` is used `null`.
+     *
+     * @memberOf DispatcherBase
+     */
+    _dispatch(executeAsync, scope, args) {
+        //execute on a copy because of bug #9
+        for (let sub of [...this._subscriptions]) {
+            let ev = new __1.EventManagement(() => this.unsub(sub.handler));
+            let nargs = Array.prototype.slice.call(args);
+            nargs.push(ev);
+            let s = sub;
+            s.execute(executeAsync, scope, nargs);
+            //cleanup subs that are no longer needed
+            this.cleanup(sub);
+            if (!executeAsync && ev.propagationStopped) {
+                return { propagationStopped: true };
+            }
+        }
+        if (executeAsync) {
+            return null;
+        }
+        return { propagationStopped: false };
+    }
+    createSubscription(handler, isOnce) {
+        return new __1.Subscription(handler, isOnce);
+    }
+    /**
+     * Cleans up subs that ran and should run only once.
+     */
+    cleanup(sub) {
+        if (sub.isOnce && sub.isExecuted) {
+            let i = this._subscriptions.indexOf(sub);
+            if (i > -1) {
+                this._subscriptions.splice(i, 1);
+            }
+        }
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    asEvent() {
+        return this._wrap;
+    }
+    /**
+     * Clears all the subscriptions.
+     */
+    clear() {
+        this._subscriptions.splice(0, this._subscriptions.length);
+    }
+}
+exports.DispatcherBase = DispatcherBase;
+
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DispatchError = void 0;
+/**
+ * Indicates an error with dispatching.
+ *
+ * @export
+ * @class DispatchError
+ * @extends {Error}
+ */
+class DispatchError extends Error {
+    constructor(message) {
+        super(message);
+    }
+}
+exports.DispatchError = DispatchError;
+
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DispatcherWrapper = void 0;
+/**
+ * Hides the implementation of the event dispatcher. Will expose methods that
+ * are relevent to the event.
+ */
+class DispatcherWrapper {
+    /**
+     * Creates a new EventDispatcherWrapper instance.
+     * @param dispatcher The dispatcher.
+     */
+    constructor(dispatcher) {
+        this._subscribe = (fn) => dispatcher.subscribe(fn);
+        this._unsubscribe = (fn) => dispatcher.unsubscribe(fn);
+        this._one = (fn) => dispatcher.one(fn);
+        this._has = (fn) => dispatcher.has(fn);
+        this._clear = () => dispatcher.clear();
+        this._count = () => dispatcher.count;
+    }
+    /**
+     * Returns the number of subscriptions.
+     *
+     * @readonly
+     * @type {number}
+     * @memberOf DispatcherWrapper
+     */
+    get count() {
+        return this._count();
+    }
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    subscribe(fn) {
+        return this._subscribe(fn);
+    }
+    /**
+     * Subscribe to the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     * @returns A function that unsubscribes the event handler from the event.
+     */
+    sub(fn) {
+        return this.subscribe(fn);
+    }
+    /**
+     * Unsubscribe from the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     */
+    unsubscribe(fn) {
+        this._unsubscribe(fn);
+    }
+    /**
+     * Unsubscribe from the event dispatcher.
+     * @param fn The event handler that is called when the event is dispatched.
+     */
+    unsub(fn) {
+        this.unsubscribe(fn);
+    }
+    /**
+     * Subscribe once to the event with the specified name.
+     * @param fn The event handler that is called when the event is dispatched.
+     */
+    one(fn) {
+        return this._one(fn);
+    }
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param fn The event handler.
+     */
+    has(fn) {
+        return this._has(fn);
+    }
+    /**
+     * Clears all the subscriptions.
+     */
+    clear() {
+        this._clear();
+    }
+}
+exports.DispatcherWrapper = DispatcherWrapper;
+
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventListBase = void 0;
+/**
+ * Base class for event lists classes. Implements the get and remove.
+ */
+class EventListBase {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    get(name) {
+        let event = this._events[name];
+        if (event) {
+            return event;
+        }
+        event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    }
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    remove(name) {
+        delete this._events[name];
+    }
+}
+exports.EventListBase = EventListBase;
+
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventManagement = void 0;
+/**
+ * Allows the user to interact with the event.
+ *
+ * @class EventManagement
+ * @implements {IEventManagement}
+ */
+class EventManagement {
+    constructor(unsub) {
+        this.unsub = unsub;
+        this.propagationStopped = false;
+    }
+    stopPropagation() {
+        this.propagationStopped = true;
+    }
+}
+exports.EventManagement = EventManagement;
+
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HandlingBase = void 0;
+/**
+ * Base class that implements event handling. With a an
+ * event list this base class will expose events that can be
+ * subscribed to. This will give your class generic events.
+ *
+ * @export
+ * @abstract
+ * @class HandlingBase
+ * @template TEventHandler
+ * @template TDispatcher
+ * @template TList
+ */
+class HandlingBase {
+    constructor(events) {
+        this.events = events;
+    }
+    /**
+     * Subscribes once to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    one(name, fn) {
+        this.events.get(name).one(fn);
+    }
+    /**
+     * Checks it the event has a subscription for the specified handler.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    has(name, fn) {
+        return this.events.get(name).has(fn);
+    }
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    subscribe(name, fn) {
+        this.events.get(name).subscribe(fn);
+    }
+    /**
+     * Subscribes to the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    sub(name, fn) {
+        this.subscribe(name, fn);
+    }
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    unsubscribe(name, fn) {
+        this.events.get(name).unsubscribe(fn);
+    }
+    /**
+     * Unsubscribes from the event with the specified name.
+     * @param name The name of the event.
+     * @param fn The event handler.
+     */
+    unsub(name, fn) {
+        this.unsubscribe(name, fn);
+    }
+}
+exports.HandlingBase = HandlingBase;
+
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseDispatcherBase = void 0;
+const __1 = __webpack_require__(112);
+class PromiseDispatcherBase extends __1.DispatcherBase {
+    constructor() {
+        super();
+    }
+    _dispatch(executeAsync, scope, args) {
+        throw new __1.DispatchError("_dispatch not supported. Use _dispatchAsPromise.");
+    }
+    createSubscription(handler, isOnce) {
+        return new __1.PromiseSubscription(handler, isOnce);
+    }
+    /**
+     * Generic dispatch will dispatch the handlers with the given arguments.
+     *
+     * @protected
+     * @param {boolean} executeAsync `True` if the even should be executed async.
+     * @param {*} scrop The scope of the event. The scope becomes the `this` for handler.
+     * @param {IArguments} args The arguments for the event.
+     * @returns {(IPropagationStatus | null)} The propagation status, or if an `executeAsync` is used `null`.
+     *
+     * @memberOf DispatcherBase
+     */
+    async _dispatchAsPromise(executeAsync, scope, args) {
+        //execute on a copy because of bug #9
+        for (let sub of [...this._subscriptions]) {
+            let ev = new __1.EventManagement(() => this.unsub(sub.handler));
+            let nargs = Array.prototype.slice.call(args);
+            nargs.push(ev);
+            let ps = sub;
+            await ps.execute(executeAsync, scope, nargs);
+            //cleanup subs that are no longer needed
+            this.cleanup(sub);
+            if (!executeAsync && ev.propagationStopped) {
+                return { propagationStopped: true };
+            }
+        }
+        if (executeAsync) {
+            return null;
+        }
+        return { propagationStopped: false };
+    }
+}
+exports.PromiseDispatcherBase = PromiseDispatcherBase;
+
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSubscription = void 0;
+class PromiseSubscription {
+    /**
+     * Creates an instance of Subscription.
+     *
+     * @param {TEventHandler} handler The handler for the subscription.
+     * @param {boolean} isOnce Indicates if the handler should only be executed once.
+     */
+    constructor(handler, isOnce) {
+        this.handler = handler;
+        this.isOnce = isOnce;
+        /**
+         * Indicates if the subscription has been executed before.
+         */
+        this.isExecuted = false;
+    }
+    /**
+     * Executes the handler.
+     *
+     * @param {boolean} executeAsync True if the even should be executed async.
+     * @param {*} scope The scope the scope of the event.
+     * @param {IArguments} args The arguments for the event.
+     */
+    async execute(executeAsync, scope, args) {
+        if (!this.isOnce || !this.isExecuted) {
+            this.isExecuted = true;
+            //TODO: do we need to cast to any -- seems yuck
+            var fn = this.handler;
+            if (executeAsync) {
+                setTimeout(() => {
+                    fn.apply(scope, args);
+                }, 1);
+                return;
+            }
+            let result = fn.apply(scope, args);
+            await result;
+        }
+    }
+}
+exports.PromiseSubscription = PromiseSubscription;
+
+
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Subscription = void 0;
+/**
+ * Stores a handler. Manages execution meta data.
+ * @class Subscription
+ * @template TEventHandler
+ */
+class Subscription {
+    /**
+     * Creates an instance of Subscription.
+     *
+     * @param {TEventHandler} handler The handler for the subscription.
+     * @param {boolean} isOnce Indicates if the handler should only be executed once.
+     */
+    constructor(handler, isOnce) {
+        this.handler = handler;
+        this.isOnce = isOnce;
+        /**
+         * Indicates if the subscription has been executed before.
+         */
+        this.isExecuted = false;
+    }
+    /**
+     * Executes the handler.
+     *
+     * @param {boolean} executeAsync True if the even should be executed async.
+     * @param {*} scope The scope the scope of the event.
+     * @param {IArguments} args The arguments for the event.
+     */
+    execute(executeAsync, scope, args) {
+        if (!this.isOnce || !this.isExecuted) {
+            this.isExecuted = true;
+            var fn = this.handler;
+            if (executeAsync) {
+                setTimeout(() => {
+                    fn.apply(scope, args);
+                }, 1);
+            }
+            else {
+                fn.apply(scope, args);
+            }
+        }
+    }
+}
+exports.Subscription = Subscription;
+
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript - Core
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = void 0;
+const EventDispatcher_1 = __webpack_require__(113);
+Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return EventDispatcher_1.EventDispatcher; } });
+const EventHandlingBase_1 = __webpack_require__(137);
+Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return EventHandlingBase_1.EventHandlingBase; } });
+const EventList_1 = __webpack_require__(117);
+Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return EventList_1.EventList; } });
+const NonUniformEventList_1 = __webpack_require__(138);
+Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return NonUniformEventList_1.NonUniformEventList; } });
+
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventHandlingBase = void 0;
+const ste_core_1 = __webpack_require__(112);
+const EventList_1 = __webpack_require__(117);
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+class EventHandlingBase extends ste_core_1.HandlingBase {
+    constructor() {
+        super(new EventList_1.EventList());
+    }
+}
+exports.EventHandlingBase = EventHandlingBase;
+
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformEventList = void 0;
+const EventDispatcher_1 = __webpack_require__(113);
+/**
+ * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
+ */
+class NonUniformEventList {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    get(name) {
+        if (this._events[name]) {
+            // @TODO avoid typecasting. Not sure why TS thinks this._events[name] could still be undefined.
+            return this._events[name];
+        }
+        const event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    }
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    remove(name) {
+        delete this._events[name];
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new EventDispatcher_1.EventDispatcher();
+    }
+}
+exports.NonUniformEventList = NonUniformEventList;
+
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = void 0;
+const SimpleEventDispatcher_1 = __webpack_require__(114);
+Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return SimpleEventDispatcher_1.SimpleEventDispatcher; } });
+const SimpleEventHandlingBase_1 = __webpack_require__(140);
+Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return SimpleEventHandlingBase_1.SimpleEventHandlingBase; } });
+const NonUniformSimpleEventList_1 = __webpack_require__(141);
+Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return NonUniformSimpleEventList_1.NonUniformSimpleEventList; } });
+const SimpleEventList_1 = __webpack_require__(118);
+Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return SimpleEventList_1.SimpleEventList; } });
+
+
+/***/ }),
+/* 140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SimpleEventHandlingBase = void 0;
+const ste_core_1 = __webpack_require__(112);
+const SimpleEventList_1 = __webpack_require__(118);
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+class SimpleEventHandlingBase extends ste_core_1.HandlingBase {
+    constructor() {
+        super(new SimpleEventList_1.SimpleEventList());
+    }
+}
+exports.SimpleEventHandlingBase = SimpleEventHandlingBase;
+
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformSimpleEventList = void 0;
+const SimpleEventDispatcher_1 = __webpack_require__(114);
+/**
+ * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
+ */
+class NonUniformSimpleEventList {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    get(name) {
+        if (this._events[name]) {
+            // @TODO avoid typecasting. Not sure why TS thinks this._events[name] could still be undefined.
+            return this._events[name];
+        }
+        const event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    }
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    remove(name) {
+        delete this._events[name];
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new SimpleEventDispatcher_1.SimpleEventDispatcher();
+    }
+}
+exports.NonUniformSimpleEventList = NonUniformSimpleEventList;
+
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript - Promise Signals
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = void 0;
+const SignalDispatcher_1 = __webpack_require__(119);
+Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return SignalDispatcher_1.SignalDispatcher; } });
+const SignalHandlingBase_1 = __webpack_require__(143);
+Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return SignalHandlingBase_1.SignalHandlingBase; } });
+const SignalList_1 = __webpack_require__(120);
+Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return SignalList_1.SignalList; } });
+
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SignalHandlingBase = void 0;
+const ste_core_1 = __webpack_require__(112);
+const SignalList_1 = __webpack_require__(120);
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+class SignalHandlingBase extends ste_core_1.HandlingBase {
+    constructor() {
+        super(new SignalList_1.SignalList());
+    }
+}
+exports.SignalHandlingBase = SignalHandlingBase;
+
+
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript - Core
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformPromiseEventList = exports.PromiseEventList = exports.PromiseEventHandlingBase = exports.PromiseEventDispatcher = void 0;
+const PromiseEventDispatcher_1 = __webpack_require__(115);
+Object.defineProperty(exports, "PromiseEventDispatcher", { enumerable: true, get: function () { return PromiseEventDispatcher_1.PromiseEventDispatcher; } });
+const PromiseEventHandlingBase_1 = __webpack_require__(145);
+Object.defineProperty(exports, "PromiseEventHandlingBase", { enumerable: true, get: function () { return PromiseEventHandlingBase_1.PromiseEventHandlingBase; } });
+const PromiseEventList_1 = __webpack_require__(121);
+Object.defineProperty(exports, "PromiseEventList", { enumerable: true, get: function () { return PromiseEventList_1.PromiseEventList; } });
+const NonUniformPromiseEventList_1 = __webpack_require__(146);
+Object.defineProperty(exports, "NonUniformPromiseEventList", { enumerable: true, get: function () { return NonUniformPromiseEventList_1.NonUniformPromiseEventList; } });
+
+
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseEventHandlingBase = void 0;
+const ste_core_1 = __webpack_require__(112);
+const PromiseEventList_1 = __webpack_require__(121);
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+class PromiseEventHandlingBase extends ste_core_1.HandlingBase {
+    constructor() {
+        super(new PromiseEventList_1.PromiseEventList());
+    }
+}
+exports.PromiseEventHandlingBase = PromiseEventHandlingBase;
+
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformPromiseEventList = void 0;
+const PromiseEventDispatcher_1 = __webpack_require__(115);
+/**
+ * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
+ */
+class NonUniformPromiseEventList {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    get(name) {
+        if (this._events[name]) {
+            // @TODO avoid typecasting. Not sure why TS thinks this._events[name] could still be undefined.
+            return this._events[name];
+        }
+        const event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    }
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    remove(name) {
+        delete this._events[name];
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new PromiseEventDispatcher_1.PromiseEventDispatcher();
+    }
+}
+exports.NonUniformPromiseEventList = NonUniformPromiseEventList;
+
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSignalDispatcher = void 0;
+const ste_core_1 = __webpack_require__(112);
+/**
+ * The dispatcher handles the storage of subsciptions and facilitates
+ * subscription, unsubscription and dispatching of a signal event.
+ */
+class PromiseSignalDispatcher extends ste_core_1.PromiseDispatcherBase {
+    /**
+     * Creates a new SignalDispatcher instance.
+     */
+    constructor() {
+        super();
+    }
+    /**
+     * Dispatches the signal.
+     *
+     * @returns {IPropagationStatus} The status of the dispatch.
+     *
+     * @memberOf SignalDispatcher
+     */
+    async dispatch() {
+        const result = await this._dispatchAsPromise(false, this, arguments);
+        if (result == null) {
+            throw new ste_core_1.DispatchError("Got `null` back from dispatch.");
+        }
+        return result;
+    }
+    /**
+     * Dispatches the signal threaded.
+     */
+    dispatchAsync() {
+        this._dispatchAsPromise(true, this, arguments);
+    }
+    /**
+     * Creates an event from the dispatcher. Will return the dispatcher
+     * in a wrapper. This will prevent exposure of any dispatcher methods.
+     */
+    asEvent() {
+        return super.asEvent();
+    }
+}
+exports.PromiseSignalDispatcher = PromiseSignalDispatcher;
+
+
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSignalHandlingBase = void 0;
+const ste_core_1 = __webpack_require__(112);
+const PromiseSignalList_1 = __webpack_require__(123);
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+class PromiseSignalHandlingBase extends ste_core_1.HandlingBase {
+    constructor() {
+        super(new PromiseSignalList_1.PromiseSignalList());
+    }
+}
+exports.PromiseSignalHandlingBase = PromiseSignalHandlingBase;
+
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*!
+ * Strongly Typed Events for TypeScript - Core
+ * https://github.com/KeesCBakker/StronlyTypedEvents/
+ * http://keestalkstech.com
+ *
+ * Copyright Kees C. Bakker / KeesTalksTech
+ * Released under the MIT license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformPromiseSimpleEventList = exports.PromiseSimpleEventList = exports.PromiseSimpleEventHandlingBase = exports.PromiseSimpleEventDispatcher = void 0;
+const NonUniformPromiseSimpleEventList_1 = __webpack_require__(150);
+Object.defineProperty(exports, "NonUniformPromiseSimpleEventList", { enumerable: true, get: function () { return NonUniformPromiseSimpleEventList_1.NonUniformPromiseSimpleEventList; } });
+const PromiseSimpleEventDispatcher_1 = __webpack_require__(116);
+Object.defineProperty(exports, "PromiseSimpleEventDispatcher", { enumerable: true, get: function () { return PromiseSimpleEventDispatcher_1.PromiseSimpleEventDispatcher; } });
+const PromiseSimpleEventHandlingBase_1 = __webpack_require__(151);
+Object.defineProperty(exports, "PromiseSimpleEventHandlingBase", { enumerable: true, get: function () { return PromiseSimpleEventHandlingBase_1.PromiseSimpleEventHandlingBase; } });
+const PromiseSimpleEventList_1 = __webpack_require__(124);
+Object.defineProperty(exports, "PromiseSimpleEventList", { enumerable: true, get: function () { return PromiseSimpleEventList_1.PromiseSimpleEventList; } });
+
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NonUniformPromiseSimpleEventList = void 0;
+const PromiseSimpleEventDispatcher_1 = __webpack_require__(116);
+/**
+ * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
+ */
+class NonUniformPromiseSimpleEventList {
+    constructor() {
+        this._events = {};
+    }
+    /**
+     * Gets the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    get(name) {
+        if (this._events[name]) {
+            // @TODO avoid typecasting. Not sure why TS thinks this._events[name] could still be undefined.
+            return this._events[name];
+        }
+        const event = this.createDispatcher();
+        this._events[name] = event;
+        return event;
+    }
+    /**
+     * Removes the dispatcher associated with the name.
+     * @param name The name of the event.
+     */
+    remove(name) {
+        delete this._events[name];
+    }
+    /**
+     * Creates a new dispatcher instance.
+     */
+    createDispatcher() {
+        return new PromiseSimpleEventDispatcher_1.PromiseSimpleEventDispatcher();
+    }
+}
+exports.NonUniformPromiseSimpleEventList = NonUniformPromiseSimpleEventList;
+
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PromiseSimpleEventHandlingBase = void 0;
+const ste_core_1 = __webpack_require__(112);
+const PromiseSimpleEventList_1 = __webpack_require__(124);
+/**
+ * Extends objects with signal event handling capabilities.
+ */
+class PromiseSimpleEventHandlingBase extends ste_core_1.HandlingBase {
+    constructor() {
+        super(new PromiseSimpleEventList_1.PromiseSimpleEventList());
+    }
+}
+exports.PromiseSimpleEventHandlingBase = PromiseSimpleEventHandlingBase;
+
+
+/***/ }),
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventScheduler = exports.ScheduledEvent = exports.EventType = void 0;
+/**
+ * Type of event, for mass canceling.
+ */
+var EventType;
+(function (EventType) {
+    // Disk events.
+    EventType[EventType["DISK_DONE"] = 1] = "DISK_DONE";
+    EventType[EventType["DISK_LOST_DATA"] = 2] = "DISK_LOST_DATA";
+    EventType[EventType["DISK_FIRST_DRQ"] = 4] = "DISK_FIRST_DRQ";
+    // All disk events.
+    EventType[EventType["DISK_ALL"] = 7] = "DISK_ALL";
+})(EventType = exports.EventType || (exports.EventType = {}));
+/**
+ * An event scheduled for the future.
+ */
+class ScheduledEvent {
+    constructor(eventType, handle, tStateCount, callback) {
+        this.eventType = eventType;
+        this.handle = handle;
+        this.tStateCount = Math.round(tStateCount);
+        this.callback = callback;
+    }
+    /**
+     * Whether the event type of this event is included in the mask.
+     */
+    matchesEventTypeMask(eventTypeMask) {
+        return this.eventType !== undefined && (this.eventType & eventTypeMask) !== 0;
+    }
+}
+exports.ScheduledEvent = ScheduledEvent;
+/**
+ * Stores events in chronological order and fires them off.
+ */
+class EventScheduler {
+    constructor() {
+        this.counter = 1;
+        // Sorted by tStateCount.
+        this.events = [];
+    }
+    /**
+     * Dispatch all events ready to go.
+     *
+     * @param tStateCount current clock count.
+     */
+    dispatch(tStateCount) {
+        while (this.events.length > 0 && tStateCount >= this.events[0].tStateCount) {
+            const scheduledEvent = this.events.shift();
+            scheduledEvent.callback();
+        }
+    }
+    /**
+     * Schedule an event to happen tStateCount clocks. The callback will be called
+     * at the end of an instruction step.
+     *
+     * @return a handle that can be passed to cancel().
+     */
+    add(eventType, tStateCount, callback) {
+        let handle = this.counter++;
+        this.events.push(new ScheduledEvent(eventType, handle, tStateCount, callback));
+        this.events.sort((a, b) => {
+            if (a.tStateCount < b.tStateCount) {
+                return -1;
+            }
+            else if (a.tStateCount > b.tStateCount) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        });
+        return handle;
+    }
+    /**
+     * Cancel an event scheduled by add().
+     */
+    cancel(handle) {
+        for (let i = 0; i < this.events.length; i++) {
+            if (this.events[i].handle === handle) {
+                this.events.splice(i, 1);
+                break;
+            }
+        }
+    }
+    /**
+     * Cancel all events that are included in the mask.
+     */
+    cancelByEventTypeMask(eventTypeMask) {
+        this.events = this.events.filter(e => !e.matchesEventTypeMask(eventTypeMask));
+    }
+    /**
+     * Returns the first (next to dispatch) event included in the mask, or undefined if none.
+     * Does not remove the event from the queue.
+     */
+    getFirstEvent(eventTypeMask) {
+        for (const event of this.events) {
+            if (event.matchesEventTypeMask(eventTypeMask)) {
+                return event;
+            }
+        }
+        return undefined;
+    }
+}
+exports.EventScheduler = EventScheduler;
+
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeJv3FloppyDisk = exports.Jv3FloppyDisk = void 0;
+const main_1 = __webpack_require__(56);
+const FloppyDisk_1 = __webpack_require__(111);
+const ProgramAnnotation_1 = __webpack_require__(15);
+// The JV3 file consists of sectors of different sizes all bunched together. Before that
+// comes a directory of these sectors, with three bytes per directory entry (track,
+// sector, and flags), mapping in order to the subsequent sectors.
+// The directory is in this header:
+const HEADER_SIZE = 34 * 256;
+// We can fit this many 3-byte records into it:
+const RECORD_COUNT = Math.floor(HEADER_SIZE / 3);
+// Flags for SectorInfo.
+var Flags;
+(function (Flags) {
+    Flags[Flags["SIZE_CODE_MASK"] = 3] = "SIZE_CODE_MASK";
+    Flags[Flags["NON_IBM"] = 4] = "NON_IBM";
+    Flags[Flags["BAD_CRC"] = 8] = "BAD_CRC";
+    Flags[Flags["SIDE"] = 16] = "SIDE";
+    Flags[Flags["DAM_MASK"] = 96] = "DAM_MASK";
+    // Single-density.
+    Flags[Flags["DAM_SD_FB"] = 0] = "DAM_SD_FB";
+    Flags[Flags["DAM_SD_FA"] = 32] = "DAM_SD_FA";
+    Flags[Flags["DAM_SD_F9"] = 64] = "DAM_SD_F9";
+    Flags[Flags["DAM_SD_F8"] = 96] = "DAM_SD_F8";
+    // Double-density.
+    Flags[Flags["DAM_DD_FB"] = 0] = "DAM_DD_FB";
+    Flags[Flags["DAM_DD_F8"] = 32] = "DAM_DD_F8";
+    Flags[Flags["DOUBLE_DENSITY"] = 128] = "DOUBLE_DENSITY";
+})(Flags || (Flags = {}));
+const FREE = 0xFF;
+const SIZE_CODE_MASK = 0x03;
+class SectorInfo {
+    constructor(track, sector, flags, offset) {
+        // Make both FREE to avoid confusion.
+        if (track === FREE || sector === FREE) {
+            track = FREE;
+            sector = FREE;
+        }
+        this.track = track;
+        this.sector = sector;
+        this.flags = flags;
+        this.offset = offset;
+        // In used sectors: 0=256,1=128,2=1024,3=512
+        // In free sectors: 0=512,1=1024,2=128,3=256
+        const sizeCode = (flags & SIZE_CODE_MASK) ^ (this.isFree() ? 0x02 : 0x01);
+        this.size = 128 << sizeCode;
+    }
+    getSide() {
+        return (this.flags & Flags.SIDE) === 0 ? FloppyDisk_1.Side.FRONT : FloppyDisk_1.Side.BACK;
+    }
+    /**
+     * Return the flags as a string, for debugging.
+     */
+    flagsToString() {
+        const parts = [];
+        parts.push(this.size + " bytes");
+        if ((this.flags & Flags.NON_IBM) !== 0) {
+            parts.push("non-IBM");
+        }
+        if ((this.flags & Flags.BAD_CRC) !== 0) {
+            parts.push("bad CRC");
+        }
+        parts.push("side " + ((this.flags & Flags.SIDE) === 0 ? 0 : 1));
+        if ((this.flags & Flags.DOUBLE_DENSITY) !== 0) {
+            parts.push("double density");
+        }
+        else {
+            parts.push("single density");
+        }
+        return parts.join(", ");
+    }
+    /**
+     * Whether the sector entry is free (doesn't represent real space in the file).
+     */
+    isFree() {
+        return this.track === FREE;
+    }
+    /**
+     * Whether the sector is encoded with MFM (instead of FM).
+     */
+    isDoubleDensity() {
+        return (this.flags & Flags.DOUBLE_DENSITY) !== 0;
+    }
+    /**
+     * Whether the sector's data is invalid.
+     *
+     * Normally FB is normal and F8 is deleted, but the single-density version has
+     * two other values (F9 and FA), which we also consider deleted, to match xtrs.
+     */
+    isDeleted() {
+        const dam = this.flags & Flags.DAM_MASK;
+        if (this.isDoubleDensity()) {
+            return dam === Flags.DAM_DD_F8;
+        }
+        else {
+            return dam !== Flags.DAM_SD_FB;
+        }
+    }
+    /**
+     * Whether the floppy had a bar CRC when reading it.
+     */
+    hasCrcError() {
+        return (this.flags & Flags.BAD_CRC) !== 0;
+    }
+}
+/**
+ * Floppy disk in the JV3 format.
+ */
+class Jv3FloppyDisk extends FloppyDisk_1.FloppyDisk {
+    constructor(binary, error, annotations, sectorInfos) {
+        super(binary, error, annotations, true);
+        this.sectorInfos = sectorInfos;
+    }
+    getDescription() {
+        return "Floppy disk (JV3)";
+    }
+    readSector(track, sector, side) {
+        const sectorInfo = this.findSectorInfo(track, sector);
+        if (sectorInfo === undefined) {
+            return undefined;
+        }
+        if (side !== undefined && side !== sectorInfo.getSide()) {
+            return undefined;
+        }
+        const data = this.padSector(this.binary.subarray(sectorInfo.offset, sectorInfo.offset + sectorInfo.size), sectorInfo.size);
+        const sectorData = new FloppyDisk_1.SectorData(data);
+        sectorData.deleted = sectorInfo.isDeleted();
+        sectorData.crcError = sectorInfo.hasCrcError();
+        return sectorData;
+    }
+    findSectorInfo(track, sector) {
+        for (const sectorInfo of this.sectorInfos) {
+            if (!sectorInfo.isFree() &&
+                sectorInfo.track === track &&
+                (sector === undefined || sectorInfo.sector === sector)) {
+                return sectorInfo;
+            }
+        }
+        return undefined;
+    }
+}
+exports.Jv3FloppyDisk = Jv3FloppyDisk;
+/**
+ * Decode a JV3 floppy disk file.
+ */
+function decodeJv3FloppyDisk(binary) {
+    let error;
+    const annotations = [];
+    const sectorInfos = [];
+    // Read the directory.
+    let sectorOffset = HEADER_SIZE;
+    for (let i = 0; i < RECORD_COUNT; i++) {
+        const offset = i * 3;
+        if (offset + 2 >= binary.length) {
+            error = "Directory truncated at entry " + i;
+            break;
+        }
+        const track = binary[offset];
+        const sector = binary[offset + 1];
+        const flags = binary[offset + 2];
+        const sectorInfo = new SectorInfo(track, sector, flags, sectorOffset);
+        sectorOffset += sectorInfo.size;
+        if (!sectorInfo.isFree()) {
+            if (sectorOffset > binary.length) {
+                error = `Sector truncated at entry ${i} (${sectorOffset} > ${binary.length})`;
+                break;
+            }
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Track " + sectorInfo.track + ", sector " +
+                sectorInfo.sector + ", " + sectorInfo.flagsToString(), offset, offset + 3));
+            sectorInfos.push(sectorInfo);
+        }
+    }
+    // Annotate the sectors themselves.
+    for (const sectorInfo of sectorInfos) {
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Track " + sectorInfo.track + ", sector " + sectorInfo.sector, sectorInfo.offset, sectorInfo.offset + sectorInfo.size));
+    }
+    const writableOffset = RECORD_COUNT * 3;
+    const writable = binary[writableOffset];
+    if (writable !== 0 && writable !== 0xFF) {
+        error = "Invalid \"writable\" byte: 0x" + main_1.toHexByte(writable);
+    }
+    const copyProtected = writable === 0;
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(copyProtected ? "Copy protected" : "Writable", writableOffset, writableOffset + 1));
+    return new Jv3FloppyDisk(binary, error, annotations, sectorInfos);
+}
+exports.decodeJv3FloppyDisk = decodeJv3FloppyDisk;
 
 
 /***/ })
