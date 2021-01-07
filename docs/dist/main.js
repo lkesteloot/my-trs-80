@@ -38414,10 +38414,12 @@ class RetroStoreTab_RetroStoreTab {
                 console.log(app.id, app.name, mediaImages);
                 for (const mediaImage of mediaImages) {
                     if (mediaImage.type === "COMMAND" /* COMMAND */ ||
-                        mediaImage.type === "BASIC" /* BASIC */) {
+                        mediaImage.type === "BASIC" /* BASIC */ ||
+                        mediaImage.type === "DISK" /* DISK */) {
                         validMediaImage = mediaImage;
                         playButton.disabled = false;
                         importButton.disabled = false;
+                        break;
                     }
                 }
             })
