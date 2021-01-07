@@ -6676,6 +6676,7 @@ const CmdProgram_1 = __webpack_require__(24);
 const RawBinaryFile_1 = __webpack_require__(29);
 const Jv1FloppyDisk_1 = __webpack_require__(110);
 const Jv3FloppyDisk_1 = __webpack_require__(158);
+const DmkFloppyDisk_1 = __webpack_require__(152);
 /**
  * Get the extension of the filename, including the dot, in upper case, or
  * an empty string if the filename does not contain an extension.
@@ -6698,7 +6699,12 @@ function getExtension(filename) {
 function decodeDsk(binary) {
     // TODO see trs_disk.c:trs_disk_emutype()
     // TODO see DiskDrive.cpp:Dectect_JV1, etc.
-    let trs80File = Jv1FloppyDisk_1.decodeJv1FloppyDisk(binary);
+    let trs80File;
+    trs80File = DmkFloppyDisk_1.decodeDmkFloppyDisk(binary);
+    if (trs80File !== undefined) {
+        return trs80File;
+    }
+    trs80File = Jv1FloppyDisk_1.decodeJv1FloppyDisk(binary);
     if (trs80File !== undefined) {
         return trs80File;
     }
@@ -6715,7 +6721,7 @@ function decodeDsk(binary) {
  * @param filename optional filename to help with detection.
  */
 function decodeTrs80File(binary, filename) {
-    var _a, _b;
+    var _a, _b, _c;
     let trs80File;
     const extension = filename === undefined ? "" : getExtension(filename);
     if (extension === ".JV1") {
@@ -6723,6 +6729,9 @@ function decodeTrs80File(binary, filename) {
     }
     if (extension === ".DSK") {
         return (_b = decodeDsk(binary)) !== null && _b !== void 0 ? _b : new RawBinaryFile_1.RawBinaryFile(binary);
+    }
+    if (extension === ".DMK") {
+        return (_c = DmkFloppyDisk_1.decodeDmkFloppyDisk(binary)) !== null && _c !== void 0 ? _c : new RawBinaryFile_1.RawBinaryFile(binary);
     }
     trs80File = Cassette_1.decodeCassette(binary);
     if (trs80File !== undefined) {
@@ -38793,6 +38802,7 @@ class HexdumpGenerator_HexdumpGenerator {
         const lines = [];
         const binary = this.binary;
         const generateAnnotation = (annotation) => {
+            var _a;
             const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
             const endAddr = Math.min(Math.ceil(annotation.end / STRIDE) * STRIDE, binary.length);
             let lastAddr = undefined;
@@ -38828,11 +38838,29 @@ class HexdumpGenerator_HexdumpGenerator {
                             const plural = count === 1 ? "" : "s";
                             newSpan(line, ` repetition${plural} of previous row ...`, "address");
                         }
+                        // Draw vertical ellipsis.
+                        if (annotation.text !== "" && addr !== beginAddr) {
+                            // This doesn't trigger a reflow. Don't use innerText, which does.
+                            const lineText = (_a = line.textContent) !== null && _a !== void 0 ? _a : "";
+                            const width = STRIDE * 4 + 13;
+                            const label = String.fromCodePoint(0x22EE).padStart(width - lineText.length, " ");
+                            newSpan(line, label, "annotation");
+                        }
                     }
                 }
                 else {
                     lastAddr = addr;
-                    this.generateRow(lines, addr, annotation.begin, annotation.end, addr === beginAddr ? annotation.text : "");
+                    let label = "";
+                    if (annotation.text !== "") {
+                        if (addr === beginAddr) {
+                            label = annotation.text;
+                        }
+                        else {
+                            // Vertical ellipsis.
+                            label = "  " + String.fromCodePoint(0x22EE);
+                        }
+                    }
+                    this.generateRow(lines, addr, annotation.begin, annotation.end, label);
                 }
             }
         };
@@ -51251,8 +51279,328 @@ exports.PromiseSimpleEventHandlingBase = PromiseSimpleEventHandlingBase;
 
 
 /***/ }),
-/* 152 */,
-/* 153 */,
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeDmkFloppyDisk = exports.DmkFloppyDisk = void 0;
+const FloppyDisk_1 = __webpack_require__(111);
+const ProgramAnnotation_1 = __webpack_require__(15);
+const Crc16_1 = __webpack_require__(153);
+const main_1 = __webpack_require__(56);
+const FILE_HEADER_SIZE = 16;
+const TRACK_HEADER_SIZE = 128;
+/**
+ * Represents a single sector on a DMK floppy.
+ */
+class DmkSector {
+    constructor(doubleDensity, offset) {
+        this.doubleDensity = doubleDensity;
+        this.offset = offset;
+    }
+    /**
+     * Get the cylinder for this sector. This is 0-based.
+     */
+    getCylinder(binary, trackOffset) {
+        return this.getByte(binary, trackOffset, 1);
+    }
+    /**
+     * Get the side for this sector, 0 for front and 1 for back.
+     */
+    getSide(binary, trackOffset) {
+        return this.getByte(binary, trackOffset, 2);
+    }
+    /**
+     * Get the sector number for this sector. This is 1-based.
+     */
+    getSectorNumber(binary, trackOffset) {
+        return this.getByte(binary, trackOffset, 3);
+    }
+    /**
+     * Get the sector length in bytes.
+     */
+    getLength(binary, trackOffset) {
+        return 128 * (1 << this.getByte(binary, trackOffset, 4));
+    }
+    /**
+     * Get a byte from the sector data.
+     */
+    getByte(binary, trackOffset, index) {
+        return binary[trackOffset + this.offset + index];
+    }
+}
+/**
+ * Represents a single track on a DMK floppy.
+ */
+class DmkTrack {
+    constructor(offset, sectors) {
+        this.offset = offset;
+        this.sectors = sectors;
+    }
+}
+/**
+ * Handles the DMK floppy disk file format, developed by David M. Keil.
+ *
+ * http://www.classiccmp.org/cpmarchives/trs80/mirrors/trs-80.com/early/www.trs-80.com/trs80-dm.htm
+ * http://www.classiccmp.org/cpmarchives/trs80/mirrors/www.discover-net.net/~dmkeil/trs80/trstech.htm
+ */
+class DmkFloppyDisk extends FloppyDisk_1.FloppyDisk {
+    constructor(binary, error, annotations, supportsDoubleDensity, writeProtected, trackCount, trackLength, flags, tracks) {
+        super(binary, error, annotations, supportsDoubleDensity);
+        this.writeProtected = writeProtected;
+        this.trackCount = trackCount;
+        this.trackLength = trackLength;
+        this.flags = flags;
+        this.tracks = tracks;
+    }
+    getDescription() {
+        return "Floppy disk (DMK)";
+    }
+    readSector(track, sector, side) {
+        return undefined;
+    }
+}
+exports.DmkFloppyDisk = DmkFloppyDisk;
+/**
+ * Decode a DMK floppy disk file.
+ */
+function decodeDmkFloppyDisk(binary) {
+    let error;
+    const annotations = [];
+    if (binary.length < FILE_HEADER_SIZE) {
+        return undefined;
+    }
+    // Decode the header. Comments marked [DMK] are from David Keil's original documentation.
+    // [DMK] If this byte is set to FFH the disk is `write protected', 00H allows writing.
+    const writeProtected = binary[0] === 0xFF;
+    if (binary[0] !== 0x00 && binary[0] !== 0xFF) {
+        return undefined;
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(writeProtected ? "Write protected" : "Writable", 0, 1));
+    // [DMK] Number of tracks on virtual disk. Since tracks start at 0 this value will be one greater
+    // than the highest track written to the disk. So a disk with 40 tracks will have a value
+    // of 40 (28H) in this field after formatting while the highest track written would be 39.
+    // This field is updated after a track is formatted if the track formatted is greater than
+    // or equal to the current number of tracks. Re-formatting a disk with fewer tracks will
+    // NOT reduce the number of tracks on the virtual disk. Once a virtual disk has allocated
+    // space for a track it will NEVER release it. Formatting a virtual disk with 80 tracks
+    // then re-formatting it with 40 tracks would waste space just like formatting only 40
+    // tracks on an 80 track drive. The emulator and TRS-80 operating system don't care.
+    // To re-format a virtual disk with fewer tracks use the /I option at start-up to
+    // delete and re-create the virtual disk first, then re-format to save space.
+    //
+    // [DMK] Note: This field should NEVER be modified. Changing this number will cause TRS-80
+    // operating system disk errors. (Like reading an 80 track disk in a 40 track drive)
+    const trackCount = binary[1];
+    if (trackCount > 160) {
+        // Not sure what a reasonable maximum is. I've only see 80.
+        return undefined;
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(trackCount + " tracks", 1, 2));
+    // [DMK] This is the track length for the virtual disk. By default the value is 1900H, 80H bytes
+    // more than the actual track length, this gives a track length of 6272 bytes. A real double
+    // density track length is approx. 6250 bytes. This is the default value when a virtual disk is created.
+    // Values for other disk and format types are 0CC0H for single density 5.25" floppies,
+    // 14E0H for single density 8" floppies and 2940H for double density 8" floppies. The max value is 2940H.
+    // For normal formatting of disks the values of 1900H and 2940H for 5.25" and 8" are used.
+    // The emulator will write two bytes and read every second byte when  in single density to maintain
+    // proper sector spacing, allowing mixed density disks. Setting the track length must be done before
+    // a virtual disk is formatted or the disk will have to be re-formatted and since the space for the
+    // disk has already been allocated no space will be saved.
+    //
+    // [DMK] WARNING: Bytes are entered in reverse order (ex. 2940H would be entered, byte 2=40, byte 3=29).
+    //
+    // [DMK] Note: No modification of the track length is necessary, doing so only saves space and is not
+    // necessary to normal operation. The values for all normal 5.25" and 8" disks are set when the
+    // virtual disk is created. DON'T modify the track length unless you understand these instructions completely.
+    // Nothing in the PC world can be messed up by improper modification but any other virtual disk mounted
+    // in the emulator with an improperly modified disk could have their data scrambled.
+    const trackLength = binary[2] + (binary[3] << 8);
+    if (trackLength > 0x2940) {
+        return undefined;
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(trackLength + " bytes per track", 2, 4));
+    // Sanity check.
+    const expectedLength = FILE_HEADER_SIZE + trackCount * trackLength;
+    if (binary.length !== expectedLength) {
+        console.error(`DMK file wrong size (${binary.length} != ${expectedLength}`);
+        return undefined;
+    }
+    // [DMK] Virtual disk option flags.
+    //
+    // [DMK] Bit 4 of this byte, if set, means this is a single sided ONLY disk. This bit is set if the
+    // user selects single sided during disk creation and should not require modification. This flag is
+    // used only to save PC hard disk space and is never required.
+    //
+    // [DMK] Bit 6 of this byte, if set, means this disk is to be single density size and the emulator
+    // will access one byte instead of two when doing I/O in single density. Double density can still
+    // be written to a single density disk but with half the track length only 10 256 byte sectors can be
+    // written in either density. Mixed density is also possible but sector timing may be off so protected
+    // disks may not work, a maximum of 10 256 byte sectors of mixed density can be written to a
+    // single density disk. A program like "Spook House" which has a mixed density track 0 with 1 SD sector
+    // and 1 DD sector and the rest of the disk consisting of 10 SD sectors/track will work with this flag set
+    // and save half the PC hard disk space. The protected disk "Super Utility + 3.0" however has 6 SD and 6 DD
+    // sectors/track for a total of 12 256 byte sectors/track. This disk cannot be single density.
+    // This bit is set if the user selects single density during disk creation and should
+    // not require modification. This flag is used only to save PC hard disk space and is never required.
+    //
+    // [DMK] Bit 7 of this byte, if set, means density is to be ignored when accessing this disk. The disk MUST
+    // be formatted in double density but the emulator will then read and write the sectors in either density.
+    // The emulator will access one byte instead of two when doing I/O in single density.
+    // This flag was an early way to support mixed density disks it is no longer needed for this purpose.
+    // It is now used for compatibility with old virtual disks created without the double byte now used when in
+    // single density. This bit can be set manually in a hex editor to access old virtual disks written
+    // in single density.
+    const flags = binary[4];
+    const flagParts = [];
+    if ((flags & 0x10) !== 0) {
+        flagParts.push("SS");
+    }
+    if ((flags & 0x40) !== 0) {
+        flagParts.push("SD");
+    }
+    if ((flags & 0x80) !== 0) {
+        flagParts.push("ignore density");
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Flags: [" + flagParts.join(",") + "]", 4, 5));
+    // Should we check that these are zero?
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Reserved", 5, 12));
+    // [DMK] Must be zero if virtual disk is in emulator's native format.
+    //
+    // [DMK] Must be 12345678h if virtual disk is a REAL disk specification file used to access
+    // REAL TRS-80 floppies in compatible PC drives.
+    if (binary[12] + binary[13] + binary[14] + binary[15] !== 0x00) {
+        return undefined;
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Virtual disk", 12, 16));
+    // Read the tracks.
+    let binaryOffset = FILE_HEADER_SIZE;
+    const tracks = [];
+    for (let trackNumber = 0; trackNumber < trackCount; trackNumber++) {
+        const trackOffset = binaryOffset;
+        // Read the track header. The term "IDAM" in the comment below refers to the "ID access mark",
+        // where "ID" is referring to the sector ID, the few byte just before the sector data.
+        // [DMK] Each side of each track has a 128 (80H) byte header which contains an offset pointer
+        // to each IDAM in the track. This allows a maximum of 64 sector IDAMs/track. This is more than
+        // twice what an 8 inch disk would require and 3.5 times that of a normal TRS-80 5 inch DD disk.
+        // This should more than enough for any protected disk also.
+        //
+        // [DMK] These IDAM pointers MUST adhere to the following rules:
+        //
+        // * Each pointer is a 2 byte offset to the FEh byte of the IDAM. In double byte single density
+        //   the pointer is to the first FEh.
+        // * The offset includes the 128 byte header. For example, an IDAM 10h bytes into the track would
+        //   have a pointer of 90h, 10h+80h=90h.
+        // * The IDAM offsets MUST be in ascending order with no unused or bad pointers.
+        // * If all the entries are not used the header is terminated with a 0000h entry. Unused entries
+        //   must also be zero filled..
+        // * Any IDAMs overwritten during a sector write command should have their entry removed from the
+        //   header and all other pointer entries shifted to fill in.
+        // * The IDAM pointers are created during the track write command (format). A completed track write
+        //   MUST remove all previous IDAM pointers. A partial track write (aborted with the forced interrupt
+        //   command) MUST have it's previous pointers that were not overwritten added to the new IDAM pointers.
+        // * The pointer bytes are stored in reverse order (LSB/MSB).
+        //
+        // [DMK] Each IDAM pointer has two flags. Bit 15 is set if the sector is double density. Bit 14 is
+        // currently undefined. These bits must be masked to get the actual sector offset. For example,
+        // an offset to an IDAM at byte 90h would be 0090h if single density and 8090h if double density.
+        const sectors = [];
+        for (let i = 0; i < TRACK_HEADER_SIZE; i += 2) {
+            const sectorOffset = binary[binaryOffset + i] + (binary[binaryOffset + i + 1] << 8);
+            if (sectorOffset !== 0) {
+                sectors.push(new DmkSector((sectorOffset & 0x8000) !== 0, sectorOffset & 0x7FFF));
+            }
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Track ${trackNumber} header`, binaryOffset, binaryOffset + TRACK_HEADER_SIZE));
+        for (const sector of sectors) {
+            let i = trackOffset + sector.offset;
+            {
+                let crc = 0;
+                for (let j = -3; j < 5; j++) {
+                    const byte = binary[trackOffset + sector.offset + j];
+                    console.log("Updating with " + main_1.toHexByte(byte));
+                    crc = Crc16_1.CRC_16_CCITT.update(crc, byte);
+                }
+                console.log("CRC = " + main_1.toHexWord(crc));
+            }
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector ID access mark", i, i + 1));
+            i++;
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Cylinder " + sector.getCylinder(binary, trackOffset), i, i + 1));
+            i++;
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Side " + sector.getSide(binary, trackOffset), i, i + 1));
+            i++;
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector " + sector.getSectorNumber(binary, trackOffset), i, i + 1));
+            i++;
+            const sectorLength = sector.getLength(binary, trackOffset);
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Length " + sectorLength, i, i + 1));
+            i++;
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("IDAM CRC", i, i + 2));
+            i += 2;
+            i += 22 + 12 + 3 + 1;
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector data", i, i + sectorLength));
+            i += sectorLength;
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Data CRC", i, i + 2));
+            i += 2;
+        }
+        tracks.push(new DmkTrack(trackOffset, sectors));
+        binaryOffset += trackLength;
+    }
+    return new DmkFloppyDisk(binary, error, annotations, true, writeProtected, trackCount, trackLength, flags, tracks);
+}
+exports.decodeDmkFloppyDisk = decodeDmkFloppyDisk;
+
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CRC_16_CCITT = exports.Crc16 = void 0;
+/**
+ * Performs CRC-16 operations treating bits as big-endian.
+ *
+ * https://en.wikipedia.org/wiki/Cyclic_redundancy_check
+ * https://en.wikipedia.org/wiki/Computation_of_cyclic_redundancy_checks
+ * https://en.wikipedia.org/wiki/Mathematics_of_cyclic_redundancy_checks
+ */
+class Crc16 {
+    /**
+     * Specifies the generator, which must be a 16-bit value.
+     */
+    constructor(generator) {
+        this.generator = generator;
+    }
+    /**
+     * Update the CRC with the new data, which must be a byte.
+     *
+     * @return the new CRC.
+     */
+    update(crc, data) {
+        for (let shift = 8; shift < 16; shift++) {
+            const isOne = ((crc ^ (data << shift)) & 0x8000) !== 0;
+            crc <<= 1;
+            if (isOne) {
+                crc ^= this.generator;
+            }
+        }
+        crc &= 0xFFFF;
+        return crc;
+    }
+}
+exports.Crc16 = Crc16;
+/**
+ * The CRC-16-CCITT polynomial, used for floppy disks. The polynomial is
+ * x^16 + x^12 + x^5 + 1, which maps to 0x11021, but the leading 1 is
+ * removed because it doesn't affect the outcome.
+ */
+exports.CRC_16_CCITT = new Crc16(0x1021);
+
+
+/***/ }),
 /* 154 */,
 /* 155 */,
 /* 156 */,
@@ -51484,9 +51832,10 @@ class SectorInfo {
  * Floppy disk in the JV3 format.
  */
 class Jv3FloppyDisk extends FloppyDisk_1.FloppyDisk {
-    constructor(binary, error, annotations, sectorInfos) {
+    constructor(binary, error, annotations, sectorInfos, writeProtected) {
         super(binary, error, annotations, true);
         this.sectorInfos = sectorInfos;
+        this.writeProtected = writeProtected;
     }
     getDescription() {
         return "Floppy disk (JV3)";
@@ -51556,9 +51905,9 @@ function decodeJv3FloppyDisk(binary) {
     if (writable !== 0 && writable !== 0xFF) {
         error = "Invalid \"writable\" byte: 0x" + main_1.toHexByte(writable);
     }
-    const copyProtected = writable === 0;
-    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(copyProtected ? "Copy protected" : "Writable", writableOffset, writableOffset + 1));
-    return new Jv3FloppyDisk(binary, error, annotations, sectorInfos);
+    const writeProtected = writable === 0;
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(writeProtected ? "Write protected" : "Writable", writableOffset, writableOffset + 1));
+    return new Jv3FloppyDisk(binary, error, annotations, sectorInfos, writeProtected);
 }
 exports.decodeJv3FloppyDisk = decodeJv3FloppyDisk;
 
