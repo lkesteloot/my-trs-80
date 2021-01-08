@@ -5383,8 +5383,6 @@ class Trs80File {
     constructor(binary, error, annotations) {
         this.binary = binary;
         this.error = error;
-        // Sort in case they were generated out of order.
-        annotations.sort((a, b) => a.begin - b.begin);
         this.annotations = annotations;
     }
 }
@@ -38866,16 +38864,21 @@ class HexdumpGenerator_HexdumpGenerator {
                 }
             }
         };
+        // Sort in case they were generated out of order.
+        this.annotations.sort((a, b) => a.begin - b.begin);
         let lastAnnotation = undefined;
         for (const annotation of this.annotations) {
-            if (lastAnnotation !== undefined && lastAnnotation.end !== annotation.begin) {
+            if (lastAnnotation !== undefined && lastAnnotation.end < annotation.begin) {
                 generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotation.end, annotation.begin));
             }
-            generateAnnotation(annotation);
+            // Make sure there are no overlapping annotations.
+            if (lastAnnotation === undefined || lastAnnotation.end <= annotation.begin) {
+                generateAnnotation(annotation);
+            }
             lastAnnotation = annotation;
         }
         const lastAnnotationEnd = lastAnnotation !== undefined ? lastAnnotation.end : 0;
-        if (lastAnnotationEnd !== binary.length) {
+        if (lastAnnotationEnd < binary.length) {
             generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
         }
         // Final address to show where file ends.
@@ -51288,58 +51291,109 @@ exports.PromiseSimpleEventHandlingBase = PromiseSimpleEventHandlingBase;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeDmkFloppyDisk = exports.DmkFloppyDisk = void 0;
+const z80_base_1 = __webpack_require__(42);
+const Crc16_1 = __webpack_require__(153);
 const FloppyDisk_1 = __webpack_require__(111);
 const ProgramAnnotation_1 = __webpack_require__(15);
-const Crc16_1 = __webpack_require__(153);
-const main_1 = __webpack_require__(56);
 const FILE_HEADER_SIZE = 16;
 const TRACK_HEADER_SIZE = 128;
 /**
  * Represents a single sector on a DMK floppy.
  */
 class DmkSector {
-    constructor(doubleDensity, offset) {
+    constructor(track, doubleDensity, offset) {
+        this.track = track;
         this.doubleDensity = doubleDensity;
         this.offset = offset;
     }
     /**
      * Get the cylinder for this sector. This is 0-based.
      */
-    getCylinder(binary, trackOffset) {
-        return this.getByte(binary, trackOffset, 1);
+    getCylinder() {
+        return this.getByte(1);
     }
     /**
      * Get the side for this sector, 0 for front and 1 for back.
      */
-    getSide(binary, trackOffset) {
-        return this.getByte(binary, trackOffset, 2);
+    getSide() {
+        return this.getByte(2);
     }
     /**
      * Get the sector number for this sector. This is 1-based.
      */
-    getSectorNumber(binary, trackOffset) {
-        return this.getByte(binary, trackOffset, 3);
+    getSectorNumber() {
+        return this.getByte(3);
     }
     /**
      * Get the sector length in bytes.
      */
-    getLength(binary, trackOffset) {
-        return 128 * (1 << this.getByte(binary, trackOffset, 4));
+    getLength() {
+        return 128 * (1 << this.getByte(4));
+    }
+    /**
+     * Get the CRC for the IDAM.
+     */
+    getIdamCrc() {
+        // Bit endian.
+        return (this.getByte(5) << 8) + this.getByte(6);
+    }
+    /**
+     * Compute the CRC for the IDAM.
+     */
+    computeIdemCrc() {
+        let crc = 0xFFFF;
+        for (let i = -3; i < 5; i++) {
+            crc = Crc16_1.CRC_16_CCITT.update(crc, this.getByte(i));
+        }
+        return crc;
+    }
+    /**
+     * Get the CRC for the data bytes.
+     */
+    getDataCrc() {
+        // Bit endian.
+        const index = this.getSectorIndex() + this.getLength();
+        return (this.getByte(index) << 8) + this.getByte(index + 1);
+    }
+    /**
+     * Compute the CRC for the data bytes.
+     */
+    computeDataCrc() {
+        let crc = 0xFFFF;
+        const index = this.getSectorIndex();
+        const begin = index - 4;
+        const end = index + this.getLength();
+        for (let i = begin; i < end; i++) {
+            crc = Crc16_1.CRC_16_CCITT.update(crc, this.getByte(i));
+        }
+        return crc;
+    }
+    /**
+     * Get the index into the sector binary for the first data byte.
+     */
+    getSectorIndex() {
+        return 45;
     }
     /**
      * Get a byte from the sector data.
+     *
+     * @param index index into the sector, relative to the 0xFE byte. Can be negative.
      */
-    getByte(binary, trackOffset, index) {
-        return binary[trackOffset + this.offset + index];
+    getByte(index) {
+        return this.track.floppyDisk.binary[this.track.offset + this.offset + index];
     }
 }
 /**
  * Represents a single track on a DMK floppy.
  */
 class DmkTrack {
-    constructor(offset, sectors) {
+    constructor(floppyDisk, offset) {
+        /**
+         * Sectors in this track.
+         */
+        this.sectors = [];
+        this.floppyDisk = floppyDisk;
         this.offset = offset;
-        this.sectors = sectors;
     }
 }
 /**
@@ -51349,13 +51403,13 @@ class DmkTrack {
  * http://www.classiccmp.org/cpmarchives/trs80/mirrors/www.discover-net.net/~dmkeil/trs80/trstech.htm
  */
 class DmkFloppyDisk extends FloppyDisk_1.FloppyDisk {
-    constructor(binary, error, annotations, supportsDoubleDensity, writeProtected, trackCount, trackLength, flags, tracks) {
+    constructor(binary, error, annotations, supportsDoubleDensity, writeProtected, trackCount, trackLength, flags) {
         super(binary, error, annotations, supportsDoubleDensity);
+        this.tracks = [];
         this.writeProtected = writeProtected;
         this.trackCount = trackCount;
         this.trackLength = trackLength;
         this.flags = flags;
-        this.tracks = tracks;
     }
     getDescription() {
         return "Floppy disk (DMK)";
@@ -51369,7 +51423,7 @@ exports.DmkFloppyDisk = DmkFloppyDisk;
  * Decode a DMK floppy disk file.
  */
 function decodeDmkFloppyDisk(binary) {
-    let error;
+    const error = undefined;
     const annotations = [];
     if (binary.length < FILE_HEADER_SIZE) {
         return undefined;
@@ -51427,7 +51481,7 @@ function decodeDmkFloppyDisk(binary) {
     // Sanity check.
     const expectedLength = FILE_HEADER_SIZE + trackCount * trackLength;
     if (binary.length !== expectedLength) {
-        console.error(`DMK file wrong size (${binary.length} != ${expectedLength}`);
+        console.error(`DMK file wrong size (${binary.length} != ${expectedLength})`);
         return undefined;
     }
     // [DMK] Virtual disk option flags.
@@ -51477,11 +51531,12 @@ function decodeDmkFloppyDisk(binary) {
         return undefined;
     }
     annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Virtual disk", 12, 16));
+    const floppyDisk = new DmkFloppyDisk(binary, error, annotations, true, writeProtected, trackCount, trackLength, flags);
     // Read the tracks.
     let binaryOffset = FILE_HEADER_SIZE;
-    const tracks = [];
     for (let trackNumber = 0; trackNumber < trackCount; trackNumber++) {
         const trackOffset = binaryOffset;
+        const track = new DmkTrack(floppyDisk, trackOffset);
         // Read the track header. The term "IDAM" in the comment below refers to the "ID access mark",
         // where "ID" is referring to the sector ID, the few byte just before the sector data.
         // [DMK] Each side of each track has a 128 (80H) byte header which contains an offset pointer
@@ -51508,48 +51563,56 @@ function decodeDmkFloppyDisk(binary) {
         // [DMK] Each IDAM pointer has two flags. Bit 15 is set if the sector is double density. Bit 14 is
         // currently undefined. These bits must be masked to get the actual sector offset. For example,
         // an offset to an IDAM at byte 90h would be 0090h if single density and 8090h if double density.
-        const sectors = [];
         for (let i = 0; i < TRACK_HEADER_SIZE; i += 2) {
             const sectorOffset = binary[binaryOffset + i] + (binary[binaryOffset + i + 1] << 8);
             if (sectorOffset !== 0) {
-                sectors.push(new DmkSector((sectorOffset & 0x8000) !== 0, sectorOffset & 0x7FFF));
+                track.sectors.push(new DmkSector(track, (sectorOffset & 0x8000) !== 0, sectorOffset & 0x7FFF));
             }
         }
         annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Track ${trackNumber} header`, binaryOffset, binaryOffset + TRACK_HEADER_SIZE));
-        for (const sector of sectors) {
+        for (const sector of track.sectors) {
             let i = trackOffset + sector.offset;
-            {
-                let crc = 0;
-                for (let j = -3; j < 5; j++) {
-                    const byte = binary[trackOffset + sector.offset + j];
-                    console.log("Updating with " + main_1.toHexByte(byte));
-                    crc = Crc16_1.CRC_16_CCITT.update(crc, byte);
-                }
-                console.log("CRC = " + main_1.toHexWord(crc));
-            }
             annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector ID access mark", i, i + 1));
             i++;
-            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Cylinder " + sector.getCylinder(binary, trackOffset), i, i + 1));
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Cylinder " + sector.getCylinder(), i, i + 1));
             i++;
-            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Side " + sector.getSide(binary, trackOffset), i, i + 1));
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Side " + sector.getSide(), i, i + 1));
             i++;
-            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector " + sector.getSectorNumber(binary, trackOffset), i, i + 1));
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector " + sector.getSectorNumber(), i, i + 1));
             i++;
-            const sectorLength = sector.getLength(binary, trackOffset);
+            const sectorLength = sector.getLength();
             annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Length " + sectorLength, i, i + 1));
             i++;
-            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("IDAM CRC", i, i + 2));
+            const actualIdamCrc = sector.computeIdemCrc();
+            const expectedIdamCrc = sector.getIdamCrc();
+            let idamCrcLabel = "IDAM CRC";
+            if (actualIdamCrc === expectedIdamCrc) {
+                idamCrcLabel += " (valid)";
+            }
+            else {
+                idamCrcLabel += ` (got 0x${z80_base_1.toHexWord(actualIdamCrc)}, expected 0x${z80_base_1.toHexWord(expectedIdamCrc)})`;
+            }
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation(idamCrcLabel, i, i + 2));
             i += 2;
-            i += 22 + 12 + 3 + 1;
+            i = trackOffset + sector.offset + sector.getSectorIndex();
             annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Sector data", i, i + sectorLength));
             i += sectorLength;
-            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Data CRC", i, i + 2));
+            const actualDataCrc = sector.computeDataCrc();
+            const expectedDataCrc = sector.getDataCrc();
+            let dataCrcLabel = "Data CRC";
+            if (actualDataCrc === expectedDataCrc) {
+                dataCrcLabel += " (valid)";
+            }
+            else {
+                dataCrcLabel += ` (got 0x${z80_base_1.toHexWord(actualDataCrc)}, expected 0x${z80_base_1.toHexWord(expectedDataCrc)})`;
+            }
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation(dataCrcLabel, i, i + 2));
             i += 2;
         }
-        tracks.push(new DmkTrack(trackOffset, sectors));
+        floppyDisk.tracks.push(track);
         binaryOffset += trackLength;
     }
-    return new DmkFloppyDisk(binary, error, annotations, true, writeProtected, trackCount, trackLength, flags, tracks);
+    return floppyDisk;
 }
 exports.decodeDmkFloppyDisk = decodeDmkFloppyDisk;
 
@@ -51589,8 +51652,7 @@ class Crc16 {
                 crc ^= this.generator;
             }
         }
-        crc &= 0xFFFF;
-        return crc;
+        return crc & 0xFFFF;
     }
 }
 exports.Crc16 = Crc16;
