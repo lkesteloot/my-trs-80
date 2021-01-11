@@ -1,4 +1,4 @@
-import {toHexByte, toHexWord} from "z80-base";
+import {toHex, toHexByte} from "z80-base";
 import {ProgramAnnotation} from "trs80-base/dist/ProgramAnnotation";
 import {isSameStringArray} from "./Utils";
 
@@ -78,6 +78,10 @@ export class HexdumpGenerator {
         const lines: HTMLElement[] = [];
         const binary = this.binary;
 
+        // Figure out the number of digits in the address: 4 or 6.
+        const addrDigits = binary.length < (2 << 16) ? 4 : 6;
+        const addrSpaces = "".padStart(addrDigits, " ");
+
         const generateAnnotation = (annotation: ProgramAnnotation) => {
             const beginAddr = Math.floor(annotation.begin/STRIDE)*STRIDE;
             const endAddr = Math.min(Math.ceil(annotation.end/STRIDE)*STRIDE, binary.length);
@@ -92,7 +96,7 @@ export class HexdumpGenerator {
                         if (allSameByte(binary, addr, STRIDE)) {
                             // Lots of the same byte repeated. Say many there are.
                             const count = countConsecutive(binary, addr);
-                            newSpan(line, "      ... ", "address");
+                            newSpan(line, addrSpaces + "   ... ", "address");
                             newSpan(line, count.toString(), "ascii");
                             newSpan(line, " (", "address");
                             newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
@@ -109,7 +113,7 @@ export class HexdumpGenerator {
                                     break;
                                 }
                             }
-                            newSpan(line, "      ... ", "address");
+                            newSpan(line, addrSpaces + "  ... ", "address");
                             newSpan(line, count.toString(), "ascii");
                             const plural = count === 1 ? "" : "s";
                             newSpan(line, ` repetition${plural} of previous row ...`, "address");
@@ -117,9 +121,9 @@ export class HexdumpGenerator {
 
                         // Draw vertical ellipsis.
                         if (annotation.text !== "" && addr !== beginAddr) {
-                            // This doesn't trigger a reflow. Don't use innerText, which does.
+                            // textContent doesn't trigger a reflow. Don't use innerText, which does.
                             const lineText = line.textContent ?? "";
-                            const width = STRIDE*4 + 13;
+                            const width = addrDigits + STRIDE*4 + 9;
                             const label = String.fromCodePoint(0x22EE).padStart(width - lineText.length, " ");
                             newSpan(line, label, "annotation");
                         }
@@ -136,7 +140,7 @@ export class HexdumpGenerator {
                             label = "  " + String.fromCodePoint(0x22EE);
                         }
                     }
-                    this.generateRow(lines, addr, annotation.begin, annotation.end, label);
+                    this.generateRow(lines, addr, addrDigits, annotation.begin, annotation.end, label);
                 }
             }
         };
@@ -161,12 +165,14 @@ export class HexdumpGenerator {
         }
 
         // Final address to show where file ends.
-        newSpan(newLine(lines), toHexWord(binary.length), "address");
+        newSpan(newLine(lines), toHex(binary.length, addrDigits), "address");
 
         return lines;
     }
 
-    private generateRow(lines: HTMLElement[], addr: number, beginAddr: number, endAddr: number, label: string) {
+    private generateRow(lines: HTMLElement[], addr: number, addrDigits: number,
+                        beginAddr: number, endAddr: number, label: string) {
+
         const binary = this.binary;
 
         const line = newLine(lines);
@@ -174,7 +180,7 @@ export class HexdumpGenerator {
         if (addr < beginAddr) {
             cssClass.push("outside-annotation");
         }
-        newSpan(line, toHexWord(addr) + "  ", ...cssClass);
+        newSpan(line, toHex(addr, addrDigits) + "  ", ...cssClass);
 
         // Utility function for adding text to a line, minimizing the number of needless spans.
         let currentCssClass: string[] | undefined = undefined;

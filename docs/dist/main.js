@@ -42745,6 +42745,9 @@ class HexdumpGenerator_HexdumpGenerator {
     generate() {
         const lines = [];
         const binary = this.binary;
+        // Figure out the number of digits in the address: 4 or 6.
+        const addrDigits = binary.length < (2 << 16) ? 4 : 6;
+        const addrSpaces = "".padStart(addrDigits, " ");
         const generateAnnotation = (annotation) => {
             var _a;
             const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
@@ -42758,7 +42761,7 @@ class HexdumpGenerator_HexdumpGenerator {
                         if (allSameByte(binary, addr, STRIDE)) {
                             // Lots of the same byte repeated. Say many there are.
                             const count = countConsecutive(binary, addr);
-                            newSpan(line, "      ... ", "address");
+                            newSpan(line, addrSpaces + "   ... ", "address");
                             newSpan(line, count.toString(), "ascii");
                             newSpan(line, " (", "address");
                             newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
@@ -42777,16 +42780,16 @@ class HexdumpGenerator_HexdumpGenerator {
                                     break;
                                 }
                             }
-                            newSpan(line, "      ... ", "address");
+                            newSpan(line, addrSpaces + "  ... ", "address");
                             newSpan(line, count.toString(), "ascii");
                             const plural = count === 1 ? "" : "s";
                             newSpan(line, ` repetition${plural} of previous row ...`, "address");
                         }
                         // Draw vertical ellipsis.
                         if (annotation.text !== "" && addr !== beginAddr) {
-                            // This doesn't trigger a reflow. Don't use innerText, which does.
+                            // textContent doesn't trigger a reflow. Don't use innerText, which does.
                             const lineText = (_a = line.textContent) !== null && _a !== void 0 ? _a : "";
-                            const width = STRIDE * 4 + 13;
+                            const width = addrDigits + STRIDE * 4 + 9;
                             const label = String.fromCodePoint(0x22EE).padStart(width - lineText.length, " ");
                             newSpan(line, label, "annotation");
                         }
@@ -42804,7 +42807,7 @@ class HexdumpGenerator_HexdumpGenerator {
                             label = "  " + String.fromCodePoint(0x22EE);
                         }
                     }
-                    this.generateRow(lines, addr, annotation.begin, annotation.end, label);
+                    this.generateRow(lines, addr, addrDigits, annotation.begin, annotation.end, label);
                 }
             }
         };
@@ -42826,17 +42829,17 @@ class HexdumpGenerator_HexdumpGenerator {
             generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
         }
         // Final address to show where file ends.
-        newSpan(newLine(lines), Object(z80_base_dist["toHexWord"])(binary.length), "address");
+        newSpan(newLine(lines), Object(z80_base_dist["toHex"])(binary.length, addrDigits), "address");
         return lines;
     }
-    generateRow(lines, addr, beginAddr, endAddr, label) {
+    generateRow(lines, addr, addrDigits, beginAddr, endAddr, label) {
         const binary = this.binary;
         const line = newLine(lines);
         const cssClass = ["address"];
         if (addr < beginAddr) {
             cssClass.push("outside-annotation");
         }
-        newSpan(line, Object(z80_base_dist["toHexWord"])(addr) + "  ", ...cssClass);
+        newSpan(line, Object(z80_base_dist["toHex"])(addr, addrDigits) + "  ", ...cssClass);
         // Utility function for adding text to a line, minimizing the number of needless spans.
         let currentCssClass = undefined;
         let e = undefined;
@@ -43285,7 +43288,8 @@ class TrsdosTab_TrsdosTab {
             playButton.addEventListener("click", () => {
                 const binary = trsdos.readFile(dirEntry);
                 const program = Object(trs80_base_dist["decodeTrs80File"])(binary, dirEntry.getFilename("."));
-                // TODO should set context.runningFile
+                // Not quite the right file, but makes screenshots go to the floppy.
+                filePanel.context.runningFile = filePanel.file;
                 filePanel.context.trs80.runTrs80File(program);
                 filePanel.context.panelManager.close();
             });
@@ -53408,7 +53412,6 @@ class Trsdos {
      */
     readFile(dirEntry) {
         const parts = [];
-        console.log("---------- " + dirEntry.getFilename("."));
         let sectorCount = dirEntry.sectorCount + (dirEntry.lastSectorSize > 0 ? 1 : 0);
         for (const extent of dirEntry.extents) {
             let trackNumber = extent.trackNumber;
@@ -53419,7 +53422,6 @@ class Trsdos {
                     sectorNumber -= SECTORS_PER_TRACK;
                     trackNumber += 1;
                 }
-                console.log(`About to read ${trackNumber}, ${sectorNumber}`);
                 const sector = this.disk.readSector(trackNumber, FloppyDisk_1.Side.FRONT, sectorNumber);
                 if (sector === undefined) {
                     console.log(`Sector couldn't be read ${trackNumber}, ${sectorNumber}`);
@@ -53475,7 +53477,7 @@ function decodeTrsdos(disk) {
             const tandy = decodeAscii(dirSector.data.subarray(5 * DIR_ENTRY_LENGTH));
             if (tandy !== EXPECTED_TANDY) {
                 console.error(`Expected "${EXPECTED_TANDY}", got "${tandy}"`);
-                // return undefined?
+                return undefined;
             }
             for (let j = 0; j < 5; j++) {
                 const dirEntry = decodeDirEntry(dirSector.data.subarray(j * DIR_ENTRY_LENGTH, (j + 1) * DIR_ENTRY_LENGTH));
