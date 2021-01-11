@@ -43214,6 +43214,7 @@ class FileInfoTab_FileInfoTab {
 
 
 
+
 /**
  * Handles the TRSDOS tab in the file panel.
  */
@@ -43257,7 +43258,8 @@ class TrsdosTab_TrsdosTab {
         addDirEntryField("Size", "size", "header");
         addDirEntryField("Date", "date", "header");
         addDirEntryField("Permission", "protection-level", "header");
-        addDirEntryField("", "run", "header");
+        addDirEntryField("Run", "run", "header");
+        addDirEntryField("Import", "import", "header");
         for (const dirEntry of trsdos.dirEntries) {
             const extraCssClasses = [];
             if (dirEntry.isHidden()) {
@@ -43280,6 +43282,36 @@ class TrsdosTab_TrsdosTab {
                 filePanel.context.panelManager.close();
             });
             dirDiv.append(playButton);
+            // TODO this breaks the grid.
+            const user = filePanel.context.user;
+            if (user !== undefined) {
+                const importButton = makeIcon("get_app");
+                importButton.classList.add(...["import", ...extraCssClasses]);
+                importButton.addEventListener("click", () => {
+                    const binary = trsdos.readFile(dirEntry);
+                    let file = new File_FileBuilder()
+                        .withUid(user.uid)
+                        .withName(dirEntry.getBasename())
+                        .withNote(`Imported from "${filePanel.file.name}" floppy disk.`)
+                        .withAuthor(filePanel.file.author)
+                        .withReleaseYear(dirEntry.year > 75 ? (1900 + dirEntry.year).toString() : filePanel.file.releaseYear)
+                        .withFilename(dirEntry.getFilename("/"))
+                        .withShared(filePanel.file.shared) // Questionable.
+                        .withBinary(binary)
+                        .build();
+                    filePanel.context.db.addFile(file)
+                        .then(docRef => {
+                        file = file.builder().withId(docRef.id).build();
+                        filePanel.context.library.addFile(file);
+                        filePanel.context.openFilePanel(file);
+                    })
+                        .catch(error => {
+                        // TODO
+                        console.error("Error adding document: ", error);
+                    });
+                });
+                dirDiv.append(importButton);
+            }
         }
         pageTabs.addTab(tab);
     }

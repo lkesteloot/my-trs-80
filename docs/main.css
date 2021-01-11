@@ -52,6 +52,8 @@
 }
 
 body {
+    --icon-color: var(--foreground-secondary);
+
     margin: 0;
     padding: 0;
     background-color: var(--background);
@@ -70,7 +72,7 @@ body, input, textarea {
 
 /* Our own overrides for the material design icons. */
 .material-icons-override {
-    color: var(--foreground-secondary);
+    color: var(--icon-color);
     transition: color var(--button-transition-time) ease-in-out;
 }
 
@@ -829,7 +831,7 @@ button.icon-button {
     margin-top: 30px;
     display: grid;
     width: fit-content;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto;
     column-gap: 25px;
     align-items: center;
 }
@@ -851,8 +853,10 @@ button.icon-button {
     color: var(--violet);
 }
 
-.trsdos-tab .dir .run {
+.trsdos-tab .dir .run,
+.trsdos-tab .dir .import {
     cursor: pointer;
+    text-align: center;
 }
 
 .trsdos-tab .dir .header {
@@ -875,6 +879,11 @@ button.icon-button {
 
 .trsdos-tab .dir .protection-level.header {
     border-bottom: 1px solid var(--violet);
+}
+
+.trsdos-tab .dir .run.header,
+.trsdos-tab .dir .import.header {
+    border-bottom: 1px solid var(--icon-color);
 }
 
 .trsdos-tab .dir .hidden-file {
