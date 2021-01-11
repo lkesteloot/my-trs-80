@@ -4,7 +4,7 @@ import UpdateData = firebase.firestore.UpdateData;
 import {isSameStringArray} from "./Utils";
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import * as base64js from "base64-js";
-import {sha1} from "./sha1";
+import {sha1} from "./Sha1";
 
 /**
  * Represents a file that the user owns.

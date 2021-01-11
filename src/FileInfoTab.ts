@@ -131,12 +131,7 @@ export class FileInfoTab {
         }
         this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
         this.nameInput.addEventListener("input", () => {
-            let name = this.fileFromUi().name;
-            if (name === "") {
-                // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
-                name = "&nbsp;"
-            }
-            this.filePanel.setHeaderText(name);
+            this.filePanel.setHeaderText(this.fileFromUi().name);
         });
 
         this.revertButton.addEventListener("click", () => {

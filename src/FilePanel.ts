@@ -2,10 +2,11 @@ import {Panel} from "./Panel";
 import {File} from "./File";
 import {Context} from "./Context";
 import {PageTabs} from "./PageTabs";
-import {decodeTrs80File} from "trs80-base";
+import {decodeTrs80File, decodeTrsdos, FloppyDisk} from "trs80-base";
 import {HexdumpTab} from "./HexdumpTab";
 import {FileInfoTab} from "./FileInfoTab";
 import {IFilePanel} from "./IFilePanel";
+import {TrsdosTab} from "./TrsdosTab";
 
 /**
  * Panel to explore a file.
@@ -22,9 +23,21 @@ export class FilePanel extends Panel implements IFilePanel {
         const pageTabs = new PageTabs(this.content);
         new FileInfoTab(this, pageTabs, trs80File);
         new HexdumpTab(this.context, pageTabs, trs80File);
+
+        if (trs80File instanceof FloppyDisk) {
+            const trsdos = decodeTrsdos(trs80File);
+            if (trsdos !== undefined) {
+                new TrsdosTab(this, pageTabs, trsdos);
+            }
+        }
     }
 
     setHeaderText(header: string): void {
-        this.headerTextNode.innerText = header;
+        if (header === "") {
+            // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
+            this.headerTextNode.innerHTML = "&nbsp;";
+        } else {
+            this.headerTextNode.innerText = header;
+        }
     }
 }

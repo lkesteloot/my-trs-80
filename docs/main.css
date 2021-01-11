@@ -598,11 +598,6 @@ button.icon-button {
     padding: var(--side-padding);
 }
 
-.file-panel-form > * {
-    /* TODO delete */
-    xbackground-color: #ECC;
-}
-
 .file-panel-form label {
     display: block;
     color: var(--foreground-secondary);
@@ -799,4 +794,89 @@ button.icon-button {
 
 .hexdump .annotation {
     color: var(--violet);
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
+.trsdos-tab {
+    background-color: var(--background);
+    padding: var(--side-padding);
+    overflow-y: auto;
+}
+
+.trsdos-tab .info {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 15px;
+    width: fit-content;
+}
+
+.trsdos-tab .info .label {
+    font-weight: bold;
+    text-align: right;
+    color: var(--cyan);
+}
+
+.trsdos-tab .info .value {
+    color: var(--blue);
+}
+
+.trsdos-tab .info .empty-field {
+    opacity: 30%;
+}
+
+.trsdos-tab .dir {
+    margin-top: 30px;
+    display: grid;
+    width: fit-content;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 25px;
+    align-items: center;
+}
+
+.trsdos-tab .dir .filename {
+    color: var(--magenta);
+}
+
+.trsdos-tab .dir .size {
+    text-align: right;
+    color: var(--cyan);
+}
+
+.trsdos-tab .dir .date {
+    color: var(--blue);
+}
+
+.trsdos-tab .dir .protection-level {
+    color: var(--violet);
+}
+
+.trsdos-tab .dir .run {
+    cursor: pointer;
+}
+
+.trsdos-tab .dir .header {
+    font-weight: bold;
+    margin-bottom: 6px;
+    padding-bottom: 2px;
+}
+
+.trsdos-tab .dir .filename.header {
+    border-bottom: 1px solid var(--magenta);
+}
+
+.trsdos-tab .dir .size.header {
+    border-bottom: 1px solid var(--cyan);
+}
+
+.trsdos-tab .dir .date.header {
+    border-bottom: 1px solid var(--blue);
+}
+
+.trsdos-tab .dir .protection-level.header {
+    border-bottom: 1px solid var(--violet);
+}
+
+.trsdos-tab .dir .hidden-file {
+    opacity: 30%;
 }

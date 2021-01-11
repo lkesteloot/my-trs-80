@@ -30980,7 +30980,7 @@ class DmkFloppyDisk extends FloppyDisk_1.FloppyDisk {
         return "Floppy disk (DMK)";
     }
     readSector(trackNumber, side, sectorNumber) {
-        console.log(`readSector(${trackNumber}, ${sectorNumber}, ${side})`);
+        // console.log(`readSector(${trackNumber}, ${sectorNumber}, ${side})`);
         for (const track of this.tracks) {
             if (track.trackNumber === trackNumber) { // TODO not checking side.
                 for (const sector of track.sectors) {
@@ -40943,7 +40943,7 @@ class Library_Library {
 // EXTERNAL MODULE: ./node_modules/base64-js/index.js
 var base64_js = __webpack_require__(66);
 
-// CONCATENATED MODULE: ./src/sha1.ts
+// CONCATENATED MODULE: ./src/Sha1.ts
 // Convert a 32-bit unsigned number to a hex string.
 // TODO use the z80-base version of this.
 function toHexLong(value) {
@@ -43067,12 +43067,7 @@ class FileInfoTab_FileInfoTab {
         }
         this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
         this.nameInput.addEventListener("input", () => {
-            let name = this.fileFromUi().name;
-            if (name === "") {
-                // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
-                name = "&nbsp;";
-            }
-            this.filePanel.setHeaderText(name);
+            this.filePanel.setHeaderText(this.fileFromUi().name);
         });
         this.revertButton.addEventListener("click", () => {
             this.updateUi();
@@ -43214,7 +43209,84 @@ class FileInfoTab_FileInfoTab {
     }
 }
 
+// CONCATENATED MODULE: ./src/TrsdosTab.ts
+
+
+
+
+/**
+ * Handles the TRSDOS tab in the file panel.
+ */
+class TrsdosTab_TrsdosTab {
+    constructor(filePanel, pageTabs, trsdos) {
+        const tab = new PageTab_PageTab("TRSDOS");
+        tab.element.classList.add("trsdos-tab");
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add("info");
+        const addField = (label, value, cssClass) => {
+            const labelSpan = document.createElement("div");
+            labelSpan.classList.add(cssClass + "-label", "label");
+            labelSpan.innerText = label + ":";
+            infoDiv.append(labelSpan);
+            const valueSpan = document.createElement("div");
+            valueSpan.classList.add(cssClass, "value");
+            if (value === "") {
+                valueSpan.classList.add("empty-field");
+                valueSpan.innerText = "None";
+            }
+            else {
+                valueSpan.innerText = value;
+            }
+            infoDiv.append(valueSpan);
+        };
+        addField("Disk name", trsdos.gatInfo.name, "name");
+        addField("Date", trsdos.gatInfo.date, "date");
+        addField("Auto command", trsdos.gatInfo.autoCommand, "auto-command");
+        tab.element.append(infoDiv);
+        // Add directory.
+        const dirDiv = document.createElement("div");
+        dirDiv.classList.add("dir");
+        tab.element.append(dirDiv);
+        const addDirEntryField = (value, ...cssClass) => {
+            const dirEntry = document.createElement("div");
+            dirEntry.classList.add(...cssClass);
+            dirEntry.innerText = value;
+            dirDiv.append(dirEntry);
+        };
+        addDirEntryField("Filename", "filename", "header");
+        addDirEntryField("Size", "size", "header");
+        addDirEntryField("Date", "date", "header");
+        addDirEntryField("Permission", "protection-level", "header");
+        addDirEntryField("", "run", "header");
+        for (const dirEntry of trsdos.dirEntries) {
+            const extraCssClasses = [];
+            if (dirEntry.isHidden()) {
+                extraCssClasses.push("hidden-file");
+            }
+            if (dirEntry.getExtension() === "CMD") {
+                extraCssClasses.push("executable-file");
+            }
+            addDirEntryField(dirEntry.getFilename("/"), ...["filename", ...extraCssClasses]);
+            addDirEntryField(Object(teamten_ts_utils_dist["withCommas"])(dirEntry.getSize()), ...["size", ...extraCssClasses]);
+            addDirEntryField(dirEntry.getDate(), ...["date", ...extraCssClasses]);
+            addDirEntryField(Object(trs80_base_dist["trsdosProtectionLevelToString"])(dirEntry.getProtectionLevel()), ...["protection-level", ...extraCssClasses]);
+            const playButton = makeIcon("play_arrow");
+            playButton.classList.add(...["run", ...extraCssClasses]);
+            playButton.addEventListener("click", () => {
+                const binary = trsdos.readFile(dirEntry);
+                const program = Object(trs80_base_dist["decodeTrs80File"])(binary, dirEntry.getFilename("."));
+                // TODO should set context.runningFile
+                filePanel.context.trs80.runTrs80File(program);
+                filePanel.context.panelManager.close();
+            });
+            dirDiv.append(playButton);
+        }
+        pageTabs.addTab(tab);
+    }
+}
+
 // CONCATENATED MODULE: ./src/FilePanel.ts
+
 
 
 
@@ -43231,9 +43303,21 @@ class FilePanel_FilePanel extends Panel_Panel {
         const pageTabs = new PageTabs_PageTabs(this.content);
         new FileInfoTab_FileInfoTab(this, pageTabs, trs80File);
         new HexdumpTab_HexdumpTab(this.context, pageTabs, trs80File);
+        if (trs80File instanceof trs80_base_dist["FloppyDisk"]) {
+            const trsdos = Object(trs80_base_dist["decodeTrsdos"])(trs80File);
+            if (trsdos !== undefined) {
+                new TrsdosTab_TrsdosTab(this, pageTabs, trsdos);
+            }
+        }
     }
     setHeaderText(header) {
-        this.headerTextNode.innerText = header;
+        if (header === "") {
+            // If we completely blank out the span, the H1 shrinks, so keep it constant height with a space.
+            this.headerTextNode.innerHTML = "&nbsp;";
+        }
+        else {
+            this.headerTextNode.innerText = header;
+        }
     }
 }
 
@@ -52917,24 +53001,41 @@ class Z80_Z80 {
  * http://www.manmrk.net/tutorials/TRS80/Software/ldos/trs80/doc/prgguide.pdf
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeTrsdos = exports.Trsdos = exports.TrsdosDirEntry = exports.TrsdosHitInfo = exports.TrsdosGatInfo = exports.TrsdosExtent = exports.TrsdosProtectionLevel = void 0;
+exports.decodeTrsdos = exports.Trsdos = exports.TrsdosDirEntry = exports.TrsdosHitInfo = exports.TrsdosGatInfo = exports.TrsdosExtent = exports.trsdosProtectionLevelToString = exports.TrsdosProtectionLevel = void 0;
 const teamten_ts_utils_1 = __webpack_require__(26);
 const FloppyDisk_1 = __webpack_require__(19);
 // Number of bytes per dir entry in the sector.
 const DIR_ENTRY_LENGTH = 48;
+// Apparently this is constant in TRSDOS.
+const BYTES_PER_SECTOR = 256;
 // Apparently this is 3, but somewhere else I read 6.
 const SECTORS_PER_GRANULE = 3;
 // The number of sectors on each track, numbered 1 to 18.
 const SECTORS_PER_TRACK = 18;
 // Copyright in the last 16 bytes of each directory sector.
 const EXPECTED_TANDY = "(c) 1980 Tandy";
-// For converting ASCII in binary code to strings. This defaults to UTF-8. They
-// don't support ASCII directly, but we don't expect non-ASCII letter.s
-const TEXT_DECODER = new TextDecoder();
 // Password value that means "no password".
 const NO_PASSWORD = 0xEF5C;
 // Password value for "PASSWORD".
 const PASSWORD = 0xD38F;
+/**
+ * Decodes binary into an ASCII string. Returns undefined if any non-ASCII value is
+ * found in the string, where "ASCII" is defined as being in the range 32 to 126 inclusive.
+ */
+function decodeAscii(binary, trim = true) {
+    const parts = [];
+    for (const b of binary) {
+        if (b < 32 || b >= 127) {
+            return undefined;
+        }
+        parts.push(String.fromCodePoint(b));
+    }
+    let s = parts.join("");
+    if (trim) {
+        s = s.trim();
+    }
+    return s;
+}
 /**
  * Lowest three bits of the directory entry's flag.
  */
@@ -52976,6 +53077,7 @@ function trsdosProtectionLevelToString(level) {
             return "UNKNOWN";
     }
 }
+exports.trsdosProtectionLevelToString = trsdosProtectionLevelToString;
 /**
  * A contiguous number of sectors for storing part of a file.
  */
@@ -53005,6 +53107,10 @@ function decodeExtents(binary, begin, end, trackFirst) {
         const granuleByte = binary[trackFirst ? i + 1 : i];
         const granuleOffset = granuleByte >> 5;
         const granuleCount = granuleByte & 0x1F;
+        if (trackNumber >= 40) {
+            // Not a TRSDOS disk.
+            return undefined;
+        }
         extents.push(new TrsdosExtent(trackNumber, granuleOffset, granuleCount));
     }
     return extents;
@@ -53023,16 +53129,26 @@ class TrsdosGatInfo {
 }
 exports.TrsdosGatInfo = TrsdosGatInfo;
 /**
- * Converts a sector to a GAT object.
+ * Converts a sector to a GAT object, or undefined if we don't think this is a GAT sector.
  */
 function decodeGatInfo(binary) {
     // One byte for each track.
     const gat = binary.subarray(0, 40);
+    // Top two bits don't map to anything, so must be zero.
+    for (const g of gat) {
+        if ((g & 0xC0) !== 0) {
+            return undefined;
+        }
+    }
     // Assume big endian.
     const password = (binary[0xCE] << 8) | binary[0xCF];
-    const name = TEXT_DECODER.decode(binary.subarray(0xD0, 0xD8)).trim();
-    const date = TEXT_DECODER.decode(binary.subarray(0xD8, 0xE0)).trim();
-    const autoCommand = binary[0xE0] === 0x0D ? "" : TEXT_DECODER.decode(binary.subarray(0xE0)).trim();
+    const name = decodeAscii(binary.subarray(0xD0, 0xD8));
+    const date = decodeAscii(binary.subarray(0xD8, 0xE0));
+    const autoCommand = binary[0xE0] === 0x0D ? "" : decodeAscii(binary.subarray(0xE0));
+    // Implies that this is not a TRSDOS disk.
+    if (name === undefined || date === undefined || autoCommand === undefined) {
+        return undefined;
+    }
     return new TrsdosGatInfo(gat, password, name, date, autoCommand);
 }
 /**
@@ -53046,25 +53162,28 @@ class TrsdosHitInfo {
 }
 exports.TrsdosHitInfo = TrsdosHitInfo;
 /**
- * Decode the Hash Index Table sector.
+ * Decode the Hash Index Table sector, or undefined if we don't think this is a TRSDOS disk.
  */
 function decodeHitInfo(binary) {
     // One byte for each file.
     const hit = binary.subarray(0, 80);
     const systemFiles = decodeExtents(binary, 0xE0, binary.length, false);
+    if (systemFiles === undefined) {
+        return undefined;
+    }
     return new TrsdosHitInfo(hit, systemFiles);
 }
 /**
  * Single (valid) directory entry for a file.
  */
 class TrsdosDirEntry {
-    constructor(flags, month, year, eof, lrl, filename, updatePassword, accessPassword, sectorCount, extents) {
+    constructor(flags, month, year, lastSectorSize, lrl, filename, updatePassword, accessPassword, sectorCount, extents) {
         this.flags = flags;
         this.month = month;
         this.year = year;
-        this.eof = eof;
+        this.lastSectorSize = lastSectorSize;
         this.lrl = lrl;
-        this.filename = filename;
+        this.rawFilename = filename;
         this.updatePassword = updatePassword;
         this.accessPassword = accessPassword;
         this.sectorCount = sectorCount;
@@ -53135,21 +53254,33 @@ class TrsdosDirEntry {
      * Get the basename (part before the period) of the filename.
      */
     getBasename() {
-        return this.filename.substr(0, 8).trim();
+        return this.rawFilename.substr(0, 8).trim();
     }
     /**
-     * Get the extension of the filename, including the period. If the filename
-     * has no extension, returns an empty string.
+     * Get the extension of the filename.
      */
     getExtension() {
-        const extension = this.filename.substr(8).trim();
-        return extension === "" ? "" : "." + extension;
+        return this.rawFilename.substr(8).trim();
     }
     /**
-     * Get a modern filename in the format of "foo.ext" or just "foo" if no extension is specified.
+     * Get the full filename (without the internal spaces of the raw filename). If the
+     * file has an extension, it will be preceded by the specified separator.
      */
-    getModernFilename() {
-        return this.getBasename() + this.getExtension();
+    getFilename(extensionSeparator) {
+        const extension = this.getExtension();
+        return this.getBasename() + (extension === "" ? "" : extensionSeparator + extension);
+    }
+    /**
+     * Return the size in bytes.
+     */
+    getSize() {
+        return this.sectorCount * BYTES_PER_SECTOR + this.lastSectorSize;
+    }
+    /**
+     * Return the date in MM/YY format.
+     */
+    getDate() {
+        return this.month.toString().padStart(2, "0") + "/" + this.year.toString().padStart(2, "0");
     }
 }
 exports.TrsdosDirEntry = TrsdosDirEntry;
@@ -53162,19 +53293,22 @@ function decodeDirEntry(binary) {
     if ((flags & 0x10) === 0 || binary[5] === 0) {
         return undefined;
     }
-    console.log(binary);
     const month = binary[1];
     const year = binary[2];
-    const eof = ((binary[3] - 1) & 0xFF) + 1; // 0 -> 256.
+    const lastSectorSize = binary[3];
     const lrl = ((binary[4] - 1) & 0xFF) + 1; // 0 -> 256.
-    const filename = TEXT_DECODER.decode(binary.subarray(5, 16)).trim();
+    const filename = decodeAscii(binary.subarray(5, 16));
     // Not sure how to convert these two into a number. Just use big endian.
     const updatePassword = (binary[16] << 8) | binary[17];
     const accessPassword = (binary[18] << 8) | binary[19];
     // Little endian.
     const sectorCount = (binary[21] << 8) | binary[20];
     const extents = decodeExtents(binary, 22, binary.length, true);
-    return new TrsdosDirEntry(flags, month, year, eof, lrl, filename, updatePassword, accessPassword, sectorCount, extents);
+    if (filename === undefined || extents === undefined) {
+        // This signals empty directory, but really should imply a non-TRSDOS disk.
+        return undefined;
+    }
+    return new TrsdosDirEntry(flags, month, year, lastSectorSize, lrl, filename, updatePassword, accessPassword, sectorCount, extents);
 }
 /**
  * A decoded TRSDOS diskette.
@@ -53191,8 +53325,8 @@ class Trsdos {
      */
     readFile(dirEntry) {
         const parts = [];
-        console.log("---------- " + dirEntry.getModernFilename());
-        let sectorCount = dirEntry.sectorCount;
+        console.log("---------- " + dirEntry.getFilename("."));
+        let sectorCount = dirEntry.sectorCount + (dirEntry.lastSectorSize > 0 ? 1 : 0);
         for (const extent of dirEntry.extents) {
             let trackNumber = extent.trackNumber;
             let sectorNumber = extent.granuleOffset * SECTORS_PER_GRANULE + 1;
@@ -53221,9 +53355,8 @@ class Trsdos {
             }
         }
         // Clip last sector.
-        if (parts.length > 0) {
-            console.log("Clipping from " + parts[parts.length - 1].length + " to " + dirEntry.eof);
-            parts[parts.length - 1] = parts[parts.length - 1].subarray(0, dirEntry.eof);
+        if (parts.length > 0 && dirEntry.lastSectorSize > 0) {
+            parts[parts.length - 1] = parts[parts.length - 1].subarray(0, dirEntry.lastSectorSize);
         }
         return teamten_ts_utils_1.concatByteArrays(parts);
     }
@@ -53233,21 +53366,30 @@ exports.Trsdos = Trsdos;
  * Decode a TRSDOS diskette, or return undefined if this does not look like such a diskette.
  */
 function decodeTrsdos(disk) {
+    // Decode Granule Allocation Table sector.
     const gatSector = disk.readSector(17, FloppyDisk_1.Side.FRONT, 1);
     if (gatSector === undefined || gatSector.deleted) {
         return undefined;
     }
     const gatInfo = decodeGatInfo(gatSector.data);
+    if (gatInfo === undefined) {
+        return undefined;
+    }
+    // Decode Hash Index Table sector.
     const hitSector = disk.readSector(17, FloppyDisk_1.Side.FRONT, 2);
     if (hitSector === undefined || hitSector.deleted) {
         return undefined;
     }
     const hitInfo = decodeHitInfo(hitSector.data);
+    if (hitInfo === undefined) {
+        return undefined;
+    }
+    // Decode directory entries.
     const dirEntries = [];
     for (let k = 0; k < 16; k++) {
         const dirSector = disk.readSector(17, FloppyDisk_1.Side.FRONT, k + 3);
         if (dirSector !== undefined) {
-            const tandy = TEXT_DECODER.decode(dirSector.data.subarray(5 * DIR_ENTRY_LENGTH)).trim();
+            const tandy = decodeAscii(dirSector.data.subarray(5 * DIR_ENTRY_LENGTH));
             if (tandy !== EXPECTED_TANDY) {
                 console.error(`Expected "${EXPECTED_TANDY}", got "${tandy}"`);
                 // return undefined?
