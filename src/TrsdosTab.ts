@@ -2,9 +2,10 @@ import {PageTabs} from "./PageTabs";
 import {decodeTrs80File, Trsdos, trsdosProtectionLevelToString} from "trs80-base";
 import {PageTab} from "./PageTab";
 import {withCommas} from "teamten-ts-utils";
-import {makeIcon} from "./Utils";
+import {makeIcon, makeTextButton} from "./Utils";
 import {IFilePanel} from "./IFilePanel";
 import {FileBuilder} from "./File";
+import JSZip from "jszip";
 
 /**
  * Handles the TRSDOS tab in the file panel.
@@ -13,6 +14,10 @@ export class TrsdosTab {
     constructor(filePanel: IFilePanel, pageTabs: PageTabs, trsdos: Trsdos) {
         const tab = new PageTab("TRSDOS");
         tab.element.classList.add("trsdos-tab");
+
+        const mainContents = document.createElement("div");
+        mainContents.classList.add("trsdos");
+        tab.element.append(mainContents);
 
         const infoDiv = document.createElement("div");
         infoDiv.classList.add("info");
@@ -34,13 +39,13 @@ export class TrsdosTab {
         addField("Disk name", trsdos.gatInfo.name, "name");
         addField("Date", trsdos.gatInfo.date, "date");
         addField("Auto command", trsdos.gatInfo.autoCommand, "auto-command");
-        tab.element.append(infoDiv);
+        mainContents.append(infoDiv);
 
         // Add directory.
 
         const dirDiv = document.createElement("div");
         dirDiv.classList.add("dir");
-        tab.element.append(dirDiv);
+        mainContents.append(dirDiv);
 
         const addDirEntryField = (value: string, ... cssClass: string[]): void => {
             const dirEntry = document.createElement("div");
@@ -66,7 +71,7 @@ export class TrsdosTab {
 
             addDirEntryField(dirEntry.getFilename("/"), ... ["filename", ...extraCssClasses]);
             addDirEntryField(withCommas(dirEntry.getSize()), ... ["size", ...extraCssClasses]);
-            addDirEntryField(dirEntry.getDate(), ... ["date", ...extraCssClasses]);
+            addDirEntryField(dirEntry.getDateString(), ... ["date", ...extraCssClasses]);
             addDirEntryField(trsdosProtectionLevelToString(dirEntry.getProtectionLevel()),
                 ... ["protection-level", ...extraCssClasses]);
 
@@ -115,6 +120,48 @@ export class TrsdosTab {
                 dirDiv.append(importButton);
             }
         }
+
+        const actionBar = document.createElement("div");
+        actionBar.classList.add("action-bar");
+        tab.element.append(actionBar);
+
+        // Make a ZIP file for export.
+        const exportZipButton = makeTextButton("Export ZIP", "get_app", "export-zip-button", () => {
+            const zip = new JSZip();
+
+            for (const dirEntry of trsdos.dirEntries) {
+                zip.file(dirEntry.getFilename("."), trsdos.readFile(dirEntry), {
+                    date: dirEntry.getDate(),
+                });
+            }
+
+            zip.generateAsync({
+                type: "blob",
+            })
+                .then(blob => {
+                    let filename = filePanel.file.filename;
+                    let i = filename.lastIndexOf("/");
+                    if (i >= 0) {
+                        // Strip path.
+                        filename = filename.substr(i + 1);
+                    }
+                    i = filename.lastIndexOf(".");
+                    if (i > 0) {
+                        // Strip existing extension.
+                        filename = filename.substr(0, i);
+                    }
+                    if (filename === "") {
+                        filename = "trsdos"
+                    }
+                    filename += ".zip";
+
+                    const a = document.createElement("a");
+                    a.href = window.URL.createObjectURL(blob);
+                    a.download = filename;
+                    a.click();
+                });
+        });
+        actionBar.append(exportZipButton);
 
         pageTabs.addTab(tab);
     }

@@ -801,33 +801,43 @@ button.icon-button {
 /* ----------------------------------------------------------------------------------------------------- */
 
 .trsdos-tab {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto; /* contents and action-bar */
+}
+
+.trsdos-tab .action-bar {
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.trsdos {
     background-color: var(--background);
     padding: var(--side-padding);
     overflow-y: auto;
 }
 
-.trsdos-tab .info {
+.trsdos .info {
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 15px;
     width: fit-content;
 }
 
-.trsdos-tab .info .label {
+.trsdos .info .label {
     font-weight: bold;
     text-align: right;
     color: var(--cyan);
 }
 
-.trsdos-tab .info .value {
+.trsdos .info .value {
     color: var(--blue);
 }
 
-.trsdos-tab .info .empty-field {
+.trsdos .info .empty-field {
     opacity: 30%;
 }
 
-.trsdos-tab .dir {
+.trsdos .dir {
     margin-top: 30px;
     display: grid;
     width: fit-content;
@@ -836,56 +846,62 @@ button.icon-button {
     align-items: center;
 }
 
-.trsdos-tab .dir .filename {
+/* Untested */
+body.signed-out .trsdos .dir {
+    /* Missing import button. Might be easier to disable it. */
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.trsdos .dir .filename {
     color: var(--magenta);
 }
 
-.trsdos-tab .dir .size {
+.trsdos .dir .size {
     text-align: right;
     color: var(--cyan);
 }
 
-.trsdos-tab .dir .date {
+.trsdos .dir .date {
     color: var(--blue);
 }
 
-.trsdos-tab .dir .protection-level {
+.trsdos .dir .protection-level {
     color: var(--violet);
 }
 
-.trsdos-tab .dir .run,
-.trsdos-tab .dir .import {
+.trsdos .dir .run,
+.trsdos .dir .import {
     cursor: pointer;
     text-align: center;
 }
 
-.trsdos-tab .dir .header {
+.trsdos .dir .header {
     font-weight: bold;
     margin-bottom: 6px;
     padding-bottom: 2px;
 }
 
-.trsdos-tab .dir .filename.header {
+.trsdos .dir .filename.header {
     border-bottom: 1px solid var(--magenta);
 }
 
-.trsdos-tab .dir .size.header {
+.trsdos .dir .size.header {
     border-bottom: 1px solid var(--cyan);
 }
 
-.trsdos-tab .dir .date.header {
+.trsdos .dir .date.header {
     border-bottom: 1px solid var(--blue);
 }
 
-.trsdos-tab .dir .protection-level.header {
+.trsdos .dir .protection-level.header {
     border-bottom: 1px solid var(--violet);
 }
 
-.trsdos-tab .dir .run.header,
-.trsdos-tab .dir .import.header {
+.trsdos .dir .run.header,
+.trsdos .dir .import.header {
     border-bottom: 1px solid var(--icon-color);
 }
 
-.trsdos-tab .dir .hidden-file {
+.trsdos .dir .hidden-file {
     opacity: 30%;
 }

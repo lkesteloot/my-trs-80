@@ -30,6 +30,7 @@
     "firebaseui": "^4.7.1",
     "jss": "^10.0.3",
     "jss-preset-default": "^10.0.3",
+    "jszip": "^3.5.0",
     "lodash": "^4.17.20",
     "split.js": "^1.5.11",
     "strongly-typed-events": "^1.7.3",
