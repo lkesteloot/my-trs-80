@@ -6,6 +6,9 @@ import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import * as base64js from "base64-js";
 import {sha1} from "./Sha1";
 
+// What's considered a "new" file.
+const NEW_SECONDS = 60*60*24*7;
+
 /**
  * Represents a file that the user owns.
  */
@@ -18,6 +21,7 @@ export class File {
     public readonly author: string;
     public readonly releaseYear: string;
     public readonly shared: boolean;
+    public readonly tags: string[]; // Don't modify this, treat as immutable. Always sorted alphabetically.
     public readonly hash: string;
     public readonly screenshots: string[]; // Don't modify this, treat as immutable.
     public readonly binary: Uint8Array;
@@ -25,7 +29,7 @@ export class File {
     public readonly modifiedAt: Date;
 
     constructor(id: string, uid: string, name: string, filename: string, note: string,
-                author: string, releaseYear: string, shared: boolean, hash: string,
+                author: string, releaseYear: string, shared: boolean, tags: string[], hash: string,
                 screenshots: string[], binary: Uint8Array, addedAt: Date, modifiedAt: Date) {
 
         this.id = id;
@@ -36,6 +40,7 @@ export class File {
         this.author = author;
         this.releaseYear = releaseYear;
         this.shared = shared;
+        this.tags = [...tags].sort(); // Guarantee it's sorted.
         this.hash = hash;
         this.screenshots = screenshots;
         this.binary = binary;
@@ -56,6 +61,7 @@ export class File {
             author: this.author,
             releaseYear: this.releaseYear,
             shared: this.shared,
+            tags: this.tags,
             hash: this.hash,
             screenshots: this.screenshots,
             binary: base64js.fromByteArray(this.binary),
@@ -75,6 +81,7 @@ export class File {
         builder.author = this.author;
         builder.releaseYear = this.releaseYear;
         builder.shared = this.shared;
+        builder.tags = this.tags;
         builder.hash = this.hash;
         builder.screenshots = this.screenshots;
         builder.binary = this.binary;
@@ -108,6 +115,9 @@ export class File {
         if (this.shared !== oldFile.shared) {
             updateData.shared = this.shared;
         }
+        if (!isSameStringArray(this.tags, oldFile.tags)) {
+            updateData.tags = this.tags;
+        }
         if (this.hash !== oldFile.hash) {
             updateData.hash = this.hash;
         }
@@ -119,6 +129,35 @@ export class File {
         }
 
         return updateData;
+    }
+
+    /**
+     * Get all tags, both stored in the file and the automatically created ones.
+     */
+    public getAllTags(): string[] {
+        const autoTags: string[] = [];
+
+        if (this.shared) {
+            autoTags.push("Shared");
+        }
+        const now = Date.now();
+        if (now - this.addedAt.getTime() < NEW_SECONDS) {
+            autoTags.push("New");
+        }
+
+        // TODO better extension algorithm.
+        const i = this.filename.lastIndexOf(".");
+        if (i > 0) {
+            autoTags.push(this.filename.substr(i + 1).toUpperCase());
+        }
+
+        if (autoTags.length === 0) {
+            return this.tags;
+        } else {
+            // There may be some duplicats here, but leave them so the user can see that their tags
+            // are redundant.
+            return [...this.tags, ...autoTags].sort();
+        }
     }
 
     /**
@@ -156,6 +195,7 @@ export class FileBuilder {
     public author = "";
     public releaseYear = "";
     public shared = false;
+    public tags: string[] = [];
     public hash = "";
     public screenshots: string[] = [];
     public binary = new Uint8Array(0);
@@ -175,6 +215,7 @@ export class FileBuilder {
         builder.author = data.author ?? "";
         builder.releaseYear = data.releaseYear ?? "";
         builder.shared = data.shared ?? false;
+        builder.tags = data.tags ?? [];
         builder.hash = data.hash;
         builder.screenshots = data.screenshots ?? [];
         builder.binary = (data.binary as firebase.firestore.Blob).toUint8Array();
@@ -224,6 +265,11 @@ export class FileBuilder {
         return this;
     }
 
+    public withTags(tags: string[]): this {
+        this.tags = tags;
+        return this;
+    }
+
     public withScreenshots(screenshots: string[]): this {
         this.screenshots = screenshots;
         return this;
@@ -242,7 +288,7 @@ export class FileBuilder {
 
     public build(): File {
         return new File(this.id, this.uid, this.name, this.filename, this.note,
-            this.author, this.releaseYear, this.shared, this.hash,
+            this.author, this.releaseYear, this.shared, this.tags, this.hash,
             this.screenshots, this.binary, this.addedAt, this.modifiedAt);
     }
 }

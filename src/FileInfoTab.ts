@@ -1,7 +1,7 @@
 import {Trs80File} from "trs80-base";
 import {PageTabs} from "./PageTabs";
 import {PageTab} from "./PageTab";
-import {defer, formatDate, makeIcon, makeIconButton, makeTextButton} from "./Utils";
+import {defer, formatDate, makeIcon, makeIconButton, makeTagCapsule, makeTextButton} from "./Utils";
 import {LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {clearElement, withCommas} from "teamten-ts-utils";
 import {CanvasScreen} from "trs80-emulator";
@@ -24,10 +24,12 @@ export class FileInfoTab {
     private readonly noteInput: HTMLTextAreaElement;
     private readonly authorInput: HTMLInputElement;
     private readonly releaseYearInput: HTMLInputElement;
+    private readonly tags: string[];
     private readonly typeInput: HTMLInputElement;
     private readonly sizeInput: HTMLInputElement;
     private readonly addedAtInput: HTMLInputElement;
     private readonly modifiedAtInput: HTMLInputElement;
+    private readonly tagsInput: HTMLElement;
     private readonly sharedInput: HTMLInputElement;
     private readonly screenshotsDiv: HTMLElement;
     private readonly revertButton: HTMLButtonElement;
@@ -36,6 +38,10 @@ export class FileInfoTab {
     constructor(filePanel: IFilePanel, pageTabs: PageTabs, trs80File: Trs80File) {
         this.filePanel = filePanel;
         this.trs80File = trs80File;
+
+        // Make our own copy of tags that will reflect what's in the UI.
+        this.tags = [...filePanel.file.tags];
+        // this.tags = ["RetroStore", "CMD", "Mine", "Floppy"]; // TODO DELETE
 
         const tab = new PageTab("File Info");
         tab.element.classList.add("file-info-tab");
@@ -78,6 +84,17 @@ export class FileInfoTab {
         this.sizeInput = makeInputBox("Size", undefined, false);
         this.modifiedAtInput = makeInputBox("Last modified", undefined, false);
         {
+            // Tags editor.
+            const labelElement = document.createElement("label");
+            labelElement.innerText = "Tags";
+            form.append(labelElement);
+
+            this.tagsInput = document.createElement("div");
+            this.tagsInput.classList.add("tags-editor");
+            labelElement.append(this.tagsInput);
+        }
+        {
+            // Shared editor.
             const labelElement = document.createElement("label");
             labelElement.classList.add("shared");
             labelElement.innerText = "Shared";
@@ -212,12 +229,32 @@ export class FileInfoTab {
         this.sizeInput.value = withCommas(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
         this.addedAtInput.value = formatDate(file.addedAt);
         this.modifiedAtInput.value = formatDate(file.modifiedAt);
+        this.updateTagsInput();
         this.sharedInput.checked = file.shared;
         if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
             this.populateScreenshots();
         }
 
         this.updateButtonStatus();
+    }
+
+    /**
+     * Update the UI for showing and editing the tags on this file.
+     */
+    private updateTagsInput(): void {
+        clearElement(this.tagsInput);
+        for (const tag of this.tags) {
+            this.tagsInput.append(makeTagCapsule(tag, true, () => {
+                const i = this.tags.indexOf(tag);
+                if (i >= 0) {
+                    this.tags.splice(i, 1);
+                    this.updateTagsInput();
+                    this.updateButtonStatus();
+                } else {
+                    console.error(`Can't find tag "${tag}" to delete`);
+                }
+            }));
+        }
     }
 
     /**
@@ -284,6 +321,7 @@ export class FileInfoTab {
             .withAuthor(this.authorInput.value.trim())
             .withReleaseYear(this.releaseYearInput.value.trim())
             .withShared(this.sharedInput.checked)
+            .withTags(this.tags)
             .withScreenshots(screenshots)
             .build();
     }

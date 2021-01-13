@@ -40547,6 +40547,30 @@ function makeTextButton(label, iconName, cssClass, clickCallback) {
     return button;
 }
 /**
+ * Make a capsule to display a tag.
+ */
+function makeTagCapsule(tag, deletable, clickCallback) {
+    let hash = 0;
+    for (let i = 0; i < tag.length; i++) {
+        hash += tag.charCodeAt(i);
+    }
+    hash %= 7;
+    const capsule = document.createElement("div");
+    capsule.classList.add("tag", "tag-" + hash);
+    capsule.innerText = tag;
+    if (deletable) {
+        const deleteIcon = document.createElement("i");
+        deleteIcon.classList.add(MATERIAL_ICONS_CLASS);
+        deleteIcon.innerText = "clear";
+        capsule.append(deleteIcon);
+    }
+    if (clickCallback !== undefined) {
+        capsule.addEventListener("click", clickCallback);
+        capsule.classList.add("tag-clickable");
+    }
+    return capsule;
+}
+/**
  * Returns whether two string arrays are the same.
  *
  * Lodash has isEqual(), but it adds about 15 kB after minimization! (It's a deep comparison
@@ -41040,11 +41064,13 @@ function sha1(bytes) {
 
 
 
+// What's considered a "new" file.
+const NEW_SECONDS = 60 * 60 * 24 * 7;
 /**
  * Represents a file that the user owns.
  */
 class File_File {
-    constructor(id, uid, name, filename, note, author, releaseYear, shared, hash, screenshots, binary, addedAt, modifiedAt) {
+    constructor(id, uid, name, filename, note, author, releaseYear, shared, tags, hash, screenshots, binary, addedAt, modifiedAt) {
         this.id = id;
         this.uid = uid;
         this.name = name;
@@ -41053,6 +41079,7 @@ class File_File {
         this.author = author;
         this.releaseYear = releaseYear;
         this.shared = shared;
+        this.tags = [...tags].sort(); // Guarantee it's sorted.
         this.hash = hash;
         this.screenshots = screenshots;
         this.binary = binary;
@@ -41072,6 +41099,7 @@ class File_File {
             author: this.author,
             releaseYear: this.releaseYear,
             shared: this.shared,
+            tags: this.tags,
             hash: this.hash,
             screenshots: this.screenshots,
             binary: base64_js["fromByteArray"](this.binary),
@@ -41089,6 +41117,7 @@ class File_File {
         builder.author = this.author;
         builder.releaseYear = this.releaseYear;
         builder.shared = this.shared;
+        builder.tags = this.tags;
         builder.hash = this.hash;
         builder.screenshots = this.screenshots;
         builder.binary = this.binary;
@@ -41119,6 +41148,9 @@ class File_File {
         if (this.shared !== oldFile.shared) {
             updateData.shared = this.shared;
         }
+        if (!isSameStringArray(this.tags, oldFile.tags)) {
+            updateData.tags = this.tags;
+        }
         if (this.hash !== oldFile.hash) {
             updateData.hash = this.hash;
         }
@@ -41129,6 +41161,32 @@ class File_File {
             updateData.modifiedAt = this.modifiedAt;
         }
         return updateData;
+    }
+    /**
+     * Get all tags, both stored in the file and the automatically created ones.
+     */
+    getAllTags() {
+        const autoTags = [];
+        if (this.shared) {
+            autoTags.push("Shared");
+        }
+        const now = Date.now();
+        if (now - this.addedAt.getTime() < NEW_SECONDS) {
+            autoTags.push("New");
+        }
+        // TODO better extension algorithm.
+        const i = this.filename.lastIndexOf(".");
+        if (i > 0) {
+            autoTags.push(this.filename.substr(i + 1).toUpperCase());
+        }
+        if (autoTags.length === 0) {
+            return this.tags;
+        }
+        else {
+            // There may be some duplicats here, but leave them so the user can see that their tags
+            // are redundant.
+            return [...this.tags, ...autoTags].sort();
+        }
     }
     /**
      * Compare two files for sorting.
@@ -41167,6 +41225,7 @@ class File_FileBuilder {
         this.author = "";
         this.releaseYear = "";
         this.shared = false;
+        this.tags = [];
         this.hash = "";
         this.screenshots = [];
         this.binary = new Uint8Array(0);
@@ -41174,7 +41233,7 @@ class File_FileBuilder {
         this.modifiedAt = new Date();
     }
     static fromDoc(doc) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         const builder = new File_FileBuilder();
         builder.id = doc.id;
         // Assume data() is valid, either because it's a query or because we checked "exists".
@@ -41186,8 +41245,9 @@ class File_FileBuilder {
         builder.author = (_a = data.author) !== null && _a !== void 0 ? _a : "";
         builder.releaseYear = (_b = data.releaseYear) !== null && _b !== void 0 ? _b : "";
         builder.shared = (_c = data.shared) !== null && _c !== void 0 ? _c : false;
+        builder.tags = (_d = data.tags) !== null && _d !== void 0 ? _d : [];
         builder.hash = data.hash;
-        builder.screenshots = (_d = data.screenshots) !== null && _d !== void 0 ? _d : [];
+        builder.screenshots = (_e = data.screenshots) !== null && _e !== void 0 ? _e : [];
         builder.binary = data.binary.toUint8Array();
         builder.addedAt = data.addedAt.toDate();
         builder.modifiedAt = data.modifiedAt.toDate();
@@ -41225,6 +41285,10 @@ class File_FileBuilder {
         this.shared = shared;
         return this;
     }
+    withTags(tags) {
+        this.tags = tags;
+        return this;
+    }
     withScreenshots(screenshots) {
         this.screenshots = screenshots;
         return this;
@@ -41239,7 +41303,7 @@ class File_FileBuilder {
         return this;
     }
     build() {
-        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.author, this.releaseYear, this.shared, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
+        return new File_File(this.id, this.uid, this.name, this.filename, this.note, this.author, this.releaseYear, this.shared, this.tags, this.hash, this.screenshots, this.binary, this.addedAt, this.modifiedAt);
     }
 }
 
@@ -41273,6 +41337,8 @@ const IMPORT_FILE_LABEL = "Import File";
  */
 class YourFilesTab_YourFilesTab {
     constructor(pageTabs, context) {
+        // If empty, show all files. Otherwise show only files that have all of these tags.
+        this.filterTags = new Set();
         this.libraryInSync = false;
         this.context = context;
         const tab = new PageTab_PageTab("Your Files", context.user !== undefined);
@@ -41300,6 +41366,9 @@ class YourFilesTab_YourFilesTab {
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
+        this.filterEditor = document.createElement("div");
+        this.filterEditor.classList.add("filter-editor");
+        actionBar.append(this.filterEditor);
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button", () => this.exportAll());
         actionBar.append(exportAllButton);
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
@@ -41428,7 +41497,7 @@ class YourFilesTab_YourFilesTab {
     /**
      * Add a file to the list of files in the library.
      */
-    addFile(file) {
+    addFileOld(file) {
         const fileDiv = document.createElement("div");
         fileDiv.classList.add("file");
         fileDiv.setAttribute(FILE_ID_ATTR, file.id);
@@ -41443,6 +41512,15 @@ class YourFilesTab_YourFilesTab {
             releaseYearSpan.classList.add("release-year");
             releaseYearSpan.innerText = " (" + file.releaseYear + ")";
             nameDiv.append(releaseYearSpan);
+        }
+        const autoTags = file.getAllTags();
+        if (autoTags.length > 0) {
+            const tagsDiv = document.createElement("span");
+            tagsDiv.classList.add("tags");
+            for (const tag of autoTags) {
+                tagsDiv.append(makeTagCapsule(tag, false));
+            }
+            nameDiv.append(tagsDiv);
         }
         infoDiv.append(nameDiv);
         const filenameDiv = document.createElement("div");
@@ -41479,6 +41557,81 @@ class YourFilesTab_YourFilesTab {
         fileDiv.append(infoButton);
     }
     /**
+     * Add a file to the list of files in the library.
+     */
+    addFile(file) {
+        const fileDiv = document.createElement("div");
+        fileDiv.classList.add("file");
+        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
+        this.filesDiv.append(fileDiv);
+        const contentDiv = document.createElement("div");
+        contentDiv.classList.add("content");
+        fileDiv.append(contentDiv);
+        const screenshotsDiv = document.createElement("div");
+        screenshotsDiv.classList.add("screenshots");
+        contentDiv.append(screenshotsDiv);
+        /*
+        for (const screenshot of file.screenshots) {
+            // Don't do these all at once, they can take tens of milliseconds each, and in a large
+            // library that can hang the page for several seconds. Dribble them in later.
+            defer(() => {
+                const screen = new CanvasScreen();
+                screen.displayScreenshot(screenshot);
+                const image = screen.asImage();
+                screenshotsDiv.append(image)
+            });
+        }*/
+        defer(() => {
+            const screen = new dist["CanvasScreen"]();
+            if (file.screenshots.length > 0) {
+                screen.displayScreenshot(file.screenshots[0]);
+            }
+            screenshotsDiv.append(screen.asImage());
+        });
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        nameDiv.innerText = file.name;
+        if (file.releaseYear !== "") {
+            const releaseYearSpan = document.createElement("span");
+            releaseYearSpan.classList.add("release-year");
+            releaseYearSpan.innerText = " (" + file.releaseYear + ")";
+            nameDiv.append(releaseYearSpan);
+        }
+        contentDiv.append(nameDiv);
+        const filenameDiv = document.createElement("div");
+        filenameDiv.classList.add("filename");
+        filenameDiv.innerText = file.filename;
+        contentDiv.append(filenameDiv);
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("note");
+        noteDiv.innerText = [file.author, file.note].filter(field => field !== "").join(" — ");
+        contentDiv.append(noteDiv);
+        const tagsDiv = document.createElement("span");
+        tagsDiv.classList.add("tags");
+        const autoTags = file.getAllTags();
+        for (const tag of autoTags) {
+            tagsDiv.append(makeTagCapsule(tag, false, () => {
+                this.filterTags.add(tag);
+                this.refreshFilter();
+            }));
+        }
+        contentDiv.append(tagsDiv);
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("buttons");
+        fileDiv.append(buttonsDiv);
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
+            this.context.runProgram(file);
+            this.context.panelManager.close();
+        });
+        playButton.classList.add("play-button");
+        buttonsDiv.append(playButton);
+        const infoButton = makeIconButton(makeIcon("edit"), "File information", () => {
+            this.context.openFilePanel(file);
+        });
+        infoButton.classList.add("info-button");
+        buttonsDiv.append(infoButton);
+    }
+    /**
      * Remove a file from the UI by its ID.
      */
     removeFile(fileId) {
@@ -41488,6 +41641,46 @@ class YourFilesTab_YourFilesTab {
         }
         else {
             console.error("removeFile(): No element with file ID " + fileId);
+        }
+    }
+    /**
+     * Update the hidden flags based on a new tag filter.
+     */
+    refreshFilter() {
+        // Update hidden.
+        for (const fileDiv of this.filesDiv.children) {
+            let hidden = false;
+            if (this.filterTags.size !== 0) {
+                const fileId = fileDiv.getAttribute(FILE_ID_ATTR);
+                if (fileId !== null) {
+                    const file = this.context.library.getFile(fileId);
+                    if (file !== undefined) {
+                        for (const tag of this.filterTags) {
+                            const fileTags = file.getAllTags();
+                            if (fileTags.indexOf(tag) === -1) {
+                                hidden = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            fileDiv.classList.toggle("hidden", hidden);
+        }
+        Object(teamten_ts_utils_dist["clearElement"])(this.filterEditor);
+        if (this.filterTags.size !== 0) {
+            this.filterEditor.append("Filter tags:");
+            const sortedTags = [];
+            for (const tag of this.filterTags) {
+                sortedTags.push(tag);
+            }
+            sortedTags.sort();
+            for (const tag of sortedTags) {
+                this.filterEditor.append(makeTagCapsule(tag, true, () => {
+                    this.filterTags.delete(tag);
+                    this.refreshFilter();
+                }));
+            }
         }
     }
     /**
@@ -42618,6 +42811,7 @@ class RetroStoreTab_RetroStoreTab {
                     .withNote(note)
                     .withAuthor((_a = app.author) !== null && _a !== void 0 ? _a : "")
                     .withReleaseYear(app.release_year === undefined ? "" : app.release_year.toString())
+                    .withTags(["RetroStore"])
                     .withFilename((_b = validMediaImage.filename) !== null && _b !== void 0 ? _b : "UNKNOWN")
                     .withBinary(validMediaImage.data)
                     .build();
@@ -42992,6 +43186,9 @@ class FileInfoTab_FileInfoTab {
     constructor(filePanel, pageTabs, trs80File) {
         this.filePanel = filePanel;
         this.trs80File = trs80File;
+        // Make our own copy of tags that will reflect what's in the UI.
+        this.tags = [...filePanel.file.tags];
+        // this.tags = ["RetroStore", "CMD", "Mine", "Floppy"]; // TODO DELETE
         const tab = new PageTab_PageTab("File Info");
         tab.element.classList.add("file-info-tab");
         // Form for editing file info.
@@ -43026,6 +43223,16 @@ class FileInfoTab_FileInfoTab {
         this.sizeInput = makeInputBox("Size", undefined, false);
         this.modifiedAtInput = makeInputBox("Last modified", undefined, false);
         {
+            // Tags editor.
+            const labelElement = document.createElement("label");
+            labelElement.innerText = "Tags";
+            form.append(labelElement);
+            this.tagsInput = document.createElement("div");
+            this.tagsInput.classList.add("tags-editor");
+            labelElement.append(this.tagsInput);
+        }
+        {
+            // Shared editor.
             const labelElement = document.createElement("label");
             labelElement.classList.add("shared");
             labelElement.innerText = "Shared";
@@ -43143,11 +43350,31 @@ class FileInfoTab_FileInfoTab {
         this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
         this.addedAtInput.value = formatDate(file.addedAt);
         this.modifiedAtInput.value = formatDate(file.modifiedAt);
+        this.updateTagsInput();
         this.sharedInput.checked = file.shared;
         if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
             this.populateScreenshots();
         }
         this.updateButtonStatus();
+    }
+    /**
+     * Update the UI for showing and editing the tags on this file.
+     */
+    updateTagsInput() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.tagsInput);
+        for (const tag of this.tags) {
+            this.tagsInput.append(makeTagCapsule(tag, true, () => {
+                const i = this.tags.indexOf(tag);
+                if (i >= 0) {
+                    this.tags.splice(i, 1);
+                    this.updateTagsInput();
+                    this.updateButtonStatus();
+                }
+                else {
+                    console.error(`Can't find tag "${tag}" to delete`);
+                }
+            }));
+        }
     }
     /**
      * Fill the screenshots UI with those from the file.
@@ -43207,6 +43434,7 @@ class FileInfoTab_FileInfoTab {
             .withAuthor(this.authorInput.value.trim())
             .withReleaseYear(this.releaseYearInput.value.trim())
             .withShared(this.sharedInput.checked)
+            .withTags(this.tags)
             .withScreenshots(screenshots)
             .build();
     }
@@ -43307,7 +43535,7 @@ class TrsdosTab_TrsdosTab {
                         .withNote(`Imported from "${filePanel.file.name}" floppy disk.`)
                         .withAuthor(filePanel.file.author)
                         .withReleaseYear(dirEntry.year > 75 ? (1900 + dirEntry.year).toString() : filePanel.file.releaseYear)
-                        .withFilename(dirEntry.getFilename("/"))
+                        .withFilename(dirEntry.getFilename("."))
                         .withShared(filePanel.file.shared) // Questionable.
                         .withBinary(binary)
                         .build();
@@ -43678,6 +43906,7 @@ class Database_Database {
             author: file.author,
             releaseYear: file.releaseYear,
             shared: file.shared,
+            tags: file.tags,
             hash: file.hash,
             binary: index_esm["a" /* default */].firestore.Blob.fromUint8Array(file.binary),
             addedAt: index_esm["a" /* default */].firestore.Timestamp.fromDate(file.addedAt),

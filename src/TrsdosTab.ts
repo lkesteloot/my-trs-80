@@ -102,7 +102,7 @@ export class TrsdosTab {
                         .withNote(`Imported from "${filePanel.file.name}" floppy disk.`)
                         .withAuthor(filePanel.file.author)
                         .withReleaseYear(dirEntry.year > 75 ? (1900 + dirEntry.year).toString() : filePanel.file.releaseYear)
-                        .withFilename(dirEntry.getFilename("/"))
+                        .withFilename(dirEntry.getFilename("."))
                         .withShared(filePanel.file.shared) // Questionable.
                         .withBinary(binary)
                         .build();

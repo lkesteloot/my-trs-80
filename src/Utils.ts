@@ -110,6 +110,33 @@ export function makeTextButton(label: string, iconName: string | string[] | unde
 }
 
 /**
+ * Make a capsule to display a tag.
+ */
+export function makeTagCapsule(tag: string, deletable: boolean, clickCallback?: () => void): HTMLElement {
+    let hash = 0;
+    for (let i = 0; i < tag.length; i++) {
+        hash += tag.charCodeAt(i);
+    }
+    hash %= 7;
+
+    const capsule = document.createElement("div");
+    capsule.classList.add("tag", "tag-" + hash);
+    capsule.innerText = tag;
+    if (deletable) {
+        const deleteIcon = document.createElement("i");
+        deleteIcon.classList.add(MATERIAL_ICONS_CLASS);
+        deleteIcon.innerText = "clear";
+
+        capsule.append(deleteIcon)
+    }
+    if (clickCallback !== undefined) {
+        capsule.addEventListener("click", clickCallback);
+        capsule.classList.add("tag-clickable");
+    }
+    return capsule;
+}
+
+/**
  * Returns whether two string arrays are the same.
  *
  * Lodash has isEqual(), but it adds about 15 kB after minimization! (It's a deep comparison

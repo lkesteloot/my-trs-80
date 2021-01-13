@@ -190,6 +190,56 @@ button.icon-button {
     color: var(--foreground-emphasized);
 }
 
+.tag {
+    border-radius: 999px;
+    color: white;
+    font-size: 11px;
+    padding: 2px 7px;
+
+    display: flex;
+    gap: 3px; /* Between text and delete icon. */
+    align-items: center; /* To align delete icon and text. */
+}
+
+.tag i {
+    /* Delete icon size */
+    font-size: 13px;
+}
+
+.tag-clickable {
+    cursor: pointer;
+}
+
+/* See makeTagCapsule() */
+.tag-0 { background-color: var(--yellow); }
+.tag-1 { background-color: var(--orange); }
+.tag-2 { background-color: var(--magenta); }
+.tag-3 { background-color: var(--violet); }
+.tag-4 { background-color: var(--blue); }
+.tag-5 { background-color: var(--cyan); }
+.tag-6 { background-color: var(--green); }
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes rainbow {
+    0% { color: var(--yellow); }
+    12.5% { color: var(--orange); }
+    25% { color: var(--red); }
+    37.5% { color: var(--magenta); }
+    50% { color: var(--violet); }
+    62.5% { color: var(--blue); }
+    75% { color: var(--cyan); }
+    87.5% { color: var(--green); }
+    100% { color: var(--yellow); }
+}
+
 /* ----------------------------------------------------------------------------------------------------- */
 
 .panel-background,
@@ -385,21 +435,97 @@ button.icon-button {
     grid-template-rows: minmax(0, 1fr) auto; /* content (files or empty-library) and action-bar */
 }
 
+/*.your-files-tab .files {*/
+/*    background-color: var(--background);*/
+/*    overflow: auto;*/
+/*}*/
+
+/*.your-files-tab .file {*/
+/*    padding: 10px var(--side-padding);*/
+/*    border-bottom: 1px solid var(--background-highlights);*/
+/*    cursor: default;*/
+
+/*    display: grid;*/
+/*    grid-template-columns: 1fr auto auto auto;*/
+/*    align-items: center;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*.your-files-tab .file .name {*/
+/*    font-weight: 800;*/
+/*    color: var(--accent-color);*/
+/*}*/
+
+/*.your-files-tab .file .name .release-year {*/
+/*    font-weight: 100;*/
+/*    color: var(--foreground);*/
+/*    font-size: 80%;*/
+/*    margin-left: 3px;*/
+/*}*/
+
+/*.your-files-tab .file .filename {*/
+/*    font-family: "Roboto Mono", monospace;*/
+/*    white-space: pre;*/
+/*}*/
+
+/*.your-files-tab .file .note {*/
+/*    font-size: 80%;*/
+/*    margin-top: 5px;*/
+/*    color: var(--foreground-secondary);*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+
+/*    !* Max two lines. *!*/
+/*    line-height: 1.3;*/
+/*    max-height: 2.6em;*/
+
+/*    !* Put ellipsis at end of second line. This appears to be webkit-only, but seems to work on Firefox too. *!*/
+/*    display: -webkit-box;*/
+/*    -webkit-line-clamp: 2;*/
+/*    -webkit-box-orient: vertical;*/
+/*}*/
+
+/*.your-files-tab .file .screenshots {*/
+/*    display: flex;*/
+/*    flex-flow: row nowrap;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.your-files-tab .file .screenshots > * {*/
+/*    !* TODO can replace this with grid *!*/
+/*    border-radius: 5px;*/
+/*    max-width: 75px;*/
+/*    margin-left: 10px;*/
+/*}*/
+
+/*.your-files-tab .file .screenshots > *:first-child {*/
+/*    margin-left: 0;*/
+/*}*/
+
 .your-files-tab .files {
     background-color: var(--background);
-
     overflow: auto;
+    padding: var(--side-padding);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    column-gap: var(--side-padding);
+    row-gap: 40px;
 }
 
 .your-files-tab .file {
-    padding: 10px var(--side-padding);
-    border-bottom: 1px solid var(--background-highlights);
     cursor: default;
-
     display: grid;
-    grid-template-columns: 1fr auto auto auto;
-    align-items: center;
-    gap: 10px;
+    grid-template-rows: 1fr auto; /* .content and .buttons */
+}
+
+.your-files-tab .file .screenshots > :not(:first-child) {
+    display: none;
+}
+
+.your-files-tab .file .screenshots > * {
+    border-radius: 10px;
+    max-width: 100%;
 }
 
 .your-files-tab .file .name {
@@ -423,34 +549,25 @@ button.icon-button {
     font-size: 80%;
     margin-top: 5px;
     color: var(--foreground-secondary);
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    /* Max two lines. */
-    line-height: 1.3;
-    max-height: 2.6em;
-
-    /* Put ellipsis at end of second line. This appears to be webkit-only, but seems to work on Firefox too. */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
 }
 
-.your-files-tab .file .screenshots {
+.your-files-tab .file .tags {
+    margin-top: 10px;
     display: flex;
-    flex-flow: row nowrap;
-    overflow: hidden;
+    flex-flow: row wrap;
+    gap: 5px;
 }
 
-.your-files-tab .file .screenshots > * {
-    /* TODO can replace this with grid */
-    border-radius: 5px;
-    max-width: 75px;
-    margin-left: 10px;
-}
-
-.your-files-tab .file .screenshots > *:first-child {
-    margin-left: 0;
+.your-files-tab .file .buttons {
+    background-color: var(--background-highlights);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+    margin: 15px 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
 .your-files-tab .empty-library {
@@ -494,6 +611,17 @@ button.icon-button {
 .your-files-tab .empty-library article code {
     font-family: "Roboto Mono", monospace;
     color: var(--blue);
+}
+
+.your-files-tab .action-bar {
+    display: grid;
+    grid-template-columns: 1fr auto auto; /* Tag filter, export all, import file */
+}
+
+.your-files-tab .action-bar .filter-editor {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
@@ -611,11 +739,17 @@ button.icon-button {
     display: block;
     box-sizing: border-box;
     width: 100%;
-    margin-top: 5px;
     color: var(--foreground-emphasized);
     background-color: var(--background-highlights);
     border: none;
     border-radius: 3px;
+}
+
+.file-panel-form input,
+.file-panel-form textarea,
+.file-panel-form .tags-editor {
+
+    margin-top: 5px;
 }
 
 .file-panel-form input:disabled,
@@ -645,6 +779,12 @@ button.icon-button {
 
 .file-panel-form .misc {
     grid-column-end: span 2;
+}
+
+.file-panel-form .tags-editor {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 .file-panel-form .shared input {
@@ -700,52 +840,31 @@ button.icon-button {
     color: var(--red);
 }
 
-.action-bar .save-button.saving i:nth-of-type(1),
-.action-bar .save-button.saving i:nth-of-type(3) {
+.file-panel .action-bar .save-button.saving i:nth-of-type(1),
+.file-panel .action-bar .save-button.saving i:nth-of-type(3) {
     display: none;
 }
 
-.action-bar .save-button.success i:nth-of-type(1),
-.action-bar .save-button.success i:nth-of-type(2) {
+.file-panel .action-bar .save-button.success i:nth-of-type(1),
+.file-panel .action-bar .save-button.success i:nth-of-type(2) {
     display: none;
 }
 
-.action-bar .save-button:not(.saving):not(.success) i:nth-of-type(2),
-.action-bar .save-button:not(.saving):not(.success) i:nth-of-type(3) {
+.file-panel .action-bar .save-button:not(.saving):not(.success) i:nth-of-type(2),
+.file-panel .action-bar .save-button:not(.saving):not(.success) i:nth-of-type(3) {
     display: none;
 }
 
-.action-bar .save-button i:nth-of-type(2) {
+.file-panel .action-bar .save-button i:nth-of-type(2) {
     animation: spin 1s infinite linear;
 }
 
-.action-bar .save-button i:nth-of-type(3) {
+.file-panel .action-bar .save-button i:nth-of-type(3) {
     color: var(--green);
 }
 
-.panel .action-bar button.save-button.saving:disabled {
+.file-panel .action-bar button.save-button.saving:disabled {
     opacity: 1;
-}
-
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes rainbow {
-    0% { color: var(--yellow); }
-    12.5% { color: var(--orange); }
-    25% { color: var(--red); }
-    37.5% { color: var(--magenta); }
-    50% { color: var(--violet); }
-    62.5% { color: var(--blue); }
-    75% { color: var(--cyan); }
-    87.5% { color: var(--green); }
-    100% { color: var(--yellow); }
 }
 
 /* ----------------------------------------------------------------------------------------------------- */

@@ -2,7 +2,7 @@ import {PageTabs} from "./PageTabs";
 import {LibraryAddEvent, LibraryEvent, LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {File, FileBuilder} from "./File";
 import {CanvasScreen} from "trs80-emulator";
-import {defer, makeIcon, makeIconButton, makeTextButton} from "./Utils";
+import {defer, makeIcon, makeIconButton, makeTagCapsule, makeTextButton} from "./Utils";
 import {clearElement} from "teamten-ts-utils";
 import {Context} from "./Context";
 import {PageTab} from "./PageTab";
@@ -17,6 +17,9 @@ export class YourFilesTab {
     private readonly context: Context;
     private readonly filesDiv: HTMLElement;
     private readonly emptyLibrary: HTMLElement;
+    // If empty, show all files. Otherwise show only files that have all of these tags.
+    private readonly filterTags = new Set<string>();
+    private readonly filterEditor: HTMLElement;
     private libraryInSync = false;
 
     constructor(pageTabs: PageTabs, context: Context) {
@@ -53,6 +56,10 @@ export class YourFilesTab {
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
+
+        this.filterEditor = document.createElement("div");
+        this.filterEditor.classList.add("filter-editor");
+        actionBar.append(this.filterEditor);
 
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button",
             () => this.exportAll());
@@ -201,7 +208,7 @@ export class YourFilesTab {
     /**
      * Add a file to the list of files in the library.
      */
-    private addFile(file: File): void {
+    private addFileOld(file: File): void {
         const fileDiv = document.createElement("div");
         fileDiv.classList.add("file");
         fileDiv.setAttribute(FILE_ID_ATTR, file.id);
@@ -218,6 +225,15 @@ export class YourFilesTab {
             releaseYearSpan.classList.add("release-year");
             releaseYearSpan.innerText = " (" + file.releaseYear + ")";
             nameDiv.append(releaseYearSpan);
+        }
+        const autoTags = file.getAllTags();
+        if (autoTags.length > 0) {
+            const tagsDiv = document.createElement("span");
+            tagsDiv.classList.add("tags");
+            for (const tag of autoTags) {
+                tagsDiv.append(makeTagCapsule(tag, false));
+            }
+            nameDiv.append(tagsDiv);
         }
         infoDiv.append(nameDiv);
 
@@ -260,6 +276,91 @@ export class YourFilesTab {
     }
 
     /**
+     * Add a file to the list of files in the library.
+     */
+    private addFile(file: File): void {
+        const fileDiv = document.createElement("div");
+        fileDiv.classList.add("file");
+        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
+        this.filesDiv.append(fileDiv);
+
+        const contentDiv = document.createElement("div");
+        contentDiv.classList.add("content");
+        fileDiv.append(contentDiv);
+
+        const screenshotsDiv = document.createElement("div");
+        screenshotsDiv.classList.add("screenshots");
+        contentDiv.append(screenshotsDiv);
+        /*
+        for (const screenshot of file.screenshots) {
+            // Don't do these all at once, they can take tens of milliseconds each, and in a large
+            // library that can hang the page for several seconds. Dribble them in later.
+            defer(() => {
+                const screen = new CanvasScreen();
+                screen.displayScreenshot(screenshot);
+                const image = screen.asImage();
+                screenshotsDiv.append(image)
+            });
+        }*/
+        defer(() => {
+            const screen = new CanvasScreen();
+            if (file.screenshots.length > 0) {
+                screen.displayScreenshot(file.screenshots[0]);
+            }
+            screenshotsDiv.append(screen.asImage());
+        });
+
+        const nameDiv = document.createElement("div");
+        nameDiv.classList.add("name");
+        nameDiv.innerText = file.name;
+        if (file.releaseYear !== "") {
+            const releaseYearSpan = document.createElement("span");
+            releaseYearSpan.classList.add("release-year");
+            releaseYearSpan.innerText = " (" + file.releaseYear + ")";
+            nameDiv.append(releaseYearSpan);
+        }
+        contentDiv.append(nameDiv);
+
+        const filenameDiv = document.createElement("div");
+        filenameDiv.classList.add("filename");
+        filenameDiv.innerText = file.filename;
+        contentDiv.append(filenameDiv);
+
+        const noteDiv = document.createElement("div");
+        noteDiv.classList.add("note");
+        noteDiv.innerText = [file.author, file.note].filter(field => field !== "").join(" — ");
+        contentDiv.append(noteDiv);
+
+        const tagsDiv = document.createElement("span");
+        tagsDiv.classList.add("tags");
+        const autoTags = file.getAllTags();
+        for (const tag of autoTags) {
+            tagsDiv.append(makeTagCapsule(tag, false, () => {
+                this.filterTags.add(tag);
+                this.refreshFilter();
+            }));
+        }
+        contentDiv.append(tagsDiv);
+
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("buttons");
+        fileDiv.append(buttonsDiv);
+
+        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
+            this.context.runProgram(file);
+            this.context.panelManager.close();
+        });
+        playButton.classList.add("play-button");
+        buttonsDiv.append(playButton);
+
+        const infoButton = makeIconButton(makeIcon("edit"), "File information", () => {
+            this.context.openFilePanel(file);
+        });
+        infoButton.classList.add("info-button");
+        buttonsDiv.append(infoButton);
+    }
+
+    /**
      * Remove a file from the UI by its ID.
      */
     private removeFile(fileId: string): void {
@@ -268,6 +369,50 @@ export class YourFilesTab {
             element.remove();
         } else {
             console.error("removeFile(): No element with file ID " + fileId);
+        }
+    }
+
+    /**
+     * Update the hidden flags based on a new tag filter.
+     */
+    private refreshFilter(): void {
+        // Update hidden.
+        for (const fileDiv of this.filesDiv.children) {
+            let hidden = false;
+            if (this.filterTags.size !== 0) {
+                const fileId = fileDiv.getAttribute(FILE_ID_ATTR);
+                if (fileId !== null) {
+                    const file = this.context.library.getFile(fileId);
+                    if (file !== undefined) {
+                        for (const tag of this.filterTags) {
+                            const fileTags = file.getAllTags();
+                            if (fileTags.indexOf(tag) === -1) {
+                                hidden = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            fileDiv.classList.toggle("hidden", hidden);
+        }
+
+        clearElement(this.filterEditor);
+        if (this.filterTags.size !== 0) {
+            this.filterEditor.append("Filter tags:");
+
+            const sortedTags: string[] = [];
+            for (const tag of this.filterTags) {
+                sortedTags.push(tag);
+            }
+            sortedTags.sort();
+
+            for (const tag of sortedTags) {
+                this.filterEditor.append(makeTagCapsule(tag, true, () => {
+                    this.filterTags.delete(tag);
+                    this.refreshFilter();
+                }));
+            }
         }
     }
 
