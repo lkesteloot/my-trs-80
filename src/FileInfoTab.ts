@@ -1,7 +1,7 @@
 import {Trs80File} from "trs80-base";
 import {PageTabs} from "./PageTabs";
 import {PageTab} from "./PageTab";
-import {defer, formatDate, makeIcon, makeIconButton, makeTagCapsule, makeTextButton} from "./Utils";
+import {defer, formatDate, makeIcon, makeIconButton, makeTagCapsule, makeTextButton, TagCapsuleOptions} from "./Utils";
 import {LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {clearElement, withCommas} from "teamten-ts-utils";
 import {CanvasScreen} from "trs80-emulator";
@@ -10,6 +10,7 @@ import {File} from "./File";
 import {IFilePanel} from "./IFilePanel";
 import firebase from "firebase";
 import UpdateData = firebase.firestore.UpdateData;
+import {TagSet} from "./TagSet";
 
 const SCREENSHOT_ATTR = "data-screenshot";
 
@@ -24,11 +25,11 @@ export class FileInfoTab {
     private readonly noteInput: HTMLTextAreaElement;
     private readonly authorInput: HTMLInputElement;
     private readonly releaseYearInput: HTMLInputElement;
-    private readonly tags: string[];
     private readonly typeInput: HTMLInputElement;
     private readonly sizeInput: HTMLInputElement;
     private readonly addedAtInput: HTMLInputElement;
     private readonly modifiedAtInput: HTMLInputElement;
+    private readonly tags = new TagSet();
     private readonly tagsInput: HTMLElement;
     private readonly sharedInput: HTMLInputElement;
     private readonly screenshotsDiv: HTMLElement;
@@ -40,8 +41,7 @@ export class FileInfoTab {
         this.trs80File = trs80File;
 
         // Make our own copy of tags that will reflect what's in the UI.
-        this.tags = [...filePanel.file.tags];
-        // this.tags = ["RetroStore", "CMD", "Mine", "Floppy"]; // TODO DELETE
+        this.tags.add(...filePanel.file.tags);
 
         const tab = new PageTab("File Info");
         tab.element.classList.add("file-info-tab");
@@ -240,21 +240,69 @@ export class FileInfoTab {
 
     /**
      * Update the UI for showing and editing the tags on this file.
+     *
+     * @param newTagFocus whether to put the input focus on the new tag input field.
      */
-    private updateTagsInput(): void {
+    private updateTagsInput(newTagFocus?: boolean): void {
         clearElement(this.tagsInput);
-        for (const tag of this.tags) {
-            this.tagsInput.append(makeTagCapsule(tag, true, () => {
-                const i = this.tags.indexOf(tag);
-                if (i >= 0) {
-                    this.tags.splice(i, 1);
+
+        const tagListElement = document.createElement("div");
+        tagListElement.classList.add("tag-list");
+        this.tagsInput.append(tagListElement);
+
+        // Make union of all tags in all files.
+        const allTags = new TagSet();
+        for (const file of this.filePanel.context.library.getAllFiles()) {
+            allTags.add(... file.tags);
+        }
+        allTags.addAll(this.tags);
+
+        for (const tag of allTags.asArray()) {
+            const tagOptions: TagCapsuleOptions = {
+                tag: tag,
+            };
+
+            if (this.tags.has(tag)) {
+                tagOptions.iconName = "clear";
+                tagOptions.clickCallback = () => {
+                    this.tags.remove(tag);
                     this.updateTagsInput();
                     this.updateButtonStatus();
-                } else {
-                    console.error(`Can't find tag "${tag}" to delete`);
-                }
-            }));
+                };
+            } else {
+                tagOptions.iconName = "add";
+                tagOptions.faint = true;
+                tagOptions.clickCallback = () => {
+                    this.tags.add(tag);
+                    this.updateTagsInput();
+                    this.updateButtonStatus();
+                };
+            }
+            tagListElement.append(makeTagCapsule(tagOptions));
         }
+
+        const newTagForm = document.createElement("form");
+        newTagForm.classList.add("new-tag-form");
+        newTagForm.addEventListener("submit", event => {
+            const newTag = newTagInput.value.trim();
+            if (newTag !== "") {
+                this.tags.add(newTag);
+                this.updateTagsInput(true);
+                this.updateButtonStatus();
+            }
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        // this.tagsInput.append(newTagForm);
+        tagListElement.append(newTagForm);
+
+        const newTagInput = document.createElement("input");
+        newTagInput.placeholder = "New tag";
+        console.log(newTagFocus);
+        if (newTagFocus) {
+            setTimeout(() => newTagInput.focus(), 0);
+        }
+        newTagForm.append(newTagInput);
     }
 
     /**
@@ -321,7 +369,7 @@ export class FileInfoTab {
             .withAuthor(this.authorInput.value.trim())
             .withReleaseYear(this.releaseYearInput.value.trim())
             .withShared(this.sharedInput.checked)
-            .withTags(this.tags)
+            .withTags(this.tags.asArray())
             .withScreenshots(screenshots)
             .build();
     }

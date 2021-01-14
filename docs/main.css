@@ -70,6 +70,10 @@ body, input, textarea {
     font-size: 16px;
 }
 
+input::placeholder {
+    opacity: 50%;
+}
+
 /* Our own overrides for the material design icons. */
 .material-icons-override {
     color: var(--icon-color);
@@ -196,6 +200,8 @@ button.icon-button {
     font-size: 11px;
     padding: 2px 7px;
 
+    white-space: nowrap;
+
     display: flex;
     gap: 3px; /* Between text and delete icon. */
     align-items: center; /* To align delete icon and text. */
@@ -208,6 +214,10 @@ button.icon-button {
 
 .tag-clickable {
     cursor: pointer;
+}
+
+.tag-faint {
+    opacity: 30%;
 }
 
 /* See makeTagCapsule() */
@@ -781,10 +791,25 @@ button.icon-button {
     grid-column-end: span 2;
 }
 
-.file-panel-form .tags-editor {
+.file-panel-form .tags-editor .tag-list {
     display: flex;
+    flex-flow: row wrap;
     gap: 5px;
     align-items: center;
+}
+
+.file-panel-form .tags-editor .new-tag-form {
+    /*margin-top: 8px;*/
+}
+
+.file-panel-form .tags-editor .new-tag-form input {
+    font-size: 12px;
+    width: 8em;
+    margin: 0;
+    border-radius: 999px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: 0;
 }
 
 .file-panel-form .shared input {

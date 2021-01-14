@@ -133,6 +133,8 @@ export class File {
 
     /**
      * Get all tags, both stored in the file and the automatically created ones.
+     * TODO could cache this, assume the auto ones don't change over time. The "new" would
+     * change but not much.
      */
     public getAllTags(): string[] {
         const autoTags: string[] = [];
@@ -154,7 +156,7 @@ export class File {
         if (autoTags.length === 0) {
             return this.tags;
         } else {
-            // There may be some duplicats here, but leave them so the user can see that their tags
+            // There may be some duplicates here, but leave them so the user can see that their tags
             // are redundant.
             return [...this.tags, ...autoTags].sort();
         }

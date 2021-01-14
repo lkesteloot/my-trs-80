@@ -231,7 +231,7 @@ export class YourFilesTab {
             const tagsDiv = document.createElement("span");
             tagsDiv.classList.add("tags");
             for (const tag of autoTags) {
-                tagsDiv.append(makeTagCapsule(tag, false));
+                // tagsDiv.append(makeTagCapsule());
             }
             nameDiv.append(tagsDiv);
         }
@@ -335,9 +335,12 @@ export class YourFilesTab {
         tagsDiv.classList.add("tags");
         const autoTags = file.getAllTags();
         for (const tag of autoTags) {
-            tagsDiv.append(makeTagCapsule(tag, false, () => {
-                this.filterTags.add(tag);
-                this.refreshFilter();
+            tagsDiv.append(makeTagCapsule({
+                tag: tag,
+                clickCallback: () => {
+                    this.filterTags.add(tag);
+                    this.refreshFilter();
+                },
             }));
         }
         contentDiv.append(tagsDiv);
@@ -408,9 +411,13 @@ export class YourFilesTab {
             sortedTags.sort();
 
             for (const tag of sortedTags) {
-                this.filterEditor.append(makeTagCapsule(tag, true, () => {
-                    this.filterTags.delete(tag);
-                    this.refreshFilter();
+                this.filterEditor.append(makeTagCapsule({
+                    tag: tag,
+                    iconName: "clear",
+                    clickCallback: () => {
+                        this.filterTags.delete(tag);
+                        this.refreshFilter();
+                    },
                 }));
             }
         }

@@ -110,28 +110,54 @@ export function makeTextButton(label: string, iconName: string | string[] | unde
 }
 
 /**
- * Make a capsule to display a tag.
+ * Options for the {@link makeTagCapsule} function.
  */
-export function makeTagCapsule(tag: string, deletable: boolean, clickCallback?: () => void): HTMLElement {
+export interface TagCapsuleOptions {
+    // Text to draw on the tag.
+    tag: string;
+
+    // "clear" for X, "add" for +.
+    iconName?: string;
+
+    // Whether to draw it dimly.
+    faint?: boolean;
+
+    // Change cursor to pointer and make it clickable.
+    clickCallback?: () => void;
+}
+
+/**
+ * Compute a hash number for the tag string. See the "tag-#" CSS classes.
+ */
+function computeTagColor(tag: string): number {
     let hash = 0;
     for (let i = 0; i < tag.length; i++) {
         hash += tag.charCodeAt(i);
     }
-    hash %= 7;
+    return hash % 7;
+}
+
+/**
+ * Make a capsule to display a tag.
+ */
+export function makeTagCapsule(options: TagCapsuleOptions): HTMLElement {
 
     const capsule = document.createElement("div");
-    capsule.classList.add("tag", "tag-" + hash);
-    capsule.innerText = tag;
-    if (deletable) {
+    capsule.classList.add("tag", "tag-" + computeTagColor(options.tag));
+    capsule.innerText = options.tag;
+    if (options.iconName !== undefined) {
         const deleteIcon = document.createElement("i");
         deleteIcon.classList.add(MATERIAL_ICONS_CLASS);
-        deleteIcon.innerText = "clear";
+        deleteIcon.innerText = options.iconName;
 
         capsule.append(deleteIcon)
     }
-    if (clickCallback !== undefined) {
-        capsule.addEventListener("click", clickCallback);
+    if (options.clickCallback !== undefined) {
+        capsule.addEventListener("click", options.clickCallback);
         capsule.classList.add("tag-clickable");
+    }
+    if (options.faint) {
+        capsule.classList.add("tag-faint");
     }
     return capsule;
 }
