@@ -9,6 +9,7 @@ export abstract class Panel {
     public readonly element: HTMLElement;
     public readonly headerTextNode: HTMLElement;
     public readonly content: HTMLElement;
+    private readonly keyboardListener: (e: KeyboardEvent) => void;
 
     /**
      * Construct the panel and its basic UI.
@@ -24,12 +25,22 @@ export abstract class Panel {
         this.element = document.createElement("div");
         this.element.classList.add("panel", panelCssClass);
 
+        // Handler for hotkeys.
+        this.keyboardListener = (e: KeyboardEvent) => {
+            if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Backspace") {
+                this.context.panelManager.popPanel();
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
+
         const header = document.createElement("h1");
         if (showBackButton) {
-            const backButton = makeIconButton(makeIcon("arrow_back"), "Back",
+            const backButton = makeIconButton(makeIcon("arrow_back"), "Back (Ctrl-Backspace)",
                 () => this.context.panelManager.popPanel());
             backButton.classList.add("back-button");
             header.append(backButton);
+            window.addEventListener("keydown", this.keyboardListener);
         }
         this.headerTextNode = document.createElement("span");
         this.headerTextNode.innerText = title;
@@ -46,6 +57,7 @@ export abstract class Panel {
      * Called when the panel is no longer visible and is being destroyed.
      */
     public onPanelDestroy(): void {
-        // Nothing by default.
+        // Okay if wasn't registered.
+        window.removeEventListener("keydown", this.keyboardListener);
     }
 }

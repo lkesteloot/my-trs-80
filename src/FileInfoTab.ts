@@ -17,8 +17,8 @@ import isEmpty from "lodash/isEmpty";
 import {File} from "./File";
 import {IFilePanel} from "./IFilePanel";
 import firebase from "firebase";
-import UpdateData = firebase.firestore.UpdateData;
 import {TagSet} from "./TagSet";
+import UpdateData = firebase.firestore.UpdateData;
 
 const SCREENSHOT_ATTR = "data-screenshot";
 
@@ -47,6 +47,7 @@ export class FileInfoTab extends PageTab {
     private readonly revertButton: HTMLButtonElement;
     private readonly saveButton: HTMLButtonElement;
     private readonly cancelLibrarySubscription: () => void;
+    private readonly keyboardListener: (e: KeyboardEvent) => void;
 
     constructor(filePanel: IFilePanel, trs80File: Trs80File) {
         super("File Info");
@@ -182,50 +183,21 @@ export class FileInfoTab extends PageTab {
                 });
         });
         this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
-        this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
+        this.saveButton = makeTextButton("Save",
+            ["save", "cached", "check"], "save-button", undefined);
+        this.saveButton.title = "Ctrl-Enter to save and close";
         actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
 
         for (const input of [this.nameInput, this.filenameInput, this.noteInput, this.authorInput, this.releaseYearInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
         }
         this.sharedInput.addEventListener("change", () => this.updateButtonStatus());
-        this.nameInput.addEventListener("input", () => {
-            this.filePanel.setHeaderText(this.fileFromUi().name);
-        });
+        this.nameInput.addEventListener("input", () => this.filePanel.setHeaderText(this.fileFromUi().name));
 
-        this.revertButton.addEventListener("click", () => {
-            this.updateUi();
-        });
-        this.saveButton.addEventListener("click", () => {
-            const newFile = this.fileFromUi().builder().withModifiedAt(new Date()).build();
-
-            this.saveButton.classList.add("saving");
-
-            // Disable right away so it's not clicked again.
-            this.saveButton.disabled = true;
-
-            this.filePanel.context.db.updateFile(this.filePanel.file, newFile)
-                .then(() => {
-                    this.saveButton.classList.remove("saving");
-                    this.saveButton.classList.add("success");
-                    setTimeout(() => {
-                        this.saveButton.classList.remove("success");
-                    }, 2000);
-                    this.filePanel.file = newFile;
-                    this.filePanel.context.library.modifyFile(newFile);
-                    this.updateUi();
-                })
-                .catch(error => {
-                    this.saveButton.classList.remove("saving");
-                    // TODO show error.
-                    // The document probably doesn't exist.
-                    console.error("Error updating document: ", error);
-                    this.updateUi();
-                });
-        });
+        this.revertButton.addEventListener("click", () => this.updateUi());
+        this.saveButton.addEventListener("click", () => this.save());
 
         this.cancelLibrarySubscription = this.filePanel.context.library.onEvent.subscribe(event => {
-            console.log(this);
             if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
                 // Make sure we don't clobber any user-entered data in the input fields.
                 const updateData = this.filePanel.file.getUpdateDataComparedTo(event.newFile);
@@ -238,12 +210,81 @@ export class FileInfoTab extends PageTab {
             }
         });
 
+        // Handler for hotkeys.
+        this.keyboardListener = (e: KeyboardEvent) => {
+            if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Enter") {
+                this.saveAndClose();
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
+
         this.updateUi();
+    }
+
+    onShow(): void {
+        super.onShow();
+        window.addEventListener("keydown", this.keyboardListener);
+    }
+
+    onHide(): void {
+        window.removeEventListener("keydown", this.keyboardListener);
+        super.onHide();
     }
 
     onDestroy(): void {
         this.cancelLibrarySubscription();
         super.onDestroy();
+    }
+
+    /**
+     * Save if necessary, then close the panel.
+     */
+    private saveAndClose(): void {
+        const isSame = isEmpty(this.fileFromUi().getUpdateDataComparedTo(this.filePanel.file));
+
+        if (isSame) {
+            this.filePanel.context.panelManager.popPanel();
+        } else {
+            this.save(() => {
+                this.filePanel.context.panelManager.popPanel();
+            });
+        }
+    }
+
+    /**
+     * Save the current changes to the file, then optionally call the callback.
+     */
+    private save(callback?: () => void): void {
+        const newFile = this.fileFromUi().builder().withModifiedAt(new Date()).build();
+
+        this.saveButton.classList.add("saving");
+
+        // Disable right away so it's not clicked again.
+        this.saveButton.disabled = true;
+
+        this.filePanel.context.db.updateFile(this.filePanel.file, newFile)
+            .then(() => {
+                this.saveButton.classList.remove("saving");
+                this.saveButton.classList.add("success");
+                setTimeout(() => {
+                    this.saveButton.classList.remove("success");
+                }, 2000);
+                this.filePanel.file = newFile;
+                this.filePanel.context.library.modifyFile(newFile);
+                this.updateUi();
+
+                if (callback) {
+                    callback();
+                }
+            })
+            .catch(error => {
+                this.saveButton.classList.remove("saving");
+                // TODO show error.
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+                this.updateUi();
+            });
     }
 
     /**

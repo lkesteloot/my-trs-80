@@ -84,7 +84,7 @@ export function makeIconButton(icon: HTMLElement, title: string, clickCallback: 
  * Make a float-right close button for dialog boxes.
  */
 export function makeCloseIconButton(closeCallback: () => void) {
-    const button = makeIconButton(makeIcon("close"), "Close window", closeCallback);
+    const button = makeIconButton(makeIcon("close"), "Close window (ESC)", closeCallback);
     button.classList.add("close-button");
 
     return button;
