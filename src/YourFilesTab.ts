@@ -2,10 +2,11 @@ import {PageTabs} from "./PageTabs";
 import {LibraryAddEvent, LibraryEvent, LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {File, FileBuilder} from "./File";
 import {CanvasScreen} from "trs80-emulator";
-import {defer, makeIcon, makeIconButton, makeTagCapsule, makeTextButton} from "./Utils";
+import {defer, makeIcon, makeIconButton, makeTagCapsule, makeTextButton, TRASH_TAG} from "./Utils";
 import {clearElement} from "teamten-ts-utils";
 import {Context} from "./Context";
 import {PageTab} from "./PageTab";
+import {TagSet} from "./TagSet";
 
 const FILE_ID_ATTR = "data-file-id";
 const IMPORT_FILE_LABEL = "Import File";
@@ -17,9 +18,10 @@ export class YourFilesTab {
     private readonly context: Context;
     private readonly filesDiv: HTMLElement;
     private readonly emptyLibrary: HTMLElement;
-    // If empty, show all files. Otherwise show only files that have all of these tags.
-    private readonly filterTags = new Set<string>();
+    // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
+    private readonly filterTags = new TagSet();
     private readonly filterEditor: HTMLElement;
+    private readonly openTrashButton: HTMLElement;
     private libraryInSync = false;
 
     constructor(pageTabs: PageTabs, context: Context) {
@@ -49,10 +51,6 @@ export class YourFilesTab {
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
         this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
 
-        // Populate initial library state.
-        this.context.library.getAllFiles().forEach(f => this.addFile(f));
-        this.sortFiles();
-
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
@@ -61,6 +59,9 @@ export class YourFilesTab {
         this.filterEditor.classList.add("filter-editor");
         actionBar.append(this.filterEditor);
 
+        this.openTrashButton = makeTextButton("Open Trash", "delete", "open-trash-button",
+            () => this.openTrash());
+
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button",
             () => this.exportAll());
         actionBar.append(exportAllButton);
@@ -68,6 +69,10 @@ export class YourFilesTab {
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button",
             () => this.uploadFile());
         actionBar.append(uploadButton);
+
+        // Populate initial library state.
+        this.context.library.getAllFiles().forEach(f => this.addFile(f));
+        this.sortFiles();
 
         this.updateSplashScreen();
 
@@ -206,7 +211,7 @@ export class YourFilesTab {
     }
 
     /**
-     * Add a file to the list of files in the library.
+     * Add a file to the list of files in the library. TODO delete.
      */
     private addFileOld(file: File): void {
         const fileDiv = document.createElement("div");
@@ -226,6 +231,7 @@ export class YourFilesTab {
             releaseYearSpan.innerText = " (" + file.releaseYear + ")";
             nameDiv.append(releaseYearSpan);
         }
+        /*
         const autoTags = file.getAllTags();
         if (autoTags.length > 0) {
             const tagsDiv = document.createElement("span");
@@ -234,7 +240,7 @@ export class YourFilesTab {
                 // tagsDiv.append(makeTagCapsule());
             }
             nameDiv.append(tagsDiv);
-        }
+        }*/
         infoDiv.append(nameDiv);
 
         const filenameDiv = document.createElement("div");
@@ -291,7 +297,7 @@ export class YourFilesTab {
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
         contentDiv.append(screenshotsDiv);
-        /*
+        /* TODO find a way to show all screenshots.
         for (const screenshot of file.screenshots) {
             // Don't do these all at once, they can take tens of milliseconds each, and in a large
             // library that can hang the page for several seconds. Dribble them in later.
@@ -335,8 +341,7 @@ export class YourFilesTab {
 
         const tagsDiv = document.createElement("span");
         tagsDiv.classList.add("tags");
-        const autoTags = file.getAllTags();
-        for (const tag of autoTags) {
+        for (const tag of file.getAllTags().asArray()) {
             tagsDiv.append(makeTagCapsule({
                 tag: tag,
                 clickCallback: () => {
@@ -384,45 +389,68 @@ export class YourFilesTab {
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;
-            if (this.filterTags.size !== 0) {
-                const fileId = fileDiv.getAttribute(FILE_ID_ATTR);
-                if (fileId !== null) {
-                    const file = this.context.library.getFile(fileId);
-                    if (file !== undefined) {
-                        for (const tag of this.filterTags) {
-                            const fileTags = file.getAllTags();
-                            if (fileTags.indexOf(tag) === -1) {
-                                hidden = true;
-                                break;
-                            }
-                        }
+
+            const fileId = fileDiv.getAttribute(FILE_ID_ATTR);
+            if (fileId !== null) {
+                const file = this.context.library.getFile(fileId);
+                if (file !== undefined) {
+                    const fileTags = file.getAllTags();
+
+                    // Only show files that have all the filter items.
+                    if (!this.filterTags.isEmpty() && !fileTags.hasAll(this.filterTags)) {
+                        hidden = true;
+                    }
+
+                    // If we're not explicitly filtering for trash, hide files in the trash.
+                    if (!this.filterTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
+                        hidden = true;
                     }
                 }
             }
+
             fileDiv.classList.toggle("hidden", hidden);
         }
 
         clearElement(this.filterEditor);
-        if (this.filterTags.size !== 0) {
+        if (this.filterTags.isEmpty()) {
+            if (this.anyFileInTrash()) {
+                this.filterEditor.append(this.openTrashButton);
+            }
+        } else {
             this.filterEditor.append("Filter tags:");
 
-            const sortedTags: string[] = [];
-            for (const tag of this.filterTags) {
-                sortedTags.push(tag);
-            }
-            sortedTags.sort();
-
-            for (const tag of sortedTags) {
+            for (const tag of this.filterTags.asArray()) {
                 this.filterEditor.append(makeTagCapsule({
                     tag: tag,
                     iconName: "clear",
                     clickCallback: () => {
-                        this.filterTags.delete(tag);
+                        this.filterTags.remove(tag);
                         this.refreshFilter();
                     },
                 }));
             }
         }
+    }
+
+    /**
+     * Whether there's anything in the trash.
+     */
+    private anyFileInTrash(): boolean {
+        for (const file of this.context.library.getAllFiles()) {
+            if (file.tags.indexOf(TRASH_TAG) >= 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Adds trash to the filter.
+     */
+    private openTrash(): void {
+        this.filterTags.add(TRASH_TAG);
+        this.refreshFilter();
     }
 
     /**
@@ -454,5 +482,8 @@ export class YourFilesTab {
         // Repopulate the UI in the right order.
         clearElement(this.filesDiv);
         this.filesDiv.append(... fileElements.map(e => e.element));
+
+        // Update the hidden flags.
+        this.refreshFilter();
     }
 }

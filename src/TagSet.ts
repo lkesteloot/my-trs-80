@@ -6,6 +6,13 @@ export class TagSet {
     private readonly tagSet = new Set<string>();
 
     /**
+     * Whether this tag set is empty (has no tags).
+     */
+    public isEmpty(): boolean {
+        return this.tagSet.size === 0;
+    }
+
+    /**
      * Add the given tags to this set.
      */
     public add(... tags: string[]): void {
@@ -28,6 +35,19 @@ export class TagSet {
      */
     public has(tag: string): boolean {
         return this.tagSet.has(tag);
+    }
+
+    /**
+     * Whether this tag set has all of the tags in the other tag set.
+     */
+    public hasAll(tags: TagSet): boolean {
+        for (const tag of tags.tagSet) {
+            if (!this.has(tag)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**

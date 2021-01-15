@@ -1,10 +1,11 @@
 import firebase from "firebase/app";
 import DocumentData = firebase.firestore.DocumentData;
 import UpdateData = firebase.firestore.UpdateData;
-import {isSameStringArray} from "./Utils";
+import {isSameStringArray, TRASH_TAG} from "./Utils";
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import * as base64js from "base64-js";
 import {sha1} from "./Sha1";
+import {TagSet} from "./TagSet";
 
 // What's considered a "new" file.
 const NEW_SECONDS = 60*60*24*7;
@@ -23,6 +24,7 @@ export class File {
     public readonly shared: boolean;
     public readonly tags: string[]; // Don't modify this, treat as immutable. Always sorted alphabetically.
     public readonly hash: string;
+    public readonly isDeleted: boolean;
     public readonly screenshots: string[]; // Don't modify this, treat as immutable.
     public readonly binary: Uint8Array;
     public readonly addedAt: Date;
@@ -41,6 +43,7 @@ export class File {
         this.releaseYear = releaseYear;
         this.shared = shared;
         this.tags = [...tags].sort(); // Guarantee it's sorted.
+        this.isDeleted = this.tags.indexOf(TRASH_TAG) >= 0;
         this.hash = hash;
         this.screenshots = screenshots;
         this.binary = binary;
@@ -136,37 +139,33 @@ export class File {
      * TODO could cache this, assume the auto ones don't change over time. The "new" would
      * change but not much.
      */
-    public getAllTags(): string[] {
-        const autoTags: string[] = [];
+    public getAllTags(): TagSet {
+        const allTags = new TagSet();
 
         if (this.shared) {
-            autoTags.push("Shared");
+            allTags.add("Shared");
         }
         const now = Date.now();
         if (now - this.addedAt.getTime() < NEW_SECONDS) {
-            autoTags.push("New");
+            allTags.add("New");
         }
 
         // TODO better extension algorithm.
         const i = this.filename.lastIndexOf(".");
         if (i > 0) {
-            autoTags.push(this.filename.substr(i + 1).toUpperCase());
+            allTags.add(this.filename.substr(i + 1).toUpperCase());
         }
 
         if (this.note === "") {
-            autoTags.push("Missing note");
+            allTags.add("Missing note");
         }
         if (this.screenshots.length === 0) {
-            autoTags.push("Missing screenshot");
+            allTags.add("Missing screenshot");
         }
 
-        if (autoTags.length === 0) {
-            return this.tags;
-        } else {
-            // There may be some duplicates here, but leave them so the user can see that their tags
-            // are redundant.
-            return [...this.tags, ...autoTags].sort();
-        }
+        allTags.add(...this.tags);
+
+        return allTags;
     }
 
     /**

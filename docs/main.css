@@ -234,6 +234,7 @@ button.icon-button {
 .tag-4 { background-color: var(--blue); }
 .tag-5 { background-color: var(--cyan); }
 .tag-6 { background-color: var(--green); }
+.tag-trash { background-color: var(--red); }
 
 @keyframes spin {
     from {

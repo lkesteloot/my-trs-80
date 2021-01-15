@@ -43058,6 +43058,8 @@ var esm = __webpack_require__(66);
 
 // CONCATENATED MODULE: ./src/Utils.ts
 const MATERIAL_ICONS_CLASS = "material-icons-round";
+// Name of tag we use for files in the trash.
+const TRASH_TAG = "Trash";
 // Functions to call.
 const deferredFunctions = [];
 // Whether we've already created a timer to call the deferred functions.
@@ -43155,14 +43157,17 @@ function makeTextButton(label, iconName, cssClass, clickCallback) {
     return button;
 }
 /**
- * Compute a hash number for the tag string. See the "tag-#" CSS classes.
+ * Compute a hash for the tag string. See the "tag-#" CSS classes.
  */
 function computeTagColor(tag) {
+    if (tag === TRASH_TAG) {
+        return "trash";
+    }
     let hash = 0;
     for (let i = 0; i < tag.length; i++) {
         hash += tag.charCodeAt(i);
     }
-    return hash % 7;
+    return (hash % 7).toString();
 }
 /**
  * Make a capsule to display a tag.
@@ -43676,7 +43681,80 @@ function sha1(bytes) {
     return [h0, h1, h2, h3, h4].map(toHexLong).join("");
 }
 
+// CONCATENATED MODULE: ./src/TagSet.ts
+/**
+ * Manages a set of tags for a File.
+ */
+class TagSet {
+    constructor() {
+        this.tagSet = new Set();
+    }
+    /**
+     * Whether this tag set is empty (has no tags).
+     */
+    isEmpty() {
+        return this.tagSet.size === 0;
+    }
+    /**
+     * Add the given tags to this set.
+     */
+    add(...tags) {
+        for (const tag of tags) {
+            this.tagSet.add(tag);
+        }
+    }
+    /**
+     * Add the tags from the other tag set to this set.
+     */
+    addAll(tags) {
+        for (const tag of tags.tagSet) {
+            this.tagSet.add(tag);
+        }
+    }
+    /**
+     * Whether this tag set contains the specified tag.
+     */
+    has(tag) {
+        return this.tagSet.has(tag);
+    }
+    /**
+     * Whether this tag set has all of the tags in the other tag set.
+     */
+    hasAll(tags) {
+        for (const tag of tags.tagSet) {
+            if (!this.has(tag)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * Remove the tag, returning whether it was in the set before.
+     */
+    remove(tag) {
+        return this.tagSet.delete(tag);
+    }
+    /**
+     * Remove all tags from this tag set.
+     */
+    clear() {
+        this.tagSet.clear();
+    }
+    /**
+     * Returns a sorted array of the tags.
+     */
+    asArray() {
+        const tags = [];
+        for (const tag of this.tagSet) {
+            tags.push(tag);
+        }
+        tags.sort();
+        return tags;
+    }
+}
+
 // CONCATENATED MODULE: ./src/File.ts
+
 
 
 
@@ -43696,6 +43774,7 @@ class File_File {
         this.releaseYear = releaseYear;
         this.shared = shared;
         this.tags = [...tags].sort(); // Guarantee it's sorted.
+        this.isDeleted = this.tags.indexOf(TRASH_TAG) >= 0;
         this.hash = hash;
         this.screenshots = screenshots;
         this.binary = binary;
@@ -43784,33 +43863,27 @@ class File_File {
      * change but not much.
      */
     getAllTags() {
-        const autoTags = [];
+        const allTags = new TagSet();
         if (this.shared) {
-            autoTags.push("Shared");
+            allTags.add("Shared");
         }
         const now = Date.now();
         if (now - this.addedAt.getTime() < NEW_SECONDS) {
-            autoTags.push("New");
+            allTags.add("New");
         }
         // TODO better extension algorithm.
         const i = this.filename.lastIndexOf(".");
         if (i > 0) {
-            autoTags.push(this.filename.substr(i + 1).toUpperCase());
+            allTags.add(this.filename.substr(i + 1).toUpperCase());
         }
         if (this.note === "") {
-            autoTags.push("Missing note");
+            allTags.add("Missing note");
         }
         if (this.screenshots.length === 0) {
-            autoTags.push("Missing screenshot");
+            allTags.add("Missing screenshot");
         }
-        if (autoTags.length === 0) {
-            return this.tags;
-        }
-        else {
-            // There may be some duplicates here, but leave them so the user can see that their tags
-            // are redundant.
-            return [...this.tags, ...autoTags].sort();
-        }
+        allTags.add(...this.tags);
+        return allTags;
     }
     /**
      * Compare two files for sorting.
@@ -43954,6 +44027,7 @@ class PageTab_PageTab {
 
 
 
+
 const FILE_ID_ATTR = "data-file-id";
 const IMPORT_FILE_LABEL = "Import File";
 /**
@@ -43961,8 +44035,8 @@ const IMPORT_FILE_LABEL = "Import File";
  */
 class YourFilesTab_YourFilesTab {
     constructor(pageTabs, context) {
-        // If empty, show all files. Otherwise show only files that have all of these tags.
-        this.filterTags = new Set();
+        // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
+        this.filterTags = new TagSet();
         this.libraryInSync = false;
         this.context = context;
         const tab = new PageTab_PageTab("Your Files", context.user !== undefined);
@@ -43984,19 +44058,20 @@ class YourFilesTab_YourFilesTab {
         // Register for changes to library.
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
         this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
-        // Populate initial library state.
-        this.context.library.getAllFiles().forEach(f => this.addFile(f));
-        this.sortFiles();
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         tab.element.append(actionBar);
         this.filterEditor = document.createElement("div");
         this.filterEditor.classList.add("filter-editor");
         actionBar.append(this.filterEditor);
+        this.openTrashButton = makeTextButton("Open Trash", "delete", "open-trash-button", () => this.openTrash());
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button", () => this.exportAll());
         actionBar.append(exportAllButton);
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
         actionBar.append(uploadButton);
+        // Populate initial library state.
+        this.context.library.getAllFiles().forEach(f => this.addFile(f));
+        this.sortFiles();
         this.updateSplashScreen();
         pageTabs.addTab(tab);
     }
@@ -44119,7 +44194,7 @@ class YourFilesTab_YourFilesTab {
         });
     }
     /**
-     * Add a file to the list of files in the library.
+     * Add a file to the list of files in the library. TODO delete.
      */
     addFileOld(file) {
         const fileDiv = document.createElement("div");
@@ -44137,6 +44212,7 @@ class YourFilesTab_YourFilesTab {
             releaseYearSpan.innerText = " (" + file.releaseYear + ")";
             nameDiv.append(releaseYearSpan);
         }
+        /*
         const autoTags = file.getAllTags();
         if (autoTags.length > 0) {
             const tagsDiv = document.createElement("span");
@@ -44145,7 +44221,7 @@ class YourFilesTab_YourFilesTab {
                 // tagsDiv.append(makeTagCapsule());
             }
             nameDiv.append(tagsDiv);
-        }
+        }*/
         infoDiv.append(nameDiv);
         const filenameDiv = document.createElement("div");
         filenameDiv.classList.add("filename");
@@ -44194,7 +44270,7 @@ class YourFilesTab_YourFilesTab {
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
         contentDiv.append(screenshotsDiv);
-        /*
+        /* TODO find a way to show all screenshots.
         for (const screenshot of file.screenshots) {
             // Don't do these all at once, they can take tens of milliseconds each, and in a large
             // library that can hang the page for several seconds. Dribble them in later.
@@ -44235,8 +44311,7 @@ class YourFilesTab_YourFilesTab {
         contentDiv.append(noteDiv);
         const tagsDiv = document.createElement("span");
         tagsDiv.classList.add("tags");
-        const autoTags = file.getAllTags();
-        for (const tag of autoTags) {
+        for (const tag of file.getAllTags().asArray()) {
             tagsDiv.append(makeTagCapsule({
                 tag: tag,
                 clickCallback: () => {
@@ -44280,42 +44355,60 @@ class YourFilesTab_YourFilesTab {
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;
-            if (this.filterTags.size !== 0) {
-                const fileId = fileDiv.getAttribute(FILE_ID_ATTR);
-                if (fileId !== null) {
-                    const file = this.context.library.getFile(fileId);
-                    if (file !== undefined) {
-                        for (const tag of this.filterTags) {
-                            const fileTags = file.getAllTags();
-                            if (fileTags.indexOf(tag) === -1) {
-                                hidden = true;
-                                break;
-                            }
-                        }
+            const fileId = fileDiv.getAttribute(FILE_ID_ATTR);
+            if (fileId !== null) {
+                const file = this.context.library.getFile(fileId);
+                if (file !== undefined) {
+                    const fileTags = file.getAllTags();
+                    // Only show files that have all the filter items.
+                    if (!this.filterTags.isEmpty() && !fileTags.hasAll(this.filterTags)) {
+                        hidden = true;
+                    }
+                    // If we're not explicitly filtering for trash, hide files in the trash.
+                    if (!this.filterTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
+                        hidden = true;
                     }
                 }
             }
             fileDiv.classList.toggle("hidden", hidden);
         }
         Object(teamten_ts_utils_dist["clearElement"])(this.filterEditor);
-        if (this.filterTags.size !== 0) {
-            this.filterEditor.append("Filter tags:");
-            const sortedTags = [];
-            for (const tag of this.filterTags) {
-                sortedTags.push(tag);
+        if (this.filterTags.isEmpty()) {
+            if (this.anyFileInTrash()) {
+                this.filterEditor.append(this.openTrashButton);
             }
-            sortedTags.sort();
-            for (const tag of sortedTags) {
+        }
+        else {
+            this.filterEditor.append("Filter tags:");
+            for (const tag of this.filterTags.asArray()) {
                 this.filterEditor.append(makeTagCapsule({
                     tag: tag,
                     iconName: "clear",
                     clickCallback: () => {
-                        this.filterTags.delete(tag);
+                        this.filterTags.remove(tag);
                         this.refreshFilter();
                     },
                 }));
             }
         }
+    }
+    /**
+     * Whether there's anything in the trash.
+     */
+    anyFileInTrash() {
+        for (const file of this.context.library.getAllFiles()) {
+            if (file.tags.indexOf(TRASH_TAG) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Adds trash to the filter.
+     */
+    openTrash() {
+        this.filterTags.add(TRASH_TAG);
+        this.refreshFilter();
     }
     /**
      * Return an element for a file given its ID, or undefined if not found.
@@ -44344,6 +44437,8 @@ class YourFilesTab_YourFilesTab {
         // Repopulate the UI in the right order.
         Object(teamten_ts_utils_dist["clearElement"])(this.filesDiv);
         this.filesDiv.append(...fileElements.map(e => e.element));
+        // Update the hidden flags.
+        this.refreshFilter();
     }
 }
 
@@ -45805,61 +45900,6 @@ class HexdumpTab_HexdumpTab {
 var isEmpty = __webpack_require__(68);
 var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
 
-// CONCATENATED MODULE: ./src/TagSet.ts
-/**
- * Manages a set of tags for a File.
- */
-class TagSet {
-    constructor() {
-        this.tagSet = new Set();
-    }
-    /**
-     * Add the given tags to this set.
-     */
-    add(...tags) {
-        for (const tag of tags) {
-            this.tagSet.add(tag);
-        }
-    }
-    /**
-     * Add the tags from the other tag set to this set.
-     */
-    addAll(tags) {
-        for (const tag of tags.tagSet) {
-            this.tagSet.add(tag);
-        }
-    }
-    /**
-     * Whether this tag set contains the specified tag.
-     */
-    has(tag) {
-        return this.tagSet.has(tag);
-    }
-    /**
-     * Remove the tag, returning whether it was in the set before.
-     */
-    remove(tag) {
-        return this.tagSet.delete(tag);
-    }
-    /**
-     * Remove all tags from this tag set.
-     */
-    clear() {
-        this.tagSet.clear();
-    }
-    /**
-     * Returns a sorted array of the tags.
-     */
-    asArray() {
-        const tags = [];
-        for (const tag of this.tagSet) {
-            tags.push(tag);
-        }
-        tags.sort();
-        return tags;
-    }
-}
-
 // CONCATENATED MODULE: ./src/FileInfoTab.ts
 
 
@@ -45883,6 +45923,7 @@ class FileInfoTab_FileInfoTab {
         for (const file of this.filePanel.context.library.getAllFiles()) {
             this.allTags.add(...file.tags);
         }
+        this.allTags.remove(TRASH_TAG);
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
         const tab = new PageTab_PageTab("File Info");
@@ -45952,22 +45993,45 @@ class FileInfoTab_FileInfoTab {
             this.filePanel.context.panelManager.close();
         });
         actionBar.append(runButton);
-        const deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
-            this.filePanel.context.db.deleteFile(this.filePanel.file)
+        this.deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
+            const oldFile = this.filePanel.file;
+            const tags = new TagSet();
+            tags.add(...oldFile.tags, TRASH_TAG);
+            const newFile = oldFile.builder()
+                .withTags(tags.asArray())
+                .withModifiedAt(new Date())
+                .build();
+            this.filePanel.context.db.updateFile(oldFile, newFile)
                 .then(() => {
-                this.filePanel.context.library.removeFile(this.filePanel.file);
-                // We automatically close as a result of the file being removed from the library.
+                this.filePanel.context.library.modifyFile(newFile);
+                this.filePanel.context.panelManager.popPanel();
             })
                 .catch(error => {
                 // TODO.
                 console.error(error);
             });
         });
-        actionBar.append(deleteButton);
+        this.undeleteButton = makeTextButton("Undelete File", "restore_from_trash", "delete-button", () => {
+            const oldFile = this.filePanel.file;
+            const tags = new TagSet();
+            tags.add(...oldFile.tags);
+            tags.remove(TRASH_TAG);
+            const newFile = oldFile.builder()
+                .withTags(tags.asArray())
+                .withModifiedAt(new Date())
+                .build();
+            this.filePanel.context.db.updateFile(oldFile, newFile)
+                .then(() => {
+                this.filePanel.context.library.modifyFile(newFile);
+            })
+                .catch(error => {
+                // TODO.
+                console.error(error);
+            });
+        });
         this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
-        actionBar.append(this.revertButton);
         this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
-        actionBar.append(this.saveButton);
+        actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
         for (const input of [this.nameInput, this.filenameInput, this.noteInput, this.authorInput, this.releaseYearInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
         }
@@ -46003,6 +46067,7 @@ class FileInfoTab_FileInfoTab {
             });
         });
         this.filePanel.context.library.onEvent.subscribe(event => {
+            console.log(this);
             if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
                 // Make sure we don't clobber any user-entered data in the input fields.
                 const updateData = this.filePanel.file.getUpdateDataComparedTo(event.newFile);
@@ -46094,7 +46159,7 @@ class FileInfoTab_FileInfoTab {
         newTagForm.classList.add("new-tag-form");
         newTagForm.addEventListener("submit", event => {
             const newTag = newTagInput.value.trim();
-            if (newTag !== "") {
+            if (newTag !== "" && newTag !== TRASH_TAG) {
                 this.tags.add(newTag);
                 this.allTags.add(newTag);
                 this.updateTagsInput(true);
@@ -46107,7 +46172,6 @@ class FileInfoTab_FileInfoTab {
         tagListElement.append(newTagForm);
         const newTagInput = document.createElement("input");
         newTagInput.placeholder = "New tag";
-        console.log(newTagFocus);
         if (newTagFocus) {
             setTimeout(() => newTagInput.focus(), 0);
         }
@@ -46148,6 +46212,8 @@ class FileInfoTab_FileInfoTab {
             newFile.filename.length > 0;
         this.revertButton.disabled = isSame;
         this.saveButton.disabled = isSame || !isValid;
+        this.deleteButton.classList.toggle("hidden", file.isDeleted);
+        this.undeleteButton.classList.toggle("hidden", !file.isDeleted);
     }
     /**
      * Make a new File object based on the user's inputs.

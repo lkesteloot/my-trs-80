@@ -1,5 +1,8 @@
 const MATERIAL_ICONS_CLASS = "material-icons-round";
 
+// Name of tag we use for files in the trash.
+ export const TRASH_TAG = "Trash";
+
 // Functions to call.
 const deferredFunctions: (() => void)[] = [];
 // Whether we've already created a timer to call the deferred functions.
@@ -131,14 +134,18 @@ export interface TagCapsuleOptions {
 }
 
 /**
- * Compute a hash number for the tag string. See the "tag-#" CSS classes.
+ * Compute a hash for the tag string. See the "tag-#" CSS classes.
  */
-function computeTagColor(tag: string): number {
+function computeTagColor(tag: string): string {
+    if (tag === TRASH_TAG) {
+        return "trash";
+    }
+
     let hash = 0;
     for (let i = 0; i < tag.length; i++) {
         hash += tag.charCodeAt(i);
     }
-    return hash % 7;
+    return (hash % 7).toString();
 }
 
 /**

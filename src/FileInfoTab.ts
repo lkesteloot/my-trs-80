@@ -1,7 +1,16 @@
 import {Trs80File} from "trs80-base";
 import {PageTabs} from "./PageTabs";
 import {PageTab} from "./PageTab";
-import {defer, formatDate, makeIcon, makeIconButton, makeTagCapsule, makeTextButton, TagCapsuleOptions} from "./Utils";
+import {
+    defer,
+    formatDate,
+    makeIcon,
+    makeIconButton,
+    makeTagCapsule,
+    makeTextButton,
+    TagCapsuleOptions,
+    TRASH_TAG
+} from "./Utils";
 import {LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {clearElement, withCommas} from "teamten-ts-utils";
 import {CanvasScreen} from "trs80-emulator";
@@ -34,6 +43,8 @@ export class FileInfoTab {
     private readonly tagsInput: HTMLElement;
     private readonly sharedInput: HTMLInputElement;
     private readonly screenshotsDiv: HTMLElement;
+    private readonly deleteButton: HTMLButtonElement;
+    private readonly undeleteButton: HTMLButtonElement;
     private readonly revertButton: HTMLButtonElement;
     private readonly saveButton: HTMLButtonElement;
 
@@ -46,6 +57,7 @@ export class FileInfoTab {
         for (const file of this.filePanel.context.library.getAllFiles()) {
             this.allTags.add(... file.tags);
         }
+        this.allTags.remove(TRASH_TAG);
 
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
@@ -130,25 +142,47 @@ export class FileInfoTab {
         const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
             this.filePanel.context.panelManager.close();
-
         });
         actionBar.append(runButton);
-        const deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
-            this.filePanel.context.db.deleteFile(this.filePanel.file)
+        this.deleteButton = makeTextButton("Delete File", "delete", "delete-button", () => {
+            const oldFile = this.filePanel.file;
+            const tags = new TagSet();
+            tags.add(...oldFile.tags, TRASH_TAG);
+            const newFile = oldFile.builder()
+                .withTags(tags.asArray())
+                .withModifiedAt(new Date())
+                .build();
+            this.filePanel.context.db.updateFile(oldFile, newFile)
                 .then(() => {
-                    this.filePanel.context.library.removeFile(this.filePanel.file);
-                    // We automatically close as a result of the file being removed from the library.
+                    this.filePanel.context.library.modifyFile(newFile);
+                    this.filePanel.context.panelManager.popPanel();
                 })
                 .catch(error => {
                     // TODO.
                     console.error(error);
                 });
         });
-        actionBar.append(deleteButton);
+        this.undeleteButton = makeTextButton("Undelete File", "restore_from_trash", "delete-button", () => {
+            const oldFile = this.filePanel.file;
+            const tags = new TagSet();
+            tags.add(...oldFile.tags);
+            tags.remove(TRASH_TAG);
+            const newFile = oldFile.builder()
+                .withTags(tags.asArray())
+                .withModifiedAt(new Date())
+                .build();
+            this.filePanel.context.db.updateFile(oldFile, newFile)
+                .then(() => {
+                    this.filePanel.context.library.modifyFile(newFile);
+                })
+                .catch(error => {
+                    // TODO.
+                    console.error(error);
+                });
+        });
         this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
-        actionBar.append(this.revertButton);
         this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
-        actionBar.append(this.saveButton);
+        actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
 
         for (const input of [this.nameInput, this.filenameInput, this.noteInput, this.authorInput, this.releaseYearInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
@@ -190,6 +224,7 @@ export class FileInfoTab {
         });
 
         this.filePanel.context.library.onEvent.subscribe(event => {
+            console.log(this);
             if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
                 // Make sure we don't clobber any user-entered data in the input fields.
                 const updateData = this.filePanel.file.getUpdateDataComparedTo(event.newFile);
@@ -289,7 +324,7 @@ export class FileInfoTab {
         newTagForm.classList.add("new-tag-form");
         newTagForm.addEventListener("submit", event => {
             const newTag = newTagInput.value.trim();
-            if (newTag !== "") {
+            if (newTag !== "" && newTag !== TRASH_TAG) {
                 this.tags.add(newTag);
                 this.allTags.add(newTag);
                 this.updateTagsInput(true);
@@ -303,7 +338,6 @@ export class FileInfoTab {
 
         const newTagInput = document.createElement("input");
         newTagInput.placeholder = "New tag";
-        console.log(newTagFocus);
         if (newTagFocus) {
             setTimeout(() => newTagInput.focus(), 0);
         }
@@ -350,6 +384,9 @@ export class FileInfoTab {
 
         this.revertButton.disabled = isSame;
         this.saveButton.disabled = isSame || !isValid;
+
+        this.deleteButton.classList.toggle("hidden", file.isDeleted);
+        this.undeleteButton.classList.toggle("hidden", !file.isDeleted);
     }
 
     /**
