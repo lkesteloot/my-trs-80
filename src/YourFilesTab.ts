@@ -306,6 +306,8 @@ export class YourFilesTab {
             const screen = new CanvasScreen();
             if (file.screenshots.length > 0) {
                 screen.displayScreenshot(file.screenshots[0]);
+            } else {
+                screenshotsDiv.classList.add("missing");
             }
             screenshotsDiv.append(screen.asImage());
         });

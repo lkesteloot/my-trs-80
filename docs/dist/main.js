@@ -43797,6 +43797,12 @@ class File_File {
         if (i > 0) {
             autoTags.push(this.filename.substr(i + 1).toUpperCase());
         }
+        if (this.note === "") {
+            autoTags.push("Missing note");
+        }
+        if (this.screenshots.length === 0) {
+            autoTags.push("Missing screenshot");
+        }
         if (autoTags.length === 0) {
             return this.tags;
         }
@@ -44203,6 +44209,9 @@ class YourFilesTab_YourFilesTab {
             const screen = new dist["CanvasScreen"]();
             if (file.screenshots.length > 0) {
                 screen.displayScreenshot(file.screenshots[0]);
+            }
+            else {
+                screenshotsDiv.classList.add("missing");
             }
             screenshotsDiv.append(screen.asImage());
         });
@@ -45879,7 +45888,7 @@ class FileInfoTab_FileInfoTab {
         const tab = new PageTab_PageTab("File Info");
         tab.element.classList.add("file-info-tab");
         // Form for editing file info.
-        const form = document.createElement("form");
+        const form = document.createElement("div");
         form.classList.add("file-panel-form");
         tab.element.append(form);
         const makeInputBox = (label, cssClass, enabled) => {

@@ -544,9 +544,14 @@ button.icon-button {
     max-width: 100%;
 }
 
+.your-files-tab .file .screenshots.missing {
+    opacity: 30%;
+}
+
 .your-files-tab .file .name {
     font-weight: 800;
     color: var(--accent-color);
+    margin-top: 5px;
 }
 
 .your-files-tab .file .name .release-year {
@@ -825,6 +830,7 @@ button.icon-button {
 .file-panel-form .shared i {
     font-size: 36px;
     display: block;
+    cursor: pointer;
 }
 
 .file-panel-form .shared i.on-state {

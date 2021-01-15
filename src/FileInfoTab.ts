@@ -54,7 +54,7 @@ export class FileInfoTab {
         tab.element.classList.add("file-info-tab");
 
         // Form for editing file info.
-        const form = document.createElement("form");
+        const form = document.createElement("div");
         form.classList.add("file-panel-form");
         tab.element.append(form);
 

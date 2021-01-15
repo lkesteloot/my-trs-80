@@ -153,6 +153,13 @@ export class File {
             autoTags.push(this.filename.substr(i + 1).toUpperCase());
         }
 
+        if (this.note === "") {
+            autoTags.push("Missing note");
+        }
+        if (this.screenshots.length === 0) {
+            autoTags.push("Missing screenshot");
+        }
+
         if (autoTags.length === 0) {
             return this.tags;
         } else {
