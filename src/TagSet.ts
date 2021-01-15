@@ -38,6 +38,13 @@ export class TagSet {
     }
 
     /**
+     * Remove all tags from this tag set.
+     */
+    public clear(): void {
+        this.tagSet.clear();
+    }
+
+    /**
      * Returns a sorted array of the tags.
      */
     public asArray(): string[] {

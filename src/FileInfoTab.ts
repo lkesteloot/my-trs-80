@@ -229,7 +229,11 @@ export class FileInfoTab {
         this.sizeInput.value = withCommas(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
         this.addedAtInput.value = formatDate(file.addedAt);
         this.modifiedAtInput.value = formatDate(file.modifiedAt);
-        this.updateTagsInput();
+        if (updateData === undefined || updateData.hasOwnProperty("tags")) {
+            this.tags.clear();
+            this.tags.add(...file.tags);
+            this.updateTagsInput();
+        }
         this.sharedInput.checked = file.shared;
         if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
             this.populateScreenshots();

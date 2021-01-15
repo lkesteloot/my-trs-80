@@ -45829,6 +45829,12 @@ class TagSet {
         return this.tagSet.delete(tag);
     }
     /**
+     * Remove all tags from this tag set.
+     */
+    clear() {
+        this.tagSet.clear();
+    }
+    /**
      * Returns a sorted array of the tags.
      */
     asArray() {
@@ -46021,7 +46027,11 @@ class FileInfoTab_FileInfoTab {
         this.sizeInput.value = Object(teamten_ts_utils_dist["withCommas"])(file.binary.length) + " byte" + (file.binary.length === 1 ? "" : "s");
         this.addedAtInput.value = formatDate(file.addedAt);
         this.modifiedAtInput.value = formatDate(file.modifiedAt);
-        this.updateTagsInput();
+        if (updateData === undefined || updateData.hasOwnProperty("tags")) {
+            this.tags.clear();
+            this.tags.add(...file.tags);
+            this.updateTagsInput();
+        }
         this.sharedInput.checked = file.shared;
         if (updateData === undefined || updateData.hasOwnProperty("screenshots")) {
             this.populateScreenshots();
