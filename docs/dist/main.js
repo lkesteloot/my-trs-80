@@ -45862,8 +45862,14 @@ const SCREENSHOT_ATTR = "data-screenshot";
 class FileInfoTab_FileInfoTab {
     constructor(filePanel, pageTabs, trs80File) {
         this.tags = new TagSet();
+        this.allTags = new TagSet();
         this.filePanel = filePanel;
         this.trs80File = trs80File;
+        // Make union of all tags in all files. Do this here once so that if the user deletes a tag
+        // that only this file has, it'll stay in this set so it can be added again easily.
+        for (const file of this.filePanel.context.library.getAllFiles()) {
+            this.allTags.add(...file.tags);
+        }
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
         const tab = new PageTab_PageTab("File Info");
@@ -46048,13 +46054,7 @@ class FileInfoTab_FileInfoTab {
         const tagListElement = document.createElement("div");
         tagListElement.classList.add("tag-list");
         this.tagsInput.append(tagListElement);
-        // Make union of all tags in all files.
-        const allTags = new TagSet();
-        for (const file of this.filePanel.context.library.getAllFiles()) {
-            allTags.add(...file.tags);
-        }
-        allTags.addAll(this.tags);
-        for (const tag of allTags.asArray()) {
+        for (const tag of this.allTags.asArray()) {
             const tagOptions = {
                 tag: tag,
             };
@@ -46083,6 +46083,7 @@ class FileInfoTab_FileInfoTab {
             const newTag = newTagInput.value.trim();
             if (newTag !== "") {
                 this.tags.add(newTag);
+                this.allTags.add(newTag);
                 this.updateTagsInput(true);
                 this.updateButtonStatus();
             }

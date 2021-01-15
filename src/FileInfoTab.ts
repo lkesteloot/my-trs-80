@@ -30,6 +30,7 @@ export class FileInfoTab {
     private readonly addedAtInput: HTMLInputElement;
     private readonly modifiedAtInput: HTMLInputElement;
     private readonly tags = new TagSet();
+    private readonly allTags = new TagSet();
     private readonly tagsInput: HTMLElement;
     private readonly sharedInput: HTMLInputElement;
     private readonly screenshotsDiv: HTMLElement;
@@ -39,6 +40,12 @@ export class FileInfoTab {
     constructor(filePanel: IFilePanel, pageTabs: PageTabs, trs80File: Trs80File) {
         this.filePanel = filePanel;
         this.trs80File = trs80File;
+
+        // Make union of all tags in all files. Do this here once so that if the user deletes a tag
+        // that only this file has, it'll stay in this set so it can be added again easily.
+        for (const file of this.filePanel.context.library.getAllFiles()) {
+            this.allTags.add(... file.tags);
+        }
 
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
@@ -254,14 +261,7 @@ export class FileInfoTab {
         tagListElement.classList.add("tag-list");
         this.tagsInput.append(tagListElement);
 
-        // Make union of all tags in all files.
-        const allTags = new TagSet();
-        for (const file of this.filePanel.context.library.getAllFiles()) {
-            allTags.add(... file.tags);
-        }
-        allTags.addAll(this.tags);
-
-        for (const tag of allTags.asArray()) {
+        for (const tag of this.allTags.asArray()) {
             const tagOptions: TagCapsuleOptions = {
                 tag: tag,
             };
@@ -291,6 +291,7 @@ export class FileInfoTab {
             const newTag = newTagInput.value.trim();
             if (newTag !== "") {
                 this.tags.add(newTag);
+                this.allTags.add(newTag);
                 this.updateTagsInput(true);
                 this.updateButtonStatus();
             }
