@@ -4,7 +4,7 @@ import {makeCloseIconButton, makeIcon, makeIconButton} from "./Utils";
 /**
  * Base class for panels.
  */
-export class Panel {
+export abstract class Panel {
     public readonly context: Context;
     public readonly element: HTMLElement;
     public readonly headerTextNode: HTMLElement;
@@ -18,7 +18,7 @@ export class Panel {
      * @param panelCssClass class for the whole panel.
      * @param showBackButton whether to show a back button.
      */
-    constructor(context: Context, title: string, panelCssClass: string, showBackButton: boolean) {
+    protected constructor(context: Context, title: string, panelCssClass: string, showBackButton: boolean) {
         this.context = context;
 
         this.element = document.createElement("div");
@@ -40,5 +40,12 @@ export class Panel {
         this.content = document.createElement("div");
         this.content.classList.add("panel-content");
         this.element.append(this.content);
+    }
+
+    /**
+     * Called when the panel is no longer visible and is being destroyed.
+     */
+    public onPanelDestroy(): void {
+        // Nothing by default.
     }
 }

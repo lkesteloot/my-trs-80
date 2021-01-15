@@ -1,4 +1,4 @@
-import {PageTabs} from "./PageTabs";
+
 import {decodeTrs80File, Trsdos, trsdosProtectionLevelToString} from "trs80-base";
 import {PageTab} from "./PageTab";
 import {withCommas} from "teamten-ts-utils";
@@ -10,14 +10,15 @@ import JSZip from "jszip";
 /**
  * Handles the TRSDOS tab in the file panel.
  */
-export class TrsdosTab {
-    constructor(filePanel: IFilePanel, pageTabs: PageTabs, trsdos: Trsdos) {
-        const tab = new PageTab("TRSDOS");
-        tab.element.classList.add("trsdos-tab");
+export class TrsdosTab extends PageTab {
+    constructor(filePanel: IFilePanel, trsdos: Trsdos) {
+        super("TRSDOS");
+
+        this.element.classList.add("trsdos-tab");
 
         const mainContents = document.createElement("div");
         mainContents.classList.add("trsdos");
-        tab.element.append(mainContents);
+        this.element.append(mainContents);
 
         const infoDiv = document.createElement("div");
         infoDiv.classList.add("info");
@@ -124,7 +125,7 @@ export class TrsdosTab {
 
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
 
         // Make a ZIP file for export.
         const exportZipButton = makeTextButton("Export ZIP", "get_app", "export-zip-button", () => {
@@ -163,7 +164,5 @@ export class TrsdosTab {
                 });
         });
         actionBar.append(exportZipButton);
-
-        pageTabs.addTab(tab);
     }
 }

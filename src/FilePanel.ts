@@ -13,6 +13,7 @@ import {TrsdosTab} from "./TrsdosTab";
  */
 export class FilePanel extends Panel implements IFilePanel {
     public file: File;
+    public readonly pageTabs: PageTabs;
 
     constructor(context: Context, file: File) {
         super(context, file.name, "file-panel", true);
@@ -20,16 +21,21 @@ export class FilePanel extends Panel implements IFilePanel {
         this.file = file;
         const trs80File = decodeTrs80File(file.binary, file.filename);
 
-        const pageTabs = new PageTabs(this.content);
-        new FileInfoTab(this, pageTabs, trs80File);
-        new HexdumpTab(this.context, pageTabs, trs80File);
+        this.pageTabs = new PageTabs(this.content);
+        this.pageTabs.addTab(new FileInfoTab(this, trs80File));
+        this.pageTabs.addTab(new HexdumpTab(this.context, trs80File));
 
         if (trs80File instanceof FloppyDisk) {
             const trsdos = decodeTrsdos(trs80File);
             if (trsdos !== undefined) {
-                new TrsdosTab(this, pageTabs, trsdos);
+                this.pageTabs.addTab(new TrsdosTab(this, trsdos));
             }
         }
+    }
+
+    onPanelDestroy(): void {
+        this.pageTabs.destroy();
+        super.onPanelDestroy();
     }
 
     setHeaderText(header: string): void {

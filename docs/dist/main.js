@@ -43267,6 +43267,7 @@ class PanelManager_PanelManager {
             const panel = this.panels.pop();
             setTimeout(() => {
                 if (panel !== undefined) {
+                    panel.onPanelDestroy();
                     panel.element.remove();
                 }
             }, 1000);
@@ -43351,6 +43352,12 @@ class Panel_Panel {
         this.content.classList.add("panel-content");
         this.element.append(this.content);
     }
+    /**
+     * Called when the panel is no longer visible and is being destroyed.
+     */
+    onPanelDestroy() {
+        // Nothing by default.
+    }
 }
 
 // EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
@@ -43386,11 +43393,12 @@ class PageTabs_PageTabs {
         this.configurationChanged();
     }
     /**
-     * Set the visibility of a tab.
+     * The panel these page tabs are on is being destroyed.
      */
-    setVisible(tab, visible) {
-        tab.visible = visible;
-        this.configurationChanged();
+    destroy() {
+        for (const tab of this.tabs) {
+            tab.onDestroy();
+        }
     }
     /**
      * Switch the active tab.
@@ -43409,10 +43417,10 @@ class PageTabs_PageTabs {
         this.computeEffectiveActiveIndex();
         if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
             if (oldEffectiveActiveIndex !== undefined) {
-                this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
+                this.tabs[oldEffectiveActiveIndex].onHide();
             }
             if (this.effectiveActiveIndex !== undefined) {
-                this.tabs[this.effectiveActiveIndex].onShow.dispatch();
+                this.tabs[this.effectiveActiveIndex].onShow();
             }
         }
         this.recreateTabs();
@@ -44005,18 +44013,33 @@ class File_FileBuilder {
 }
 
 // CONCATENATED MODULE: ./src/PageTab.ts
-
 /**
  * Represents a single page tab and its contents.
  */
-class PageTab_PageTab {
+class PageTab {
     constructor(name, visible = true) {
-        this.onShow = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.onHide = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.name = name;
         this.visible = visible;
         this.element = document.createElement("div");
         this.element.classList.add("tab-content");
+    }
+    /**
+     * Called when a tab is shown.
+     */
+    onShow() {
+        // Nothing by default.
+    }
+    /**
+     * Called when a tab is hidden (another tab is shown).
+     */
+    onHide() {
+        // Nothing by default.
+    }
+    /**
+     * Called when the page tab is being destroyed.
+     */
+    onDestroy() {
+        // Nothing by default.
     }
 }
 
@@ -44033,21 +44056,24 @@ const IMPORT_FILE_LABEL = "Import File";
 /**
  * Tap for the Your Files UI.
  */
-class YourFilesTab_YourFilesTab {
-    constructor(pageTabs, context) {
+class YourFilesTab_YourFilesTab extends PageTab {
+    constructor(context, pageTabs) {
+        super("Your Files", context.user !== undefined);
         // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
         this.filterTags = new TagSet();
         this.libraryInSync = false;
         this.context = context;
-        const tab = new PageTab_PageTab("Your Files", context.user !== undefined);
-        tab.element.classList.add("your-files-tab");
-        context.onUser.subscribe(user => pageTabs.setVisible(tab, user !== undefined));
+        this.element.classList.add("your-files-tab");
+        context.onUser.subscribe(user => {
+            this.visible = user !== undefined;
+            pageTabs.configurationChanged();
+        });
         this.filesDiv = document.createElement("div");
         this.filesDiv.classList.add("files");
-        tab.element.append(this.filesDiv);
+        this.element.append(this.filesDiv);
         this.emptyLibrary = document.createElement("div");
         this.emptyLibrary.classList.add("empty-library");
-        tab.element.append(this.emptyLibrary);
+        this.element.append(this.emptyLibrary);
         const emptyTitle = document.createElement("h2");
         emptyTitle.innerText = "You have no files in your library!";
         const emptyBody = document.createElement("article");
@@ -44060,7 +44086,7 @@ class YourFilesTab_YourFilesTab {
         this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
         this.filterEditor = document.createElement("div");
         this.filterEditor.classList.add("filter-editor");
         actionBar.append(this.filterEditor);
@@ -44073,7 +44099,6 @@ class YourFilesTab_YourFilesTab {
         this.context.library.getAllFiles().forEach(f => this.addFile(f));
         this.sortFiles();
         this.updateSplashScreen();
-        pageTabs.addTab(tab);
     }
     /**
      * Handle change to library files.
@@ -45394,27 +45419,28 @@ function fetchMediaImages(appId) {
 /**
  * The tab for showing apps from RetroStore.org.
  */
-class RetroStoreTab_RetroStoreTab {
-    constructor(pageTabs, context) {
+class RetroStoreTab_RetroStoreTab extends PageTab {
+    constructor(context) {
+        super("RetroStore");
         this.apps = [];
         this.complete = false;
         this.fetching = false;
         this.context = context;
-        const tab = new PageTab_PageTab("RetroStore");
-        tab.element.classList.add("retro-store-tab");
+        this.element.classList.add("retro-store-tab");
         this.appsDiv = document.createElement("div");
         this.appsDiv.classList.add("retro-store-apps");
         this.appsDiv.addEventListener("scroll", () => this.fetchNextBatchIfNecessary());
-        tab.element.append(this.appsDiv);
+        this.element.append(this.appsDiv);
         this.moreDiv = document.createElement("div");
         this.moreDiv.classList.add("retro-store-more");
         this.moreDiv.append(makeIcon("cached"));
-        // When showing the tab, wait for layout and maybe fetch more.
-        tab.onShow.subscribe(() => setTimeout(() => this.fetchNextBatchIfNecessary(), 0));
         this.populateApps();
         // If the window is resized, it might reveal slots to load.
         window.addEventListener("resize", () => this.fetchNextBatchIfNecessary());
-        pageTabs.addTab(tab);
+    }
+    onShow() {
+        // When showing the tab, wait for layout and maybe fetch more.
+        setTimeout(() => this.fetchNextBatchIfNecessary(), 0);
     }
     /**
      * If the "More" section is visible, fetch more apps.
@@ -45595,8 +45621,8 @@ class LibraryPanel_LibraryPanel extends Panel_Panel {
     constructor(context) {
         super(context, "Library", "library-panel", false);
         const pageTabs = new PageTabs_PageTabs(this.content);
-        new YourFilesTab_YourFilesTab(pageTabs, context);
-        new RetroStoreTab_RetroStoreTab(pageTabs, context);
+        pageTabs.addTab(new YourFilesTab_YourFilesTab(context, pageTabs));
+        pageTabs.addTab(new RetroStoreTab_RetroStoreTab(context));
     }
 }
 
@@ -45816,33 +45842,24 @@ class HexdumpGenerator_HexdumpGenerator {
 /**
  * Tab for displaying the hex and ASCII of the binary.
  */
-class HexdumpTab_HexdumpTab {
-    constructor(context, pageTabs, trs80File) {
+class HexdumpTab_HexdumpTab extends PageTab {
+    constructor(context, trs80File) {
+        super("Hexdump");
         this.needGeneration = true;
         this.collapse = true;
         this.annotate = true;
         this.binary = trs80File.binary;
         this.trs80File = trs80File;
-        const tab = new PageTab_PageTab("Hexdump");
-        tab.element.classList.add("hexdump-tab");
+        this.element.classList.add("hexdump-tab");
         const outer = document.createElement("div");
         outer.classList.add("hexdump-outer");
-        tab.element.append(outer);
+        this.element.append(outer);
         this.hexdumpElement = document.createElement("div");
         this.hexdumpElement.classList.add("hexdump");
         outer.append(this.hexdumpElement);
-        tab.onShow.subscribe(() => {
-            // Wait until user switches to tab to compute initial display, so that
-            // it doesn't slow down the animation to the file panel. Also do it
-            // asynchronously so that we don't block the display of the tab change.
-            if (this.needGeneration) {
-                this.needGeneration = false;
-                setTimeout(() => this.generateHexdump(), 0);
-            }
-        });
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
         const collapseLabel = document.createElement("label");
         const collapseCheckbox = document.createElement("input");
         collapseCheckbox.type = "checkbox";
@@ -45883,7 +45900,15 @@ class HexdumpTab_HexdumpTab {
                 hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
             }
         });
-        pageTabs.addTab(tab);
+    }
+    onShow() {
+        // Wait until user switches to tab to compute initial display, so that
+        // it doesn't slow down the animation to the file panel. Also do it
+        // asynchronously so that we don't block the display of the tab change.
+        if (this.needGeneration) {
+            this.needGeneration = false;
+            setTimeout(() => this.generateHexdump(), 0);
+        }
     }
     /**
      * Regenerate the HTML for the hexdump.
@@ -45912,8 +45937,9 @@ const SCREENSHOT_ATTR = "data-screenshot";
 /**
  * Handles the file info tab in the file panel.
  */
-class FileInfoTab_FileInfoTab {
-    constructor(filePanel, pageTabs, trs80File) {
+class FileInfoTab_FileInfoTab extends PageTab {
+    constructor(filePanel, trs80File) {
+        super("File Info");
         this.tags = new TagSet();
         this.allTags = new TagSet();
         this.filePanel = filePanel;
@@ -45926,12 +45952,11 @@ class FileInfoTab_FileInfoTab {
         this.allTags.remove(TRASH_TAG);
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
-        const tab = new PageTab_PageTab("File Info");
-        tab.element.classList.add("file-info-tab");
+        this.element.classList.add("file-info-tab");
         // Form for editing file info.
         const form = document.createElement("div");
         form.classList.add("file-panel-form");
-        tab.element.append(form);
+        this.element.append(form);
         const makeInputBox = (label, cssClass, enabled) => {
             const labelElement = document.createElement("label");
             if (cssClass !== undefined) {
@@ -45987,7 +46012,7 @@ class FileInfoTab_FileInfoTab {
         form.append(this.screenshotsDiv);
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
         const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
             this.filePanel.context.panelManager.close();
@@ -46066,7 +46091,7 @@ class FileInfoTab_FileInfoTab {
                 this.updateUi();
             });
         });
-        this.filePanel.context.library.onEvent.subscribe(event => {
+        this.cancelLibrarySubscription = this.filePanel.context.library.onEvent.subscribe(event => {
             console.log(this);
             if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
                 // Make sure we don't clobber any user-entered data in the input fields.
@@ -46080,7 +46105,10 @@ class FileInfoTab_FileInfoTab {
             }
         });
         this.updateUi();
-        pageTabs.addTab(tab);
+    }
+    onDestroy() {
+        this.cancelLibrarySubscription();
+        super.onDestroy();
     }
     /**
      * Update UI after a change to file.
@@ -46257,13 +46285,13 @@ var jszip_min_default = /*#__PURE__*/__webpack_require__.n(jszip_min);
 /**
  * Handles the TRSDOS tab in the file panel.
  */
-class TrsdosTab_TrsdosTab {
-    constructor(filePanel, pageTabs, trsdos) {
-        const tab = new PageTab_PageTab("TRSDOS");
-        tab.element.classList.add("trsdos-tab");
+class TrsdosTab_TrsdosTab extends PageTab {
+    constructor(filePanel, trsdos) {
+        super("TRSDOS");
+        this.element.classList.add("trsdos-tab");
         const mainContents = document.createElement("div");
         mainContents.classList.add("trsdos");
-        tab.element.append(mainContents);
+        this.element.append(mainContents);
         const infoDiv = document.createElement("div");
         infoDiv.classList.add("info");
         const addField = (label, value, cssClass) => {
@@ -46358,7 +46386,7 @@ class TrsdosTab_TrsdosTab {
         }
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
         // Make a ZIP file for export.
         const exportZipButton = makeTextButton("Export ZIP", "get_app", "export-zip-button", () => {
             const zip = new jszip_min_default.a();
@@ -46393,7 +46421,6 @@ class TrsdosTab_TrsdosTab {
             });
         });
         actionBar.append(exportZipButton);
-        pageTabs.addTab(tab);
     }
 }
 
@@ -46412,15 +46439,19 @@ class FilePanel_FilePanel extends Panel_Panel {
         super(context, file.name, "file-panel", true);
         this.file = file;
         const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary, file.filename);
-        const pageTabs = new PageTabs_PageTabs(this.content);
-        new FileInfoTab_FileInfoTab(this, pageTabs, trs80File);
-        new HexdumpTab_HexdumpTab(this.context, pageTabs, trs80File);
+        this.pageTabs = new PageTabs_PageTabs(this.content);
+        this.pageTabs.addTab(new FileInfoTab_FileInfoTab(this, trs80File));
+        this.pageTabs.addTab(new HexdumpTab_HexdumpTab(this.context, trs80File));
         if (trs80File instanceof trs80_base_dist["FloppyDisk"]) {
             const trsdos = Object(trs80_base_dist["decodeTrsdos"])(trs80File);
             if (trsdos !== undefined) {
-                new TrsdosTab_TrsdosTab(this, pageTabs, trsdos);
+                this.pageTabs.addTab(new TrsdosTab_TrsdosTab(this, trsdos));
             }
         }
+    }
+    onPanelDestroy() {
+        this.pageTabs.destroy();
+        super.onPanelDestroy();
     }
     setHeaderText(header) {
         if (header === "") {

@@ -73,6 +73,7 @@ export class PanelManager {
             const panel = this.panels.pop();
             setTimeout(() => {
                 if (panel !== undefined) {
+                    panel.onPanelDestroy();
                     panel.element.remove();
                 }
             }, 1000);

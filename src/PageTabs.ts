@@ -35,11 +35,12 @@ export class PageTabs {
     }
 
     /**
-     * Set the visibility of a tab.
+     * The panel these page tabs are on is being destroyed.
      */
-    public setVisible(tab: PageTab, visible: boolean): void {
-        tab.visible = visible;
-        this.configurationChanged();
+    public destroy(): void {
+        for (const tab of this.tabs) {
+            tab.onDestroy();
+        }
     }
 
     /**
@@ -55,15 +56,15 @@ export class PageTabs {
     /**
      * Update all tabs given a new configuration.
      */
-    private configurationChanged(): void {
+    public configurationChanged(): void {
         const oldEffectiveActiveIndex = this.effectiveActiveIndex;
         this.computeEffectiveActiveIndex();
         if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
             if (oldEffectiveActiveIndex !== undefined) {
-                this.tabs[oldEffectiveActiveIndex].onHide.dispatch();
+                this.tabs[oldEffectiveActiveIndex].onHide();
             }
             if (this.effectiveActiveIndex !== undefined) {
-                this.tabs[this.effectiveActiveIndex].onShow.dispatch();
+                this.tabs[this.effectiveActiveIndex].onShow();
             }
         }
 

@@ -1,4 +1,4 @@
-import {PageTabs} from "./PageTabs";
+
 import {LibraryAddEvent, LibraryEvent, LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {File, FileBuilder} from "./File";
 import {CanvasScreen} from "trs80-emulator";
@@ -7,6 +7,7 @@ import {clearElement} from "teamten-ts-utils";
 import {Context} from "./Context";
 import {PageTab} from "./PageTab";
 import {TagSet} from "./TagSet";
+import {PageTabs} from "./PageTabs";
 
 const FILE_ID_ATTR = "data-file-id";
 const IMPORT_FILE_LABEL = "Import File";
@@ -14,7 +15,7 @@ const IMPORT_FILE_LABEL = "Import File";
 /**
  * Tap for the Your Files UI.
  */
-export class YourFilesTab {
+export class YourFilesTab extends PageTab {
     private readonly context: Context;
     private readonly filesDiv: HTMLElement;
     private readonly emptyLibrary: HTMLElement;
@@ -24,20 +25,24 @@ export class YourFilesTab {
     private readonly openTrashButton: HTMLElement;
     private libraryInSync = false;
 
-    constructor(pageTabs: PageTabs, context: Context) {
+    constructor(context: Context, pageTabs: PageTabs) {
+        super("Your Files", context.user !== undefined);
+
         this.context = context;
 
-        const tab = new PageTab("Your Files", context.user !== undefined);
-        tab.element.classList.add("your-files-tab");
-        context.onUser.subscribe(user => pageTabs.setVisible(tab, user !== undefined));
+        this.element.classList.add("your-files-tab");
+        context.onUser.subscribe(user => {
+            this.visible = user !== undefined;
+            pageTabs.configurationChanged();
+        });
 
         this.filesDiv = document.createElement("div");
         this.filesDiv.classList.add("files");
-        tab.element.append(this.filesDiv);
+        this.element.append(this.filesDiv);
 
         this.emptyLibrary = document.createElement("div");
         this.emptyLibrary.classList.add("empty-library");
-        tab.element.append(this.emptyLibrary);
+        this.element.append(this.emptyLibrary);
 
         const emptyTitle = document.createElement("h2");
         emptyTitle.innerText = "You have no files in your library!";
@@ -53,7 +58,7 @@ export class YourFilesTab {
 
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
 
         this.filterEditor = document.createElement("div");
         this.filterEditor.classList.add("filter-editor");
@@ -75,8 +80,6 @@ export class YourFilesTab {
         this.sortFiles();
 
         this.updateSplashScreen();
-
-        pageTabs.addTab(tab);
     }
 
     /**

@@ -13,7 +13,7 @@ export class LibraryPanel extends Panel {
         super(context, "Library", "library-panel", false);
 
         const pageTabs = new PageTabs(this.content);
-        new YourFilesTab(pageTabs, context);
-        new RetroStoreTab(pageTabs, context);
+        pageTabs.addTab(new YourFilesTab(context, pageTabs));
+        pageTabs.addTab(new RetroStoreTab(context));
     }
 }

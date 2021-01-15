@@ -1,5 +1,4 @@
 import {Trs80File} from "trs80-base";
-import {PageTabs} from "./PageTabs";
 import {PageTab} from "./PageTab";
 import {
     defer,
@@ -26,7 +25,7 @@ const SCREENSHOT_ATTR = "data-screenshot";
 /**
  * Handles the file info tab in the file panel.
  */
-export class FileInfoTab {
+export class FileInfoTab extends PageTab {
     private readonly filePanel: IFilePanel;
     private readonly trs80File: Trs80File;
     private readonly nameInput: HTMLInputElement;
@@ -47,8 +46,11 @@ export class FileInfoTab {
     private readonly undeleteButton: HTMLButtonElement;
     private readonly revertButton: HTMLButtonElement;
     private readonly saveButton: HTMLButtonElement;
+    private readonly cancelLibrarySubscription: () => void;
 
-    constructor(filePanel: IFilePanel, pageTabs: PageTabs, trs80File: Trs80File) {
+    constructor(filePanel: IFilePanel, trs80File: Trs80File) {
+        super("File Info");
+
         this.filePanel = filePanel;
         this.trs80File = trs80File;
 
@@ -62,13 +64,12 @@ export class FileInfoTab {
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
 
-        const tab = new PageTab("File Info");
-        tab.element.classList.add("file-info-tab");
+        this.element.classList.add("file-info-tab");
 
         // Form for editing file info.
         const form = document.createElement("div");
         form.classList.add("file-panel-form");
-        tab.element.append(form);
+        this.element.append(form);
 
         const makeInputBox = (label: string, cssClass: string | undefined, enabled: boolean): HTMLInputElement => {
             const labelElement = document.createElement("label");
@@ -137,7 +138,7 @@ export class FileInfoTab {
 
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
 
         const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
@@ -223,7 +224,7 @@ export class FileInfoTab {
                 });
         });
 
-        this.filePanel.context.library.onEvent.subscribe(event => {
+        this.cancelLibrarySubscription = this.filePanel.context.library.onEvent.subscribe(event => {
             console.log(this);
             if (event instanceof LibraryModifyEvent && event.newFile.id === this.filePanel.file.id) {
                 // Make sure we don't clobber any user-entered data in the input fields.
@@ -238,7 +239,11 @@ export class FileInfoTab {
         });
 
         this.updateUi();
-        pageTabs.addTab(tab);
+    }
+
+    onDestroy(): void {
+        this.cancelLibrarySubscription();
+        super.onDestroy();
     }
 
     /**

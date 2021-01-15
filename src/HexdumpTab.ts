@@ -1,5 +1,4 @@
 import {Trs80File} from "trs80-base";
-import {PageTabs} from "./PageTabs";
 import {PageTab} from "./PageTab";
 import {HexdumpGenerator} from "./HexdumpGenerator";
 import {clearElement} from "teamten-ts-utils";
@@ -8,7 +7,7 @@ import {Context} from "./Context";
 /**
  * Tab for displaying the hex and ASCII of the binary.
  */
-export class HexdumpTab {
+export class HexdumpTab extends PageTab {
     private readonly binary: Uint8Array;
     private readonly trs80File: Trs80File;
     private readonly hexdumpElement: HTMLElement;
@@ -16,33 +15,25 @@ export class HexdumpTab {
     private collapse = true;
     private annotate = true;
 
-    constructor(context: Context, pageTabs: PageTabs, trs80File: Trs80File) {
+    constructor(context: Context, trs80File: Trs80File) {
+        super("Hexdump");
+
         this.binary = trs80File.binary;
         this.trs80File = trs80File;
 
-        const tab = new PageTab("Hexdump");
-        tab.element.classList.add("hexdump-tab");
+        this.element.classList.add("hexdump-tab");
 
         const outer = document.createElement("div");
         outer.classList.add("hexdump-outer");
-        tab.element.append(outer);
+        this.element.append(outer);
 
         this.hexdumpElement = document.createElement("div");
         this.hexdumpElement.classList.add("hexdump");
         outer.append(this.hexdumpElement);
-        tab.onShow.subscribe(() => {
-            // Wait until user switches to tab to compute initial display, so that
-            // it doesn't slow down the animation to the file panel. Also do it
-            // asynchronously so that we don't block the display of the tab change.
-            if (this.needGeneration) {
-                this.needGeneration = false;
-                setTimeout(() => this.generateHexdump(), 0);
-            }
-        });
 
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
-        tab.element.append(actionBar);
+        this.element.append(actionBar);
 
         const collapseLabel = document.createElement("label");
         const collapseCheckbox = document.createElement("input");
@@ -85,8 +76,16 @@ export class HexdumpTab {
                 hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
             }
         });
+    }
 
-        pageTabs.addTab(tab);
+    public onShow(): void {
+        // Wait until user switches to tab to compute initial display, so that
+        // it doesn't slow down the animation to the file panel. Also do it
+        // asynchronously so that we don't block the display of the tab change.
+        if (this.needGeneration) {
+            this.needGeneration = false;
+            setTimeout(() => this.generateHexdump(), 0);
+        }
     }
 
     /**

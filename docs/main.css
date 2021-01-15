@@ -196,6 +196,11 @@ button.icon-button {
     border-radius: 50%;
 }
 
+button i {
+    transition: color var(--button-transition-time) ease-in-out,
+        opacity var(--button-transition-time) ease-in-out;
+}
+
 .icon-button:hover:not(:disabled) .material-icons-override {
     color: var(--foreground-emphasized);
 }
