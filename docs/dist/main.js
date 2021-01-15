@@ -43108,6 +43108,10 @@ function makeIcon(name) {
     const icon = document.createElement("i");
     icon.classList.add(MATERIAL_ICONS_CLASS);
     icon.classList.add("material-icons-override");
+    if (name === "edit") {
+        // Icon is too large.
+        icon.classList.add("smaller-icon");
+    }
     icon.innerText = name;
     return icon;
 }

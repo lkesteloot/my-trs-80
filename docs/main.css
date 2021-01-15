@@ -93,7 +93,13 @@ input::placeholder {
 }
 
 i.material-icons-round {
+    /* Don't allow selecting the text. */
     user-select: none;
+}
+
+/* Slightly reduce size of these icons. Normal is 24px. */
+.smaller-icon {
+    font-size: 20px;
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
