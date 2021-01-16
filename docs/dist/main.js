@@ -46467,7 +46467,94 @@ class TrsdosTab_TrsdosTab extends PageTab {
     }
 }
 
+// CONCATENATED MODULE: ./src/BasicTab.ts
+
+
+
+/**
+ * Add text to the line with the specified class.
+ *
+ * @param out the enclosing element to add to.
+ * @param text the text to add.
+ * @param className the name of the class for the item.
+ * @return the new element.
+ */
+function add(out, text, className) {
+    const e = document.createElement("span");
+    e.innerText = text;
+    e.classList.add(className);
+    out.appendChild(e);
+    return e;
+}
+/**
+ * Tab for displaying the decoded Basic source code.
+ */
+class BasicTab_BasicTab extends PageTab {
+    constructor(basic) {
+        super("Basic");
+        this.needGeneration = true;
+        this.basic = basic;
+        this.element.classList.add("basic-tab");
+        const outer = document.createElement("div");
+        outer.classList.add("basic-outer");
+        this.element.append(outer);
+        this.basicElement = document.createElement("div");
+        this.basicElement.classList.add("basic");
+        outer.append(this.basicElement);
+    }
+    onShow() {
+        // Wait until user switches to tab to compute initial display, so that
+        // it doesn't slow down the animation to the file panel. Also do it
+        // asynchronously so that we don't block the display of the tab change.
+        if (this.needGeneration) {
+            this.needGeneration = false;
+            setTimeout(() => this.generateBasic(), 0);
+        }
+    }
+    /**
+     * Regenerate the HTML for the Basic program.
+     */
+    generateBasic() {
+        const lines = [];
+        let line = undefined;
+        for (const basicElement of this.basic.elements) {
+            // Create a new line if necessary.
+            if (line === undefined || basicElement.elementType === trs80_base_dist["ElementType"].LINE_NUMBER) {
+                line = document.createElement("div");
+                lines.push(line);
+            }
+            add(line, basicElement.text, BasicTab_BasicTab.classNameForBasicElement(basicElement));
+        }
+        // Add the lines all at once.
+        Object(teamten_ts_utils_dist["clearElement"])(this.basicElement);
+        this.basicElement.append(...lines);
+    }
+    /**
+     * Get the CSS class name for the given element.
+     */
+    static classNameForBasicElement(basicElement) {
+        switch (basicElement.elementType) {
+            case trs80_base_dist["ElementType"].ERROR:
+                return "basic-error";
+            case trs80_base_dist["ElementType"].LINE_NUMBER:
+                return "basic-line-number";
+            case trs80_base_dist["ElementType"].PUNCTUATION:
+                return "basic-punctuation";
+            case trs80_base_dist["ElementType"].KEYWORD:
+                return "basic-keyword";
+            case trs80_base_dist["ElementType"].REGULAR:
+            default:
+                return "basic-regular";
+            case trs80_base_dist["ElementType"].STRING:
+                return "basic-string";
+            case trs80_base_dist["ElementType"].COMMENT:
+                return "basic-comment";
+        }
+    }
+}
+
 // CONCATENATED MODULE: ./src/FilePanel.ts
+
 
 
 
@@ -46485,11 +46572,20 @@ class FilePanel_FilePanel extends Panel_Panel {
         this.pageTabs = new PageTabs_PageTabs(this.content);
         this.pageTabs.addTab(new FileInfoTab_FileInfoTab(this, trs80File));
         this.pageTabs.addTab(new HexdumpTab_HexdumpTab(this.context, trs80File));
+        // Refer to the file in the cassette if possible.
+        let effectiveFile = trs80File;
+        if (effectiveFile instanceof trs80_base_dist["Cassette"] && effectiveFile.files.length === 1) {
+            // Here we could open a tab for each file on the cassette.
+            effectiveFile = effectiveFile.files[0].file;
+        }
         if (trs80File instanceof trs80_base_dist["FloppyDisk"]) {
             const trsdos = Object(trs80_base_dist["decodeTrsdos"])(trs80File);
             if (trsdos !== undefined) {
                 this.pageTabs.addTab(new TrsdosTab_TrsdosTab(this, trsdos));
             }
+        }
+        if (effectiveFile instanceof trs80_base_dist["BasicProgram"]) {
+            this.pageTabs.addTab(new BasicTab_BasicTab(effectiveFile));
         }
     }
     onPanelDestroy() {

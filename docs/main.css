@@ -962,6 +962,55 @@ button i {
 
 /* ----------------------------------------------------------------------------------------------------- */
 
+.basic-tab {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr); /* contents */
+}
+
+.basic-outer {
+    background-color: var(--background);
+    padding: var(--side-padding);
+
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+}
+
+.basic {
+    font-family: "Roboto Mono", monospace;
+    overflow-y: auto;
+    white-space: pre;
+}
+
+.basic .basic-error {
+    color: var(--red);
+}
+
+.basic .basic-line-number {
+    color: var(--foreground-secondary);
+}
+
+.basic .basic-punctuation {
+    color: var(--foreground-secondary);
+}
+
+.basic .basic-keyword {
+    color: var(--blue);
+}
+
+.basic .basic-regular {
+    color: var(--foreground);
+}
+
+.basic .basic-string {
+    color: var(--orange);
+}
+
+.basic .basic-comment {
+    color: var(--cyan);
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
 .trsdos-tab {
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto; /* contents and action-bar */
