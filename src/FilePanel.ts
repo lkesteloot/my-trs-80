@@ -2,12 +2,13 @@ import {Panel} from "./Panel";
 import {File} from "./File";
 import {Context} from "./Context";
 import {PageTabs} from "./PageTabs";
-import {BasicProgram, Cassette, decodeTrs80File, decodeTrsdos, FloppyDisk} from "trs80-base";
+import {BasicProgram, Cassette, CmdProgram, decodeTrs80File, decodeTrsdos, FloppyDisk} from "trs80-base";
 import {HexdumpTab} from "./HexdumpTab";
 import {FileInfoTab} from "./FileInfoTab";
 import {IFilePanel} from "./IFilePanel";
 import {TrsdosTab} from "./TrsdosTab";
 import {BasicTab} from "./BasicTab";
+import {CmdTab} from "./CmdTab";
 
 /**
  * Panel to explore a file.
@@ -42,6 +43,9 @@ export class FilePanel extends Panel implements IFilePanel {
 
         if (effectiveFile instanceof BasicProgram) {
             this.pageTabs.addTab(new BasicTab(effectiveFile));
+        }
+        if (effectiveFile instanceof CmdProgram) {
+            this.pageTabs.addTab(new CmdTab(effectiveFile));
         }
     }
 

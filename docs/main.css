@@ -1011,6 +1011,55 @@ button i {
 
 /* ----------------------------------------------------------------------------------------------------- */
 
+.cmd-tab {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr); /* contents */
+}
+
+.cmd-outer {
+    background-color: var(--background);
+    padding: var(--side-padding);
+
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+}
+
+.cmd {
+    font-family: "Roboto Mono", monospace;
+    overflow-y: auto;
+    white-space: pre;
+}
+
+.cmd .cmd-error {
+    color: var(--red);
+}
+
+.cmd .cmd-address {
+    color: var(--foreground-secondary);
+}
+
+.cmd .cmd-hex {
+    color: var(--blue);
+}
+
+.cmd .cmd-opcodes {
+    color: var(--cyan);
+}
+
+.cmd .cmd-label {
+    color: var(--orange);
+}
+
+.cmd .cmd-space {
+    color: var(--foreground-secondary);
+}
+
+.cmd .cmd-punctuation {
+    color: var(--foreground-secondary);
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
 .trsdos-tab {
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto; /* contents and action-bar */
