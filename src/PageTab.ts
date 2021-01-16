@@ -6,6 +6,7 @@ import {SimpleEventDispatcher} from "strongly-typed-events";
 export abstract class PageTab {
     public readonly name: string;
     public visible: boolean;
+    private firstShow = true;
     // Element for the body of the tab.
     public readonly element: Element;
 
@@ -20,6 +21,16 @@ export abstract class PageTab {
      * Called when a tab is shown.
      */
     public onShow(): void {
+        if (this.firstShow) {
+            this.firstShow = false;
+            setTimeout(() => this.onFirstShow(), 0);
+        }
+    }
+
+    /**
+     * Called the first time a tab is shown.
+     */
+    public onFirstShow(): void {
         // Nothing by default.
     }
 

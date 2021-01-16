@@ -11,7 +11,6 @@ export class HexdumpTab extends PageTab {
     private readonly binary: Uint8Array;
     private readonly trs80File: Trs80File;
     private readonly hexdumpElement: HTMLElement;
-    private needGeneration = true;
     private collapse = true;
     private annotate = true;
 
@@ -78,14 +77,8 @@ export class HexdumpTab extends PageTab {
         });
     }
 
-    public onShow(): void {
-        // Wait until user switches to tab to compute initial display, so that
-        // it doesn't slow down the animation to the file panel. Also do it
-        // asynchronously so that we don't block the display of the tab change.
-        if (this.needGeneration) {
-            this.needGeneration = false;
-            setTimeout(() => this.generateHexdump(), 0);
-        }
+    public onFirstShow(): void {
+        this.generateHexdump();
     }
 
     /**

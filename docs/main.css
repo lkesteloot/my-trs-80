@@ -1060,6 +1060,51 @@ button i {
 
 /* ----------------------------------------------------------------------------------------------------- */
 
+.disassembly-tab {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr); /* contents */
+}
+
+.disassembly-outer {
+    background-color: var(--background);
+    padding: var(--side-padding);
+
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+}
+
+.disassembly {
+    font-family: "Roboto Mono", monospace;
+    overflow-y: auto;
+    white-space: pre;
+}
+
+.disassembly-space {
+    color: var(--foreground-secondary);
+}
+
+.disassembly-label {
+    color: var(--orange);
+}
+
+.disassembly-punctuation {
+    color: var(--foreground-secondary);
+}
+
+.disassembly-address {
+    color: var(--foreground-secondary);
+}
+
+.disassembly-hex {
+    color: var(--blue);
+}
+
+.disassembly-opcodes {
+    color: var(--cyan);
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
 .trsdos-tab {
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto; /* contents and action-bar */

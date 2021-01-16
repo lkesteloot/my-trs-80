@@ -24,7 +24,6 @@ function add(out: HTMLElement, text: string, className: string): HTMLElement {
 export class BasicTab extends PageTab {
     private readonly basic: BasicProgram;
     private readonly basicElement: HTMLElement;
-    private needGeneration = true;
 
     constructor(basic: BasicProgram) {
         super("Basic");
@@ -42,14 +41,8 @@ export class BasicTab extends PageTab {
         outer.append(this.basicElement);
     }
 
-    public onShow(): void {
-        // Wait until user switches to tab to compute initial display, so that
-        // it doesn't slow down the animation to the file panel. Also do it
-        // asynchronously so that we don't block the display of the tab change.
-        if (this.needGeneration) {
-            this.needGeneration = false;
-            setTimeout(() => this.generateBasic(), 0);
-        }
+    public onFirstShow(): void {
+        this.generateBasic();
     }
 
     /**

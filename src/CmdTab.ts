@@ -40,7 +40,6 @@ function addBinarySnippet(line: HTMLDivElement, loadData: Uint8Array) {
 export class CmdTab extends PageTab {
     private readonly cmdProgram: CmdProgram;
     private readonly innerElement: HTMLElement;
-    private needGeneration = true;
 
     constructor(cmdProgram: CmdProgram) {
         super("CMD");
@@ -58,14 +57,8 @@ export class CmdTab extends PageTab {
         outer.append(this.innerElement);
     }
 
-    public onShow(): void {
-        // Wait until user switches to tab to compute initial display, so that
-        // it doesn't slow down the animation to the file panel. Also do it
-        // asynchronously so that we don't block the display of the tab change.
-        if (this.needGeneration) {
-            this.needGeneration = false;
-            setTimeout(() => this.generateCmd(), 0);
-        }
+    public onFirstShow(): void {
+        this.generateCmd();
     }
 
     private generateCmd(): void {
@@ -117,10 +110,6 @@ export class CmdTab extends PageTab {
         }
 
         /*
-        h1 = document.createElement("h1");
-        h1.innerText = "Disassembly";
-        lines.push(h1);
-
         const disasm = new Disasm();
         disasm.addLabels(Z80_KNOWN_LABELS);
         disasm.addLabels(TRS80_MODEL_III_KNOWN_LABELS);

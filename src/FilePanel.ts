@@ -9,6 +9,7 @@ import {IFilePanel} from "./IFilePanel";
 import {TrsdosTab} from "./TrsdosTab";
 import {BasicTab} from "./BasicTab";
 import {CmdTab} from "./CmdTab";
+import {DisassemblyTab} from "./DisassemblyTab";
 
 /**
  * Panel to explore a file.
@@ -46,6 +47,7 @@ export class FilePanel extends Panel implements IFilePanel {
         }
         if (effectiveFile instanceof CmdProgram) {
             this.pageTabs.addTab(new CmdTab(effectiveFile));
+            this.pageTabs.addTab(new DisassemblyTab(effectiveFile));
         }
     }
 
