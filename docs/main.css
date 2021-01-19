@@ -741,18 +741,20 @@ button i {
     grid-template-rows: minmax(0, 1fr) auto; /* contents and action-bar */
 }
 
+.file-panel-form-container {
+    background-color: var(--background);
+    padding: var(--side-padding);
+    overflow-y: hidden;
+}
+
 .file-panel-form {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto auto auto 1fr;
     column-gap: 20px;
     row-gap: 20px;
-    background-color: var(--background);
-
-    flex-grow: 1;
-    overflow-y: hidden;
-
-    padding: var(--side-padding);
+    overflow-y: auto;
 }
 
 .file-panel-form label {
@@ -789,10 +791,17 @@ button i {
 .file-panel-form .screenshots {
     grid-column: 3 / -1;
     grid-row: 1 / -1;
-    overflow-y: auto;
 
     display: flex;
     flex-flow: column nowrap;
+
+    height: max-content;
+}
+
+.file-panel-form .screenshots-instructions {
+    margin-top: 5px;
+    font-style: italic;
+    color: var(--foreground-secondary);
 }
 
 .file-panel-form .filename input {

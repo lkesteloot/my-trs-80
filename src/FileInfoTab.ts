@@ -67,10 +67,15 @@ export class FileInfoTab extends PageTab {
 
         this.element.classList.add("file-info-tab");
 
+        // Container of form.
+        const formContainer = document.createElement("div");
+        formContainer.classList.add("file-panel-form-container");
+        this.element.append(formContainer);
+
         // Form for editing file info.
         const form = document.createElement("div");
         form.classList.add("file-panel-form");
-        this.element.append(form);
+        formContainer.append(form);
 
         const makeInputBox = (label: string, cssClass: string | undefined, enabled: boolean): HTMLInputElement => {
             const labelElement = document.createElement("label");
@@ -395,6 +400,17 @@ export class FileInfoTab extends PageTab {
      */
     private populateScreenshots(): void {
         clearElement(this.screenshotsDiv);
+
+        const labelElement = document.createElement("label");
+        labelElement.innerText = "Screenshots";
+        this.screenshotsDiv.append(labelElement);
+
+        if (this.filePanel.file.screenshots.length === 0) {
+            const instructions = document.createElement("div");
+            instructions.classList.add("screenshots-instructions");
+            instructions.innerText = "To take a screenshot, run the program and click the camera icon.";
+            this.screenshotsDiv.append(instructions);
+        }
 
         for (const screenshot of this.filePanel.file.screenshots) {
             const screenshotDiv = document.createElement("div");
