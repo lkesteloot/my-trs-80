@@ -25,7 +25,7 @@ export abstract class Panel {
         this.element = document.createElement("div");
         this.element.classList.add("panel", panelCssClass);
 
-        // Handler for hotkeys.
+        // Handler for hot keys.
         this.keyboardListener = (e: KeyboardEvent) => {
             if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Backspace") {
                 this.context.panelManager.popPanel();

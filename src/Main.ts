@@ -14,6 +14,7 @@ import {FileBuilder} from "./File";
 import {DialogBox} from "./DialogBox";
 import {AuthUser} from "./User";
 import {Database} from "./Database";
+import {Editor} from "trs80-emulator/dist/Editor";
 
 class EmptyCassette extends CassettePlayer {
     // Nothing to do.
@@ -146,9 +147,10 @@ export function main() {
     screenDiv.classList.add("main-computer-screen");
 
     const screen = new CanvasScreen(1.5);
-    screenDiv.append(screen.getNode());
     let cassette = new EmptyCassette();
     const trs80 = new Trs80(screen, cassette);
+    const editor = new Editor(trs80, screen);
+    screenDiv.append(editor.node);
 
     const reboot = () => {
         trs80.reset();
@@ -223,6 +225,8 @@ export function main() {
                 });
         }
     });
+
+    controlPanel.addEditorButton(() => editor.startEdit());
 
     context.onUser.subscribe(user => {
         library.removeAll();
