@@ -96,6 +96,10 @@ export class CmdTab extends PageTab {
                     add(line, "Jump to ", "cmd-opcodes");
                     add(line, toHexWord(chunk.address), "cmd-address");
                 }
+                // Not sure what to do here. I've seen junk after this block. I suspect that CMD
+                // parsers of the time, when running into this block, would immediately just
+                // jump to the address and ignore everything after it, so let's emulate that.
+                break;
             } else if (chunk instanceof CmdLoadModuleHeaderChunk) {
                 add(line, "Load module header: ", "cmd-opcodes");
                 add(line, chunk.filename, "cmd-hex");
@@ -108,51 +112,6 @@ export class CmdTab extends PageTab {
                 }
             }
         }
-
-        /*
-        const disasm = new Disasm();
-        disasm.addLabels(Z80_KNOWN_LABELS);
-        disasm.addLabels(TRS80_MODEL_III_KNOWN_LABELS);
-        disasm.addLabels([[cmdProgram.entryPointAddress, "MAIN"]]);
-        for (const chunk of cmdProgram.chunks) {
-            if (chunk.type === CMD_LOAD_BLOCK) {
-                const address = chunk.rawData[0] + chunk.rawData[1] * 256;
-                disasm.addChunk(chunk.rawData.slice(2), address);
-            }
-        }
-        disasm.addEntryPoint(cmdProgram.entryPointAddress);
-        const instructions = disasm.disassemble();
-
-        for (const instruction of instructions) {
-            if (instruction.label !== undefined) {
-                const line = document.createElement("div");
-                lines.push(line);
-                add(line, "                  ", classes.space);
-                add(line, instruction.label, classes.label);
-                add(line, ":", classes.punctuation);
-            }
-
-            let address = instruction.address;
-            const bytes = instruction.bin;
-
-            while (bytes.length > 0) {
-                const subbytes = bytes.slice(0, Math.min(4, bytes.length));
-                const subbytesText = subbytes.map(toHexByte).join(" ");
-
-                const line = document.createElement("div");
-                lines.push(line);
-                add(line, toHexWord(instruction.address), classes.address);
-                add(line, "  ", classes.space);
-                add(line, subbytesText, classes.hex);
-                if (address === instruction.address) {
-                    add(line, "".padEnd(12 - subbytesText.length + 8), classes.space);
-                    add(line, instruction.toText(), classes.opcodes);
-                }
-
-                address += subbytes.length;
-                bytes.splice(0, subbytes.length);
-            }
-        }*/
 
         // Add the lines all at once.
         clearElement(this.innerElement);
