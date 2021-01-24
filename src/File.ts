@@ -173,21 +173,18 @@ export class File {
      */
     public static compare(a: File, b: File): number {
         // Primary sort by name.
-        if (a.name < b.name) {
-            return -1;
-        } else if (a.name > b.name) {
-            return 1;
+        const cmp = a.name.localeCompare(b.name, undefined, {
+            usage: "sort",
+            sensitivity: "base",
+            ignorePunctuation: true,
+            numeric: true,
+        });
+        if (cmp !== 0) {
+            return cmp;
         }
 
         // Break ties with ID so the sort is stable.
-        if (a.id < b.id) {
-            return -1;
-        } else if (a.id > b.id) {
-            return 1;
-        } else {
-            // Shouldn't happen.
-            return 0;
-        }
+        return a.id.localeCompare(b.id);
     }
 }
 

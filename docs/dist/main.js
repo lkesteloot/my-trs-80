@@ -25410,7 +25410,14 @@ function decodeCmdProgram(binary) {
     while (true) {
         // First byte is type of chunk.
         const type = b.read();
-        if (type === teamten_ts_utils_1.EOF || type > exports.CMD_MAX_TYPE || error !== undefined) {
+        // End of file?
+        if (type === teamten_ts_utils_1.EOF ||
+            // Invalid type byte?
+            type > exports.CMD_MAX_TYPE ||
+            // Error earlier?
+            error !== undefined ||
+            // Just saw jump? There's typically junk after this and it can make it seem like there's an error.
+            (chunks.length > 0 && chunks[chunks.length - 1] instanceof CmdTransferAddressChunk)) {
             if (chunks.length === 0) {
                 return undefined;
             }
@@ -41388,12 +41395,31 @@ class Disasm {
         return false;
     }
     /**
+     * Add the label or, if it's already there, add a suffix to make it unique.
+     */
+    addUniqueLabel(address, label) {
+        let suffix = 1;
+        while (suffix < 1000) {
+            const uniqueLabel = label + (suffix === 1 ? "" : suffix);
+            if (this.haveLabel(uniqueLabel)) {
+                suffix += 1;
+            }
+            else {
+                this.addLabels([[address, uniqueLabel]]);
+                break;
+            }
+        }
+    }
+    /**
      * Disassemble all instructions and assign labels.
      */
     disassemble() {
         var _a;
         // First, see if there's a preamble that copies the program else where in memory and jumps to it.
-        for (const entryPoint of this.entryPoints) {
+        // Use numerical for-loop instead of for-of because we modify the array in the loop and I
+        // don't know what guarantees JavaScript makes about that.
+        for (let i = 0; i < this.entryPoints.length; i++) {
+            const entryPoint = this.entryPoints[i];
             const preamble = Preamble_1.Preamble.detect(this.memory, entryPoint);
             if (preamble !== undefined) {
                 const begin = preamble.sourceAddress;
@@ -41402,9 +41428,9 @@ class Disasm {
                 // Unmark this so that we don't decode it as data. It's possible that the program makes use of
                 // it, but unlikely.
                 this.hasContent.fill(0, begin, end);
-                if (!this.haveLabel("real_main")) {
-                    this.addLabels([[preamble.jumpAddress, "real_main"]]);
-                }
+                this.addUniqueLabel(preamble.jumpAddress, "main");
+                // It might have a preamble! See Galaxy Invasion.
+                this.addEntryPoint(preamble.jumpAddress);
             }
         }
         // Create set of addresses we want to decode, starting with our entry points.
@@ -45333,23 +45359,17 @@ class File_File {
      */
     static compare(a, b) {
         // Primary sort by name.
-        if (a.name < b.name) {
-            return -1;
-        }
-        else if (a.name > b.name) {
-            return 1;
+        const cmp = a.name.localeCompare(b.name, undefined, {
+            usage: "sort",
+            sensitivity: "base",
+            ignorePunctuation: true,
+            numeric: true,
+        });
+        if (cmp !== 0) {
+            return cmp;
         }
         // Break ties with ID so the sort is stable.
-        if (a.id < b.id) {
-            return -1;
-        }
-        else if (a.id > b.id) {
-            return 1;
-        }
-        else {
-            // Shouldn't happen.
-            return 0;
-        }
+        return a.id.localeCompare(b.id);
     }
 }
 /**
@@ -58106,15 +58126,15 @@ class Preamble {
         }
         const sourceAddress = memory[start + 0x01] | (memory[start + 0x02] << 8);
         const destinationAddress = memory[start + 0x04] | (memory[start + 0x05] << 8);
-        const length = memory[start + 0x07] | (memory[start + 0x08] << 8);
+        const copyLength = memory[start + 0x07] | (memory[start + 0x08] << 8);
         const jumpAddress = memory[start + 0x0C] | (memory[start + 0x0D] << 8);
         if (memory[start + 0x00] === 0x21 && // LD HL,nnnn
             memory[start + 0x03] === 0x11 && // LD DE,nnnn
             memory[start + 0x06] === 0x01 && // LD BC,nnnn
             memory[start + 0x09] === 0xED && memory[start + 0x0A] === 0xB0 && // LDIR
             memory[start + 0x0B] === 0xC3 && // JP nnnn
-            sourceAddress == entryPoint + preambleLength) {
-            return new Preamble(preambleLength, sourceAddress, destinationAddress, length, jumpAddress);
+            jumpAddress >= destinationAddress && jumpAddress < destinationAddress + copyLength) {
+            return new Preamble(preambleLength, sourceAddress, destinationAddress, copyLength, jumpAddress);
         }
         return undefined;
     }
