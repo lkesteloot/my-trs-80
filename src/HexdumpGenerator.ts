@@ -63,6 +63,9 @@ function allSameByte(binary: Uint8Array, addr: number, length: number): boolean 
     return true;
 }
 
+/**
+ * Generates a hexdump for the given binary.
+ */
 export class HexdumpGenerator {
     private readonly binary: Uint8Array;
     private readonly collapse: boolean;

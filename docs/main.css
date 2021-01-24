@@ -1069,6 +1069,52 @@ button i {
 
 /* ----------------------------------------------------------------------------------------------------- */
 
+.system-program-tab {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr); /* contents */
+}
+
+.system-program-outer {
+    background-color: var(--background);
+    padding: var(--side-padding);
+
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+}
+
+.system-program {
+    font-family: "Roboto Mono", monospace;
+    overflow-y: auto;
+    white-space: pre;
+}
+
+.system-program .system-program-error,
+.system-program .system-program-highlight {
+    color: var(--red);
+}
+
+.system-program .system-program-address {
+    color: var(--foreground-secondary);
+}
+
+.system-program .system-program-hex {
+    color: var(--blue);
+}
+
+.system-program .system-program-explanation {
+    color: var(--cyan);
+}
+
+.system-program .system-program-entry-point {
+    margin-top: 10px;
+}
+
+.system-program .system-program-screenshot {
+    margin-top: 10px;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
 .disassembly-tab {
     display: grid;
     grid-template-rows: minmax(0, 1fr); /* contents */

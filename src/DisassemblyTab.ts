@@ -1,7 +1,13 @@
 import {toHexByte, toHexWord} from "z80-base";
 import {PageTab} from "./PageTab";
 import {
-    CmdLoadBlockChunk, CmdProgram, CmdTransferAddressChunk,
+    CmdLoadBlockChunk,
+    CmdProgram,
+    CmdTransferAddressChunk,
+    SystemChunk,
+    SystemProgram,
+    TRS80_SCREEN_BEGIN,
+    TRS80_SCREEN_END,
 } from "trs80-base";
 import {clearElement} from "teamten-ts-utils";
 import {Disasm, TRS80_MODEL_III_KNOWN_LABELS, Z80_KNOWN_LABELS} from "z80-disasm";
@@ -19,6 +25,20 @@ function add(out: HTMLElement, text: string, className: string): HTMLElement {
     e.classList.add(className);
     out.appendChild(e);
     return e;
+}
+
+// Whether to try to disassemble this chunk.
+function shouldDisassembleSystemProgramChunk(chunk: SystemChunk): boolean {
+    if (chunk.loadAddress >= TRS80_SCREEN_BEGIN && chunk.loadAddress + chunk.data.length <= TRS80_SCREEN_END) {
+        return false;
+    }
+
+    // Various addresses that don't represent code.
+    if (chunk.loadAddress === 0x4210 || chunk.loadAddress === 0x401E) {
+        return false;
+    }
+
+    return true;
 }
 
 /**
@@ -78,16 +98,16 @@ class CopyPreamble {
 }
 
 /**
- * Tab for displaying chunks of CMD files.
+ * Tab for disassembling CMD or system program files.
  */
 export class DisassemblyTab extends PageTab {
-    private readonly cmdProgram: CmdProgram;
+    private readonly program: CmdProgram | SystemProgram;
     private readonly innerElement: HTMLElement;
 
-    constructor(cmdProgram: CmdProgram) {
+    constructor(program: CmdProgram | SystemProgram) {
         super("Disassembly");
 
-        this.cmdProgram = cmdProgram;
+        this.program = program;
 
         this.element.classList.add("disassembly-tab");
 
@@ -106,39 +126,47 @@ export class DisassemblyTab extends PageTab {
 
     private generateDisassembly(): void {
         const lines: HTMLElement[] = [];
-        const cmdProgram = this.cmdProgram;
+        const program = this.program;
 
         const disasm = new Disasm();
         disasm.addLabels(Z80_KNOWN_LABELS);
         disasm.addLabels(TRS80_MODEL_III_KNOWN_LABELS);
-        if (cmdProgram.entryPointAddress !== undefined) {
-            disasm.addLabels([[cmdProgram.entryPointAddress, "MAIN"]]);
+        if (program.entryPointAddress !== undefined) {
+            disasm.addLabels([[program.entryPointAddress, "main"]]);
         }
         let copyOffset: number | undefined = undefined;
-        for (const chunk of cmdProgram.chunks) {
-            if (chunk instanceof CmdLoadBlockChunk) {
-                const preamble = CopyPreamble.detect(chunk, cmdProgram.entryPointAddress);
-                if (preamble !== undefined) {
-                    disasm.addLabels([[preamble.destinationAddress, "REAL_MAIN"]]);
-                    disasm.addChunk(chunk.loadData.subarray(0, preamble.preambleLength), chunk.address);
-                    disasm.addChunk(chunk.loadData.subarray(preamble.preambleLength), preamble.destinationAddress);
-                    copyOffset = preamble.sourceAddress - preamble.destinationAddress;
-                    // Could also use preamble.copyLength here and only copy that many bytes.
-                } else {
-                    disasm.addChunk(chunk.loadData,
-                        copyOffset === undefined ? chunk.address : chunk.address - copyOffset);
+        if (program instanceof CmdProgram) {
+            for (const chunk of program.chunks) {
+                if (chunk instanceof CmdLoadBlockChunk) {
+                    const preamble = CopyPreamble.detect(chunk, program.entryPointAddress);
+                    if (preamble !== undefined) {
+                        disasm.addLabels([[preamble.destinationAddress, "real_main"]]);
+                        disasm.addChunk(chunk.loadData.subarray(0, preamble.preambleLength), chunk.address);
+                        disasm.addChunk(chunk.loadData.subarray(preamble.preambleLength), preamble.destinationAddress);
+                        copyOffset = preamble.sourceAddress - preamble.destinationAddress;
+                        // Could also use preamble.copyLength here and only copy that many bytes.
+                    } else {
+                        disasm.addChunk(chunk.loadData,
+                            copyOffset === undefined ? chunk.address : chunk.address - copyOffset);
+                    }
+                }
+                if (chunk instanceof CmdTransferAddressChunk) {
+                    // Not sure what to do here. I've seen junk after this block, and we risk
+                    // overwriting valid things in memory. I suspect that CMD parsers of the time,
+                    // when running into this block, would immediately just jump to the address
+                    // and ignore everything after it, so let's emulate that.
+                    break;
                 }
             }
-            if (chunk instanceof CmdTransferAddressChunk) {
-                // Not sure what to do here. I've seen junk after this block, and we risk
-                // overwriting valid things in memory. I suspect that CMD parsers of the time,
-                // when running into this block, would immediately just jump to the address
-                // and ignore everything after it, so let's emulate that.
-                break;
+        } else {
+            for (const chunk of program.chunks) {
+                if (shouldDisassembleSystemProgramChunk(chunk)) {
+                    disasm.addChunk(chunk.data, chunk.loadAddress);
+                }
             }
         }
-        if (cmdProgram.entryPointAddress !== undefined) {
-            disasm.addEntryPoint(cmdProgram.entryPointAddress);
+        if (program.entryPointAddress !== undefined) {
+            disasm.addEntryPoint(program.entryPointAddress);
         }
         const instructions = disasm.disassemble();
 
@@ -160,7 +188,7 @@ export class DisassemblyTab extends PageTab {
 
                 const line = document.createElement("div");
                 lines.push(line);
-                add(line, toHexWord(instruction.address), "disassembly-address");
+                add(line, toHexWord(address), "disassembly-address");
                 add(line, "  ", "disassembly-space");
                 add(line, subbytesText, "disassembly-hex");
                 if (address === instruction.address) {
