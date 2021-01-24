@@ -8,7 +8,7 @@ import {sha1} from "./Sha1";
 import {TagSet} from "./TagSet";
 
 // What's considered a "new" file.
-const NEW_SECONDS = 60*60*24*7;
+const NEW_TIME_MS = 60*60*24*7*1000;
 
 /**
  * Represents a file that the user owns.
@@ -146,7 +146,7 @@ export class File {
             allTags.add("Shared");
         }
         const now = Date.now();
-        if (now - this.addedAt.getTime() < NEW_SECONDS) {
+        if (now - this.addedAt.getTime() < NEW_TIME_MS) {
             allTags.add("New");
         }
 

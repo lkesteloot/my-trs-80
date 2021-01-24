@@ -31182,8 +31182,11 @@ var Flag;
 // really not.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Keyboard = void 0;
+// Keyboard is in several identical (mirrored) banks.
+const BANK_SIZE = 0x100;
+const BANK_COUNT = 4;
 const BEGIN_ADDR = 0x3800;
-const END_ADDR = BEGIN_ADDR + 256;
+const END_ADDR = BEGIN_ADDR + BANK_SIZE * BANK_COUNT;
 const KEY_DELAY_CLOCK_CYCLES = 50000;
 // Whether to force a Shift key, and how.
 var ShiftState;
@@ -31330,7 +31333,7 @@ class Keyboard {
     // addresses to read more than one byte at a time. For the last byte we fake
     // the Shift key if necessary.
     readKeyboard(addr, clock) {
-        addr -= BEGIN_ADDR;
+        addr = (addr - BEGIN_ADDR) % BANK_SIZE;
         let b = 0;
         // Dequeue if necessary.
         if (clock > this.keyProcessMinClock) {
@@ -45228,7 +45231,7 @@ class TagSet {
 
 
 // What's considered a "new" file.
-const NEW_SECONDS = 60 * 60 * 24 * 7;
+const NEW_TIME_MS = 60 * 60 * 24 * 7 * 1000;
 /**
  * Represents a file that the user owns.
  */
@@ -45337,7 +45340,7 @@ class File_File {
             allTags.add("Shared");
         }
         const now = Date.now();
-        if (now - this.addedAt.getTime() < NEW_SECONDS) {
+        if (now - this.addedAt.getTime() < NEW_TIME_MS) {
             allTags.add("New");
         }
         // TODO better extension algorithm.
@@ -45682,69 +45685,6 @@ class YourFilesTab_YourFilesTab extends PageTab {
             // TODO
             console.error("Error adding document: ", error);
         });
-    }
-    /**
-     * Add a file to the list of files in the library. TODO delete.
-     */
-    addFileOld(file) {
-        const fileDiv = document.createElement("div");
-        fileDiv.classList.add("file");
-        fileDiv.setAttribute(FILE_ID_ATTR, file.id);
-        this.filesDiv.append(fileDiv);
-        const infoDiv = document.createElement("div");
-        fileDiv.append(infoDiv);
-        const nameDiv = document.createElement("div");
-        nameDiv.classList.add("name");
-        nameDiv.innerText = file.name;
-        if (file.releaseYear !== "") {
-            const releaseYearSpan = document.createElement("span");
-            releaseYearSpan.classList.add("release-year");
-            releaseYearSpan.innerText = " (" + file.releaseYear + ")";
-            nameDiv.append(releaseYearSpan);
-        }
-        /*
-        const autoTags = file.getAllTags();
-        if (autoTags.length > 0) {
-            const tagsDiv = document.createElement("span");
-            tagsDiv.classList.add("tags");
-            for (const tag of autoTags) {
-                // tagsDiv.append(makeTagCapsule());
-            }
-            nameDiv.append(tagsDiv);
-        }*/
-        infoDiv.append(nameDiv);
-        const filenameDiv = document.createElement("div");
-        filenameDiv.classList.add("filename");
-        filenameDiv.innerText = file.filename;
-        infoDiv.append(filenameDiv);
-        const noteDiv = document.createElement("div");
-        noteDiv.classList.add("note");
-        noteDiv.innerText = [file.author, file.note].filter(field => field !== "").join(" — ");
-        infoDiv.append(noteDiv);
-        const screenshotsDiv = document.createElement("div");
-        screenshotsDiv.classList.add("screenshots");
-        fileDiv.append(screenshotsDiv);
-        for (const screenshot of file.screenshots) {
-            // Don't do these all at once, they can take tens of milliseconds each, and in a large
-            // library that can hang the page for several seconds. Dribble them in later.
-            defer(() => {
-                const screen = new dist["CanvasScreen"]();
-                screen.displayScreenshot(screenshot);
-                const image = screen.asImage();
-                screenshotsDiv.append(image);
-            });
-        }
-        const playButton = makeIconButton(makeIcon("play_arrow"), "Run program", () => {
-            this.context.runProgram(file);
-            this.context.panelManager.close();
-        });
-        playButton.classList.add("play-button");
-        fileDiv.append(playButton);
-        const infoButton = makeIconButton(makeIcon("arrow_forward"), "File information", () => {
-            this.context.openFilePanel(file);
-        });
-        infoButton.classList.add("info-button");
-        fileDiv.append(infoButton);
     }
     /**
      * Add a file to the list of files in the library.
