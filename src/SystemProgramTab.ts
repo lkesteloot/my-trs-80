@@ -86,7 +86,7 @@ export class SystemProgramTab extends PageTab {
             if (chunk.loadAddress >= TRS80_SCREEN_BEGIN && chunk.loadAddress + chunk.data.length <= TRS80_SCREEN_END) {
                 add(line, "Screen", "system-program-explanation");
                 if (!wroteToScreen) {
-                    add(line, " (see screenshot below)", "system-program-highlight");
+                    add(line, " (see screenshot above)", "system-program-highlight");
                 }
                 for (let i = 0; i < length; i++) {
                     screen.writeChar(chunk.loadAddress + i, chunk.data[i]);
@@ -120,7 +120,7 @@ export class SystemProgramTab extends PageTab {
             const screenDiv = document.createElement("div");
             screenDiv.classList.add("system-program-screenshot");
             screenDiv.append(screen.asImage());
-            lines.push(screenDiv);
+            lines.unshift(screenDiv);
         }
 
         // Add the lines all at once.

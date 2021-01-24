@@ -48304,7 +48304,7 @@ class SystemProgramTab_SystemProgramTab extends PageTab {
             if (chunk.loadAddress >= trs80_base_dist["TRS80_SCREEN_BEGIN"] && chunk.loadAddress + chunk.data.length <= trs80_base_dist["TRS80_SCREEN_END"]) {
                 SystemProgramTab_add(line, "Screen", "system-program-explanation");
                 if (!wroteToScreen) {
-                    SystemProgramTab_add(line, " (see screenshot below)", "system-program-highlight");
+                    SystemProgramTab_add(line, " (see screenshot above)", "system-program-highlight");
                 }
                 for (let i = 0; i < length; i++) {
                     screen.writeChar(chunk.loadAddress + i, chunk.data[i]);
@@ -48337,7 +48337,7 @@ class SystemProgramTab_SystemProgramTab extends PageTab {
             const screenDiv = document.createElement("div");
             screenDiv.classList.add("system-program-screenshot");
             screenDiv.append(screen.asImage());
-            lines.push(screenDiv);
+            lines.unshift(screenDiv);
         }
         // Add the lines all at once.
         Object(teamten_ts_utils_dist["clearElement"])(this.innerElement);
