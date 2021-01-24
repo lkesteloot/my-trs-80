@@ -458,10 +458,9 @@ export class FileInfoTab extends PageTab {
         // Collect screenshots from UI.
         const screenshots: string[] = [];
         for (const screenshotDiv of this.screenshotsDiv.children) {
+            // Skip label and instructions.
             let screenshot = screenshotDiv.getAttribute(SCREENSHOT_ATTR);
-            if (screenshot === null) {
-                console.error("Screenshot attribute " + SCREENSHOT_ATTR + " is null");
-            } else {
+            if (screenshot !== null) {
                 screenshots.push(screenshot);
             }
         }

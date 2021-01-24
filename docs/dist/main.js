@@ -41184,10 +41184,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Opcodes_json_1 = __importDefault(__webpack_require__(175));
 const Instruction_1 = __webpack_require__(68);
 const z80_base_1 = __webpack_require__(69);
+const Preamble_1 = __webpack_require__(184);
 // Temporary string used for address substitution.
 const TARGET = "TARGET";
 // Number of bytes in memory.
 const MEM_SIZE = 64 * 1024;
+/**
+ * Main class for disassembling a binary.
+ */
 class Disasm {
     constructor() {
         this.memory = new Uint8Array(MEM_SIZE);
@@ -41372,10 +41376,37 @@ class Disasm {
         }
     }
     /**
+     * Whether we have a label with this name. This is pretty slow currently, but is only used
+     * where that doesn't matter. Speed up with a set later if necessary.
+     */
+    haveLabel(label) {
+        for (const l of this.knownLabels.values()) {
+            if (l === label) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
      * Disassemble all instructions and assign labels.
      */
     disassemble() {
         var _a;
+        // First, see if there's a preamble that copies the program else where in memory and jumps to it.
+        for (const entryPoint of this.entryPoints) {
+            const preamble = Preamble_1.Preamble.detect(this.memory, entryPoint);
+            if (preamble !== undefined) {
+                const begin = preamble.sourceAddress;
+                const end = begin + preamble.copyLength;
+                this.addChunk(this.memory.subarray(begin, end), preamble.destinationAddress);
+                // Unmark this so that we don't decode it as data. It's possible that the program makes use of
+                // it, but unlikely.
+                this.hasContent.fill(0, begin, end);
+                if (!this.haveLabel("real_main")) {
+                    this.addLabels([[preamble.jumpAddress, "real_main"]]);
+                }
+            }
+        }
         // Create set of addresses we want to decode, starting with our entry points.
         const addressesToDecode = new Set();
         const addAddressToDecode = (number) => {
@@ -41394,7 +41425,7 @@ class Disasm {
                 }
             }
             if (this.entryPoints.length === 0) {
-                throw new Error("not binary content was specified");
+                throw new Error("no binary content was specified");
             }
         }
         else {
@@ -47706,11 +47737,9 @@ class FileInfoTab_FileInfoTab extends PageTab {
         // Collect screenshots from UI.
         const screenshots = [];
         for (const screenshotDiv of this.screenshotsDiv.children) {
+            // Skip label and instructions.
             let screenshot = screenshotDiv.getAttribute(SCREENSHOT_ATTR);
-            if (screenshot === null) {
-                console.error("Screenshot attribute " + SCREENSHOT_ATTR + " is null");
-            }
-            else {
+            if (screenshot !== null) {
                 screenshots.push(screenshot);
             }
         }
@@ -48097,50 +48126,6 @@ function shouldDisassembleSystemProgramChunk(chunk) {
     return true;
 }
 /**
- * Information about a preamble that might copy the rest of the program elsewhere in memory.
- */
-class CopyPreamble {
-    constructor(preambleLength, sourceAddress, destinationAddress, copyLength) {
-        this.preambleLength = preambleLength;
-        this.sourceAddress = sourceAddress;
-        this.destinationAddress = destinationAddress;
-        this.copyLength = copyLength;
-    }
-    /**
-     * Detect a preamble that copies the program to another address. It typically looks like:
-     *
-     * 6000  21 0E 60            ld hl,0x600E
-     * 6003  11 00 43            ld de,0x4300
-     * 6006  01 5C 07            ld bc,0x075C
-     * 6009  ED B0               ldir
-     * 600B  C3 00 43            jp 0x4300
-     */
-    static detect(chunk, entryPointAddress) {
-        // Only do this for that first chunk.
-        if (chunk.address !== entryPointAddress) {
-            return undefined;
-        }
-        const preambleLength = 0x0E;
-        if (chunk.loadData.length < preambleLength) {
-            return undefined;
-        }
-        const sourceAddress = chunk.loadData[0x01] | (chunk.loadData[0x02] << 8);
-        const destinationAddress = chunk.loadData[0x04] | (chunk.loadData[0x05] << 8);
-        const length = chunk.loadData[0x07] | (chunk.loadData[0x08] << 8);
-        const jumpAddress = chunk.loadData[0x0C] | (chunk.loadData[0x0D] << 8);
-        if (chunk.loadData[0x00] === 0x21 && // LD HL,nnnn
-            chunk.loadData[0x03] === 0x11 && // LD DE,nnnn
-            chunk.loadData[0x06] === 0x01 && // LD BC,nnnn
-            chunk.loadData[0x09] === 0xED && chunk.loadData[0x0A] === 0xB0 && // LDIR
-            chunk.loadData[0x0B] === 0xC3 && // JP nnnn
-            sourceAddress == chunk.address + preambleLength &&
-            destinationAddress === jumpAddress) {
-            return new CopyPreamble(preambleLength, sourceAddress, destinationAddress, length);
-        }
-        return undefined;
-    }
-}
-/**
  * Tab for disassembling CMD or system program files.
  */
 class DisassemblyTab_DisassemblyTab extends PageTab {
@@ -48167,21 +48152,10 @@ class DisassemblyTab_DisassemblyTab extends PageTab {
         if (program.entryPointAddress !== undefined) {
             disasm.addLabels([[program.entryPointAddress, "main"]]);
         }
-        let copyOffset = undefined;
         if (program instanceof trs80_base_dist["CmdProgram"]) {
             for (const chunk of program.chunks) {
                 if (chunk instanceof trs80_base_dist["CmdLoadBlockChunk"]) {
-                    const preamble = CopyPreamble.detect(chunk, program.entryPointAddress);
-                    if (preamble !== undefined) {
-                        disasm.addLabels([[preamble.destinationAddress, "real_main"]]);
-                        disasm.addChunk(chunk.loadData.subarray(0, preamble.preambleLength), chunk.address);
-                        disasm.addChunk(chunk.loadData.subarray(preamble.preambleLength), preamble.destinationAddress);
-                        copyOffset = preamble.sourceAddress - preamble.destinationAddress;
-                        // Could also use preamble.copyLength here and only copy that many bytes.
-                    }
-                    else {
-                        disasm.addChunk(chunk.loadData, copyOffset === undefined ? chunk.address : chunk.address - copyOffset);
-                    }
+                    disasm.addChunk(chunk.loadData, chunk.address);
                 }
                 if (chunk instanceof trs80_base_dist["CmdTransferAddressChunk"]) {
                     // Not sure what to do here. I've seen junk after this block, and we risk
@@ -58091,6 +58065,61 @@ exports.TRS80_SCREEN_END = exports.TRS80_SCREEN_BEGIN = void 0;
 // RAM address range of screen.
 exports.TRS80_SCREEN_BEGIN = 15 * 1024;
 exports.TRS80_SCREEN_END = 16 * 1024;
+
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Information about a preamble that might copy the rest of the program elsewhere in memory. It typically looks like:
+ *
+ *     6000  21 0E 60            ld hl,0x600E
+ *     6003  11 00 43            ld de,0x4300
+ *     6006  01 5C 07            ld bc,0x075C
+ *     6009  ED B0               ldir
+ *     600B  C3 00 43            jp 0x4300
+ *     600E  [program to be copied]
+ *
+ */
+class Preamble {
+    constructor(preambleLength, sourceAddress, destinationAddress, copyLength, jumpAddress) {
+        this.preambleLength = preambleLength;
+        this.sourceAddress = sourceAddress;
+        this.destinationAddress = destinationAddress;
+        this.copyLength = copyLength;
+        this.jumpAddress = jumpAddress;
+    }
+    /**
+     * Detect a preamble that copies the program to another address.
+     */
+    static detect(memory, entryPoint) {
+        let preambleLength = 0x0E;
+        let start = entryPoint;
+        // Skip optional DI.
+        if (memory[start] === 0xF3) { // DI
+            start += 1;
+            preambleLength += 1;
+        }
+        const sourceAddress = memory[start + 0x01] | (memory[start + 0x02] << 8);
+        const destinationAddress = memory[start + 0x04] | (memory[start + 0x05] << 8);
+        const length = memory[start + 0x07] | (memory[start + 0x08] << 8);
+        const jumpAddress = memory[start + 0x0C] | (memory[start + 0x0D] << 8);
+        if (memory[start + 0x00] === 0x21 && // LD HL,nnnn
+            memory[start + 0x03] === 0x11 && // LD DE,nnnn
+            memory[start + 0x06] === 0x01 && // LD BC,nnnn
+            memory[start + 0x09] === 0xED && memory[start + 0x0A] === 0xB0 && // LDIR
+            memory[start + 0x0B] === 0xC3 && // JP nnnn
+            sourceAddress == entryPoint + preambleLength) {
+            return new Preamble(preambleLength, sourceAddress, destinationAddress, length, jumpAddress);
+        }
+        return undefined;
+    }
+}
+exports.Preamble = Preamble;
 
 
 /***/ })
