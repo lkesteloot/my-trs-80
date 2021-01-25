@@ -1,19 +1,17 @@
 
-import {Panel} from "./Panel";
 import {Context} from "./Context";
-import {PageTabs} from "./PageTabs";
 import {YourFilesTab} from "./YourFilesTab";
 import {RetroStoreTab} from "./RetroStoreTab";
+import {TabbedPanel} from "./TabbedPanel";
 
 /**
  * Panel showing the library of user's files.
  */
-export class LibraryPanel extends Panel {
+export class LibraryPanel extends TabbedPanel {
     constructor(context: Context) {
         super(context, "Library", "library-panel", false);
 
-        const pageTabs = new PageTabs(this.content);
-        pageTabs.addTab(new YourFilesTab(context, pageTabs));
-        pageTabs.addTab(new RetroStoreTab(context));
+        this.pageTabs.addTab(new YourFilesTab(context, this.pageTabs));
+        this.pageTabs.addTab(new RetroStoreTab(context));
     }
 }

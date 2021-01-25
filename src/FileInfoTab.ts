@@ -47,7 +47,6 @@ export class FileInfoTab extends PageTab {
     private readonly revertButton: HTMLButtonElement;
     private readonly saveButton: HTMLButtonElement;
     private readonly cancelLibrarySubscription: () => void;
-    private readonly keyboardListener: (e: KeyboardEvent) => void;
 
     constructor(filePanel: IFilePanel, trs80File: Trs80File) {
         super("File Info");
@@ -215,26 +214,17 @@ export class FileInfoTab extends PageTab {
             }
         });
 
-        // Handler for hotkeys.
-        this.keyboardListener = (e: KeyboardEvent) => {
-            if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Enter") {
-                this.saveAndClose();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        };
-
         this.updateUi();
     }
 
-    onShow(): void {
-        super.onShow();
-        window.addEventListener("keydown", this.keyboardListener);
-    }
+    onKeyDown(e: KeyboardEvent): boolean {
+        // Ctrl-Enter to save and close the panel.
+        if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Enter") {
+            this.saveAndClose();
+            return true;
+        }
 
-    onHide(): void {
-        window.removeEventListener("keydown", this.keyboardListener);
-        super.onHide();
+        return super.onKeyDown(e);
     }
 
     onDestroy(): void {

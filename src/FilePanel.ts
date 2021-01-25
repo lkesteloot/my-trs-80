@@ -1,7 +1,6 @@
-import {Panel} from "./Panel";
+
 import {File} from "./File";
 import {Context} from "./Context";
-import {PageTabs} from "./PageTabs";
 import {BasicProgram, Cassette, CmdProgram, decodeTrs80File, decodeTrsdos, FloppyDisk, SystemProgram} from "trs80-base";
 import {HexdumpTab} from "./HexdumpTab";
 import {FileInfoTab} from "./FileInfoTab";
@@ -11,13 +10,13 @@ import {BasicTab} from "./BasicTab";
 import {CmdTab} from "./CmdTab";
 import {DisassemblyTab} from "./DisassemblyTab";
 import {SystemProgramTab} from "./SystemProgramTab";
+import {TabbedPanel} from "./TabbedPanel";
 
 /**
  * Panel to explore a file.
  */
-export class FilePanel extends Panel implements IFilePanel {
+export class FilePanel extends TabbedPanel implements IFilePanel {
     public file: File;
-    public readonly pageTabs: PageTabs;
 
     constructor(context: Context, file: File) {
         super(context, file.name, "file-panel", true);
@@ -25,7 +24,6 @@ export class FilePanel extends Panel implements IFilePanel {
         this.file = file;
         const trs80File = decodeTrs80File(file.binary, file.filename);
 
-        this.pageTabs = new PageTabs(this.content);
         this.pageTabs.addTab(new FileInfoTab(this, trs80File));
         this.pageTabs.addTab(new HexdumpTab(this.context, trs80File));
 
@@ -54,11 +52,6 @@ export class FilePanel extends Panel implements IFilePanel {
             this.pageTabs.addTab(new SystemProgramTab(effectiveFile));
             this.pageTabs.addTab(new DisassemblyTab(effectiveFile));
         }
-    }
-
-    onPanelDestroy(): void {
-        this.pageTabs.destroy();
-        super.onPanelDestroy();
     }
 
     setHeaderText(header: string): void {

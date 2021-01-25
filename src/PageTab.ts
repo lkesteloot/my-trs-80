@@ -35,6 +35,16 @@ export abstract class PageTab {
     }
 
     /**
+     * Called when a key is pressed and this tab is visible.
+     * @param e the keyboard event for the key down event.
+     * @return whether the method handled the key.
+     */
+    public onKeyDown(e: KeyboardEvent): boolean {
+        // Nothing by default.
+        return false;
+    }
+
+    /**
      * Called when a tab is hidden (another tab is shown).
      */
     public onHide(): void {

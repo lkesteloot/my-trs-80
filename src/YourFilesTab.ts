@@ -21,6 +21,7 @@ export class YourFilesTab extends PageTab {
     private readonly emptyLibrary: HTMLElement;
     // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
     private readonly filterTags = new TagSet();
+    private filterPrefix: string = "";
     private readonly filterEditor: HTMLElement;
     private readonly openTrashButton: HTMLElement;
     private libraryInSync = false;

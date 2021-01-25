@@ -54,6 +54,15 @@ export class PageTabs {
     }
 
     /**
+     * Called when a key is pressed and this panel is visible.
+     * @param e the keyboard event for the key down event.
+     * @return whether the method handled the key.
+     */
+    public onKeyDown(e: KeyboardEvent): boolean {
+        return this.effectiveActiveIndex !== undefined && this.tabs[this.effectiveActiveIndex].onKeyDown(e);
+    }
+
+    /**
      * Update all tabs given a new configuration.
      */
     public configurationChanged(): void {
@@ -76,7 +85,7 @@ export class PageTabs {
      * Get the current active index. If it's hidden, return another one. If none
      * exist, return undefined.
      */
-    private computeEffectiveActiveIndex() {
+    private computeEffectiveActiveIndex(): void {
         this.effectiveActiveIndex = this.activeIndex;
 
         // If the active tab is hidden, find another one.

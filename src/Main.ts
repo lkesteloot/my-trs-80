@@ -189,12 +189,6 @@ export function main() {
         }
     });
 
-    document.addEventListener("keydown", event => {
-        if (event.ctrlKey && event.key === "l") {
-            panelManager.toggle();
-        }
-    });
-
     reboot();
 
     const context = new Context(library, trs80, db, panelManager);
