@@ -53,6 +53,7 @@ export class Library {
     private readonly files = new Map<string,File>();
     // Fires after the map has been updated.
     public readonly onEvent = new SimpleEventDispatcher<LibraryEvent>();
+    public inSync = false;
     // Whether the library is in sync with the cloud database. This starts out false
     // and emits a "true" once the first fetch has completed.
     public readonly onInSync = new SimpleEventDispatcher<boolean>();
@@ -75,6 +76,7 @@ export class Library {
      * Specify whether the in-memory library is now in sync with the cloud database.
      */
     public setInSync(inSync: boolean): void {
+        this.inSync = inSync;
         this.onInSync.dispatch(inSync);
     }
 

@@ -102,6 +102,12 @@ i.material-icons-round {
     font-size: 20px;
 }
 
+.authentic-cursor {
+    /* This is loaded because we use the TRS-80 emulator, which uses it for its editor. */
+    font-family: "TreasureMIII64C", monospace;
+    font-size: 20px;
+}
+
 /* ----------------------------------------------------------------------------------------------------- */
 
 .navbar {
@@ -369,6 +375,10 @@ button i {
     gap: 10px;
 }
 
+.panel .action-bar .action-bar-spacer {
+    flex-grow: 1;
+}
+
 .dialog-box-background {
     display: flex;
     justify-content: center;
@@ -559,7 +569,7 @@ button i {
     grid-area: body;
     margin: 0;
     font-size: 14pt;
-    font-weight: normal;
+    font-weight: 100;
     color: var(--foreground);
     text-align: right;
 }
@@ -573,15 +583,20 @@ button i {
     color: var(--blue);
 }
 
-.your-files-tab .action-bar {
-    display: grid;
-    grid-template-columns: 1fr auto auto; /* Tag filter, export all, import file */
-}
-
-.your-files-tab .action-bar .filter-editor {
+.your-files-tab .action-bar .tag-editor {
     display: flex;
     gap: 5px;
     align-items: center;
+}
+
+.your-files-tab .action-bar .search-editor label {
+    margin-right: 0.4em;
+}
+
+.your-files-tab .action-bar .search-editor span,
+.your-files-tab .action-bar .search-editor .authentic-cursor {
+
+    color: var(--blue);
 }
 
 /* ----------------------------------------------------------------------------------------------------- */

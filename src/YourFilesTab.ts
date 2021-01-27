@@ -13,16 +13,83 @@ const FILE_ID_ATTR = "data-file-id";
 const IMPORT_FILE_LABEL = "Import File";
 
 /**
+ * Quotes for the "no filter" error page.
+ */
+const NO_FILTER_QUOTE = [
+    "No dance for you.",
+    "I'm disappointed.",
+    "Try being less demanding.",
+    "And it's not for lack of trying.",
+    "Try doing literally anything else.",
+];
+
+/**
+ * Get a random quote for the "no filter" error page.
+ */
+function getRandomNoFilterQuote(): string {
+    return NO_FILTER_QUOTE[Math.floor(Math.random()*NO_FILTER_QUOTE.length)];
+}
+
+/**
+ * A TRS-80-like cursor in HTML.
+ */
+class AuthenticCursor {
+    // This is 7 ticks of the Model III timer (30 Hz).
+    private static readonly BLINK_PERIOD_MS = 233;
+    public readonly node: HTMLElement;
+    public readonly handle: number;
+    public visible = true;
+
+    constructor() {
+        this.node = document.createElement("span");
+        this.node.classList.add("authentic-cursor");
+        this.update();
+
+        this.handle = window.setInterval(() => {
+            this.visible = !this.visible;
+            this.update();
+        }, AuthenticCursor.BLINK_PERIOD_MS);
+    }
+
+    /**
+     * Stop the cursor. Only call this once.
+     */
+    public disable() {
+        this.node.remove();
+        window.clearInterval(this.handle);
+    }
+
+    /**
+     * Set the correct block for the current visibility.
+     */
+    private update() {
+        if (this.visible) {
+            this.node.innerText = "\uE0B0";  // 131, bottom two pixels.
+        } else {
+            this.node.innerText = "\uE080";  // 128, blank.
+        }
+    }
+}
+
+/**
  * Tap for the Your Files UI.
  */
 export class YourFilesTab extends PageTab {
     private readonly context: Context;
     private readonly filesDiv: HTMLElement;
     private readonly emptyLibrary: HTMLElement;
+    private readonly emptyTitle: HTMLElement;
+    private readonly emptyBody: HTMLElement;
+    private emptyQuote: string | undefined = undefined;
     // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
     private readonly filterTags = new TagSet();
-    private filterPrefix: string = "";
-    private readonly filterEditor: HTMLElement;
+    private searchString: string = "";
+    private readonly tagEditor: HTMLElement;
+    private readonly searchEditor: HTMLElement;
+
+    private forceShowSearch = false;
+    private readonly searchButton: HTMLButtonElement;
+    private searchCursor: AuthenticCursor | undefined = undefined;
     private readonly openTrashButton: HTMLElement;
     private libraryInSync = false;
 
@@ -45,15 +112,14 @@ export class YourFilesTab extends PageTab {
         this.emptyLibrary.classList.add("empty-library");
         this.element.append(this.emptyLibrary);
 
-        const emptyTitle = document.createElement("h2");
-        emptyTitle.innerText = "You have no files in your library!";
-        const emptyBody = document.createElement("article");
-        emptyBody.innerHTML= `Upload a <code>CAS</code> or <code>CMD</code> file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import it from the RetroStore tab.`;
+        this.emptyTitle = document.createElement("h2");
+        this.emptyBody = document.createElement("article");
         const demon = document.createElement("img");
         demon.src = "/demon.png";
-        this.emptyLibrary.append(emptyTitle, emptyBody, demon);
+        this.emptyLibrary.append(this.emptyTitle, this.emptyBody, demon);
 
         // Register for changes to library.
+        this.libraryInSync = this.context.library.inSync;
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
         this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
 
@@ -61,26 +127,56 @@ export class YourFilesTab extends PageTab {
         actionBar.classList.add("action-bar");
         this.element.append(actionBar);
 
-        this.filterEditor = document.createElement("div");
-        this.filterEditor.classList.add("filter-editor");
-        actionBar.append(this.filterEditor);
-
         this.openTrashButton = makeTextButton("Open Trash", "delete", "open-trash-button",
             () => this.openTrash());
 
+        this.tagEditor = document.createElement("div");
+        this.tagEditor.classList.add("tag-editor");
+
+        this.searchButton = makeTextButton("Search", "search", "search-button", () => {
+            this.forceShowSearch = true;
+            this.refreshFilter();
+        });
+
+        this.searchEditor = document.createElement("span");
+        this.searchEditor.classList.add("search-editor");
+
+        const spacer = document.createElement("div");
+        spacer.classList.add("action-bar-spacer");
+
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button",
             () => this.exportAll());
-        actionBar.append(exportAllButton);
 
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button",
             () => this.uploadFile());
-        actionBar.append(uploadButton);
+
+        actionBar.append(this.openTrashButton, this.tagEditor,this.searchButton, this.searchEditor, spacer,
+            exportAllButton, uploadButton);
 
         // Populate initial library state.
         this.context.library.getAllFiles().forEach(f => this.addFile(f));
         this.sortFiles();
+    }
 
-        this.updateSplashScreen();
+    onKeyDown(e: KeyboardEvent): boolean {
+        if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+            // Plain letter.
+            if (e.key.length === 1) {
+                this.searchString += e.key;
+                this.refreshFilter();
+                return true;
+            }
+
+            // Backspace last character.
+            if (e.key === "Backspace" && this.searchString.length > 0) {
+                this.searchString = this.searchString.substr(0, this.searchString.length - 1);
+                this.forceShowSearch = false;
+                this.refreshFilter();
+                return true;
+            }
+        }
+
+        return super.onKeyDown(e);
     }
 
     /**
@@ -99,9 +195,8 @@ export class YourFilesTab extends PageTab {
         }
         if (event instanceof LibraryRemoveEvent) {
             this.removeFile(event.oldFile.id);
+            this.refreshFilter();
         }
-
-        this.updateSplashScreen();
     }
 
     /**
@@ -109,17 +204,7 @@ export class YourFilesTab extends PageTab {
      */
     private onLibraryInSync(inSync: boolean): void {
         this.libraryInSync = inSync;
-        this.updateSplashScreen();
-    }
-
-    /**
-     * Update whether the splash screen is shown.
-     */
-    private updateSplashScreen(): void {
-        const displaySplashScreen = this.libraryInSync && this.filesDiv.children.length === 0;
-
-        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
-        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
+        this.refreshFilter();
     }
 
     /**
@@ -319,6 +404,9 @@ export class YourFilesTab extends PageTab {
      * Update the hidden flags based on a new tag filter.
      */
     private refreshFilter(): void {
+        let anyFiles = false;
+        let anyVisible = false;
+
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;
@@ -327,6 +415,7 @@ export class YourFilesTab extends PageTab {
             if (fileId !== null) {
                 const file = this.context.library.getFile(fileId);
                 if (file !== undefined) {
+                    anyFiles = true;
                     const fileTags = file.getAllTags();
 
                     // Only show files that have all the filter items.
@@ -338,22 +427,61 @@ export class YourFilesTab extends PageTab {
                     if (!this.filterTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
                         hidden = true;
                     }
+
+                    if (!file.matchesFilterPrefix(this.searchString)) {
+                        hidden = true;
+                    }
                 }
             }
 
             fileDiv.classList.toggle("hidden", hidden);
+            if (!hidden) {
+                anyVisible = true;
+            }
         }
 
-        clearElement(this.filterEditor);
-        if (this.filterTags.isEmpty()) {
-            if (this.anyFileInTrash()) {
-                this.filterEditor.append(this.openTrashButton);
+        // Update whether the splash screen is shown.
+        let displaySplashScreen: boolean;
+        if (this.libraryInSync) {
+            if (anyFiles) {
+                if (anyVisible) {
+                    displaySplashScreen = false;
+                    this.emptyQuote = undefined;
+                } else {
+                    displaySplashScreen = true;
+                    this.emptyTitle.innerText = "No files match your filter.";
+                    if (this.emptyQuote === undefined) {
+                        this.emptyQuote = getRandomNoFilterQuote();
+                    }
+                    this.emptyBody.innerText = this.emptyQuote;
+                }
+            } else {
+                displaySplashScreen = true;
+                this.emptyTitle.innerText = "You have no files in your library!";
+                this.emptyBody.innerHTML = `Upload a file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import one from the RetroStore tab.`;
             }
         } else {
-            this.filterEditor.append("Filter tags:");
+            // Just show nothing at all while loading the library.
+            displaySplashScreen = false;
+        }
+
+
+        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
+        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
+
+        // Update filter UI in the action bar.
+        if (this.filterTags.isEmpty()) {
+            this.tagEditor.classList.add("hidden");
+            this.openTrashButton.classList.toggle("hidden", !this.anyFileInTrash());
+        } else {
+            this.tagEditor.classList.remove("hidden");
+            this.openTrashButton.classList.add("hidden");
+
+            clearElement(this.tagEditor);
+            this.tagEditor.append("Filter tags:");
 
             for (const tag of this.filterTags.asArray()) {
-                this.filterEditor.append(makeTagCapsule({
+                this.tagEditor.append(makeTagCapsule({
                     tag: tag,
                     iconName: "clear",
                     clickCallback: () => {
@@ -361,6 +489,30 @@ export class YourFilesTab extends PageTab {
                         this.refreshFilter();
                     },
                 }));
+            }
+        }
+
+        // Draw search prefix.
+        if (this.searchString !== "" || this.forceShowSearch) {
+            this.searchButton.classList.add("hidden");
+            this.searchEditor.classList.remove("hidden");
+
+            const labelNode = document.createElement("label");
+            labelNode.innerText = "Search:";
+            const searchStringNode = document.createElement("span");
+            searchStringNode.innerText = this.searchString;
+            if (this.searchCursor === undefined) {
+                this.searchCursor = new AuthenticCursor();
+            }
+            clearElement(this.searchEditor);
+            this.searchEditor.append(labelNode, searchStringNode, this.searchCursor.node);
+        } else {
+            this.searchButton.classList.remove("hidden");
+            this.searchEditor.classList.add("hidden");
+
+            if (this.searchCursor !== undefined) {
+                this.searchCursor.disable();
+                this.searchCursor = undefined;
             }
         }
     }

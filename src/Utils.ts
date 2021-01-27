@@ -70,7 +70,7 @@ export function makeIcon(name: string): HTMLElement {
 /**
  * Make a generic round button.
  */
-export function makeIconButton(icon: HTMLElement, title: string, clickCallback: () => void) {
+export function makeIconButton(icon: HTMLElement, title: string, clickCallback: () => void): HTMLButtonElement {
     const button = document.createElement("button");
     button.classList.add("icon-button");
     button.title = title;

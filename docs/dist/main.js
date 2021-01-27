@@ -81,27 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 181);
+/******/ 	return __webpack_require__(__webpack_require__.s = 186);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(78));
-__export(__webpack_require__(79));
-__export(__webpack_require__(35));
-__export(__webpack_require__(80));
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -349,11 +333,11 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _firebase_app__WEBPACK_IMPORTED_MODULE_0__["a"]; });
 
 
@@ -382,15 +366,15 @@ _firebase_app__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].registerVersion(na
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export firebase */
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
-/* harmony import */ var _firebase_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
+/* harmony import */ var _firebase_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
 
 
 
@@ -1063,6 +1047,36 @@ registerCoreComponents(firebase$1);
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(37), exports);
+__exportStar(__webpack_require__(39), exports);
+__exportStar(__webpack_require__(40), exports);
+__exportStar(__webpack_require__(28), exports);
+__exportStar(__webpack_require__(17), exports);
+__exportStar(__webpack_require__(42), exports);
+__exportStar(__webpack_require__(41), exports);
+__exportStar(__webpack_require__(20), exports);
+__exportStar(__webpack_require__(43), exports);
+__exportStar(__webpack_require__(96), exports);
+__exportStar(__webpack_require__(97), exports);
+
+
+/***/ }),
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1119,7 +1133,7 @@ registerCoreComponents(firebase$1);
 /* unused harmony export validateContextObject */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return validateIndexedDBOpenable; });
 /* unused harmony export validateNamespace */
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 
 
 /**
@@ -2903,17 +2917,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(36), exports);
-__exportStar(__webpack_require__(38), exports);
-__exportStar(__webpack_require__(39), exports);
-__exportStar(__webpack_require__(40), exports);
-__exportStar(__webpack_require__(19), exports);
-__exportStar(__webpack_require__(42), exports);
-__exportStar(__webpack_require__(41), exports);
-__exportStar(__webpack_require__(21), exports);
-__exportStar(__webpack_require__(43), exports);
-__exportStar(__webpack_require__(93), exports);
-__exportStar(__webpack_require__(183), exports);
+__exportStar(__webpack_require__(143), exports);
+__exportStar(__webpack_require__(144), exports);
 
 
 /***/ }),
@@ -2932,23 +2937,23 @@ __exportStar(__webpack_require__(183), exports);
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HandlingBase = exports.PromiseDispatcherBase = exports.PromiseSubscription = exports.DispatchError = exports.EventManagement = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = exports.Subscription = void 0;
-const DispatcherBase_1 = __webpack_require__(96);
+const DispatcherBase_1 = __webpack_require__(100);
 Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return DispatcherBase_1.DispatcherBase; } });
-const DispatchError_1 = __webpack_require__(97);
+const DispatchError_1 = __webpack_require__(101);
 Object.defineProperty(exports, "DispatchError", { enumerable: true, get: function () { return DispatchError_1.DispatchError; } });
-const DispatcherWrapper_1 = __webpack_require__(98);
+const DispatcherWrapper_1 = __webpack_require__(102);
 Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return DispatcherWrapper_1.DispatcherWrapper; } });
-const EventListBase_1 = __webpack_require__(99);
+const EventListBase_1 = __webpack_require__(103);
 Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return EventListBase_1.EventListBase; } });
-const EventManagement_1 = __webpack_require__(100);
+const EventManagement_1 = __webpack_require__(104);
 Object.defineProperty(exports, "EventManagement", { enumerable: true, get: function () { return EventManagement_1.EventManagement; } });
-const HandlingBase_1 = __webpack_require__(101);
+const HandlingBase_1 = __webpack_require__(105);
 Object.defineProperty(exports, "HandlingBase", { enumerable: true, get: function () { return HandlingBase_1.HandlingBase; } });
-const PromiseDispatcherBase_1 = __webpack_require__(102);
+const PromiseDispatcherBase_1 = __webpack_require__(106);
 Object.defineProperty(exports, "PromiseDispatcherBase", { enumerable: true, get: function () { return PromiseDispatcherBase_1.PromiseDispatcherBase; } });
-const PromiseSubscription_1 = __webpack_require__(103);
+const PromiseSubscription_1 = __webpack_require__(107);
 Object.defineProperty(exports, "PromiseSubscription", { enumerable: true, get: function () { return PromiseSubscription_1.PromiseSubscription; } });
-const Subscription_1 = __webpack_require__(104);
+const Subscription_1 = __webpack_require__(108);
 Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return Subscription_1.Subscription; } });
 
 
@@ -2958,19 +2963,14 @@ Object.defineProperty(exports, "Subscription", { enumerable: true, get: function
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
-};
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(139), exports);
-__exportStar(__webpack_require__(140), exports);
+__export(__webpack_require__(145));
+__export(__webpack_require__(146));
+__export(__webpack_require__(59));
+__export(__webpack_require__(147));
 
 
 /***/ }),
@@ -2998,10 +2998,10 @@ __exportStar(__webpack_require__(140), exports);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return Ec; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return Fc; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return $; });
-/* harmony import */ var _firebase_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+/* harmony import */ var _firebase_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _firebase_webchannel_wrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
 
 
 
@@ -22837,6 +22837,28 @@ var esm = {
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var CassettePlayer_1 = __webpack_require__(76);
+Object.defineProperty(exports, "CassettePlayer", { enumerable: true, get: function () { return CassettePlayer_1.CassettePlayer; } });
+var Trs80_1 = __webpack_require__(77);
+Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
+var CanvasScreen_1 = __webpack_require__(53);
+Object.defineProperty(exports, "CanvasScreen", { enumerable: true, get: function () { return CanvasScreen_1.CanvasScreen; } });
+var ControlPanel_1 = __webpack_require__(54);
+Object.defineProperty(exports, "ControlPanel", { enumerable: true, get: function () { return ControlPanel_1.ControlPanel; } });
+var SettingsPanel_1 = __webpack_require__(55);
+Object.defineProperty(exports, "SettingsPanel", { enumerable: true, get: function () { return SettingsPanel_1.SettingsPanel; } });
+Object.defineProperty(exports, "PanelType", { enumerable: true, get: function () { return SettingsPanel_1.PanelType; } });
+var ProgressBar_1 = __webpack_require__(127);
+Object.defineProperty(exports, "ProgressBar", { enumerable: true, get: function () { return ProgressBar_1.ProgressBar; } });
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23133,52 +23155,14 @@ function setUserLogHandler(logCallback, options) {
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var CassettePlayer_1 = __webpack_require__(76);
-Object.defineProperty(exports, "CassettePlayer", { enumerable: true, get: function () { return CassettePlayer_1.CassettePlayer; } });
-var Trs80_1 = __webpack_require__(77);
-Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
-var CanvasScreen_1 = __webpack_require__(53);
-Object.defineProperty(exports, "CanvasScreen", { enumerable: true, get: function () { return CanvasScreen_1.CanvasScreen; } });
-var ControlPanel_1 = __webpack_require__(54);
-Object.defineProperty(exports, "ControlPanel", { enumerable: true, get: function () { return ControlPanel_1.ControlPanel; } });
-var SettingsPanel_1 = __webpack_require__(55);
-Object.defineProperty(exports, "SettingsPanel", { enumerable: true, get: function () { return SettingsPanel_1.SettingsPanel; } });
-Object.defineProperty(exports, "PanelType", { enumerable: true, get: function () { return SettingsPanel_1.PanelType; } });
-var ProgressBar_1 = __webpack_require__(123);
-Object.defineProperty(exports, "ProgressBar", { enumerable: true, get: function () { return ProgressBar_1.ProgressBar; } });
-
-
-/***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(141));
-__export(__webpack_require__(142));
-__export(__webpack_require__(59));
-__export(__webpack_require__(143));
-
-
-/***/ }),
-/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Component; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ComponentContainer; });
 /* unused harmony export Provider */
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 
 
@@ -23494,6 +23478,34 @@ var ComponentContainer = /** @class */ (function () {
 
 
 /***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProgramAnnotation = void 0;
+/**
+ * Information about one particular section of a program. The indices refer back to a binary
+ * that the program was parsed from.
+ */
+class ProgramAnnotation {
+    constructor(text, begin, end) {
+        this.text = text;
+        this.begin = begin;
+        this.end = end;
+    }
+    /**
+     * Create a new program annotation with the begin and end increased by the specified offset.
+     */
+    adjusted(offset) {
+        return new ProgramAnnotation(this.text, this.begin + offset, this.end + offset);
+    }
+}
+exports.ProgramAnnotation = ProgramAnnotation;
+
+
+/***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
@@ -23525,34 +23537,6 @@ module.exports = g;
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProgramAnnotation = void 0;
-/**
- * Information about one particular section of a program. The indices refer back to a binary
- * that the program was parsed from.
- */
-class ProgramAnnotation {
-    constructor(text, begin, end) {
-        this.text = text;
-        this.begin = begin;
-        this.end = end;
-    }
-    /**
-     * Create a new program annotation with the begin and end increased by the specified offset.
-     */
-    adjusted(offset) {
-        return new ProgramAnnotation(this.text, this.begin + offset, this.end + offset);
-    }
-}
-exports.ProgramAnnotation = ProgramAnnotation;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 /*!
  * Strongly Typed Events for TypeScript
  * https://github.com/KeesCBakker/StronlyTypedEvents/
@@ -23568,24 +23552,24 @@ Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: functi
 Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return ste_core_1.DispatcherWrapper; } });
 Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return ste_core_1.EventListBase; } });
 Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return ste_core_1.Subscription; } });
-var ste_events_1 = __webpack_require__(133);
+var ste_events_1 = __webpack_require__(137);
 Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return ste_events_1.EventDispatcher; } });
 Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return ste_events_1.EventHandlingBase; } });
 Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return ste_events_1.EventList; } });
 Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return ste_events_1.NonUniformEventList; } });
-var ste_simple_events_1 = __webpack_require__(135);
+var ste_simple_events_1 = __webpack_require__(139);
 Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventDispatcher; } });
 Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventHandlingBase; } });
 Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventList; } });
 Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.NonUniformSimpleEventList; } });
-var ste_signals_1 = __webpack_require__(137);
+var ste_signals_1 = __webpack_require__(141);
 Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return ste_signals_1.SignalDispatcher; } });
 Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return ste_signals_1.SignalHandlingBase; } });
 Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return ste_signals_1.SignalList; } });
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var freeGlobal = __webpack_require__(63);
@@ -23600,18 +23584,7 @@ module.exports = root;
 
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CSS_PREFIX = void 0;
-exports.CSS_PREFIX = "trs80-emulator";
-
-
-/***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23632,7 +23605,7 @@ exports.Trs80File = Trs80File;
 
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23641,21 +23614,37 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(87));
-__export(__webpack_require__(88));
-__export(__webpack_require__(37));
-__export(__webpack_require__(89));
+__export(__webpack_require__(78));
+__export(__webpack_require__(79));
+__export(__webpack_require__(36));
+__export(__webpack_require__(80));
 
 
 /***/ }),
-/* 21 */
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(90));
+__export(__webpack_require__(91));
+__export(__webpack_require__(38));
+__export(__webpack_require__(92));
+
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FloppyDisk = exports.SectorData = exports.numberToSide = exports.Side = void 0;
-const Trs80File_1 = __webpack_require__(19);
+const Trs80File_1 = __webpack_require__(17);
 // Side of a floppy disk.
 var Side;
 (function (Side) {
@@ -23723,11 +23712,11 @@ exports.FloppyDisk = FloppyDisk;
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(149),
-    getValue = __webpack_require__(154);
+var baseIsNative = __webpack_require__(153),
+    getValue = __webpack_require__(158);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -23746,7 +23735,7 @@ module.exports = getNative;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23762,8 +23751,19 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(85), exports);
-__exportStar(__webpack_require__(86), exports);
+__exportStar(__webpack_require__(88), exports);
+__exportStar(__webpack_require__(89), exports);
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CSS_PREFIX = void 0;
+exports.CSS_PREFIX = "trs80-emulator";
 
 
 /***/ }),
@@ -23782,7 +23782,7 @@ __exportStar(__webpack_require__(86), exports);
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Subscription = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = void 0;
-var dispatching_1 = __webpack_require__(131);
+var dispatching_1 = __webpack_require__(135);
 Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return dispatching_1.DispatcherBase; } });
 Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return dispatching_1.DispatcherWrapper; } });
 Object.defineProperty(exports, "EventListBase", { enumerable: true, get: function () { return dispatching_1.EventListBase; } });
@@ -23795,8 +23795,8 @@ Object.defineProperty(exports, "Subscription", { enumerable: true, get: function
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(62),
-    getRawTag = __webpack_require__(150),
-    objectToString = __webpack_require__(151);
+    getRawTag = __webpack_require__(154),
+    objectToString = __webpack_require__(155);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -23834,11 +23834,11 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-var Disasm_1 = __webpack_require__(174);
+var Disasm_1 = __webpack_require__(178);
 exports.Disasm = Disasm_1.Disasm;
 var Instruction_1 = __webpack_require__(68);
 exports.Instruction = Instruction_1.Instruction;
-__export(__webpack_require__(179));
+__export(__webpack_require__(184));
 
 
 /***/ }),
@@ -24007,6 +24007,168 @@ exports.Config = Config;
 
 "use strict";
 
+/**
+ * Tools for dealing with SYSTEM (machine language) programs.
+ *
+ * http://www.trs-80.com/wordpress/zaps-patches-pokes-tips/tape-and-file-formats-structures/
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeSystemProgram = exports.SystemProgram = exports.SystemChunk = void 0;
+const teamten_ts_utils_1 = __webpack_require__(22);
+const z80_base_1 = __webpack_require__(19);
+const ProgramAnnotation_1 = __webpack_require__(13);
+const Trs80File_1 = __webpack_require__(17);
+const FILE_HEADER = 0x55;
+const DATA_HEADER = 0x3C;
+const END_OF_FILE_MARKER = 0x78;
+const FILENAME_LENGTH = 6;
+/**
+ * Represents a chunk of bytes from the file, with a checksum.
+ */
+class SystemChunk {
+    constructor(loadAddress, data, checksum) {
+        this.loadAddress = loadAddress;
+        this.data = data;
+        this.checksum = checksum;
+    }
+    /**
+     * Whether the checksum supplied on tape matches what we compute.
+     */
+    isChecksumValid() {
+        let checksum = 0;
+        // Include load address and data.
+        checksum += (this.loadAddress >> 8) & 0xFF;
+        checksum += this.loadAddress & 0xFF;
+        for (const b of this.data) {
+            checksum += b;
+        }
+        checksum &= 0xFF;
+        return checksum === this.checksum;
+    }
+}
+exports.SystemChunk = SystemChunk;
+/**
+ * Class representing a SYSTEM (machine language) program. If the "error" field is set, then something
+ * went wrong with the program and the data may be partially loaded.
+ */
+class SystemProgram extends Trs80File_1.Trs80File {
+    constructor(binary, error, filename, chunks, entryPointAddress, annotations) {
+        super(binary, error, annotations);
+        this.filename = filename;
+        this.chunks = chunks;
+        this.entryPointAddress = entryPointAddress;
+        this.annotations = annotations;
+    }
+    getDescription() {
+        return "System program (" + this.filename + ")";
+    }
+    /**
+     * Convert an address in memory to the original byte offset in the binary. Returns undefined if
+     * not found in any chunk.
+     */
+    addressToByteOffset(address) {
+        // Skip file header and block header.
+        let offset = 1 + FILENAME_LENGTH + 4;
+        for (const chunk of this.chunks) {
+            if (address >= chunk.loadAddress && address < chunk.loadAddress + chunk.data.length) {
+                return offset + (address - chunk.loadAddress);
+            }
+            // Skip checksum and block header of the next block.
+            offset += chunk.data.length + 5;
+        }
+        return undefined;
+    }
+}
+exports.SystemProgram = SystemProgram;
+/**
+ * Decodes a system program from the binary. If the binary is not at all a system
+ * program, returns undefined. If it's a system program with decoding errors, returns
+ * partially-decoded binary and sets the "error" field.
+ */
+function decodeSystemProgram(binary) {
+    const chunks = [];
+    const annotations = [];
+    let entryPointAddress = 0;
+    const b = new teamten_ts_utils_1.ByteReader(binary);
+    const headerByte = b.read();
+    if (headerByte === teamten_ts_utils_1.EOF) {
+        return undefined;
+    }
+    if (headerByte !== FILE_HEADER) {
+        return undefined;
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("System file header", b.addr() - 1, b.addr()));
+    let filename = b.readString(FILENAME_LENGTH);
+    // Make a SystemProgram object with what we have so far.
+    const makeSystemProgram = (error) => {
+        const programBinary = binary.subarray(0, b.addr());
+        return new SystemProgram(programBinary, error, filename, chunks, entryPointAddress, annotations);
+    };
+    if (filename.length < FILENAME_LENGTH) {
+        // Binary is truncated.
+        return makeSystemProgram("File is truncated at filename");
+    }
+    filename = filename.trim();
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Filename "${filename}"`, b.addr() - FILENAME_LENGTH, b.addr()));
+    while (true) {
+        const marker = b.read();
+        if (marker === teamten_ts_utils_1.EOF) {
+            return makeSystemProgram("File is truncated at start of block");
+        }
+        if (marker === END_OF_FILE_MARKER) {
+            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("End of file marker", b.addr() - 1, b.addr()));
+            break;
+        }
+        if (marker !== DATA_HEADER) {
+            // Here if the marker is 0x55, we could guess that it's a high-speed cassette header.
+            return makeSystemProgram("Unexpected byte " + z80_base_1.toHexByte(marker) + " at start of block");
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Data chunk marker", b.addr() - 1, b.addr()));
+        let length = b.read();
+        if (length === teamten_ts_utils_1.EOF) {
+            return makeSystemProgram("File is truncated at block length");
+        }
+        // 0 means 256.
+        if (length === 0) {
+            length = 256;
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Length (${length} byte${length === 1 ? "" : "s"})`, b.addr() - 1, b.addr()));
+        const loadAddress = b.readShort(false);
+        if (loadAddress === teamten_ts_utils_1.EOF) {
+            return makeSystemProgram("File is truncated at load address");
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Address (0x${z80_base_1.toHexWord(loadAddress)})`, b.addr() - 2, b.addr()));
+        const dataStartAddr = b.addr();
+        const data = b.readBytes(length);
+        if (data.length < length) {
+            return makeSystemProgram("File is truncated at data");
+        }
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Chunk data`, dataStartAddr, b.addr()));
+        const checksum = b.read();
+        if (loadAddress === teamten_ts_utils_1.EOF) {
+            return makeSystemProgram("File is truncated at checksum");
+        }
+        const systemChunk = new SystemChunk(loadAddress, data, checksum);
+        chunks.push(systemChunk);
+        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Checksum (0x${z80_base_1.toHexByte(checksum)}, ${systemChunk.isChecksumValid() ? "" : "in"}valid)`, b.addr() - 1, b.addr()));
+    }
+    entryPointAddress = b.readShort(false);
+    if (entryPointAddress === teamten_ts_utils_1.EOF) {
+        entryPointAddress = 0;
+        return makeSystemProgram("File is truncated at entry point address");
+    }
+    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Jump address (0x${z80_base_1.toHexWord(entryPointAddress)})`, b.addr() - 2, b.addr()));
+    return makeSystemProgram();
+}
+exports.decodeSystemProgram = decodeSystemProgram;
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventDispatcher = void 0;
 const ste_core_1 = __webpack_require__(6);
@@ -24070,7 +24232,7 @@ exports.EventDispatcher = EventDispatcher;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24138,7 +24300,7 @@ exports.SimpleEventDispatcher = SimpleEventDispatcher;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24203,7 +24365,7 @@ exports.PromiseEventDispatcher = PromiseEventDispatcher;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24261,7 +24423,7 @@ exports.PromiseSimpleEventDispatcher = PromiseSimpleEventDispatcher;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 /**
@@ -24296,7 +24458,7 @@ module.exports = isObjectLike;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24453,17 +24615,17 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseKeys = __webpack_require__(144),
-    getTag = __webpack_require__(147),
-    isArguments = __webpack_require__(159),
-    isArray = __webpack_require__(161),
-    isArrayLike = __webpack_require__(162),
-    isBuffer = __webpack_require__(163),
+var baseKeys = __webpack_require__(148),
+    getTag = __webpack_require__(151),
+    isArguments = __webpack_require__(163),
+    isArray = __webpack_require__(165),
+    isArrayLike = __webpack_require__(166),
+    isBuffer = __webpack_require__(167),
     isPrototype = __webpack_require__(60),
-    isTypedArray = __webpack_require__(165);
+    isTypedArray = __webpack_require__(169);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -24536,7 +24698,7 @@ module.exports = isEmpty;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24663,7 +24825,7 @@ exports.signedByte = signedByte;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24671,10 +24833,10 @@ exports.signedByte = signedByte;
 // Tools for decoding Basic programs.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseBasicText = exports.decodeBasicProgram = exports.wrapBasic = exports.BasicProgram = exports.BasicElement = exports.ElementType = exports.getToken = exports.BASIC_HEADER_BYTE = exports.BASIC_TAPE_HEADER_BYTE = void 0;
-const teamten_ts_utils_1 = __webpack_require__(23);
-const z80_base_1 = __webpack_require__(20);
-const ProgramAnnotation_1 = __webpack_require__(15);
-const Trs80File_1 = __webpack_require__(19);
+const teamten_ts_utils_1 = __webpack_require__(22);
+const z80_base_1 = __webpack_require__(19);
+const ProgramAnnotation_1 = __webpack_require__(13);
+const Trs80File_1 = __webpack_require__(17);
 exports.BASIC_TAPE_HEADER_BYTE = 0xD3;
 exports.BASIC_HEADER_BYTE = 0xFF;
 const FIRST_TOKEN = 0x80;
@@ -24687,12 +24849,12 @@ const TOKENS = [
     "MERGE", "NAME", "KILL", "LSET", "RSET", "SAVE", "SYSTEM", "LPRINT",
     "DEF", "POKE", "PRINT", "CONT", "LIST", "LLIST", "DELETE", "AUTO",
     "CLEAR", "CLOAD", "CSAVE", "NEW", "TAB(", "TO", "FN", "USING",
-    "VARPTR", "USR", "ERL", "ERR", "STRING", "INSTR", "POINT", "TIME$",
+    "VARPTR", "USR", "ERL", "ERR", "STRING$", "INSTR", "POINT", "TIME$",
     "MEM", "INKEY$", "THEN", "NOT", "STEP", "+", "-", "*",
     "/", "[", "AND", "OR", ">", "=", "<", "SGN",
     "INT", "ABS", "FRE", "INP", "POS", "SQR", "RND", "LOG",
     "EXP", "COS", "SIN", "TAN", "ATN", "PEEK", "CVI", "CVS",
-    "CVD", "EOF", "LOC", "LOF", "MKI", "MKS$", "MKD$", "CINT",
+    "CVD", "EOF", "LOC", "LOF", "MKI$", "MKS$", "MKD$", "CINT",
     "CSNG", "CDBL", "FIX", "LEN", "STR$", "VAL", "ASC", "CHR$",
     "LEFT$", "RIGHT$", "MID$",
 ];
@@ -24940,7 +25102,7 @@ function decodeBasicProgram(binary) {
         for (let i = lineElementsIndex; i < elements.length; i++) {
             textLineParts.push(elements[i].text);
         }
-        let textLine = textLineParts.join("");
+        let textLine = textLineParts.join("").replace(/[\n\r]+/, " ");
         if (textLine.length > 33) {
             textLine = textLine.substr(0, 30) + "...";
         }
@@ -25130,7 +25292,7 @@ exports.parseBasicText = parseBasicText;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25257,7 +25419,7 @@ exports.signedByte = signedByte;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25269,10 +25431,10 @@ exports.signedByte = signedByte;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeCmdProgram = exports.CmdProgram = exports.CMD_CHUNK_TYPE_NAME = exports.CmdLoadModuleHeaderChunk = exports.CmdTransferAddressChunk = exports.CmdLoadBlockChunk = exports.CmdChunk = exports.CMD_MAX_TYPE = exports.CMD_LOAD_MODULE_HEADER = exports.CMD_TRANSFER_ADDRESS = exports.CMD_LOAD_BLOCK = void 0;
-const teamten_ts_utils_1 = __webpack_require__(23);
-const z80_base_1 = __webpack_require__(20);
-const ProgramAnnotation_1 = __webpack_require__(15);
-const Trs80File_1 = __webpack_require__(19);
+const teamten_ts_utils_1 = __webpack_require__(22);
+const z80_base_1 = __webpack_require__(19);
+const ProgramAnnotation_1 = __webpack_require__(13);
+const Trs80File_1 = __webpack_require__(17);
 // Chunk types.
 exports.CMD_LOAD_BLOCK = 0x01;
 exports.CMD_TRANSFER_ADDRESS = 0x02;
@@ -25481,17 +25643,17 @@ exports.decodeCmdProgram = decodeCmdProgram;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeCassette = exports.Cassette = exports.CassetteFile = exports.CassetteSpeed = void 0;
-const SystemProgram_1 = __webpack_require__(40);
-const Trs80File_1 = __webpack_require__(19);
+const SystemProgram_1 = __webpack_require__(28);
+const Trs80File_1 = __webpack_require__(17);
 const Trs80FileDecoder_1 = __webpack_require__(41);
-const ProgramAnnotation_1 = __webpack_require__(15);
+const ProgramAnnotation_1 = __webpack_require__(13);
 // Low-speed header and sync constants.
 const LOW_SPEED_HEADER_BYTE = 0x00;
 const LOW_SPEED_SYNC_BYTE = 0xA5;
@@ -25678,168 +25840,6 @@ exports.decodeCassette = decodeCassette;
 
 
 /***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * Tools for dealing with SYSTEM (machine language) programs.
- *
- * http://www.trs-80.com/wordpress/zaps-patches-pokes-tips/tape-and-file-formats-structures/
- */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeSystemProgram = exports.SystemProgram = exports.SystemChunk = void 0;
-const teamten_ts_utils_1 = __webpack_require__(23);
-const z80_base_1 = __webpack_require__(20);
-const ProgramAnnotation_1 = __webpack_require__(15);
-const Trs80File_1 = __webpack_require__(19);
-const FILE_HEADER = 0x55;
-const DATA_HEADER = 0x3C;
-const END_OF_FILE_MARKER = 0x78;
-const FILENAME_LENGTH = 6;
-/**
- * Represents a chunk of bytes from the file, with a checksum.
- */
-class SystemChunk {
-    constructor(loadAddress, data, checksum) {
-        this.loadAddress = loadAddress;
-        this.data = data;
-        this.checksum = checksum;
-    }
-    /**
-     * Whether the checksum supplied on tape matches what we compute.
-     */
-    isChecksumValid() {
-        let checksum = 0;
-        // Include load address and data.
-        checksum += (this.loadAddress >> 8) & 0xFF;
-        checksum += this.loadAddress & 0xFF;
-        for (const b of this.data) {
-            checksum += b;
-        }
-        checksum &= 0xFF;
-        return checksum === this.checksum;
-    }
-}
-exports.SystemChunk = SystemChunk;
-/**
- * Class representing a SYSTEM (machine language) program. If the "error" field is set, then something
- * went wrong with the program and the data may be partially loaded.
- */
-class SystemProgram extends Trs80File_1.Trs80File {
-    constructor(binary, error, filename, chunks, entryPointAddress, annotations) {
-        super(binary, error, annotations);
-        this.filename = filename;
-        this.chunks = chunks;
-        this.entryPointAddress = entryPointAddress;
-        this.annotations = annotations;
-    }
-    getDescription() {
-        return "System program (" + this.filename + ")";
-    }
-    /**
-     * Convert an address in memory to the original byte offset in the binary. Returns undefined if
-     * not found in any chunk.
-     */
-    addressToByteOffset(address) {
-        // Skip file header and block header.
-        let offset = 1 + FILENAME_LENGTH + 4;
-        for (const chunk of this.chunks) {
-            if (address >= chunk.loadAddress && address < chunk.loadAddress + chunk.data.length) {
-                return offset + (address - chunk.loadAddress);
-            }
-            // Skip checksum and block header of the next block.
-            offset += chunk.data.length + 5;
-        }
-        return undefined;
-    }
-}
-exports.SystemProgram = SystemProgram;
-/**
- * Decodes a system program from the binary. If the binary is not at all a system
- * program, returns undefined. If it's a system program with decoding errors, returns
- * partially-decoded binary and sets the "error" field.
- */
-function decodeSystemProgram(binary) {
-    const chunks = [];
-    const annotations = [];
-    let entryPointAddress = 0;
-    const b = new teamten_ts_utils_1.ByteReader(binary);
-    const headerByte = b.read();
-    if (headerByte === teamten_ts_utils_1.EOF) {
-        return undefined;
-    }
-    if (headerByte !== FILE_HEADER) {
-        return undefined;
-    }
-    annotations.push(new ProgramAnnotation_1.ProgramAnnotation("System file header", b.addr() - 1, b.addr()));
-    let filename = b.readString(FILENAME_LENGTH);
-    // Make a SystemProgram object with what we have so far.
-    const makeSystemProgram = (error) => {
-        const programBinary = binary.subarray(0, b.addr());
-        return new SystemProgram(programBinary, error, filename, chunks, entryPointAddress, annotations);
-    };
-    if (filename.length < FILENAME_LENGTH) {
-        // Binary is truncated.
-        return makeSystemProgram("File is truncated at filename");
-    }
-    filename = filename.trim();
-    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Filename "${filename}"`, b.addr() - FILENAME_LENGTH, b.addr()));
-    while (true) {
-        const marker = b.read();
-        if (marker === teamten_ts_utils_1.EOF) {
-            return makeSystemProgram("File is truncated at start of block");
-        }
-        if (marker === END_OF_FILE_MARKER) {
-            annotations.push(new ProgramAnnotation_1.ProgramAnnotation("End of file marker", b.addr() - 1, b.addr()));
-            break;
-        }
-        if (marker !== DATA_HEADER) {
-            // Here if the marker is 0x55, we could guess that it's a high-speed cassette header.
-            return makeSystemProgram("Unexpected byte " + z80_base_1.toHexByte(marker) + " at start of block");
-        }
-        annotations.push(new ProgramAnnotation_1.ProgramAnnotation("Data chunk marker", b.addr() - 1, b.addr()));
-        let length = b.read();
-        if (length === teamten_ts_utils_1.EOF) {
-            return makeSystemProgram("File is truncated at block length");
-        }
-        // 0 means 256.
-        if (length === 0) {
-            length = 256;
-        }
-        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Length (${length} byte${length === 1 ? "" : "s"})`, b.addr() - 1, b.addr()));
-        const loadAddress = b.readShort(false);
-        if (loadAddress === teamten_ts_utils_1.EOF) {
-            return makeSystemProgram("File is truncated at load address");
-        }
-        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Address (0x${z80_base_1.toHexWord(loadAddress)})`, b.addr() - 2, b.addr()));
-        const dataStartAddr = b.addr();
-        const data = b.readBytes(length);
-        if (data.length < length) {
-            return makeSystemProgram("File is truncated at data");
-        }
-        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Chunk data`, dataStartAddr, b.addr()));
-        const checksum = b.read();
-        if (loadAddress === teamten_ts_utils_1.EOF) {
-            return makeSystemProgram("File is truncated at checksum");
-        }
-        const systemChunk = new SystemChunk(loadAddress, data, checksum);
-        chunks.push(systemChunk);
-        annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Checksum (0x${z80_base_1.toHexByte(checksum)}, ${systemChunk.isChecksumValid() ? "" : "in"}valid)`, b.addr() - 1, b.addr()));
-    }
-    entryPointAddress = b.readShort(false);
-    if (entryPointAddress === teamten_ts_utils_1.EOF) {
-        entryPointAddress = 0;
-        return makeSystemProgram("File is truncated at entry point address");
-    }
-    annotations.push(new ProgramAnnotation_1.ProgramAnnotation(`Jump address (0x${z80_base_1.toHexWord(entryPointAddress)})`, b.addr() - 2, b.addr()));
-    return makeSystemProgram();
-}
-exports.decodeSystemProgram = decodeSystemProgram;
-
-
-/***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -25847,14 +25847,14 @@ exports.decodeSystemProgram = decodeSystemProgram;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeTrs80File = void 0;
-const Basic_1 = __webpack_require__(36);
-const Cassette_1 = __webpack_require__(39);
-const CmdProgram_1 = __webpack_require__(38);
+const Basic_1 = __webpack_require__(37);
+const Cassette_1 = __webpack_require__(40);
+const CmdProgram_1 = __webpack_require__(39);
 const RawBinaryFile_1 = __webpack_require__(42);
 const Jv1FloppyDisk_1 = __webpack_require__(43);
-const Jv3FloppyDisk_1 = __webpack_require__(90);
-const DmkFloppyDisk_1 = __webpack_require__(91);
-const SystemProgram_1 = __webpack_require__(40);
+const Jv3FloppyDisk_1 = __webpack_require__(93);
+const DmkFloppyDisk_1 = __webpack_require__(94);
+const SystemProgram_1 = __webpack_require__(28);
 /**
  * Get the extension of the filename, including the dot, in upper case, or
  * an empty string if the filename does not contain an extension.
@@ -25941,7 +25941,7 @@ exports.decodeTrs80File = decodeTrs80File;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RawBinaryFile = void 0;
-const Trs80File_1 = __webpack_require__(19);
+const Trs80File_1 = __webpack_require__(17);
 /**
  * File when we don't recognize the type.
  */
@@ -25964,8 +25964,8 @@ exports.RawBinaryFile = RawBinaryFile;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeJv1FloppyDisk = exports.Jv1FloppyDisk = void 0;
-const FloppyDisk_1 = __webpack_require__(21);
-const ProgramAnnotation_1 = __webpack_require__(15);
+const FloppyDisk_1 = __webpack_require__(20);
+const ProgramAnnotation_1 = __webpack_require__(13);
 const BYTES_PER_SECTOR = 256;
 const SECTORS_PER_TRACK = 10;
 const BYTES_PER_TRACK = BYTES_PER_SECTOR * SECTORS_PER_TRACK;
@@ -26035,7 +26035,7 @@ exports.decodeJv1FloppyDisk = decodeJv1FloppyDisk;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventList = void 0;
 const ste_core_1 = __webpack_require__(6);
-const EventDispatcher_1 = __webpack_require__(28);
+const EventDispatcher_1 = __webpack_require__(29);
 /**
  * Storage class for multiple events that are accessible by name.
  * Events dispatchers are automatically created.
@@ -26066,7 +26066,7 @@ exports.EventList = EventList;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleEventList = void 0;
 const ste_core_1 = __webpack_require__(6);
-const SimpleEventDispatcher_1 = __webpack_require__(29);
+const SimpleEventDispatcher_1 = __webpack_require__(30);
 /**
  * Storage class for multiple simple events that are accessible by name.
  * Events dispatchers are automatically created.
@@ -26192,7 +26192,7 @@ exports.SignalList = SignalList;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseEventList = void 0;
 const ste_core_1 = __webpack_require__(6);
-const PromiseEventDispatcher_1 = __webpack_require__(30);
+const PromiseEventDispatcher_1 = __webpack_require__(31);
 /**
  * Storage class for multiple events that are accessible by name.
  * Events dispatchers are automatically created.
@@ -26230,9 +26230,9 @@ exports.PromiseEventList = PromiseEventList;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSignalList = exports.PromiseSignalHandlingBase = exports.PromiseSignalDispatcher = void 0;
-const PromiseSignalDispatcher_1 = __webpack_require__(116);
+const PromiseSignalDispatcher_1 = __webpack_require__(120);
 Object.defineProperty(exports, "PromiseSignalDispatcher", { enumerable: true, get: function () { return PromiseSignalDispatcher_1.PromiseSignalDispatcher; } });
-const PromiseSignalHandlingBase_1 = __webpack_require__(117);
+const PromiseSignalHandlingBase_1 = __webpack_require__(121);
 Object.defineProperty(exports, "PromiseSignalHandlingBase", { enumerable: true, get: function () { return PromiseSignalHandlingBase_1.PromiseSignalHandlingBase; } });
 const PromiseSignalList_1 = __webpack_require__(50);
 Object.defineProperty(exports, "PromiseSignalList", { enumerable: true, get: function () { return PromiseSignalList_1.PromiseSignalList; } });
@@ -26278,7 +26278,7 @@ exports.PromiseSignalList = PromiseSignalList;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSimpleEventList = void 0;
 const ste_core_1 = __webpack_require__(6);
-const PromiseSimpleEventDispatcher_1 = __webpack_require__(31);
+const PromiseSimpleEventDispatcher_1 = __webpack_require__(32);
 /**
  * Storage class for multiple simple events that are accessible by name.
  * Events dispatchers are automatically created.
@@ -26359,7 +26359,7 @@ class EventScheduler {
         }
     }
     /**
-     * Schedule an event to happen tStateCount clocks. The callback will be called
+     * Schedule an event to happen at tStateCount clocks. The callback will be called
      * at the end of an instruction step.
      *
      * @return a handle that can be passed to cancel().
@@ -26421,11 +26421,11 @@ exports.EventScheduler = EventScheduler;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CanvasScreen = exports.phosphorToRgb = exports.BLACK_BACKGROUND = exports.AUTHENTIC_BACKGROUND = void 0;
-const Trs80Screen_1 = __webpack_require__(121);
-const Fonts_1 = __webpack_require__(122);
+const Trs80Screen_1 = __webpack_require__(125);
+const Fonts_1 = __webpack_require__(126);
 const Config_1 = __webpack_require__(27);
-const z80_base_1 = __webpack_require__(0);
-const trs80_base_1 = __webpack_require__(5);
+const z80_base_1 = __webpack_require__(18);
+const trs80_base_1 = __webpack_require__(3);
 exports.AUTHENTIC_BACKGROUND = "#334843";
 exports.BLACK_BACKGROUND = "#000000";
 const PADDING = 10;
@@ -26621,7 +26621,7 @@ exports.CanvasScreen = CanvasScreen;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ControlPanel = void 0;
-const Utils_1 = __webpack_require__(18);
+const Utils_1 = __webpack_require__(23);
 const SettingsPanel_1 = __webpack_require__(55);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-control-panel";
 const gScreenNodeCssClass = gCssPrefix + "-screen-node";
@@ -26863,7 +26863,7 @@ exports.ControlPanel = ControlPanel;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SettingsPanel = exports.PanelType = void 0;
-const Utils_1 = __webpack_require__(18);
+const Utils_1 = __webpack_require__(23);
 const Config_1 = __webpack_require__(27);
 const CanvasScreen_1 = __webpack_require__(53);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-settings-panel";
@@ -27372,7 +27372,7 @@ exports.SettingsPanel = SettingsPanel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _firebase_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(124);
+/* harmony import */ var _firebase_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(128);
 
 
 
@@ -27818,7 +27818,7 @@ module.exports = isFunction;
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(17);
+var root = __webpack_require__(16);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -28056,10 +28056,10 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(176));
-__export(__webpack_require__(177));
+__export(__webpack_require__(180));
+__export(__webpack_require__(181));
 __export(__webpack_require__(70));
-__export(__webpack_require__(178));
+__export(__webpack_require__(182));
 
 
 /***/ }),
@@ -28516,19 +28516,19 @@ exports.signedByte = signedByte;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return auth; });
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(56);
 /* harmony import */ var dialog_polyfill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(73);
 /* harmony import */ var dialog_polyfill__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dialog_polyfill__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var material_design_lite_src_mdlComponentHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(126);
+/* harmony import */ var material_design_lite_src_mdlComponentHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(130);
 /* harmony import */ var material_design_lite_src_mdlComponentHandler__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(material_design_lite_src_mdlComponentHandler__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var material_design_lite_src_button_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(127);
+/* harmony import */ var material_design_lite_src_button_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(131);
 /* harmony import */ var material_design_lite_src_button_button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(material_design_lite_src_button_button__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var material_design_lite_src_progress_progress__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(128);
+/* harmony import */ var material_design_lite_src_progress_progress__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(132);
 /* harmony import */ var material_design_lite_src_progress_progress__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(material_design_lite_src_progress_progress__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var material_design_lite_src_spinner_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(129);
+/* harmony import */ var material_design_lite_src_spinner_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(133);
 /* harmony import */ var material_design_lite_src_spinner_spinner__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(material_design_lite_src_spinner_spinner__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var material_design_lite_src_textfield_textfield__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(130);
+/* harmony import */ var material_design_lite_src_textfield_textfield__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(134);
 /* harmony import */ var material_design_lite_src_textfield_textfield__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(material_design_lite_src_textfield_textfield__WEBPACK_IMPORTED_MODULE_7__);
 (function() {(function(){var l,aa="function"==typeof Object.create?Object.create:function(a){function b(){}b.prototype=a;return new b},ba;if("function"==typeof Object.setPrototypeOf)ba=Object.setPrototypeOf;else{var ca;a:{var da={xb:!0},ea={};try{ea.__proto__=da;ca=ea.xb;break a}catch(a){}ca=!1}ba=ca?function(a,b){a.__proto__=b;if(a.__proto__!==b)throw new TypeError(a+" is not extensible");return a}:null}var fa=ba;function m(a,b){a.prototype=aa(b.prototype);a.prototype.constructor=a;if(fa)fa(a,b);else for(var c in b)if("prototype"!=
 c)if(Object.defineProperties){var d=Object.getOwnPropertyDescriptor(b,c);d&&Object.defineProperty(a,c,d)}else a[c]=b[c];a.K=b.prototype}var ha="function"==typeof Object.defineProperties?Object.defineProperty:function(a,b,c){a!=Array.prototype&&a!=Object.prototype&&(a[b]=c.value)},ia="undefined"!=typeof window&&window===this?this:"undefined"!=typeof global&&null!=global?global:this;function ja(a,b){if(b){var c=ia;a=a.split(".");for(var d=0;d<a.length-1;d++){var e=a[d];e in c||(c[e]={});c=c[e]}a=a[a.length-
@@ -29641,7 +29641,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;(function() {
   dialogPolyfill['forceRegisterDialog'] = dialogPolyfill.forceRegisterDialog;
   dialogPolyfill['registerDialog'] = dialogPolyfill.registerDialog;
 
-  if ( true && 'amd' in __webpack_require__(125)) {
+  if ( true && 'amd' in __webpack_require__(129)) {
     // AMD support
     !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() { return dialogPolyfill; }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -29672,7 +29672,7 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 */
 
 !function(t){if(true)module.exports=t();else {}}(function(){return function s(a,o,h){function u(r,t){if(!o[r]){if(!a[r]){var e="function"==typeof require&&require;if(!t&&e)return require(r,!0);if(l)return l(r,!0);var i=new Error("Cannot find module '"+r+"'");throw i.code="MODULE_NOT_FOUND",i}var n=o[r]={exports:{}};a[r][0].call(n.exports,function(t){var e=a[r][1][t];return u(e||t)},n,n.exports,s,a,o,h)}return o[r].exports}for(var l="function"==typeof require&&require,t=0;t<h.length;t++)u(h[t]);return u}({1:[function(t,e,r){"use strict";var c=t("./utils"),d=t("./support"),p="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";r.encode=function(t){for(var e,r,i,n,s,a,o,h=[],u=0,l=t.length,f=l,d="string"!==c.getTypeOf(t);u<t.length;)f=l-u,i=d?(e=t[u++],r=u<l?t[u++]:0,u<l?t[u++]:0):(e=t.charCodeAt(u++),r=u<l?t.charCodeAt(u++):0,u<l?t.charCodeAt(u++):0),n=e>>2,s=(3&e)<<4|r>>4,a=1<f?(15&r)<<2|i>>6:64,o=2<f?63&i:64,h.push(p.charAt(n)+p.charAt(s)+p.charAt(a)+p.charAt(o));return h.join("")},r.decode=function(t){var e,r,i,n,s,a,o=0,h=0,u="data:";if(t.substr(0,u.length)===u)throw new Error("Invalid base64 input, it looks like a data url.");var l,f=3*(t=t.replace(/[^A-Za-z0-9\+\/\=]/g,"")).length/4;if(t.charAt(t.length-1)===p.charAt(64)&&f--,t.charAt(t.length-2)===p.charAt(64)&&f--,f%1!=0)throw new Error("Invalid base64 input, bad content length.");for(l=d.uint8array?new Uint8Array(0|f):new Array(0|f);o<t.length;)e=p.indexOf(t.charAt(o++))<<2|(n=p.indexOf(t.charAt(o++)))>>4,r=(15&n)<<4|(s=p.indexOf(t.charAt(o++)))>>2,i=(3&s)<<6|(a=p.indexOf(t.charAt(o++))),l[h++]=e,64!==s&&(l[h++]=r),64!==a&&(l[h++]=i);return l}},{"./support":30,"./utils":32}],2:[function(t,e,r){"use strict";var i=t("./external"),n=t("./stream/DataWorker"),s=t("./stream/DataLengthProbe"),a=t("./stream/Crc32Probe");s=t("./stream/DataLengthProbe");function o(t,e,r,i,n){this.compressedSize=t,this.uncompressedSize=e,this.crc32=r,this.compression=i,this.compressedContent=n}o.prototype={getContentWorker:function(){var t=new n(i.Promise.resolve(this.compressedContent)).pipe(this.compression.uncompressWorker()).pipe(new s("data_length")),e=this;return t.on("end",function(){if(this.streamInfo.data_length!==e.uncompressedSize)throw new Error("Bug : uncompressed data size mismatch")}),t},getCompressedWorker:function(){return new n(i.Promise.resolve(this.compressedContent)).withStreamInfo("compressedSize",this.compressedSize).withStreamInfo("uncompressedSize",this.uncompressedSize).withStreamInfo("crc32",this.crc32).withStreamInfo("compression",this.compression)}},o.createWorkerFrom=function(t,e,r){return t.pipe(new a).pipe(new s("uncompressedSize")).pipe(e.compressWorker(r)).pipe(new s("compressedSize")).withStreamInfo("compression",e)},e.exports=o},{"./external":6,"./stream/Crc32Probe":25,"./stream/DataLengthProbe":26,"./stream/DataWorker":27}],3:[function(t,e,r){"use strict";var i=t("./stream/GenericWorker");r.STORE={magic:"\0\0",compressWorker:function(t){return new i("STORE compression")},uncompressWorker:function(){return new i("STORE decompression")}},r.DEFLATE=t("./flate")},{"./flate":7,"./stream/GenericWorker":28}],4:[function(t,e,r){"use strict";var i=t("./utils");var o=function(){for(var t,e=[],r=0;r<256;r++){t=r;for(var i=0;i<8;i++)t=1&t?3988292384^t>>>1:t>>>1;e[r]=t}return e}();e.exports=function(t,e){return void 0!==t&&t.length?"string"!==i.getTypeOf(t)?function(t,e,r,i){var n=o,s=i+r;t^=-1;for(var a=i;a<s;a++)t=t>>>8^n[255&(t^e[a])];return-1^t}(0|e,t,t.length,0):function(t,e,r,i){var n=o,s=i+r;t^=-1;for(var a=i;a<s;a++)t=t>>>8^n[255&(t^e.charCodeAt(a))];return-1^t}(0|e,t,t.length,0):0}},{"./utils":32}],5:[function(t,e,r){"use strict";r.base64=!1,r.binary=!1,r.dir=!1,r.createFolders=!0,r.date=null,r.compression=null,r.compressionOptions=null,r.comment=null,r.unixPermissions=null,r.dosPermissions=null},{}],6:[function(t,e,r){"use strict";var i=null;i="undefined"!=typeof Promise?Promise:t("lie"),e.exports={Promise:i}},{lie:37}],7:[function(t,e,r){"use strict";var i="undefined"!=typeof Uint8Array&&"undefined"!=typeof Uint16Array&&"undefined"!=typeof Uint32Array,n=t("pako"),s=t("./utils"),a=t("./stream/GenericWorker"),o=i?"uint8array":"array";function h(t,e){a.call(this,"FlateWorker/"+t),this._pako=null,this._pakoAction=t,this._pakoOptions=e,this.meta={}}r.magic="\b\0",s.inherits(h,a),h.prototype.processChunk=function(t){this.meta=t.meta,null===this._pako&&this._createPako(),this._pako.push(s.transformTo(o,t.data),!1)},h.prototype.flush=function(){a.prototype.flush.call(this),null===this._pako&&this._createPako(),this._pako.push([],!0)},h.prototype.cleanUp=function(){a.prototype.cleanUp.call(this),this._pako=null},h.prototype._createPako=function(){this._pako=new n[this._pakoAction]({raw:!0,level:this._pakoOptions.level||-1});var e=this;this._pako.onData=function(t){e.push({data:t,meta:e.meta})}},r.compressWorker=function(t){return new h("Deflate",t)},r.uncompressWorker=function(){return new h("Inflate",{})}},{"./stream/GenericWorker":28,"./utils":32,pako:38}],8:[function(t,e,r){"use strict";function A(t,e){var r,i="";for(r=0;r<e;r++)i+=String.fromCharCode(255&t),t>>>=8;return i}function i(t,e,r,i,n,s){var a,o,h=t.file,u=t.compression,l=s!==O.utf8encode,f=I.transformTo("string",s(h.name)),d=I.transformTo("string",O.utf8encode(h.name)),c=h.comment,p=I.transformTo("string",s(c)),m=I.transformTo("string",O.utf8encode(c)),_=d.length!==h.name.length,g=m.length!==c.length,b="",v="",y="",w=h.dir,k=h.date,x={crc32:0,compressedSize:0,uncompressedSize:0};e&&!r||(x.crc32=t.crc32,x.compressedSize=t.compressedSize,x.uncompressedSize=t.uncompressedSize);var S=0;e&&(S|=8),l||!_&&!g||(S|=2048);var z=0,C=0;w&&(z|=16),"UNIX"===n?(C=798,z|=function(t,e){var r=t;return t||(r=e?16893:33204),(65535&r)<<16}(h.unixPermissions,w)):(C=20,z|=function(t){return 63&(t||0)}(h.dosPermissions)),a=k.getUTCHours(),a<<=6,a|=k.getUTCMinutes(),a<<=5,a|=k.getUTCSeconds()/2,o=k.getUTCFullYear()-1980,o<<=4,o|=k.getUTCMonth()+1,o<<=5,o|=k.getUTCDate(),_&&(v=A(1,1)+A(B(f),4)+d,b+="up"+A(v.length,2)+v),g&&(y=A(1,1)+A(B(p),4)+m,b+="uc"+A(y.length,2)+y);var E="";return E+="\n\0",E+=A(S,2),E+=u.magic,E+=A(a,2),E+=A(o,2),E+=A(x.crc32,4),E+=A(x.compressedSize,4),E+=A(x.uncompressedSize,4),E+=A(f.length,2),E+=A(b.length,2),{fileRecord:R.LOCAL_FILE_HEADER+E+f+b,dirRecord:R.CENTRAL_FILE_HEADER+A(C,2)+E+A(p.length,2)+"\0\0\0\0"+A(z,4)+A(i,4)+f+b+p}}var I=t("../utils"),n=t("../stream/GenericWorker"),O=t("../utf8"),B=t("../crc32"),R=t("../signature");function s(t,e,r,i){n.call(this,"ZipFileWorker"),this.bytesWritten=0,this.zipComment=e,this.zipPlatform=r,this.encodeFileName=i,this.streamFiles=t,this.accumulate=!1,this.contentBuffer=[],this.dirRecords=[],this.currentSourceOffset=0,this.entriesCount=0,this.currentFile=null,this._sources=[]}I.inherits(s,n),s.prototype.push=function(t){var e=t.meta.percent||0,r=this.entriesCount,i=this._sources.length;this.accumulate?this.contentBuffer.push(t):(this.bytesWritten+=t.data.length,n.prototype.push.call(this,{data:t.data,meta:{currentFile:this.currentFile,percent:r?(e+100*(r-i-1))/r:100}}))},s.prototype.openedSource=function(t){this.currentSourceOffset=this.bytesWritten,this.currentFile=t.file.name;var e=this.streamFiles&&!t.file.dir;if(e){var r=i(t,e,!1,this.currentSourceOffset,this.zipPlatform,this.encodeFileName);this.push({data:r.fileRecord,meta:{percent:0}})}else this.accumulate=!0},s.prototype.closedSource=function(t){this.accumulate=!1;var e=this.streamFiles&&!t.file.dir,r=i(t,e,!0,this.currentSourceOffset,this.zipPlatform,this.encodeFileName);if(this.dirRecords.push(r.dirRecord),e)this.push({data:function(t){return R.DATA_DESCRIPTOR+A(t.crc32,4)+A(t.compressedSize,4)+A(t.uncompressedSize,4)}(t),meta:{percent:100}});else for(this.push({data:r.fileRecord,meta:{percent:0}});this.contentBuffer.length;)this.push(this.contentBuffer.shift());this.currentFile=null},s.prototype.flush=function(){for(var t=this.bytesWritten,e=0;e<this.dirRecords.length;e++)this.push({data:this.dirRecords[e],meta:{percent:100}});var r=this.bytesWritten-t,i=function(t,e,r,i,n){var s=I.transformTo("string",n(i));return R.CENTRAL_DIRECTORY_END+"\0\0\0\0"+A(t,2)+A(t,2)+A(e,4)+A(r,4)+A(s.length,2)+s}(this.dirRecords.length,r,t,this.zipComment,this.encodeFileName);this.push({data:i,meta:{percent:100}})},s.prototype.prepareNextSource=function(){this.previous=this._sources.shift(),this.openedSource(this.previous.streamInfo),this.isPaused?this.previous.pause():this.previous.resume()},s.prototype.registerPrevious=function(t){this._sources.push(t);var e=this;return t.on("data",function(t){e.processChunk(t)}),t.on("end",function(){e.closedSource(e.previous.streamInfo),e._sources.length?e.prepareNextSource():e.end()}),t.on("error",function(t){e.error(t)}),this},s.prototype.resume=function(){return!!n.prototype.resume.call(this)&&(!this.previous&&this._sources.length?(this.prepareNextSource(),!0):this.previous||this._sources.length||this.generatedError?void 0:(this.end(),!0))},s.prototype.error=function(t){var e=this._sources;if(!n.prototype.error.call(this,t))return!1;for(var r=0;r<e.length;r++)try{e[r].error(t)}catch(t){}return!0},s.prototype.lock=function(){n.prototype.lock.call(this);for(var t=this._sources,e=0;e<t.length;e++)t[e].lock()},e.exports=s},{"../crc32":4,"../signature":23,"../stream/GenericWorker":28,"../utf8":31,"../utils":32}],9:[function(t,e,r){"use strict";var u=t("../compressions"),i=t("./ZipFileWorker");r.generateWorker=function(t,a,e){var o=new i(a.streamFiles,e,a.platform,a.encodeFileName),h=0;try{t.forEach(function(t,e){h++;var r=function(t,e){var r=t||e,i=u[r];if(!i)throw new Error(r+" is not a valid compression method !");return i}(e.options.compression,a.compression),i=e.options.compressionOptions||a.compressionOptions||{},n=e.dir,s=e.date;e._compressWorker(r,i).withStreamInfo("file",{name:t,dir:n,date:s,comment:e.comment||"",unixPermissions:e.unixPermissions,dosPermissions:e.dosPermissions}).pipe(o)}),o.entriesCount=h}catch(t){o.error(t)}return o}},{"../compressions":3,"./ZipFileWorker":8}],10:[function(t,e,r){"use strict";function i(){if(!(this instanceof i))return new i;if(arguments.length)throw new Error("The constructor with parameters has been removed in JSZip 3.0, please check the upgrade guide.");this.files={},this.comment=null,this.root="",this.clone=function(){var t=new i;for(var e in this)"function"!=typeof this[e]&&(t[e]=this[e]);return t}}(i.prototype=t("./object")).loadAsync=t("./load"),i.support=t("./support"),i.defaults=t("./defaults"),i.version="3.5.0",i.loadAsync=function(t,e){return(new i).loadAsync(t,e)},i.external=t("./external"),e.exports=i},{"./defaults":5,"./external":6,"./load":11,"./object":15,"./support":30}],11:[function(t,e,r){"use strict";var i=t("./utils"),n=t("./external"),o=t("./utf8"),h=(i=t("./utils"),t("./zipEntries")),s=t("./stream/Crc32Probe"),u=t("./nodejsUtils");function l(i){return new n.Promise(function(t,e){var r=i.decompressed.getContentWorker().pipe(new s);r.on("error",function(t){e(t)}).on("end",function(){r.streamInfo.crc32!==i.decompressed.crc32?e(new Error("Corrupted zip : CRC32 mismatch")):t()}).resume()})}e.exports=function(t,s){var a=this;return s=i.extend(s||{},{base64:!1,checkCRC32:!1,optimizedBinaryString:!1,createFolders:!1,decodeFileName:o.utf8decode}),u.isNode&&u.isStream(t)?n.Promise.reject(new Error("JSZip can't accept a stream when loading a zip file.")):i.prepareContent("the loaded zip file",t,!0,s.optimizedBinaryString,s.base64).then(function(t){var e=new h(s);return e.load(t),e}).then(function(t){var e=[n.Promise.resolve(t)],r=t.files;if(s.checkCRC32)for(var i=0;i<r.length;i++)e.push(l(r[i]));return n.Promise.all(e)}).then(function(t){for(var e=t.shift(),r=e.files,i=0;i<r.length;i++){var n=r[i];a.file(n.fileNameStr,n.decompressed,{binary:!0,optimizedBinaryString:!0,date:n.date,dir:n.dir,comment:n.fileCommentStr.length?n.fileCommentStr:null,unixPermissions:n.unixPermissions,dosPermissions:n.dosPermissions,createFolders:s.createFolders})}return e.zipComment.length&&(a.comment=e.zipComment),a})}},{"./external":6,"./nodejsUtils":14,"./stream/Crc32Probe":25,"./utf8":31,"./utils":32,"./zipEntries":33}],12:[function(t,e,r){"use strict";var i=t("../utils"),n=t("../stream/GenericWorker");function s(t,e){n.call(this,"Nodejs stream input adapter for "+t),this._upstreamEnded=!1,this._bindStream(e)}i.inherits(s,n),s.prototype._bindStream=function(t){var e=this;(this._stream=t).pause(),t.on("data",function(t){e.push({data:t,meta:{percent:0}})}).on("error",function(t){e.isPaused?this.generatedError=t:e.error(t)}).on("end",function(){e.isPaused?e._upstreamEnded=!0:e.end()})},s.prototype.pause=function(){return!!n.prototype.pause.call(this)&&(this._stream.pause(),!0)},s.prototype.resume=function(){return!!n.prototype.resume.call(this)&&(this._upstreamEnded?this.end():this._stream.resume(),!0)},e.exports=s},{"../stream/GenericWorker":28,"../utils":32}],13:[function(t,e,r){"use strict";var n=t("readable-stream").Readable;function i(t,e,r){n.call(this,e),this._helper=t;var i=this;t.on("data",function(t,e){i.push(t)||i._helper.pause(),r&&r(e)}).on("error",function(t){i.emit("error",t)}).on("end",function(){i.push(null)})}t("../utils").inherits(i,n),i.prototype._read=function(){this._helper.resume()},e.exports=i},{"../utils":32,"readable-stream":16}],14:[function(t,e,r){"use strict";e.exports={isNode:"undefined"!=typeof Buffer,newBufferFrom:function(t,e){if(Buffer.from&&Buffer.from!==Uint8Array.from)return Buffer.from(t,e);if("number"==typeof t)throw new Error('The "data" argument must not be a number');return new Buffer(t,e)},allocBuffer:function(t){if(Buffer.alloc)return Buffer.alloc(t);var e=new Buffer(t);return e.fill(0),e},isBuffer:function(t){return Buffer.isBuffer(t)},isStream:function(t){return t&&"function"==typeof t.on&&"function"==typeof t.pause&&"function"==typeof t.resume}}},{}],15:[function(t,e,r){"use strict";function s(t,e,r){var i,n=u.getTypeOf(e),s=u.extend(r||{},f);s.date=s.date||new Date,null!==s.compression&&(s.compression=s.compression.toUpperCase()),"string"==typeof s.unixPermissions&&(s.unixPermissions=parseInt(s.unixPermissions,8)),s.unixPermissions&&16384&s.unixPermissions&&(s.dir=!0),s.dosPermissions&&16&s.dosPermissions&&(s.dir=!0),s.dir&&(t=g(t)),s.createFolders&&(i=_(t))&&b.call(this,i,!0);var a="string"===n&&!1===s.binary&&!1===s.base64;r&&void 0!==r.binary||(s.binary=!a),(e instanceof d&&0===e.uncompressedSize||s.dir||!e||0===e.length)&&(s.base64=!1,s.binary=!0,e="",s.compression="STORE",n="string");var o=null;o=e instanceof d||e instanceof l?e:p.isNode&&p.isStream(e)?new m(t,e):u.prepareContent(t,e,s.binary,s.optimizedBinaryString,s.base64);var h=new c(t,o,s);this.files[t]=h}var n=t("./utf8"),u=t("./utils"),l=t("./stream/GenericWorker"),a=t("./stream/StreamHelper"),f=t("./defaults"),d=t("./compressedObject"),c=t("./zipObject"),o=t("./generate"),p=t("./nodejsUtils"),m=t("./nodejs/NodejsStreamInputAdapter"),_=function(t){"/"===t.slice(-1)&&(t=t.substring(0,t.length-1));var e=t.lastIndexOf("/");return 0<e?t.substring(0,e):""},g=function(t){return"/"!==t.slice(-1)&&(t+="/"),t},b=function(t,e){return e=void 0!==e?e:f.createFolders,t=g(t),this.files[t]||s.call(this,t,null,{dir:!0,createFolders:e}),this.files[t]};function h(t){return"[object RegExp]"===Object.prototype.toString.call(t)}var i={load:function(){throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.")},forEach:function(t){var e,r,i;for(e in this.files)this.files.hasOwnProperty(e)&&(i=this.files[e],(r=e.slice(this.root.length,e.length))&&e.slice(0,this.root.length)===this.root&&t(r,i))},filter:function(r){var i=[];return this.forEach(function(t,e){r(t,e)&&i.push(e)}),i},file:function(t,e,r){if(1!==arguments.length)return t=this.root+t,s.call(this,t,e,r),this;if(h(t)){var i=t;return this.filter(function(t,e){return!e.dir&&i.test(t)})}var n=this.files[this.root+t];return n&&!n.dir?n:null},folder:function(r){if(!r)return this;if(h(r))return this.filter(function(t,e){return e.dir&&r.test(t)});var t=this.root+r,e=b.call(this,t),i=this.clone();return i.root=e.name,i},remove:function(r){r=this.root+r;var t=this.files[r];if(t||("/"!==r.slice(-1)&&(r+="/"),t=this.files[r]),t&&!t.dir)delete this.files[r];else for(var e=this.filter(function(t,e){return e.name.slice(0,r.length)===r}),i=0;i<e.length;i++)delete this.files[e[i].name];return this},generate:function(t){throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.")},generateInternalStream:function(t){var e,r={};try{if((r=u.extend(t||{},{streamFiles:!1,compression:"STORE",compressionOptions:null,type:"",platform:"DOS",comment:null,mimeType:"application/zip",encodeFileName:n.utf8encode})).type=r.type.toLowerCase(),r.compression=r.compression.toUpperCase(),"binarystring"===r.type&&(r.type="string"),!r.type)throw new Error("No output type specified.");u.checkSupport(r.type),"darwin"!==r.platform&&"freebsd"!==r.platform&&"linux"!==r.platform&&"sunos"!==r.platform||(r.platform="UNIX"),"win32"===r.platform&&(r.platform="DOS");var i=r.comment||this.comment||"";e=o.generateWorker(this,r,i)}catch(t){(e=new l("error")).error(t)}return new a(e,r.type||"string",r.mimeType)},generateAsync:function(t,e){return this.generateInternalStream(t).accumulate(e)},generateNodeStream:function(t,e){return(t=t||{}).type||(t.type="nodebuffer"),this.generateInternalStream(t).toNodejsStream(e)}};e.exports=i},{"./compressedObject":2,"./defaults":5,"./generate":9,"./nodejs/NodejsStreamInputAdapter":12,"./nodejsUtils":14,"./stream/GenericWorker":28,"./stream/StreamHelper":29,"./utf8":31,"./utils":32,"./zipObject":35}],16:[function(t,e,r){e.exports=t("stream")},{stream:void 0}],17:[function(t,e,r){"use strict";var i=t("./DataReader");function n(t){i.call(this,t);for(var e=0;e<this.data.length;e++)t[e]=255&t[e]}t("../utils").inherits(n,i),n.prototype.byteAt=function(t){return this.data[this.zero+t]},n.prototype.lastIndexOfSignature=function(t){for(var e=t.charCodeAt(0),r=t.charCodeAt(1),i=t.charCodeAt(2),n=t.charCodeAt(3),s=this.length-4;0<=s;--s)if(this.data[s]===e&&this.data[s+1]===r&&this.data[s+2]===i&&this.data[s+3]===n)return s-this.zero;return-1},n.prototype.readAndCheckSignature=function(t){var e=t.charCodeAt(0),r=t.charCodeAt(1),i=t.charCodeAt(2),n=t.charCodeAt(3),s=this.readData(4);return e===s[0]&&r===s[1]&&i===s[2]&&n===s[3]},n.prototype.readData=function(t){if(this.checkOffset(t),0===t)return[];var e=this.data.slice(this.zero+this.index,this.zero+this.index+t);return this.index+=t,e},e.exports=n},{"../utils":32,"./DataReader":18}],18:[function(t,e,r){"use strict";var i=t("../utils");function n(t){this.data=t,this.length=t.length,this.index=0,this.zero=0}n.prototype={checkOffset:function(t){this.checkIndex(this.index+t)},checkIndex:function(t){if(this.length<this.zero+t||t<0)throw new Error("End of data reached (data length = "+this.length+", asked index = "+t+"). Corrupted zip ?")},setIndex:function(t){this.checkIndex(t),this.index=t},skip:function(t){this.setIndex(this.index+t)},byteAt:function(t){},readInt:function(t){var e,r=0;for(this.checkOffset(t),e=this.index+t-1;e>=this.index;e--)r=(r<<8)+this.byteAt(e);return this.index+=t,r},readString:function(t){return i.transformTo("string",this.readData(t))},readData:function(t){},lastIndexOfSignature:function(t){},readAndCheckSignature:function(t){},readDate:function(){var t=this.readInt(4);return new Date(Date.UTC(1980+(t>>25&127),(t>>21&15)-1,t>>16&31,t>>11&31,t>>5&63,(31&t)<<1))}},e.exports=n},{"../utils":32}],19:[function(t,e,r){"use strict";var i=t("./Uint8ArrayReader");function n(t){i.call(this,t)}t("../utils").inherits(n,i),n.prototype.readData=function(t){this.checkOffset(t);var e=this.data.slice(this.zero+this.index,this.zero+this.index+t);return this.index+=t,e},e.exports=n},{"../utils":32,"./Uint8ArrayReader":21}],20:[function(t,e,r){"use strict";var i=t("./DataReader");function n(t){i.call(this,t)}t("../utils").inherits(n,i),n.prototype.byteAt=function(t){return this.data.charCodeAt(this.zero+t)},n.prototype.lastIndexOfSignature=function(t){return this.data.lastIndexOf(t)-this.zero},n.prototype.readAndCheckSignature=function(t){return t===this.readData(4)},n.prototype.readData=function(t){this.checkOffset(t);var e=this.data.slice(this.zero+this.index,this.zero+this.index+t);return this.index+=t,e},e.exports=n},{"../utils":32,"./DataReader":18}],21:[function(t,e,r){"use strict";var i=t("./ArrayReader");function n(t){i.call(this,t)}t("../utils").inherits(n,i),n.prototype.readData=function(t){if(this.checkOffset(t),0===t)return new Uint8Array(0);var e=this.data.subarray(this.zero+this.index,this.zero+this.index+t);return this.index+=t,e},e.exports=n},{"../utils":32,"./ArrayReader":17}],22:[function(t,e,r){"use strict";var i=t("../utils"),n=t("../support"),s=t("./ArrayReader"),a=t("./StringReader"),o=t("./NodeBufferReader"),h=t("./Uint8ArrayReader");e.exports=function(t){var e=i.getTypeOf(t);return i.checkSupport(e),"string"!==e||n.uint8array?"nodebuffer"===e?new o(t):n.uint8array?new h(i.transformTo("uint8array",t)):new s(i.transformTo("array",t)):new a(t)}},{"../support":30,"../utils":32,"./ArrayReader":17,"./NodeBufferReader":19,"./StringReader":20,"./Uint8ArrayReader":21}],23:[function(t,e,r){"use strict";r.LOCAL_FILE_HEADER="PK",r.CENTRAL_FILE_HEADER="PK",r.CENTRAL_DIRECTORY_END="PK",r.ZIP64_CENTRAL_DIRECTORY_LOCATOR="PK",r.ZIP64_CENTRAL_DIRECTORY_END="PK",r.DATA_DESCRIPTOR="PK\b"},{}],24:[function(t,e,r){"use strict";var i=t("./GenericWorker"),n=t("../utils");function s(t){i.call(this,"ConvertWorker to "+t),this.destType=t}n.inherits(s,i),s.prototype.processChunk=function(t){this.push({data:n.transformTo(this.destType,t.data),meta:t.meta})},e.exports=s},{"../utils":32,"./GenericWorker":28}],25:[function(t,e,r){"use strict";var i=t("./GenericWorker"),n=t("../crc32");function s(){i.call(this,"Crc32Probe"),this.withStreamInfo("crc32",0)}t("../utils").inherits(s,i),s.prototype.processChunk=function(t){this.streamInfo.crc32=n(t.data,this.streamInfo.crc32||0),this.push(t)},e.exports=s},{"../crc32":4,"../utils":32,"./GenericWorker":28}],26:[function(t,e,r){"use strict";var i=t("../utils"),n=t("./GenericWorker");function s(t){n.call(this,"DataLengthProbe for "+t),this.propName=t,this.withStreamInfo(t,0)}i.inherits(s,n),s.prototype.processChunk=function(t){if(t){var e=this.streamInfo[this.propName]||0;this.streamInfo[this.propName]=e+t.data.length}n.prototype.processChunk.call(this,t)},e.exports=s},{"../utils":32,"./GenericWorker":28}],27:[function(t,e,r){"use strict";var i=t("../utils"),n=t("./GenericWorker");function s(t){n.call(this,"DataWorker");var e=this;this.dataIsReady=!1,this.index=0,this.max=0,this.data=null,this.type="",this._tickScheduled=!1,t.then(function(t){e.dataIsReady=!0,e.data=t,e.max=t&&t.length||0,e.type=i.getTypeOf(t),e.isPaused||e._tickAndRepeat()},function(t){e.error(t)})}i.inherits(s,n),s.prototype.cleanUp=function(){n.prototype.cleanUp.call(this),this.data=null},s.prototype.resume=function(){return!!n.prototype.resume.call(this)&&(!this._tickScheduled&&this.dataIsReady&&(this._tickScheduled=!0,i.delay(this._tickAndRepeat,[],this)),!0)},s.prototype._tickAndRepeat=function(){this._tickScheduled=!1,this.isPaused||this.isFinished||(this._tick(),this.isFinished||(i.delay(this._tickAndRepeat,[],this),this._tickScheduled=!0))},s.prototype._tick=function(){if(this.isPaused||this.isFinished)return!1;var t=null,e=Math.min(this.max,this.index+16384);if(this.index>=this.max)return this.end();switch(this.type){case"string":t=this.data.substring(this.index,e);break;case"uint8array":t=this.data.subarray(this.index,e);break;case"array":case"nodebuffer":t=this.data.slice(this.index,e)}return this.index=e,this.push({data:t,meta:{percent:this.max?this.index/this.max*100:0}})},e.exports=s},{"../utils":32,"./GenericWorker":28}],28:[function(t,e,r){"use strict";function i(t){this.name=t||"default",this.streamInfo={},this.generatedError=null,this.extraStreamInfo={},this.isPaused=!0,this.isFinished=!1,this.isLocked=!1,this._listeners={data:[],end:[],error:[]},this.previous=null}i.prototype={push:function(t){this.emit("data",t)},end:function(){if(this.isFinished)return!1;this.flush();try{this.emit("end"),this.cleanUp(),this.isFinished=!0}catch(t){this.emit("error",t)}return!0},error:function(t){return!this.isFinished&&(this.isPaused?this.generatedError=t:(this.isFinished=!0,this.emit("error",t),this.previous&&this.previous.error(t),this.cleanUp()),!0)},on:function(t,e){return this._listeners[t].push(e),this},cleanUp:function(){this.streamInfo=this.generatedError=this.extraStreamInfo=null,this._listeners=[]},emit:function(t,e){if(this._listeners[t])for(var r=0;r<this._listeners[t].length;r++)this._listeners[t][r].call(this,e)},pipe:function(t){return t.registerPrevious(this)},registerPrevious:function(t){if(this.isLocked)throw new Error("The stream '"+this+"' has already been used.");this.streamInfo=t.streamInfo,this.mergeStreamInfo(),this.previous=t;var e=this;return t.on("data",function(t){e.processChunk(t)}),t.on("end",function(){e.end()}),t.on("error",function(t){e.error(t)}),this},pause:function(){return!this.isPaused&&!this.isFinished&&(this.isPaused=!0,this.previous&&this.previous.pause(),!0)},resume:function(){if(!this.isPaused||this.isFinished)return!1;var t=this.isPaused=!1;return this.generatedError&&(this.error(this.generatedError),t=!0),this.previous&&this.previous.resume(),!t},flush:function(){},processChunk:function(t){this.push(t)},withStreamInfo:function(t,e){return this.extraStreamInfo[t]=e,this.mergeStreamInfo(),this},mergeStreamInfo:function(){for(var t in this.extraStreamInfo)this.extraStreamInfo.hasOwnProperty(t)&&(this.streamInfo[t]=this.extraStreamInfo[t])},lock:function(){if(this.isLocked)throw new Error("The stream '"+this+"' has already been used.");this.isLocked=!0,this.previous&&this.previous.lock()},toString:function(){var t="Worker "+this.name;return this.previous?this.previous+" -> "+t:t}},e.exports=i},{}],29:[function(t,e,r){"use strict";var h=t("../utils"),n=t("./ConvertWorker"),s=t("./GenericWorker"),u=t("../base64"),i=t("../support"),a=t("../external"),o=null;if(i.nodestream)try{o=t("../nodejs/NodejsStreamOutputAdapter")}catch(t){}function l(t,o){return new a.Promise(function(e,r){var i=[],n=t._internalType,s=t._outputType,a=t._mimeType;t.on("data",function(t,e){i.push(t),o&&o(e)}).on("error",function(t){i=[],r(t)}).on("end",function(){try{var t=function(t,e,r){switch(t){case"blob":return h.newBlob(h.transformTo("arraybuffer",e),r);case"base64":return u.encode(e);default:return h.transformTo(t,e)}}(s,function(t,e){var r,i=0,n=null,s=0;for(r=0;r<e.length;r++)s+=e[r].length;switch(t){case"string":return e.join("");case"array":return Array.prototype.concat.apply([],e);case"uint8array":for(n=new Uint8Array(s),r=0;r<e.length;r++)n.set(e[r],i),i+=e[r].length;return n;case"nodebuffer":return Buffer.concat(e);default:throw new Error("concat : unsupported type '"+t+"'")}}(n,i),a);e(t)}catch(t){r(t)}i=[]}).resume()})}function f(t,e,r){var i=e;switch(e){case"blob":case"arraybuffer":i="uint8array";break;case"base64":i="string"}try{this._internalType=i,this._outputType=e,this._mimeType=r,h.checkSupport(i),this._worker=t.pipe(new n(i)),t.lock()}catch(t){this._worker=new s("error"),this._worker.error(t)}}f.prototype={accumulate:function(t){return l(this,t)},on:function(t,e){var r=this;return"data"===t?this._worker.on(t,function(t){e.call(r,t.data,t.meta)}):this._worker.on(t,function(){h.delay(e,arguments,r)}),this},resume:function(){return h.delay(this._worker.resume,[],this._worker),this},pause:function(){return this._worker.pause(),this},toNodejsStream:function(t){if(h.checkSupport("nodestream"),"nodebuffer"!==this._outputType)throw new Error(this._outputType+" is not supported by this method");return new o(this,{objectMode:"nodebuffer"!==this._outputType},t)}},e.exports=f},{"../base64":1,"../external":6,"../nodejs/NodejsStreamOutputAdapter":13,"../support":30,"../utils":32,"./ConvertWorker":24,"./GenericWorker":28}],30:[function(t,e,r){"use strict";if(r.base64=!0,r.array=!0,r.string=!0,r.arraybuffer="undefined"!=typeof ArrayBuffer&&"undefined"!=typeof Uint8Array,r.nodebuffer="undefined"!=typeof Buffer,r.uint8array="undefined"!=typeof Uint8Array,"undefined"==typeof ArrayBuffer)r.blob=!1;else{var i=new ArrayBuffer(0);try{r.blob=0===new Blob([i],{type:"application/zip"}).size}catch(t){try{var n=new(self.BlobBuilder||self.WebKitBlobBuilder||self.MozBlobBuilder||self.MSBlobBuilder);n.append(i),r.blob=0===n.getBlob("application/zip").size}catch(t){r.blob=!1}}}try{r.nodestream=!!t("readable-stream").Readable}catch(t){r.nodestream=!1}},{"readable-stream":16}],31:[function(t,e,s){"use strict";for(var o=t("./utils"),h=t("./support"),r=t("./nodejsUtils"),i=t("./stream/GenericWorker"),u=new Array(256),n=0;n<256;n++)u[n]=252<=n?6:248<=n?5:240<=n?4:224<=n?3:192<=n?2:1;u[254]=u[254]=1;function a(){i.call(this,"utf-8 decode"),this.leftOver=null}function l(){i.call(this,"utf-8 encode")}s.utf8encode=function(t){return h.nodebuffer?r.newBufferFrom(t,"utf-8"):function(t){var e,r,i,n,s,a=t.length,o=0;for(n=0;n<a;n++)55296==(64512&(r=t.charCodeAt(n)))&&n+1<a&&56320==(64512&(i=t.charCodeAt(n+1)))&&(r=65536+(r-55296<<10)+(i-56320),n++),o+=r<128?1:r<2048?2:r<65536?3:4;for(e=h.uint8array?new Uint8Array(o):new Array(o),n=s=0;s<o;n++)55296==(64512&(r=t.charCodeAt(n)))&&n+1<a&&56320==(64512&(i=t.charCodeAt(n+1)))&&(r=65536+(r-55296<<10)+(i-56320),n++),r<128?e[s++]=r:(r<2048?e[s++]=192|r>>>6:(r<65536?e[s++]=224|r>>>12:(e[s++]=240|r>>>18,e[s++]=128|r>>>12&63),e[s++]=128|r>>>6&63),e[s++]=128|63&r);return e}(t)},s.utf8decode=function(t){return h.nodebuffer?o.transformTo("nodebuffer",t).toString("utf-8"):function(t){var e,r,i,n,s=t.length,a=new Array(2*s);for(e=r=0;e<s;)if((i=t[e++])<128)a[r++]=i;else if(4<(n=u[i]))a[r++]=65533,e+=n-1;else{for(i&=2===n?31:3===n?15:7;1<n&&e<s;)i=i<<6|63&t[e++],n--;1<n?a[r++]=65533:i<65536?a[r++]=i:(i-=65536,a[r++]=55296|i>>10&1023,a[r++]=56320|1023&i)}return a.length!==r&&(a.subarray?a=a.subarray(0,r):a.length=r),o.applyFromCharCode(a)}(t=o.transformTo(h.uint8array?"uint8array":"array",t))},o.inherits(a,i),a.prototype.processChunk=function(t){var e=o.transformTo(h.uint8array?"uint8array":"array",t.data);if(this.leftOver&&this.leftOver.length){if(h.uint8array){var r=e;(e=new Uint8Array(r.length+this.leftOver.length)).set(this.leftOver,0),e.set(r,this.leftOver.length)}else e=this.leftOver.concat(e);this.leftOver=null}var i=function(t,e){var r;for((e=e||t.length)>t.length&&(e=t.length),r=e-1;0<=r&&128==(192&t[r]);)r--;return r<0?e:0===r?e:r+u[t[r]]>e?r:e}(e),n=e;i!==e.length&&(h.uint8array?(n=e.subarray(0,i),this.leftOver=e.subarray(i,e.length)):(n=e.slice(0,i),this.leftOver=e.slice(i,e.length))),this.push({data:s.utf8decode(n),meta:t.meta})},a.prototype.flush=function(){this.leftOver&&this.leftOver.length&&(this.push({data:s.utf8decode(this.leftOver),meta:{}}),this.leftOver=null)},s.Utf8DecodeWorker=a,o.inherits(l,i),l.prototype.processChunk=function(t){this.push({data:s.utf8encode(t.data),meta:t.meta})},s.Utf8EncodeWorker=l},{"./nodejsUtils":14,"./stream/GenericWorker":28,"./support":30,"./utils":32}],32:[function(t,e,a){"use strict";var o=t("./support"),h=t("./base64"),r=t("./nodejsUtils"),i=t("set-immediate-shim"),u=t("./external");function n(t){return t}function l(t,e){for(var r=0;r<t.length;++r)e[r]=255&t.charCodeAt(r);return e}a.newBlob=function(e,r){a.checkSupport("blob");try{return new Blob([e],{type:r})}catch(t){try{var i=new(self.BlobBuilder||self.WebKitBlobBuilder||self.MozBlobBuilder||self.MSBlobBuilder);return i.append(e),i.getBlob(r)}catch(t){throw new Error("Bug : can't construct the Blob.")}}};var s={stringifyByChunk:function(t,e,r){var i=[],n=0,s=t.length;if(s<=r)return String.fromCharCode.apply(null,t);for(;n<s;)"array"===e||"nodebuffer"===e?i.push(String.fromCharCode.apply(null,t.slice(n,Math.min(n+r,s)))):i.push(String.fromCharCode.apply(null,t.subarray(n,Math.min(n+r,s)))),n+=r;return i.join("")},stringifyByChar:function(t){for(var e="",r=0;r<t.length;r++)e+=String.fromCharCode(t[r]);return e},applyCanBeUsed:{uint8array:function(){try{return o.uint8array&&1===String.fromCharCode.apply(null,new Uint8Array(1)).length}catch(t){return!1}}(),nodebuffer:function(){try{return o.nodebuffer&&1===String.fromCharCode.apply(null,r.allocBuffer(1)).length}catch(t){return!1}}()}};function f(t){var e=65536,r=a.getTypeOf(t),i=!0;if("uint8array"===r?i=s.applyCanBeUsed.uint8array:"nodebuffer"===r&&(i=s.applyCanBeUsed.nodebuffer),i)for(;1<e;)try{return s.stringifyByChunk(t,r,e)}catch(t){e=Math.floor(e/2)}return s.stringifyByChar(t)}function d(t,e){for(var r=0;r<t.length;r++)e[r]=t[r];return e}a.applyFromCharCode=f;var c={};c.string={string:n,array:function(t){return l(t,new Array(t.length))},arraybuffer:function(t){return c.string.uint8array(t).buffer},uint8array:function(t){return l(t,new Uint8Array(t.length))},nodebuffer:function(t){return l(t,r.allocBuffer(t.length))}},c.array={string:f,array:n,arraybuffer:function(t){return new Uint8Array(t).buffer},uint8array:function(t){return new Uint8Array(t)},nodebuffer:function(t){return r.newBufferFrom(t)}},c.arraybuffer={string:function(t){return f(new Uint8Array(t))},array:function(t){return d(new Uint8Array(t),new Array(t.byteLength))},arraybuffer:n,uint8array:function(t){return new Uint8Array(t)},nodebuffer:function(t){return r.newBufferFrom(new Uint8Array(t))}},c.uint8array={string:f,array:function(t){return d(t,new Array(t.length))},arraybuffer:function(t){return t.buffer},uint8array:n,nodebuffer:function(t){return r.newBufferFrom(t)}},c.nodebuffer={string:f,array:function(t){return d(t,new Array(t.length))},arraybuffer:function(t){return c.nodebuffer.uint8array(t).buffer},uint8array:function(t){return d(t,new Uint8Array(t.length))},nodebuffer:n},a.transformTo=function(t,e){if(e=e||"",!t)return e;a.checkSupport(t);var r=a.getTypeOf(e);return c[r][t](e)},a.getTypeOf=function(t){return"string"==typeof t?"string":"[object Array]"===Object.prototype.toString.call(t)?"array":o.nodebuffer&&r.isBuffer(t)?"nodebuffer":o.uint8array&&t instanceof Uint8Array?"uint8array":o.arraybuffer&&t instanceof ArrayBuffer?"arraybuffer":void 0},a.checkSupport=function(t){if(!o[t.toLowerCase()])throw new Error(t+" is not supported by this platform")},a.MAX_VALUE_16BITS=65535,a.MAX_VALUE_32BITS=-1,a.pretty=function(t){var e,r,i="";for(r=0;r<(t||"").length;r++)i+="\\x"+((e=t.charCodeAt(r))<16?"0":"")+e.toString(16).toUpperCase();return i},a.delay=function(t,e,r){i(function(){t.apply(r||null,e||[])})},a.inherits=function(t,e){function r(){}r.prototype=e.prototype,t.prototype=new r},a.extend=function(){var t,e,r={};for(t=0;t<arguments.length;t++)for(e in arguments[t])arguments[t].hasOwnProperty(e)&&void 0===r[e]&&(r[e]=arguments[t][e]);return r},a.prepareContent=function(r,t,i,n,s){return u.Promise.resolve(t).then(function(i){return o.blob&&(i instanceof Blob||-1!==["[object File]","[object Blob]"].indexOf(Object.prototype.toString.call(i)))&&"undefined"!=typeof FileReader?new u.Promise(function(e,r){var t=new FileReader;t.onload=function(t){e(t.target.result)},t.onerror=function(t){r(t.target.error)},t.readAsArrayBuffer(i)}):i}).then(function(t){var e=a.getTypeOf(t);return e?("arraybuffer"===e?t=a.transformTo("uint8array",t):"string"===e&&(s?t=h.decode(t):i&&!0!==n&&(t=function(t){return l(t,o.uint8array?new Uint8Array(t.length):new Array(t.length))}(t))),t):u.Promise.reject(new Error("Can't read the data of '"+r+"'. Is it in a supported JavaScript type (String, Blob, ArrayBuffer, etc) ?"))})}},{"./base64":1,"./external":6,"./nodejsUtils":14,"./support":30,"set-immediate-shim":54}],33:[function(t,e,r){"use strict";var i=t("./reader/readerFor"),n=t("./utils"),s=t("./signature"),a=t("./zipEntry"),o=(t("./utf8"),t("./support"));function h(t){this.files=[],this.loadOptions=t}h.prototype={checkSignature:function(t){if(!this.reader.readAndCheckSignature(t)){this.reader.index-=4;var e=this.reader.readString(4);throw new Error("Corrupted zip or bug: unexpected signature ("+n.pretty(e)+", expected "+n.pretty(t)+")")}},isSignature:function(t,e){var r=this.reader.index;this.reader.setIndex(t);var i=this.reader.readString(4)===e;return this.reader.setIndex(r),i},readBlockEndOfCentral:function(){this.diskNumber=this.reader.readInt(2),this.diskWithCentralDirStart=this.reader.readInt(2),this.centralDirRecordsOnThisDisk=this.reader.readInt(2),this.centralDirRecords=this.reader.readInt(2),this.centralDirSize=this.reader.readInt(4),this.centralDirOffset=this.reader.readInt(4),this.zipCommentLength=this.reader.readInt(2);var t=this.reader.readData(this.zipCommentLength),e=o.uint8array?"uint8array":"array",r=n.transformTo(e,t);this.zipComment=this.loadOptions.decodeFileName(r)},readBlockZip64EndOfCentral:function(){this.zip64EndOfCentralSize=this.reader.readInt(8),this.reader.skip(4),this.diskNumber=this.reader.readInt(4),this.diskWithCentralDirStart=this.reader.readInt(4),this.centralDirRecordsOnThisDisk=this.reader.readInt(8),this.centralDirRecords=this.reader.readInt(8),this.centralDirSize=this.reader.readInt(8),this.centralDirOffset=this.reader.readInt(8),this.zip64ExtensibleData={};for(var t,e,r,i=this.zip64EndOfCentralSize-44;0<i;)t=this.reader.readInt(2),e=this.reader.readInt(4),r=this.reader.readData(e),this.zip64ExtensibleData[t]={id:t,length:e,value:r}},readBlockZip64EndOfCentralLocator:function(){if(this.diskWithZip64CentralDirStart=this.reader.readInt(4),this.relativeOffsetEndOfZip64CentralDir=this.reader.readInt(8),this.disksCount=this.reader.readInt(4),1<this.disksCount)throw new Error("Multi-volumes zip are not supported")},readLocalFiles:function(){var t,e;for(t=0;t<this.files.length;t++)e=this.files[t],this.reader.setIndex(e.localHeaderOffset),this.checkSignature(s.LOCAL_FILE_HEADER),e.readLocalPart(this.reader),e.handleUTF8(),e.processAttributes()},readCentralDir:function(){var t;for(this.reader.setIndex(this.centralDirOffset);this.reader.readAndCheckSignature(s.CENTRAL_FILE_HEADER);)(t=new a({zip64:this.zip64},this.loadOptions)).readCentralPart(this.reader),this.files.push(t);if(this.centralDirRecords!==this.files.length&&0!==this.centralDirRecords&&0===this.files.length)throw new Error("Corrupted zip or bug: expected "+this.centralDirRecords+" records in central dir, got "+this.files.length)},readEndOfCentral:function(){var t=this.reader.lastIndexOfSignature(s.CENTRAL_DIRECTORY_END);if(t<0)throw!this.isSignature(0,s.LOCAL_FILE_HEADER)?new Error("Can't find end of central directory : is this a zip file ? If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html"):new Error("Corrupted zip: can't find end of central directory");this.reader.setIndex(t);var e=t;if(this.checkSignature(s.CENTRAL_DIRECTORY_END),this.readBlockEndOfCentral(),this.diskNumber===n.MAX_VALUE_16BITS||this.diskWithCentralDirStart===n.MAX_VALUE_16BITS||this.centralDirRecordsOnThisDisk===n.MAX_VALUE_16BITS||this.centralDirRecords===n.MAX_VALUE_16BITS||this.centralDirSize===n.MAX_VALUE_32BITS||this.centralDirOffset===n.MAX_VALUE_32BITS){if(this.zip64=!0,(t=this.reader.lastIndexOfSignature(s.ZIP64_CENTRAL_DIRECTORY_LOCATOR))<0)throw new Error("Corrupted zip: can't find the ZIP64 end of central directory locator");if(this.reader.setIndex(t),this.checkSignature(s.ZIP64_CENTRAL_DIRECTORY_LOCATOR),this.readBlockZip64EndOfCentralLocator(),!this.isSignature(this.relativeOffsetEndOfZip64CentralDir,s.ZIP64_CENTRAL_DIRECTORY_END)&&(this.relativeOffsetEndOfZip64CentralDir=this.reader.lastIndexOfSignature(s.ZIP64_CENTRAL_DIRECTORY_END),this.relativeOffsetEndOfZip64CentralDir<0))throw new Error("Corrupted zip: can't find the ZIP64 end of central directory");this.reader.setIndex(this.relativeOffsetEndOfZip64CentralDir),this.checkSignature(s.ZIP64_CENTRAL_DIRECTORY_END),this.readBlockZip64EndOfCentral()}var r=this.centralDirOffset+this.centralDirSize;this.zip64&&(r+=20,r+=12+this.zip64EndOfCentralSize);var i=e-r;if(0<i)this.isSignature(e,s.CENTRAL_FILE_HEADER)||(this.reader.zero=i);else if(i<0)throw new Error("Corrupted zip: missing "+Math.abs(i)+" bytes.")},prepareReader:function(t){this.reader=i(t)},load:function(t){this.prepareReader(t),this.readEndOfCentral(),this.readCentralDir(),this.readLocalFiles()}},e.exports=h},{"./reader/readerFor":22,"./signature":23,"./support":30,"./utf8":31,"./utils":32,"./zipEntry":34}],34:[function(t,e,r){"use strict";var i=t("./reader/readerFor"),s=t("./utils"),n=t("./compressedObject"),a=t("./crc32"),o=t("./utf8"),h=t("./compressions"),u=t("./support");function l(t,e){this.options=t,this.loadOptions=e}l.prototype={isEncrypted:function(){return 1==(1&this.bitFlag)},useUTF8:function(){return 2048==(2048&this.bitFlag)},readLocalPart:function(t){var e,r;if(t.skip(22),this.fileNameLength=t.readInt(2),r=t.readInt(2),this.fileName=t.readData(this.fileNameLength),t.skip(r),-1===this.compressedSize||-1===this.uncompressedSize)throw new Error("Bug or corrupted zip : didn't get enough information from the central directory (compressedSize === -1 || uncompressedSize === -1)");if(null===(e=function(t){for(var e in h)if(h.hasOwnProperty(e)&&h[e].magic===t)return h[e];return null}(this.compressionMethod)))throw new Error("Corrupted zip : compression "+s.pretty(this.compressionMethod)+" unknown (inner file : "+s.transformTo("string",this.fileName)+")");this.decompressed=new n(this.compressedSize,this.uncompressedSize,this.crc32,e,t.readData(this.compressedSize))},readCentralPart:function(t){this.versionMadeBy=t.readInt(2),t.skip(2),this.bitFlag=t.readInt(2),this.compressionMethod=t.readString(2),this.date=t.readDate(),this.crc32=t.readInt(4),this.compressedSize=t.readInt(4),this.uncompressedSize=t.readInt(4);var e=t.readInt(2);if(this.extraFieldsLength=t.readInt(2),this.fileCommentLength=t.readInt(2),this.diskNumberStart=t.readInt(2),this.internalFileAttributes=t.readInt(2),this.externalFileAttributes=t.readInt(4),this.localHeaderOffset=t.readInt(4),this.isEncrypted())throw new Error("Encrypted zip are not supported");t.skip(e),this.readExtraFields(t),this.parseZIP64ExtraField(t),this.fileComment=t.readData(this.fileCommentLength)},processAttributes:function(){this.unixPermissions=null,this.dosPermissions=null;var t=this.versionMadeBy>>8;this.dir=!!(16&this.externalFileAttributes),0==t&&(this.dosPermissions=63&this.externalFileAttributes),3==t&&(this.unixPermissions=this.externalFileAttributes>>16&65535),this.dir||"/"!==this.fileNameStr.slice(-1)||(this.dir=!0)},parseZIP64ExtraField:function(t){if(this.extraFields[1]){var e=i(this.extraFields[1].value);this.uncompressedSize===s.MAX_VALUE_32BITS&&(this.uncompressedSize=e.readInt(8)),this.compressedSize===s.MAX_VALUE_32BITS&&(this.compressedSize=e.readInt(8)),this.localHeaderOffset===s.MAX_VALUE_32BITS&&(this.localHeaderOffset=e.readInt(8)),this.diskNumberStart===s.MAX_VALUE_32BITS&&(this.diskNumberStart=e.readInt(4))}},readExtraFields:function(t){var e,r,i,n=t.index+this.extraFieldsLength;for(this.extraFields||(this.extraFields={});t.index+4<n;)e=t.readInt(2),r=t.readInt(2),i=t.readData(r),this.extraFields[e]={id:e,length:r,value:i};t.setIndex(n)},handleUTF8:function(){var t=u.uint8array?"uint8array":"array";if(this.useUTF8())this.fileNameStr=o.utf8decode(this.fileName),this.fileCommentStr=o.utf8decode(this.fileComment);else{var e=this.findExtraFieldUnicodePath();if(null!==e)this.fileNameStr=e;else{var r=s.transformTo(t,this.fileName);this.fileNameStr=this.loadOptions.decodeFileName(r)}var i=this.findExtraFieldUnicodeComment();if(null!==i)this.fileCommentStr=i;else{var n=s.transformTo(t,this.fileComment);this.fileCommentStr=this.loadOptions.decodeFileName(n)}}},findExtraFieldUnicodePath:function(){var t=this.extraFields[28789];if(t){var e=i(t.value);return 1!==e.readInt(1)?null:a(this.fileName)!==e.readInt(4)?null:o.utf8decode(e.readData(t.length-5))}return null},findExtraFieldUnicodeComment:function(){var t=this.extraFields[25461];if(t){var e=i(t.value);return 1!==e.readInt(1)?null:a(this.fileComment)!==e.readInt(4)?null:o.utf8decode(e.readData(t.length-5))}return null}},e.exports=l},{"./compressedObject":2,"./compressions":3,"./crc32":4,"./reader/readerFor":22,"./support":30,"./utf8":31,"./utils":32}],35:[function(t,e,r){"use strict";function i(t,e,r){this.name=t,this.dir=r.dir,this.date=r.date,this.comment=r.comment,this.unixPermissions=r.unixPermissions,this.dosPermissions=r.dosPermissions,this._data=e,this._dataBinary=r.binary,this.options={compression:r.compression,compressionOptions:r.compressionOptions}}var s=t("./stream/StreamHelper"),n=t("./stream/DataWorker"),a=t("./utf8"),o=t("./compressedObject"),h=t("./stream/GenericWorker");i.prototype={internalStream:function(t){var e=null,r="string";try{if(!t)throw new Error("No output type specified.");var i="string"===(r=t.toLowerCase())||"text"===r;"binarystring"!==r&&"text"!==r||(r="string"),e=this._decompressWorker();var n=!this._dataBinary;n&&!i&&(e=e.pipe(new a.Utf8EncodeWorker)),!n&&i&&(e=e.pipe(new a.Utf8DecodeWorker))}catch(t){(e=new h("error")).error(t)}return new s(e,r,"")},async:function(t,e){return this.internalStream(t).accumulate(e)},nodeStream:function(t,e){return this.internalStream(t||"nodebuffer").toNodejsStream(e)},_compressWorker:function(t,e){if(this._data instanceof o&&this._data.compression.magic===t.magic)return this._data.getCompressedWorker();var r=this._decompressWorker();return this._dataBinary||(r=r.pipe(new a.Utf8EncodeWorker)),o.createWorkerFrom(r,t,e)},_decompressWorker:function(){return this._data instanceof o?this._data.getContentWorker():this._data instanceof h?this._data:new n(this._data)}};for(var u=["asText","asBinary","asNodeBuffer","asUint8Array","asArrayBuffer"],l=function(){throw new Error("This method has been removed in JSZip 3.0, please check the upgrade guide.")},f=0;f<u.length;f++)i.prototype[u[f]]=l;e.exports=i},{"./compressedObject":2,"./stream/DataWorker":27,"./stream/GenericWorker":28,"./stream/StreamHelper":29,"./utf8":31}],36:[function(t,l,e){(function(e){"use strict";var r,i,t=e.MutationObserver||e.WebKitMutationObserver;if(t){var n=0,s=new t(u),a=e.document.createTextNode("");s.observe(a,{characterData:!0}),r=function(){a.data=n=++n%2}}else if(e.setImmediate||void 0===e.MessageChannel)r="document"in e&&"onreadystatechange"in e.document.createElement("script")?function(){var t=e.document.createElement("script");t.onreadystatechange=function(){u(),t.onreadystatechange=null,t.parentNode.removeChild(t),t=null},e.document.documentElement.appendChild(t)}:function(){setTimeout(u,0)};else{var o=new e.MessageChannel;o.port1.onmessage=u,r=function(){o.port2.postMessage(0)}}var h=[];function u(){var t,e;i=!0;for(var r=h.length;r;){for(e=h,h=[],t=-1;++t<r;)e[t]();r=h.length}i=!1}l.exports=function(t){1!==h.push(t)||i||r()}}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],37:[function(t,e,r){"use strict";var n=t("immediate");function u(){}var l={},s=["REJECTED"],a=["FULFILLED"],i=["PENDING"];function o(t){if("function"!=typeof t)throw new TypeError("resolver must be a function");this.state=i,this.queue=[],this.outcome=void 0,t!==u&&c(this,t)}function h(t,e,r){this.promise=t,"function"==typeof e&&(this.onFulfilled=e,this.callFulfilled=this.otherCallFulfilled),"function"==typeof r&&(this.onRejected=r,this.callRejected=this.otherCallRejected)}function f(e,r,i){n(function(){var t;try{t=r(i)}catch(t){return l.reject(e,t)}t===e?l.reject(e,new TypeError("Cannot resolve promise with itself")):l.resolve(e,t)})}function d(t){var e=t&&t.then;if(t&&("object"==typeof t||"function"==typeof t)&&"function"==typeof e)return function(){e.apply(t,arguments)}}function c(e,t){var r=!1;function i(t){r||(r=!0,l.reject(e,t))}function n(t){r||(r=!0,l.resolve(e,t))}var s=p(function(){t(n,i)});"error"===s.status&&i(s.value)}function p(t,e){var r={};try{r.value=t(e),r.status="success"}catch(t){r.status="error",r.value=t}return r}(e.exports=o).prototype.finally=function(e){if("function"!=typeof e)return this;var r=this.constructor;return this.then(function(t){return r.resolve(e()).then(function(){return t})},function(t){return r.resolve(e()).then(function(){throw t})})},o.prototype.catch=function(t){return this.then(null,t)},o.prototype.then=function(t,e){if("function"!=typeof t&&this.state===a||"function"!=typeof e&&this.state===s)return this;var r=new this.constructor(u);this.state!==i?f(r,this.state===a?t:e,this.outcome):this.queue.push(new h(r,t,e));return r},h.prototype.callFulfilled=function(t){l.resolve(this.promise,t)},h.prototype.otherCallFulfilled=function(t){f(this.promise,this.onFulfilled,t)},h.prototype.callRejected=function(t){l.reject(this.promise,t)},h.prototype.otherCallRejected=function(t){f(this.promise,this.onRejected,t)},l.resolve=function(t,e){var r=p(d,e);if("error"===r.status)return l.reject(t,r.value);var i=r.value;if(i)c(t,i);else{t.state=a,t.outcome=e;for(var n=-1,s=t.queue.length;++n<s;)t.queue[n].callFulfilled(e)}return t},l.reject=function(t,e){t.state=s,t.outcome=e;for(var r=-1,i=t.queue.length;++r<i;)t.queue[r].callRejected(e);return t},o.resolve=function(t){if(t instanceof this)return t;return l.resolve(new this(u),t)},o.reject=function(t){var e=new this(u);return l.reject(e,t)},o.all=function(t){var r=this;if("[object Array]"!==Object.prototype.toString.call(t))return this.reject(new TypeError("must be an array"));var i=t.length,n=!1;if(!i)return this.resolve([]);var s=new Array(i),a=0,e=-1,o=new this(u);for(;++e<i;)h(t[e],e);return o;function h(t,e){r.resolve(t).then(function(t){s[e]=t,++a!==i||n||(n=!0,l.resolve(o,s))},function(t){n||(n=!0,l.reject(o,t))})}},o.race=function(t){var e=this;if("[object Array]"!==Object.prototype.toString.call(t))return this.reject(new TypeError("must be an array"));var r=t.length,i=!1;if(!r)return this.resolve([]);var n=-1,s=new this(u);for(;++n<r;)a=t[n],e.resolve(a).then(function(t){i||(i=!0,l.resolve(s,t))},function(t){i||(i=!0,l.reject(s,t))});var a;return s}},{immediate:36}],38:[function(t,e,r){"use strict";var i={};(0,t("./lib/utils/common").assign)(i,t("./lib/deflate"),t("./lib/inflate"),t("./lib/zlib/constants")),e.exports=i},{"./lib/deflate":39,"./lib/inflate":40,"./lib/utils/common":41,"./lib/zlib/constants":44}],39:[function(t,e,r){"use strict";var a=t("./zlib/deflate"),o=t("./utils/common"),h=t("./utils/strings"),n=t("./zlib/messages"),s=t("./zlib/zstream"),u=Object.prototype.toString,l=0,f=-1,d=0,c=8;function p(t){if(!(this instanceof p))return new p(t);this.options=o.assign({level:f,method:c,chunkSize:16384,windowBits:15,memLevel:8,strategy:d,to:""},t||{});var e=this.options;e.raw&&0<e.windowBits?e.windowBits=-e.windowBits:e.gzip&&0<e.windowBits&&e.windowBits<16&&(e.windowBits+=16),this.err=0,this.msg="",this.ended=!1,this.chunks=[],this.strm=new s,this.strm.avail_out=0;var r=a.deflateInit2(this.strm,e.level,e.method,e.windowBits,e.memLevel,e.strategy);if(r!==l)throw new Error(n[r]);if(e.header&&a.deflateSetHeader(this.strm,e.header),e.dictionary){var i;if(i="string"==typeof e.dictionary?h.string2buf(e.dictionary):"[object ArrayBuffer]"===u.call(e.dictionary)?new Uint8Array(e.dictionary):e.dictionary,(r=a.deflateSetDictionary(this.strm,i))!==l)throw new Error(n[r]);this._dict_set=!0}}function i(t,e){var r=new p(e);if(r.push(t,!0),r.err)throw r.msg||n[r.err];return r.result}p.prototype.push=function(t,e){var r,i,n=this.strm,s=this.options.chunkSize;if(this.ended)return!1;i=e===~~e?e:!0===e?4:0,"string"==typeof t?n.input=h.string2buf(t):"[object ArrayBuffer]"===u.call(t)?n.input=new Uint8Array(t):n.input=t,n.next_in=0,n.avail_in=n.input.length;do{if(0===n.avail_out&&(n.output=new o.Buf8(s),n.next_out=0,n.avail_out=s),1!==(r=a.deflate(n,i))&&r!==l)return this.onEnd(r),!(this.ended=!0);0!==n.avail_out&&(0!==n.avail_in||4!==i&&2!==i)||("string"===this.options.to?this.onData(h.buf2binstring(o.shrinkBuf(n.output,n.next_out))):this.onData(o.shrinkBuf(n.output,n.next_out)))}while((0<n.avail_in||0===n.avail_out)&&1!==r);return 4===i?(r=a.deflateEnd(this.strm),this.onEnd(r),this.ended=!0,r===l):2!==i||(this.onEnd(l),!(n.avail_out=0))},p.prototype.onData=function(t){this.chunks.push(t)},p.prototype.onEnd=function(t){t===l&&("string"===this.options.to?this.result=this.chunks.join(""):this.result=o.flattenChunks(this.chunks)),this.chunks=[],this.err=t,this.msg=this.strm.msg},r.Deflate=p,r.deflate=i,r.deflateRaw=function(t,e){return(e=e||{}).raw=!0,i(t,e)},r.gzip=function(t,e){return(e=e||{}).gzip=!0,i(t,e)}},{"./utils/common":41,"./utils/strings":42,"./zlib/deflate":46,"./zlib/messages":51,"./zlib/zstream":53}],40:[function(t,e,r){"use strict";var d=t("./zlib/inflate"),c=t("./utils/common"),p=t("./utils/strings"),m=t("./zlib/constants"),i=t("./zlib/messages"),n=t("./zlib/zstream"),s=t("./zlib/gzheader"),_=Object.prototype.toString;function a(t){if(!(this instanceof a))return new a(t);this.options=c.assign({chunkSize:16384,windowBits:0,to:""},t||{});var e=this.options;e.raw&&0<=e.windowBits&&e.windowBits<16&&(e.windowBits=-e.windowBits,0===e.windowBits&&(e.windowBits=-15)),!(0<=e.windowBits&&e.windowBits<16)||t&&t.windowBits||(e.windowBits+=32),15<e.windowBits&&e.windowBits<48&&0==(15&e.windowBits)&&(e.windowBits|=15),this.err=0,this.msg="",this.ended=!1,this.chunks=[],this.strm=new n,this.strm.avail_out=0;var r=d.inflateInit2(this.strm,e.windowBits);if(r!==m.Z_OK)throw new Error(i[r]);this.header=new s,d.inflateGetHeader(this.strm,this.header)}function o(t,e){var r=new a(e);if(r.push(t,!0),r.err)throw r.msg||i[r.err];return r.result}a.prototype.push=function(t,e){var r,i,n,s,a,o,h=this.strm,u=this.options.chunkSize,l=this.options.dictionary,f=!1;if(this.ended)return!1;i=e===~~e?e:!0===e?m.Z_FINISH:m.Z_NO_FLUSH,"string"==typeof t?h.input=p.binstring2buf(t):"[object ArrayBuffer]"===_.call(t)?h.input=new Uint8Array(t):h.input=t,h.next_in=0,h.avail_in=h.input.length;do{if(0===h.avail_out&&(h.output=new c.Buf8(u),h.next_out=0,h.avail_out=u),(r=d.inflate(h,m.Z_NO_FLUSH))===m.Z_NEED_DICT&&l&&(o="string"==typeof l?p.string2buf(l):"[object ArrayBuffer]"===_.call(l)?new Uint8Array(l):l,r=d.inflateSetDictionary(this.strm,o)),r===m.Z_BUF_ERROR&&!0===f&&(r=m.Z_OK,f=!1),r!==m.Z_STREAM_END&&r!==m.Z_OK)return this.onEnd(r),!(this.ended=!0);h.next_out&&(0!==h.avail_out&&r!==m.Z_STREAM_END&&(0!==h.avail_in||i!==m.Z_FINISH&&i!==m.Z_SYNC_FLUSH)||("string"===this.options.to?(n=p.utf8border(h.output,h.next_out),s=h.next_out-n,a=p.buf2string(h.output,n),h.next_out=s,h.avail_out=u-s,s&&c.arraySet(h.output,h.output,n,s,0),this.onData(a)):this.onData(c.shrinkBuf(h.output,h.next_out)))),0===h.avail_in&&0===h.avail_out&&(f=!0)}while((0<h.avail_in||0===h.avail_out)&&r!==m.Z_STREAM_END);return r===m.Z_STREAM_END&&(i=m.Z_FINISH),i===m.Z_FINISH?(r=d.inflateEnd(this.strm),this.onEnd(r),this.ended=!0,r===m.Z_OK):i!==m.Z_SYNC_FLUSH||(this.onEnd(m.Z_OK),!(h.avail_out=0))},a.prototype.onData=function(t){this.chunks.push(t)},a.prototype.onEnd=function(t){t===m.Z_OK&&("string"===this.options.to?this.result=this.chunks.join(""):this.result=c.flattenChunks(this.chunks)),this.chunks=[],this.err=t,this.msg=this.strm.msg},r.Inflate=a,r.inflate=o,r.inflateRaw=function(t,e){return(e=e||{}).raw=!0,o(t,e)},r.ungzip=o},{"./utils/common":41,"./utils/strings":42,"./zlib/constants":44,"./zlib/gzheader":47,"./zlib/inflate":49,"./zlib/messages":51,"./zlib/zstream":53}],41:[function(t,e,r){"use strict";var i="undefined"!=typeof Uint8Array&&"undefined"!=typeof Uint16Array&&"undefined"!=typeof Int32Array;r.assign=function(t){for(var e=Array.prototype.slice.call(arguments,1);e.length;){var r=e.shift();if(r){if("object"!=typeof r)throw new TypeError(r+"must be non-object");for(var i in r)r.hasOwnProperty(i)&&(t[i]=r[i])}}return t},r.shrinkBuf=function(t,e){return t.length===e?t:t.subarray?t.subarray(0,e):(t.length=e,t)};var n={arraySet:function(t,e,r,i,n){if(e.subarray&&t.subarray)t.set(e.subarray(r,r+i),n);else for(var s=0;s<i;s++)t[n+s]=e[r+s]},flattenChunks:function(t){var e,r,i,n,s,a;for(e=i=0,r=t.length;e<r;e++)i+=t[e].length;for(a=new Uint8Array(i),e=n=0,r=t.length;e<r;e++)s=t[e],a.set(s,n),n+=s.length;return a}},s={arraySet:function(t,e,r,i,n){for(var s=0;s<i;s++)t[n+s]=e[r+s]},flattenChunks:function(t){return[].concat.apply([],t)}};r.setTyped=function(t){t?(r.Buf8=Uint8Array,r.Buf16=Uint16Array,r.Buf32=Int32Array,r.assign(r,n)):(r.Buf8=Array,r.Buf16=Array,r.Buf32=Array,r.assign(r,s))},r.setTyped(i)},{}],42:[function(t,e,r){"use strict";var h=t("./common"),n=!0,s=!0;try{String.fromCharCode.apply(null,[0])}catch(t){n=!1}try{String.fromCharCode.apply(null,new Uint8Array(1))}catch(t){s=!1}for(var u=new h.Buf8(256),i=0;i<256;i++)u[i]=252<=i?6:248<=i?5:240<=i?4:224<=i?3:192<=i?2:1;function l(t,e){if(e<65537&&(t.subarray&&s||!t.subarray&&n))return String.fromCharCode.apply(null,h.shrinkBuf(t,e));for(var r="",i=0;i<e;i++)r+=String.fromCharCode(t[i]);return r}u[254]=u[254]=1,r.string2buf=function(t){var e,r,i,n,s,a=t.length,o=0;for(n=0;n<a;n++)55296==(64512&(r=t.charCodeAt(n)))&&n+1<a&&56320==(64512&(i=t.charCodeAt(n+1)))&&(r=65536+(r-55296<<10)+(i-56320),n++),o+=r<128?1:r<2048?2:r<65536?3:4;for(e=new h.Buf8(o),n=s=0;s<o;n++)55296==(64512&(r=t.charCodeAt(n)))&&n+1<a&&56320==(64512&(i=t.charCodeAt(n+1)))&&(r=65536+(r-55296<<10)+(i-56320),n++),r<128?e[s++]=r:(r<2048?e[s++]=192|r>>>6:(r<65536?e[s++]=224|r>>>12:(e[s++]=240|r>>>18,e[s++]=128|r>>>12&63),e[s++]=128|r>>>6&63),e[s++]=128|63&r);return e},r.buf2binstring=function(t){return l(t,t.length)},r.binstring2buf=function(t){for(var e=new h.Buf8(t.length),r=0,i=e.length;r<i;r++)e[r]=t.charCodeAt(r);return e},r.buf2string=function(t,e){var r,i,n,s,a=e||t.length,o=new Array(2*a);for(r=i=0;r<a;)if((n=t[r++])<128)o[i++]=n;else if(4<(s=u[n]))o[i++]=65533,r+=s-1;else{for(n&=2===s?31:3===s?15:7;1<s&&r<a;)n=n<<6|63&t[r++],s--;1<s?o[i++]=65533:n<65536?o[i++]=n:(n-=65536,o[i++]=55296|n>>10&1023,o[i++]=56320|1023&n)}return l(o,i)},r.utf8border=function(t,e){var r;for((e=e||t.length)>t.length&&(e=t.length),r=e-1;0<=r&&128==(192&t[r]);)r--;return r<0?e:0===r?e:r+u[t[r]]>e?r:e}},{"./common":41}],43:[function(t,e,r){"use strict";e.exports=function(t,e,r,i){for(var n=65535&t|0,s=t>>>16&65535|0,a=0;0!==r;){for(r-=a=2e3<r?2e3:r;s=s+(n=n+e[i++]|0)|0,--a;);n%=65521,s%=65521}return n|s<<16|0}},{}],44:[function(t,e,r){"use strict";e.exports={Z_NO_FLUSH:0,Z_PARTIAL_FLUSH:1,Z_SYNC_FLUSH:2,Z_FULL_FLUSH:3,Z_FINISH:4,Z_BLOCK:5,Z_TREES:6,Z_OK:0,Z_STREAM_END:1,Z_NEED_DICT:2,Z_ERRNO:-1,Z_STREAM_ERROR:-2,Z_DATA_ERROR:-3,Z_BUF_ERROR:-5,Z_NO_COMPRESSION:0,Z_BEST_SPEED:1,Z_BEST_COMPRESSION:9,Z_DEFAULT_COMPRESSION:-1,Z_FILTERED:1,Z_HUFFMAN_ONLY:2,Z_RLE:3,Z_FIXED:4,Z_DEFAULT_STRATEGY:0,Z_BINARY:0,Z_TEXT:1,Z_UNKNOWN:2,Z_DEFLATED:8}},{}],45:[function(t,e,r){"use strict";var o=function(){for(var t,e=[],r=0;r<256;r++){t=r;for(var i=0;i<8;i++)t=1&t?3988292384^t>>>1:t>>>1;e[r]=t}return e}();e.exports=function(t,e,r,i){var n=o,s=i+r;t^=-1;for(var a=i;a<s;a++)t=t>>>8^n[255&(t^e[a])];return-1^t}},{}],46:[function(t,e,r){"use strict";var h,d=t("../utils/common"),u=t("./trees"),c=t("./adler32"),p=t("./crc32"),i=t("./messages"),l=0,f=4,m=0,_=-2,g=-1,b=4,n=2,v=8,y=9,s=286,a=30,o=19,w=2*s+1,k=15,x=3,S=258,z=S+x+1,C=42,E=113,A=1,I=2,O=3,B=4;function R(t,e){return t.msg=i[e],e}function T(t){return(t<<1)-(4<t?9:0)}function D(t){for(var e=t.length;0<=--e;)t[e]=0}function F(t){var e=t.state,r=e.pending;r>t.avail_out&&(r=t.avail_out),0!==r&&(d.arraySet(t.output,e.pending_buf,e.pending_out,r,t.next_out),t.next_out+=r,e.pending_out+=r,t.total_out+=r,t.avail_out-=r,e.pending-=r,0===e.pending&&(e.pending_out=0))}function N(t,e){u._tr_flush_block(t,0<=t.block_start?t.block_start:-1,t.strstart-t.block_start,e),t.block_start=t.strstart,F(t.strm)}function U(t,e){t.pending_buf[t.pending++]=e}function P(t,e){t.pending_buf[t.pending++]=e>>>8&255,t.pending_buf[t.pending++]=255&e}function L(t,e){var r,i,n=t.max_chain_length,s=t.strstart,a=t.prev_length,o=t.nice_match,h=t.strstart>t.w_size-z?t.strstart-(t.w_size-z):0,u=t.window,l=t.w_mask,f=t.prev,d=t.strstart+S,c=u[s+a-1],p=u[s+a];t.prev_length>=t.good_match&&(n>>=2),o>t.lookahead&&(o=t.lookahead);do{if(u[(r=e)+a]===p&&u[r+a-1]===c&&u[r]===u[s]&&u[++r]===u[s+1]){s+=2,r++;do{}while(u[++s]===u[++r]&&u[++s]===u[++r]&&u[++s]===u[++r]&&u[++s]===u[++r]&&u[++s]===u[++r]&&u[++s]===u[++r]&&u[++s]===u[++r]&&u[++s]===u[++r]&&s<d);if(i=S-(d-s),s=d-S,a<i){if(t.match_start=e,o<=(a=i))break;c=u[s+a-1],p=u[s+a]}}}while((e=f[e&l])>h&&0!=--n);return a<=t.lookahead?a:t.lookahead}function j(t){var e,r,i,n,s,a,o,h,u,l,f=t.w_size;do{if(n=t.window_size-t.lookahead-t.strstart,t.strstart>=f+(f-z)){for(d.arraySet(t.window,t.window,f,f,0),t.match_start-=f,t.strstart-=f,t.block_start-=f,e=r=t.hash_size;i=t.head[--e],t.head[e]=f<=i?i-f:0,--r;);for(e=r=f;i=t.prev[--e],t.prev[e]=f<=i?i-f:0,--r;);n+=f}if(0===t.strm.avail_in)break;if(a=t.strm,o=t.window,h=t.strstart+t.lookahead,u=n,l=void 0,l=a.avail_in,u<l&&(l=u),r=0===l?0:(a.avail_in-=l,d.arraySet(o,a.input,a.next_in,l,h),1===a.state.wrap?a.adler=c(a.adler,o,l,h):2===a.state.wrap&&(a.adler=p(a.adler,o,l,h)),a.next_in+=l,a.total_in+=l,l),t.lookahead+=r,t.lookahead+t.insert>=x)for(s=t.strstart-t.insert,t.ins_h=t.window[s],t.ins_h=(t.ins_h<<t.hash_shift^t.window[s+1])&t.hash_mask;t.insert&&(t.ins_h=(t.ins_h<<t.hash_shift^t.window[s+x-1])&t.hash_mask,t.prev[s&t.w_mask]=t.head[t.ins_h],t.head[t.ins_h]=s,s++,t.insert--,!(t.lookahead+t.insert<x)););}while(t.lookahead<z&&0!==t.strm.avail_in)}function Z(t,e){for(var r,i;;){if(t.lookahead<z){if(j(t),t.lookahead<z&&e===l)return A;if(0===t.lookahead)break}if(r=0,t.lookahead>=x&&(t.ins_h=(t.ins_h<<t.hash_shift^t.window[t.strstart+x-1])&t.hash_mask,r=t.prev[t.strstart&t.w_mask]=t.head[t.ins_h],t.head[t.ins_h]=t.strstart),0!==r&&t.strstart-r<=t.w_size-z&&(t.match_length=L(t,r)),t.match_length>=x)if(i=u._tr_tally(t,t.strstart-t.match_start,t.match_length-x),t.lookahead-=t.match_length,t.match_length<=t.max_lazy_match&&t.lookahead>=x){for(t.match_length--;t.strstart++,t.ins_h=(t.ins_h<<t.hash_shift^t.window[t.strstart+x-1])&t.hash_mask,r=t.prev[t.strstart&t.w_mask]=t.head[t.ins_h],t.head[t.ins_h]=t.strstart,0!=--t.match_length;);t.strstart++}else t.strstart+=t.match_length,t.match_length=0,t.ins_h=t.window[t.strstart],t.ins_h=(t.ins_h<<t.hash_shift^t.window[t.strstart+1])&t.hash_mask;else i=u._tr_tally(t,0,t.window[t.strstart]),t.lookahead--,t.strstart++;if(i&&(N(t,!1),0===t.strm.avail_out))return A}return t.insert=t.strstart<x-1?t.strstart:x-1,e===f?(N(t,!0),0===t.strm.avail_out?O:B):t.last_lit&&(N(t,!1),0===t.strm.avail_out)?A:I}function W(t,e){for(var r,i,n;;){if(t.lookahead<z){if(j(t),t.lookahead<z&&e===l)return A;if(0===t.lookahead)break}if(r=0,t.lookahead>=x&&(t.ins_h=(t.ins_h<<t.hash_shift^t.window[t.strstart+x-1])&t.hash_mask,r=t.prev[t.strstart&t.w_mask]=t.head[t.ins_h],t.head[t.ins_h]=t.strstart),t.prev_length=t.match_length,t.prev_match=t.match_start,t.match_length=x-1,0!==r&&t.prev_length<t.max_lazy_match&&t.strstart-r<=t.w_size-z&&(t.match_length=L(t,r),t.match_length<=5&&(1===t.strategy||t.match_length===x&&4096<t.strstart-t.match_start)&&(t.match_length=x-1)),t.prev_length>=x&&t.match_length<=t.prev_length){for(n=t.strstart+t.lookahead-x,i=u._tr_tally(t,t.strstart-1-t.prev_match,t.prev_length-x),t.lookahead-=t.prev_length-1,t.prev_length-=2;++t.strstart<=n&&(t.ins_h=(t.ins_h<<t.hash_shift^t.window[t.strstart+x-1])&t.hash_mask,r=t.prev[t.strstart&t.w_mask]=t.head[t.ins_h],t.head[t.ins_h]=t.strstart),0!=--t.prev_length;);if(t.match_available=0,t.match_length=x-1,t.strstart++,i&&(N(t,!1),0===t.strm.avail_out))return A}else if(t.match_available){if((i=u._tr_tally(t,0,t.window[t.strstart-1]))&&N(t,!1),t.strstart++,t.lookahead--,0===t.strm.avail_out)return A}else t.match_available=1,t.strstart++,t.lookahead--}return t.match_available&&(i=u._tr_tally(t,0,t.window[t.strstart-1]),t.match_available=0),t.insert=t.strstart<x-1?t.strstart:x-1,e===f?(N(t,!0),0===t.strm.avail_out?O:B):t.last_lit&&(N(t,!1),0===t.strm.avail_out)?A:I}function M(t,e,r,i,n){this.good_length=t,this.max_lazy=e,this.nice_length=r,this.max_chain=i,this.func=n}function H(){this.strm=null,this.status=0,this.pending_buf=null,this.pending_buf_size=0,this.pending_out=0,this.pending=0,this.wrap=0,this.gzhead=null,this.gzindex=0,this.method=v,this.last_flush=-1,this.w_size=0,this.w_bits=0,this.w_mask=0,this.window=null,this.window_size=0,this.prev=null,this.head=null,this.ins_h=0,this.hash_size=0,this.hash_bits=0,this.hash_mask=0,this.hash_shift=0,this.block_start=0,this.match_length=0,this.prev_match=0,this.match_available=0,this.strstart=0,this.match_start=0,this.lookahead=0,this.prev_length=0,this.max_chain_length=0,this.max_lazy_match=0,this.level=0,this.strategy=0,this.good_match=0,this.nice_match=0,this.dyn_ltree=new d.Buf16(2*w),this.dyn_dtree=new d.Buf16(2*(2*a+1)),this.bl_tree=new d.Buf16(2*(2*o+1)),D(this.dyn_ltree),D(this.dyn_dtree),D(this.bl_tree),this.l_desc=null,this.d_desc=null,this.bl_desc=null,this.bl_count=new d.Buf16(k+1),this.heap=new d.Buf16(2*s+1),D(this.heap),this.heap_len=0,this.heap_max=0,this.depth=new d.Buf16(2*s+1),D(this.depth),this.l_buf=0,this.lit_bufsize=0,this.last_lit=0,this.d_buf=0,this.opt_len=0,this.static_len=0,this.matches=0,this.insert=0,this.bi_buf=0,this.bi_valid=0}function G(t){var e;return t&&t.state?(t.total_in=t.total_out=0,t.data_type=n,(e=t.state).pending=0,e.pending_out=0,e.wrap<0&&(e.wrap=-e.wrap),e.status=e.wrap?C:E,t.adler=2===e.wrap?0:1,e.last_flush=l,u._tr_init(e),m):R(t,_)}function K(t){var e=G(t);return e===m&&function(t){t.window_size=2*t.w_size,D(t.head),t.max_lazy_match=h[t.level].max_lazy,t.good_match=h[t.level].good_length,t.nice_match=h[t.level].nice_length,t.max_chain_length=h[t.level].max_chain,t.strstart=0,t.block_start=0,t.lookahead=0,t.insert=0,t.match_length=t.prev_length=x-1,t.match_available=0,t.ins_h=0}(t.state),e}function Y(t,e,r,i,n,s){if(!t)return _;var a=1;if(e===g&&(e=6),i<0?(a=0,i=-i):15<i&&(a=2,i-=16),n<1||y<n||r!==v||i<8||15<i||e<0||9<e||s<0||b<s)return R(t,_);8===i&&(i=9);var o=new H;return(t.state=o).strm=t,o.wrap=a,o.gzhead=null,o.w_bits=i,o.w_size=1<<o.w_bits,o.w_mask=o.w_size-1,o.hash_bits=n+7,o.hash_size=1<<o.hash_bits,o.hash_mask=o.hash_size-1,o.hash_shift=~~((o.hash_bits+x-1)/x),o.window=new d.Buf8(2*o.w_size),o.head=new d.Buf16(o.hash_size),o.prev=new d.Buf16(o.w_size),o.lit_bufsize=1<<n+6,o.pending_buf_size=4*o.lit_bufsize,o.pending_buf=new d.Buf8(o.pending_buf_size),o.d_buf=1*o.lit_bufsize,o.l_buf=3*o.lit_bufsize,o.level=e,o.strategy=s,o.method=r,K(t)}h=[new M(0,0,0,0,function(t,e){var r=65535;for(r>t.pending_buf_size-5&&(r=t.pending_buf_size-5);;){if(t.lookahead<=1){if(j(t),0===t.lookahead&&e===l)return A;if(0===t.lookahead)break}t.strstart+=t.lookahead,t.lookahead=0;var i=t.block_start+r;if((0===t.strstart||t.strstart>=i)&&(t.lookahead=t.strstart-i,t.strstart=i,N(t,!1),0===t.strm.avail_out))return A;if(t.strstart-t.block_start>=t.w_size-z&&(N(t,!1),0===t.strm.avail_out))return A}return t.insert=0,e===f?(N(t,!0),0===t.strm.avail_out?O:B):(t.strstart>t.block_start&&(N(t,!1),t.strm.avail_out),A)}),new M(4,4,8,4,Z),new M(4,5,16,8,Z),new M(4,6,32,32,Z),new M(4,4,16,16,W),new M(8,16,32,32,W),new M(8,16,128,128,W),new M(8,32,128,256,W),new M(32,128,258,1024,W),new M(32,258,258,4096,W)],r.deflateInit=function(t,e){return Y(t,e,v,15,8,0)},r.deflateInit2=Y,r.deflateReset=K,r.deflateResetKeep=G,r.deflateSetHeader=function(t,e){return t&&t.state?2!==t.state.wrap?_:(t.state.gzhead=e,m):_},r.deflate=function(t,e){var r,i,n,s;if(!t||!t.state||5<e||e<0)return t?R(t,_):_;if(i=t.state,!t.output||!t.input&&0!==t.avail_in||666===i.status&&e!==f)return R(t,0===t.avail_out?-5:_);if(i.strm=t,r=i.last_flush,i.last_flush=e,i.status===C)if(2===i.wrap)t.adler=0,U(i,31),U(i,139),U(i,8),i.gzhead?(U(i,(i.gzhead.text?1:0)+(i.gzhead.hcrc?2:0)+(i.gzhead.extra?4:0)+(i.gzhead.name?8:0)+(i.gzhead.comment?16:0)),U(i,255&i.gzhead.time),U(i,i.gzhead.time>>8&255),U(i,i.gzhead.time>>16&255),U(i,i.gzhead.time>>24&255),U(i,9===i.level?2:2<=i.strategy||i.level<2?4:0),U(i,255&i.gzhead.os),i.gzhead.extra&&i.gzhead.extra.length&&(U(i,255&i.gzhead.extra.length),U(i,i.gzhead.extra.length>>8&255)),i.gzhead.hcrc&&(t.adler=p(t.adler,i.pending_buf,i.pending,0)),i.gzindex=0,i.status=69):(U(i,0),U(i,0),U(i,0),U(i,0),U(i,0),U(i,9===i.level?2:2<=i.strategy||i.level<2?4:0),U(i,3),i.status=E);else{var a=v+(i.w_bits-8<<4)<<8;a|=(2<=i.strategy||i.level<2?0:i.level<6?1:6===i.level?2:3)<<6,0!==i.strstart&&(a|=32),a+=31-a%31,i.status=E,P(i,a),0!==i.strstart&&(P(i,t.adler>>>16),P(i,65535&t.adler)),t.adler=1}if(69===i.status)if(i.gzhead.extra){for(n=i.pending;i.gzindex<(65535&i.gzhead.extra.length)&&(i.pending!==i.pending_buf_size||(i.gzhead.hcrc&&i.pending>n&&(t.adler=p(t.adler,i.pending_buf,i.pending-n,n)),F(t),n=i.pending,i.pending!==i.pending_buf_size));)U(i,255&i.gzhead.extra[i.gzindex]),i.gzindex++;i.gzhead.hcrc&&i.pending>n&&(t.adler=p(t.adler,i.pending_buf,i.pending-n,n)),i.gzindex===i.gzhead.extra.length&&(i.gzindex=0,i.status=73)}else i.status=73;if(73===i.status)if(i.gzhead.name){n=i.pending;do{if(i.pending===i.pending_buf_size&&(i.gzhead.hcrc&&i.pending>n&&(t.adler=p(t.adler,i.pending_buf,i.pending-n,n)),F(t),n=i.pending,i.pending===i.pending_buf_size)){s=1;break}s=i.gzindex<i.gzhead.name.length?255&i.gzhead.name.charCodeAt(i.gzindex++):0,U(i,s)}while(0!==s);i.gzhead.hcrc&&i.pending>n&&(t.adler=p(t.adler,i.pending_buf,i.pending-n,n)),0===s&&(i.gzindex=0,i.status=91)}else i.status=91;if(91===i.status)if(i.gzhead.comment){n=i.pending;do{if(i.pending===i.pending_buf_size&&(i.gzhead.hcrc&&i.pending>n&&(t.adler=p(t.adler,i.pending_buf,i.pending-n,n)),F(t),n=i.pending,i.pending===i.pending_buf_size)){s=1;break}s=i.gzindex<i.gzhead.comment.length?255&i.gzhead.comment.charCodeAt(i.gzindex++):0,U(i,s)}while(0!==s);i.gzhead.hcrc&&i.pending>n&&(t.adler=p(t.adler,i.pending_buf,i.pending-n,n)),0===s&&(i.status=103)}else i.status=103;if(103===i.status&&(i.gzhead.hcrc?(i.pending+2>i.pending_buf_size&&F(t),i.pending+2<=i.pending_buf_size&&(U(i,255&t.adler),U(i,t.adler>>8&255),t.adler=0,i.status=E)):i.status=E),0!==i.pending){if(F(t),0===t.avail_out)return i.last_flush=-1,m}else if(0===t.avail_in&&T(e)<=T(r)&&e!==f)return R(t,-5);if(666===i.status&&0!==t.avail_in)return R(t,-5);if(0!==t.avail_in||0!==i.lookahead||e!==l&&666!==i.status){var o=2===i.strategy?function(t,e){for(var r;;){if(0===t.lookahead&&(j(t),0===t.lookahead)){if(e===l)return A;break}if(t.match_length=0,r=u._tr_tally(t,0,t.window[t.strstart]),t.lookahead--,t.strstart++,r&&(N(t,!1),0===t.strm.avail_out))return A}return t.insert=0,e===f?(N(t,!0),0===t.strm.avail_out?O:B):t.last_lit&&(N(t,!1),0===t.strm.avail_out)?A:I}(i,e):3===i.strategy?function(t,e){for(var r,i,n,s,a=t.window;;){if(t.lookahead<=S){if(j(t),t.lookahead<=S&&e===l)return A;if(0===t.lookahead)break}if(t.match_length=0,t.lookahead>=x&&0<t.strstart&&(i=a[n=t.strstart-1])===a[++n]&&i===a[++n]&&i===a[++n]){s=t.strstart+S;do{}while(i===a[++n]&&i===a[++n]&&i===a[++n]&&i===a[++n]&&i===a[++n]&&i===a[++n]&&i===a[++n]&&i===a[++n]&&n<s);t.match_length=S-(s-n),t.match_length>t.lookahead&&(t.match_length=t.lookahead)}if(t.match_length>=x?(r=u._tr_tally(t,1,t.match_length-x),t.lookahead-=t.match_length,t.strstart+=t.match_length,t.match_length=0):(r=u._tr_tally(t,0,t.window[t.strstart]),t.lookahead--,t.strstart++),r&&(N(t,!1),0===t.strm.avail_out))return A}return t.insert=0,e===f?(N(t,!0),0===t.strm.avail_out?O:B):t.last_lit&&(N(t,!1),0===t.strm.avail_out)?A:I}(i,e):h[i.level].func(i,e);if(o!==O&&o!==B||(i.status=666),o===A||o===O)return 0===t.avail_out&&(i.last_flush=-1),m;if(o===I&&(1===e?u._tr_align(i):5!==e&&(u._tr_stored_block(i,0,0,!1),3===e&&(D(i.head),0===i.lookahead&&(i.strstart=0,i.block_start=0,i.insert=0))),F(t),0===t.avail_out))return i.last_flush=-1,m}return e!==f?m:i.wrap<=0?1:(2===i.wrap?(U(i,255&t.adler),U(i,t.adler>>8&255),U(i,t.adler>>16&255),U(i,t.adler>>24&255),U(i,255&t.total_in),U(i,t.total_in>>8&255),U(i,t.total_in>>16&255),U(i,t.total_in>>24&255)):(P(i,t.adler>>>16),P(i,65535&t.adler)),F(t),0<i.wrap&&(i.wrap=-i.wrap),0!==i.pending?m:1)},r.deflateEnd=function(t){var e;return t&&t.state?(e=t.state.status)!==C&&69!==e&&73!==e&&91!==e&&103!==e&&e!==E&&666!==e?R(t,_):(t.state=null,e===E?R(t,-3):m):_},r.deflateSetDictionary=function(t,e){var r,i,n,s,a,o,h,u,l=e.length;if(!t||!t.state)return _;if(2===(s=(r=t.state).wrap)||1===s&&r.status!==C||r.lookahead)return _;for(1===s&&(t.adler=c(t.adler,e,l,0)),r.wrap=0,l>=r.w_size&&(0===s&&(D(r.head),r.strstart=0,r.block_start=0,r.insert=0),u=new d.Buf8(r.w_size),d.arraySet(u,e,l-r.w_size,r.w_size,0),e=u,l=r.w_size),a=t.avail_in,o=t.next_in,h=t.input,t.avail_in=l,t.next_in=0,t.input=e,j(r);r.lookahead>=x;){for(i=r.strstart,n=r.lookahead-(x-1);r.ins_h=(r.ins_h<<r.hash_shift^r.window[i+x-1])&r.hash_mask,r.prev[i&r.w_mask]=r.head[r.ins_h],r.head[r.ins_h]=i,i++,--n;);r.strstart=i,r.lookahead=x-1,j(r)}return r.strstart+=r.lookahead,r.block_start=r.strstart,r.insert=r.lookahead,r.lookahead=0,r.match_length=r.prev_length=x-1,r.match_available=0,t.next_in=o,t.input=h,t.avail_in=a,r.wrap=s,m},r.deflateInfo="pako deflate (from Nodeca project)"},{"../utils/common":41,"./adler32":43,"./crc32":45,"./messages":51,"./trees":52}],47:[function(t,e,r){"use strict";e.exports=function(){this.text=0,this.time=0,this.xflags=0,this.os=0,this.extra=null,this.extra_len=0,this.name="",this.comment="",this.hcrc=0,this.done=!1}},{}],48:[function(t,e,r){"use strict";e.exports=function(t,e){var r,i,n,s,a,o,h,u,l,f,d,c,p,m,_,g,b,v,y,w,k,x,S,z,C;r=t.state,i=t.next_in,z=t.input,n=i+(t.avail_in-5),s=t.next_out,C=t.output,a=s-(e-t.avail_out),o=s+(t.avail_out-257),h=r.dmax,u=r.wsize,l=r.whave,f=r.wnext,d=r.window,c=r.hold,p=r.bits,m=r.lencode,_=r.distcode,g=(1<<r.lenbits)-1,b=(1<<r.distbits)-1;t:do{p<15&&(c+=z[i++]<<p,p+=8,c+=z[i++]<<p,p+=8),v=m[c&g];e:for(;;){if(c>>>=y=v>>>24,p-=y,0===(y=v>>>16&255))C[s++]=65535&v;else{if(!(16&y)){if(0==(64&y)){v=m[(65535&v)+(c&(1<<y)-1)];continue e}if(32&y){r.mode=12;break t}t.msg="invalid literal/length code",r.mode=30;break t}w=65535&v,(y&=15)&&(p<y&&(c+=z[i++]<<p,p+=8),w+=c&(1<<y)-1,c>>>=y,p-=y),p<15&&(c+=z[i++]<<p,p+=8,c+=z[i++]<<p,p+=8),v=_[c&b];r:for(;;){if(c>>>=y=v>>>24,p-=y,!(16&(y=v>>>16&255))){if(0==(64&y)){v=_[(65535&v)+(c&(1<<y)-1)];continue r}t.msg="invalid distance code",r.mode=30;break t}if(k=65535&v,p<(y&=15)&&(c+=z[i++]<<p,(p+=8)<y&&(c+=z[i++]<<p,p+=8)),h<(k+=c&(1<<y)-1)){t.msg="invalid distance too far back",r.mode=30;break t}if(c>>>=y,p-=y,(y=s-a)<k){if(l<(y=k-y)&&r.sane){t.msg="invalid distance too far back",r.mode=30;break t}if(S=d,(x=0)===f){if(x+=u-y,y<w){for(w-=y;C[s++]=d[x++],--y;);x=s-k,S=C}}else if(f<y){if(x+=u+f-y,(y-=f)<w){for(w-=y;C[s++]=d[x++],--y;);if(x=0,f<w){for(w-=y=f;C[s++]=d[x++],--y;);x=s-k,S=C}}}else if(x+=f-y,y<w){for(w-=y;C[s++]=d[x++],--y;);x=s-k,S=C}for(;2<w;)C[s++]=S[x++],C[s++]=S[x++],C[s++]=S[x++],w-=3;w&&(C[s++]=S[x++],1<w&&(C[s++]=S[x++]))}else{for(x=s-k;C[s++]=C[x++],C[s++]=C[x++],C[s++]=C[x++],2<(w-=3););w&&(C[s++]=C[x++],1<w&&(C[s++]=C[x++]))}break}}break}}while(i<n&&s<o);i-=w=p>>3,c&=(1<<(p-=w<<3))-1,t.next_in=i,t.next_out=s,t.avail_in=i<n?n-i+5:5-(i-n),t.avail_out=s<o?o-s+257:257-(s-o),r.hold=c,r.bits=p}},{}],49:[function(t,e,r){"use strict";var I=t("../utils/common"),O=t("./adler32"),B=t("./crc32"),R=t("./inffast"),T=t("./inftrees"),D=1,F=2,N=0,U=-2,P=1,i=852,n=592;function L(t){return(t>>>24&255)+(t>>>8&65280)+((65280&t)<<8)+((255&t)<<24)}function s(){this.mode=0,this.last=!1,this.wrap=0,this.havedict=!1,this.flags=0,this.dmax=0,this.check=0,this.total=0,this.head=null,this.wbits=0,this.wsize=0,this.whave=0,this.wnext=0,this.window=null,this.hold=0,this.bits=0,this.length=0,this.offset=0,this.extra=0,this.lencode=null,this.distcode=null,this.lenbits=0,this.distbits=0,this.ncode=0,this.nlen=0,this.ndist=0,this.have=0,this.next=null,this.lens=new I.Buf16(320),this.work=new I.Buf16(288),this.lendyn=null,this.distdyn=null,this.sane=0,this.back=0,this.was=0}function a(t){var e;return t&&t.state?(e=t.state,t.total_in=t.total_out=e.total=0,t.msg="",e.wrap&&(t.adler=1&e.wrap),e.mode=P,e.last=0,e.havedict=0,e.dmax=32768,e.head=null,e.hold=0,e.bits=0,e.lencode=e.lendyn=new I.Buf32(i),e.distcode=e.distdyn=new I.Buf32(n),e.sane=1,e.back=-1,N):U}function o(t){var e;return t&&t.state?((e=t.state).wsize=0,e.whave=0,e.wnext=0,a(t)):U}function h(t,e){var r,i;return t&&t.state?(i=t.state,e<0?(r=0,e=-e):(r=1+(e>>4),e<48&&(e&=15)),e&&(e<8||15<e)?U:(null!==i.window&&i.wbits!==e&&(i.window=null),i.wrap=r,i.wbits=e,o(t))):U}function u(t,e){var r,i;return t?(i=new s,(t.state=i).window=null,(r=h(t,e))!==N&&(t.state=null),r):U}var l,f,d=!0;function j(t){if(d){var e;for(l=new I.Buf32(512),f=new I.Buf32(32),e=0;e<144;)t.lens[e++]=8;for(;e<256;)t.lens[e++]=9;for(;e<280;)t.lens[e++]=7;for(;e<288;)t.lens[e++]=8;for(T(D,t.lens,0,288,l,0,t.work,{bits:9}),e=0;e<32;)t.lens[e++]=5;T(F,t.lens,0,32,f,0,t.work,{bits:5}),d=!1}t.lencode=l,t.lenbits=9,t.distcode=f,t.distbits=5}function Z(t,e,r,i){var n,s=t.state;return null===s.window&&(s.wsize=1<<s.wbits,s.wnext=0,s.whave=0,s.window=new I.Buf8(s.wsize)),i>=s.wsize?(I.arraySet(s.window,e,r-s.wsize,s.wsize,0),s.wnext=0,s.whave=s.wsize):(i<(n=s.wsize-s.wnext)&&(n=i),I.arraySet(s.window,e,r-i,n,s.wnext),(i-=n)?(I.arraySet(s.window,e,r-i,i,0),s.wnext=i,s.whave=s.wsize):(s.wnext+=n,s.wnext===s.wsize&&(s.wnext=0),s.whave<s.wsize&&(s.whave+=n))),0}r.inflateReset=o,r.inflateReset2=h,r.inflateResetKeep=a,r.inflateInit=function(t){return u(t,15)},r.inflateInit2=u,r.inflate=function(t,e){var r,i,n,s,a,o,h,u,l,f,d,c,p,m,_,g,b,v,y,w,k,x,S,z,C=0,E=new I.Buf8(4),A=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15];if(!t||!t.state||!t.output||!t.input&&0!==t.avail_in)return U;12===(r=t.state).mode&&(r.mode=13),a=t.next_out,n=t.output,h=t.avail_out,s=t.next_in,i=t.input,o=t.avail_in,u=r.hold,l=r.bits,f=o,d=h,x=N;t:for(;;)switch(r.mode){case P:if(0===r.wrap){r.mode=13;break}for(;l<16;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(2&r.wrap&&35615===u){E[r.check=0]=255&u,E[1]=u>>>8&255,r.check=B(r.check,E,2,0),l=u=0,r.mode=2;break}if(r.flags=0,r.head&&(r.head.done=!1),!(1&r.wrap)||(((255&u)<<8)+(u>>8))%31){t.msg="incorrect header check",r.mode=30;break}if(8!=(15&u)){t.msg="unknown compression method",r.mode=30;break}if(l-=4,k=8+(15&(u>>>=4)),0===r.wbits)r.wbits=k;else if(k>r.wbits){t.msg="invalid window size",r.mode=30;break}r.dmax=1<<k,t.adler=r.check=1,r.mode=512&u?10:12,l=u=0;break;case 2:for(;l<16;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(r.flags=u,8!=(255&r.flags)){t.msg="unknown compression method",r.mode=30;break}if(57344&r.flags){t.msg="unknown header flags set",r.mode=30;break}r.head&&(r.head.text=u>>8&1),512&r.flags&&(E[0]=255&u,E[1]=u>>>8&255,r.check=B(r.check,E,2,0)),l=u=0,r.mode=3;case 3:for(;l<32;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}r.head&&(r.head.time=u),512&r.flags&&(E[0]=255&u,E[1]=u>>>8&255,E[2]=u>>>16&255,E[3]=u>>>24&255,r.check=B(r.check,E,4,0)),l=u=0,r.mode=4;case 4:for(;l<16;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}r.head&&(r.head.xflags=255&u,r.head.os=u>>8),512&r.flags&&(E[0]=255&u,E[1]=u>>>8&255,r.check=B(r.check,E,2,0)),l=u=0,r.mode=5;case 5:if(1024&r.flags){for(;l<16;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}r.length=u,r.head&&(r.head.extra_len=u),512&r.flags&&(E[0]=255&u,E[1]=u>>>8&255,r.check=B(r.check,E,2,0)),l=u=0}else r.head&&(r.head.extra=null);r.mode=6;case 6:if(1024&r.flags&&(o<(c=r.length)&&(c=o),c&&(r.head&&(k=r.head.extra_len-r.length,r.head.extra||(r.head.extra=new Array(r.head.extra_len)),I.arraySet(r.head.extra,i,s,c,k)),512&r.flags&&(r.check=B(r.check,i,c,s)),o-=c,s+=c,r.length-=c),r.length))break t;r.length=0,r.mode=7;case 7:if(2048&r.flags){if(0===o)break t;for(c=0;k=i[s+c++],r.head&&k&&r.length<65536&&(r.head.name+=String.fromCharCode(k)),k&&c<o;);if(512&r.flags&&(r.check=B(r.check,i,c,s)),o-=c,s+=c,k)break t}else r.head&&(r.head.name=null);r.length=0,r.mode=8;case 8:if(4096&r.flags){if(0===o)break t;for(c=0;k=i[s+c++],r.head&&k&&r.length<65536&&(r.head.comment+=String.fromCharCode(k)),k&&c<o;);if(512&r.flags&&(r.check=B(r.check,i,c,s)),o-=c,s+=c,k)break t}else r.head&&(r.head.comment=null);r.mode=9;case 9:if(512&r.flags){for(;l<16;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(u!==(65535&r.check)){t.msg="header crc mismatch",r.mode=30;break}l=u=0}r.head&&(r.head.hcrc=r.flags>>9&1,r.head.done=!0),t.adler=r.check=0,r.mode=12;break;case 10:for(;l<32;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}t.adler=r.check=L(u),l=u=0,r.mode=11;case 11:if(0===r.havedict)return t.next_out=a,t.avail_out=h,t.next_in=s,t.avail_in=o,r.hold=u,r.bits=l,2;t.adler=r.check=1,r.mode=12;case 12:if(5===e||6===e)break t;case 13:if(r.last){u>>>=7&l,l-=7&l,r.mode=27;break}for(;l<3;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}switch(r.last=1&u,l-=1,3&(u>>>=1)){case 0:r.mode=14;break;case 1:if(j(r),r.mode=20,6!==e)break;u>>>=2,l-=2;break t;case 2:r.mode=17;break;case 3:t.msg="invalid block type",r.mode=30}u>>>=2,l-=2;break;case 14:for(u>>>=7&l,l-=7&l;l<32;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if((65535&u)!=(u>>>16^65535)){t.msg="invalid stored block lengths",r.mode=30;break}if(r.length=65535&u,l=u=0,r.mode=15,6===e)break t;case 15:r.mode=16;case 16:if(c=r.length){if(o<c&&(c=o),h<c&&(c=h),0===c)break t;I.arraySet(n,i,s,c,a),o-=c,s+=c,h-=c,a+=c,r.length-=c;break}r.mode=12;break;case 17:for(;l<14;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(r.nlen=257+(31&u),u>>>=5,l-=5,r.ndist=1+(31&u),u>>>=5,l-=5,r.ncode=4+(15&u),u>>>=4,l-=4,286<r.nlen||30<r.ndist){t.msg="too many length or distance symbols",r.mode=30;break}r.have=0,r.mode=18;case 18:for(;r.have<r.ncode;){for(;l<3;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}r.lens[A[r.have++]]=7&u,u>>>=3,l-=3}for(;r.have<19;)r.lens[A[r.have++]]=0;if(r.lencode=r.lendyn,r.lenbits=7,S={bits:r.lenbits},x=T(0,r.lens,0,19,r.lencode,0,r.work,S),r.lenbits=S.bits,x){t.msg="invalid code lengths set",r.mode=30;break}r.have=0,r.mode=19;case 19:for(;r.have<r.nlen+r.ndist;){for(;g=(C=r.lencode[u&(1<<r.lenbits)-1])>>>16&255,b=65535&C,!((_=C>>>24)<=l);){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(b<16)u>>>=_,l-=_,r.lens[r.have++]=b;else{if(16===b){for(z=_+2;l<z;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(u>>>=_,l-=_,0===r.have){t.msg="invalid bit length repeat",r.mode=30;break}k=r.lens[r.have-1],c=3+(3&u),u>>>=2,l-=2}else if(17===b){for(z=_+3;l<z;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}l-=_,k=0,c=3+(7&(u>>>=_)),u>>>=3,l-=3}else{for(z=_+7;l<z;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}l-=_,k=0,c=11+(127&(u>>>=_)),u>>>=7,l-=7}if(r.have+c>r.nlen+r.ndist){t.msg="invalid bit length repeat",r.mode=30;break}for(;c--;)r.lens[r.have++]=k}}if(30===r.mode)break;if(0===r.lens[256]){t.msg="invalid code -- missing end-of-block",r.mode=30;break}if(r.lenbits=9,S={bits:r.lenbits},x=T(D,r.lens,0,r.nlen,r.lencode,0,r.work,S),r.lenbits=S.bits,x){t.msg="invalid literal/lengths set",r.mode=30;break}if(r.distbits=6,r.distcode=r.distdyn,S={bits:r.distbits},x=T(F,r.lens,r.nlen,r.ndist,r.distcode,0,r.work,S),r.distbits=S.bits,x){t.msg="invalid distances set",r.mode=30;break}if(r.mode=20,6===e)break t;case 20:r.mode=21;case 21:if(6<=o&&258<=h){t.next_out=a,t.avail_out=h,t.next_in=s,t.avail_in=o,r.hold=u,r.bits=l,R(t,d),a=t.next_out,n=t.output,h=t.avail_out,s=t.next_in,i=t.input,o=t.avail_in,u=r.hold,l=r.bits,12===r.mode&&(r.back=-1);break}for(r.back=0;g=(C=r.lencode[u&(1<<r.lenbits)-1])>>>16&255,b=65535&C,!((_=C>>>24)<=l);){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(g&&0==(240&g)){for(v=_,y=g,w=b;g=(C=r.lencode[w+((u&(1<<v+y)-1)>>v)])>>>16&255,b=65535&C,!(v+(_=C>>>24)<=l);){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}u>>>=v,l-=v,r.back+=v}if(u>>>=_,l-=_,r.back+=_,r.length=b,0===g){r.mode=26;break}if(32&g){r.back=-1,r.mode=12;break}if(64&g){t.msg="invalid literal/length code",r.mode=30;break}r.extra=15&g,r.mode=22;case 22:if(r.extra){for(z=r.extra;l<z;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}r.length+=u&(1<<r.extra)-1,u>>>=r.extra,l-=r.extra,r.back+=r.extra}r.was=r.length,r.mode=23;case 23:for(;g=(C=r.distcode[u&(1<<r.distbits)-1])>>>16&255,b=65535&C,!((_=C>>>24)<=l);){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(0==(240&g)){for(v=_,y=g,w=b;g=(C=r.distcode[w+((u&(1<<v+y)-1)>>v)])>>>16&255,b=65535&C,!(v+(_=C>>>24)<=l);){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}u>>>=v,l-=v,r.back+=v}if(u>>>=_,l-=_,r.back+=_,64&g){t.msg="invalid distance code",r.mode=30;break}r.offset=b,r.extra=15&g,r.mode=24;case 24:if(r.extra){for(z=r.extra;l<z;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}r.offset+=u&(1<<r.extra)-1,u>>>=r.extra,l-=r.extra,r.back+=r.extra}if(r.offset>r.dmax){t.msg="invalid distance too far back",r.mode=30;break}r.mode=25;case 25:if(0===h)break t;if(c=d-h,r.offset>c){if((c=r.offset-c)>r.whave&&r.sane){t.msg="invalid distance too far back",r.mode=30;break}p=c>r.wnext?(c-=r.wnext,r.wsize-c):r.wnext-c,c>r.length&&(c=r.length),m=r.window}else m=n,p=a-r.offset,c=r.length;for(h<c&&(c=h),h-=c,r.length-=c;n[a++]=m[p++],--c;);0===r.length&&(r.mode=21);break;case 26:if(0===h)break t;n[a++]=r.length,h--,r.mode=21;break;case 27:if(r.wrap){for(;l<32;){if(0===o)break t;o--,u|=i[s++]<<l,l+=8}if(d-=h,t.total_out+=d,r.total+=d,d&&(t.adler=r.check=r.flags?B(r.check,n,d,a-d):O(r.check,n,d,a-d)),d=h,(r.flags?u:L(u))!==r.check){t.msg="incorrect data check",r.mode=30;break}l=u=0}r.mode=28;case 28:if(r.wrap&&r.flags){for(;l<32;){if(0===o)break t;o--,u+=i[s++]<<l,l+=8}if(u!==(4294967295&r.total)){t.msg="incorrect length check",r.mode=30;break}l=u=0}r.mode=29;case 29:x=1;break t;case 30:x=-3;break t;case 31:return-4;case 32:default:return U}return t.next_out=a,t.avail_out=h,t.next_in=s,t.avail_in=o,r.hold=u,r.bits=l,(r.wsize||d!==t.avail_out&&r.mode<30&&(r.mode<27||4!==e))&&Z(t,t.output,t.next_out,d-t.avail_out)?(r.mode=31,-4):(f-=t.avail_in,d-=t.avail_out,t.total_in+=f,t.total_out+=d,r.total+=d,r.wrap&&d&&(t.adler=r.check=r.flags?B(r.check,n,d,t.next_out-d):O(r.check,n,d,t.next_out-d)),t.data_type=r.bits+(r.last?64:0)+(12===r.mode?128:0)+(20===r.mode||15===r.mode?256:0),(0==f&&0===d||4===e)&&x===N&&(x=-5),x)},r.inflateEnd=function(t){if(!t||!t.state)return U;var e=t.state;return e.window&&(e.window=null),t.state=null,N},r.inflateGetHeader=function(t,e){var r;return t&&t.state?0==(2&(r=t.state).wrap)?U:((r.head=e).done=!1,N):U},r.inflateSetDictionary=function(t,e){var r,i=e.length;return t&&t.state?0!==(r=t.state).wrap&&11!==r.mode?U:11===r.mode&&O(1,e,i,0)!==r.check?-3:Z(t,e,i,i)?(r.mode=31,-4):(r.havedict=1,N):U},r.inflateInfo="pako inflate (from Nodeca project)"},{"../utils/common":41,"./adler32":43,"./crc32":45,"./inffast":48,"./inftrees":50}],50:[function(t,e,r){"use strict";var D=t("../utils/common"),F=[3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258,0,0],N=[16,16,16,16,16,16,16,16,17,17,17,17,18,18,18,18,19,19,19,19,20,20,20,20,21,21,21,21,16,72,78],U=[1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577,0,0],P=[16,16,16,16,17,17,18,18,19,19,20,20,21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,29,29,64,64];e.exports=function(t,e,r,i,n,s,a,o){var h,u,l,f,d,c,p,m,_,g=o.bits,b=0,v=0,y=0,w=0,k=0,x=0,S=0,z=0,C=0,E=0,A=null,I=0,O=new D.Buf16(16),B=new D.Buf16(16),R=null,T=0;for(b=0;b<=15;b++)O[b]=0;for(v=0;v<i;v++)O[e[r+v]]++;for(k=g,w=15;1<=w&&0===O[w];w--);if(w<k&&(k=w),0===w)return n[s++]=20971520,n[s++]=20971520,o.bits=1,0;for(y=1;y<w&&0===O[y];y++);for(k<y&&(k=y),b=z=1;b<=15;b++)if(z<<=1,(z-=O[b])<0)return-1;if(0<z&&(0===t||1!==w))return-1;for(B[1]=0,b=1;b<15;b++)B[b+1]=B[b]+O[b];for(v=0;v<i;v++)0!==e[r+v]&&(a[B[e[r+v]]++]=v);if(c=0===t?(A=R=a,19):1===t?(A=F,I-=257,R=N,T-=257,256):(A=U,R=P,-1),b=y,d=s,S=v=E=0,l=-1,f=(C=1<<(x=k))-1,1===t&&852<C||2===t&&592<C)return 1;for(;;){for(p=b-S,_=a[v]<c?(m=0,a[v]):a[v]>c?(m=R[T+a[v]],A[I+a[v]]):(m=96,0),h=1<<b-S,y=u=1<<x;n[d+(E>>S)+(u-=h)]=p<<24|m<<16|_|0,0!==u;);for(h=1<<b-1;E&h;)h>>=1;if(0!==h?(E&=h-1,E+=h):E=0,v++,0==--O[b]){if(b===w)break;b=e[r+a[v]]}if(k<b&&(E&f)!==l){for(0===S&&(S=k),d+=y,z=1<<(x=b-S);x+S<w&&!((z-=O[x+S])<=0);)x++,z<<=1;if(C+=1<<x,1===t&&852<C||2===t&&592<C)return 1;n[l=E&f]=k<<24|x<<16|d-s|0}}return 0!==E&&(n[d+E]=b-S<<24|64<<16|0),o.bits=k,0}},{"../utils/common":41}],51:[function(t,e,r){"use strict";e.exports={2:"need dictionary",1:"stream end",0:"","-1":"file error","-2":"stream error","-3":"data error","-4":"insufficient memory","-5":"buffer error","-6":"incompatible version"}},{}],52:[function(t,e,r){"use strict";var n=t("../utils/common"),o=0,h=1;function i(t){for(var e=t.length;0<=--e;)t[e]=0}var s=0,a=29,u=256,l=u+1+a,f=30,d=19,_=2*l+1,g=15,c=16,p=7,m=256,b=16,v=17,y=18,w=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0],k=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],x=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,7],S=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],z=new Array(2*(l+2));i(z);var C=new Array(2*f);i(C);var E=new Array(512);i(E);var A=new Array(256);i(A);var I=new Array(a);i(I);var O,B,R,T=new Array(f);function D(t,e,r,i,n){this.static_tree=t,this.extra_bits=e,this.extra_base=r,this.elems=i,this.max_length=n,this.has_stree=t&&t.length}function F(t,e){this.dyn_tree=t,this.max_code=0,this.stat_desc=e}function N(t){return t<256?E[t]:E[256+(t>>>7)]}function U(t,e){t.pending_buf[t.pending++]=255&e,t.pending_buf[t.pending++]=e>>>8&255}function P(t,e,r){t.bi_valid>c-r?(t.bi_buf|=e<<t.bi_valid&65535,U(t,t.bi_buf),t.bi_buf=e>>c-t.bi_valid,t.bi_valid+=r-c):(t.bi_buf|=e<<t.bi_valid&65535,t.bi_valid+=r)}function L(t,e,r){P(t,r[2*e],r[2*e+1])}function j(t,e){for(var r=0;r|=1&t,t>>>=1,r<<=1,0<--e;);return r>>>1}function Z(t,e,r){var i,n,s=new Array(g+1),a=0;for(i=1;i<=g;i++)s[i]=a=a+r[i-1]<<1;for(n=0;n<=e;n++){var o=t[2*n+1];0!==o&&(t[2*n]=j(s[o]++,o))}}function W(t){var e;for(e=0;e<l;e++)t.dyn_ltree[2*e]=0;for(e=0;e<f;e++)t.dyn_dtree[2*e]=0;for(e=0;e<d;e++)t.bl_tree[2*e]=0;t.dyn_ltree[2*m]=1,t.opt_len=t.static_len=0,t.last_lit=t.matches=0}function M(t){8<t.bi_valid?U(t,t.bi_buf):0<t.bi_valid&&(t.pending_buf[t.pending++]=t.bi_buf),t.bi_buf=0,t.bi_valid=0}function H(t,e,r,i){var n=2*e,s=2*r;return t[n]<t[s]||t[n]===t[s]&&i[e]<=i[r]}function G(t,e,r){for(var i=t.heap[r],n=r<<1;n<=t.heap_len&&(n<t.heap_len&&H(e,t.heap[n+1],t.heap[n],t.depth)&&n++,!H(e,i,t.heap[n],t.depth));)t.heap[r]=t.heap[n],r=n,n<<=1;t.heap[r]=i}function K(t,e,r){var i,n,s,a,o=0;if(0!==t.last_lit)for(;i=t.pending_buf[t.d_buf+2*o]<<8|t.pending_buf[t.d_buf+2*o+1],n=t.pending_buf[t.l_buf+o],o++,0===i?L(t,n,e):(L(t,(s=A[n])+u+1,e),0!==(a=w[s])&&P(t,n-=I[s],a),L(t,s=N(--i),r),0!==(a=k[s])&&P(t,i-=T[s],a)),o<t.last_lit;);L(t,m,e)}function Y(t,e){var r,i,n,s=e.dyn_tree,a=e.stat_desc.static_tree,o=e.stat_desc.has_stree,h=e.stat_desc.elems,u=-1;for(t.heap_len=0,t.heap_max=_,r=0;r<h;r++)0!==s[2*r]?(t.heap[++t.heap_len]=u=r,t.depth[r]=0):s[2*r+1]=0;for(;t.heap_len<2;)s[2*(n=t.heap[++t.heap_len]=u<2?++u:0)]=1,t.depth[n]=0,t.opt_len--,o&&(t.static_len-=a[2*n+1]);for(e.max_code=u,r=t.heap_len>>1;1<=r;r--)G(t,s,r);for(n=h;r=t.heap[1],t.heap[1]=t.heap[t.heap_len--],G(t,s,1),i=t.heap[1],t.heap[--t.heap_max]=r,t.heap[--t.heap_max]=i,s[2*n]=s[2*r]+s[2*i],t.depth[n]=(t.depth[r]>=t.depth[i]?t.depth[r]:t.depth[i])+1,s[2*r+1]=s[2*i+1]=n,t.heap[1]=n++,G(t,s,1),2<=t.heap_len;);t.heap[--t.heap_max]=t.heap[1],function(t,e){var r,i,n,s,a,o,h=e.dyn_tree,u=e.max_code,l=e.stat_desc.static_tree,f=e.stat_desc.has_stree,d=e.stat_desc.extra_bits,c=e.stat_desc.extra_base,p=e.stat_desc.max_length,m=0;for(s=0;s<=g;s++)t.bl_count[s]=0;for(h[2*t.heap[t.heap_max]+1]=0,r=t.heap_max+1;r<_;r++)p<(s=h[2*h[2*(i=t.heap[r])+1]+1]+1)&&(s=p,m++),h[2*i+1]=s,u<i||(t.bl_count[s]++,a=0,c<=i&&(a=d[i-c]),o=h[2*i],t.opt_len+=o*(s+a),f&&(t.static_len+=o*(l[2*i+1]+a)));if(0!==m){do{for(s=p-1;0===t.bl_count[s];)s--;t.bl_count[s]--,t.bl_count[s+1]+=2,t.bl_count[p]--,m-=2}while(0<m);for(s=p;0!==s;s--)for(i=t.bl_count[s];0!==i;)u<(n=t.heap[--r])||(h[2*n+1]!==s&&(t.opt_len+=(s-h[2*n+1])*h[2*n],h[2*n+1]=s),i--)}}(t,e),Z(s,u,t.bl_count)}function X(t,e,r){var i,n,s=-1,a=e[1],o=0,h=7,u=4;for(0===a&&(h=138,u=3),e[2*(r+1)+1]=65535,i=0;i<=r;i++)n=a,a=e[2*(i+1)+1],++o<h&&n===a||(o<u?t.bl_tree[2*n]+=o:0!==n?(n!==s&&t.bl_tree[2*n]++,t.bl_tree[2*b]++):o<=10?t.bl_tree[2*v]++:t.bl_tree[2*y]++,s=n,u=(o=0)===a?(h=138,3):n===a?(h=6,3):(h=7,4))}function V(t,e,r){var i,n,s=-1,a=e[1],o=0,h=7,u=4;for(0===a&&(h=138,u=3),i=0;i<=r;i++)if(n=a,a=e[2*(i+1)+1],!(++o<h&&n===a)){if(o<u)for(;L(t,n,t.bl_tree),0!=--o;);else 0!==n?(n!==s&&(L(t,n,t.bl_tree),o--),L(t,b,t.bl_tree),P(t,o-3,2)):o<=10?(L(t,v,t.bl_tree),P(t,o-3,3)):(L(t,y,t.bl_tree),P(t,o-11,7));s=n,u=(o=0)===a?(h=138,3):n===a?(h=6,3):(h=7,4)}}i(T);var q=!1;function J(t,e,r,i){P(t,(s<<1)+(i?1:0),3),function(t,e,r,i){M(t),i&&(U(t,r),U(t,~r)),n.arraySet(t.pending_buf,t.window,e,r,t.pending),t.pending+=r}(t,e,r,!0)}r._tr_init=function(t){q||(function(){var t,e,r,i,n,s=new Array(g+1);for(i=r=0;i<a-1;i++)for(I[i]=r,t=0;t<1<<w[i];t++)A[r++]=i;for(A[r-1]=i,i=n=0;i<16;i++)for(T[i]=n,t=0;t<1<<k[i];t++)E[n++]=i;for(n>>=7;i<f;i++)for(T[i]=n<<7,t=0;t<1<<k[i]-7;t++)E[256+n++]=i;for(e=0;e<=g;e++)s[e]=0;for(t=0;t<=143;)z[2*t+1]=8,t++,s[8]++;for(;t<=255;)z[2*t+1]=9,t++,s[9]++;for(;t<=279;)z[2*t+1]=7,t++,s[7]++;for(;t<=287;)z[2*t+1]=8,t++,s[8]++;for(Z(z,l+1,s),t=0;t<f;t++)C[2*t+1]=5,C[2*t]=j(t,5);O=new D(z,w,u+1,l,g),B=new D(C,k,0,f,g),R=new D(new Array(0),x,0,d,p)}(),q=!0),t.l_desc=new F(t.dyn_ltree,O),t.d_desc=new F(t.dyn_dtree,B),t.bl_desc=new F(t.bl_tree,R),t.bi_buf=0,t.bi_valid=0,W(t)},r._tr_stored_block=J,r._tr_flush_block=function(t,e,r,i){var n,s,a=0;0<t.level?(2===t.strm.data_type&&(t.strm.data_type=function(t){var e,r=4093624447;for(e=0;e<=31;e++,r>>>=1)if(1&r&&0!==t.dyn_ltree[2*e])return o;if(0!==t.dyn_ltree[18]||0!==t.dyn_ltree[20]||0!==t.dyn_ltree[26])return h;for(e=32;e<u;e++)if(0!==t.dyn_ltree[2*e])return h;return o}(t)),Y(t,t.l_desc),Y(t,t.d_desc),a=function(t){var e;for(X(t,t.dyn_ltree,t.l_desc.max_code),X(t,t.dyn_dtree,t.d_desc.max_code),Y(t,t.bl_desc),e=d-1;3<=e&&0===t.bl_tree[2*S[e]+1];e--);return t.opt_len+=3*(e+1)+5+5+4,e}(t),n=t.opt_len+3+7>>>3,(s=t.static_len+3+7>>>3)<=n&&(n=s)):n=s=r+5,r+4<=n&&-1!==e?J(t,e,r,i):4===t.strategy||s===n?(P(t,2+(i?1:0),3),K(t,z,C)):(P(t,4+(i?1:0),3),function(t,e,r,i){var n;for(P(t,e-257,5),P(t,r-1,5),P(t,i-4,4),n=0;n<i;n++)P(t,t.bl_tree[2*S[n]+1],3);V(t,t.dyn_ltree,e-1),V(t,t.dyn_dtree,r-1)}(t,t.l_desc.max_code+1,t.d_desc.max_code+1,a+1),K(t,t.dyn_ltree,t.dyn_dtree)),W(t),i&&M(t)},r._tr_tally=function(t,e,r){return t.pending_buf[t.d_buf+2*t.last_lit]=e>>>8&255,t.pending_buf[t.d_buf+2*t.last_lit+1]=255&e,t.pending_buf[t.l_buf+t.last_lit]=255&r,t.last_lit++,0===e?t.dyn_ltree[2*r]++:(t.matches++,e--,t.dyn_ltree[2*(A[r]+u+1)]++,t.dyn_dtree[2*N(e)]++),t.last_lit===t.lit_bufsize-1},r._tr_align=function(t){P(t,2,3),L(t,m,z),function(t){16===t.bi_valid?(U(t,t.bi_buf),t.bi_buf=0,t.bi_valid=0):8<=t.bi_valid&&(t.pending_buf[t.pending++]=255&t.bi_buf,t.bi_buf>>=8,t.bi_valid-=8)}(t)}},{"../utils/common":41}],53:[function(t,e,r){"use strict";e.exports=function(){this.input=null,this.next_in=0,this.avail_in=0,this.total_in=0,this.output=null,this.next_out=0,this.avail_out=0,this.total_out=0,this.msg="",this.state=null,this.data_type=2,this.adler=0}},{}],54:[function(t,e,r){"use strict";e.exports="function"==typeof setImmediate?setImmediate:function(){var t=[].slice.apply(arguments);t.splice(1,0,0),setTimeout.apply(null,t)}},{}]},{},[10])(10)});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(169).Buffer, __webpack_require__(14), __webpack_require__(172).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(173).Buffer, __webpack_require__(14), __webpack_require__(176).setImmediate))
 
 /***/ }),
 /* 75 */
@@ -29682,8 +29682,8 @@ https://github.com/nodeca/pako/blob/master/LICENSE
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Editor = void 0;
-const trs80_base_1 = __webpack_require__(5);
-const EditorFont_1 = __webpack_require__(180);
+const trs80_base_1 = __webpack_require__(3);
+const EditorFont_1 = __webpack_require__(185);
 const ControlPanel_1 = __webpack_require__(54);
 /**
  * Allows the user to edit the in-memory Basic program directly in an HTML text widget,
@@ -29929,17 +29929,17 @@ exports.CassettePlayer = CassettePlayer;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Trs80 = void 0;
-const z80_base_1 = __webpack_require__(0);
-const z80_emulator_1 = __webpack_require__(182);
-const Keyboard_1 = __webpack_require__(81);
-const Model1Level1Rom_1 = __webpack_require__(82);
-const Model1Level2Rom_1 = __webpack_require__(83);
-const Model3Rom_1 = __webpack_require__(84);
+const z80_base_1 = __webpack_require__(18);
+const z80_emulator_1 = __webpack_require__(81);
+const Keyboard_1 = __webpack_require__(84);
+const Model1Level1Rom_1 = __webpack_require__(85);
+const Model1Level2Rom_1 = __webpack_require__(86);
+const Model3Rom_1 = __webpack_require__(87);
 const Config_1 = __webpack_require__(27);
-const trs80_base_1 = __webpack_require__(5);
-const z80_base_2 = __webpack_require__(0);
-const FloppyDisk_1 = __webpack_require__(21);
-const FloppyDiskController_1 = __webpack_require__(94);
+const trs80_base_1 = __webpack_require__(3);
+const z80_base_2 = __webpack_require__(18);
+const FloppyDisk_1 = __webpack_require__(20);
+const FloppyDiskController_1 = __webpack_require__(98);
 const EventScheduler_1 = __webpack_require__(52);
 // IRQs
 const M1_TIMER_IRQ_MASK = 0x80;
@@ -30999,7 +30999,7 @@ exports.isByteReg = isByteReg;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Utils_1 = __webpack_require__(35);
+const Utils_1 = __webpack_require__(36);
 /**
  * All registers in a Z80.
  */
@@ -31173,6 +31173,9096 @@ var Flag;
 
 /***/ }),
 /* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(82));
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const z80_base_1 = __webpack_require__(18);
+const Decode_1 = __webpack_require__(83);
+/**
+ * Emulated Z80 processor.
+ */
+class Z80 {
+    constructor(hal) {
+        /**
+         * Full set of registers.
+         */
+        this.regs = new z80_base_1.RegisterSet();
+        /**
+         * Tables for computing flags. Public so that the decoding function
+         * can access them.
+         */
+        this.sz53Table = []; /* The S, Z, 5 and 3 bits of the index */
+        this.parityTable = []; /* The parity of the lookup value */
+        this.sz53pTable = []; /* OR the above two tables together */
+        this.hal = hal;
+        this.initTables();
+    }
+    /**
+     * Reset the Z80 to a known state.
+     */
+    reset() {
+        this.regs = new z80_base_1.RegisterSet();
+    }
+    /**
+     * Execute one instruction.
+     */
+    step() {
+        Decode_1.decode(this);
+    }
+    /**
+     * Increment the clock count.
+     */
+    incTStateCount(count) {
+        this.hal.tStateCount += count;
+    }
+    /**
+     * Interrupt the CPU with a maskable interrupt
+     */
+    maskableInterrupt() {
+        if (this.regs.iff1 !== 0) {
+            this.interrupt(true);
+        }
+    }
+    /**
+     * Interrupt the CPU with a non-maskable interrupt
+     */
+    nonMaskableInterrupt() {
+        this.interrupt(false);
+    }
+    /**
+     * Read a byte from memory, taking as many clock cycles as necessary.
+     */
+    readByte(address) {
+        this.incTStateCount(3);
+        return this.readByteInternal(address);
+    }
+    /**
+     * Reads a word at the specified address. Reads the low byte first.
+     */
+    readWord(address) {
+        const lowByte = this.readByte(address);
+        const highByte = this.readByte(address + 1);
+        return z80_base_1.word(highByte, lowByte);
+    }
+    /**
+     * Read a byte from memory (not affecting clock).
+     */
+    readByteInternal(address) {
+        return this.hal.readMemory(address);
+    }
+    /**
+     * Write a byte to memory, taking as many clock cycles as necessary.
+     */
+    writeByte(address, value) {
+        this.incTStateCount(3);
+        this.writeByteInternal(address, value);
+    }
+    /**
+     * Write a byte to memory (not affecting clock).
+     */
+    writeByteInternal(address, value) {
+        this.hal.writeMemory(address, value);
+    }
+    /**
+     * Write a byte to a port, taking as many clock cycles as necessary.
+     */
+    writePort(address, value) {
+        this.incTStateCount(1);
+        this.hal.writePort(address, value);
+        this.incTStateCount(3);
+    }
+    /**
+     * Read a byte from a port, taking as many clock cycles as necessary.
+     */
+    readPort(address) {
+        this.incTStateCount(1);
+        const value = this.hal.readPort(address);
+        this.incTStateCount(3);
+        return value;
+    }
+    /**
+     * Push a word on the stack.
+     */
+    pushWord(value) {
+        this.pushByte(z80_base_1.hi(value));
+        this.pushByte(z80_base_1.lo(value));
+    }
+    /**
+     * Push a byte on the stack.
+     */
+    pushByte(value) {
+        this.regs.sp = (this.regs.sp - 1) & 0xFFFF;
+        this.writeByte(this.regs.sp, value);
+    }
+    /**
+     * Pop a word from the stack.
+     */
+    popWord() {
+        const lowByte = this.popByte();
+        const highByte = this.popByte();
+        return z80_base_1.word(highByte, lowByte);
+    }
+    /**
+     * Pop a byte from the stack.
+     */
+    popByte() {
+        const value = this.readByte(this.regs.sp);
+        this.regs.sp = z80_base_1.inc16(this.regs.sp);
+        return value;
+    }
+    /**
+     * Process either kind of interrupt. If maskable, assumes that
+     * the mask has already been checked.
+     */
+    interrupt(maskable) {
+        if (this.regs.halted) {
+            // Skip past HALT instruction.
+            this.regs.pc++;
+            this.regs.halted = 0;
+        }
+        this.incTStateCount(7);
+        this.regs.r += 1;
+        this.regs.iff1 = 0;
+        this.regs.iff2 = 0;
+        this.pushWord(this.regs.pc);
+        if (maskable) {
+            switch (this.regs.im) {
+                case 0:
+                case 1:
+                    this.regs.pc = 0x0038;
+                    break;
+                case 2: {
+                    // The LSB here is taken from the data bus, so it's
+                    // unpredictable. We use 0xFF but any value would do.
+                    const address = z80_base_1.word(this.regs.i, 0xFF);
+                    this.regs.pc = this.readWord(address);
+                    break;
+                }
+                default:
+                    throw new Error("Unknown im mode " + this.regs.im);
+            }
+        }
+        else {
+            this.regs.pc = 0x0066;
+        }
+    }
+    initTables() {
+        for (let i = 0; i < 0x100; i++) {
+            this.sz53Table.push(i & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S));
+            let bits = i;
+            let parity = 0;
+            for (let bit = 0; bit < 8; bit++) {
+                parity ^= bits & 1;
+                bits >>= 1;
+            }
+            this.parityTable.push(parity ? 0 : z80_base_1.Flag.P);
+            this.sz53pTable.push(this.sz53Table[i] | this.parityTable[i]);
+        }
+        this.sz53Table[0] |= z80_base_1.Flag.Z;
+        this.sz53pTable[0] |= z80_base_1.Flag.Z;
+    }
+}
+exports.Z80 = Z80;
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// Do not modify. This file was generated by GenerateOpcodes.ts.
+Object.defineProperty(exports, "__esModule", { value: true });
+const z80_base_1 = __webpack_require__(18);
+// Tables for computing flags after an operation.
+const halfCarryAddTable = [0, z80_base_1.Flag.H, z80_base_1.Flag.H, z80_base_1.Flag.H, 0, 0, 0, z80_base_1.Flag.H];
+const halfCarrySubTable = [0, 0, z80_base_1.Flag.H, 0, z80_base_1.Flag.H, 0, z80_base_1.Flag.H, z80_base_1.Flag.H];
+const overflowAddTable = [0, 0, 0, z80_base_1.Flag.V, z80_base_1.Flag.V, 0, 0, 0];
+const overflowSubTable = [0, z80_base_1.Flag.V, 0, 0, 0, 0, z80_base_1.Flag.V, 0];
+const decodeMapBASE = new Map();
+decodeMapBASE.set(0x00, (z80) => {
+});
+decodeMapBASE.set(0x01, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.bc = value;
+});
+decodeMapBASE.set(0x02, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.memptr = z80_base_1.word(z80.regs.a, z80_base_1.inc16(z80.regs.bc));
+    z80.writeByte(z80.regs.bc, value);
+});
+decodeMapBASE.set(0x03, (z80) => {
+    let value;
+    value = z80.regs.bc;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.inc16(value);
+    z80.regs.bc = value;
+});
+decodeMapBASE.set(0x04, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x05, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x06, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x07, (z80) => {
+    const oldA = z80.regs.a;
+    z80.regs.a = ((z80.regs.a >> 7) | (z80.regs.a << 1)) & 0xFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | ((oldA & 0x80) !== 0 ? z80_base_1.Flag.C : 0);
+});
+decodeMapBASE.set(0x08, (z80) => {
+    const rightValue = z80.regs.afPrime;
+    z80.regs.afPrime = z80.regs.af;
+    z80.regs.af = rightValue;
+});
+decodeMapBASE.set(0x09, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.bc;
+    let result = z80.regs.hl + value;
+    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapBASE.set(0x0A, (z80) => {
+    let value;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    value = z80.readByte(z80.regs.bc);
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x0B, (z80) => {
+    let value;
+    value = z80.regs.bc;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.dec16(value);
+    z80.regs.bc = value;
+});
+decodeMapBASE.set(0x0C, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x0D, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x0E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x0F, (z80) => {
+    const oldA = z80.regs.a;
+    z80.regs.a = ((z80.regs.a >> 1) | (z80.regs.a << 7)) & 0xFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | ((oldA & 0x01) !== 0 ? z80_base_1.Flag.C : 0);
+});
+decodeMapBASE.set(0x10, (z80) => {
+    z80.incTStateCount(1);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    if (z80.regs.b !== 0) {
+        const offset = z80.readByte(z80.regs.pc);
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, z80_base_1.signedByte(offset));
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+        z80.regs.memptr = z80.regs.pc;
+    }
+    else {
+        z80.incTStateCount(3);
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    }
+});
+decodeMapBASE.set(0x11, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.de = value;
+});
+decodeMapBASE.set(0x12, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.memptr = z80_base_1.word(z80.regs.a, z80_base_1.inc16(z80.regs.de));
+    z80.writeByte(z80.regs.de, value);
+});
+decodeMapBASE.set(0x13, (z80) => {
+    let value;
+    value = z80.regs.de;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.inc16(value);
+    z80.regs.de = value;
+});
+decodeMapBASE.set(0x14, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x15, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x16, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x17, (z80) => {
+    const oldA = z80.regs.a;
+    z80.regs.a = ((z80.regs.a << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x01 : 0)) & 0xFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | ((oldA & 0x80) !== 0 ? z80_base_1.Flag.C : 0);
+});
+decodeMapBASE.set(0x18, (z80) => {
+    const offset = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.add16(z80.regs.pc, z80_base_1.signedByte(offset));
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0x19, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.de;
+    let result = z80.regs.hl + value;
+    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapBASE.set(0x1A, (z80) => {
+    let value;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.de);
+    value = z80.readByte(z80.regs.de);
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x1B, (z80) => {
+    let value;
+    value = z80.regs.de;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.dec16(value);
+    z80.regs.de = value;
+});
+decodeMapBASE.set(0x1C, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x1D, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x1E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x1F, (z80) => {
+    const oldA = z80.regs.a;
+    z80.regs.a = (z80.regs.a >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | ((oldA & 0x01) !== 0 ? z80_base_1.Flag.C : 0);
+});
+decodeMapBASE.set(0x20, (z80) => {
+    if ((z80.regs.f & z80_base_1.Flag.Z) === 0) {
+        const offset = z80.readByte(z80.regs.pc);
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, z80_base_1.signedByte(offset));
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+        z80.regs.memptr = z80.regs.pc;
+    }
+    else {
+        z80.incTStateCount(3);
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    }
+});
+decodeMapBASE.set(0x21, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.hl = value;
+});
+decodeMapBASE.set(0x22, (z80) => {
+    let value;
+    value = z80.regs.hl;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapBASE.set(0x23, (z80) => {
+    let value;
+    value = z80.regs.hl;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.inc16(value);
+    z80.regs.hl = value;
+});
+decodeMapBASE.set(0x24, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x25, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x26, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x27, (z80) => {
+    let value = 0;
+    let carry = z80.regs.f & z80_base_1.Flag.C;
+    if ((z80.regs.f & z80_base_1.Flag.H) !== 0 || ((z80.regs.a & 0x0F) > 9)) {
+        value = 6; // Skip over hex digits in lower nybble.
+    }
+    if (carry !== 0 || z80.regs.a > 0x99) {
+        value |= 0x60; // Skip over hex digits in upper nybble.
+    }
+    if (z80.regs.a > 0x99) {
+        carry = z80_base_1.Flag.C;
+    }
+    if ((z80.regs.f & z80_base_1.Flag.N) !== 0) {
+        let result = z80_base_1.sub16(z80.regs.a, value);
+        const lookup = (((z80.regs.a & 0x88) >> 3) |
+            ((value & 0x88) >> 2) |
+            ((result & 0x88) >> 1)) & 0xFF;
+        z80.regs.a = result & 0xFF;
+        z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+    }
+    else {
+        let result = z80_base_1.add16(z80.regs.a, value);
+        const lookup = (((z80.regs.a & 0x88) >> 3) |
+            ((value & 0x88) >> 2) |
+            ((result & 0x88) >> 1)) & 0xFF;
+        z80.regs.a = result & 0xFF;
+        z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+    }
+    z80.regs.f = (z80.regs.f & ~(z80_base_1.Flag.C | z80_base_1.Flag.P)) | carry | z80.parityTable[z80.regs.a];
+});
+decodeMapBASE.set(0x28, (z80) => {
+    if ((z80.regs.f & z80_base_1.Flag.Z) !== 0) {
+        const offset = z80.readByte(z80.regs.pc);
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, z80_base_1.signedByte(offset));
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+        z80.regs.memptr = z80.regs.pc;
+    }
+    else {
+        z80.incTStateCount(3);
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    }
+});
+decodeMapBASE.set(0x29, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.hl;
+    let result = z80.regs.hl + value;
+    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapBASE.set(0x2A, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.hl = value;
+});
+decodeMapBASE.set(0x2B, (z80) => {
+    let value;
+    value = z80.regs.hl;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.dec16(value);
+    z80.regs.hl = value;
+});
+decodeMapBASE.set(0x2C, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x2D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x2E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x2F, (z80) => {
+    z80.regs.a ^= 0xFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.C | z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | z80_base_1.Flag.N | z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0x30, (z80) => {
+    if ((z80.regs.f & z80_base_1.Flag.C) === 0) {
+        const offset = z80.readByte(z80.regs.pc);
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, z80_base_1.signedByte(offset));
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+        z80.regs.memptr = z80.regs.pc;
+    }
+    else {
+        z80.incTStateCount(3);
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    }
+});
+decodeMapBASE.set(0x31, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.sp = value;
+});
+decodeMapBASE.set(0x32, (z80) => {
+    let value;
+    value = z80.regs.a;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.regs.a, z80_base_1.inc16(value));
+    z80.writeByte(value, z80.regs.a);
+});
+decodeMapBASE.set(0x33, (z80) => {
+    let value;
+    value = z80.regs.sp;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.inc16(value);
+    z80.regs.sp = value;
+});
+decodeMapBASE.set(0x34, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x35, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x36, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x37, (z80) => {
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | z80_base_1.Flag.C | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+});
+decodeMapBASE.set(0x38, (z80) => {
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        const offset = z80.readByte(z80.regs.pc);
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, z80_base_1.signedByte(offset));
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+        z80.regs.memptr = z80.regs.pc;
+    }
+    else {
+        z80.incTStateCount(3);
+        z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    }
+});
+decodeMapBASE.set(0x39, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.sp;
+    let result = z80.regs.hl + value;
+    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapBASE.set(0x3A, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.inc16(value);
+    value = z80.readByte(value);
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x3B, (z80) => {
+    let value;
+    value = z80.regs.sp;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.dec16(value);
+    z80.regs.sp = value;
+});
+decodeMapBASE.set(0x3C, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x3D, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x3E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x3F, (z80) => {
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.P | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? z80_base_1.Flag.H : z80_base_1.Flag.C) | (z80.regs.a & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+});
+decodeMapBASE.set(0x40, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x41, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x42, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x43, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x44, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x45, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x46, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x47, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.b = value;
+});
+decodeMapBASE.set(0x48, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x49, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x4A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x4B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x4C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x4D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x4E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x4F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.c = value;
+});
+decodeMapBASE.set(0x50, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x51, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x52, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x53, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x54, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x55, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x56, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x57, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.d = value;
+});
+decodeMapBASE.set(0x58, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x59, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x5A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x5B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x5C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x5D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x5E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x5F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.e = value;
+});
+decodeMapBASE.set(0x60, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x61, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x62, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x63, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x64, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x65, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x66, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x67, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.h = value;
+});
+decodeMapBASE.set(0x68, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x69, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x6A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x6B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x6C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x6D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x6E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x6F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.l = value;
+});
+decodeMapBASE.set(0x70, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x71, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x72, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x73, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x74, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x75, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x76, (z80) => {
+    z80.regs.halted = 1;
+    z80.regs.pc = z80_base_1.dec16(z80.regs.pc);
+});
+decodeMapBASE.set(0x77, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapBASE.set(0x78, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x79, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x7A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x7B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x7C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x7D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x7E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x7F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.a = value;
+});
+decodeMapBASE.set(0x80, (z80) => {
+    let value;
+    value = z80.regs.b;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x81, (z80) => {
+    let value;
+    value = z80.regs.c;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x82, (z80) => {
+    let value;
+    value = z80.regs.d;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x83, (z80) => {
+    let value;
+    value = z80.regs.e;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x84, (z80) => {
+    let value;
+    value = z80.regs.h;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x85, (z80) => {
+    let value;
+    value = z80.regs.l;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x86, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x87, (z80) => {
+    let value;
+    value = z80.regs.a;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x88, (z80) => {
+    let value;
+    value = z80.regs.b;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x89, (z80) => {
+    let value;
+    value = z80.regs.c;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x8A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x8B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x8C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x8D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x8E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x8F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x90, (z80) => {
+    let value;
+    value = z80.regs.b;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x91, (z80) => {
+    let value;
+    value = z80.regs.c;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x92, (z80) => {
+    let value;
+    value = z80.regs.d;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x93, (z80) => {
+    let value;
+    value = z80.regs.e;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x94, (z80) => {
+    let value;
+    value = z80.regs.h;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x95, (z80) => {
+    let value;
+    value = z80.regs.l;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x96, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x97, (z80) => {
+    let value;
+    value = z80.regs.a;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x98, (z80) => {
+    let value;
+    value = z80.regs.b;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x99, (z80) => {
+    let value;
+    value = z80.regs.c;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x9A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x9B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x9C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x9D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x9E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0x9F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0xA0, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA1, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA2, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA3, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA4, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA5, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA7, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xA8, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xA9, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xAA, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xAB, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xAC, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xAD, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xAE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xAF, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB0, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB1, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB2, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB3, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB4, (z80) => {
+    let value;
+    value = z80.regs.h;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB5, (z80) => {
+    let value;
+    value = z80.regs.l;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB7, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xB8, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xB9, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xBA, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xBB, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xBC, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xBD, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xBE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xBF, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xC0, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.Z) === 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xC1, (z80) => {
+    z80.regs.bc = z80.popWord();
+});
+decodeMapBASE.set(0xC2, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.Z) === 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xC3, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.pc = z80.regs.memptr;
+});
+decodeMapBASE.set(0xC4, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.Z) === 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xC5, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.bc);
+});
+decodeMapBASE.set(0xC6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0xC7, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0000;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xC8, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.Z) !== 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xC9, (z80) => {
+    z80.regs.pc = z80.popWord();
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xCA, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.Z) !== 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xCB, (z80) => {
+    decodeCB(z80);
+});
+decodeMapBASE.set(0xCC, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.Z) !== 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xCD, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = z80.regs.memptr;
+});
+decodeMapBASE.set(0xCE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0xCF, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0008;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xD0, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.C) === 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xD1, (z80) => {
+    z80.regs.de = z80.popWord();
+});
+decodeMapBASE.set(0xD2, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.C) === 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xD3, (z80) => {
+    const port = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.regs.a, z80_base_1.inc8(port));
+    z80.writePort(z80_base_1.word(z80.regs.a, port), z80.regs.a);
+});
+decodeMapBASE.set(0xD4, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.C) === 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xD5, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.de);
+});
+decodeMapBASE.set(0xD6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0xD7, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0010;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xD8, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xD9, (z80) => {
+    let tmp;
+    tmp = z80.regs.bc;
+    z80.regs.bc = z80.regs.bcPrime;
+    z80.regs.bcPrime = tmp;
+    tmp = z80.regs.de;
+    z80.regs.de = z80.regs.dePrime;
+    z80.regs.dePrime = tmp;
+    tmp = z80.regs.hl;
+    z80.regs.hl = z80.regs.hlPrime;
+    z80.regs.hlPrime = tmp;
+});
+decodeMapBASE.set(0xDA, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xDB, (z80) => {
+    const port = z80_base_1.word(z80.regs.a, z80.readByte(z80.regs.pc));
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.a = z80.readPort(port);
+    z80.regs.memptr = z80_base_1.inc16(port);
+});
+decodeMapBASE.set(0xDC, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xDD, (z80) => {
+    decodeDD(z80);
+});
+decodeMapBASE.set(0xDE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapBASE.set(0xDF, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0018;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xE0, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.P) === 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xE1, (z80) => {
+    z80.regs.hl = z80.popWord();
+});
+decodeMapBASE.set(0xE2, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.P) === 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xE3, (z80) => {
+    const rightValue = z80.regs.hl;
+    const leftValueL = z80.readByte(z80.regs.sp);
+    const leftValueH = z80.readByte(z80_base_1.inc16(z80.regs.sp));
+    z80.incTStateCount(1);
+    z80.writeByte(z80_base_1.inc16(z80.regs.sp), z80_base_1.hi(rightValue));
+    z80.writeByte(z80.regs.sp, z80_base_1.lo(rightValue));
+    z80.incTStateCount(2);
+    z80.regs.memptr = z80_base_1.word(leftValueH, leftValueL);
+    z80.regs.hl = z80_base_1.word(leftValueH, leftValueL);
+});
+decodeMapBASE.set(0xE4, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.P) === 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xE5, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.hl);
+});
+decodeMapBASE.set(0xE6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapBASE.set(0xE7, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0020;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xE8, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.P) !== 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xE9, (z80) => {
+    z80.regs.pc = z80.regs.hl;
+});
+decodeMapBASE.set(0xEA, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.P) !== 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xEB, (z80) => {
+    const rightValue = z80.regs.hl;
+    z80.regs.hl = z80.regs.de;
+    z80.regs.de = rightValue;
+});
+decodeMapBASE.set(0xEC, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.P) !== 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xED, (z80) => {
+    decodeED(z80);
+});
+decodeMapBASE.set(0xEE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xEF, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0028;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xF0, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.S) === 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xF1, (z80) => {
+    z80.regs.af = z80.popWord();
+});
+decodeMapBASE.set(0xF2, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.S) === 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xF3, (z80) => {
+    z80.regs.iff1 = 0;
+    z80.regs.iff2 = 0;
+});
+decodeMapBASE.set(0xF4, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.S) === 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xF5, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.af);
+});
+decodeMapBASE.set(0xF6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapBASE.set(0xF7, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0030;
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapBASE.set(0xF8, (z80) => {
+    z80.incTStateCount(1);
+    if ((z80.regs.f & z80_base_1.Flag.S) !== 0) {
+        z80.regs.pc = z80.popWord();
+        z80.regs.memptr = z80.regs.pc;
+    }
+});
+decodeMapBASE.set(0xF9, (z80) => {
+    let value;
+    value = z80.regs.hl;
+    z80.incTStateCount(2);
+    z80.regs.sp = value;
+});
+decodeMapBASE.set(0xFA, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.S) !== 0) {
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xFB, (z80) => {
+    z80.regs.iff1 = 1;
+    z80.regs.iff2 = 1;
+});
+decodeMapBASE.set(0xFC, (z80) => {
+    z80.regs.memptr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.word(z80.readByte(z80.regs.pc), z80.regs.memptr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    if ((z80.regs.f & z80_base_1.Flag.S) !== 0) {
+        z80.incTStateCount(1);
+        z80.pushWord(z80.regs.pc);
+        z80.regs.pc = z80.regs.memptr;
+    }
+});
+decodeMapBASE.set(0xFD, (z80) => {
+    decodeFD(z80);
+});
+decodeMapBASE.set(0xFE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapBASE.set(0xFF, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.pc);
+    z80.regs.pc = 0x0038;
+    z80.regs.memptr = z80.regs.pc;
+});
+const decodeMapCB = new Map();
+decodeMapCB.set(0x00, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x01, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x02, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x03, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x04, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x05, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x06, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x07, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x08, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x09, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x0A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x0B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x0C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x0D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x0E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x0F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x10, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x11, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x12, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x13, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x14, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x15, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x16, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x17, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x18, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x19, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x1A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x1B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x1C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x1D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x1E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x1F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x20, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x21, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x22, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x23, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x24, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x25, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x26, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x27, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x28, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x29, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x2A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x2B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x2C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x2D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x2E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x2F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x30, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x31, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x32, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x33, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x34, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x35, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x36, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x37, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x38, (z80) => {
+    let value;
+    value = z80.regs.b;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.b = value;
+});
+decodeMapCB.set(0x39, (z80) => {
+    let value;
+    value = z80.regs.c;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.c = value;
+});
+decodeMapCB.set(0x3A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.d = value;
+});
+decodeMapCB.set(0x3B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.e = value;
+});
+decodeMapCB.set(0x3C, (z80) => {
+    let value;
+    value = z80.regs.h;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.h = value;
+});
+decodeMapCB.set(0x3D, (z80) => {
+    let value;
+    value = z80.regs.l;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.l = value;
+});
+decodeMapCB.set(0x3E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.hl, value);
+});
+decodeMapCB.set(0x3F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.regs.a = value;
+});
+decodeMapCB.set(0x40, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x41, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x42, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x43, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x44, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x45, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x46, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x47, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x48, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x49, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x4A, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x4B, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x4C, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x4D, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x4E, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x4F, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x50, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x51, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x52, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x53, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x54, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x55, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x56, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x57, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x58, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x59, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x5A, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x5B, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x5C, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x5D, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x5E, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x5F, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x60, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x61, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x62, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x63, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x64, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x65, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x66, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x67, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x68, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x69, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x6A, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x6B, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x6C, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x6D, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x6E, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x6F, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x70, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x71, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x72, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x73, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x74, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x75, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x76, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x77, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x78, (z80) => {
+    const value = z80.regs.b;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x79, (z80) => {
+    const value = z80.regs.c;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x7A, (z80) => {
+    const value = z80.regs.d;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x7B, (z80) => {
+    const value = z80.regs.e;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x7C, (z80) => {
+    const value = z80.regs.h;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x7D, (z80) => {
+    const value = z80.regs.l;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x7E, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x7F, (z80) => {
+    const value = z80.regs.a;
+    const hiddenValue = value;
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapCB.set(0x80, (z80) => {
+    z80.regs.b &= 0xFE;
+});
+decodeMapCB.set(0x81, (z80) => {
+    z80.regs.c &= 0xFE;
+});
+decodeMapCB.set(0x82, (z80) => {
+    z80.regs.d &= 0xFE;
+});
+decodeMapCB.set(0x83, (z80) => {
+    z80.regs.e &= 0xFE;
+});
+decodeMapCB.set(0x84, (z80) => {
+    z80.regs.h &= 0xFE;
+});
+decodeMapCB.set(0x85, (z80) => {
+    z80.regs.l &= 0xFE;
+});
+decodeMapCB.set(0x86, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xFE);
+});
+decodeMapCB.set(0x87, (z80) => {
+    z80.regs.a &= 0xFE;
+});
+decodeMapCB.set(0x88, (z80) => {
+    z80.regs.b &= 0xFD;
+});
+decodeMapCB.set(0x89, (z80) => {
+    z80.regs.c &= 0xFD;
+});
+decodeMapCB.set(0x8A, (z80) => {
+    z80.regs.d &= 0xFD;
+});
+decodeMapCB.set(0x8B, (z80) => {
+    z80.regs.e &= 0xFD;
+});
+decodeMapCB.set(0x8C, (z80) => {
+    z80.regs.h &= 0xFD;
+});
+decodeMapCB.set(0x8D, (z80) => {
+    z80.regs.l &= 0xFD;
+});
+decodeMapCB.set(0x8E, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xFD);
+});
+decodeMapCB.set(0x8F, (z80) => {
+    z80.regs.a &= 0xFD;
+});
+decodeMapCB.set(0x90, (z80) => {
+    z80.regs.b &= 0xFB;
+});
+decodeMapCB.set(0x91, (z80) => {
+    z80.regs.c &= 0xFB;
+});
+decodeMapCB.set(0x92, (z80) => {
+    z80.regs.d &= 0xFB;
+});
+decodeMapCB.set(0x93, (z80) => {
+    z80.regs.e &= 0xFB;
+});
+decodeMapCB.set(0x94, (z80) => {
+    z80.regs.h &= 0xFB;
+});
+decodeMapCB.set(0x95, (z80) => {
+    z80.regs.l &= 0xFB;
+});
+decodeMapCB.set(0x96, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xFB);
+});
+decodeMapCB.set(0x97, (z80) => {
+    z80.regs.a &= 0xFB;
+});
+decodeMapCB.set(0x98, (z80) => {
+    z80.regs.b &= 0xF7;
+});
+decodeMapCB.set(0x99, (z80) => {
+    z80.regs.c &= 0xF7;
+});
+decodeMapCB.set(0x9A, (z80) => {
+    z80.regs.d &= 0xF7;
+});
+decodeMapCB.set(0x9B, (z80) => {
+    z80.regs.e &= 0xF7;
+});
+decodeMapCB.set(0x9C, (z80) => {
+    z80.regs.h &= 0xF7;
+});
+decodeMapCB.set(0x9D, (z80) => {
+    z80.regs.l &= 0xF7;
+});
+decodeMapCB.set(0x9E, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xF7);
+});
+decodeMapCB.set(0x9F, (z80) => {
+    z80.regs.a &= 0xF7;
+});
+decodeMapCB.set(0xA0, (z80) => {
+    z80.regs.b &= 0xEF;
+});
+decodeMapCB.set(0xA1, (z80) => {
+    z80.regs.c &= 0xEF;
+});
+decodeMapCB.set(0xA2, (z80) => {
+    z80.regs.d &= 0xEF;
+});
+decodeMapCB.set(0xA3, (z80) => {
+    z80.regs.e &= 0xEF;
+});
+decodeMapCB.set(0xA4, (z80) => {
+    z80.regs.h &= 0xEF;
+});
+decodeMapCB.set(0xA5, (z80) => {
+    z80.regs.l &= 0xEF;
+});
+decodeMapCB.set(0xA6, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xEF);
+});
+decodeMapCB.set(0xA7, (z80) => {
+    z80.regs.a &= 0xEF;
+});
+decodeMapCB.set(0xA8, (z80) => {
+    z80.regs.b &= 0xDF;
+});
+decodeMapCB.set(0xA9, (z80) => {
+    z80.regs.c &= 0xDF;
+});
+decodeMapCB.set(0xAA, (z80) => {
+    z80.regs.d &= 0xDF;
+});
+decodeMapCB.set(0xAB, (z80) => {
+    z80.regs.e &= 0xDF;
+});
+decodeMapCB.set(0xAC, (z80) => {
+    z80.regs.h &= 0xDF;
+});
+decodeMapCB.set(0xAD, (z80) => {
+    z80.regs.l &= 0xDF;
+});
+decodeMapCB.set(0xAE, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xDF);
+});
+decodeMapCB.set(0xAF, (z80) => {
+    z80.regs.a &= 0xDF;
+});
+decodeMapCB.set(0xB0, (z80) => {
+    z80.regs.b &= 0xBF;
+});
+decodeMapCB.set(0xB1, (z80) => {
+    z80.regs.c &= 0xBF;
+});
+decodeMapCB.set(0xB2, (z80) => {
+    z80.regs.d &= 0xBF;
+});
+decodeMapCB.set(0xB3, (z80) => {
+    z80.regs.e &= 0xBF;
+});
+decodeMapCB.set(0xB4, (z80) => {
+    z80.regs.h &= 0xBF;
+});
+decodeMapCB.set(0xB5, (z80) => {
+    z80.regs.l &= 0xBF;
+});
+decodeMapCB.set(0xB6, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0xBF);
+});
+decodeMapCB.set(0xB7, (z80) => {
+    z80.regs.a &= 0xBF;
+});
+decodeMapCB.set(0xB8, (z80) => {
+    z80.regs.b &= 0x7F;
+});
+decodeMapCB.set(0xB9, (z80) => {
+    z80.regs.c &= 0x7F;
+});
+decodeMapCB.set(0xBA, (z80) => {
+    z80.regs.d &= 0x7F;
+});
+decodeMapCB.set(0xBB, (z80) => {
+    z80.regs.e &= 0x7F;
+});
+decodeMapCB.set(0xBC, (z80) => {
+    z80.regs.h &= 0x7F;
+});
+decodeMapCB.set(0xBD, (z80) => {
+    z80.regs.l &= 0x7F;
+});
+decodeMapCB.set(0xBE, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value & 0x7F);
+});
+decodeMapCB.set(0xBF, (z80) => {
+    z80.regs.a &= 0x7F;
+});
+decodeMapCB.set(0xC0, (z80) => {
+    z80.regs.b |= 0x01;
+});
+decodeMapCB.set(0xC1, (z80) => {
+    z80.regs.c |= 0x01;
+});
+decodeMapCB.set(0xC2, (z80) => {
+    z80.regs.d |= 0x01;
+});
+decodeMapCB.set(0xC3, (z80) => {
+    z80.regs.e |= 0x01;
+});
+decodeMapCB.set(0xC4, (z80) => {
+    z80.regs.h |= 0x01;
+});
+decodeMapCB.set(0xC5, (z80) => {
+    z80.regs.l |= 0x01;
+});
+decodeMapCB.set(0xC6, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x01);
+});
+decodeMapCB.set(0xC7, (z80) => {
+    z80.regs.a |= 0x01;
+});
+decodeMapCB.set(0xC8, (z80) => {
+    z80.regs.b |= 0x02;
+});
+decodeMapCB.set(0xC9, (z80) => {
+    z80.regs.c |= 0x02;
+});
+decodeMapCB.set(0xCA, (z80) => {
+    z80.regs.d |= 0x02;
+});
+decodeMapCB.set(0xCB, (z80) => {
+    z80.regs.e |= 0x02;
+});
+decodeMapCB.set(0xCC, (z80) => {
+    z80.regs.h |= 0x02;
+});
+decodeMapCB.set(0xCD, (z80) => {
+    z80.regs.l |= 0x02;
+});
+decodeMapCB.set(0xCE, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x02);
+});
+decodeMapCB.set(0xCF, (z80) => {
+    z80.regs.a |= 0x02;
+});
+decodeMapCB.set(0xD0, (z80) => {
+    z80.regs.b |= 0x04;
+});
+decodeMapCB.set(0xD1, (z80) => {
+    z80.regs.c |= 0x04;
+});
+decodeMapCB.set(0xD2, (z80) => {
+    z80.regs.d |= 0x04;
+});
+decodeMapCB.set(0xD3, (z80) => {
+    z80.regs.e |= 0x04;
+});
+decodeMapCB.set(0xD4, (z80) => {
+    z80.regs.h |= 0x04;
+});
+decodeMapCB.set(0xD5, (z80) => {
+    z80.regs.l |= 0x04;
+});
+decodeMapCB.set(0xD6, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x04);
+});
+decodeMapCB.set(0xD7, (z80) => {
+    z80.regs.a |= 0x04;
+});
+decodeMapCB.set(0xD8, (z80) => {
+    z80.regs.b |= 0x08;
+});
+decodeMapCB.set(0xD9, (z80) => {
+    z80.regs.c |= 0x08;
+});
+decodeMapCB.set(0xDA, (z80) => {
+    z80.regs.d |= 0x08;
+});
+decodeMapCB.set(0xDB, (z80) => {
+    z80.regs.e |= 0x08;
+});
+decodeMapCB.set(0xDC, (z80) => {
+    z80.regs.h |= 0x08;
+});
+decodeMapCB.set(0xDD, (z80) => {
+    z80.regs.l |= 0x08;
+});
+decodeMapCB.set(0xDE, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x08);
+});
+decodeMapCB.set(0xDF, (z80) => {
+    z80.regs.a |= 0x08;
+});
+decodeMapCB.set(0xE0, (z80) => {
+    z80.regs.b |= 0x10;
+});
+decodeMapCB.set(0xE1, (z80) => {
+    z80.regs.c |= 0x10;
+});
+decodeMapCB.set(0xE2, (z80) => {
+    z80.regs.d |= 0x10;
+});
+decodeMapCB.set(0xE3, (z80) => {
+    z80.regs.e |= 0x10;
+});
+decodeMapCB.set(0xE4, (z80) => {
+    z80.regs.h |= 0x10;
+});
+decodeMapCB.set(0xE5, (z80) => {
+    z80.regs.l |= 0x10;
+});
+decodeMapCB.set(0xE6, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x10);
+});
+decodeMapCB.set(0xE7, (z80) => {
+    z80.regs.a |= 0x10;
+});
+decodeMapCB.set(0xE8, (z80) => {
+    z80.regs.b |= 0x20;
+});
+decodeMapCB.set(0xE9, (z80) => {
+    z80.regs.c |= 0x20;
+});
+decodeMapCB.set(0xEA, (z80) => {
+    z80.regs.d |= 0x20;
+});
+decodeMapCB.set(0xEB, (z80) => {
+    z80.regs.e |= 0x20;
+});
+decodeMapCB.set(0xEC, (z80) => {
+    z80.regs.h |= 0x20;
+});
+decodeMapCB.set(0xED, (z80) => {
+    z80.regs.l |= 0x20;
+});
+decodeMapCB.set(0xEE, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x20);
+});
+decodeMapCB.set(0xEF, (z80) => {
+    z80.regs.a |= 0x20;
+});
+decodeMapCB.set(0xF0, (z80) => {
+    z80.regs.b |= 0x40;
+});
+decodeMapCB.set(0xF1, (z80) => {
+    z80.regs.c |= 0x40;
+});
+decodeMapCB.set(0xF2, (z80) => {
+    z80.regs.d |= 0x40;
+});
+decodeMapCB.set(0xF3, (z80) => {
+    z80.regs.e |= 0x40;
+});
+decodeMapCB.set(0xF4, (z80) => {
+    z80.regs.h |= 0x40;
+});
+decodeMapCB.set(0xF5, (z80) => {
+    z80.regs.l |= 0x40;
+});
+decodeMapCB.set(0xF6, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x40);
+});
+decodeMapCB.set(0xF7, (z80) => {
+    z80.regs.a |= 0x40;
+});
+decodeMapCB.set(0xF8, (z80) => {
+    z80.regs.b |= 0x80;
+});
+decodeMapCB.set(0xF9, (z80) => {
+    z80.regs.c |= 0x80;
+});
+decodeMapCB.set(0xFA, (z80) => {
+    z80.regs.d |= 0x80;
+});
+decodeMapCB.set(0xFB, (z80) => {
+    z80.regs.e |= 0x80;
+});
+decodeMapCB.set(0xFC, (z80) => {
+    z80.regs.h |= 0x80;
+});
+decodeMapCB.set(0xFD, (z80) => {
+    z80.regs.l |= 0x80;
+});
+decodeMapCB.set(0xFE, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.hl, value | 0x80);
+});
+decodeMapCB.set(0xFF, (z80) => {
+    z80.regs.a |= 0x80;
+});
+const decodeMapDD = new Map();
+decodeMapDD.set(0x09, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.bc;
+    let result = z80.regs.ix + value;
+    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.ix);
+    z80.regs.ix = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapDD.set(0x19, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.de;
+    let result = z80.regs.ix + value;
+    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.ix);
+    z80.regs.ix = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapDD.set(0x21, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.ix = value;
+});
+decodeMapDD.set(0x22, (z80) => {
+    let value;
+    value = z80.regs.ix;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapDD.set(0x23, (z80) => {
+    let value;
+    value = z80.regs.ix;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.inc16(value);
+    z80.regs.ix = value;
+});
+decodeMapDD.set(0x24, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x25, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x26, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x29, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.ix;
+    let result = z80.regs.ix + value;
+    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.ix);
+    z80.regs.ix = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapDD.set(0x2A, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.ix = value;
+});
+decodeMapDD.set(0x2B, (z80) => {
+    let value;
+    value = z80.regs.ix;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.dec16(value);
+    z80.regs.ix = value;
+});
+decodeMapDD.set(0x2C, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x2D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x2E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x34, (z80) => {
+    let value;
+    const offset = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.add16(z80.regs.ix, z80_base_1.signedByte(offset));
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x35, (z80) => {
+    let value;
+    const offset = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.add16(z80.regs.ix, z80_base_1.signedByte(offset));
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x36, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(2);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x39, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.sp;
+    let result = z80.regs.ix + value;
+    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.ix);
+    z80.regs.ix = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapDD.set(0x44, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.b = value;
+});
+decodeMapDD.set(0x45, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.b = value;
+});
+decodeMapDD.set(0x46, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.b = value;
+});
+decodeMapDD.set(0x4C, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.c = value;
+});
+decodeMapDD.set(0x4D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.c = value;
+});
+decodeMapDD.set(0x4E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.c = value;
+});
+decodeMapDD.set(0x54, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.d = value;
+});
+decodeMapDD.set(0x55, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.d = value;
+});
+decodeMapDD.set(0x56, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.d = value;
+});
+decodeMapDD.set(0x5C, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.e = value;
+});
+decodeMapDD.set(0x5D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.e = value;
+});
+decodeMapDD.set(0x5E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.e = value;
+});
+decodeMapDD.set(0x60, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x61, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x62, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x63, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x64, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x65, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x66, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.h = value;
+});
+decodeMapDD.set(0x67, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.ixh = value;
+});
+decodeMapDD.set(0x68, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x69, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x6A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x6B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x6C, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x6D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x6E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.l = value;
+});
+decodeMapDD.set(0x6F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.ixl = value;
+});
+decodeMapDD.set(0x70, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.b;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x71, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.c;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x72, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.d;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x73, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.e;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x74, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.h;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x75, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.l;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x77, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.a;
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDD.set(0x7C, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.a = value;
+});
+decodeMapDD.set(0x7D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.a = value;
+});
+decodeMapDD.set(0x7E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a = value;
+});
+decodeMapDD.set(0x84, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x85, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x86, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x8C, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x8D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x8E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x94, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x95, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x96, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x9C, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x9D, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0x9E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapDD.set(0xA4, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapDD.set(0xA5, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapDD.set(0xA6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapDD.set(0xAC, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapDD.set(0xAD, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapDD.set(0xAE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapDD.set(0xB4, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapDD.set(0xB5, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapDD.set(0xB6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapDD.set(0xBC, (z80) => {
+    let value;
+    value = z80.regs.ixh;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapDD.set(0xBD, (z80) => {
+    let value;
+    value = z80.regs.ixl;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapDD.set(0xBE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.ix + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapDD.set(0xCB, (z80) => {
+    decodeDDCB(z80);
+});
+decodeMapDD.set(0xE1, (z80) => {
+    z80.regs.ix = z80.popWord();
+});
+decodeMapDD.set(0xE3, (z80) => {
+    const rightValue = z80.regs.ix;
+    const leftValueL = z80.readByte(z80.regs.sp);
+    const leftValueH = z80.readByte(z80_base_1.inc16(z80.regs.sp));
+    z80.incTStateCount(1);
+    z80.writeByte(z80_base_1.inc16(z80.regs.sp), z80_base_1.hi(rightValue));
+    z80.writeByte(z80.regs.sp, z80_base_1.lo(rightValue));
+    z80.incTStateCount(2);
+    z80.regs.memptr = z80_base_1.word(leftValueH, leftValueL);
+    z80.regs.ix = z80_base_1.word(leftValueH, leftValueL);
+});
+decodeMapDD.set(0xE5, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.ix);
+});
+decodeMapDD.set(0xE9, (z80) => {
+    z80.regs.pc = z80.regs.ix;
+});
+decodeMapDD.set(0xF9, (z80) => {
+    let value;
+    value = z80.regs.ix;
+    z80.incTStateCount(2);
+    z80.regs.sp = value;
+});
+const decodeMapDDCB = new Map();
+decodeMapDDCB.set(0x00, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x01, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x02, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x03, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x04, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x05, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x06, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x07, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x08, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x09, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x0A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x0B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x0C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x0D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x0E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x0F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x10, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x11, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x12, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x13, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x14, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x15, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x16, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x17, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x18, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x19, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x1A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x1B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x1C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x1D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x1E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x1F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x20, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x21, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x22, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x23, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x24, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x25, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x26, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x27, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x28, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x29, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x2A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x2B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x2C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x2D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x2E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x2F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x30, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x31, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x32, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x33, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x34, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x35, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x36, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x37, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x38, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x39, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x3A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x3B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x3C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x3D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x3E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapDDCB.set(0x3F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x47, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x40, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x41, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x42, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x43, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x44, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x45, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x46, decodeMapDDCB.get(0x47));
+decodeMapDDCB.set(0x4F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x48, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x49, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x4A, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x4B, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x4C, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x4D, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x4E, decodeMapDDCB.get(0x4F));
+decodeMapDDCB.set(0x57, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x50, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x51, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x52, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x53, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x54, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x55, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x56, decodeMapDDCB.get(0x57));
+decodeMapDDCB.set(0x5F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x58, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x59, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x5A, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x5B, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x5C, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x5D, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x5E, decodeMapDDCB.get(0x5F));
+decodeMapDDCB.set(0x67, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x60, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x61, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x62, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x63, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x64, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x65, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x66, decodeMapDDCB.get(0x67));
+decodeMapDDCB.set(0x6F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x68, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x69, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x6A, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x6B, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x6C, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x6D, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x6E, decodeMapDDCB.get(0x6F));
+decodeMapDDCB.set(0x77, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x70, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x71, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x72, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x73, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x74, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x75, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x76, decodeMapDDCB.get(0x77));
+decodeMapDDCB.set(0x7F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapDDCB.set(0x78, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x79, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x7A, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x7B, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x7C, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x7D, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x7E, decodeMapDDCB.get(0x7F));
+decodeMapDDCB.set(0x80, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x81, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x82, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x83, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x84, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x85, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x86, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xFE);
+});
+decodeMapDDCB.set(0x87, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x88, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x89, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x8A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x8B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x8C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x8D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x8E, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xFD);
+});
+decodeMapDDCB.set(0x8F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x90, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x91, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x92, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x93, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x94, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x95, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x96, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xFB);
+});
+decodeMapDDCB.set(0x97, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0x98, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0x99, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0x9A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0x9B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0x9C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0x9D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0x9E, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xF7);
+});
+decodeMapDDCB.set(0x9F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xA0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xA1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xA2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xA3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xA4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xA5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xA6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xEF);
+});
+decodeMapDDCB.set(0xA7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xA8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xA9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xAA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xAB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xAC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xAD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xAE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xDF);
+});
+decodeMapDDCB.set(0xAF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xB0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xB1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xB2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xB3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xB4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xB5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xB6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xBF);
+});
+decodeMapDDCB.set(0xB7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xB8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xB9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xBA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xBB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xBC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xBD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xBE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0x7F);
+});
+decodeMapDDCB.set(0xBF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xC0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xC1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xC2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xC3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xC4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xC5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xC6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x01);
+});
+decodeMapDDCB.set(0xC7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xC8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xC9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xCA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xCB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xCC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xCD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xCE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x02);
+});
+decodeMapDDCB.set(0xCF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xD0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xD1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xD2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xD3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xD4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xD5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xD6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x04);
+});
+decodeMapDDCB.set(0xD7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xD8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xD9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xDA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xDB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xDC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xDD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xDE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x08);
+});
+decodeMapDDCB.set(0xDF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xE0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xE1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xE2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xE3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xE4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xE5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xE6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x10);
+});
+decodeMapDDCB.set(0xE7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xE8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xE9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xEA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xEB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xEC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xED, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xEE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x20);
+});
+decodeMapDDCB.set(0xEF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xF0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xF1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xF2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xF3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xF4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xF5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xF6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x40);
+});
+decodeMapDDCB.set(0xF7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapDDCB.set(0xF8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapDDCB.set(0xF9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapDDCB.set(0xFA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapDDCB.set(0xFB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapDDCB.set(0xFC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapDDCB.set(0xFD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapDDCB.set(0xFE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x80);
+});
+decodeMapDDCB.set(0xFF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+const decodeMapED = new Map();
+decodeMapED.set(0x40, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.b = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.b];
+});
+decodeMapED.set(0x41, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.b);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x42, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.bc;
+    let result = z80.regs.hl - value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result -= 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | overflowSubTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x43, (z80) => {
+    let value;
+    value = z80.regs.bc;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapED.set(0x7C, (z80) => {
+    const value = z80.regs.a;
+    z80.regs.a = 0;
+    const diff = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = diff;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= z80.sz53Table[z80.regs.a];
+    z80.regs.f = f;
+});
+decodeMapED.set(0x44, decodeMapED.get(0x7C));
+decodeMapED.set(0x4C, decodeMapED.get(0x7C));
+decodeMapED.set(0x54, decodeMapED.get(0x7C));
+decodeMapED.set(0x5C, decodeMapED.get(0x7C));
+decodeMapED.set(0x64, decodeMapED.get(0x7C));
+decodeMapED.set(0x6C, decodeMapED.get(0x7C));
+decodeMapED.set(0x74, decodeMapED.get(0x7C));
+decodeMapED.set(0x7D, (z80) => {
+    z80.regs.iff1 = z80.regs.iff2;
+    z80.regs.pc = z80.popWord();
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapED.set(0x45, decodeMapED.get(0x7D));
+decodeMapED.set(0x55, decodeMapED.get(0x7D));
+decodeMapED.set(0x5D, decodeMapED.get(0x7D));
+decodeMapED.set(0x65, decodeMapED.get(0x7D));
+decodeMapED.set(0x6D, decodeMapED.get(0x7D));
+decodeMapED.set(0x75, decodeMapED.get(0x7D));
+decodeMapED.set(0x6E, (z80) => {
+    z80.regs.im = 0;
+});
+decodeMapED.set(0x46, decodeMapED.get(0x6E));
+decodeMapED.set(0x4E, decodeMapED.get(0x6E));
+decodeMapED.set(0x66, decodeMapED.get(0x6E));
+decodeMapED.set(0x47, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.incTStateCount(1);
+    z80.regs.i = value;
+});
+decodeMapED.set(0x48, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.c = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.c];
+});
+decodeMapED.set(0x49, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.c);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x4A, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.bc;
+    let result = z80.regs.hl + value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result += 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x4B, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.bc = value;
+});
+decodeMapED.set(0x4D, (z80) => {
+    z80.regs.iff1 = z80.regs.iff2;
+    z80.regs.pc = z80.popWord();
+    z80.regs.memptr = z80.regs.pc;
+});
+decodeMapED.set(0x4F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.incTStateCount(1);
+    z80.regs.r = value;
+});
+decodeMapED.set(0x50, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.d = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.d];
+});
+decodeMapED.set(0x51, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.d);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x52, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.de;
+    let result = z80.regs.hl - value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result -= 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | overflowSubTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x53, (z80) => {
+    let value;
+    value = z80.regs.de;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapED.set(0x76, (z80) => {
+    z80.regs.im = 1;
+});
+decodeMapED.set(0x56, decodeMapED.get(0x76));
+decodeMapED.set(0x57, (z80) => {
+    let value;
+    value = z80.regs.i;
+    z80.incTStateCount(1);
+    z80.regs.a = value;
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53Table[z80.regs.a] | (z80.regs.iff2 ? z80_base_1.Flag.V : 0);
+});
+decodeMapED.set(0x58, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.e = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.e];
+});
+decodeMapED.set(0x59, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.e);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x5A, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.de;
+    let result = z80.regs.hl + value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result += 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x5B, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.de = value;
+});
+decodeMapED.set(0x7E, (z80) => {
+    z80.regs.im = 2;
+});
+decodeMapED.set(0x5E, decodeMapED.get(0x7E));
+decodeMapED.set(0x5F, (z80) => {
+    let value;
+    value = z80.regs.rCombined;
+    z80.incTStateCount(1);
+    z80.regs.a = value;
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53Table[z80.regs.a] | (z80.regs.iff2 ? z80_base_1.Flag.V : 0);
+});
+decodeMapED.set(0x60, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.h = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.h];
+});
+decodeMapED.set(0x61, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.h);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x62, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.hl;
+    let result = z80.regs.hl - value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result -= 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | overflowSubTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x63, (z80) => {
+    let value;
+    value = z80.regs.hl;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapED.set(0x67, (z80) => {
+    const tmp = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(4);
+    z80.writeByte(z80.regs.hl, ((z80.regs.a << 4) | (tmp >> 4)) & 0xFF);
+    z80.regs.a = (z80.regs.a & 0xF0) | (tmp & 0x0F);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.a];
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+});
+decodeMapED.set(0x68, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.l = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.l];
+});
+decodeMapED.set(0x69, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.l);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x6A, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.hl;
+    let result = z80.regs.hl + value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result += 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x6B, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.hl = value;
+});
+decodeMapED.set(0x6F, (z80) => {
+    const tmp = z80.readByte(z80.regs.hl);
+    z80.incTStateCount(4);
+    z80.writeByte(z80.regs.hl, ((tmp << 4) | (z80.regs.a & 0x0F)) & 0xFF);
+    z80.regs.a = (z80.regs.a & 0xF0) | (tmp >> 4);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.a];
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+});
+decodeMapED.set(0x70, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.f = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.f];
+});
+decodeMapED.set(0x71, (z80) => {
+    z80.writePort(z80.regs.bc, 0x00);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x72, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.sp;
+    let result = z80.regs.hl - value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result -= 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | overflowSubTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x73, (z80) => {
+    let value;
+    value = z80.regs.sp;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapED.set(0x78, (z80) => {
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.a = z80.readPort(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | z80.sz53pTable[z80.regs.a];
+});
+decodeMapED.set(0x79, (z80) => {
+    z80.writePort(z80.regs.bc, z80.regs.a);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+});
+decodeMapED.set(0x7A, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.sp;
+    let result = z80.regs.hl + value;
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result += 1;
+    }
+    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
+        ((value & 0x8800) >> 10) |
+        ((result & 0x8800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.hl = result & 0xFFFF;
+    z80.regs.f = ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5 | z80_base_1.Flag.S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : z80_base_1.Flag.Z);
+});
+decodeMapED.set(0x7B, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.sp = value;
+});
+decodeMapED.set(0xA0, (z80) => {
+    let value = z80.readByte(z80.regs.hl);
+    z80.writeByte(z80.regs.de, value);
+    z80.incTStateCount(2);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    value = z80_base_1.add16(value, z80.regs.a);
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.C | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | (value & z80_base_1.Flag.X3) | ((value & 0x02) !== 0 ? z80_base_1.Flag.X5 : 0);
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.de = z80_base_1.inc16(z80.regs.de);
+});
+decodeMapED.set(0xA1, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    let diff = (z80.regs.a - value) & 0xFF;
+    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
+    z80.incTStateCount(5);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : z80_base_1.Flag.Z) | (diff & z80_base_1.Flag.S);
+    if ((z80.regs.f & z80_base_1.Flag.H) !== 0)
+        diff = z80_base_1.dec8(diff);
+    z80.regs.f |= (diff & z80_base_1.Flag.X3) | (((diff & 0x02) !== 0) ? z80_base_1.Flag.X5 : 0);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.memptr);
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+});
+decodeMapED.set(0xA2, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readPort(z80.regs.bc);
+    z80.writeByte(z80.regs.hl, value);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    const other = z80_base_1.inc8(z80_base_1.add8(value, z80.regs.c));
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+});
+decodeMapED.set(0xA3, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readByte(z80.regs.hl);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.writePort(z80.regs.bc, value);
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+    const other = z80_base_1.add8(value, z80.regs.l);
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+});
+decodeMapED.set(0xA8, (z80) => {
+    let value = z80.readByte(z80.regs.hl);
+    z80.writeByte(z80.regs.de, value);
+    z80.incTStateCount(2);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    value = z80_base_1.add16(value, z80.regs.a);
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.C | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | (value & z80_base_1.Flag.X3) | ((value & 0x02) !== 0 ? z80_base_1.Flag.X5 : 0);
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+    z80.regs.de = z80_base_1.dec16(z80.regs.de);
+});
+decodeMapED.set(0xA9, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    let diff = (z80.regs.a - value) & 0xFF;
+    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
+    z80.incTStateCount(5);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : z80_base_1.Flag.Z) | (diff & z80_base_1.Flag.S);
+    if ((z80.regs.f & z80_base_1.Flag.H) !== 0)
+        diff = z80_base_1.dec8(diff);
+    z80.regs.f |= (diff & z80_base_1.Flag.X3) | (((diff & 0x02) !== 0) ? z80_base_1.Flag.X5 : 0);
+    z80.regs.memptr = z80_base_1.dec16(z80.regs.memptr);
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+});
+decodeMapED.set(0xAA, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readPort(z80.regs.bc);
+    z80.writeByte(z80.regs.hl, value);
+    z80.regs.memptr = z80_base_1.dec16(z80.regs.bc);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    const other = z80_base_1.dec8(z80_base_1.add8(value, z80.regs.c));
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+});
+decodeMapED.set(0xAB, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readByte(z80.regs.hl);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    z80.regs.memptr = z80_base_1.dec16(z80.regs.bc);
+    z80.writePort(z80.regs.bc, value);
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+    const other = z80_base_1.add8(value, z80.regs.l);
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+});
+decodeMapED.set(0xB0, (z80) => {
+    let value = z80.readByte(z80.regs.hl);
+    z80.writeByte(z80.regs.de, value);
+    z80.incTStateCount(2);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    value = z80_base_1.add16(value, z80.regs.a);
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.C | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | (value & z80_base_1.Flag.X3) | ((value & 0x02) !== 0 ? z80_base_1.Flag.X5 : 0);
+    if (z80.regs.bc !== 0) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+        z80.regs.memptr = z80_base_1.add16(z80.regs.pc, 1);
+    }
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+    z80.regs.de = z80_base_1.inc16(z80.regs.de);
+});
+decodeMapED.set(0xB1, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    let diff = (z80.regs.a - value) & 0xFF;
+    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
+    z80.incTStateCount(5);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : z80_base_1.Flag.Z) | (diff & z80_base_1.Flag.S);
+    if ((z80.regs.f & z80_base_1.Flag.H) !== 0)
+        diff = z80_base_1.dec8(diff);
+    z80.regs.f |= (diff & z80_base_1.Flag.X3) | (((diff & 0x02) !== 0) ? z80_base_1.Flag.X5 : 0);
+    if ((z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z)) === z80_base_1.Flag.V) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+        z80.regs.memptr = z80_base_1.add16(z80.regs.pc, 1);
+    }
+    else {
+        z80.regs.memptr = z80_base_1.inc16(z80.regs.memptr);
+    }
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+});
+decodeMapED.set(0xB2, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readPort(z80.regs.bc);
+    z80.writeByte(z80.regs.hl, value);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    const other = z80_base_1.inc8(z80_base_1.add8(value, z80.regs.c));
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+    if (z80.regs.b > 0) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+    }
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+});
+decodeMapED.set(0xB3, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readByte(z80.regs.hl);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.bc);
+    z80.writePort(z80.regs.bc, value);
+    z80.regs.hl = z80_base_1.inc16(z80.regs.hl);
+    const other = z80_base_1.add8(value, z80.regs.l);
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+    if (z80.regs.b > 0) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+    }
+});
+decodeMapED.set(0xB8, (z80) => {
+    let value = z80.readByte(z80.regs.hl);
+    z80.writeByte(z80.regs.de, value);
+    z80.incTStateCount(2);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    value = z80_base_1.add16(value, z80.regs.a);
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.C | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | (value & z80_base_1.Flag.X3) | ((value & 0x02) !== 0 ? z80_base_1.Flag.X5 : 0);
+    if (z80.regs.bc !== 0) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+        z80.regs.memptr = z80_base_1.add16(z80.regs.pc, 1);
+    }
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+    z80.regs.de = z80_base_1.dec16(z80.regs.de);
+});
+decodeMapED.set(0xB9, (z80) => {
+    const value = z80.readByte(z80.regs.hl);
+    let diff = (z80.regs.a - value) & 0xFF;
+    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
+    z80.incTStateCount(5);
+    z80.regs.bc = z80_base_1.dec16(z80.regs.bc);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (z80.regs.bc !== 0 ? z80_base_1.Flag.V : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : z80_base_1.Flag.Z) | (diff & z80_base_1.Flag.S);
+    if ((z80.regs.f & z80_base_1.Flag.H) !== 0)
+        diff = z80_base_1.dec8(diff);
+    z80.regs.f |= (diff & z80_base_1.Flag.X3) | (((diff & 0x02) !== 0) ? z80_base_1.Flag.X5 : 0);
+    if ((z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z)) === z80_base_1.Flag.V) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+        z80.regs.memptr = z80_base_1.add16(z80.regs.pc, 1);
+    }
+    else {
+        z80.regs.memptr = z80_base_1.dec16(z80.regs.memptr);
+    }
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+});
+decodeMapED.set(0xBA, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readPort(z80.regs.bc);
+    z80.writeByte(z80.regs.hl, value);
+    z80.regs.memptr = z80_base_1.dec16(z80.regs.bc);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    const other = z80_base_1.dec8(z80_base_1.add8(value, z80.regs.c));
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+    if (z80.regs.b > 0) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+    }
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+});
+decodeMapED.set(0xBB, (z80) => {
+    z80.incTStateCount(1);
+    const value = z80.readByte(z80.regs.hl);
+    z80.regs.b = z80_base_1.dec8(z80.regs.b);
+    z80.regs.memptr = z80_base_1.dec16(z80.regs.bc);
+    z80.writePort(z80.regs.bc, value);
+    z80.regs.hl = z80_base_1.dec16(z80.regs.hl);
+    const other = z80_base_1.add8(value, z80.regs.l);
+    z80.regs.f = (value & 0x80 ? z80_base_1.Flag.N : 0) | (other < value ? z80_base_1.Flag.H | z80_base_1.Flag.C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? z80_base_1.Flag.P : 0) | z80.sz53Table[z80.regs.b];
+    if (z80.regs.b > 0) {
+        z80.incTStateCount(5);
+        z80.regs.pc = z80_base_1.add16(z80.regs.pc, -2);
+    }
+});
+const decodeMapFD = new Map();
+decodeMapFD.set(0x09, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.bc;
+    let result = z80.regs.iy + value;
+    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.iy);
+    z80.regs.iy = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapFD.set(0x19, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.de;
+    let result = z80.regs.iy + value;
+    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.iy);
+    z80.regs.iy = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapFD.set(0x21, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80_base_1.word(z80.readByte(z80.regs.pc), value);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.iy = value;
+});
+decodeMapFD.set(0x22, (z80) => {
+    let value;
+    value = z80.regs.iy;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.writeByte(addr, z80_base_1.lo(value));
+    addr = z80_base_1.inc16(addr);
+    z80.regs.memptr = addr;
+    z80.writeByte(addr, z80_base_1.hi(value));
+});
+decodeMapFD.set(0x23, (z80) => {
+    let value;
+    value = z80.regs.iy;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.inc16(value);
+    z80.regs.iy = value;
+});
+decodeMapFD.set(0x24, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x25, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x26, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x29, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.iy;
+    let result = z80.regs.iy + value;
+    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.iy);
+    z80.regs.iy = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapFD.set(0x2A, (z80) => {
+    let value;
+    let addr = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    addr = z80_base_1.word(z80.readByte(z80.regs.pc), addr);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    value = z80.readByte(addr);
+    z80.regs.memptr = z80_base_1.inc16(addr);
+    value = z80_base_1.word(z80.readByte(z80.regs.memptr), value);
+    z80.regs.iy = value;
+});
+decodeMapFD.set(0x2B, (z80) => {
+    let value;
+    value = z80.regs.iy;
+    const oldValue = value;
+    z80.incTStateCount(2);
+    value = z80_base_1.dec16(value);
+    z80.regs.iy = value;
+});
+decodeMapFD.set(0x2C, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x2D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x2E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x34, (z80) => {
+    let value;
+    const offset = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.add16(z80.regs.iy, z80_base_1.signedByte(offset));
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = z80_base_1.inc8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x80 ? z80_base_1.Flag.V : 0) | ((value & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80.sz53Table[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x35, (z80) => {
+    let value;
+    const offset = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.add16(z80.regs.iy, z80_base_1.signedByte(offset));
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = z80_base_1.dec8(value);
+    z80.regs.f = (z80.regs.f & z80_base_1.Flag.C) | (value === 0x7F ? z80_base_1.Flag.V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : z80_base_1.Flag.H) | z80_base_1.Flag.N | z80.sz53Table[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x36, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(2);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x39, (z80) => {
+    let value;
+    z80.incTStateCount(7);
+    value = z80.regs.sp;
+    let result = z80.regs.iy + value;
+    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
+        ((value & 0x0800) >> 10) |
+        ((result & 0x0800) >> 9)) & 0xFF;
+    z80.regs.memptr = z80_base_1.inc16(z80.regs.iy);
+    z80.regs.iy = result & 0xFFFF;
+    z80.regs.f = (z80.regs.f & (z80_base_1.Flag.V | z80_base_1.Flag.Z | z80_base_1.Flag.S)) | ((result & 0x10000) !== 0 ? z80_base_1.Flag.C : 0) | ((result >> 8) & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5)) | halfCarryAddTable[lookup];
+});
+decodeMapFD.set(0x44, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.b = value;
+});
+decodeMapFD.set(0x45, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.b = value;
+});
+decodeMapFD.set(0x46, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.b = value;
+});
+decodeMapFD.set(0x4C, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.c = value;
+});
+decodeMapFD.set(0x4D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.c = value;
+});
+decodeMapFD.set(0x4E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.c = value;
+});
+decodeMapFD.set(0x54, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.d = value;
+});
+decodeMapFD.set(0x55, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.d = value;
+});
+decodeMapFD.set(0x56, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.d = value;
+});
+decodeMapFD.set(0x5C, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.e = value;
+});
+decodeMapFD.set(0x5D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.e = value;
+});
+decodeMapFD.set(0x5E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.e = value;
+});
+decodeMapFD.set(0x60, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x61, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x62, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x63, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x64, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x65, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x66, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.h = value;
+});
+decodeMapFD.set(0x67, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.iyh = value;
+});
+decodeMapFD.set(0x68, (z80) => {
+    let value;
+    value = z80.regs.b;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x69, (z80) => {
+    let value;
+    value = z80.regs.c;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x6A, (z80) => {
+    let value;
+    value = z80.regs.d;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x6B, (z80) => {
+    let value;
+    value = z80.regs.e;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x6C, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x6D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x6E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.l = value;
+});
+decodeMapFD.set(0x6F, (z80) => {
+    let value;
+    value = z80.regs.a;
+    z80.regs.iyl = value;
+});
+decodeMapFD.set(0x70, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.b;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x71, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.c;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x72, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.d;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x73, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.e;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x74, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.h;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x75, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.l;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x77, (z80) => {
+    const dd = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    let value;
+    value = z80.regs.a;
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(dd)) & 0xFFFF;
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFD.set(0x7C, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.a = value;
+});
+decodeMapFD.set(0x7D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.a = value;
+});
+decodeMapFD.set(0x7E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a = value;
+});
+decodeMapFD.set(0x84, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x85, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x86, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x8C, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x8D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x8E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.add16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.inc16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x94, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x95, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x96, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x9C, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x9D, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0x9E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    let result = z80_base_1.sub16(z80.regs.a, value);
+    if ((z80.regs.f & z80_base_1.Flag.C) !== 0) {
+        result = z80_base_1.dec16(result);
+    }
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((result & 0x88) >> 1)) & 0xFF;
+    z80.regs.a = result & 0xFF;
+    z80.regs.f = (((result & 0x100) !== 0) ? z80_base_1.Flag.C : 0) | z80_base_1.Flag.N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
+});
+decodeMapFD.set(0xA4, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapFD.set(0xA5, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapFD.set(0xA6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a &= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+    z80.regs.f |= z80_base_1.Flag.H;
+});
+decodeMapFD.set(0xAC, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapFD.set(0xAD, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapFD.set(0xAE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a ^= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapFD.set(0xB4, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapFD.set(0xB5, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapFD.set(0xB6, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    z80.regs.a |= value;
+    z80.regs.f = z80.sz53pTable[z80.regs.a];
+});
+decodeMapFD.set(0xBC, (z80) => {
+    let value;
+    value = z80.regs.iyh;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapFD.set(0xBD, (z80) => {
+    let value;
+    value = z80.regs.iyl;
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapFD.set(0xBE, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.pc);
+    z80.incTStateCount(5);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.regs.memptr = (z80.regs.iy + z80_base_1.signedByte(value)) & 0xFFFF;
+    value = z80.readByte(z80.regs.memptr);
+    const diff = (z80.regs.a - value) & 0xFFFF;
+    const lookup = (((z80.regs.a & 0x88) >> 3) |
+        ((value & 0x88) >> 2) |
+        ((diff & 0x88) >> 1)) & 0xFF;
+    let f = z80_base_1.Flag.N;
+    if ((diff & 0x100) != 0)
+        f |= z80_base_1.Flag.C;
+    if (diff == 0)
+        f |= z80_base_1.Flag.Z;
+    f |= halfCarrySubTable[lookup & 0x07];
+    f |= overflowSubTable[lookup >> 4];
+    f |= value & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5);
+    f |= diff & z80_base_1.Flag.S;
+    z80.regs.af = z80_base_1.word(z80.regs.a, f);
+});
+decodeMapFD.set(0xCB, (z80) => {
+    decodeFDCB(z80);
+});
+decodeMapFD.set(0xE1, (z80) => {
+    z80.regs.iy = z80.popWord();
+});
+decodeMapFD.set(0xE3, (z80) => {
+    const rightValue = z80.regs.iy;
+    const leftValueL = z80.readByte(z80.regs.sp);
+    const leftValueH = z80.readByte(z80_base_1.inc16(z80.regs.sp));
+    z80.incTStateCount(1);
+    z80.writeByte(z80_base_1.inc16(z80.regs.sp), z80_base_1.hi(rightValue));
+    z80.writeByte(z80.regs.sp, z80_base_1.lo(rightValue));
+    z80.incTStateCount(2);
+    z80.regs.memptr = z80_base_1.word(leftValueH, leftValueL);
+    z80.regs.iy = z80_base_1.word(leftValueH, leftValueL);
+});
+decodeMapFD.set(0xE5, (z80) => {
+    z80.incTStateCount(1);
+    z80.pushWord(z80.regs.iy);
+});
+decodeMapFD.set(0xE9, (z80) => {
+    z80.regs.pc = z80.regs.iy;
+});
+decodeMapFD.set(0xF9, (z80) => {
+    let value;
+    value = z80.regs.iy;
+    z80.incTStateCount(2);
+    z80.regs.sp = value;
+});
+const decodeMapFDCB = new Map();
+decodeMapFDCB.set(0x00, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x01, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x02, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x03, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x04, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x05, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x06, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | (value >> 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x07, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value << 1) | (value >> 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x08, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x09, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x0A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x0B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x0C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x0D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x0E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value >> 1) | (value << 7)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x0F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value >> 1) | (value << 7)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x10, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x11, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x12, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x13, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x14, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x15, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x16, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x17, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value << 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 1 : 0)) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x18, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x19, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x1A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x1B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x1C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x1D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x1E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x1F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = (value >> 1) | ((z80.regs.f & z80_base_1.Flag.C) !== 0 ? 0x80 : 0);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x20, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x21, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x22, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x23, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x24, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x25, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x26, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value << 1) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x27, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = (value << 1) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x28, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x29, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x2A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x2B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x2C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x2D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x2E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = (value & 0x80) | (value >> 1);
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x2F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = (value & 0x80) | (value >> 1);
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x30, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x31, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x32, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x33, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x34, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x35, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x36, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = ((value << 1) | 0x01) & 0xFF;
+    z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x37, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = ((value << 1) | 0x01) & 0xFF;
+        z80.regs.f = ((oldValue & 0x80) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x38, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.b;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.b = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x39, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.c;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.c = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x3A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.d;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.d = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x3B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.e;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.e = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x3C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.h;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.h = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x3D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.l;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.l = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x3E, (z80) => {
+    let value;
+    value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    const oldValue = value;
+    value = value >> 1;
+    z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+    z80.writeByte(z80.regs.memptr, value);
+});
+decodeMapFDCB.set(0x3F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    {
+        let value;
+        value = z80.regs.a;
+        const oldValue = value;
+        value = value >> 1;
+        z80.regs.f = ((oldValue & 0x01) !== 0 ? z80_base_1.Flag.C : 0) | z80.sz53pTable[value];
+        z80.regs.a = value;
+    }
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x47, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x01) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x40, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x41, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x42, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x43, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x44, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x45, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x46, decodeMapFDCB.get(0x47));
+decodeMapFDCB.set(0x4F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x02) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x48, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x49, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x4A, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x4B, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x4C, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x4D, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x4E, decodeMapFDCB.get(0x4F));
+decodeMapFDCB.set(0x57, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x04) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x50, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x51, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x52, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x53, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x54, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x55, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x56, decodeMapFDCB.get(0x57));
+decodeMapFDCB.set(0x5F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x08) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x58, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x59, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x5A, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x5B, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x5C, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x5D, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x5E, decodeMapFDCB.get(0x5F));
+decodeMapFDCB.set(0x67, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x10) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x60, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x61, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x62, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x63, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x64, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x65, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x66, decodeMapFDCB.get(0x67));
+decodeMapFDCB.set(0x6F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x20) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x68, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x69, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x6A, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x6B, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x6C, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x6D, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x6E, decodeMapFDCB.get(0x6F));
+decodeMapFDCB.set(0x77, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x40) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x70, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x71, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x72, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x73, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x74, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x75, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x76, decodeMapFDCB.get(0x77));
+decodeMapFDCB.set(0x7F, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    const hiddenValue = z80_base_1.hi(z80.regs.memptr);
+    z80.incTStateCount(1);
+    let f = (z80.regs.f & z80_base_1.Flag.C) | z80_base_1.Flag.H | (hiddenValue & (z80_base_1.Flag.X3 | z80_base_1.Flag.X5));
+    if ((value & 0x80) === 0) {
+        f |= z80_base_1.Flag.P | z80_base_1.Flag.Z;
+    }
+    if ((value & 0x80) !== 0) {
+        f |= z80_base_1.Flag.S;
+    }
+    z80.regs.f = f;
+});
+decodeMapFDCB.set(0x78, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x79, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x7A, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x7B, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x7C, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x7D, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x7E, decodeMapFDCB.get(0x7F));
+decodeMapFDCB.set(0x80, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x81, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x82, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x83, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x84, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x85, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x86, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xFE);
+});
+decodeMapFDCB.set(0x87, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFE;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x88, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x89, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x8A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x8B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x8C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x8D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x8E, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xFD);
+});
+decodeMapFDCB.set(0x8F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFD;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x90, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x91, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x92, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x93, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x94, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x95, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x96, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xFB);
+});
+decodeMapFDCB.set(0x97, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFB;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0x98, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0x99, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0x9A, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0x9B, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0x9C, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0x9D, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0x9E, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xF7);
+});
+decodeMapFDCB.set(0x9F, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xF7;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xA0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xA1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xA2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xA3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xA4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xA5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xA6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xEF);
+});
+decodeMapFDCB.set(0xA7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xEF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xA8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xA9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xAA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xAB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xAC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xAD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xAE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xDF);
+});
+decodeMapFDCB.set(0xAF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xDF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xB0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xB1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xB2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xB3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xB4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xB5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xB6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0xBF);
+});
+decodeMapFDCB.set(0xB7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xBF;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xB8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xB9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xBA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xBB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xBC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xBD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xBE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value & 0x7F);
+});
+decodeMapFDCB.set(0xBF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) & 0x7F;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xC0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xC1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xC2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xC3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xC4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xC5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xC6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x01);
+});
+decodeMapFDCB.set(0xC7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x01;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xC8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xC9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xCA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xCB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xCC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xCD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xCE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x02);
+});
+decodeMapFDCB.set(0xCF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x02;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xD0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xD1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xD2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xD3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xD4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xD5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xD6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x04);
+});
+decodeMapFDCB.set(0xD7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x04;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xD8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xD9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xDA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xDB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xDC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xDD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xDE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x08);
+});
+decodeMapFDCB.set(0xDF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x08;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xE0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xE1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xE2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xE3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xE4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xE5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xE6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x10);
+});
+decodeMapFDCB.set(0xE7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x10;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xE8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xE9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xEA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xEB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xEC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xED, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xEE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x20);
+});
+decodeMapFDCB.set(0xEF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x20;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xF0, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xF1, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xF2, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xF3, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xF4, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xF5, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xF6, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x40);
+});
+decodeMapFDCB.set(0xF7, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x40;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+decodeMapFDCB.set(0xF8, (z80) => {
+    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.b);
+});
+decodeMapFDCB.set(0xF9, (z80) => {
+    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.c);
+});
+decodeMapFDCB.set(0xFA, (z80) => {
+    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.d);
+});
+decodeMapFDCB.set(0xFB, (z80) => {
+    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.e);
+});
+decodeMapFDCB.set(0xFC, (z80) => {
+    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.h);
+});
+decodeMapFDCB.set(0xFD, (z80) => {
+    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.l);
+});
+decodeMapFDCB.set(0xFE, (z80) => {
+    const value = z80.readByte(z80.regs.memptr);
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, value | 0x80);
+});
+decodeMapFDCB.set(0xFF, (z80) => {
+    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x80;
+    z80.incTStateCount(1);
+    z80.writeByte(z80.regs.memptr, z80.regs.a);
+});
+/**
+ * Fetch an instruction for decode.
+ */
+function fetchInstruction(z80) {
+    z80.incTStateCount(4);
+    const inst = z80.readByteInternal(z80.regs.pc);
+    z80.regs.pc = (z80.regs.pc + 1) & 0xFFFF;
+    z80.regs.r = (z80.regs.r + 1) & 0xFF;
+    return inst;
+}
+/**
+ * Decode the "CB" prefix (bit instructions).
+ */
+function decodeCB(z80) {
+    const inst = fetchInstruction(z80);
+    const func = decodeMapCB.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode in CB: " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+/**
+ * Decode the "DD" prefix (IX instructions).
+ */
+function decodeDD(z80) {
+    const inst = fetchInstruction(z80);
+    const func = decodeMapDD.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode in DD: " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+/**
+ * Decode the "DDCB" prefix (IX bit instructions).
+ */
+function decodeDDCB(z80) {
+    z80.incTStateCount(3);
+    const offset = z80.readByteInternal(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.add16(z80.regs.ix, z80_base_1.signedByte(offset));
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.incTStateCount(3);
+    const inst = z80.readByteInternal(z80.regs.pc);
+    z80.incTStateCount(2);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    const func = decodeMapDDCB.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode in DDCB: " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+/**
+ * Decode the "ED" prefix (extended instructions).
+ */
+function decodeED(z80) {
+    const inst = fetchInstruction(z80);
+    const func = decodeMapED.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode in ED: " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+/**
+ * Decode the "FD" prefix (IY instructions).
+ */
+function decodeFD(z80) {
+    const inst = fetchInstruction(z80);
+    const func = decodeMapFD.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode in FD: " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+/**
+ * Decode the "FDCB" prefix (IY bit instructions).
+ */
+function decodeFDCB(z80) {
+    z80.incTStateCount(3);
+    const offset = z80.readByteInternal(z80.regs.pc);
+    z80.regs.memptr = z80_base_1.add16(z80.regs.iy, z80_base_1.signedByte(offset));
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    z80.incTStateCount(3);
+    const inst = z80.readByteInternal(z80.regs.pc);
+    z80.incTStateCount(2);
+    z80.regs.pc = z80_base_1.inc16(z80.regs.pc);
+    const func = decodeMapFDCB.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode in FDCB: " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+/**
+ * Decode the base (un-prefixed) instructions.
+ */
+function decode(z80) {
+    const inst = fetchInstruction(z80);
+    const func = decodeMapBASE.get(inst);
+    if (func === undefined) {
+        console.log("Unhandled opcode " + z80_base_1.toHex(inst, 2));
+    }
+    else {
+        func(z80);
+    }
+}
+exports.decode = decode;
+
+
+/***/ }),
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31453,7 +40543,7 @@ exports.Keyboard = Keyboard;
 
 
 /***/ }),
-/* 82 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31466,7 +40556,7 @@ exports.model1Level1Rom = `
 
 
 /***/ }),
-/* 83 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31479,7 +40569,7 @@ exports.model1Level2Rom = `
 
 
 /***/ }),
-/* 84 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31492,7 +40582,7 @@ exports.model3Rom = `
 
 
 /***/ }),
-/* 85 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31540,7 +40630,7 @@ exports.concatByteArrays = concatByteArrays;
 
 
 /***/ }),
-/* 86 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31619,7 +40709,7 @@ exports.ByteReader = ByteReader;
 
 
 /***/ }),
-/* 87 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31650,13 +40740,13 @@ exports.isByteReg = isByteReg;
 
 
 /***/ }),
-/* 88 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Utils_1 = __webpack_require__(37);
+const Utils_1 = __webpack_require__(38);
 /**
  * All registers in a Z80.
  */
@@ -31777,7 +40867,7 @@ exports.registerSetFields = [
 
 
 /***/ }),
-/* 89 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31829,16 +40919,16 @@ var Flag;
 
 
 /***/ }),
-/* 90 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeJv3FloppyDisk = exports.Jv3FloppyDisk = void 0;
-const z80_base_1 = __webpack_require__(20);
-const FloppyDisk_1 = __webpack_require__(21);
-const ProgramAnnotation_1 = __webpack_require__(15);
+const z80_base_1 = __webpack_require__(19);
+const FloppyDisk_1 = __webpack_require__(20);
+const ProgramAnnotation_1 = __webpack_require__(13);
 // The JV3 file consists of sectors of different sizes all bunched together. Before that
 // comes a directory of these sectors, with three bytes per directory entry (track,
 // sector, and flags), mapping in order to the subsequent sectors.
@@ -32026,7 +41116,7 @@ exports.decodeJv3FloppyDisk = decodeJv3FloppyDisk;
 
 
 /***/ }),
-/* 91 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32040,11 +41130,11 @@ exports.decodeJv3FloppyDisk = decodeJv3FloppyDisk;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeDmkFloppyDisk = exports.DmkFloppyDisk = void 0;
-const z80_base_1 = __webpack_require__(20);
-const z80_base_2 = __webpack_require__(20);
-const Crc16_1 = __webpack_require__(92);
-const FloppyDisk_1 = __webpack_require__(21);
-const ProgramAnnotation_1 = __webpack_require__(15);
+const z80_base_1 = __webpack_require__(19);
+const z80_base_2 = __webpack_require__(19);
+const Crc16_1 = __webpack_require__(95);
+const FloppyDisk_1 = __webpack_require__(20);
+const ProgramAnnotation_1 = __webpack_require__(13);
 const FILE_HEADER_SIZE = 16;
 const TRACK_HEADER_SIZE = 128;
 /**
@@ -32419,7 +41509,7 @@ exports.decodeDmkFloppyDisk = decodeDmkFloppyDisk;
 
 
 /***/ }),
-/* 92 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32466,7 +41556,7 @@ exports.CRC_16_CCITT = new Crc16(0x1021);
 
 
 /***/ }),
-/* 93 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32479,8 +41569,8 @@ exports.CRC_16_CCITT = new Crc16(0x1021);
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodeTrsdos = exports.Trsdos = exports.TrsdosDirEntry = exports.TrsdosHitInfo = exports.TrsdosGatInfo = exports.TrsdosExtent = exports.trsdosProtectionLevelToString = exports.TrsdosProtectionLevel = void 0;
-const teamten_ts_utils_1 = __webpack_require__(23);
-const FloppyDisk_1 = __webpack_require__(21);
+const teamten_ts_utils_1 = __webpack_require__(22);
+const FloppyDisk_1 = __webpack_require__(20);
 // Number of bytes per dir entry in the sector.
 const DIR_ENTRY_LENGTH = 48;
 // Apparently this is constant in TRSDOS.
@@ -32889,7 +41979,20 @@ exports.decodeTrsdos = decodeTrsdos;
 
 
 /***/ }),
-/* 94 */
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TRS80_SCREEN_END = exports.TRS80_SCREEN_BEGIN = void 0;
+// RAM address range of screen.
+exports.TRS80_SCREEN_BEGIN = 15 * 1024;
+exports.TRS80_SCREEN_END = 16 * 1024;
+
+
+/***/ }),
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32903,9 +42006,9 @@ exports.decodeTrsdos = decodeTrsdos;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FloppyDiskController = void 0;
-const trs80_base_1 = __webpack_require__(5);
-const strongly_typed_events_1 = __webpack_require__(95);
-const z80_base_1 = __webpack_require__(0);
+const trs80_base_1 = __webpack_require__(3);
+const strongly_typed_events_1 = __webpack_require__(99);
+const z80_base_1 = __webpack_require__(18);
 const EventScheduler_1 = __webpack_require__(52);
 // Whether this controller supports writing.
 const SUPPORT_WRITING = false;
@@ -33433,7 +42536,7 @@ exports.FloppyDiskController = FloppyDiskController;
 
 
 /***/ }),
-/* 95 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33458,21 +42561,21 @@ Object.defineProperty(exports, "DispatchError", { enumerable: true, get: functio
 Object.defineProperty(exports, "PromiseSubscription", { enumerable: true, get: function () { return ste_core_1.PromiseSubscription; } });
 Object.defineProperty(exports, "PromiseDispatcherBase", { enumerable: true, get: function () { return ste_core_1.PromiseDispatcherBase; } });
 Object.defineProperty(exports, "HandlingBase", { enumerable: true, get: function () { return ste_core_1.HandlingBase; } });
-var ste_events_1 = __webpack_require__(105);
+var ste_events_1 = __webpack_require__(109);
 Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return ste_events_1.EventDispatcher; } });
 Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return ste_events_1.EventHandlingBase; } });
 Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return ste_events_1.EventList; } });
 Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return ste_events_1.NonUniformEventList; } });
-var ste_simple_events_1 = __webpack_require__(108);
+var ste_simple_events_1 = __webpack_require__(112);
 Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventDispatcher; } });
 Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventHandlingBase; } });
 Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.SimpleEventList; } });
 Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return ste_simple_events_1.NonUniformSimpleEventList; } });
-var ste_signals_1 = __webpack_require__(111);
+var ste_signals_1 = __webpack_require__(115);
 Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return ste_signals_1.SignalDispatcher; } });
 Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return ste_signals_1.SignalHandlingBase; } });
 Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return ste_signals_1.SignalList; } });
-var ste_promise_events_1 = __webpack_require__(113);
+var ste_promise_events_1 = __webpack_require__(117);
 Object.defineProperty(exports, "PromiseEventDispatcher", { enumerable: true, get: function () { return ste_promise_events_1.PromiseEventDispatcher; } });
 Object.defineProperty(exports, "PromiseEventHandlingBase", { enumerable: true, get: function () { return ste_promise_events_1.PromiseEventHandlingBase; } });
 Object.defineProperty(exports, "PromiseEventList", { enumerable: true, get: function () { return ste_promise_events_1.PromiseEventList; } });
@@ -33481,7 +42584,7 @@ var ste_promise_signals_1 = __webpack_require__(49);
 Object.defineProperty(exports, "PromiseSignalDispatcher", { enumerable: true, get: function () { return ste_promise_signals_1.PromiseSignalDispatcher; } });
 Object.defineProperty(exports, "PromiseSignalHandlingBase", { enumerable: true, get: function () { return ste_promise_signals_1.PromiseSignalHandlingBase; } });
 Object.defineProperty(exports, "PromiseSignalList", { enumerable: true, get: function () { return ste_promise_signals_1.PromiseSignalList; } });
-var ste_promise_simple_events_1 = __webpack_require__(118);
+var ste_promise_simple_events_1 = __webpack_require__(122);
 Object.defineProperty(exports, "PromiseSimpleEventDispatcher", { enumerable: true, get: function () { return ste_promise_simple_events_1.PromiseSimpleEventDispatcher; } });
 Object.defineProperty(exports, "PromiseSimpleEventHandlingBase", { enumerable: true, get: function () { return ste_promise_simple_events_1.PromiseSimpleEventHandlingBase; } });
 Object.defineProperty(exports, "PromiseSimpleEventList", { enumerable: true, get: function () { return ste_promise_simple_events_1.PromiseSimpleEventList; } });
@@ -33489,7 +42592,7 @@ Object.defineProperty(exports, "NonUniformPromiseSimpleEventList", { enumerable:
 
 
 /***/ }),
-/* 96 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33644,7 +42747,7 @@ exports.DispatcherBase = DispatcherBase;
 
 
 /***/ }),
-/* 97 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33667,7 +42770,7 @@ exports.DispatchError = DispatchError;
 
 
 /***/ }),
-/* 98 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33756,7 +42859,7 @@ exports.DispatcherWrapper = DispatcherWrapper;
 
 
 /***/ }),
-/* 99 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33795,7 +42898,7 @@ exports.EventListBase = EventListBase;
 
 
 /***/ }),
-/* 100 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33821,7 +42924,7 @@ exports.EventManagement = EventManagement;
 
 
 /***/ }),
-/* 101 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33897,7 +43000,7 @@ exports.HandlingBase = HandlingBase;
 
 
 /***/ }),
-/* 102 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33950,7 +43053,7 @@ exports.PromiseDispatcherBase = PromiseDispatcherBase;
 
 
 /***/ }),
-/* 103 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33999,7 +43102,7 @@ exports.PromiseSubscription = PromiseSubscription;
 
 
 /***/ }),
-/* 104 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34052,7 +43155,7 @@ exports.Subscription = Subscription;
 
 
 /***/ }),
-/* 105 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34067,18 +43170,18 @@ exports.Subscription = Subscription;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = void 0;
-const EventDispatcher_1 = __webpack_require__(28);
+const EventDispatcher_1 = __webpack_require__(29);
 Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return EventDispatcher_1.EventDispatcher; } });
-const EventHandlingBase_1 = __webpack_require__(106);
+const EventHandlingBase_1 = __webpack_require__(110);
 Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return EventHandlingBase_1.EventHandlingBase; } });
 const EventList_1 = __webpack_require__(44);
 Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return EventList_1.EventList; } });
-const NonUniformEventList_1 = __webpack_require__(107);
+const NonUniformEventList_1 = __webpack_require__(111);
 Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: function () { return NonUniformEventList_1.NonUniformEventList; } });
 
 
 /***/ }),
-/* 106 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34099,14 +43202,14 @@ exports.EventHandlingBase = EventHandlingBase;
 
 
 /***/ }),
-/* 107 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformEventList = void 0;
-const EventDispatcher_1 = __webpack_require__(28);
+const EventDispatcher_1 = __webpack_require__(29);
 /**
  * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
  */
@@ -34145,25 +43248,25 @@ exports.NonUniformEventList = NonUniformEventList;
 
 
 /***/ }),
-/* 108 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = void 0;
-const SimpleEventDispatcher_1 = __webpack_require__(29);
+const SimpleEventDispatcher_1 = __webpack_require__(30);
 Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return SimpleEventDispatcher_1.SimpleEventDispatcher; } });
-const SimpleEventHandlingBase_1 = __webpack_require__(109);
+const SimpleEventHandlingBase_1 = __webpack_require__(113);
 Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return SimpleEventHandlingBase_1.SimpleEventHandlingBase; } });
-const NonUniformSimpleEventList_1 = __webpack_require__(110);
+const NonUniformSimpleEventList_1 = __webpack_require__(114);
 Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, get: function () { return NonUniformSimpleEventList_1.NonUniformSimpleEventList; } });
 const SimpleEventList_1 = __webpack_require__(45);
 Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return SimpleEventList_1.SimpleEventList; } });
 
 
 /***/ }),
-/* 109 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34184,14 +43287,14 @@ exports.SimpleEventHandlingBase = SimpleEventHandlingBase;
 
 
 /***/ }),
-/* 110 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformSimpleEventList = void 0;
-const SimpleEventDispatcher_1 = __webpack_require__(29);
+const SimpleEventDispatcher_1 = __webpack_require__(30);
 /**
  * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
  */
@@ -34230,7 +43333,7 @@ exports.NonUniformSimpleEventList = NonUniformSimpleEventList;
 
 
 /***/ }),
-/* 111 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34247,14 +43350,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = void 0;
 const SignalDispatcher_1 = __webpack_require__(46);
 Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return SignalDispatcher_1.SignalDispatcher; } });
-const SignalHandlingBase_1 = __webpack_require__(112);
+const SignalHandlingBase_1 = __webpack_require__(116);
 Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return SignalHandlingBase_1.SignalHandlingBase; } });
 const SignalList_1 = __webpack_require__(47);
 Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return SignalList_1.SignalList; } });
 
 
 /***/ }),
-/* 112 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34275,7 +43378,7 @@ exports.SignalHandlingBase = SignalHandlingBase;
 
 
 /***/ }),
-/* 113 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34290,18 +43393,18 @@ exports.SignalHandlingBase = SignalHandlingBase;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformPromiseEventList = exports.PromiseEventList = exports.PromiseEventHandlingBase = exports.PromiseEventDispatcher = void 0;
-const PromiseEventDispatcher_1 = __webpack_require__(30);
+const PromiseEventDispatcher_1 = __webpack_require__(31);
 Object.defineProperty(exports, "PromiseEventDispatcher", { enumerable: true, get: function () { return PromiseEventDispatcher_1.PromiseEventDispatcher; } });
-const PromiseEventHandlingBase_1 = __webpack_require__(114);
+const PromiseEventHandlingBase_1 = __webpack_require__(118);
 Object.defineProperty(exports, "PromiseEventHandlingBase", { enumerable: true, get: function () { return PromiseEventHandlingBase_1.PromiseEventHandlingBase; } });
 const PromiseEventList_1 = __webpack_require__(48);
 Object.defineProperty(exports, "PromiseEventList", { enumerable: true, get: function () { return PromiseEventList_1.PromiseEventList; } });
-const NonUniformPromiseEventList_1 = __webpack_require__(115);
+const NonUniformPromiseEventList_1 = __webpack_require__(119);
 Object.defineProperty(exports, "NonUniformPromiseEventList", { enumerable: true, get: function () { return NonUniformPromiseEventList_1.NonUniformPromiseEventList; } });
 
 
 /***/ }),
-/* 114 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34322,14 +43425,14 @@ exports.PromiseEventHandlingBase = PromiseEventHandlingBase;
 
 
 /***/ }),
-/* 115 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformPromiseEventList = void 0;
-const PromiseEventDispatcher_1 = __webpack_require__(30);
+const PromiseEventDispatcher_1 = __webpack_require__(31);
 /**
  * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
  */
@@ -34368,7 +43471,7 @@ exports.NonUniformPromiseEventList = NonUniformPromiseEventList;
 
 
 /***/ }),
-/* 116 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34419,7 +43522,7 @@ exports.PromiseSignalDispatcher = PromiseSignalDispatcher;
 
 
 /***/ }),
-/* 117 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34440,7 +43543,7 @@ exports.PromiseSignalHandlingBase = PromiseSignalHandlingBase;
 
 
 /***/ }),
-/* 118 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34455,25 +43558,25 @@ exports.PromiseSignalHandlingBase = PromiseSignalHandlingBase;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformPromiseSimpleEventList = exports.PromiseSimpleEventList = exports.PromiseSimpleEventHandlingBase = exports.PromiseSimpleEventDispatcher = void 0;
-const NonUniformPromiseSimpleEventList_1 = __webpack_require__(119);
+const NonUniformPromiseSimpleEventList_1 = __webpack_require__(123);
 Object.defineProperty(exports, "NonUniformPromiseSimpleEventList", { enumerable: true, get: function () { return NonUniformPromiseSimpleEventList_1.NonUniformPromiseSimpleEventList; } });
-const PromiseSimpleEventDispatcher_1 = __webpack_require__(31);
+const PromiseSimpleEventDispatcher_1 = __webpack_require__(32);
 Object.defineProperty(exports, "PromiseSimpleEventDispatcher", { enumerable: true, get: function () { return PromiseSimpleEventDispatcher_1.PromiseSimpleEventDispatcher; } });
-const PromiseSimpleEventHandlingBase_1 = __webpack_require__(120);
+const PromiseSimpleEventHandlingBase_1 = __webpack_require__(124);
 Object.defineProperty(exports, "PromiseSimpleEventHandlingBase", { enumerable: true, get: function () { return PromiseSimpleEventHandlingBase_1.PromiseSimpleEventHandlingBase; } });
 const PromiseSimpleEventList_1 = __webpack_require__(51);
 Object.defineProperty(exports, "PromiseSimpleEventList", { enumerable: true, get: function () { return PromiseSimpleEventList_1.PromiseSimpleEventList; } });
 
 
 /***/ }),
-/* 119 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformPromiseSimpleEventList = void 0;
-const PromiseSimpleEventDispatcher_1 = __webpack_require__(31);
+const PromiseSimpleEventDispatcher_1 = __webpack_require__(32);
 /**
  * Similar to EventList, but instead of TArgs, a map of event names ang argument types is provided with TArgsMap.
  */
@@ -34512,7 +43615,7 @@ exports.NonUniformPromiseSimpleEventList = NonUniformPromiseSimpleEventList;
 
 
 /***/ }),
-/* 120 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34533,14 +43636,14 @@ exports.PromiseSimpleEventHandlingBase = PromiseSimpleEventHandlingBase;
 
 
 /***/ }),
-/* 121 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Trs80Screen = void 0;
-const trs80_base_1 = __webpack_require__(5);
+const trs80_base_1 = __webpack_require__(3);
 /**
  * Abstract base class for displaying a screen.
  */
@@ -34640,7 +43743,7 @@ exports.Trs80Screen = Trs80Screen;
 
 
 /***/ }),
-/* 122 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35319,14 +44422,14 @@ exports.MODEL3_ALT_FONT = new Font(GLYPH_CG4, 8, 12, [0, 64, -1, 192]);
 
 
 /***/ }),
-/* 123 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProgressBar = void 0;
-const Utils_1 = __webpack_require__(18);
+const Utils_1 = __webpack_require__(23);
 const gCssPrefix = Utils_1.CSS_PREFIX + "-progress-bar";
 const gScreenNodeCssClass = gCssPrefix + "-screen-node";
 const gBarCssClass = gCssPrefix + "-bar";
@@ -35406,11 +44509,11 @@ exports.ProgressBar = ProgressBar;
 
 
 /***/ }),
-/* 124 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 (function() {/*
 
  Copyright The Closure Library Authors.
@@ -35849,7 +44952,7 @@ instanceFactory:function(b){b=b.getProvider("auth").getImmediate();return{getUid
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14)))
 
 /***/ }),
-/* 125 */
+/* 129 */
 /***/ (function(module, exports) {
 
 module.exports = function() {
@@ -35858,7 +44961,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 126 */
+/* 130 */
 /***/ (function(module, exports) {
 
 /**
@@ -36367,7 +45470,7 @@ window.addEventListener('load', function() {
 
 
 /***/ }),
-/* 127 */
+/* 131 */
 /***/ (function(module, exports) {
 
 /**
@@ -36496,7 +45599,7 @@ window.addEventListener('load', function() {
 
 
 /***/ }),
-/* 128 */
+/* 132 */
 /***/ (function(module, exports) {
 
 /**
@@ -36625,7 +45728,7 @@ window.addEventListener('load', function() {
 
 
 /***/ }),
-/* 129 */
+/* 133 */
 /***/ (function(module, exports) {
 
 /**
@@ -36778,7 +45881,7 @@ window.addEventListener('load', function() {
 
 
 /***/ }),
-/* 130 */
+/* 134 */
 /***/ (function(module, exports) {
 
 /**
@@ -37068,7 +46171,7 @@ window.addEventListener('load', function() {
 
 
 /***/ }),
-/* 131 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37082,7 +46185,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DispatcherWrapper = exports.EventListBase = exports.DispatcherBase = void 0;
-var management_1 = __webpack_require__(132);
+var management_1 = __webpack_require__(136);
 var subscription_1 = __webpack_require__(58);
 /**
  * Base class for implementation of the dispatcher. It facilitates the subscribe
@@ -37349,7 +46452,7 @@ exports.DispatcherWrapper = DispatcherWrapper;
 
 
 /***/ }),
-/* 132 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37376,14 +46479,14 @@ exports.EventManagement = EventManagement;
 
 
 /***/ }),
-/* 133 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = void 0;
-var events_1 = __webpack_require__(134);
+var events_1 = __webpack_require__(138);
 Object.defineProperty(exports, "EventDispatcher", { enumerable: true, get: function () { return events_1.EventDispatcher; } });
 Object.defineProperty(exports, "EventHandlingBase", { enumerable: true, get: function () { return events_1.EventHandlingBase; } });
 Object.defineProperty(exports, "EventList", { enumerable: true, get: function () { return events_1.EventList; } });
@@ -37391,7 +46494,7 @@ Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: f
 
 
 /***/ }),
-/* 134 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37578,14 +46681,14 @@ exports.EventHandlingBase = EventHandlingBase;
 
 
 /***/ }),
-/* 135 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = void 0;
-var simple_events_1 = __webpack_require__(136);
+var simple_events_1 = __webpack_require__(140);
 Object.defineProperty(exports, "SimpleEventDispatcher", { enumerable: true, get: function () { return simple_events_1.SimpleEventDispatcher; } });
 Object.defineProperty(exports, "SimpleEventHandlingBase", { enumerable: true, get: function () { return simple_events_1.SimpleEventHandlingBase; } });
 Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: function () { return simple_events_1.SimpleEventList; } });
@@ -37593,7 +46696,7 @@ Object.defineProperty(exports, "NonUniformSimpleEventList", { enumerable: true, 
 
 
 /***/ }),
-/* 136 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37775,21 +46878,21 @@ exports.SimpleEventHandlingBase = SimpleEventHandlingBase;
 
 
 /***/ }),
-/* 137 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = void 0;
-var signals_1 = __webpack_require__(138);
+var signals_1 = __webpack_require__(142);
 Object.defineProperty(exports, "SignalDispatcher", { enumerable: true, get: function () { return signals_1.SignalDispatcher; } });
 Object.defineProperty(exports, "SignalHandlingBase", { enumerable: true, get: function () { return signals_1.SignalHandlingBase; } });
 Object.defineProperty(exports, "SignalList", { enumerable: true, get: function () { return signals_1.SignalList; } });
 
 
 /***/ }),
-/* 138 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37933,7 +47036,7 @@ exports.SignalHandlingBase = SignalHandlingBase;
 
 
 /***/ }),
-/* 139 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37981,7 +47084,7 @@ exports.concatByteArrays = concatByteArrays;
 
 
 /***/ }),
-/* 140 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38060,7 +47163,7 @@ exports.ByteReader = ByteReader;
 
 
 /***/ }),
-/* 141 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38091,7 +47194,7 @@ exports.isByteReg = isByteReg;
 
 
 /***/ }),
-/* 142 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38218,7 +47321,7 @@ exports.registerSetFields = [
 
 
 /***/ }),
-/* 143 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38270,11 +47373,11 @@ var Flag;
 
 
 /***/ }),
-/* 144 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isPrototype = __webpack_require__(60),
-    nativeKeys = __webpack_require__(145);
+    nativeKeys = __webpack_require__(149);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -38306,10 +47409,10 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 145 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(146);
+var overArg = __webpack_require__(150);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -38318,7 +47421,7 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 146 */
+/* 150 */
 /***/ (function(module, exports) {
 
 /**
@@ -38339,14 +47442,14 @@ module.exports = overArg;
 
 
 /***/ }),
-/* 147 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(148),
-    Map = __webpack_require__(155),
-    Promise = __webpack_require__(156),
-    Set = __webpack_require__(157),
-    WeakMap = __webpack_require__(158),
+var DataView = __webpack_require__(152),
+    Map = __webpack_require__(159),
+    Promise = __webpack_require__(160),
+    Set = __webpack_require__(161),
+    WeakMap = __webpack_require__(162),
     baseGetTag = __webpack_require__(25),
     toSource = __webpack_require__(65);
 
@@ -38403,11 +47506,11 @@ module.exports = getTag;
 
 
 /***/ }),
-/* 148 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(22),
-    root = __webpack_require__(17);
+var getNative = __webpack_require__(21),
+    root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -38416,11 +47519,11 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 149 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(61),
-    isMasked = __webpack_require__(152),
+    isMasked = __webpack_require__(156),
     isObject = __webpack_require__(64),
     toSource = __webpack_require__(65);
 
@@ -38469,7 +47572,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 150 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(62);
@@ -38521,7 +47624,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 151 */
+/* 155 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -38549,10 +47652,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 152 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(153);
+var coreJsData = __webpack_require__(157);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -38575,10 +47678,10 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 153 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(17);
+var root = __webpack_require__(16);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -38587,7 +47690,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 154 */
+/* 158 */
 /***/ (function(module, exports) {
 
 /**
@@ -38606,11 +47709,11 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 155 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(22),
-    root = __webpack_require__(17);
+var getNative = __webpack_require__(21),
+    root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -38619,11 +47722,11 @@ module.exports = Map;
 
 
 /***/ }),
-/* 156 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(22),
-    root = __webpack_require__(17);
+var getNative = __webpack_require__(21),
+    root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -38632,11 +47735,11 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 157 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(22),
-    root = __webpack_require__(17);
+var getNative = __webpack_require__(21),
+    root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -38645,11 +47748,11 @@ module.exports = Set;
 
 
 /***/ }),
-/* 158 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getNative = __webpack_require__(22),
-    root = __webpack_require__(17);
+var getNative = __webpack_require__(21),
+    root = __webpack_require__(16);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -38658,11 +47761,11 @@ module.exports = WeakMap;
 
 
 /***/ }),
-/* 159 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(160),
-    isObjectLike = __webpack_require__(32);
+var baseIsArguments = __webpack_require__(164),
+    isObjectLike = __webpack_require__(33);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -38700,11 +47803,11 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 160 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(25),
-    isObjectLike = __webpack_require__(32);
+    isObjectLike = __webpack_require__(33);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -38724,7 +47827,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 161 */
+/* 165 */
 /***/ (function(module, exports) {
 
 /**
@@ -38756,7 +47859,7 @@ module.exports = isArray;
 
 
 /***/ }),
-/* 162 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(61),
@@ -38795,11 +47898,11 @@ module.exports = isArrayLike;
 
 
 /***/ }),
-/* 163 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(17),
-    stubFalse = __webpack_require__(164);
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(16),
+    stubFalse = __webpack_require__(168);
 
 /** Detect free variable `exports`. */
 var freeExports =  true && exports && !exports.nodeType && exports;
@@ -38840,7 +47943,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(67)(module)))
 
 /***/ }),
-/* 164 */
+/* 168 */
 /***/ (function(module, exports) {
 
 /**
@@ -38864,12 +47967,12 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 165 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(166),
-    baseUnary = __webpack_require__(167),
-    nodeUtil = __webpack_require__(168);
+var baseIsTypedArray = __webpack_require__(170),
+    baseUnary = __webpack_require__(171),
+    nodeUtil = __webpack_require__(172);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -38897,12 +48000,12 @@ module.exports = isTypedArray;
 
 
 /***/ }),
-/* 166 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(25),
     isLength = __webpack_require__(66),
-    isObjectLike = __webpack_require__(32);
+    isObjectLike = __webpack_require__(33);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -38963,7 +48066,7 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 167 */
+/* 171 */
 /***/ (function(module, exports) {
 
 /**
@@ -38983,7 +48086,7 @@ module.exports = baseUnary;
 
 
 /***/ }),
-/* 168 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(63);
@@ -39020,7 +48123,7 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(67)(module)))
 
 /***/ }),
-/* 169 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39034,9 +48137,9 @@ module.exports = nodeUtil;
 
 
 
-var base64 = __webpack_require__(33)
-var ieee754 = __webpack_require__(170)
-var isArray = __webpack_require__(171)
+var base64 = __webpack_require__(34)
+var ieee754 = __webpack_require__(174)
+var isArray = __webpack_require__(175)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -40817,7 +49920,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14)))
 
 /***/ }),
-/* 170 */
+/* 174 */
 /***/ (function(module, exports) {
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
@@ -40908,7 +50011,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 171 */
+/* 175 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -40919,7 +50022,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 172 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -40975,7 +50078,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(173);
+__webpack_require__(177);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -40989,7 +50092,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14)))
 
 /***/ }),
-/* 173 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -41182,7 +50285,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14), __webpack_require__(57)))
 
 /***/ }),
-/* 174 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41191,10 +50294,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Opcodes_json_1 = __importDefault(__webpack_require__(175));
+const Opcodes_json_1 = __importDefault(__webpack_require__(179));
 const Instruction_1 = __webpack_require__(68);
 const z80_base_1 = __webpack_require__(69);
-const Preamble_1 = __webpack_require__(184);
+const Preamble_1 = __webpack_require__(183);
 // Temporary string used for address substitution.
 const TARGET = "TARGET";
 // Number of bytes in memory.
@@ -41534,13 +50637,13 @@ exports.Disasm = Disasm;
 
 
 /***/ }),
-/* 175 */
+/* 179 */
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"0\":{\"mnemonic\":\"nop\"},\"1\":{\"mnemonic\":\"ld\",\"params\":[\"bc\",\"nnnn\"]},\"2\":{\"mnemonic\":\"ld\",\"params\":[\"(bc)\",\"a\"]},\"3\":{\"mnemonic\":\"inc\",\"params\":[\"bc\"]},\"4\":{\"mnemonic\":\"inc\",\"params\":[\"b\"]},\"5\":{\"mnemonic\":\"dec\",\"params\":[\"b\"]},\"6\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"nn\"]},\"7\":{\"mnemonic\":\"rlca\"},\"8\":{\"mnemonic\":\"ex\",\"params\":[\"af\",\"af'\"]},\"9\":{\"mnemonic\":\"add\",\"params\":[\"hl\",\"bc\"]},\"10\":{\"mnemonic\":\"djnz\",\"params\":[\"offset\"]},\"11\":{\"mnemonic\":\"ld\",\"params\":[\"de\",\"nnnn\"]},\"12\":{\"mnemonic\":\"ld\",\"params\":[\"(de)\",\"a\"]},\"13\":{\"mnemonic\":\"inc\",\"params\":[\"de\"]},\"14\":{\"mnemonic\":\"inc\",\"params\":[\"d\"]},\"15\":{\"mnemonic\":\"dec\",\"params\":[\"d\"]},\"16\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"nn\"]},\"17\":{\"mnemonic\":\"rla\"},\"18\":{\"mnemonic\":\"jr\",\"params\":[\"offset\"]},\"19\":{\"mnemonic\":\"add\",\"params\":[\"hl\",\"de\"]},\"20\":{\"mnemonic\":\"jr\",\"params\":[\"nz\",\"offset\"]},\"21\":{\"mnemonic\":\"ld\",\"params\":[\"hl\",\"nnnn\"]},\"22\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"hl\"]},\"23\":{\"mnemonic\":\"inc\",\"params\":[\"hl\"]},\"24\":{\"mnemonic\":\"inc\",\"params\":[\"h\"]},\"25\":{\"mnemonic\":\"dec\",\"params\":[\"h\"]},\"26\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"nn\"]},\"27\":{\"mnemonic\":\"daa\"},\"28\":{\"mnemonic\":\"jr\",\"params\":[\"z\",\"offset\"]},\"29\":{\"mnemonic\":\"add\",\"params\":[\"hl\",\"hl\"]},\"30\":{\"mnemonic\":\"jr\",\"params\":[\"nc\",\"offset\"]},\"31\":{\"mnemonic\":\"ld\",\"params\":[\"sp\",\"nnnn\"]},\"32\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"a\"]},\"33\":{\"mnemonic\":\"inc\",\"params\":[\"sp\"]},\"34\":{\"mnemonic\":\"inc\",\"params\":[\"(hl)\"]},\"35\":{\"mnemonic\":\"dec\",\"params\":[\"(hl)\"]},\"36\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"nn\"]},\"37\":{\"mnemonic\":\"scf\"},\"38\":{\"mnemonic\":\"jr\",\"params\":[\"c\",\"offset\"]},\"39\":{\"mnemonic\":\"add\",\"params\":[\"hl\",\"sp\"]},\"40\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"b\"]},\"41\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"c\"]},\"42\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"d\"]},\"43\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"e\"]},\"44\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"h\"]},\"45\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"l\"]},\"46\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"(hl)\"]},\"47\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"a\"]},\"48\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"b\"]},\"49\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"c\"]},\"50\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"b\"]},\"51\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"c\"]},\"52\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"d\"]},\"53\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"e\"]},\"54\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"h\"]},\"55\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"l\"]},\"56\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"(hl)\"]},\"57\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"a\"]},\"58\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"b\"]},\"59\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"c\"]},\"60\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"b\"]},\"61\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"c\"]},\"62\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"d\"]},\"63\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"e\"]},\"64\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"h\"]},\"65\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"l\"]},\"66\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"(hl)\"]},\"67\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"a\"]},\"68\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"b\"]},\"69\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"c\"]},\"70\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"b\"]},\"71\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"c\"]},\"72\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"d\"]},\"73\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"e\"]},\"74\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"h\"]},\"75\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"l\"]},\"76\":{\"mnemonic\":\"halt\"},\"77\":{\"mnemonic\":\"ld\",\"params\":[\"(hl)\",\"a\"]},\"78\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"b\"]},\"79\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"c\"]},\"80\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"b\"]},\"81\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"c\"]},\"82\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"d\"]},\"83\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"e\"]},\"84\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"h\"]},\"85\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"l\"]},\"86\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"(hl)\"]},\"87\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"a\"]},\"88\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"b\"]},\"89\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"c\"]},\"90\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"b\"]},\"91\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"c\"]},\"92\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"d\"]},\"93\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"e\"]},\"94\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"h\"]},\"95\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"l\"]},\"96\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"(hl)\"]},\"97\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"a\"]},\"98\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"b\"]},\"99\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"c\"]},\"a\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"(bc)\"]},\"b\":{\"mnemonic\":\"dec\",\"params\":[\"bc\"]},\"c\":{\"mnemonic\":\"inc\",\"params\":[\"c\"]},\"d\":{\"mnemonic\":\"dec\",\"params\":[\"c\"]},\"e\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"nn\"]},\"f\":{\"mnemonic\":\"rrca\"},\"1a\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"(de)\"]},\"1b\":{\"mnemonic\":\"dec\",\"params\":[\"de\"]},\"1c\":{\"mnemonic\":\"inc\",\"params\":[\"e\"]},\"1d\":{\"mnemonic\":\"dec\",\"params\":[\"e\"]},\"1e\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"nn\"]},\"1f\":{\"mnemonic\":\"rra\"},\"2a\":{\"mnemonic\":\"ld\",\"params\":[\"hl\",\"(nnnn)\"]},\"2b\":{\"mnemonic\":\"dec\",\"params\":[\"hl\"]},\"2c\":{\"mnemonic\":\"inc\",\"params\":[\"l\"]},\"2d\":{\"mnemonic\":\"dec\",\"params\":[\"l\"]},\"2e\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"nn\"]},\"2f\":{\"mnemonic\":\"cpl\"},\"3a\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"(nnnn)\"]},\"3b\":{\"mnemonic\":\"dec\",\"params\":[\"sp\"]},\"3c\":{\"mnemonic\":\"inc\",\"params\":[\"a\"]},\"3d\":{\"mnemonic\":\"dec\",\"params\":[\"a\"]},\"3e\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"nn\"]},\"3f\":{\"mnemonic\":\"ccf\"},\"4a\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"d\"]},\"4b\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"e\"]},\"4c\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"h\"]},\"4d\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"l\"]},\"4e\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"(hl)\"]},\"4f\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"a\"]},\"5a\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"d\"]},\"5b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"e\"]},\"5c\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"h\"]},\"5d\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"l\"]},\"5e\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"(hl)\"]},\"5f\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"a\"]},\"6a\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"d\"]},\"6b\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"e\"]},\"6c\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"h\"]},\"6d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"l\"]},\"6e\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"(hl)\"]},\"6f\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"a\"]},\"7a\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"d\"]},\"7b\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"e\"]},\"7c\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"h\"]},\"7d\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"l\"]},\"7e\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"(hl)\"]},\"7f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"a\"]},\"8a\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"d\"]},\"8b\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"e\"]},\"8c\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"h\"]},\"8d\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"l\"]},\"8e\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"(hl)\"]},\"8f\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"a\"]},\"9a\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"d\"]},\"9b\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"e\"]},\"9c\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"h\"]},\"9d\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"l\"]},\"9e\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"(hl)\"]},\"9f\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"a\"]},\"a0\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"b\"]},\"a1\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"c\"]},\"a2\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"d\"]},\"a3\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"e\"]},\"a4\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"h\"]},\"a5\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"l\"]},\"a6\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"(hl)\"]},\"a7\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"a\"]},\"a8\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"b\"]},\"a9\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"c\"]},\"aa\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"d\"]},\"ab\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"e\"]},\"ac\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"h\"]},\"ad\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"l\"]},\"ae\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"(hl)\"]},\"af\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"a\"]},\"b0\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"b\"]},\"b1\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"c\"]},\"b2\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"d\"]},\"b3\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"e\"]},\"b4\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"h\"]},\"b5\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"l\"]},\"b6\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"(hl)\"]},\"b7\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"a\"]},\"b8\":{\"mnemonic\":\"cp\",\"params\":[\"b\"]},\"b9\":{\"mnemonic\":\"cp\",\"params\":[\"c\"]},\"ba\":{\"mnemonic\":\"cp\",\"params\":[\"d\"]},\"bb\":{\"mnemonic\":\"cp\",\"params\":[\"e\"]},\"bc\":{\"mnemonic\":\"cp\",\"params\":[\"h\"]},\"bd\":{\"mnemonic\":\"cp\",\"params\":[\"l\"]},\"be\":{\"mnemonic\":\"cp\",\"params\":[\"(hl)\"]},\"bf\":{\"mnemonic\":\"cp\",\"params\":[\"a\"]},\"c0\":{\"mnemonic\":\"ret\",\"params\":[\"nz\"]},\"c1\":{\"mnemonic\":\"pop\",\"params\":[\"bc\"]},\"c2\":{\"mnemonic\":\"jp\",\"params\":[\"nz\",\"nnnn\"]},\"c3\":{\"mnemonic\":\"jp\",\"params\":[\"nnnn\"]},\"c4\":{\"mnemonic\":\"call\",\"params\":[\"nz\",\"nnnn\"]},\"c5\":{\"mnemonic\":\"push\",\"params\":[\"bc\"]},\"c6\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"nn\"]},\"c7\":{\"mnemonic\":\"rst\",\"params\":[\"00\"]},\"c8\":{\"mnemonic\":\"ret\",\"params\":[\"z\"]},\"c9\":{\"mnemonic\":\"ret\"},\"ca\":{\"mnemonic\":\"jp\",\"params\":[\"z\",\"nnnn\"]},\"cb\":{\"shift\":{\"0\":{\"mnemonic\":\"rlc\",\"params\":[\"b\"]},\"1\":{\"mnemonic\":\"rlc\",\"params\":[\"c\"]},\"2\":{\"mnemonic\":\"rlc\",\"params\":[\"d\"]},\"3\":{\"mnemonic\":\"rlc\",\"params\":[\"e\"]},\"4\":{\"mnemonic\":\"rlc\",\"params\":[\"h\"]},\"5\":{\"mnemonic\":\"rlc\",\"params\":[\"l\"]},\"6\":{\"mnemonic\":\"rlc\",\"params\":[\"(hl)\"]},\"7\":{\"mnemonic\":\"rlc\",\"params\":[\"a\"]},\"8\":{\"mnemonic\":\"rrc\",\"params\":[\"b\"]},\"9\":{\"mnemonic\":\"rrc\",\"params\":[\"c\"]},\"10\":{\"mnemonic\":\"rl\",\"params\":[\"b\"]},\"11\":{\"mnemonic\":\"rl\",\"params\":[\"c\"]},\"12\":{\"mnemonic\":\"rl\",\"params\":[\"d\"]},\"13\":{\"mnemonic\":\"rl\",\"params\":[\"e\"]},\"14\":{\"mnemonic\":\"rl\",\"params\":[\"h\"]},\"15\":{\"mnemonic\":\"rl\",\"params\":[\"l\"]},\"16\":{\"mnemonic\":\"rl\",\"params\":[\"(hl)\"]},\"17\":{\"mnemonic\":\"rl\",\"params\":[\"a\"]},\"18\":{\"mnemonic\":\"rr\",\"params\":[\"b\"]},\"19\":{\"mnemonic\":\"rr\",\"params\":[\"c\"]},\"20\":{\"mnemonic\":\"sla\",\"params\":[\"b\"]},\"21\":{\"mnemonic\":\"sla\",\"params\":[\"c\"]},\"22\":{\"mnemonic\":\"sla\",\"params\":[\"d\"]},\"23\":{\"mnemonic\":\"sla\",\"params\":[\"e\"]},\"24\":{\"mnemonic\":\"sla\",\"params\":[\"h\"]},\"25\":{\"mnemonic\":\"sla\",\"params\":[\"l\"]},\"26\":{\"mnemonic\":\"sla\",\"params\":[\"(hl)\"]},\"27\":{\"mnemonic\":\"sla\",\"params\":[\"a\"]},\"28\":{\"mnemonic\":\"sra\",\"params\":[\"b\"]},\"29\":{\"mnemonic\":\"sra\",\"params\":[\"c\"]},\"30\":{\"mnemonic\":\"sll\",\"params\":[\"b\"]},\"31\":{\"mnemonic\":\"sll\",\"params\":[\"c\"]},\"32\":{\"mnemonic\":\"sll\",\"params\":[\"d\"]},\"33\":{\"mnemonic\":\"sll\",\"params\":[\"e\"]},\"34\":{\"mnemonic\":\"sll\",\"params\":[\"h\"]},\"35\":{\"mnemonic\":\"sll\",\"params\":[\"l\"]},\"36\":{\"mnemonic\":\"sll\",\"params\":[\"(hl)\"]},\"37\":{\"mnemonic\":\"sll\",\"params\":[\"a\"]},\"38\":{\"mnemonic\":\"srl\",\"params\":[\"b\"]},\"39\":{\"mnemonic\":\"srl\",\"params\":[\"c\"]},\"40\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"b\"]},\"41\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"c\"]},\"42\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"d\"]},\"43\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"e\"]},\"44\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"h\"]},\"45\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"l\"]},\"46\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(hl)\"]},\"47\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"a\"]},\"48\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"b\"]},\"49\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"c\"]},\"50\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"b\"]},\"51\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"c\"]},\"52\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"d\"]},\"53\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"e\"]},\"54\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"h\"]},\"55\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"l\"]},\"56\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(hl)\"]},\"57\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"a\"]},\"58\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"b\"]},\"59\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"c\"]},\"60\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"b\"]},\"61\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"c\"]},\"62\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"d\"]},\"63\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"e\"]},\"64\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"h\"]},\"65\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"l\"]},\"66\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(hl)\"]},\"67\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"a\"]},\"68\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"b\"]},\"69\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"c\"]},\"70\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"b\"]},\"71\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"c\"]},\"72\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"d\"]},\"73\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"e\"]},\"74\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"h\"]},\"75\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"l\"]},\"76\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(hl)\"]},\"77\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"a\"]},\"78\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"b\"]},\"79\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"c\"]},\"80\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"b\"]},\"81\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"c\"]},\"82\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"d\"]},\"83\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"e\"]},\"84\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"h\"]},\"85\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"l\"]},\"86\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"(hl)\"]},\"87\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"a\"]},\"88\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"b\"]},\"89\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"c\"]},\"90\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"b\"]},\"91\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"c\"]},\"92\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"d\"]},\"93\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"e\"]},\"94\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"h\"]},\"95\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"l\"]},\"96\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"(hl)\"]},\"97\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"a\"]},\"98\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"b\"]},\"99\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"c\"]},\"a\":{\"mnemonic\":\"rrc\",\"params\":[\"d\"]},\"b\":{\"mnemonic\":\"rrc\",\"params\":[\"e\"]},\"c\":{\"mnemonic\":\"rrc\",\"params\":[\"h\"]},\"d\":{\"mnemonic\":\"rrc\",\"params\":[\"l\"]},\"e\":{\"mnemonic\":\"rrc\",\"params\":[\"(hl)\"]},\"f\":{\"mnemonic\":\"rrc\",\"params\":[\"a\"]},\"1a\":{\"mnemonic\":\"rr\",\"params\":[\"d\"]},\"1b\":{\"mnemonic\":\"rr\",\"params\":[\"e\"]},\"1c\":{\"mnemonic\":\"rr\",\"params\":[\"h\"]},\"1d\":{\"mnemonic\":\"rr\",\"params\":[\"l\"]},\"1e\":{\"mnemonic\":\"rr\",\"params\":[\"(hl)\"]},\"1f\":{\"mnemonic\":\"rr\",\"params\":[\"a\"]},\"2a\":{\"mnemonic\":\"sra\",\"params\":[\"d\"]},\"2b\":{\"mnemonic\":\"sra\",\"params\":[\"e\"]},\"2c\":{\"mnemonic\":\"sra\",\"params\":[\"h\"]},\"2d\":{\"mnemonic\":\"sra\",\"params\":[\"l\"]},\"2e\":{\"mnemonic\":\"sra\",\"params\":[\"(hl)\"]},\"2f\":{\"mnemonic\":\"sra\",\"params\":[\"a\"]},\"3a\":{\"mnemonic\":\"srl\",\"params\":[\"d\"]},\"3b\":{\"mnemonic\":\"srl\",\"params\":[\"e\"]},\"3c\":{\"mnemonic\":\"srl\",\"params\":[\"h\"]},\"3d\":{\"mnemonic\":\"srl\",\"params\":[\"l\"]},\"3e\":{\"mnemonic\":\"srl\",\"params\":[\"(hl)\"]},\"3f\":{\"mnemonic\":\"srl\",\"params\":[\"a\"]},\"4a\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"d\"]},\"4b\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"e\"]},\"4c\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"h\"]},\"4d\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"l\"]},\"4e\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(hl)\"]},\"4f\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"a\"]},\"5a\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"d\"]},\"5b\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"e\"]},\"5c\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"h\"]},\"5d\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"l\"]},\"5e\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(hl)\"]},\"5f\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"a\"]},\"6a\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"d\"]},\"6b\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"e\"]},\"6c\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"h\"]},\"6d\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"l\"]},\"6e\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(hl)\"]},\"6f\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"a\"]},\"7a\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"d\"]},\"7b\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"e\"]},\"7c\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"h\"]},\"7d\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"l\"]},\"7e\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(hl)\"]},\"7f\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"a\"]},\"8a\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"d\"]},\"8b\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"e\"]},\"8c\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"h\"]},\"8d\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"l\"]},\"8e\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"(hl)\"]},\"8f\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"a\"]},\"9a\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"d\"]},\"9b\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"e\"]},\"9c\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"h\"]},\"9d\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"l\"]},\"9e\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"(hl)\"]},\"9f\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"a\"]},\"a0\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"b\"]},\"a1\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"c\"]},\"a2\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"d\"]},\"a3\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"e\"]},\"a4\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"h\"]},\"a5\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"l\"]},\"a6\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"(hl)\"]},\"a7\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"a\"]},\"a8\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"b\"]},\"a9\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"c\"]},\"aa\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"d\"]},\"ab\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"e\"]},\"ac\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"h\"]},\"ad\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"l\"]},\"ae\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"(hl)\"]},\"af\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"a\"]},\"b0\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"b\"]},\"b1\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"c\"]},\"b2\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"d\"]},\"b3\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"e\"]},\"b4\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"h\"]},\"b5\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"l\"]},\"b6\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"(hl)\"]},\"b7\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"a\"]},\"b8\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"b\"]},\"b9\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"c\"]},\"ba\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"d\"]},\"bb\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"e\"]},\"bc\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"h\"]},\"bd\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"l\"]},\"be\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"(hl)\"]},\"bf\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"a\"]},\"c0\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"b\"]},\"c1\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"c\"]},\"c2\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"d\"]},\"c3\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"e\"]},\"c4\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"h\"]},\"c5\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"l\"]},\"c6\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"(hl)\"]},\"c7\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"a\"]},\"c8\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"b\"]},\"c9\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"c\"]},\"ca\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"d\"]},\"cb\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"e\"]},\"cc\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"h\"]},\"cd\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"l\"]},\"ce\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"(hl)\"]},\"cf\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"a\"]},\"d0\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"b\"]},\"d1\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"c\"]},\"d2\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"d\"]},\"d3\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"e\"]},\"d4\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"h\"]},\"d5\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"l\"]},\"d6\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"(hl)\"]},\"d7\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"a\"]},\"d8\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"b\"]},\"d9\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"c\"]},\"da\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"d\"]},\"db\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"e\"]},\"dc\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"h\"]},\"dd\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"l\"]},\"de\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"(hl)\"]},\"df\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"a\"]},\"e0\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"b\"]},\"e1\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"c\"]},\"e2\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"d\"]},\"e3\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"e\"]},\"e4\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"h\"]},\"e5\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"l\"]},\"e6\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"(hl)\"]},\"e7\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"a\"]},\"e8\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"b\"]},\"e9\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"c\"]},\"ea\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"d\"]},\"eb\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"e\"]},\"ec\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"h\"]},\"ed\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"l\"]},\"ee\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"(hl)\"]},\"ef\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"a\"]},\"f0\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"b\"]},\"f1\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"c\"]},\"f2\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"d\"]},\"f3\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"e\"]},\"f4\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"h\"]},\"f5\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"l\"]},\"f6\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"(hl)\"]},\"f7\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"a\"]},\"f8\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"b\"]},\"f9\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"c\"]},\"fa\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"d\"]},\"fb\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"e\"]},\"fc\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"h\"]},\"fd\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"l\"]},\"fe\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"(hl)\"]},\"ff\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"a\"]}}},\"cc\":{\"mnemonic\":\"call\",\"params\":[\"z\",\"nnnn\"]},\"cd\":{\"mnemonic\":\"call\",\"params\":[\"nnnn\"]},\"ce\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"nn\"]},\"cf\":{\"mnemonic\":\"rst\",\"params\":[\"8\"]},\"d0\":{\"mnemonic\":\"ret\",\"params\":[\"nc\"]},\"d1\":{\"mnemonic\":\"pop\",\"params\":[\"de\"]},\"d2\":{\"mnemonic\":\"jp\",\"params\":[\"nc\",\"nnnn\"]},\"d3\":{\"mnemonic\":\"out\",\"params\":[\"(nn)\",\"a\"]},\"d4\":{\"mnemonic\":\"call\",\"params\":[\"nc\",\"nnnn\"]},\"d5\":{\"mnemonic\":\"push\",\"params\":[\"de\"]},\"d6\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"nn\"]},\"d7\":{\"mnemonic\":\"rst\",\"params\":[\"10\"]},\"d8\":{\"mnemonic\":\"ret\",\"params\":[\"c\"]},\"d9\":{\"mnemonic\":\"exx\"},\"da\":{\"mnemonic\":\"jp\",\"params\":[\"c\",\"nnnn\"]},\"db\":{\"mnemonic\":\"in\",\"params\":[\"a\",\"(nn)\"]},\"dc\":{\"mnemonic\":\"call\",\"params\":[\"c\",\"nnnn\"]},\"dd\":{\"shift\":{\"9\":{\"mnemonic\":\"add\",\"params\":[\"ix\",\"bc\"]},\"19\":{\"mnemonic\":\"add\",\"params\":[\"ix\",\"de\"]},\"21\":{\"mnemonic\":\"ld\",\"params\":[\"ix\",\"nnnn\"]},\"22\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"ix\"]},\"23\":{\"mnemonic\":\"inc\",\"params\":[\"ix\"]},\"24\":{\"mnemonic\":\"inc\",\"params\":[\"ixh\"]},\"25\":{\"mnemonic\":\"dec\",\"params\":[\"ixh\"]},\"26\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"nn\"]},\"29\":{\"mnemonic\":\"add\",\"params\":[\"ix\",\"ix\"]},\"34\":{\"mnemonic\":\"inc\",\"params\":[\"(ix+dd)\"]},\"35\":{\"mnemonic\":\"dec\",\"params\":[\"(ix+dd)\"]},\"36\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"nn\"]},\"39\":{\"mnemonic\":\"add\",\"params\":[\"ix\",\"sp\"]},\"44\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"ixh\"]},\"45\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"ixl\"]},\"46\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"(ix+dd)\"]},\"54\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"ixh\"]},\"55\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"ixl\"]},\"56\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"(ix+dd)\"]},\"60\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"b\"]},\"61\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"c\"]},\"62\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"d\"]},\"63\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"e\"]},\"64\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"ixh\"]},\"65\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"ixl\"]},\"66\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"(ix+dd)\"]},\"67\":{\"mnemonic\":\"ld\",\"params\":[\"ixh\",\"a\"]},\"68\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"b\"]},\"69\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"c\"]},\"70\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"b\"]},\"71\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"c\"]},\"72\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"d\"]},\"73\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"e\"]},\"74\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"h\"]},\"75\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"l\"]},\"77\":{\"mnemonic\":\"ld\",\"params\":[\"(ix+dd)\",\"a\"]},\"84\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"ixh\"]},\"85\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"ixl\"]},\"86\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"(ix+dd)\"]},\"94\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"ixh\"]},\"95\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"ixl\"]},\"96\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"(ix+dd)\"]},\"2a\":{\"mnemonic\":\"ld\",\"params\":[\"ix\",\"(nnnn)\"]},\"2b\":{\"mnemonic\":\"dec\",\"params\":[\"ix\"]},\"2c\":{\"mnemonic\":\"inc\",\"params\":[\"ixl\"]},\"2d\":{\"mnemonic\":\"dec\",\"params\":[\"ixl\"]},\"2e\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"nn\"]},\"4c\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"ixh\"]},\"4d\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"ixl\"]},\"4e\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"(ix+dd)\"]},\"5c\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"ixh\"]},\"5d\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"ixl\"]},\"5e\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"(ix+dd)\"]},\"6a\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"d\"]},\"6b\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"e\"]},\"6c\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"ixh\"]},\"6d\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"ixl\"]},\"6e\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"(ix+dd)\"]},\"6f\":{\"mnemonic\":\"ld\",\"params\":[\"ixl\",\"a\"]},\"7c\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"ixh\"]},\"7d\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"ixl\"]},\"7e\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"(ix+dd)\"]},\"8c\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"ixh\"]},\"8d\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"ixl\"]},\"8e\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"(ix+dd)\"]},\"9c\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"ixh\"]},\"9d\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"ixl\"]},\"9e\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"(ix+dd)\"]},\"a4\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"ixh\"]},\"a5\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"ixl\"]},\"a6\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"(ix+dd)\"]},\"ac\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"ixh\"]},\"ad\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"ixl\"]},\"ae\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"(ix+dd)\"]},\"b4\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"ixh\"]},\"b5\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"ixl\"]},\"b6\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"(ix+dd)\"]},\"bc\":{\"mnemonic\":\"cp\",\"params\":[\"ixh\"]},\"bd\":{\"mnemonic\":\"cp\",\"params\":[\"ixl\"]},\"be\":{\"mnemonic\":\"cp\",\"params\":[\"(ix+dd)\"]},\"cb\":{\"shift\":{\"0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"6\":{\"mnemonic\":\"rlc\",\"params\":[\"(ix+dd)\"]},\"7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rlc\"],\"extra\":[\"(ix+dd)\"]},\"8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"10\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"11\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"12\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"13\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"14\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"15\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"16\":{\"mnemonic\":\"rl\",\"params\":[\"(ix+dd)\"]},\"17\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rl\"],\"extra\":[\"(ix+dd)\"]},\"18\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"19\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"20\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"21\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"22\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"23\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"24\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"25\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"26\":{\"mnemonic\":\"sla\",\"params\":[\"(ix+dd)\"]},\"27\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"sla\"],\"extra\":[\"(ix+dd)\"]},\"28\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"29\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"30\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"31\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"32\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"33\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"34\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"35\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"36\":{\"mnemonic\":\"sll\",\"params\":[\"(ix+dd)\"]},\"37\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"sll\"],\"extra\":[\"(ix+dd)\"]},\"38\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"39\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"40\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"41\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"42\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"43\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"44\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"45\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"46\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"47\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(ix+dd)\"]},\"48\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"49\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"50\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"51\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"52\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"53\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"54\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"55\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"56\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"57\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(ix+dd)\"]},\"58\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"59\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"60\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"61\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"62\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"63\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"64\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"65\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"66\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"67\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(ix+dd)\"]},\"68\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"69\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"70\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"71\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"72\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"73\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"74\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"75\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"76\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"77\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(ix+dd)\"]},\"78\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"79\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"80\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"81\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"82\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"83\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"84\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"85\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"86\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"(ix+dd)\"]},\"87\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"88\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"89\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"90\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"91\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"92\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"93\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"94\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"95\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"96\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"(ix+dd)\"]},\"97\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"98\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"99\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"e\":{\"mnemonic\":\"rrc\",\"params\":[\"(ix+dd)\"]},\"f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rrc\"],\"extra\":[\"(ix+dd)\"]},\"1a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"1b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"1c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"1d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"1e\":{\"mnemonic\":\"rr\",\"params\":[\"(ix+dd)\"]},\"1f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rr\"],\"extra\":[\"(ix+dd)\"]},\"2a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"2b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"2c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"2d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"2e\":{\"mnemonic\":\"sra\",\"params\":[\"(ix+dd)\"]},\"2f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"sra\"],\"extra\":[\"(ix+dd)\"]},\"3a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"3b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"3c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"3d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"3e\":{\"mnemonic\":\"srl\",\"params\":[\"(ix+dd)\"]},\"3f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"srl\"],\"extra\":[\"(ix+dd)\"]},\"4a\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"4b\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"4c\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"4d\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"4e\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"4f\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(ix+dd)\"]},\"5a\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"5b\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"5c\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"5d\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"5e\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"5f\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(ix+dd)\"]},\"6a\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"6b\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"6c\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"6d\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"6e\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"6f\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(ix+dd)\"]},\"7a\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"7b\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"7c\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"7d\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"7e\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"7f\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(ix+dd)\"]},\"8a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"8b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"8c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"8d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"8e\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"(ix+dd)\"]},\"8f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"9a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"9b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"9c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"9d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"9e\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"(ix+dd)\"]},\"9f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"a0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a6\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"(ix+dd)\"]},\"a7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"a8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"a9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"aa\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ab\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ac\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ad\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ae\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"(ix+dd)\"]},\"af\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"b0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b6\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"(ix+dd)\"]},\"b7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"b8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"b9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"ba\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"bb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"bc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"bd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"be\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"(ix+dd)\"]},\"bf\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"c0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c6\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"(ix+dd)\"]},\"c7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"0\",\"(ix+dd)\"]},\"c8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"c9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"ca\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"cb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"cc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"cd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"ce\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"(ix+dd)\"]},\"cf\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"1\",\"(ix+dd)\"]},\"d0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d6\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"(ix+dd)\"]},\"d7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"2\",\"(ix+dd)\"]},\"d8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"d9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"da\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"db\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"dc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"dd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"de\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"(ix+dd)\"]},\"df\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"3\",\"(ix+dd)\"]},\"e0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e6\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"(ix+dd)\"]},\"e7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"4\",\"(ix+dd)\"]},\"e8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"e9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ea\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"eb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ec\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ed\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"ee\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"(ix+dd)\"]},\"ef\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"5\",\"(ix+dd)\"]},\"f0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f6\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"(ix+dd)\"]},\"f7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"6\",\"(ix+dd)\"]},\"f8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"f9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"fa\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"fb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"fc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"fd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]},\"fe\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"(ix+dd)\"]},\"ff\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"7\",\"(ix+dd)\"]}}},\"e1\":{\"mnemonic\":\"pop\",\"params\":[\"ix\"]},\"e3\":{\"mnemonic\":\"ex\",\"params\":[\"(sp)\",\"ix\"]},\"e5\":{\"mnemonic\":\"push\",\"params\":[\"ix\"]},\"e9\":{\"mnemonic\":\"jp\",\"params\":[\"ix\"]},\"f9\":{\"mnemonic\":\"ld\",\"params\":[\"sp\",\"ix\"]}}},\"de\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"nn\"]},\"df\":{\"mnemonic\":\"rst\",\"params\":[\"18\"]},\"e0\":{\"mnemonic\":\"ret\",\"params\":[\"po\"]},\"e1\":{\"mnemonic\":\"pop\",\"params\":[\"hl\"]},\"e2\":{\"mnemonic\":\"jp\",\"params\":[\"po\",\"nnnn\"]},\"e3\":{\"mnemonic\":\"ex\",\"params\":[\"(sp)\",\"hl\"]},\"e4\":{\"mnemonic\":\"call\",\"params\":[\"po\",\"nnnn\"]},\"e5\":{\"mnemonic\":\"push\",\"params\":[\"hl\"]},\"e6\":{\"mnemonic\":\"and\",\"params\":[\"nn\"]},\"e7\":{\"mnemonic\":\"rst\",\"params\":[\"20\"]},\"e8\":{\"mnemonic\":\"ret\",\"params\":[\"pe\"]},\"e9\":{\"mnemonic\":\"jp\",\"params\":[\"hl\"]},\"ea\":{\"mnemonic\":\"jp\",\"params\":[\"pe\",\"nnnn\"]},\"eb\":{\"mnemonic\":\"ex\",\"params\":[\"de\",\"hl\"]},\"ec\":{\"mnemonic\":\"call\",\"params\":[\"pe\",\"nnnn\"]},\"ed\":{\"shift\":{\"40\":{\"mnemonic\":\"in\",\"params\":[\"b\",\"(c)\"]},\"41\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"b\"]},\"42\":{\"mnemonic\":\"sbc\",\"params\":[\"hl\",\"bc\"]},\"43\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"bc\"]},\"44\":{\"mnemonic\":\"neg\"},\"45\":{\"mnemonic\":\"retn\"},\"46\":{\"mnemonic\":\"im\",\"params\":[\"0\"]},\"47\":{\"mnemonic\":\"ld\",\"params\":[\"i\",\"a\"]},\"48\":{\"mnemonic\":\"in\",\"params\":[\"c\",\"(c)\"]},\"49\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"c\"]},\"50\":{\"mnemonic\":\"in\",\"params\":[\"d\",\"(c)\"]},\"51\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"d\"]},\"52\":{\"mnemonic\":\"sbc\",\"params\":[\"hl\",\"de\"]},\"53\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"de\"]},\"54\":{\"mnemonic\":\"neg\"},\"55\":{\"mnemonic\":\"retn\"},\"56\":{\"mnemonic\":\"im\",\"params\":[\"1\"]},\"57\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"i\"]},\"58\":{\"mnemonic\":\"in\",\"params\":[\"e\",\"(c)\"]},\"59\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"e\"]},\"60\":{\"mnemonic\":\"in\",\"params\":[\"h\",\"(c)\"]},\"61\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"h\"]},\"62\":{\"mnemonic\":\"sbc\",\"params\":[\"hl\",\"hl\"]},\"63\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"hl\"]},\"64\":{\"mnemonic\":\"neg\"},\"65\":{\"mnemonic\":\"retn\"},\"66\":{\"mnemonic\":\"im\",\"params\":[\"0\"]},\"67\":{\"mnemonic\":\"rrd\"},\"68\":{\"mnemonic\":\"in\",\"params\":[\"l\",\"(c)\"]},\"69\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"l\"]},\"70\":{\"mnemonic\":\"in\",\"params\":[\"f\",\"(c)\"]},\"71\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"0\"]},\"72\":{\"mnemonic\":\"sbc\",\"params\":[\"hl\",\"sp\"]},\"73\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"sp\"]},\"74\":{\"mnemonic\":\"neg\"},\"75\":{\"mnemonic\":\"retn\"},\"76\":{\"mnemonic\":\"im\",\"params\":[\"1\"]},\"78\":{\"mnemonic\":\"in\",\"params\":[\"a\",\"(c)\"]},\"79\":{\"mnemonic\":\"out\",\"params\":[\"(c)\",\"a\"]},\"4c\":{\"mnemonic\":\"neg\"},\"5c\":{\"mnemonic\":\"neg\"},\"6c\":{\"mnemonic\":\"neg\"},\"7c\":{\"mnemonic\":\"neg\"},\"5d\":{\"mnemonic\":\"retn\"},\"6d\":{\"mnemonic\":\"retn\"},\"7d\":{\"mnemonic\":\"retn\"},\"4e\":{\"mnemonic\":\"im\",\"params\":[\"0\"]},\"6e\":{\"mnemonic\":\"im\",\"params\":[\"0\"]},\"4a\":{\"mnemonic\":\"adc\",\"params\":[\"hl\",\"bc\"]},\"4b\":{\"mnemonic\":\"ld\",\"params\":[\"bc\",\"(nnnn)\"]},\"4d\":{\"mnemonic\":\"reti\"},\"4f\":{\"mnemonic\":\"ld\",\"params\":[\"r\",\"a\"]},\"5a\":{\"mnemonic\":\"adc\",\"params\":[\"hl\",\"de\"]},\"5b\":{\"mnemonic\":\"ld\",\"params\":[\"de\",\"(nnnn)\"]},\"5e\":{\"mnemonic\":\"im\",\"params\":[\"2\"]},\"7e\":{\"mnemonic\":\"im\",\"params\":[\"2\"]},\"5f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"r\"]},\"6a\":{\"mnemonic\":\"adc\",\"params\":[\"hl\",\"hl\"]},\"6b\":{\"mnemonic\":\"ld\",\"params\":[\"hl\",\"(nnnn)\"]},\"6f\":{\"mnemonic\":\"rld\"},\"7a\":{\"mnemonic\":\"adc\",\"params\":[\"hl\",\"sp\"]},\"7b\":{\"mnemonic\":\"ld\",\"params\":[\"sp\",\"(nnnn)\"]},\"a0\":{\"mnemonic\":\"ldi\"},\"a1\":{\"mnemonic\":\"cpi\"},\"a2\":{\"mnemonic\":\"ini\"},\"a3\":{\"mnemonic\":\"outi\"},\"a8\":{\"mnemonic\":\"ldd\"},\"a9\":{\"mnemonic\":\"cpd\"},\"aa\":{\"mnemonic\":\"ind\"},\"ab\":{\"mnemonic\":\"outd\"},\"b0\":{\"mnemonic\":\"ldir\"},\"b1\":{\"mnemonic\":\"cpir\"},\"b2\":{\"mnemonic\":\"inir\"},\"b3\":{\"mnemonic\":\"otir\"},\"b8\":{\"mnemonic\":\"lddr\"},\"b9\":{\"mnemonic\":\"cpdr\"},\"ba\":{\"mnemonic\":\"indr\"},\"bb\":{\"mnemonic\":\"otdr\"}}},\"ee\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"nn\"]},\"ef\":{\"mnemonic\":\"rst\",\"params\":[\"28\"]},\"f0\":{\"mnemonic\":\"ret\",\"params\":[\"p\"]},\"f1\":{\"mnemonic\":\"pop\",\"params\":[\"af\"]},\"f2\":{\"mnemonic\":\"jp\",\"params\":[\"p\",\"nnnn\"]},\"f3\":{\"mnemonic\":\"di\"},\"f4\":{\"mnemonic\":\"call\",\"params\":[\"p\",\"nnnn\"]},\"f5\":{\"mnemonic\":\"push\",\"params\":[\"af\"]},\"f6\":{\"mnemonic\":\"or\",\"params\":[\"nn\"]},\"f7\":{\"mnemonic\":\"rst\",\"params\":[\"30\"]},\"f8\":{\"mnemonic\":\"ret\",\"params\":[\"m\"]},\"f9\":{\"mnemonic\":\"ld\",\"params\":[\"sp\",\"hl\"]},\"fa\":{\"mnemonic\":\"jp\",\"params\":[\"m\",\"nnnn\"]},\"fb\":{\"mnemonic\":\"ei\"},\"fc\":{\"mnemonic\":\"call\",\"params\":[\"m\",\"nnnn\"]},\"fd\":{\"shift\":{\"9\":{\"mnemonic\":\"add\",\"params\":[\"iy\",\"bc\"]},\"19\":{\"mnemonic\":\"add\",\"params\":[\"iy\",\"de\"]},\"21\":{\"mnemonic\":\"ld\",\"params\":[\"iy\",\"nnnn\"]},\"22\":{\"mnemonic\":\"ld\",\"params\":[\"(nnnn)\",\"iy\"]},\"23\":{\"mnemonic\":\"inc\",\"params\":[\"iy\"]},\"24\":{\"mnemonic\":\"inc\",\"params\":[\"iyh\"]},\"25\":{\"mnemonic\":\"dec\",\"params\":[\"iyh\"]},\"26\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"nn\"]},\"29\":{\"mnemonic\":\"add\",\"params\":[\"iy\",\"iy\"]},\"34\":{\"mnemonic\":\"inc\",\"params\":[\"(iy+dd)\"]},\"35\":{\"mnemonic\":\"dec\",\"params\":[\"(iy+dd)\"]},\"36\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"nn\"]},\"39\":{\"mnemonic\":\"add\",\"params\":[\"iy\",\"sp\"]},\"44\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"iyh\"]},\"45\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"iyl\"]},\"46\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"(iy+dd)\"]},\"54\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"iyh\"]},\"55\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"iyl\"]},\"56\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"(iy+dd)\"]},\"60\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"b\"]},\"61\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"c\"]},\"62\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"d\"]},\"63\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"e\"]},\"64\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"iyh\"]},\"65\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"iyl\"]},\"66\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"(iy+dd)\"]},\"67\":{\"mnemonic\":\"ld\",\"params\":[\"iyh\",\"a\"]},\"68\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"b\"]},\"69\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"c\"]},\"70\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"b\"]},\"71\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"c\"]},\"72\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"d\"]},\"73\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"e\"]},\"74\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"h\"]},\"75\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"l\"]},\"77\":{\"mnemonic\":\"ld\",\"params\":[\"(iy+dd)\",\"a\"]},\"84\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"iyh\"]},\"85\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"iyl\"]},\"86\":{\"mnemonic\":\"add\",\"params\":[\"a\",\"(iy+dd)\"]},\"94\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"iyh\"]},\"95\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"iyl\"]},\"96\":{\"mnemonic\":\"sub\",\"params\":[\"a\",\"(iy+dd)\"]},\"2a\":{\"mnemonic\":\"ld\",\"params\":[\"iy\",\"(nnnn)\"]},\"2b\":{\"mnemonic\":\"dec\",\"params\":[\"iy\"]},\"2c\":{\"mnemonic\":\"inc\",\"params\":[\"iyl\"]},\"2d\":{\"mnemonic\":\"dec\",\"params\":[\"iyl\"]},\"2e\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"nn\"]},\"4c\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"iyh\"]},\"4d\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"iyl\"]},\"4e\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"(iy+dd)\"]},\"5c\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"iyh\"]},\"5d\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"iyl\"]},\"5e\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"(iy+dd)\"]},\"6a\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"d\"]},\"6b\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"e\"]},\"6c\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"iyh\"]},\"6d\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"iyl\"]},\"6e\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"(iy+dd)\"]},\"6f\":{\"mnemonic\":\"ld\",\"params\":[\"iyl\",\"a\"]},\"7c\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"iyh\"]},\"7d\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"iyl\"]},\"7e\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"(iy+dd)\"]},\"8c\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"iyh\"]},\"8d\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"iyl\"]},\"8e\":{\"mnemonic\":\"adc\",\"params\":[\"a\",\"(iy+dd)\"]},\"9c\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"iyh\"]},\"9d\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"iyl\"]},\"9e\":{\"mnemonic\":\"sbc\",\"params\":[\"a\",\"(iy+dd)\"]},\"a4\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"iyh\"]},\"a5\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"iyl\"]},\"a6\":{\"mnemonic\":\"and\",\"params\":[\"a\",\"(iy+dd)\"]},\"ac\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"iyh\"]},\"ad\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"iyl\"]},\"ae\":{\"mnemonic\":\"xor\",\"params\":[\"a\",\"(iy+dd)\"]},\"b4\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"iyh\"]},\"b5\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"iyl\"]},\"b6\":{\"mnemonic\":\"or\",\"params\":[\"a\",\"(iy+dd)\"]},\"bc\":{\"mnemonic\":\"cp\",\"params\":[\"iyh\"]},\"bd\":{\"mnemonic\":\"cp\",\"params\":[\"iyl\"]},\"be\":{\"mnemonic\":\"cp\",\"params\":[\"(iy+dd)\"]},\"cb\":{\"shift\":{\"0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"6\":{\"mnemonic\":\"rlc\",\"params\":[\"(iy+dd)\"]},\"7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rlc\"],\"extra\":[\"(iy+dd)\"]},\"8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"10\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"11\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"12\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"13\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"14\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"15\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"16\":{\"mnemonic\":\"rl\",\"params\":[\"(iy+dd)\"]},\"17\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rl\"],\"extra\":[\"(iy+dd)\"]},\"18\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"19\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"20\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"21\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"22\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"23\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"24\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"25\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"26\":{\"mnemonic\":\"sla\",\"params\":[\"(iy+dd)\"]},\"27\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"sla\"],\"extra\":[\"(iy+dd)\"]},\"28\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"29\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"30\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"31\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"32\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"33\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"34\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"35\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"36\":{\"mnemonic\":\"sll\",\"params\":[\"(iy+dd)\"]},\"37\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"sll\"],\"extra\":[\"(iy+dd)\"]},\"38\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"39\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"40\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"41\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"42\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"43\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"44\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"45\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"46\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"47\":{\"mnemonic\":\"bit\",\"params\":[\"0\",\"(iy+dd)\"]},\"48\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"49\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"50\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"51\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"52\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"53\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"54\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"55\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"56\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"57\":{\"mnemonic\":\"bit\",\"params\":[\"2\",\"(iy+dd)\"]},\"58\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"59\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"60\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"61\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"62\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"63\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"64\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"65\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"66\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"67\":{\"mnemonic\":\"bit\",\"params\":[\"4\",\"(iy+dd)\"]},\"68\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"69\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"70\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"71\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"72\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"73\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"74\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"75\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"76\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"77\":{\"mnemonic\":\"bit\",\"params\":[\"6\",\"(iy+dd)\"]},\"78\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"79\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"80\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"81\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"82\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"83\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"84\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"85\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"86\":{\"mnemonic\":\"res\",\"params\":[\"0\",\"(iy+dd)\"]},\"87\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"88\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"89\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"90\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"91\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"92\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"93\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"94\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"95\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"96\":{\"mnemonic\":\"res\",\"params\":[\"2\",\"(iy+dd)\"]},\"97\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"98\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"99\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"e\":{\"mnemonic\":\"rrc\",\"params\":[\"(iy+dd)\"]},\"f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rrc\"],\"extra\":[\"(iy+dd)\"]},\"1a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"1b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"1c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"1d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"1e\":{\"mnemonic\":\"rr\",\"params\":[\"(iy+dd)\"]},\"1f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"rr\"],\"extra\":[\"(iy+dd)\"]},\"2a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"2b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"2c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"2d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"2e\":{\"mnemonic\":\"sra\",\"params\":[\"(iy+dd)\"]},\"2f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"sra\"],\"extra\":[\"(iy+dd)\"]},\"3a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"3b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"3c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"3d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"3e\":{\"mnemonic\":\"srl\",\"params\":[\"(iy+dd)\"]},\"3f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"srl\"],\"extra\":[\"(iy+dd)\"]},\"4a\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"4b\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"4c\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"4d\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"4e\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"4f\":{\"mnemonic\":\"bit\",\"params\":[\"1\",\"(iy+dd)\"]},\"5a\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"5b\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"5c\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"5d\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"5e\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"5f\":{\"mnemonic\":\"bit\",\"params\":[\"3\",\"(iy+dd)\"]},\"6a\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"6b\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"6c\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"6d\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"6e\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"6f\":{\"mnemonic\":\"bit\",\"params\":[\"5\",\"(iy+dd)\"]},\"7a\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"7b\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"7c\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"7d\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"7e\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"7f\":{\"mnemonic\":\"bit\",\"params\":[\"7\",\"(iy+dd)\"]},\"8a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"8b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"8c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"8d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"8e\":{\"mnemonic\":\"res\",\"params\":[\"1\",\"(iy+dd)\"]},\"8f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"9a\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"9b\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"9c\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"9d\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"9e\":{\"mnemonic\":\"res\",\"params\":[\"3\",\"(iy+dd)\"]},\"9f\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"a0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a6\":{\"mnemonic\":\"res\",\"params\":[\"4\",\"(iy+dd)\"]},\"a7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"a8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"a9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"aa\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ab\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ac\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ad\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ae\":{\"mnemonic\":\"res\",\"params\":[\"5\",\"(iy+dd)\"]},\"af\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"b0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b6\":{\"mnemonic\":\"res\",\"params\":[\"6\",\"(iy+dd)\"]},\"b7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"b8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"b9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"ba\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"bb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"bc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"bd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"be\":{\"mnemonic\":\"res\",\"params\":[\"7\",\"(iy+dd)\"]},\"bf\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"res\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"c0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c6\":{\"mnemonic\":\"set\",\"params\":[\"0\",\"(iy+dd)\"]},\"c7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"0\",\"(iy+dd)\"]},\"c8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"c9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"ca\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"cb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"cc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"cd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"ce\":{\"mnemonic\":\"set\",\"params\":[\"1\",\"(iy+dd)\"]},\"cf\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"1\",\"(iy+dd)\"]},\"d0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d6\":{\"mnemonic\":\"set\",\"params\":[\"2\",\"(iy+dd)\"]},\"d7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"2\",\"(iy+dd)\"]},\"d8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"d9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"da\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"db\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"dc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"dd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"de\":{\"mnemonic\":\"set\",\"params\":[\"3\",\"(iy+dd)\"]},\"df\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"3\",\"(iy+dd)\"]},\"e0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e6\":{\"mnemonic\":\"set\",\"params\":[\"4\",\"(iy+dd)\"]},\"e7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"4\",\"(iy+dd)\"]},\"e8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"e9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ea\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"eb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ec\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ed\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"ee\":{\"mnemonic\":\"set\",\"params\":[\"5\",\"(iy+dd)\"]},\"ef\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"5\",\"(iy+dd)\"]},\"f0\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f1\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f2\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f3\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f4\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f5\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f6\":{\"mnemonic\":\"set\",\"params\":[\"6\",\"(iy+dd)\"]},\"f7\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"6\",\"(iy+dd)\"]},\"f8\":{\"mnemonic\":\"ld\",\"params\":[\"b\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"f9\":{\"mnemonic\":\"ld\",\"params\":[\"c\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"fa\":{\"mnemonic\":\"ld\",\"params\":[\"d\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"fb\":{\"mnemonic\":\"ld\",\"params\":[\"e\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"fc\":{\"mnemonic\":\"ld\",\"params\":[\"h\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"fd\":{\"mnemonic\":\"ld\",\"params\":[\"l\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]},\"fe\":{\"mnemonic\":\"set\",\"params\":[\"7\",\"(iy+dd)\"]},\"ff\":{\"mnemonic\":\"ld\",\"params\":[\"a\",\"set\"],\"extra\":[\"7\",\"(iy+dd)\"]}}},\"e1\":{\"mnemonic\":\"pop\",\"params\":[\"iy\"]},\"e3\":{\"mnemonic\":\"ex\",\"params\":[\"(sp)\",\"iy\"]},\"e5\":{\"mnemonic\":\"push\",\"params\":[\"iy\"]},\"e9\":{\"mnemonic\":\"jp\",\"params\":[\"iy\"]},\"f9\":{\"mnemonic\":\"ld\",\"params\":[\"sp\",\"iy\"]}}},\"fe\":{\"mnemonic\":\"cp\",\"params\":[\"nn\"]},\"ff\":{\"mnemonic\":\"rst\",\"params\":[\"38\"]}}");
 
 /***/ }),
-/* 176 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41571,7 +50674,7 @@ exports.isByteReg = isByteReg;
 
 
 /***/ }),
-/* 177 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41698,7 +50801,7 @@ exports.registerSetFields = [
 
 
 /***/ }),
-/* 178 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41750,7 +50853,62 @@ var Flag;
 
 
 /***/ }),
-/* 179 */
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Information about a preamble that might copy the rest of the program elsewhere in memory. It typically looks like:
+ *
+ *     6000  21 0E 60            ld hl,0x600E
+ *     6003  11 00 43            ld de,0x4300
+ *     6006  01 5C 07            ld bc,0x075C
+ *     6009  ED B0               ldir
+ *     600B  C3 00 43            jp 0x4300
+ *     600E  [program to be copied]
+ *
+ */
+class Preamble {
+    constructor(preambleLength, sourceAddress, destinationAddress, copyLength, jumpAddress) {
+        this.preambleLength = preambleLength;
+        this.sourceAddress = sourceAddress;
+        this.destinationAddress = destinationAddress;
+        this.copyLength = copyLength;
+        this.jumpAddress = jumpAddress;
+    }
+    /**
+     * Detect a preamble that copies the program to another address.
+     */
+    static detect(memory, entryPoint) {
+        let preambleLength = 0x0E;
+        let start = entryPoint;
+        // Skip optional DI.
+        if (memory[start] === 0xF3) { // DI
+            start += 1;
+            preambleLength += 1;
+        }
+        const sourceAddress = memory[start + 0x01] | (memory[start + 0x02] << 8);
+        const destinationAddress = memory[start + 0x04] | (memory[start + 0x05] << 8);
+        const copyLength = memory[start + 0x07] | (memory[start + 0x08] << 8);
+        const jumpAddress = memory[start + 0x0C] | (memory[start + 0x0D] << 8);
+        if (memory[start + 0x00] === 0x21 && // LD HL,nnnn
+            memory[start + 0x03] === 0x11 && // LD DE,nnnn
+            memory[start + 0x06] === 0x01 && // LD BC,nnnn
+            memory[start + 0x09] === 0xED && memory[start + 0x0A] === 0xB0 && // LDIR
+            memory[start + 0x0B] === 0xC3 && // JP nnnn
+            jumpAddress >= destinationAddress && jumpAddress < destinationAddress + copyLength) {
+            return new Preamble(preambleLength, sourceAddress, destinationAddress, copyLength, jumpAddress);
+        }
+        return undefined;
+    }
+}
+exports.Preamble = Preamble;
+
+
+/***/ }),
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41798,7 +50956,7 @@ exports.TRS80_MODEL_III_KNOWN_LABELS = [
 
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41806,7 +50964,7 @@ exports.TRS80_MODEL_III_KNOWN_LABELS = [
 // Another Man's Treasure font, for the editor.
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addCssFontToPage = void 0;
-const Utils_1 = __webpack_require__(18);
+const Utils_1 = __webpack_require__(23);
 const FONT_CSS_ID_NAME = Utils_1.CSS_PREFIX + "-css-font";
 // Kept in a different file so the long text isn't in our way.
 const FONT_CSS = `
@@ -41831,7 +50989,7 @@ exports.addCssFontToPage = addCssFontToPage;
 
 
 /***/ }),
-/* 181 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41839,19 +50997,19 @@ exports.addCssFontToPage = addCssFontToPage;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../trs80-emulator/dist/index.js
-var dist = __webpack_require__(11);
+var dist = __webpack_require__(10);
 
 // EXTERNAL MODULE: ./node_modules/firebase/app/dist/index.esm.js
-var index_esm = __webpack_require__(2);
+var index_esm = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./node_modules/firebase/auth/dist/index.esm.js
 var dist_index_esm = __webpack_require__(56);
 
 // EXTERNAL MODULE: ./node_modules/@firebase/app/dist/index.esm.js
-var app_dist_index_esm = __webpack_require__(3);
+var app_dist_index_esm = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/@firebase/logger/dist/index.esm.js
-var logger_dist_index_esm = __webpack_require__(10);
+var logger_dist_index_esm = __webpack_require__(11);
 
 // EXTERNAL MODULE: ./node_modules/@firebase/util/dist/index.esm.js
 var util_dist_index_esm = __webpack_require__(4);
@@ -41863,7 +51021,7 @@ var webchannel_wrapper_dist_index_esm = __webpack_require__(9);
 var prebuilt_30db9a88_9b75cc8d = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/@firebase/component/dist/index.esm.js
-var component_dist_index_esm = __webpack_require__(13);
+var component_dist_index_esm = __webpack_require__(12);
 
 // CONCATENATED MODULE: ./node_modules/@firebase/firestore/dist/esm5/index.js
 
@@ -41946,7 +51104,7 @@ P(app_dist_index_esm["a" /* default */]);
 
 
 // EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
-var tslib_es6 = __webpack_require__(1);
+var tslib_es6 = __webpack_require__(0);
 
 // EXTERNAL MODULE: ./node_modules/idb/build/idb.js
 var idb = __webpack_require__(71);
@@ -44656,7 +53814,7 @@ function isSameStringArray(a, b) {
 }
 
 // EXTERNAL MODULE: ./node_modules/strongly-typed-events/dist/index.js
-var strongly_typed_events_dist = __webpack_require__(16);
+var strongly_typed_events_dist = __webpack_require__(15);
 
 // CONCATENATED MODULE: ./src/PanelManager.ts
 
@@ -44682,14 +53840,35 @@ class PanelManager_PanelManager {
         this.positioningNode = document.createElement("div");
         this.positioningNode.classList.add("panel-positioning");
         this.backgroundNode.append(this.positioningNode);
-        // Handler for the ESC key.
-        this.escListener = (e) => {
-            if (e.key === "Escape") {
+        // Pass key events to panels.
+        document.addEventListener("keydown", e => {
+            let handled = false;
+            // Ctrl-L anywhere to toggle the panels.
+            if (e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey && e.key === "l") {
+                this.toggle();
+                handled = true;
+            }
+            // Ctrl-Backspace to pop a panel.
+            if (!handled && this.panels.length > 1 && e.ctrlKey && !e.metaKey && !e.shiftKey &&
+                !e.altKey && e.key === "Backspace") {
+                this.popPanel();
+                handled = true;
+            }
+            // If panel is open, pass key to visible panel.
+            if (!handled && this.isOpen) {
+                // Give panel first chance, in case they need Esc for something more useful
+                // than closing the panel.
+                handled = this.panels[this.panels.length - 1].onKeyDown(e);
+                if (!handled && !e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey && e.key === "Escape") {
+                    this.close();
+                    handled = true;
+                }
+            }
+            if (handled) {
                 e.preventDefault();
                 e.stopPropagation();
-                this.close();
             }
-        };
+        });
     }
     /**
      * Push a new panel and animate it on-screen.
@@ -44744,7 +53923,6 @@ class PanelManager_PanelManager {
     open() {
         if (!this.isOpen) {
             this.isOpen = true;
-            document.addEventListener("keydown", this.escListener);
             this.onOpenClose.dispatch(true);
             this.backgroundNode.classList.add("panel-shown");
         }
@@ -44755,7 +53933,6 @@ class PanelManager_PanelManager {
     close() {
         if (this.isOpen) {
             this.isOpen = false;
-            document.removeEventListener("keydown", this.escListener);
             this.onOpenClose.dispatch(false);
             this.backgroundNode.classList.remove("panel-shown");
         }
@@ -44769,169 +53946,6 @@ class PanelManager_PanelManager {
         }
         else {
             this.open();
-        }
-    }
-}
-
-// CONCATENATED MODULE: ./src/Panel.ts
-
-/**
- * Base class for panels.
- */
-class Panel_Panel {
-    /**
-     * Construct the panel and its basic UI.
-     *
-     * @param context the app's context object.
-     * @param title title for the header.
-     * @param panelCssClass class for the whole panel.
-     * @param showBackButton whether to show a back button.
-     */
-    constructor(context, title, panelCssClass, showBackButton) {
-        this.context = context;
-        this.element = document.createElement("div");
-        this.element.classList.add("panel", panelCssClass);
-        // Handler for hot keys.
-        this.keyboardListener = (e) => {
-            if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Backspace") {
-                this.context.panelManager.popPanel();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        };
-        const header = document.createElement("h1");
-        if (showBackButton) {
-            const backButton = makeIconButton(makeIcon("arrow_back"), "Back (Ctrl-Backspace)", () => this.context.panelManager.popPanel());
-            backButton.classList.add("back-button");
-            header.append(backButton);
-            window.addEventListener("keydown", this.keyboardListener);
-        }
-        this.headerTextNode = document.createElement("span");
-        this.headerTextNode.innerText = title;
-        header.append(this.headerTextNode);
-        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
-        this.element.append(header);
-        this.content = document.createElement("div");
-        this.content.classList.add("panel-content");
-        this.element.append(this.content);
-    }
-    /**
-     * Called when the panel is no longer visible and is being destroyed.
-     */
-    onPanelDestroy() {
-        // Okay if wasn't registered.
-        window.removeEventListener("keydown", this.keyboardListener);
-    }
-}
-
-// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
-var teamten_ts_utils_dist = __webpack_require__(7);
-
-// CONCATENATED MODULE: ./src/PageTabs.ts
-
-/**
- * Set of page tabs.
- */
-class PageTabs_PageTabs {
-    constructor(element) {
-        this.tabs = [];
-        // The tab last selected by the user.
-        this.activeIndex = 0;
-        // Same as activeIndex, unless it's not visible, in which case some other
-        // visible tab, or undefined if no tab is visible.
-        this.effectiveActiveIndex = undefined;
-        this.containerElement = element;
-        this.containerElement.classList.add("page-tabs-container");
-        // Where we draw the page tabs themselves.
-        this.tabElement = document.createElement("div");
-        this.tabElement.classList.add("page-tabs");
-        this.containerElement.append(this.tabElement);
-    }
-    /**
-     * Add a new tab. Be sure it's fully configured, because its onShow
-     * listener might be called synchronously.
-     */
-    addTab(tab) {
-        this.tabs.push(tab);
-        this.containerElement.append(tab.element);
-        this.configurationChanged();
-    }
-    /**
-     * The panel these page tabs are on is being destroyed.
-     */
-    destroy() {
-        for (const tab of this.tabs) {
-            tab.onDestroy();
-        }
-    }
-    /**
-     * Switch the active tab.
-     */
-    setActiveTab(activeIndex) {
-        if (activeIndex !== this.activeIndex) {
-            this.activeIndex = activeIndex;
-            this.configurationChanged();
-        }
-    }
-    /**
-     * Update all tabs given a new configuration.
-     */
-    configurationChanged() {
-        const oldEffectiveActiveIndex = this.effectiveActiveIndex;
-        this.computeEffectiveActiveIndex();
-        if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
-            if (oldEffectiveActiveIndex !== undefined) {
-                this.tabs[oldEffectiveActiveIndex].onHide();
-            }
-            if (this.effectiveActiveIndex !== undefined) {
-                this.tabs[this.effectiveActiveIndex].onShow();
-            }
-        }
-        this.recreateTabs();
-        this.updateTabContentVisibility();
-    }
-    /**
-     * Get the current active index. If it's hidden, return another one. If none
-     * exist, return undefined.
-     */
-    computeEffectiveActiveIndex() {
-        this.effectiveActiveIndex = this.activeIndex;
-        // If the active tab is hidden, find another one.
-        if (this.effectiveActiveIndex >= this.tabs.length || !this.tabs[this.effectiveActiveIndex].visible) {
-            // Pick any.
-            this.effectiveActiveIndex = undefined;
-            for (let i = 0; i < this.tabs.length; i++) {
-                if (this.tabs[i].visible) {
-                    this.effectiveActiveIndex = i;
-                    break;
-                }
-            }
-        }
-    }
-    /**
-     * Recreate the set of page tabs (the UI).
-     */
-    recreateTabs() {
-        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
-        for (let index = 0; index < this.tabs.length; index++) {
-            const tab = this.tabs[index];
-            if (tab.visible) {
-                const tabDiv = document.createElement("div");
-                tabDiv.innerText = tab.name;
-                tabDiv.classList.toggle("page-tab-active", index === this.effectiveActiveIndex);
-                tabDiv.addEventListener("click", () => {
-                    this.setActiveTab(index);
-                });
-                this.tabElement.append(tabDiv);
-            }
-        }
-    }
-    /**
-     * Update which tab contents are visible based on which is selected.
-     */
-    updateTabContentVisibility() {
-        for (let index = 0; index < this.tabs.length; index++) {
-            this.tabs[index].element.classList.toggle("hidden", index !== this.effectiveActiveIndex);
         }
     }
 }
@@ -44978,6 +53992,7 @@ class Library_Library {
         this.files = new Map();
         // Fires after the map has been updated.
         this.onEvent = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.inSync = false;
         // Whether the library is in sync with the cloud database. This starts out false
         // and emits a "true" once the first fetch has completed.
         this.onInSync = new strongly_typed_events_dist["SimpleEventDispatcher"]();
@@ -44998,6 +54013,7 @@ class Library_Library {
      * Specify whether the in-memory library is now in sync with the cloud database.
      */
     setInSync(inSync) {
+        this.inSync = inSync;
         this.onInSync.dispatch(inSync);
     }
     /**
@@ -45058,18 +54074,13 @@ class Library_Library {
 }
 
 // EXTERNAL MODULE: ./node_modules/base64-js/index.js
-var base64_js = __webpack_require__(33);
+var base64_js = __webpack_require__(34);
+
+// EXTERNAL MODULE: ./node_modules/z80-base/dist/index.js
+var z80_base_dist = __webpack_require__(7);
 
 // CONCATENATED MODULE: ./src/Sha1.ts
-// Convert a 32-bit unsigned number to a hex string.
-// TODO use the z80-base version of this.
-function toHexLong(value) {
-    value &= 0xFFFFFFFF;
-    if (value < 0) {
-        value = 0xFFFFFFFF + value + 1;
-    }
-    return value.toString(16).padStart(8, "0").toUpperCase();
-}
+
 /**
  * Rotate the 32-bit value left "count" bits.
  */
@@ -45150,7 +54161,7 @@ function sha1(bytes) {
         h4 = (h4 + e) & 0xFFFFFFFF;
     }
     // Convert to a string.
-    return [h0, h1, h2, h3, h4].map(toHexLong).join("");
+    return [h0, h1, h2, h3, h4].map(z80_base_dist["toHexLong"]).join("");
 }
 
 // CONCATENATED MODULE: ./src/TagSet.ts
@@ -45232,6 +54243,21 @@ class TagSet {
 
 // What's considered a "new" file.
 const NEW_TIME_MS = 60 * 60 * 24 * 7 * 1000;
+/**
+ * Return whether the test string starts with the filter prefix.
+ */
+function prefixMatches(testString, filterPrefix) {
+    return testString.substr(0, filterPrefix.length).localeCompare(filterPrefix, undefined, {
+        usage: "search",
+        sensitivity: "base",
+    }) === 0;
+}
+/**
+ * Return whether any word in the test string starts with the filter prefix.
+ */
+function prefixMatchesAnyWord(testString, filterPrefix) {
+    return testString.split(/ +/).some(word => prefixMatches(word, filterPrefix));
+}
 /**
  * Represents a file that the user owns.
  */
@@ -45358,6 +54384,29 @@ class File_File {
         return allTags;
     }
     /**
+     * Whether this file would match the specified filter prefix.
+     */
+    matchesFilterPrefix(filterPrefix) {
+        // Always match empty string.
+        if (filterPrefix === "") {
+            return true;
+        }
+        // Check various fields.
+        if (prefixMatchesAnyWord(this.name, filterPrefix)) {
+            return true;
+        }
+        if (prefixMatches(this.filename, filterPrefix)) {
+            return true;
+        }
+        if (prefixMatchesAnyWord(this.note, filterPrefix)) {
+            return true;
+        }
+        if (prefixMatchesAnyWord(this.author, filterPrefix)) {
+            return true;
+        }
+        return false;
+    }
+    /**
      * Compare two files for sorting.
      */
     static compare(a, b) {
@@ -45470,6 +54519,9 @@ class File_FileBuilder {
     }
 }
 
+// EXTERNAL MODULE: ./node_modules/teamten-ts-utils/dist/index.js
+var teamten_ts_utils_dist = __webpack_require__(5);
+
 // CONCATENATED MODULE: ./src/PageTab.ts
 /**
  * Represents a single page tab and its contents.
@@ -45498,6 +54550,15 @@ class PageTab {
         // Nothing by default.
     }
     /**
+     * Called when a key is pressed and this tab is visible.
+     * @param e the keyboard event for the key down event.
+     * @return whether the method handled the key.
+     */
+    onKeyDown(e) {
+        // Nothing by default.
+        return false;
+    }
+    /**
      * Called when a tab is hidden (another tab is shown).
      */
     onHide() {
@@ -45522,13 +54583,68 @@ class PageTab {
 const FILE_ID_ATTR = "data-file-id";
 const IMPORT_FILE_LABEL = "Import File";
 /**
+ * Quotes for the "no filter" error page.
+ */
+const NO_FILTER_QUOTE = [
+    "No dance for you.",
+    "I'm disappointed.",
+    "Try being less demanding.",
+    "And it's not for lack of trying.",
+    "Try doing literally anything else.",
+];
+/**
+ * Get a random quote for the "no filter" error page.
+ */
+function getRandomNoFilterQuote() {
+    return NO_FILTER_QUOTE[Math.floor(Math.random() * NO_FILTER_QUOTE.length)];
+}
+/**
+ * A TRS-80-like cursor in HTML.
+ */
+class AuthenticCursor {
+    constructor() {
+        this.visible = true;
+        this.node = document.createElement("span");
+        this.node.classList.add("authentic-cursor");
+        this.update();
+        this.handle = window.setInterval(() => {
+            this.visible = !this.visible;
+            this.update();
+        }, AuthenticCursor.BLINK_PERIOD_MS);
+    }
+    /**
+     * Stop the cursor. Only call this once.
+     */
+    disable() {
+        this.node.remove();
+        window.clearInterval(this.handle);
+    }
+    /**
+     * Set the correct block for the current visibility.
+     */
+    update() {
+        if (this.visible) {
+            this.node.innerText = "\uE0B0"; // 131, bottom two pixels.
+        }
+        else {
+            this.node.innerText = "\uE080"; // 128, blank.
+        }
+    }
+}
+// This is 7 ticks of the Model III timer (30 Hz).
+AuthenticCursor.BLINK_PERIOD_MS = 233;
+/**
  * Tap for the Your Files UI.
  */
 class YourFilesTab_YourFilesTab extends PageTab {
     constructor(context, pageTabs) {
         super("Your Files", context.user !== undefined);
+        this.emptyQuote = undefined;
         // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
         this.filterTags = new TagSet();
+        this.searchString = "";
+        this.forceShowSearch = false;
+        this.searchCursor = undefined;
         this.libraryInSync = false;
         this.context = context;
         this.element.classList.add("your-files-tab");
@@ -45542,31 +54658,53 @@ class YourFilesTab_YourFilesTab extends PageTab {
         this.emptyLibrary = document.createElement("div");
         this.emptyLibrary.classList.add("empty-library");
         this.element.append(this.emptyLibrary);
-        const emptyTitle = document.createElement("h2");
-        emptyTitle.innerText = "You have no files in your library!";
-        const emptyBody = document.createElement("article");
-        emptyBody.innerHTML = `Upload a <code>CAS</code> or <code>CMD</code> file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import it from the RetroStore tab.`;
+        this.emptyTitle = document.createElement("h2");
+        this.emptyBody = document.createElement("article");
         const demon = document.createElement("img");
         demon.src = "/demon.png";
-        this.emptyLibrary.append(emptyTitle, emptyBody, demon);
+        this.emptyLibrary.append(this.emptyTitle, this.emptyBody, demon);
         // Register for changes to library.
+        this.libraryInSync = this.context.library.inSync;
         this.context.library.onEvent.subscribe(e => this.onLibraryEvent(e));
         this.context.library.onInSync.subscribe(inSync => this.onLibraryInSync(inSync));
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
         this.element.append(actionBar);
-        this.filterEditor = document.createElement("div");
-        this.filterEditor.classList.add("filter-editor");
-        actionBar.append(this.filterEditor);
         this.openTrashButton = makeTextButton("Open Trash", "delete", "open-trash-button", () => this.openTrash());
+        this.tagEditor = document.createElement("div");
+        this.tagEditor.classList.add("tag-editor");
+        this.searchButton = makeTextButton("Search", "search", "search-button", () => {
+            this.forceShowSearch = true;
+            this.refreshFilter();
+        });
+        this.searchEditor = document.createElement("span");
+        this.searchEditor.classList.add("search-editor");
+        const spacer = document.createElement("div");
+        spacer.classList.add("action-bar-spacer");
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button", () => this.exportAll());
-        actionBar.append(exportAllButton);
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
-        actionBar.append(uploadButton);
+        actionBar.append(this.openTrashButton, this.tagEditor, this.searchButton, this.searchEditor, spacer, exportAllButton, uploadButton);
         // Populate initial library state.
         this.context.library.getAllFiles().forEach(f => this.addFile(f));
         this.sortFiles();
-        this.updateSplashScreen();
+    }
+    onKeyDown(e) {
+        if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+            // Plain letter.
+            if (e.key.length === 1) {
+                this.searchString += e.key;
+                this.refreshFilter();
+                return true;
+            }
+            // Backspace last character.
+            if (e.key === "Backspace" && this.searchString.length > 0) {
+                this.searchString = this.searchString.substr(0, this.searchString.length - 1);
+                this.forceShowSearch = false;
+                this.refreshFilter();
+                return true;
+            }
+        }
+        return super.onKeyDown(e);
     }
     /**
      * Handle change to library files.
@@ -45584,23 +54722,15 @@ class YourFilesTab_YourFilesTab extends PageTab {
         }
         if (event instanceof LibraryRemoveEvent) {
             this.removeFile(event.oldFile.id);
+            this.refreshFilter();
         }
-        this.updateSplashScreen();
     }
     /**
      * React to whether library is now fully in sync.
      */
     onLibraryInSync(inSync) {
         this.libraryInSync = inSync;
-        this.updateSplashScreen();
-    }
-    /**
-     * Update whether the splash screen is shown.
-     */
-    updateSplashScreen() {
-        const displaySplashScreen = this.libraryInSync && this.filesDiv.children.length === 0;
-        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
-        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
+        this.refreshFilter();
     }
     /**
      * Start a download of all data in the database.
@@ -45782,6 +54912,8 @@ class YourFilesTab_YourFilesTab extends PageTab {
      * Update the hidden flags based on a new tag filter.
      */
     refreshFilter() {
+        let anyFiles = false;
+        let anyVisible = false;
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;
@@ -45789,6 +54921,7 @@ class YourFilesTab_YourFilesTab extends PageTab {
             if (fileId !== null) {
                 const file = this.context.library.getFile(fileId);
                 if (file !== undefined) {
+                    anyFiles = true;
                     const fileTags = file.getAllTags();
                     // Only show files that have all the filter items.
                     if (!this.filterTags.isEmpty() && !fileTags.hasAll(this.filterTags)) {
@@ -45798,20 +54931,57 @@ class YourFilesTab_YourFilesTab extends PageTab {
                     if (!this.filterTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
                         hidden = true;
                     }
+                    if (!file.matchesFilterPrefix(this.searchString)) {
+                        hidden = true;
+                    }
                 }
             }
             fileDiv.classList.toggle("hidden", hidden);
+            if (!hidden) {
+                anyVisible = true;
+            }
         }
-        Object(teamten_ts_utils_dist["clearElement"])(this.filterEditor);
-        if (this.filterTags.isEmpty()) {
-            if (this.anyFileInTrash()) {
-                this.filterEditor.append(this.openTrashButton);
+        // Update whether the splash screen is shown.
+        let displaySplashScreen;
+        if (this.libraryInSync) {
+            if (anyFiles) {
+                if (anyVisible) {
+                    displaySplashScreen = false;
+                    this.emptyQuote = undefined;
+                }
+                else {
+                    displaySplashScreen = true;
+                    this.emptyTitle.innerText = "No files match your filter.";
+                    if (this.emptyQuote === undefined) {
+                        this.emptyQuote = getRandomNoFilterQuote();
+                    }
+                    this.emptyBody.innerText = this.emptyQuote;
+                }
+            }
+            else {
+                displaySplashScreen = true;
+                this.emptyTitle.innerText = "You have no files in your library!";
+                this.emptyBody.innerHTML = `Upload a file from your computer using the “${IMPORT_FILE_LABEL.replace(/ /g, "&nbsp;")}” button below, or import one from the RetroStore tab.`;
             }
         }
         else {
-            this.filterEditor.append("Filter tags:");
+            // Just show nothing at all while loading the library.
+            displaySplashScreen = false;
+        }
+        this.filesDiv.classList.toggle("hidden", displaySplashScreen);
+        this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
+        // Update filter UI in the action bar.
+        if (this.filterTags.isEmpty()) {
+            this.tagEditor.classList.add("hidden");
+            this.openTrashButton.classList.toggle("hidden", !this.anyFileInTrash());
+        }
+        else {
+            this.tagEditor.classList.remove("hidden");
+            this.openTrashButton.classList.add("hidden");
+            Object(teamten_ts_utils_dist["clearElement"])(this.tagEditor);
+            this.tagEditor.append("Filter tags:");
             for (const tag of this.filterTags.asArray()) {
-                this.filterEditor.append(makeTagCapsule({
+                this.tagEditor.append(makeTagCapsule({
                     tag: tag,
                     iconName: "clear",
                     clickCallback: () => {
@@ -45819,6 +54989,28 @@ class YourFilesTab_YourFilesTab extends PageTab {
                         this.refreshFilter();
                     },
                 }));
+            }
+        }
+        // Draw search prefix.
+        if (this.searchString !== "" || this.forceShowSearch) {
+            this.searchButton.classList.add("hidden");
+            this.searchEditor.classList.remove("hidden");
+            const labelNode = document.createElement("label");
+            labelNode.innerText = "Search:";
+            const searchStringNode = document.createElement("span");
+            searchStringNode.innerText = this.searchString;
+            if (this.searchCursor === undefined) {
+                this.searchCursor = new AuthenticCursor();
+            }
+            Object(teamten_ts_utils_dist["clearElement"])(this.searchEditor);
+            this.searchEditor.append(labelNode, searchStringNode, this.searchCursor.node);
+        }
+        else {
+            this.searchButton.classList.remove("hidden");
+            this.searchEditor.classList.add("hidden");
+            if (this.searchCursor !== undefined) {
+                this.searchCursor.disable();
+                this.searchCursor = undefined;
             }
         }
     }
@@ -46716,7 +55908,7 @@ function writeVarint64ZigZag(bb, value) {
 }
 
 // EXTERNAL MODULE: ../trs80-base/dist/index.js
-var trs80_base_dist = __webpack_require__(5);
+var trs80_base_dist = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./src/RetroStoreTab.ts
 // Generate this with: npx pbjs ApiProtos.proto --ts RetroStoreProto.ts
@@ -47014,28 +56206,209 @@ class RetroStoreTab_RetroStoreTab extends PageTab {
     }
 }
 
-// CONCATENATED MODULE: ./src/LibraryPanel.ts
+// CONCATENATED MODULE: ./src/Panel.ts
 
+/**
+ * Base class for panels.
+ */
+class Panel_Panel {
+    /**
+     * Construct the panel and its basic UI.
+     *
+     * @param context the app's context object.
+     * @param title title for the header.
+     * @param panelCssClass class for the whole panel.
+     * @param showBackButton whether to show a back button.
+     */
+    constructor(context, title, panelCssClass, showBackButton) {
+        this.context = context;
+        this.element = document.createElement("div");
+        this.element.classList.add("panel", panelCssClass);
+        const header = document.createElement("h1");
+        if (showBackButton) {
+            const backButton = makeIconButton(makeIcon("arrow_back"), "Back (Ctrl-Backspace)", () => this.context.panelManager.popPanel());
+            backButton.classList.add("back-button");
+            header.append(backButton);
+        }
+        this.headerTextNode = document.createElement("span");
+        this.headerTextNode.innerText = title;
+        header.append(this.headerTextNode);
+        header.append(makeCloseIconButton(() => this.context.panelManager.close()));
+        this.element.append(header);
+        this.content = document.createElement("div");
+        this.content.classList.add("panel-content");
+        this.element.append(this.content);
+    }
+    /**
+     * Called when the panel is no longer visible and is being destroyed.
+     */
+    onPanelDestroy() {
+        // Nothing by default.
+    }
+    /**
+     * Called when a key is pressed and this panel is visible.
+     * @param e the keyboard event for the key down event.
+     * @return whether the method handled the key.
+     */
+    onKeyDown(e) {
+        return false;
+    }
+}
+
+// CONCATENATED MODULE: ./src/PageTabs.ts
+
+/**
+ * Set of page tabs.
+ */
+class PageTabs_PageTabs {
+    constructor(element) {
+        this.tabs = [];
+        // The tab last selected by the user.
+        this.activeIndex = 0;
+        // Same as activeIndex, unless it's not visible, in which case some other
+        // visible tab, or undefined if no tab is visible.
+        this.effectiveActiveIndex = undefined;
+        this.containerElement = element;
+        this.containerElement.classList.add("page-tabs-container");
+        // Where we draw the page tabs themselves.
+        this.tabElement = document.createElement("div");
+        this.tabElement.classList.add("page-tabs");
+        this.containerElement.append(this.tabElement);
+    }
+    /**
+     * Add a new tab. Be sure it's fully configured, because its onShow
+     * listener might be called synchronously.
+     */
+    addTab(tab) {
+        this.tabs.push(tab);
+        this.containerElement.append(tab.element);
+        this.configurationChanged();
+    }
+    /**
+     * The panel these page tabs are on is being destroyed.
+     */
+    destroy() {
+        for (const tab of this.tabs) {
+            tab.onDestroy();
+        }
+    }
+    /**
+     * Switch the active tab.
+     */
+    setActiveTab(activeIndex) {
+        if (activeIndex !== this.activeIndex) {
+            this.activeIndex = activeIndex;
+            this.configurationChanged();
+        }
+    }
+    /**
+     * Called when a key is pressed and this panel is visible.
+     * @param e the keyboard event for the key down event.
+     * @return whether the method handled the key.
+     */
+    onKeyDown(e) {
+        return this.effectiveActiveIndex !== undefined && this.tabs[this.effectiveActiveIndex].onKeyDown(e);
+    }
+    /**
+     * Update all tabs given a new configuration.
+     */
+    configurationChanged() {
+        const oldEffectiveActiveIndex = this.effectiveActiveIndex;
+        this.computeEffectiveActiveIndex();
+        if (oldEffectiveActiveIndex !== this.effectiveActiveIndex) {
+            if (oldEffectiveActiveIndex !== undefined) {
+                this.tabs[oldEffectiveActiveIndex].onHide();
+            }
+            if (this.effectiveActiveIndex !== undefined) {
+                this.tabs[this.effectiveActiveIndex].onShow();
+            }
+        }
+        this.recreateTabs();
+        this.updateTabContentVisibility();
+    }
+    /**
+     * Get the current active index. If it's hidden, return another one. If none
+     * exist, return undefined.
+     */
+    computeEffectiveActiveIndex() {
+        this.effectiveActiveIndex = this.activeIndex;
+        // If the active tab is hidden, find another one.
+        if (this.effectiveActiveIndex >= this.tabs.length || !this.tabs[this.effectiveActiveIndex].visible) {
+            // Pick any.
+            this.effectiveActiveIndex = undefined;
+            for (let i = 0; i < this.tabs.length; i++) {
+                if (this.tabs[i].visible) {
+                    this.effectiveActiveIndex = i;
+                    break;
+                }
+            }
+        }
+    }
+    /**
+     * Recreate the set of page tabs (the UI).
+     */
+    recreateTabs() {
+        Object(teamten_ts_utils_dist["clearElement"])(this.tabElement);
+        for (let index = 0; index < this.tabs.length; index++) {
+            const tab = this.tabs[index];
+            if (tab.visible) {
+                const tabDiv = document.createElement("div");
+                tabDiv.innerText = tab.name;
+                tabDiv.classList.toggle("page-tab-active", index === this.effectiveActiveIndex);
+                tabDiv.addEventListener("click", () => {
+                    this.setActiveTab(index);
+                });
+                this.tabElement.append(tabDiv);
+            }
+        }
+    }
+    /**
+     * Update which tab contents are visible based on which is selected.
+     */
+    updateTabContentVisibility() {
+        for (let index = 0; index < this.tabs.length; index++) {
+            this.tabs[index].element.classList.toggle("hidden", index !== this.effectiveActiveIndex);
+        }
+    }
+}
+
+// CONCATENATED MODULE: ./src/TabbedPanel.ts
+
+
+/**
+ * Panel that has page tabs.
+ */
+class TabbedPanel_TabbedPanel extends Panel_Panel {
+    constructor(context, title, panelCssClass, showBackButton) {
+        super(context, title, panelCssClass, showBackButton);
+        this.pageTabs = new PageTabs_PageTabs(this.content);
+    }
+    onPanelDestroy() {
+        this.pageTabs.destroy();
+        super.onPanelDestroy();
+    }
+    onKeyDown(e) {
+        return this.pageTabs.onKeyDown(e) || super.onKeyDown(e);
+    }
+}
+
+// CONCATENATED MODULE: ./src/LibraryPanel.ts
 
 
 
 /**
  * Panel showing the library of user's files.
  */
-class LibraryPanel_LibraryPanel extends Panel_Panel {
+class LibraryPanel_LibraryPanel extends TabbedPanel_TabbedPanel {
     constructor(context) {
         super(context, "Library", "library-panel", false);
-        const pageTabs = new PageTabs_PageTabs(this.content);
-        pageTabs.addTab(new YourFilesTab_YourFilesTab(context, pageTabs));
-        pageTabs.addTab(new RetroStoreTab_RetroStoreTab(context));
+        this.pageTabs.addTab(new YourFilesTab_YourFilesTab(context, this.pageTabs));
+        this.pageTabs.addTab(new RetroStoreTab_RetroStoreTab(context));
     }
 }
 
-// EXTERNAL MODULE: ./node_modules/z80-base/dist/index.js
-var z80_base_dist = __webpack_require__(12);
-
 // EXTERNAL MODULE: ../trs80-base/dist/ProgramAnnotation.js
-var ProgramAnnotation = __webpack_require__(15);
+var ProgramAnnotation = __webpack_require__(13);
 
 // CONCATENATED MODULE: ./src/HexdumpGenerator.ts
 
@@ -47323,7 +56696,7 @@ class HexdumpTab_HexdumpTab extends PageTab {
 }
 
 // EXTERNAL MODULE: ./node_modules/lodash/isEmpty.js
-var isEmpty = __webpack_require__(34);
+var isEmpty = __webpack_require__(35);
 var isEmpty_default = /*#__PURE__*/__webpack_require__.n(isEmpty);
 
 // CONCATENATED MODULE: ./src/FileInfoTab.ts
@@ -47482,23 +56855,15 @@ class FileInfoTab_FileInfoTab extends PageTab {
                 this.filePanel.context.panelManager.popPanel();
             }
         });
-        // Handler for hotkeys.
-        this.keyboardListener = (e) => {
-            if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Enter") {
-                this.saveAndClose();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        };
         this.updateUi();
     }
-    onShow() {
-        super.onShow();
-        window.addEventListener("keydown", this.keyboardListener);
-    }
-    onHide() {
-        window.removeEventListener("keydown", this.keyboardListener);
-        super.onHide();
+    onKeyDown(e) {
+        // Ctrl-Enter to save and close the panel.
+        if (e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.key === "Enter") {
+            this.saveAndClose();
+            return true;
+        }
+        return super.onKeyDown(e);
     }
     onDestroy() {
         this.cancelLibrarySubscription();
@@ -48289,16 +57654,14 @@ class SystemProgramTab_SystemProgramTab extends PageTab {
 
 
 
-
 /**
  * Panel to explore a file.
  */
-class FilePanel_FilePanel extends Panel_Panel {
+class FilePanel_FilePanel extends TabbedPanel_TabbedPanel {
     constructor(context, file) {
         super(context, file.name, "file-panel", true);
         this.file = file;
         const trs80File = Object(trs80_base_dist["decodeTrs80File"])(file.binary, file.filename);
-        this.pageTabs = new PageTabs_PageTabs(this.content);
         this.pageTabs.addTab(new FileInfoTab_FileInfoTab(this, trs80File));
         this.pageTabs.addTab(new HexdumpTab_HexdumpTab(this.context, trs80File));
         // Refer to the file in the cassette if possible.
@@ -48324,10 +57687,6 @@ class FilePanel_FilePanel extends Panel_Panel {
             this.pageTabs.addTab(new SystemProgramTab_SystemProgramTab(effectiveFile));
             this.pageTabs.addTab(new DisassemblyTab_DisassemblyTab(effectiveFile));
         }
-    }
-    onPanelDestroy() {
-        this.pageTabs.destroy();
-        super.onPanelDestroy();
     }
     setHeaderText(header) {
         if (header === "") {
@@ -48836,11 +58195,6 @@ function main() {
             }
         }
     });
-    document.addEventListener("keydown", event => {
-        if (event.ctrlKey && event.key === "l") {
-            panelManager.toggle();
-        }
-    });
     reboot();
     const context = new Context_Context(library, trs80, db, panelManager);
     context.onFragment.subscribe(fragment => {
@@ -48922,9164 +58276,6 @@ function main() {
 // CONCATENATED MODULE: ./src/index.ts
 
 main();
-
-
-/***/ }),
-/* 182 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "Z80", function() { return /* reexport */ Z80_Z80; });
-
-// EXTERNAL MODULE: ../trs80-emulator/node_modules/z80-base/dist/index.js
-var dist = __webpack_require__(0);
-
-// CONCATENATED MODULE: ../trs80-emulator/node_modules/z80-emulator/dist/module/Decode.js
-// Do not modify. This file is generated by GenerateOpcodes.ts.
-
-// Tables for computing flags after an operation.
-const halfCarryAddTable = [0, dist["Flag"].H, dist["Flag"].H, dist["Flag"].H, 0, 0, 0, dist["Flag"].H];
-const halfCarrySubTable = [0, 0, dist["Flag"].H, 0, dist["Flag"].H, 0, dist["Flag"].H, dist["Flag"].H];
-const overflowAddTable = [0, 0, 0, dist["Flag"].V, dist["Flag"].V, 0, 0, 0];
-const overflowSubTable = [0, dist["Flag"].V, 0, 0, 0, 0, dist["Flag"].V, 0];
-let fillMap;
-const decodeMap = new Map();
-fillMap = decodeMap;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x00, (z80) => {
-});
-fillMap.set(0x01, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.bc = value;
-});
-fillMap.set(0x02, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.memptr = Object(dist["word"])(z80.regs.a, Object(dist["inc16"])(z80.regs.bc));
-    z80.writeByte(z80.regs.bc, value);
-});
-fillMap.set(0x03, (z80) => {
-    let value;
-    value = z80.regs.bc;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["inc16"])(value);
-    z80.regs.bc = value;
-});
-fillMap.set(0x04, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x05, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x06, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.b = value;
-});
-fillMap.set(0x07, (z80) => {
-    const oldA = z80.regs.a;
-    z80.regs.a = ((z80.regs.a >> 7) | (z80.regs.a << 1)) & 0xFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5)) | ((oldA & 0x80) !== 0 ? dist["Flag"].C : 0);
-});
-fillMap.set(0x08, (z80) => {
-    const rightValue = z80.regs.afPrime;
-    z80.regs.afPrime = z80.regs.af;
-    z80.regs.af = rightValue;
-});
-fillMap.set(0x09, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.bc;
-    let result = z80.regs.hl + value;
-    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x0A, (z80) => {
-    let value;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    value = z80.readByte(z80.regs.bc);
-    z80.regs.a = value;
-});
-fillMap.set(0x0B, (z80) => {
-    let value;
-    value = z80.regs.bc;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["dec16"])(value);
-    z80.regs.bc = value;
-});
-fillMap.set(0x0C, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x0D, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x0E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.c = value;
-});
-fillMap.set(0x0F, (z80) => {
-    const oldA = z80.regs.a;
-    z80.regs.a = ((z80.regs.a >> 1) | (z80.regs.a << 7)) & 0xFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5)) | ((oldA & 0x01) !== 0 ? dist["Flag"].C : 0);
-});
-fillMap.set(0x10, (z80) => {
-    z80.incTStateCount(1);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    if (z80.regs.b !== 0) {
-        const offset = z80.readByte(z80.regs.pc);
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, Object(dist["signedByte"])(offset));
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-        z80.regs.memptr = z80.regs.pc;
-    }
-    else {
-        z80.incTStateCount(3);
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    }
-});
-fillMap.set(0x11, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.de = value;
-});
-fillMap.set(0x12, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.memptr = Object(dist["word"])(z80.regs.a, Object(dist["inc16"])(z80.regs.de));
-    z80.writeByte(z80.regs.de, value);
-});
-fillMap.set(0x13, (z80) => {
-    let value;
-    value = z80.regs.de;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["inc16"])(value);
-    z80.regs.de = value;
-});
-fillMap.set(0x14, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x15, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x16, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.d = value;
-});
-fillMap.set(0x17, (z80) => {
-    const oldA = z80.regs.a;
-    z80.regs.a = ((z80.regs.a << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x01 : 0)) & 0xFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5)) | ((oldA & 0x80) !== 0 ? dist["Flag"].C : 0);
-});
-fillMap.set(0x18, (z80) => {
-    const offset = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["add16"])(z80.regs.pc, Object(dist["signedByte"])(offset));
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0x19, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.de;
-    let result = z80.regs.hl + value;
-    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x1A, (z80) => {
-    let value;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.de);
-    value = z80.readByte(z80.regs.de);
-    z80.regs.a = value;
-});
-fillMap.set(0x1B, (z80) => {
-    let value;
-    value = z80.regs.de;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["dec16"])(value);
-    z80.regs.de = value;
-});
-fillMap.set(0x1C, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x1D, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x1E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.e = value;
-});
-fillMap.set(0x1F, (z80) => {
-    const oldA = z80.regs.a;
-    z80.regs.a = (z80.regs.a >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = (z80.regs.f & (dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5)) | ((oldA & 0x01) !== 0 ? dist["Flag"].C : 0);
-});
-fillMap.set(0x20, (z80) => {
-    if ((z80.regs.f & dist["Flag"].Z) === 0) {
-        const offset = z80.readByte(z80.regs.pc);
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, Object(dist["signedByte"])(offset));
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-        z80.regs.memptr = z80.regs.pc;
-    }
-    else {
-        z80.incTStateCount(3);
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    }
-});
-fillMap.set(0x21, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.hl = value;
-});
-fillMap.set(0x22, (z80) => {
-    let value;
-    value = z80.regs.hl;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x23, (z80) => {
-    let value;
-    value = z80.regs.hl;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["inc16"])(value);
-    z80.regs.hl = value;
-});
-fillMap.set(0x24, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x25, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x26, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.h = value;
-});
-fillMap.set(0x27, (z80) => {
-    let value = 0;
-    let carry = z80.regs.f & dist["Flag"].C;
-    if ((z80.regs.f & dist["Flag"].H) !== 0 || ((z80.regs.a & 0x0F) > 9)) {
-        value = 6; // Skip over hex digits in lower nybble.
-    }
-    if (carry !== 0 || z80.regs.a > 0x99) {
-        value |= 0x60; // Skip over hex digits in upper nybble.
-    }
-    if (z80.regs.a > 0x99) {
-        carry = dist["Flag"].C;
-    }
-    if ((z80.regs.f & dist["Flag"].N) !== 0) {
-        let result = Object(dist["sub16"])(z80.regs.a, value);
-        const lookup = (((z80.regs.a & 0x88) >> 3) |
-            ((value & 0x88) >> 2) |
-            ((result & 0x88) >> 1)) & 0xFF;
-        z80.regs.a = result & 0xFF;
-        z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-    }
-    else {
-        let result = Object(dist["add16"])(z80.regs.a, value);
-        const lookup = (((z80.regs.a & 0x88) >> 3) |
-            ((value & 0x88) >> 2) |
-            ((result & 0x88) >> 1)) & 0xFF;
-        z80.regs.a = result & 0xFF;
-        z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-    }
-    z80.regs.f = (z80.regs.f & ~(dist["Flag"].C | dist["Flag"].P)) | carry | z80.parityTable[z80.regs.a];
-});
-fillMap.set(0x28, (z80) => {
-    if ((z80.regs.f & dist["Flag"].Z) !== 0) {
-        const offset = z80.readByte(z80.regs.pc);
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, Object(dist["signedByte"])(offset));
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-        z80.regs.memptr = z80.regs.pc;
-    }
-    else {
-        z80.incTStateCount(3);
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    }
-});
-fillMap.set(0x29, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.hl;
-    let result = z80.regs.hl + value;
-    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x2A, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.hl = value;
-});
-fillMap.set(0x2B, (z80) => {
-    let value;
-    value = z80.regs.hl;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["dec16"])(value);
-    z80.regs.hl = value;
-});
-fillMap.set(0x2C, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x2D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x2E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.l = value;
-});
-fillMap.set(0x2F, (z80) => {
-    z80.regs.a ^= 0xFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].C | dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5)) | dist["Flag"].N | dist["Flag"].H;
-});
-fillMap.set(0x30, (z80) => {
-    if ((z80.regs.f & dist["Flag"].C) === 0) {
-        const offset = z80.readByte(z80.regs.pc);
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, Object(dist["signedByte"])(offset));
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-        z80.regs.memptr = z80.regs.pc;
-    }
-    else {
-        z80.incTStateCount(3);
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    }
-});
-fillMap.set(0x31, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.sp = value;
-});
-fillMap.set(0x32, (z80) => {
-    let value;
-    value = z80.regs.a;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.regs.a, Object(dist["inc16"])(value));
-    z80.writeByte(value, z80.regs.a);
-});
-fillMap.set(0x33, (z80) => {
-    let value;
-    value = z80.regs.sp;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["inc16"])(value);
-    z80.regs.sp = value;
-});
-fillMap.set(0x34, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x35, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x36, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x37, (z80) => {
-    z80.regs.f = (z80.regs.f & (dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | dist["Flag"].C | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5));
-});
-fillMap.set(0x38, (z80) => {
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        const offset = z80.readByte(z80.regs.pc);
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, Object(dist["signedByte"])(offset));
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-        z80.regs.memptr = z80.regs.pc;
-    }
-    else {
-        z80.incTStateCount(3);
-        z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    }
-});
-fillMap.set(0x39, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.sp;
-    let result = z80.regs.hl + value;
-    const lookup = (((z80.regs.hl & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x3A, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["inc16"])(value);
-    value = z80.readByte(value);
-    z80.regs.a = value;
-});
-fillMap.set(0x3B, (z80) => {
-    let value;
-    value = z80.regs.sp;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["dec16"])(value);
-    z80.regs.sp = value;
-});
-fillMap.set(0x3C, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x3D, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x3E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.a = value;
-});
-fillMap.set(0x3F, (z80) => {
-    z80.regs.f = (z80.regs.f & (dist["Flag"].P | dist["Flag"].Z | dist["Flag"].S)) | ((z80.regs.f & dist["Flag"].C) !== 0 ? dist["Flag"].H : dist["Flag"].C) | (z80.regs.a & (dist["Flag"].X3 | dist["Flag"].X5));
-});
-fillMap.set(0x40, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.b = value;
-});
-fillMap.set(0x41, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.b = value;
-});
-fillMap.set(0x42, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.b = value;
-});
-fillMap.set(0x43, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.b = value;
-});
-fillMap.set(0x44, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.b = value;
-});
-fillMap.set(0x45, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.b = value;
-});
-fillMap.set(0x46, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.b = value;
-});
-fillMap.set(0x47, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.b = value;
-});
-fillMap.set(0x48, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.c = value;
-});
-fillMap.set(0x49, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.c = value;
-});
-fillMap.set(0x4A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.c = value;
-});
-fillMap.set(0x4B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.c = value;
-});
-fillMap.set(0x4C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.c = value;
-});
-fillMap.set(0x4D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.c = value;
-});
-fillMap.set(0x4E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.c = value;
-});
-fillMap.set(0x4F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.c = value;
-});
-fillMap.set(0x50, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.d = value;
-});
-fillMap.set(0x51, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.d = value;
-});
-fillMap.set(0x52, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.d = value;
-});
-fillMap.set(0x53, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.d = value;
-});
-fillMap.set(0x54, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.d = value;
-});
-fillMap.set(0x55, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.d = value;
-});
-fillMap.set(0x56, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.d = value;
-});
-fillMap.set(0x57, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.d = value;
-});
-fillMap.set(0x58, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.e = value;
-});
-fillMap.set(0x59, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.e = value;
-});
-fillMap.set(0x5A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.e = value;
-});
-fillMap.set(0x5B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.e = value;
-});
-fillMap.set(0x5C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.e = value;
-});
-fillMap.set(0x5D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.e = value;
-});
-fillMap.set(0x5E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.e = value;
-});
-fillMap.set(0x5F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.e = value;
-});
-fillMap.set(0x60, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.h = value;
-});
-fillMap.set(0x61, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.h = value;
-});
-fillMap.set(0x62, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.h = value;
-});
-fillMap.set(0x63, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.h = value;
-});
-fillMap.set(0x64, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.h = value;
-});
-fillMap.set(0x65, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.h = value;
-});
-fillMap.set(0x66, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.h = value;
-});
-fillMap.set(0x67, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.h = value;
-});
-fillMap.set(0x68, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.l = value;
-});
-fillMap.set(0x69, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.l = value;
-});
-fillMap.set(0x6A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.l = value;
-});
-fillMap.set(0x6B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.l = value;
-});
-fillMap.set(0x6C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.l = value;
-});
-fillMap.set(0x6D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.l = value;
-});
-fillMap.set(0x6E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.l = value;
-});
-fillMap.set(0x6F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.l = value;
-});
-fillMap.set(0x70, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x71, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x72, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x73, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x74, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x75, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x76, (z80) => {
-    z80.regs.halted = 1;
-    z80.regs.pc = Object(dist["dec16"])(z80.regs.pc);
-});
-fillMap.set(0x77, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x78, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.a = value;
-});
-fillMap.set(0x79, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.a = value;
-});
-fillMap.set(0x7A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.a = value;
-});
-fillMap.set(0x7B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.a = value;
-});
-fillMap.set(0x7C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.a = value;
-});
-fillMap.set(0x7D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.a = value;
-});
-fillMap.set(0x7E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.a = value;
-});
-fillMap.set(0x7F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.a = value;
-});
-fillMap.set(0x80, (z80) => {
-    let value;
-    value = z80.regs.b;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x81, (z80) => {
-    let value;
-    value = z80.regs.c;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x82, (z80) => {
-    let value;
-    value = z80.regs.d;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x83, (z80) => {
-    let value;
-    value = z80.regs.e;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x84, (z80) => {
-    let value;
-    value = z80.regs.h;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x85, (z80) => {
-    let value;
-    value = z80.regs.l;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x86, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x87, (z80) => {
-    let value;
-    value = z80.regs.a;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x88, (z80) => {
-    let value;
-    value = z80.regs.b;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x89, (z80) => {
-    let value;
-    value = z80.regs.c;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x90, (z80) => {
-    let value;
-    value = z80.regs.b;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x91, (z80) => {
-    let value;
-    value = z80.regs.c;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x92, (z80) => {
-    let value;
-    value = z80.regs.d;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x93, (z80) => {
-    let value;
-    value = z80.regs.e;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x94, (z80) => {
-    let value;
-    value = z80.regs.h;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x95, (z80) => {
-    let value;
-    value = z80.regs.l;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x96, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x97, (z80) => {
-    let value;
-    value = z80.regs.a;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x98, (z80) => {
-    let value;
-    value = z80.regs.b;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x99, (z80) => {
-    let value;
-    value = z80.regs.c;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xA0, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA1, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA2, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA3, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA4, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA5, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA7, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA8, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xA9, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAA, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAB, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAC, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAD, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAF, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB0, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB1, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB2, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB3, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB4, (z80) => {
-    let value;
-    value = z80.regs.h;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB5, (z80) => {
-    let value;
-    value = z80.regs.l;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB7, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB8, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xB9, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBA, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBB, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBC, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBD, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBF, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xC0, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].Z) === 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xC1, (z80) => {
-    z80.regs.bc = z80.popWord();
-});
-fillMap.set(0xC2, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].Z) === 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xC3, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.pc = z80.regs.memptr;
-});
-fillMap.set(0xC4, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].Z) === 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xC5, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.bc);
-});
-fillMap.set(0xC6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xC7, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0000;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xC8, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].Z) !== 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xC9, (z80) => {
-    z80.regs.pc = z80.popWord();
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xCA, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].Z) !== 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xCB, (z80) => {
-    decodeCB(z80);
-});
-fillMap.set(0xCC, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].Z) !== 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xCD, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = z80.regs.memptr;
-});
-fillMap.set(0xCE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xCF, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0008;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xD0, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].C) === 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xD1, (z80) => {
-    z80.regs.de = z80.popWord();
-});
-fillMap.set(0xD2, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].C) === 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xD3, (z80) => {
-    const port = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.regs.a, Object(dist["inc8"])(port));
-    z80.writePort(Object(dist["word"])(z80.regs.a, port), z80.regs.a);
-});
-fillMap.set(0xD4, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].C) === 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xD5, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.de);
-});
-fillMap.set(0xD6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xD7, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0010;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xD8, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xD9, (z80) => {
-    let tmp;
-    tmp = z80.regs.bc;
-    z80.regs.bc = z80.regs.bcPrime;
-    z80.regs.bcPrime = tmp;
-    tmp = z80.regs.de;
-    z80.regs.de = z80.regs.dePrime;
-    z80.regs.dePrime = tmp;
-    tmp = z80.regs.hl;
-    z80.regs.hl = z80.regs.hlPrime;
-    z80.regs.hlPrime = tmp;
-});
-fillMap.set(0xDA, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xDB, (z80) => {
-    const port = Object(dist["word"])(z80.regs.a, z80.readByte(z80.regs.pc));
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.a = z80.readPort(port);
-    z80.regs.memptr = Object(dist["inc16"])(port);
-});
-fillMap.set(0xDC, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xDD, (z80) => {
-    decodeDD(z80);
-});
-fillMap.set(0xDE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xDF, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0018;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xE0, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].P) === 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xE1, (z80) => {
-    z80.regs.hl = z80.popWord();
-});
-fillMap.set(0xE2, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].P) === 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xE3, (z80) => {
-    const rightValue = z80.regs.hl;
-    const leftValueL = z80.readByte(z80.regs.sp);
-    const leftValueH = z80.readByte(Object(dist["inc16"])(z80.regs.sp));
-    z80.incTStateCount(1);
-    z80.writeByte(Object(dist["inc16"])(z80.regs.sp), Object(dist["hi"])(rightValue));
-    z80.writeByte(z80.regs.sp, Object(dist["lo"])(rightValue));
-    z80.incTStateCount(2);
-    z80.regs.memptr = Object(dist["word"])(leftValueH, leftValueL);
-    z80.regs.hl = Object(dist["word"])(leftValueH, leftValueL);
-});
-fillMap.set(0xE4, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].P) === 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xE5, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.hl);
-});
-fillMap.set(0xE6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xE7, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0020;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xE8, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].P) !== 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xE9, (z80) => {
-    z80.regs.pc = z80.regs.hl;
-});
-fillMap.set(0xEA, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].P) !== 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xEB, (z80) => {
-    const rightValue = z80.regs.hl;
-    z80.regs.hl = z80.regs.de;
-    z80.regs.de = rightValue;
-});
-fillMap.set(0xEC, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].P) !== 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xED, (z80) => {
-    decodeED(z80);
-});
-fillMap.set(0xEE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xEF, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0028;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xF0, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].S) === 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xF1, (z80) => {
-    z80.regs.af = z80.popWord();
-});
-fillMap.set(0xF2, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].S) === 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xF3, (z80) => {
-    z80.regs.iff1 = 0;
-    z80.regs.iff2 = 0;
-});
-fillMap.set(0xF4, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].S) === 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xF5, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.af);
-});
-fillMap.set(0xF6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xF7, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0030;
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0xF8, (z80) => {
-    z80.incTStateCount(1);
-    if ((z80.regs.f & dist["Flag"].S) !== 0) {
-        z80.regs.pc = z80.popWord();
-        z80.regs.memptr = z80.regs.pc;
-    }
-});
-fillMap.set(0xF9, (z80) => {
-    let value;
-    value = z80.regs.hl;
-    z80.incTStateCount(2);
-    z80.regs.sp = value;
-});
-fillMap.set(0xFA, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].S) !== 0) {
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xFB, (z80) => {
-    z80.regs.iff1 = 1;
-    z80.regs.iff2 = 1;
-});
-fillMap.set(0xFC, (z80) => {
-    z80.regs.memptr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["word"])(z80.readByte(z80.regs.pc), z80.regs.memptr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    if ((z80.regs.f & dist["Flag"].S) !== 0) {
-        z80.incTStateCount(1);
-        z80.pushWord(z80.regs.pc);
-        z80.regs.pc = z80.regs.memptr;
-    }
-});
-fillMap.set(0xFD, (z80) => {
-    decodeFD(z80);
-});
-fillMap.set(0xFE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xFF, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.pc);
-    z80.regs.pc = 0x0038;
-    z80.regs.memptr = z80.regs.pc;
-});
-const decodeMapCB = new Map();
-fillMap = decodeMapCB;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x00, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x01, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x02, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x03, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x04, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x05, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x06, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x07, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x08, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x09, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x0A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x0B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x0C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x0D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x0E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x0F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x10, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x11, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x12, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x13, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x14, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x15, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x16, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x17, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x18, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x19, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x1A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x1B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x1C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x1D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x1E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x1F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x20, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x21, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x22, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x23, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x24, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x25, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x26, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x27, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x28, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x29, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x2A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x2B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x2C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x2D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x2E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x2F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x30, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x31, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x32, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x33, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x34, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x35, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x36, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x37, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x38, (z80) => {
-    let value;
-    value = z80.regs.b;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.b = value;
-});
-fillMap.set(0x39, (z80) => {
-    let value;
-    value = z80.regs.c;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.c = value;
-});
-fillMap.set(0x3A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.d = value;
-});
-fillMap.set(0x3B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.e = value;
-});
-fillMap.set(0x3C, (z80) => {
-    let value;
-    value = z80.regs.h;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.h = value;
-});
-fillMap.set(0x3D, (z80) => {
-    let value;
-    value = z80.regs.l;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.l = value;
-});
-fillMap.set(0x3E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.hl, value);
-});
-fillMap.set(0x3F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.regs.a = value;
-});
-fillMap.set(0x40, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x41, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x42, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x43, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x44, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x45, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x46, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x47, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x48, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x49, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x4A, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x4B, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x4C, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x4D, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x4E, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x4F, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x50, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x51, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x52, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x53, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x54, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x55, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x56, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x57, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x58, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x59, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x5A, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x5B, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x5C, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x5D, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x5E, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x5F, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x60, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x61, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x62, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x63, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x64, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x65, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x66, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x67, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x68, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x69, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x6A, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x6B, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x6C, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x6D, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x6E, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x6F, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x70, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x71, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x72, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x73, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x74, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x75, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x76, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x77, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x78, (z80) => {
-    const value = z80.regs.b;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x79, (z80) => {
-    const value = z80.regs.c;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x7A, (z80) => {
-    const value = z80.regs.d;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x7B, (z80) => {
-    const value = z80.regs.e;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x7C, (z80) => {
-    const value = z80.regs.h;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x7D, (z80) => {
-    const value = z80.regs.l;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x7E, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x7F, (z80) => {
-    const value = z80.regs.a;
-    const hiddenValue = value;
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x80, (z80) => {
-    z80.regs.b &= 0xFE;
-});
-fillMap.set(0x81, (z80) => {
-    z80.regs.c &= 0xFE;
-});
-fillMap.set(0x82, (z80) => {
-    z80.regs.d &= 0xFE;
-});
-fillMap.set(0x83, (z80) => {
-    z80.regs.e &= 0xFE;
-});
-fillMap.set(0x84, (z80) => {
-    z80.regs.h &= 0xFE;
-});
-fillMap.set(0x85, (z80) => {
-    z80.regs.l &= 0xFE;
-});
-fillMap.set(0x86, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xFE);
-});
-fillMap.set(0x87, (z80) => {
-    z80.regs.a &= 0xFE;
-});
-fillMap.set(0x88, (z80) => {
-    z80.regs.b &= 0xFD;
-});
-fillMap.set(0x89, (z80) => {
-    z80.regs.c &= 0xFD;
-});
-fillMap.set(0x8A, (z80) => {
-    z80.regs.d &= 0xFD;
-});
-fillMap.set(0x8B, (z80) => {
-    z80.regs.e &= 0xFD;
-});
-fillMap.set(0x8C, (z80) => {
-    z80.regs.h &= 0xFD;
-});
-fillMap.set(0x8D, (z80) => {
-    z80.regs.l &= 0xFD;
-});
-fillMap.set(0x8E, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xFD);
-});
-fillMap.set(0x8F, (z80) => {
-    z80.regs.a &= 0xFD;
-});
-fillMap.set(0x90, (z80) => {
-    z80.regs.b &= 0xFB;
-});
-fillMap.set(0x91, (z80) => {
-    z80.regs.c &= 0xFB;
-});
-fillMap.set(0x92, (z80) => {
-    z80.regs.d &= 0xFB;
-});
-fillMap.set(0x93, (z80) => {
-    z80.regs.e &= 0xFB;
-});
-fillMap.set(0x94, (z80) => {
-    z80.regs.h &= 0xFB;
-});
-fillMap.set(0x95, (z80) => {
-    z80.regs.l &= 0xFB;
-});
-fillMap.set(0x96, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xFB);
-});
-fillMap.set(0x97, (z80) => {
-    z80.regs.a &= 0xFB;
-});
-fillMap.set(0x98, (z80) => {
-    z80.regs.b &= 0xF7;
-});
-fillMap.set(0x99, (z80) => {
-    z80.regs.c &= 0xF7;
-});
-fillMap.set(0x9A, (z80) => {
-    z80.regs.d &= 0xF7;
-});
-fillMap.set(0x9B, (z80) => {
-    z80.regs.e &= 0xF7;
-});
-fillMap.set(0x9C, (z80) => {
-    z80.regs.h &= 0xF7;
-});
-fillMap.set(0x9D, (z80) => {
-    z80.regs.l &= 0xF7;
-});
-fillMap.set(0x9E, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xF7);
-});
-fillMap.set(0x9F, (z80) => {
-    z80.regs.a &= 0xF7;
-});
-fillMap.set(0xA0, (z80) => {
-    z80.regs.b &= 0xEF;
-});
-fillMap.set(0xA1, (z80) => {
-    z80.regs.c &= 0xEF;
-});
-fillMap.set(0xA2, (z80) => {
-    z80.regs.d &= 0xEF;
-});
-fillMap.set(0xA3, (z80) => {
-    z80.regs.e &= 0xEF;
-});
-fillMap.set(0xA4, (z80) => {
-    z80.regs.h &= 0xEF;
-});
-fillMap.set(0xA5, (z80) => {
-    z80.regs.l &= 0xEF;
-});
-fillMap.set(0xA6, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xEF);
-});
-fillMap.set(0xA7, (z80) => {
-    z80.regs.a &= 0xEF;
-});
-fillMap.set(0xA8, (z80) => {
-    z80.regs.b &= 0xDF;
-});
-fillMap.set(0xA9, (z80) => {
-    z80.regs.c &= 0xDF;
-});
-fillMap.set(0xAA, (z80) => {
-    z80.regs.d &= 0xDF;
-});
-fillMap.set(0xAB, (z80) => {
-    z80.regs.e &= 0xDF;
-});
-fillMap.set(0xAC, (z80) => {
-    z80.regs.h &= 0xDF;
-});
-fillMap.set(0xAD, (z80) => {
-    z80.regs.l &= 0xDF;
-});
-fillMap.set(0xAE, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xDF);
-});
-fillMap.set(0xAF, (z80) => {
-    z80.regs.a &= 0xDF;
-});
-fillMap.set(0xB0, (z80) => {
-    z80.regs.b &= 0xBF;
-});
-fillMap.set(0xB1, (z80) => {
-    z80.regs.c &= 0xBF;
-});
-fillMap.set(0xB2, (z80) => {
-    z80.regs.d &= 0xBF;
-});
-fillMap.set(0xB3, (z80) => {
-    z80.regs.e &= 0xBF;
-});
-fillMap.set(0xB4, (z80) => {
-    z80.regs.h &= 0xBF;
-});
-fillMap.set(0xB5, (z80) => {
-    z80.regs.l &= 0xBF;
-});
-fillMap.set(0xB6, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0xBF);
-});
-fillMap.set(0xB7, (z80) => {
-    z80.regs.a &= 0xBF;
-});
-fillMap.set(0xB8, (z80) => {
-    z80.regs.b &= 0x7F;
-});
-fillMap.set(0xB9, (z80) => {
-    z80.regs.c &= 0x7F;
-});
-fillMap.set(0xBA, (z80) => {
-    z80.regs.d &= 0x7F;
-});
-fillMap.set(0xBB, (z80) => {
-    z80.regs.e &= 0x7F;
-});
-fillMap.set(0xBC, (z80) => {
-    z80.regs.h &= 0x7F;
-});
-fillMap.set(0xBD, (z80) => {
-    z80.regs.l &= 0x7F;
-});
-fillMap.set(0xBE, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value & 0x7F);
-});
-fillMap.set(0xBF, (z80) => {
-    z80.regs.a &= 0x7F;
-});
-fillMap.set(0xC0, (z80) => {
-    z80.regs.b |= 0x01;
-});
-fillMap.set(0xC1, (z80) => {
-    z80.regs.c |= 0x01;
-});
-fillMap.set(0xC2, (z80) => {
-    z80.regs.d |= 0x01;
-});
-fillMap.set(0xC3, (z80) => {
-    z80.regs.e |= 0x01;
-});
-fillMap.set(0xC4, (z80) => {
-    z80.regs.h |= 0x01;
-});
-fillMap.set(0xC5, (z80) => {
-    z80.regs.l |= 0x01;
-});
-fillMap.set(0xC6, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x01);
-});
-fillMap.set(0xC7, (z80) => {
-    z80.regs.a |= 0x01;
-});
-fillMap.set(0xC8, (z80) => {
-    z80.regs.b |= 0x02;
-});
-fillMap.set(0xC9, (z80) => {
-    z80.regs.c |= 0x02;
-});
-fillMap.set(0xCA, (z80) => {
-    z80.regs.d |= 0x02;
-});
-fillMap.set(0xCB, (z80) => {
-    z80.regs.e |= 0x02;
-});
-fillMap.set(0xCC, (z80) => {
-    z80.regs.h |= 0x02;
-});
-fillMap.set(0xCD, (z80) => {
-    z80.regs.l |= 0x02;
-});
-fillMap.set(0xCE, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x02);
-});
-fillMap.set(0xCF, (z80) => {
-    z80.regs.a |= 0x02;
-});
-fillMap.set(0xD0, (z80) => {
-    z80.regs.b |= 0x04;
-});
-fillMap.set(0xD1, (z80) => {
-    z80.regs.c |= 0x04;
-});
-fillMap.set(0xD2, (z80) => {
-    z80.regs.d |= 0x04;
-});
-fillMap.set(0xD3, (z80) => {
-    z80.regs.e |= 0x04;
-});
-fillMap.set(0xD4, (z80) => {
-    z80.regs.h |= 0x04;
-});
-fillMap.set(0xD5, (z80) => {
-    z80.regs.l |= 0x04;
-});
-fillMap.set(0xD6, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x04);
-});
-fillMap.set(0xD7, (z80) => {
-    z80.regs.a |= 0x04;
-});
-fillMap.set(0xD8, (z80) => {
-    z80.regs.b |= 0x08;
-});
-fillMap.set(0xD9, (z80) => {
-    z80.regs.c |= 0x08;
-});
-fillMap.set(0xDA, (z80) => {
-    z80.regs.d |= 0x08;
-});
-fillMap.set(0xDB, (z80) => {
-    z80.regs.e |= 0x08;
-});
-fillMap.set(0xDC, (z80) => {
-    z80.regs.h |= 0x08;
-});
-fillMap.set(0xDD, (z80) => {
-    z80.regs.l |= 0x08;
-});
-fillMap.set(0xDE, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x08);
-});
-fillMap.set(0xDF, (z80) => {
-    z80.regs.a |= 0x08;
-});
-fillMap.set(0xE0, (z80) => {
-    z80.regs.b |= 0x10;
-});
-fillMap.set(0xE1, (z80) => {
-    z80.regs.c |= 0x10;
-});
-fillMap.set(0xE2, (z80) => {
-    z80.regs.d |= 0x10;
-});
-fillMap.set(0xE3, (z80) => {
-    z80.regs.e |= 0x10;
-});
-fillMap.set(0xE4, (z80) => {
-    z80.regs.h |= 0x10;
-});
-fillMap.set(0xE5, (z80) => {
-    z80.regs.l |= 0x10;
-});
-fillMap.set(0xE6, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x10);
-});
-fillMap.set(0xE7, (z80) => {
-    z80.regs.a |= 0x10;
-});
-fillMap.set(0xE8, (z80) => {
-    z80.regs.b |= 0x20;
-});
-fillMap.set(0xE9, (z80) => {
-    z80.regs.c |= 0x20;
-});
-fillMap.set(0xEA, (z80) => {
-    z80.regs.d |= 0x20;
-});
-fillMap.set(0xEB, (z80) => {
-    z80.regs.e |= 0x20;
-});
-fillMap.set(0xEC, (z80) => {
-    z80.regs.h |= 0x20;
-});
-fillMap.set(0xED, (z80) => {
-    z80.regs.l |= 0x20;
-});
-fillMap.set(0xEE, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x20);
-});
-fillMap.set(0xEF, (z80) => {
-    z80.regs.a |= 0x20;
-});
-fillMap.set(0xF0, (z80) => {
-    z80.regs.b |= 0x40;
-});
-fillMap.set(0xF1, (z80) => {
-    z80.regs.c |= 0x40;
-});
-fillMap.set(0xF2, (z80) => {
-    z80.regs.d |= 0x40;
-});
-fillMap.set(0xF3, (z80) => {
-    z80.regs.e |= 0x40;
-});
-fillMap.set(0xF4, (z80) => {
-    z80.regs.h |= 0x40;
-});
-fillMap.set(0xF5, (z80) => {
-    z80.regs.l |= 0x40;
-});
-fillMap.set(0xF6, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x40);
-});
-fillMap.set(0xF7, (z80) => {
-    z80.regs.a |= 0x40;
-});
-fillMap.set(0xF8, (z80) => {
-    z80.regs.b |= 0x80;
-});
-fillMap.set(0xF9, (z80) => {
-    z80.regs.c |= 0x80;
-});
-fillMap.set(0xFA, (z80) => {
-    z80.regs.d |= 0x80;
-});
-fillMap.set(0xFB, (z80) => {
-    z80.regs.e |= 0x80;
-});
-fillMap.set(0xFC, (z80) => {
-    z80.regs.h |= 0x80;
-});
-fillMap.set(0xFD, (z80) => {
-    z80.regs.l |= 0x80;
-});
-fillMap.set(0xFE, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.hl, value | 0x80);
-});
-fillMap.set(0xFF, (z80) => {
-    z80.regs.a |= 0x80;
-});
-const decodeMapDD = new Map();
-fillMap = decodeMapDD;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x09, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.bc;
-    let result = z80.regs.ix + value;
-    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.ix);
-    z80.regs.ix = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x19, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.de;
-    let result = z80.regs.ix + value;
-    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.ix);
-    z80.regs.ix = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x21, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.ix = value;
-});
-fillMap.set(0x22, (z80) => {
-    let value;
-    value = z80.regs.ix;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x23, (z80) => {
-    let value;
-    value = z80.regs.ix;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["inc16"])(value);
-    z80.regs.ix = value;
-});
-fillMap.set(0x24, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.ixh = value;
-});
-fillMap.set(0x25, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.ixh = value;
-});
-fillMap.set(0x26, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.ixh = value;
-});
-fillMap.set(0x29, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.ix;
-    let result = z80.regs.ix + value;
-    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.ix);
-    z80.regs.ix = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x2A, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.ix = value;
-});
-fillMap.set(0x2B, (z80) => {
-    let value;
-    value = z80.regs.ix;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["dec16"])(value);
-    z80.regs.ix = value;
-});
-fillMap.set(0x2C, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.ixl = value;
-});
-fillMap.set(0x2D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.ixl = value;
-});
-fillMap.set(0x2E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.ixl = value;
-});
-fillMap.set(0x34, (z80) => {
-    let value;
-    const offset = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["add16"])(z80.regs.ix, Object(dist["signedByte"])(offset));
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x35, (z80) => {
-    let value;
-    const offset = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["add16"])(z80.regs.ix, Object(dist["signedByte"])(offset));
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x36, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(2);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x39, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.sp;
-    let result = z80.regs.ix + value;
-    const lookup = (((z80.regs.ix & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.ix);
-    z80.regs.ix = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x44, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.b = value;
-});
-fillMap.set(0x45, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.b = value;
-});
-fillMap.set(0x46, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.b = value;
-});
-fillMap.set(0x4C, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.c = value;
-});
-fillMap.set(0x4D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.c = value;
-});
-fillMap.set(0x4E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.c = value;
-});
-fillMap.set(0x54, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.d = value;
-});
-fillMap.set(0x55, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.d = value;
-});
-fillMap.set(0x56, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.d = value;
-});
-fillMap.set(0x5C, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.e = value;
-});
-fillMap.set(0x5D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.e = value;
-});
-fillMap.set(0x5E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.e = value;
-});
-fillMap.set(0x60, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x61, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x62, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x63, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x64, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x65, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x66, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.h = value;
-});
-fillMap.set(0x67, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.ixh = value;
-});
-fillMap.set(0x68, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x69, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x6A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x6B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x6C, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x6D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x6E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.l = value;
-});
-fillMap.set(0x6F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.ixl = value;
-});
-fillMap.set(0x70, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.b;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x71, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.c;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x72, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.d;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x73, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.e;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x74, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.h;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x75, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.l;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x77, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.a;
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x7C, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.a = value;
-});
-fillMap.set(0x7D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.a = value;
-});
-fillMap.set(0x7E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a = value;
-});
-fillMap.set(0x84, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x85, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x86, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8C, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x94, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x95, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x96, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9C, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9D, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xA4, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA5, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xAC, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAD, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB4, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB5, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xBC, (z80) => {
-    let value;
-    value = z80.regs.ixh;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBD, (z80) => {
-    let value;
-    value = z80.regs.ixl;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.ix + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xCB, (z80) => {
-    decodeDDCB(z80);
-});
-fillMap.set(0xE1, (z80) => {
-    z80.regs.ix = z80.popWord();
-});
-fillMap.set(0xE3, (z80) => {
-    const rightValue = z80.regs.ix;
-    const leftValueL = z80.readByte(z80.regs.sp);
-    const leftValueH = z80.readByte(Object(dist["inc16"])(z80.regs.sp));
-    z80.incTStateCount(1);
-    z80.writeByte(Object(dist["inc16"])(z80.regs.sp), Object(dist["hi"])(rightValue));
-    z80.writeByte(z80.regs.sp, Object(dist["lo"])(rightValue));
-    z80.incTStateCount(2);
-    z80.regs.memptr = Object(dist["word"])(leftValueH, leftValueL);
-    z80.regs.ix = Object(dist["word"])(leftValueH, leftValueL);
-});
-fillMap.set(0xE5, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.ix);
-});
-fillMap.set(0xE9, (z80) => {
-    z80.regs.pc = z80.regs.ix;
-});
-fillMap.set(0xF9, (z80) => {
-    let value;
-    value = z80.regs.ix;
-    z80.incTStateCount(2);
-    z80.regs.sp = value;
-});
-const decodeMapDDCB = new Map();
-fillMap = decodeMapDDCB;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x00, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x01, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x02, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x03, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x04, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x05, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x06, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x07, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x08, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x09, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x0A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x0B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x0C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x0D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x0E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x0F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x10, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x11, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x12, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x13, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x14, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x15, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x16, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x17, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x18, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x19, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x1A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x1B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x1C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x1D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x1E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x1F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x20, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x21, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x22, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x23, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x24, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x25, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x26, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x27, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x28, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x29, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x2A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x2B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x2C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x2D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x2E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x2F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x30, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x31, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x32, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x33, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x34, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x35, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x36, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x37, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x38, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x39, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x3A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x3B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x3C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x3D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x3E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x3F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x47, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x40, fillMap.get(0x47));
-fillMap.set(0x41, fillMap.get(0x47));
-fillMap.set(0x42, fillMap.get(0x47));
-fillMap.set(0x43, fillMap.get(0x47));
-fillMap.set(0x44, fillMap.get(0x47));
-fillMap.set(0x45, fillMap.get(0x47));
-fillMap.set(0x46, fillMap.get(0x47));
-fillMap.set(0x4F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x48, fillMap.get(0x4F));
-fillMap.set(0x49, fillMap.get(0x4F));
-fillMap.set(0x4A, fillMap.get(0x4F));
-fillMap.set(0x4B, fillMap.get(0x4F));
-fillMap.set(0x4C, fillMap.get(0x4F));
-fillMap.set(0x4D, fillMap.get(0x4F));
-fillMap.set(0x4E, fillMap.get(0x4F));
-fillMap.set(0x57, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x50, fillMap.get(0x57));
-fillMap.set(0x51, fillMap.get(0x57));
-fillMap.set(0x52, fillMap.get(0x57));
-fillMap.set(0x53, fillMap.get(0x57));
-fillMap.set(0x54, fillMap.get(0x57));
-fillMap.set(0x55, fillMap.get(0x57));
-fillMap.set(0x56, fillMap.get(0x57));
-fillMap.set(0x5F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x58, fillMap.get(0x5F));
-fillMap.set(0x59, fillMap.get(0x5F));
-fillMap.set(0x5A, fillMap.get(0x5F));
-fillMap.set(0x5B, fillMap.get(0x5F));
-fillMap.set(0x5C, fillMap.get(0x5F));
-fillMap.set(0x5D, fillMap.get(0x5F));
-fillMap.set(0x5E, fillMap.get(0x5F));
-fillMap.set(0x67, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x60, fillMap.get(0x67));
-fillMap.set(0x61, fillMap.get(0x67));
-fillMap.set(0x62, fillMap.get(0x67));
-fillMap.set(0x63, fillMap.get(0x67));
-fillMap.set(0x64, fillMap.get(0x67));
-fillMap.set(0x65, fillMap.get(0x67));
-fillMap.set(0x66, fillMap.get(0x67));
-fillMap.set(0x6F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x68, fillMap.get(0x6F));
-fillMap.set(0x69, fillMap.get(0x6F));
-fillMap.set(0x6A, fillMap.get(0x6F));
-fillMap.set(0x6B, fillMap.get(0x6F));
-fillMap.set(0x6C, fillMap.get(0x6F));
-fillMap.set(0x6D, fillMap.get(0x6F));
-fillMap.set(0x6E, fillMap.get(0x6F));
-fillMap.set(0x77, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x70, fillMap.get(0x77));
-fillMap.set(0x71, fillMap.get(0x77));
-fillMap.set(0x72, fillMap.get(0x77));
-fillMap.set(0x73, fillMap.get(0x77));
-fillMap.set(0x74, fillMap.get(0x77));
-fillMap.set(0x75, fillMap.get(0x77));
-fillMap.set(0x76, fillMap.get(0x77));
-fillMap.set(0x7F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x78, fillMap.get(0x7F));
-fillMap.set(0x79, fillMap.get(0x7F));
-fillMap.set(0x7A, fillMap.get(0x7F));
-fillMap.set(0x7B, fillMap.get(0x7F));
-fillMap.set(0x7C, fillMap.get(0x7F));
-fillMap.set(0x7D, fillMap.get(0x7F));
-fillMap.set(0x7E, fillMap.get(0x7F));
-fillMap.set(0x80, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x81, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x82, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x83, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x84, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x85, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x86, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xFE);
-});
-fillMap.set(0x87, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x88, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x89, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x8A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x8B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x8C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x8D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x8E, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xFD);
-});
-fillMap.set(0x8F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x90, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x91, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x92, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x93, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x94, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x95, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x96, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xFB);
-});
-fillMap.set(0x97, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x98, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x99, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x9A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x9B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x9C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x9D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x9E, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xF7);
-});
-fillMap.set(0x9F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xA0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xA1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xA2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xA3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xA4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xA5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xA6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xEF);
-});
-fillMap.set(0xA7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xA8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xA9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xAA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xAB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xAC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xAD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xAE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xDF);
-});
-fillMap.set(0xAF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xB0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xB1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xB2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xB3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xB4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xB5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xB6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xBF);
-});
-fillMap.set(0xB7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xB8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xB9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xBA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xBB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xBC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xBD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xBE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0x7F);
-});
-fillMap.set(0xBF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xC0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xC1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xC2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xC3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xC4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xC5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xC6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x01);
-});
-fillMap.set(0xC7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xC8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xC9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xCA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xCB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xCC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xCD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xCE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x02);
-});
-fillMap.set(0xCF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xD0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xD1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xD2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xD3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xD4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xD5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xD6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x04);
-});
-fillMap.set(0xD7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xD8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xD9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xDA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xDB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xDC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xDD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xDE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x08);
-});
-fillMap.set(0xDF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xE0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xE1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xE2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xE3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xE4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xE5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xE6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x10);
-});
-fillMap.set(0xE7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xE8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xE9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xEA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xEB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xEC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xED, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xEE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x20);
-});
-fillMap.set(0xEF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xF0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xF1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xF2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xF3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xF4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xF5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xF6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x40);
-});
-fillMap.set(0xF7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xF8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xF9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xFA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xFB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xFC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xFD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xFE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x80);
-});
-fillMap.set(0xFF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-const decodeMapED = new Map();
-fillMap = decodeMapED;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x40, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.b = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.b];
-});
-fillMap.set(0x41, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.b);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x42, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.bc;
-    let result = z80.regs.hl - value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result -= 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | dist["Flag"].N | overflowSubTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x43, (z80) => {
-    let value;
-    value = z80.regs.bc;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x7C, (z80) => {
-    const value = z80.regs.a;
-    z80.regs.a = 0;
-    const diff = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = diff;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= z80.sz53Table[z80.regs.a];
-    z80.regs.f = f;
-});
-fillMap.set(0x44, fillMap.get(0x7C));
-fillMap.set(0x4C, fillMap.get(0x7C));
-fillMap.set(0x54, fillMap.get(0x7C));
-fillMap.set(0x5C, fillMap.get(0x7C));
-fillMap.set(0x64, fillMap.get(0x7C));
-fillMap.set(0x6C, fillMap.get(0x7C));
-fillMap.set(0x74, fillMap.get(0x7C));
-fillMap.set(0x7D, (z80) => {
-    z80.regs.iff1 = z80.regs.iff2;
-    z80.regs.pc = z80.popWord();
-    z80.regs.memptr = z80.regs.pc;
-});
-fillMap.set(0x45, fillMap.get(0x7D));
-fillMap.set(0x4D, fillMap.get(0x7D));
-fillMap.set(0x55, fillMap.get(0x7D));
-fillMap.set(0x5D, fillMap.get(0x7D));
-fillMap.set(0x65, fillMap.get(0x7D));
-fillMap.set(0x6D, fillMap.get(0x7D));
-fillMap.set(0x75, fillMap.get(0x7D));
-fillMap.set(0x6E, (z80) => {
-    z80.regs.im = 0;
-});
-fillMap.set(0x46, fillMap.get(0x6E));
-fillMap.set(0x4E, fillMap.get(0x6E));
-fillMap.set(0x66, fillMap.get(0x6E));
-fillMap.set(0x47, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.incTStateCount(1);
-    z80.regs.i = value;
-});
-fillMap.set(0x48, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.c = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.c];
-});
-fillMap.set(0x49, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.c);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x4A, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.bc;
-    let result = z80.regs.hl + value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result += 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x4B, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.bc = value;
-});
-fillMap.set(0x4F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.incTStateCount(1);
-    z80.regs.r = value;
-});
-fillMap.set(0x50, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.d = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.d];
-});
-fillMap.set(0x51, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.d);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x52, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.de;
-    let result = z80.regs.hl - value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result -= 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | dist["Flag"].N | overflowSubTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x53, (z80) => {
-    let value;
-    value = z80.regs.de;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x76, (z80) => {
-    z80.regs.im = 1;
-});
-fillMap.set(0x56, fillMap.get(0x76));
-fillMap.set(0x57, (z80) => {
-    let value;
-    value = z80.regs.i;
-    z80.incTStateCount(1);
-    z80.regs.a = value;
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53Table[z80.regs.a] | (z80.regs.iff2 ? dist["Flag"].V : 0);
-});
-fillMap.set(0x58, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.e = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.e];
-});
-fillMap.set(0x59, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.e);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x5A, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.de;
-    let result = z80.regs.hl + value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result += 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x5B, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.de = value;
-});
-fillMap.set(0x7E, (z80) => {
-    z80.regs.im = 2;
-});
-fillMap.set(0x5E, fillMap.get(0x7E));
-fillMap.set(0x5F, (z80) => {
-    let value;
-    value = z80.regs.rCombined;
-    z80.incTStateCount(1);
-    z80.regs.a = value;
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53Table[z80.regs.a] | (z80.regs.iff2 ? dist["Flag"].V : 0);
-});
-fillMap.set(0x60, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.h = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.h];
-});
-fillMap.set(0x61, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.h);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x62, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.hl;
-    let result = z80.regs.hl - value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result -= 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | dist["Flag"].N | overflowSubTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x63, (z80) => {
-    let value;
-    value = z80.regs.hl;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x67, (z80) => {
-    const tmp = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(4);
-    z80.writeByte(z80.regs.hl, ((z80.regs.a << 4) | (tmp >> 4)) & 0xFF);
-    z80.regs.a = (z80.regs.a & 0xF0) | (tmp & 0x0F);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.a];
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-});
-fillMap.set(0x68, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.l = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.l];
-});
-fillMap.set(0x69, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.l);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x6A, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.hl;
-    let result = z80.regs.hl + value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result += 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x6B, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.hl = value;
-});
-fillMap.set(0x6F, (z80) => {
-    const tmp = z80.readByte(z80.regs.hl);
-    z80.incTStateCount(4);
-    z80.writeByte(z80.regs.hl, ((tmp << 4) | (z80.regs.a & 0x0F)) & 0xFF);
-    z80.regs.a = (z80.regs.a & 0xF0) | (tmp >> 4);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.a];
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-});
-fillMap.set(0x70, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.f = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.f];
-});
-fillMap.set(0x71, (z80) => {
-    z80.writePort(z80.regs.bc, 0x00);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x72, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.sp;
-    let result = z80.regs.hl - value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result -= 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | dist["Flag"].N | overflowSubTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarrySubTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x73, (z80) => {
-    let value;
-    value = z80.regs.sp;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x78, (z80) => {
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.a = z80.readPort(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0x79, (z80) => {
-    z80.writePort(z80.regs.bc, z80.regs.a);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-});
-fillMap.set(0x7A, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.sp;
-    let result = z80.regs.hl + value;
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result += 1;
-    }
-    const lookup = (((z80.regs.hl & 0x8800) >> 11) |
-        ((value & 0x8800) >> 10) |
-        ((result & 0x8800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.hl = result & 0xFFFF;
-    z80.regs.f = ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | overflowAddTable[lookup >> 4] | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S)) | halfCarryAddTable[lookup & 0x07] | (result !== 0 ? 0 : dist["Flag"].Z);
-});
-fillMap.set(0x7B, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.sp = value;
-});
-fillMap.set(0xA0, (z80) => {
-    let value = z80.readByte(z80.regs.hl);
-    z80.writeByte(z80.regs.de, value);
-    z80.incTStateCount(2);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    value = Object(dist["add16"])(value, z80.regs.a);
-    z80.regs.f = (z80.regs.f & (dist["Flag"].C | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | (value & dist["Flag"].X3) | ((value & 0x02) !== 0 ? dist["Flag"].X5 : 0);
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.de = Object(dist["inc16"])(z80.regs.de);
-});
-fillMap.set(0xA1, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    let diff = (z80.regs.a - value) & 0xFF;
-    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
-    z80.incTStateCount(5);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | dist["Flag"].N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : dist["Flag"].Z) | (diff & dist["Flag"].S);
-    if ((z80.regs.f & dist["Flag"].H) !== 0)
-        diff = Object(dist["dec8"])(diff);
-    z80.regs.f |= (diff & dist["Flag"].X3) | (((diff & 0x02) !== 0) ? dist["Flag"].X5 : 0);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.memptr);
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-});
-fillMap.set(0xA2, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readPort(z80.regs.bc);
-    z80.writeByte(z80.regs.hl, value);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    const other = Object(dist["inc8"])(Object(dist["add8"])(value, z80.regs.c));
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-});
-fillMap.set(0xA3, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readByte(z80.regs.hl);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.writePort(z80.regs.bc, value);
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-    const other = Object(dist["add8"])(value, z80.regs.l);
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-});
-fillMap.set(0xA8, (z80) => {
-    let value = z80.readByte(z80.regs.hl);
-    z80.writeByte(z80.regs.de, value);
-    z80.incTStateCount(2);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    value = Object(dist["add16"])(value, z80.regs.a);
-    z80.regs.f = (z80.regs.f & (dist["Flag"].C | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | (value & dist["Flag"].X3) | ((value & 0x02) !== 0 ? dist["Flag"].X5 : 0);
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-    z80.regs.de = Object(dist["dec16"])(z80.regs.de);
-});
-fillMap.set(0xA9, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    let diff = (z80.regs.a - value) & 0xFF;
-    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
-    z80.incTStateCount(5);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | dist["Flag"].N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : dist["Flag"].Z) | (diff & dist["Flag"].S);
-    if ((z80.regs.f & dist["Flag"].H) !== 0)
-        diff = Object(dist["dec8"])(diff);
-    z80.regs.f |= (diff & dist["Flag"].X3) | (((diff & 0x02) !== 0) ? dist["Flag"].X5 : 0);
-    z80.regs.memptr = Object(dist["dec16"])(z80.regs.memptr);
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-});
-fillMap.set(0xAA, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readPort(z80.regs.bc);
-    z80.writeByte(z80.regs.hl, value);
-    z80.regs.memptr = Object(dist["dec16"])(z80.regs.bc);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    const other = Object(dist["dec8"])(Object(dist["add8"])(value, z80.regs.c));
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-});
-fillMap.set(0xAB, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readByte(z80.regs.hl);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    z80.regs.memptr = Object(dist["dec16"])(z80.regs.bc);
-    z80.writePort(z80.regs.bc, value);
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-    const other = Object(dist["add8"])(value, z80.regs.l);
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-});
-fillMap.set(0xB0, (z80) => {
-    let value = z80.readByte(z80.regs.hl);
-    z80.writeByte(z80.regs.de, value);
-    z80.incTStateCount(2);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    value = Object(dist["add16"])(value, z80.regs.a);
-    z80.regs.f = (z80.regs.f & (dist["Flag"].C | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | (value & dist["Flag"].X3) | ((value & 0x02) !== 0 ? dist["Flag"].X5 : 0);
-    if (z80.regs.bc !== 0) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-        z80.regs.memptr = Object(dist["add16"])(z80.regs.pc, 1);
-    }
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-    z80.regs.de = Object(dist["inc16"])(z80.regs.de);
-});
-fillMap.set(0xB1, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    let diff = (z80.regs.a - value) & 0xFF;
-    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
-    z80.incTStateCount(5);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | dist["Flag"].N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : dist["Flag"].Z) | (diff & dist["Flag"].S);
-    if ((z80.regs.f & dist["Flag"].H) !== 0)
-        diff = Object(dist["dec8"])(diff);
-    z80.regs.f |= (diff & dist["Flag"].X3) | (((diff & 0x02) !== 0) ? dist["Flag"].X5 : 0);
-    if ((z80.regs.f & (dist["Flag"].V | dist["Flag"].Z)) === dist["Flag"].V) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-        z80.regs.memptr = Object(dist["add16"])(z80.regs.pc, 1);
-    }
-    else {
-        z80.regs.memptr = Object(dist["inc16"])(z80.regs.memptr);
-    }
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-});
-fillMap.set(0xB2, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readPort(z80.regs.bc);
-    z80.writeByte(z80.regs.hl, value);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    const other = Object(dist["inc8"])(Object(dist["add8"])(value, z80.regs.c));
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-    if (z80.regs.b > 0) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-    }
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-});
-fillMap.set(0xB3, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readByte(z80.regs.hl);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.bc);
-    z80.writePort(z80.regs.bc, value);
-    z80.regs.hl = Object(dist["inc16"])(z80.regs.hl);
-    const other = Object(dist["add8"])(value, z80.regs.l);
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-    if (z80.regs.b > 0) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-    }
-});
-fillMap.set(0xB8, (z80) => {
-    let value = z80.readByte(z80.regs.hl);
-    z80.writeByte(z80.regs.de, value);
-    z80.incTStateCount(2);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    value = Object(dist["add16"])(value, z80.regs.a);
-    z80.regs.f = (z80.regs.f & (dist["Flag"].C | dist["Flag"].Z | dist["Flag"].S)) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | (value & dist["Flag"].X3) | ((value & 0x02) !== 0 ? dist["Flag"].X5 : 0);
-    if (z80.regs.bc !== 0) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-        z80.regs.memptr = Object(dist["add16"])(z80.regs.pc, 1);
-    }
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-    z80.regs.de = Object(dist["dec16"])(z80.regs.de);
-});
-fillMap.set(0xB9, (z80) => {
-    const value = z80.readByte(z80.regs.hl);
-    let diff = (z80.regs.a - value) & 0xFF;
-    const lookup = ((z80.regs.a & 0x08) >> 3) | ((value & 0x08) >> 2) | ((diff & 0x08) >> 1);
-    z80.incTStateCount(5);
-    z80.regs.bc = Object(dist["dec16"])(z80.regs.bc);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (z80.regs.bc !== 0 ? dist["Flag"].V : 0) | dist["Flag"].N | halfCarrySubTable[lookup] | (diff !== 0 ? 0 : dist["Flag"].Z) | (diff & dist["Flag"].S);
-    if ((z80.regs.f & dist["Flag"].H) !== 0)
-        diff = Object(dist["dec8"])(diff);
-    z80.regs.f |= (diff & dist["Flag"].X3) | (((diff & 0x02) !== 0) ? dist["Flag"].X5 : 0);
-    if ((z80.regs.f & (dist["Flag"].V | dist["Flag"].Z)) === dist["Flag"].V) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-        z80.regs.memptr = Object(dist["add16"])(z80.regs.pc, 1);
-    }
-    else {
-        z80.regs.memptr = Object(dist["dec16"])(z80.regs.memptr);
-    }
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-});
-fillMap.set(0xBA, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readPort(z80.regs.bc);
-    z80.writeByte(z80.regs.hl, value);
-    z80.regs.memptr = Object(dist["dec16"])(z80.regs.bc);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    const other = Object(dist["dec8"])(Object(dist["add8"])(value, z80.regs.c));
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-    if (z80.regs.b > 0) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-    }
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-});
-fillMap.set(0xBB, (z80) => {
-    z80.incTStateCount(1);
-    const value = z80.readByte(z80.regs.hl);
-    z80.regs.b = Object(dist["dec8"])(z80.regs.b);
-    z80.regs.memptr = Object(dist["dec16"])(z80.regs.bc);
-    z80.writePort(z80.regs.bc, value);
-    z80.regs.hl = Object(dist["dec16"])(z80.regs.hl);
-    const other = Object(dist["add8"])(value, z80.regs.l);
-    z80.regs.f = (value & 0x80 ? dist["Flag"].N : 0) | (other < value ? dist["Flag"].H | dist["Flag"].C : 0) | (z80.parityTable[(other & 0x07) ^ z80.regs.b] ? dist["Flag"].P : 0) | z80.sz53Table[z80.regs.b];
-    if (z80.regs.b > 0) {
-        z80.incTStateCount(5);
-        z80.regs.pc = Object(dist["add16"])(z80.regs.pc, -2);
-    }
-});
-const decodeMapFD = new Map();
-fillMap = decodeMapFD;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x09, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.bc;
-    let result = z80.regs.iy + value;
-    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.iy);
-    z80.regs.iy = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x19, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.de;
-    let result = z80.regs.iy + value;
-    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.iy);
-    z80.regs.iy = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x21, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = Object(dist["word"])(z80.readByte(z80.regs.pc), value);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.iy = value;
-});
-fillMap.set(0x22, (z80) => {
-    let value;
-    value = z80.regs.iy;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.writeByte(addr, Object(dist["lo"])(value));
-    addr = Object(dist["inc16"])(addr);
-    z80.regs.memptr = addr;
-    z80.writeByte(addr, Object(dist["hi"])(value));
-});
-fillMap.set(0x23, (z80) => {
-    let value;
-    value = z80.regs.iy;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["inc16"])(value);
-    z80.regs.iy = value;
-});
-fillMap.set(0x24, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.iyh = value;
-});
-fillMap.set(0x25, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.iyh = value;
-});
-fillMap.set(0x26, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.iyh = value;
-});
-fillMap.set(0x29, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.iy;
-    let result = z80.regs.iy + value;
-    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.iy);
-    z80.regs.iy = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x2A, (z80) => {
-    let value;
-    let addr = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    addr = Object(dist["word"])(z80.readByte(z80.regs.pc), addr);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    value = z80.readByte(addr);
-    z80.regs.memptr = Object(dist["inc16"])(addr);
-    value = Object(dist["word"])(z80.readByte(z80.regs.memptr), value);
-    z80.regs.iy = value;
-});
-fillMap.set(0x2B, (z80) => {
-    let value;
-    value = z80.regs.iy;
-    const oldValue = value;
-    z80.incTStateCount(2);
-    value = Object(dist["dec16"])(value);
-    z80.regs.iy = value;
-});
-fillMap.set(0x2C, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.regs.iyl = value;
-});
-fillMap.set(0x2D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.regs.iyl = value;
-});
-fillMap.set(0x2E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.iyl = value;
-});
-fillMap.set(0x34, (z80) => {
-    let value;
-    const offset = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["add16"])(z80.regs.iy, Object(dist["signedByte"])(offset));
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = Object(dist["inc8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x80 ? dist["Flag"].V : 0) | ((value & 0x0F) !== 0 ? 0 : dist["Flag"].H) | z80.sz53Table[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x35, (z80) => {
-    let value;
-    const offset = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = Object(dist["add16"])(z80.regs.iy, Object(dist["signedByte"])(offset));
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = Object(dist["dec8"])(value);
-    z80.regs.f = (z80.regs.f & dist["Flag"].C) | (value === 0x7F ? dist["Flag"].V : 0) | ((oldValue & 0x0F) !== 0 ? 0 : dist["Flag"].H) | dist["Flag"].N | z80.sz53Table[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x36, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(2);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x39, (z80) => {
-    let value;
-    z80.incTStateCount(7);
-    value = z80.regs.sp;
-    let result = z80.regs.iy + value;
-    const lookup = (((z80.regs.iy & 0x0800) >> 11) |
-        ((value & 0x0800) >> 10) |
-        ((result & 0x0800) >> 9)) & 0xFF;
-    z80.regs.memptr = Object(dist["inc16"])(z80.regs.iy);
-    z80.regs.iy = result & 0xFFFF;
-    z80.regs.f = (z80.regs.f & (dist["Flag"].V | dist["Flag"].Z | dist["Flag"].S)) | ((result & 0x10000) !== 0 ? dist["Flag"].C : 0) | ((result >> 8) & (dist["Flag"].X3 | dist["Flag"].X5)) | halfCarryAddTable[lookup];
-});
-fillMap.set(0x44, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.b = value;
-});
-fillMap.set(0x45, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.b = value;
-});
-fillMap.set(0x46, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.b = value;
-});
-fillMap.set(0x4C, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.c = value;
-});
-fillMap.set(0x4D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.c = value;
-});
-fillMap.set(0x4E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.c = value;
-});
-fillMap.set(0x54, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.d = value;
-});
-fillMap.set(0x55, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.d = value;
-});
-fillMap.set(0x56, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.d = value;
-});
-fillMap.set(0x5C, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.e = value;
-});
-fillMap.set(0x5D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.e = value;
-});
-fillMap.set(0x5E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.e = value;
-});
-fillMap.set(0x60, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x61, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x62, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x63, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x64, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x65, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x66, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.h = value;
-});
-fillMap.set(0x67, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.iyh = value;
-});
-fillMap.set(0x68, (z80) => {
-    let value;
-    value = z80.regs.b;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x69, (z80) => {
-    let value;
-    value = z80.regs.c;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x6A, (z80) => {
-    let value;
-    value = z80.regs.d;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x6B, (z80) => {
-    let value;
-    value = z80.regs.e;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x6C, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x6D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x6E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.l = value;
-});
-fillMap.set(0x6F, (z80) => {
-    let value;
-    value = z80.regs.a;
-    z80.regs.iyl = value;
-});
-fillMap.set(0x70, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.b;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x71, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.c;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x72, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.d;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x73, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.e;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x74, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.h;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x75, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.l;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x77, (z80) => {
-    const dd = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    let value;
-    value = z80.regs.a;
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(dd)) & 0xFFFF;
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x7C, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.a = value;
-});
-fillMap.set(0x7D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.a = value;
-});
-fillMap.set(0x7E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a = value;
-});
-fillMap.set(0x84, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x85, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x86, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8C, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x8E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["add16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["inc16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | halfCarryAddTable[lookup & 0x07] | overflowAddTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x94, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x95, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x96, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9C, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9D, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0x9E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    let result = Object(dist["sub16"])(z80.regs.a, value);
-    if ((z80.regs.f & dist["Flag"].C) !== 0) {
-        result = Object(dist["dec16"])(result);
-    }
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((result & 0x88) >> 1)) & 0xFF;
-    z80.regs.a = result & 0xFF;
-    z80.regs.f = (((result & 0x100) !== 0) ? dist["Flag"].C : 0) | dist["Flag"].N | halfCarrySubTable[lookup & 0x07] | overflowSubTable[lookup >> 4] | z80.sz53Table[z80.regs.a];
-});
-fillMap.set(0xA4, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA5, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xA6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a &= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-    z80.regs.f |= dist["Flag"].H;
-});
-fillMap.set(0xAC, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAD, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xAE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a ^= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB4, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB5, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xB6, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    z80.regs.a |= value;
-    z80.regs.f = z80.sz53pTable[z80.regs.a];
-});
-fillMap.set(0xBC, (z80) => {
-    let value;
-    value = z80.regs.iyh;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBD, (z80) => {
-    let value;
-    value = z80.regs.iyl;
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xBE, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.pc);
-    z80.incTStateCount(5);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.regs.memptr = (z80.regs.iy + Object(dist["signedByte"])(value)) & 0xFFFF;
-    value = z80.readByte(z80.regs.memptr);
-    const diff = (z80.regs.a - value) & 0xFFFF;
-    const lookup = (((z80.regs.a & 0x88) >> 3) |
-        ((value & 0x88) >> 2) |
-        ((diff & 0x88) >> 1)) & 0xFF;
-    let f = dist["Flag"].N;
-    if ((diff & 0x100) != 0)
-        f |= dist["Flag"].C;
-    if (diff == 0)
-        f |= dist["Flag"].Z;
-    f |= halfCarrySubTable[lookup & 0x07];
-    f |= overflowSubTable[lookup >> 4];
-    f |= value & (dist["Flag"].X3 | dist["Flag"].X5);
-    f |= diff & dist["Flag"].S;
-    z80.regs.af = Object(dist["word"])(z80.regs.a, f);
-});
-fillMap.set(0xCB, (z80) => {
-    decodeFDCB(z80);
-});
-fillMap.set(0xE1, (z80) => {
-    z80.regs.iy = z80.popWord();
-});
-fillMap.set(0xE3, (z80) => {
-    const rightValue = z80.regs.iy;
-    const leftValueL = z80.readByte(z80.regs.sp);
-    const leftValueH = z80.readByte(Object(dist["inc16"])(z80.regs.sp));
-    z80.incTStateCount(1);
-    z80.writeByte(Object(dist["inc16"])(z80.regs.sp), Object(dist["hi"])(rightValue));
-    z80.writeByte(z80.regs.sp, Object(dist["lo"])(rightValue));
-    z80.incTStateCount(2);
-    z80.regs.memptr = Object(dist["word"])(leftValueH, leftValueL);
-    z80.regs.iy = Object(dist["word"])(leftValueH, leftValueL);
-});
-fillMap.set(0xE5, (z80) => {
-    z80.incTStateCount(1);
-    z80.pushWord(z80.regs.iy);
-});
-fillMap.set(0xE9, (z80) => {
-    z80.regs.pc = z80.regs.iy;
-});
-fillMap.set(0xF9, (z80) => {
-    let value;
-    value = z80.regs.iy;
-    z80.incTStateCount(2);
-    z80.regs.sp = value;
-});
-const decodeMapFDCB = new Map();
-fillMap = decodeMapFDCB;
-// The contents of this map are auto-generated by GenerateOpcodes.ts.
-fillMap.set(0x00, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x01, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x02, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x03, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x04, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x05, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x06, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | (value >> 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x07, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value << 1) | (value >> 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x08, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x09, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x0A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x0B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x0C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x0D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x0E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value >> 1) | (value << 7)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x0F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value >> 1) | (value << 7)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x10, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x11, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x12, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x13, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x14, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x15, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x16, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x17, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value << 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 1 : 0)) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x18, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x19, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x1A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x1B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x1C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x1D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x1E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x1F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = (value >> 1) | ((z80.regs.f & dist["Flag"].C) !== 0 ? 0x80 : 0);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x20, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x21, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x22, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x23, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x24, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x25, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x26, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value << 1) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x27, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = (value << 1) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x28, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x29, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x2A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x2B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x2C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x2D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x2E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = (value & 0x80) | (value >> 1);
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x2F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = (value & 0x80) | (value >> 1);
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x30, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x31, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x32, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x33, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x34, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x35, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x36, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = ((value << 1) | 0x01) & 0xFF;
-    z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x37, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = ((value << 1) | 0x01) & 0xFF;
-        z80.regs.f = ((oldValue & 0x80) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x38, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.b;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.b = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x39, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.c;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.c = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x3A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.d;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.d = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x3B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.e;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.e = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x3C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.h;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.h = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x3D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.l;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.l = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x3E, (z80) => {
-    let value;
-    value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    const oldValue = value;
-    value = value >> 1;
-    z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-    z80.writeByte(z80.regs.memptr, value);
-});
-fillMap.set(0x3F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    {
-        let value;
-        value = z80.regs.a;
-        const oldValue = value;
-        value = value >> 1;
-        z80.regs.f = ((oldValue & 0x01) !== 0 ? dist["Flag"].C : 0) | z80.sz53pTable[value];
-        z80.regs.a = value;
-    }
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x47, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x01) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x40, fillMap.get(0x47));
-fillMap.set(0x41, fillMap.get(0x47));
-fillMap.set(0x42, fillMap.get(0x47));
-fillMap.set(0x43, fillMap.get(0x47));
-fillMap.set(0x44, fillMap.get(0x47));
-fillMap.set(0x45, fillMap.get(0x47));
-fillMap.set(0x46, fillMap.get(0x47));
-fillMap.set(0x4F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x02) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x48, fillMap.get(0x4F));
-fillMap.set(0x49, fillMap.get(0x4F));
-fillMap.set(0x4A, fillMap.get(0x4F));
-fillMap.set(0x4B, fillMap.get(0x4F));
-fillMap.set(0x4C, fillMap.get(0x4F));
-fillMap.set(0x4D, fillMap.get(0x4F));
-fillMap.set(0x4E, fillMap.get(0x4F));
-fillMap.set(0x57, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x04) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x50, fillMap.get(0x57));
-fillMap.set(0x51, fillMap.get(0x57));
-fillMap.set(0x52, fillMap.get(0x57));
-fillMap.set(0x53, fillMap.get(0x57));
-fillMap.set(0x54, fillMap.get(0x57));
-fillMap.set(0x55, fillMap.get(0x57));
-fillMap.set(0x56, fillMap.get(0x57));
-fillMap.set(0x5F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x08) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x58, fillMap.get(0x5F));
-fillMap.set(0x59, fillMap.get(0x5F));
-fillMap.set(0x5A, fillMap.get(0x5F));
-fillMap.set(0x5B, fillMap.get(0x5F));
-fillMap.set(0x5C, fillMap.get(0x5F));
-fillMap.set(0x5D, fillMap.get(0x5F));
-fillMap.set(0x5E, fillMap.get(0x5F));
-fillMap.set(0x67, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x10) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x60, fillMap.get(0x67));
-fillMap.set(0x61, fillMap.get(0x67));
-fillMap.set(0x62, fillMap.get(0x67));
-fillMap.set(0x63, fillMap.get(0x67));
-fillMap.set(0x64, fillMap.get(0x67));
-fillMap.set(0x65, fillMap.get(0x67));
-fillMap.set(0x66, fillMap.get(0x67));
-fillMap.set(0x6F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x20) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x68, fillMap.get(0x6F));
-fillMap.set(0x69, fillMap.get(0x6F));
-fillMap.set(0x6A, fillMap.get(0x6F));
-fillMap.set(0x6B, fillMap.get(0x6F));
-fillMap.set(0x6C, fillMap.get(0x6F));
-fillMap.set(0x6D, fillMap.get(0x6F));
-fillMap.set(0x6E, fillMap.get(0x6F));
-fillMap.set(0x77, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x40) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x70, fillMap.get(0x77));
-fillMap.set(0x71, fillMap.get(0x77));
-fillMap.set(0x72, fillMap.get(0x77));
-fillMap.set(0x73, fillMap.get(0x77));
-fillMap.set(0x74, fillMap.get(0x77));
-fillMap.set(0x75, fillMap.get(0x77));
-fillMap.set(0x76, fillMap.get(0x77));
-fillMap.set(0x7F, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    const hiddenValue = Object(dist["hi"])(z80.regs.memptr);
-    z80.incTStateCount(1);
-    let f = (z80.regs.f & dist["Flag"].C) | dist["Flag"].H | (hiddenValue & (dist["Flag"].X3 | dist["Flag"].X5));
-    if ((value & 0x80) === 0) {
-        f |= dist["Flag"].P | dist["Flag"].Z;
-    }
-    if ((value & 0x80) !== 0) {
-        f |= dist["Flag"].S;
-    }
-    z80.regs.f = f;
-});
-fillMap.set(0x78, fillMap.get(0x7F));
-fillMap.set(0x79, fillMap.get(0x7F));
-fillMap.set(0x7A, fillMap.get(0x7F));
-fillMap.set(0x7B, fillMap.get(0x7F));
-fillMap.set(0x7C, fillMap.get(0x7F));
-fillMap.set(0x7D, fillMap.get(0x7F));
-fillMap.set(0x7E, fillMap.get(0x7F));
-fillMap.set(0x80, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x81, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x82, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x83, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x84, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x85, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x86, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xFE);
-});
-fillMap.set(0x87, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFE;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x88, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x89, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x8A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x8B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x8C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x8D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x8E, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xFD);
-});
-fillMap.set(0x8F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFD;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x90, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x91, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x92, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x93, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x94, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x95, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x96, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xFB);
-});
-fillMap.set(0x97, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xFB;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0x98, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0x99, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0x9A, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0x9B, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0x9C, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0x9D, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0x9E, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xF7);
-});
-fillMap.set(0x9F, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xF7;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xA0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xA1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xA2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xA3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xA4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xA5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xA6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xEF);
-});
-fillMap.set(0xA7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xEF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xA8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xA9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xAA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xAB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xAC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xAD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xAE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xDF);
-});
-fillMap.set(0xAF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xDF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xB0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xB1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xB2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xB3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xB4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xB5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xB6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0xBF);
-});
-fillMap.set(0xB7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0xBF;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xB8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xB9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xBA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xBB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xBC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xBD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xBE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value & 0x7F);
-});
-fillMap.set(0xBF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) & 0x7F;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xC0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xC1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xC2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xC3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xC4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xC5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xC6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x01);
-});
-fillMap.set(0xC7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x01;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xC8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xC9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xCA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xCB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xCC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xCD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xCE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x02);
-});
-fillMap.set(0xCF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x02;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xD0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xD1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xD2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xD3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xD4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xD5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xD6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x04);
-});
-fillMap.set(0xD7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x04;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xD8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xD9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xDA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xDB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xDC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xDD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xDE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x08);
-});
-fillMap.set(0xDF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x08;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xE0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xE1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xE2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xE3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xE4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xE5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xE6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x10);
-});
-fillMap.set(0xE7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x10;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xE8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xE9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xEA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xEB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xEC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xED, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xEE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x20);
-});
-fillMap.set(0xEF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x20;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xF0, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xF1, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xF2, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xF3, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xF4, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xF5, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xF6, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x40);
-});
-fillMap.set(0xF7, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x40;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-fillMap.set(0xF8, (z80) => {
-    z80.regs.b = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.b);
-});
-fillMap.set(0xF9, (z80) => {
-    z80.regs.c = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.c);
-});
-fillMap.set(0xFA, (z80) => {
-    z80.regs.d = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.d);
-});
-fillMap.set(0xFB, (z80) => {
-    z80.regs.e = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.e);
-});
-fillMap.set(0xFC, (z80) => {
-    z80.regs.h = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.h);
-});
-fillMap.set(0xFD, (z80) => {
-    z80.regs.l = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.l);
-});
-fillMap.set(0xFE, (z80) => {
-    const value = z80.readByte(z80.regs.memptr);
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, value | 0x80);
-});
-fillMap.set(0xFF, (z80) => {
-    z80.regs.a = z80.readByte(z80.regs.memptr) | 0x80;
-    z80.incTStateCount(1);
-    z80.writeByte(z80.regs.memptr, z80.regs.a);
-});
-/**
- * Fetch an instruction for decode.
- */
-function fetchInstruction(z80) {
-    z80.incTStateCount(4);
-    const inst = z80.readByteInternal(z80.regs.pc);
-    z80.regs.pc = (z80.regs.pc + 1) & 0xFFFF;
-    z80.regs.r = (z80.regs.r + 1) & 0xFF;
-    return inst;
-}
-/**
- * Decode the "CB" prefix (bit instructions).
- */
-function decodeCB(z80) {
-    const inst = fetchInstruction(z80);
-    const func = decodeMapCB.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode in CB: " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-/**
- * Decode the "DD" prefix (IX instructions).
- */
-function decodeDD(z80) {
-    const inst = fetchInstruction(z80);
-    const func = decodeMapDD.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode in DD: " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-/**
- * Decode the "DDCB" prefix (IX bit instructions).
- */
-function decodeDDCB(z80) {
-    z80.incTStateCount(3);
-    const offset = z80.readByteInternal(z80.regs.pc);
-    z80.regs.memptr = Object(dist["add16"])(z80.regs.ix, Object(dist["signedByte"])(offset));
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.incTStateCount(3);
-    const inst = z80.readByteInternal(z80.regs.pc);
-    z80.incTStateCount(2);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    const func = decodeMapDDCB.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode in DDCB: " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-/**
- * Decode the "ED" prefix (extended instructions).
- */
-function decodeED(z80) {
-    const inst = fetchInstruction(z80);
-    const func = decodeMapED.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode in ED: " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-/**
- * Decode the "FD" prefix (IY instructions).
- */
-function decodeFD(z80) {
-    const inst = fetchInstruction(z80);
-    const func = decodeMapFD.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode in FD: " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-/**
- * Decode the "FDCB" prefix (IY bit instructions).
- */
-function decodeFDCB(z80) {
-    z80.incTStateCount(3);
-    const offset = z80.readByteInternal(z80.regs.pc);
-    z80.regs.memptr = Object(dist["add16"])(z80.regs.iy, Object(dist["signedByte"])(offset));
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    z80.incTStateCount(3);
-    const inst = z80.readByteInternal(z80.regs.pc);
-    z80.incTStateCount(2);
-    z80.regs.pc = Object(dist["inc16"])(z80.regs.pc);
-    const func = decodeMapFDCB.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode in FDCB: " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-/**
- * Decode the base (un-prefixed) instructions.
- */
-function decode(z80) {
-    const inst = fetchInstruction(z80);
-    const func = decodeMap.get(inst);
-    if (func === undefined) {
-        console.log("Unhandled opcode " + Object(dist["toHex"])(inst, 2));
-    }
-    else {
-        func(z80);
-    }
-}
-
-// CONCATENATED MODULE: ../trs80-emulator/node_modules/z80-emulator/dist/module/Z80.js
-
-
-/**
- * Emulated Z80 processor.
- */
-class Z80_Z80 {
-    constructor(hal) {
-        /**
-         * Full set of registers.
-         */
-        this.regs = new dist["RegisterSet"]();
-        /**
-         * Tables for computing flags. Public so that the decoding function
-         * can access them.
-         */
-        this.sz53Table = []; /* The S, Z, 5 and 3 bits of the index */
-        this.parityTable = []; /* The parity of the lookup value */
-        this.sz53pTable = []; /* OR the above two tables together */
-        this.hal = hal;
-        this.initTables();
-    }
-    /**
-     * Reset the Z80 to a known state.
-     */
-    reset() {
-        this.regs = new dist["RegisterSet"]();
-    }
-    /**
-     * Execute one instruction.
-     */
-    step() {
-        decode(this);
-    }
-    /**
-     * Increment the clock count.
-     */
-    incTStateCount(count) {
-        this.hal.tStateCount += count;
-    }
-    /**
-     * Interrupt the CPU with a maskable interrupt
-     */
-    maskableInterrupt() {
-        if (this.regs.iff1 !== 0) {
-            this.interrupt(true);
-        }
-    }
-    /**
-     * Interrupt the CPU with a non-maskable interrupt
-     */
-    nonMaskableInterrupt() {
-        this.interrupt(false);
-    }
-    /**
-     * Read a byte from memory, taking as many clock cycles as necessary.
-     */
-    readByte(address) {
-        this.incTStateCount(3);
-        return this.readByteInternal(address);
-    }
-    /**
-     * Reads a word at the specified address. Reads the low byte first.
-     */
-    readWord(address) {
-        const lowByte = this.readByte(address);
-        const highByte = this.readByte(address + 1);
-        return Object(dist["word"])(highByte, lowByte);
-    }
-    /**
-     * Read a byte from memory (not affecting clock).
-     */
-    readByteInternal(address) {
-        return this.hal.readMemory(address);
-    }
-    /**
-     * Write a byte to memory, taking as many clock cycles as necessary.
-     */
-    writeByte(address, value) {
-        this.incTStateCount(3);
-        this.writeByteInternal(address, value);
-    }
-    /**
-     * Write a byte to memory (not affecting clock).
-     */
-    writeByteInternal(address, value) {
-        this.hal.writeMemory(address, value);
-    }
-    /**
-     * Write a byte to a port, taking as many clock cycles as necessary.
-     */
-    writePort(address, value) {
-        this.incTStateCount(1);
-        this.hal.writePort(address, value);
-        this.incTStateCount(3);
-    }
-    /**
-     * Read a byte from a port, taking as many clock cycles as necessary.
-     */
-    readPort(address) {
-        this.incTStateCount(1);
-        const value = this.hal.readPort(address);
-        this.incTStateCount(3);
-        return value;
-    }
-    /**
-     * Push a word on the stack.
-     */
-    pushWord(value) {
-        this.pushByte(Object(dist["hi"])(value));
-        this.pushByte(Object(dist["lo"])(value));
-    }
-    /**
-     * Push a byte on the stack.
-     */
-    pushByte(value) {
-        this.regs.sp = (this.regs.sp - 1) & 0xFFFF;
-        this.writeByte(this.regs.sp, value);
-    }
-    /**
-     * Pop a word from the stack.
-     */
-    popWord() {
-        const lowByte = this.popByte();
-        const highByte = this.popByte();
-        return Object(dist["word"])(highByte, lowByte);
-    }
-    /**
-     * Pop a byte from the stack.
-     */
-    popByte() {
-        const value = this.readByte(this.regs.sp);
-        this.regs.sp = Object(dist["inc16"])(this.regs.sp);
-        return value;
-    }
-    /**
-     * Process either kind of interrupt. If maskable, assumes that
-     * the mask has already been checked.
-     */
-    interrupt(maskable) {
-        if (this.regs.halted) {
-            // Skip past HALT instruction.
-            this.regs.pc++;
-            this.regs.halted = 0;
-        }
-        this.incTStateCount(7);
-        this.regs.r += 1;
-        this.regs.iff1 = 0;
-        this.regs.iff2 = 0;
-        this.pushWord(this.regs.pc);
-        if (maskable) {
-            switch (this.regs.im) {
-                case 0:
-                case 1:
-                    this.regs.pc = 0x0038;
-                    break;
-                case 2: {
-                    // The LSB here is taken from the data bus, so it's
-                    // unpredictable. We use 0xFF but any value would do.
-                    const address = Object(dist["word"])(this.regs.i, 0xFF);
-                    this.regs.pc = this.readWord(address);
-                    break;
-                }
-                default:
-                    throw new Error("Unknown im mode " + this.regs.im);
-            }
-        }
-        else {
-            this.regs.pc = 0x0066;
-        }
-    }
-    initTables() {
-        for (let i = 0; i < 0x100; i++) {
-            this.sz53Table.push(i & (dist["Flag"].X3 | dist["Flag"].X5 | dist["Flag"].S));
-            let bits = i;
-            let parity = 0;
-            for (let bit = 0; bit < 8; bit++) {
-                parity ^= bits & 1;
-                bits >>= 1;
-            }
-            this.parityTable.push(parity ? 0 : dist["Flag"].P);
-            this.sz53pTable.push(this.sz53Table[i] | this.parityTable[i]);
-        }
-        this.sz53Table[0] |= dist["Flag"].Z;
-        this.sz53pTable[0] |= dist["Flag"].Z;
-    }
-}
-
-// CONCATENATED MODULE: ../trs80-emulator/node_modules/z80-emulator/dist/module/index.js
-
-
-
-/***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TRS80_SCREEN_END = exports.TRS80_SCREEN_BEGIN = void 0;
-// RAM address range of screen.
-exports.TRS80_SCREEN_BEGIN = 15 * 1024;
-exports.TRS80_SCREEN_END = 16 * 1024;
-
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Information about a preamble that might copy the rest of the program elsewhere in memory. It typically looks like:
- *
- *     6000  21 0E 60            ld hl,0x600E
- *     6003  11 00 43            ld de,0x4300
- *     6006  01 5C 07            ld bc,0x075C
- *     6009  ED B0               ldir
- *     600B  C3 00 43            jp 0x4300
- *     600E  [program to be copied]
- *
- */
-class Preamble {
-    constructor(preambleLength, sourceAddress, destinationAddress, copyLength, jumpAddress) {
-        this.preambleLength = preambleLength;
-        this.sourceAddress = sourceAddress;
-        this.destinationAddress = destinationAddress;
-        this.copyLength = copyLength;
-        this.jumpAddress = jumpAddress;
-    }
-    /**
-     * Detect a preamble that copies the program to another address.
-     */
-    static detect(memory, entryPoint) {
-        let preambleLength = 0x0E;
-        let start = entryPoint;
-        // Skip optional DI.
-        if (memory[start] === 0xF3) { // DI
-            start += 1;
-            preambleLength += 1;
-        }
-        const sourceAddress = memory[start + 0x01] | (memory[start + 0x02] << 8);
-        const destinationAddress = memory[start + 0x04] | (memory[start + 0x05] << 8);
-        const copyLength = memory[start + 0x07] | (memory[start + 0x08] << 8);
-        const jumpAddress = memory[start + 0x0C] | (memory[start + 0x0D] << 8);
-        if (memory[start + 0x00] === 0x21 && // LD HL,nnnn
-            memory[start + 0x03] === 0x11 && // LD DE,nnnn
-            memory[start + 0x06] === 0x01 && // LD BC,nnnn
-            memory[start + 0x09] === 0xED && memory[start + 0x0A] === 0xB0 && // LDIR
-            memory[start + 0x0B] === 0xC3 && // JP nnnn
-            jumpAddress >= destinationAddress && jumpAddress < destinationAddress + copyLength) {
-            return new Preamble(preambleLength, sourceAddress, destinationAddress, copyLength, jumpAddress);
-        }
-        return undefined;
-    }
-}
-exports.Preamble = Preamble;
 
 
 /***/ })

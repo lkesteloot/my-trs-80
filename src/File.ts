@@ -1,14 +1,31 @@
 import firebase from "firebase/app";
-import DocumentData = firebase.firestore.DocumentData;
-import UpdateData = firebase.firestore.UpdateData;
 import {isSameStringArray, TRASH_TAG} from "./Utils";
-import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import * as base64js from "base64-js";
 import {sha1} from "./Sha1";
 import {TagSet} from "./TagSet";
+import DocumentData = firebase.firestore.DocumentData;
+import UpdateData = firebase.firestore.UpdateData;
+import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 
 // What's considered a "new" file.
 const NEW_TIME_MS = 60*60*24*7*1000;
+
+/**
+ * Return whether the test string starts with the filter prefix.
+ */
+function prefixMatches(testString: string, filterPrefix: string): boolean {
+    return testString.substr(0, filterPrefix.length).localeCompare(filterPrefix, undefined, {
+        usage: "search",
+        sensitivity: "base",
+    }) === 0;
+}
+
+/**
+ * Return whether any word in the test string starts with the filter prefix.
+ */
+function prefixMatchesAnyWord(testString: string, filterPrefix: string): boolean {
+    return testString.split(/ +/).some(word => prefixMatches(word, filterPrefix));
+}
 
 /**
  * Represents a file that the user owns.
@@ -166,6 +183,32 @@ export class File {
         allTags.add(...this.tags);
 
         return allTags;
+    }
+
+    /**
+     * Whether this file would match the specified filter prefix.
+     */
+    public matchesFilterPrefix(filterPrefix: string): boolean {
+        // Always match empty string.
+        if (filterPrefix === "") {
+            return true;
+        }
+
+        // Check various fields.
+        if (prefixMatchesAnyWord(this.name, filterPrefix)) {
+            return true;
+        }
+        if (prefixMatches(this.filename, filterPrefix)) {
+            return true;
+        }
+        if (prefixMatchesAnyWord(this.note, filterPrefix)) {
+            return true;
+        }
+        if (prefixMatchesAnyWord(this.author, filterPrefix)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
