@@ -24,7 +24,7 @@ function prefixMatches(testString: string, filterPrefix: string): boolean {
  * Return whether any word in the test string starts with the filter prefix.
  */
 function prefixMatchesAnyWord(testString: string, filterPrefix: string): boolean {
-    return testString.split(/ +/).some(word => prefixMatches(word, filterPrefix));
+    return testString.split(/\W+/).some(word => prefixMatches(word, filterPrefix));
 }
 
 /**

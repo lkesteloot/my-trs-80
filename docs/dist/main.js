@@ -54256,7 +54256,7 @@ function prefixMatches(testString, filterPrefix) {
  * Return whether any word in the test string starts with the filter prefix.
  */
 function prefixMatchesAnyWord(testString, filterPrefix) {
-    return testString.split(/ +/).some(word => prefixMatches(word, filterPrefix));
+    return testString.split(/\W+/).some(word => prefixMatches(word, filterPrefix));
 }
 /**
  * Represents a file that the user owns.
@@ -54924,7 +54924,7 @@ class YourFilesTab_YourFilesTab extends PageTab {
         let anyFiles = false;
         let anyVisible = false;
         // Parse out the search terms.
-        const searchWords = this.searchString.split(/ +/).filter(s => s !== "");
+        const searchWords = this.searchString.split(/\W+/).filter(s => s !== "");
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;

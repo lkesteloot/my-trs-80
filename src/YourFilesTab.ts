@@ -412,7 +412,7 @@ export class YourFilesTab extends PageTab {
         let anyVisible = false;
 
         // Parse out the search terms.
-        const searchWords = this.searchString.split(/ +/).filter(s => s !== "");
+        const searchWords = this.searchString.split(/\W+/).filter(s => s !== "");
 
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
