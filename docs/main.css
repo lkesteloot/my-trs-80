@@ -476,12 +476,14 @@ button i {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     column-gap: var(--side-padding);
     row-gap: 40px;
+    align-content: start;
 }
 
 .your-files-tab .file {
     cursor: default;
     display: grid;
-    grid-template-rows: 1fr auto; /* .content and .buttons */
+    grid-template-rows: auto auto; /* .content and .buttons */
+    align-content: start;
 }
 
 .your-files-tab .file .screenshots > :not(:first-child) {
@@ -529,15 +531,11 @@ button i {
 }
 
 .your-files-tab .file .buttons {
-    background-color: var(--background-highlights);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 10px;
     margin: 15px 0;
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
-    gap: 15px;
+    justify-content: start;
+    gap: 10px;
 }
 
 .your-files-tab .empty-library {
