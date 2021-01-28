@@ -54689,20 +54689,29 @@ class YourFilesTab_YourFilesTab extends PageTab {
         this.sortFiles();
     }
     onKeyDown(e) {
-        if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-            // Plain letter.
-            if (e.key.length === 1) {
-                this.searchString += e.key;
-                this.refreshFilter();
-                return true;
+        // Plain letter.
+        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            this.searchString += e.key;
+            this.refreshFilter();
+            return true;
+        }
+        else if (e.key === "Backspace" && this.searchString.length > 0) {
+            // Backspace.
+            if (e.ctrlKey || e.altKey) {
+                // Backspace word. Mac uses Alt and Windows uses Ctrl, so support both.
+                this.searchString = this.searchString.replace(/\S*\s*$/, "");
             }
-            // Backspace last character.
-            if (e.key === "Backspace" && this.searchString.length > 0) {
+            else if (e.metaKey) {
+                // Backspace all.
+                this.searchString = "";
+            }
+            else {
+                // Backspace letter.
                 this.searchString = this.searchString.substr(0, this.searchString.length - 1);
-                this.forceShowSearch = false;
-                this.refreshFilter();
-                return true;
             }
+            this.forceShowSearch = false;
+            this.refreshFilter();
+            return true;
         }
         return super.onKeyDown(e);
     }
@@ -54914,6 +54923,8 @@ class YourFilesTab_YourFilesTab extends PageTab {
     refreshFilter() {
         let anyFiles = false;
         let anyVisible = false;
+        // Parse out the search terms.
+        const searchWords = this.searchString.split(/ +/).filter(s => s !== "");
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;
@@ -54931,7 +54942,8 @@ class YourFilesTab_YourFilesTab extends PageTab {
                     if (!this.filterTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
                         hidden = true;
                     }
-                    if (!file.matchesFilterPrefix(this.searchString)) {
+                    // Must match every word.
+                    if (!searchWords.every(word => file.matchesFilterPrefix(word))) {
                         hidden = true;
                     }
                 }

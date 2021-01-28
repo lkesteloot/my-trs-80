@@ -1,4 +1,3 @@
-
 import {LibraryAddEvent, LibraryEvent, LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {File, FileBuilder} from "./File";
 import {CanvasScreen} from "trs80-emulator";
@@ -159,21 +158,26 @@ export class YourFilesTab extends PageTab {
     }
 
     onKeyDown(e: KeyboardEvent): boolean {
-        if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-            // Plain letter.
-            if (e.key.length === 1) {
-                this.searchString += e.key;
-                this.refreshFilter();
-                return true;
-            }
-
-            // Backspace last character.
-            if (e.key === "Backspace" && this.searchString.length > 0) {
+        // Plain letter.
+        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            this.searchString += e.key;
+            this.refreshFilter();
+            return true;
+        } else if (e.key === "Backspace" && this.searchString.length > 0) {
+            // Backspace.
+            if (e.ctrlKey || e.altKey) {
+                // Backspace word. Mac uses Alt and Windows uses Ctrl, so support both.
+                this.searchString = this.searchString.replace(/\S*\s*$/, "");
+            } else if (e.metaKey) {
+                // Backspace all.
+                this.searchString = "";
+            } else {
+                // Backspace letter.
                 this.searchString = this.searchString.substr(0, this.searchString.length - 1);
-                this.forceShowSearch = false;
-                this.refreshFilter();
-                return true;
             }
+            this.forceShowSearch = false;
+            this.refreshFilter();
+            return true;
         }
 
         return super.onKeyDown(e);
@@ -407,6 +411,9 @@ export class YourFilesTab extends PageTab {
         let anyFiles = false;
         let anyVisible = false;
 
+        // Parse out the search terms.
+        const searchWords = this.searchString.split(/ +/).filter(s => s !== "");
+
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;
@@ -428,7 +435,8 @@ export class YourFilesTab extends PageTab {
                         hidden = true;
                     }
 
-                    if (!file.matchesFilterPrefix(this.searchString)) {
+                    // Must match every word.
+                    if (!searchWords.every(word => file.matchesFilterPrefix(word))) {
                         hidden = true;
                     }
                 }

@@ -593,6 +593,10 @@ button i {
     margin-right: 0.4em;
 }
 
+.your-files-tab .action-bar .search-editor span {
+    white-space: pre-wrap;
+}
+
 .your-files-tab .action-bar .search-editor span,
 .your-files-tab .action-bar .search-editor .authentic-cursor {
 
