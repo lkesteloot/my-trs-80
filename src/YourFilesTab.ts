@@ -312,13 +312,9 @@ export class YourFilesTab extends PageTab {
         fileDiv.setAttribute(FILE_ID_ATTR, file.id);
         this.filesDiv.append(fileDiv);
 
-        const contentDiv = document.createElement("div");
-        contentDiv.classList.add("content");
-        fileDiv.append(contentDiv);
-
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
-        contentDiv.append(screenshotsDiv);
+        fileDiv.append(screenshotsDiv);
         /* TODO find a way to show all screenshots.
         for (const screenshot of file.screenshots) {
             // Don't do these all at once, they can take tens of milliseconds each, and in a large
@@ -349,17 +345,17 @@ export class YourFilesTab extends PageTab {
             releaseYearSpan.innerText = " (" + file.releaseYear + ")";
             nameDiv.append(releaseYearSpan);
         }
-        contentDiv.append(nameDiv);
+        fileDiv.append(nameDiv);
 
         const filenameDiv = document.createElement("div");
         filenameDiv.classList.add("filename");
         filenameDiv.innerText = file.filename;
-        contentDiv.append(filenameDiv);
+        fileDiv.append(filenameDiv);
 
         const noteDiv = document.createElement("div");
         noteDiv.classList.add("note");
         noteDiv.innerText = [file.author, file.note].filter(field => field !== "").join(" — ");
-        contentDiv.append(noteDiv);
+        fileDiv.append(noteDiv);
 
         const tagsDiv = document.createElement("span");
         tagsDiv.classList.add("tags");
@@ -372,7 +368,7 @@ export class YourFilesTab extends PageTab {
                 },
             }));
         }
-        contentDiv.append(tagsDiv);
+        fileDiv.append(tagsDiv);
 
         const buttonsDiv = document.createElement("div");
         buttonsDiv.classList.add("buttons");

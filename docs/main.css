@@ -237,14 +237,13 @@ button i {
     opacity: 30%;
 }
 
-/* See makeTagCapsule() */
-.tag-0 { background-color: var(--yellow); }
+/* See computeTagColor() */
+.tag-0 { background-color: var(--green); }
 .tag-1 { background-color: var(--orange); }
 .tag-2 { background-color: var(--magenta); }
 .tag-3 { background-color: var(--violet); }
 .tag-4 { background-color: var(--blue); }
 .tag-5 { background-color: var(--cyan); }
-.tag-6 { background-color: var(--green); }
 .tag-trash { background-color: var(--red); }
 
 @keyframes spin {
@@ -481,9 +480,8 @@ button i {
 
 .your-files-tab .file {
     cursor: default;
-    display: grid;
-    grid-template-rows: auto auto; /* .content and .buttons */
-    align-content: start;
+    /* For long URLs that would force the box to be larger. */
+    overflow-wrap: break-word;
 }
 
 .your-files-tab .file .screenshots > :not(:first-child) {
@@ -549,7 +547,7 @@ button i {
         "header demon" auto
         "...... demon" 50px
         " body  demon" auto
-        "...... demon" 2fr /
+        "...... demon" 1.2fr /
          4fr    3fr;
     column-gap: 40px;
 }
@@ -574,6 +572,7 @@ button i {
 
 .your-files-tab .empty-library img {
     grid-area: demon;
+    align-self: center;
 }
 
 .your-files-tab .empty-library article code {
