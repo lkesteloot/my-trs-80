@@ -2917,12 +2917,28 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(143), exports);
-__exportStar(__webpack_require__(144), exports);
+__exportStar(__webpack_require__(146), exports);
+__exportStar(__webpack_require__(147), exports);
 
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(143));
+__export(__webpack_require__(144));
+__export(__webpack_require__(59));
+__export(__webpack_require__(145));
+
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2958,22 +2974,6 @@ Object.defineProperty(exports, "Subscription", { enumerable: true, get: function
 
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(145));
-__export(__webpack_require__(146));
-__export(__webpack_require__(59));
-__export(__webpack_require__(147));
-
-
-/***/ }),
 /* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3000,7 +3000,7 @@ __export(__webpack_require__(147));
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return $; });
 /* harmony import */ var _firebase_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _firebase_webchannel_wrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
+/* harmony import */ var _firebase_webchannel_wrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
 
 
@@ -21412,6 +21412,28 @@ function Bc(t, e) {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var CassettePlayer_1 = __webpack_require__(76);
+Object.defineProperty(exports, "CassettePlayer", { enumerable: true, get: function () { return CassettePlayer_1.CassettePlayer; } });
+var Trs80_1 = __webpack_require__(77);
+Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
+var CanvasScreen_1 = __webpack_require__(53);
+Object.defineProperty(exports, "CanvasScreen", { enumerable: true, get: function () { return CanvasScreen_1.CanvasScreen; } });
+var ControlPanel_1 = __webpack_require__(54);
+Object.defineProperty(exports, "ControlPanel", { enumerable: true, get: function () { return ControlPanel_1.ControlPanel; } });
+var SettingsPanel_1 = __webpack_require__(55);
+Object.defineProperty(exports, "SettingsPanel", { enumerable: true, get: function () { return SettingsPanel_1.SettingsPanel; } });
+Object.defineProperty(exports, "PanelType", { enumerable: true, get: function () { return SettingsPanel_1.PanelType; } });
+var ProgressBar_1 = __webpack_require__(127);
+Object.defineProperty(exports, "ProgressBar", { enumerable: true, get: function () { return ProgressBar_1.ProgressBar; } });
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22836,28 +22858,6 @@ var esm = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14)))
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var CassettePlayer_1 = __webpack_require__(76);
-Object.defineProperty(exports, "CassettePlayer", { enumerable: true, get: function () { return CassettePlayer_1.CassettePlayer; } });
-var Trs80_1 = __webpack_require__(77);
-Object.defineProperty(exports, "Trs80", { enumerable: true, get: function () { return Trs80_1.Trs80; } });
-var CanvasScreen_1 = __webpack_require__(53);
-Object.defineProperty(exports, "CanvasScreen", { enumerable: true, get: function () { return CanvasScreen_1.CanvasScreen; } });
-var ControlPanel_1 = __webpack_require__(54);
-Object.defineProperty(exports, "ControlPanel", { enumerable: true, get: function () { return ControlPanel_1.ControlPanel; } });
-var SettingsPanel_1 = __webpack_require__(55);
-Object.defineProperty(exports, "SettingsPanel", { enumerable: true, get: function () { return SettingsPanel_1.SettingsPanel; } });
-Object.defineProperty(exports, "PanelType", { enumerable: true, get: function () { return SettingsPanel_1.PanelType; } });
-var ProgressBar_1 = __webpack_require__(127);
-Object.defineProperty(exports, "ProgressBar", { enumerable: true, get: function () { return ProgressBar_1.ProgressBar; } });
-
-
-/***/ }),
 /* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -24171,7 +24171,7 @@ exports.decodeSystemProgram = decodeSystemProgram;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventDispatcher = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 /**
  * Dispatcher implementation for events. Can be used to subscribe, unsubscribe
  * or dispatch events. Use the ToEvent() method to expose the event.
@@ -24239,7 +24239,7 @@ exports.EventDispatcher = EventDispatcher;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleEventDispatcher = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 /**
  * The dispatcher handles the storage of subsciptions and facilitates
  * subscription, unsubscription and dispatching of a simple event
@@ -24307,7 +24307,7 @@ exports.SimpleEventDispatcher = SimpleEventDispatcher;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseEventDispatcher = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 /**
  * Dispatcher implementation for events. Can be used to subscribe, unsubscribe
  * or dispatch events. Use the ToEvent() method to expose the event.
@@ -24372,7 +24372,7 @@ exports.PromiseEventDispatcher = PromiseEventDispatcher;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSimpleEventDispatcher = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 /**
  * The dispatcher handles the storage of subsciptions and facilitates
  * subscription, unsubscription and dispatching of a simple event
@@ -26034,7 +26034,7 @@ exports.decodeJv1FloppyDisk = decodeJv1FloppyDisk;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventList = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const EventDispatcher_1 = __webpack_require__(29);
 /**
  * Storage class for multiple events that are accessible by name.
@@ -26065,7 +26065,7 @@ exports.EventList = EventList;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleEventList = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const SimpleEventDispatcher_1 = __webpack_require__(30);
 /**
  * Storage class for multiple simple events that are accessible by name.
@@ -26096,7 +26096,7 @@ exports.SimpleEventList = SimpleEventList;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignalDispatcher = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 /**
  * The dispatcher handles the storage of subsciptions and facilitates
  * subscription, unsubscription and dispatching of a signal event.
@@ -26160,7 +26160,7 @@ exports.SignalDispatcher = SignalDispatcher;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignalList = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const SignalDispatcher_1 = __webpack_require__(46);
 /**
  * Storage class for multiple signal events that are accessible by name.
@@ -26191,7 +26191,7 @@ exports.SignalList = SignalList;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseEventList = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const PromiseEventDispatcher_1 = __webpack_require__(31);
 /**
  * Storage class for multiple events that are accessible by name.
@@ -26246,7 +26246,7 @@ Object.defineProperty(exports, "PromiseSignalList", { enumerable: true, get: fun
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSignalList = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const _1 = __webpack_require__(49);
 /**
  * Storage class for multiple signal events that are accessible by name.
@@ -26277,7 +26277,7 @@ exports.PromiseSignalList = PromiseSignalList;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSimpleEventList = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const PromiseSimpleEventDispatcher_1 = __webpack_require__(32);
 /**
  * Storage class for multiple simple events that are accessible by name.
@@ -26602,12 +26602,41 @@ class CanvasScreen extends Trs80Screen_1.Trs80Screen {
     /**
      * Returns the canvas as an <img> element that can be resized. This is relatively
      * expensive.
+     *
+     * This method is deprecated, use asImageAsync instead.
      */
     asImage() {
         const image = document.createElement("img");
-        // TODO use canvas.toBlob() instead, it might not block the UI thread.
         image.src = this.canvas.toDataURL();
         return image;
+    }
+    /**
+     * Returns the canvas as an <img> element that can be resized. Despite the
+     * "async" name, there's still some synchronous work, about 13ms.
+     */
+    asImageAsync() {
+        return new Promise((resolve, reject) => {
+            // According to this answer:
+            //     https://stackoverflow.com/a/59025746/211234
+            // the toBlob() method still has to copy the image synchronously, so this whole method still
+            // takes about 13ms. It's better than toDataUrl() because it doesn't have to make an actual
+            // base64 string. The Object URL is just a reference to the blob.
+            this.canvas.toBlob(blob => {
+                if (blob === null) {
+                    reject("Cannot make image from screen");
+                }
+                else {
+                    const image = document.createElement("img");
+                    const url = URL.createObjectURL(blob);
+                    image.addEventListener("load", () => {
+                        URL.revokeObjectURL(url);
+                        // Resolve when the image is fully loaded so that there's no UI glitching.
+                        resolve(image);
+                    });
+                    image.src = url;
+                }
+            });
+        });
     }
 }
 exports.CanvasScreen = CanvasScreen;
@@ -29996,6 +30025,17 @@ function computeVideoBit6(value) {
     const bit6 = (bit5 | bit7) ^ 1;
     return (value & 0xBF) | (bit6 << 6);
 }
+const WARN_ONCE_SET = new Set();
+/**
+ * Send this warning message to the console once. This is to avoid a program repeatedly doing something
+ * that results in a warning (such as reading from an unmapped memory address) and crashing the browser.
+ */
+function warnOnce(message) {
+    if (!WARN_ONCE_SET.has(message)) {
+        WARN_ONCE_SET.add(message);
+        console.warn(message + " (further warnings suppressed)");
+    }
+}
 /**
  * HAL for the TRS-80 Model III.
  */
@@ -30244,7 +30284,7 @@ class Trs80 {
         }
         else {
             // Unmapped memory.
-            console.error("Reading from unmapped memory at 0x" + z80_base_1.toHex(address, 4));
+            warnOnce("Reading from unmapped memory at 0x" + z80_base_1.toHex(address, 4));
             return 0;
         }
     }
@@ -30309,7 +30349,7 @@ class Trs80 {
                 break;
             default:
                 // Not sure what a good default value is, but other emulators use 0xFF.
-                console.error("Reading from unknown port 0x" + z80_base_1.toHex(z80_base_1.lo(address), 2));
+                warnOnce("Reading from unknown port 0x" + z80_base_1.toHex(z80_base_1.lo(address), 2));
                 value = 0xFF;
                 break;
         }
@@ -30389,14 +30429,14 @@ class Trs80 {
                 }
                 break;
             default:
-                console.error("Writing 0x" + z80_base_1.toHex(value, 2) + " to unknown port 0x" + z80_base_1.toHex(port, 2));
+                warnOnce("Writing 0x" + z80_base_1.toHex(value, 2) + " to unknown port 0x" + z80_base_1.toHex(port, 2));
                 return;
         }
         // console.log("Wrote 0x" + toHex(value, 2) + " to port 0x" + toHex(port, 2));
     }
     writeMemory(address, value) {
         if (address < ROM_SIZE) {
-            console.log("Warning: Writing to ROM location 0x" + z80_base_1.toHex(address, 4));
+            warnOnce("Warning: Writing to ROM location 0x" + z80_base_1.toHex(address, 4));
         }
         else {
             if (address >= trs80_base_1.TRS80_SCREEN_BEGIN && address < trs80_base_1.TRS80_SCREEN_END) {
@@ -30407,7 +30447,7 @@ class Trs80 {
                 this.screen.writeChar(address, value);
             }
             else if (address < RAM_START) {
-                console.log("Writing to unmapped memory at 0x" + z80_base_1.toHex(address, 4));
+                warnOnce("Writing to unmapped memory at 0x" + z80_base_1.toHex(address, 4));
             }
             this.memory[address] = value;
         }
@@ -30915,11 +30955,19 @@ class Trs80 {
         this.writeMemory(0x40FE, z80_base_1.hi(addr));
     }
     /**
+     * Load the floppy disk into the specified drive.
+     * @param floppyDisk the floppy, or undefined to unmount.
+     * @param driveNumber the drive number, 0-based.
+     */
+    loadFloppyDisk(floppyDisk, driveNumber) {
+        this.fdc.loadFloppyDisk(floppyDisk, driveNumber);
+    }
+    /**
      * Load a floppy and reboot into it.
      */
     runFloppyDisk(floppyDisk) {
         // Mount floppy.
-        this.fdc.loadFloppyDisk(floppyDisk, 0);
+        this.loadFloppyDisk(floppyDisk, 0);
         // Reboot.
         this.reset();
     }
@@ -42551,7 +42599,7 @@ exports.FloppyDiskController = FloppyDiskController;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NonUniformPromiseSimpleEventList = exports.PromiseSimpleEventList = exports.PromiseSimpleEventHandlingBase = exports.PromiseSimpleEventDispatcher = exports.PromiseSignalList = exports.PromiseSignalHandlingBase = exports.PromiseSignalDispatcher = exports.NonUniformPromiseEventList = exports.PromiseEventList = exports.PromiseEventHandlingBase = exports.PromiseEventDispatcher = exports.SignalList = exports.SignalHandlingBase = exports.SignalDispatcher = exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = exports.NonUniformEventList = exports.EventList = exports.EventHandlingBase = exports.EventDispatcher = exports.HandlingBase = exports.PromiseDispatcherBase = exports.PromiseSubscription = exports.DispatchError = exports.EventManagement = exports.EventListBase = exports.DispatcherWrapper = exports.DispatcherBase = exports.Subscription = void 0;
-var ste_core_1 = __webpack_require__(6);
+var ste_core_1 = __webpack_require__(7);
 Object.defineProperty(exports, "Subscription", { enumerable: true, get: function () { return ste_core_1.Subscription; } });
 Object.defineProperty(exports, "DispatcherBase", { enumerable: true, get: function () { return ste_core_1.DispatcherBase; } });
 Object.defineProperty(exports, "DispatcherWrapper", { enumerable: true, get: function () { return ste_core_1.DispatcherWrapper; } });
@@ -42599,7 +42647,7 @@ Object.defineProperty(exports, "NonUniformPromiseSimpleEventList", { enumerable:
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DispatcherBase = void 0;
-const __1 = __webpack_require__(6);
+const __1 = __webpack_require__(7);
 /**
  * Base class for implementation of the dispatcher. It facilitates the subscribe
  * and unsubscribe methods based on generic handlers. The TEventType specifies
@@ -43007,7 +43055,7 @@ exports.HandlingBase = HandlingBase;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseDispatcherBase = void 0;
-const __1 = __webpack_require__(6);
+const __1 = __webpack_require__(7);
 class PromiseDispatcherBase extends __1.DispatcherBase {
     constructor() {
         super();
@@ -43188,7 +43236,7 @@ Object.defineProperty(exports, "NonUniformEventList", { enumerable: true, get: f
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventHandlingBase = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const EventList_1 = __webpack_require__(44);
 /**
  * Extends objects with signal event handling capabilities.
@@ -43273,7 +43321,7 @@ Object.defineProperty(exports, "SimpleEventList", { enumerable: true, get: funct
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SimpleEventHandlingBase = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const SimpleEventList_1 = __webpack_require__(45);
 /**
  * Extends objects with signal event handling capabilities.
@@ -43364,7 +43412,7 @@ Object.defineProperty(exports, "SignalList", { enumerable: true, get: function (
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignalHandlingBase = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const SignalList_1 = __webpack_require__(47);
 /**
  * Extends objects with signal event handling capabilities.
@@ -43411,7 +43459,7 @@ Object.defineProperty(exports, "NonUniformPromiseEventList", { enumerable: true,
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseEventHandlingBase = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const PromiseEventList_1 = __webpack_require__(48);
 /**
  * Extends objects with signal event handling capabilities.
@@ -43478,7 +43526,7 @@ exports.NonUniformPromiseEventList = NonUniformPromiseEventList;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSignalDispatcher = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 /**
  * The dispatcher handles the storage of subsciptions and facilitates
  * subscription, unsubscription and dispatching of a signal event.
@@ -43529,7 +43577,7 @@ exports.PromiseSignalDispatcher = PromiseSignalDispatcher;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSignalHandlingBase = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const PromiseSignalList_1 = __webpack_require__(50);
 /**
  * Extends objects with signal event handling capabilities.
@@ -43622,7 +43670,7 @@ exports.NonUniformPromiseSimpleEventList = NonUniformPromiseSimpleEventList;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PromiseSimpleEventHandlingBase = void 0;
-const ste_core_1 = __webpack_require__(6);
+const ste_core_1 = __webpack_require__(7);
 const PromiseSimpleEventList_1 = __webpack_require__(51);
 /**
  * Extends objects with signal event handling capabilities.
@@ -47042,133 +47090,6 @@ exports.SignalHandlingBase = SignalHandlingBase;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.concatByteArrays = exports.withCommas = exports.clearElement = void 0;
-/**
- * Remove all children from element.
- */
-function clearElement(e) {
-    while (e.firstChild) {
-        e.removeChild(e.firstChild);
-    }
-}
-exports.clearElement = clearElement;
-/**
- * Generate the string version of a number, in base 10, with commas for thousands groups.
- */
-function withCommas(n) {
-    let s = typeof n === "number" ? Math.round(n).toString(10) : n;
-    const negative = s.length >= 1 && s.charAt(0) === "-";
-    const firstDigit = negative ? 1 : 0;
-    if (s.length - firstDigit > 4) {
-        for (let i = s.length - 3; i > firstDigit; i -= 3) {
-            s = s.substring(0, i) + "," + s.substring(i);
-        }
-    }
-    return s;
-}
-exports.withCommas = withCommas;
-/**
- * Concatenate a list of byte arrays into one.
- */
-function concatByteArrays(samplesList) {
-    const length = samplesList.reduce((sum, samples) => sum + samples.length, 0);
-    const allBytes = new Uint8Array(length);
-    let offset = 0;
-    for (const samples of samplesList) {
-        allBytes.set(samples, offset);
-        offset += samples.length;
-    }
-    return allBytes;
-}
-exports.concatByteArrays = concatByteArrays;
-
-
-/***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ByteReader = exports.EOF = void 0;
-exports.EOF = -1;
-/**
- * Provides an API for reading through a byte array.
- */
-class ByteReader {
-    constructor(b) {
-        this.b = b;
-        this.pos = 0;
-    }
-    /**
-     * Return the next byte, or EOF on end of array.
-     *
-     * @returns {number}
-     */
-    read() {
-        return this.pos < this.b.length ? this.b[this.pos++] : exports.EOF;
-    }
-    /**
-     * Return the next byte, not advancing the stream.
-     *
-     * @param ahead how many bytes ahead to peek, or 0 for the next byte
-     * to be returned by {@link #read()}.
-     */
-    peek(ahead = 0) {
-        const pos = this.pos + ahead;
-        return pos < this.b.length ? this.b[pos] : exports.EOF;
-    }
-    /**
-     * Return the byte address of the next byte to be read.
-     */
-    addr() {
-        return this.pos;
-    }
-    /**
-     * Reads a little-endian short (two-byte) integer.
-     *
-     * @param allowEofAfterFirstByte if true, an EOF after the first byte will result in just the
-     * first byte. Otherwise an EOF is returned.
-     * @returns the integer, or EOF on end of file.
-     */
-    readShort(allowEofAfterFirstByte) {
-        const low = this.read();
-        if (low === exports.EOF) {
-            return exports.EOF;
-        }
-        const high = this.read();
-        if (high === exports.EOF) {
-            return allowEofAfterFirstByte ? low : exports.EOF;
-        }
-        return low + high * 256;
-    }
-    /**
-     * Reads an ASCII string from the stream. If the returned string is shorter than "length", then we hit EOF.
-     */
-    readString(length) {
-        return new TextDecoder("ascii").decode(this.readBytes(length));
-    }
-    /**
-     * Returns the next "length" bytes. If the returned array is shorter than "length", then we hit EOF.
-     */
-    readBytes(length) {
-        const pos = this.pos;
-        length = Math.min(length, this.b.length - pos);
-        this.pos += length;
-        // So instead make a copy.
-        return this.b.slice(pos, pos + length);
-    }
-}
-exports.ByteReader = ByteReader;
-
-
-/***/ }),
-/* 145 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * List of all word registers.
  */
@@ -47194,7 +47115,7 @@ exports.isByteReg = isByteReg;
 
 
 /***/ }),
-/* 146 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47321,7 +47242,7 @@ exports.registerSetFields = [
 
 
 /***/ }),
-/* 147 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47370,6 +47291,133 @@ var Flag;
      */
     Flag[Flag["S"] = 128] = "S";
 })(Flag = exports.Flag || (exports.Flag = {}));
+
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.concatByteArrays = exports.withCommas = exports.clearElement = void 0;
+/**
+ * Remove all children from element.
+ */
+function clearElement(e) {
+    while (e.firstChild) {
+        e.removeChild(e.firstChild);
+    }
+}
+exports.clearElement = clearElement;
+/**
+ * Generate the string version of a number, in base 10, with commas for thousands groups.
+ */
+function withCommas(n) {
+    let s = typeof n === "number" ? Math.round(n).toString(10) : n;
+    const negative = s.length >= 1 && s.charAt(0) === "-";
+    const firstDigit = negative ? 1 : 0;
+    if (s.length - firstDigit > 4) {
+        for (let i = s.length - 3; i > firstDigit; i -= 3) {
+            s = s.substring(0, i) + "," + s.substring(i);
+        }
+    }
+    return s;
+}
+exports.withCommas = withCommas;
+/**
+ * Concatenate a list of byte arrays into one.
+ */
+function concatByteArrays(samplesList) {
+    const length = samplesList.reduce((sum, samples) => sum + samples.length, 0);
+    const allBytes = new Uint8Array(length);
+    let offset = 0;
+    for (const samples of samplesList) {
+        allBytes.set(samples, offset);
+        offset += samples.length;
+    }
+    return allBytes;
+}
+exports.concatByteArrays = concatByteArrays;
+
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ByteReader = exports.EOF = void 0;
+exports.EOF = -1;
+/**
+ * Provides an API for reading through a byte array.
+ */
+class ByteReader {
+    constructor(b) {
+        this.b = b;
+        this.pos = 0;
+    }
+    /**
+     * Return the next byte, or EOF on end of array.
+     *
+     * @returns {number}
+     */
+    read() {
+        return this.pos < this.b.length ? this.b[this.pos++] : exports.EOF;
+    }
+    /**
+     * Return the next byte, not advancing the stream.
+     *
+     * @param ahead how many bytes ahead to peek, or 0 for the next byte
+     * to be returned by {@link #read()}.
+     */
+    peek(ahead = 0) {
+        const pos = this.pos + ahead;
+        return pos < this.b.length ? this.b[pos] : exports.EOF;
+    }
+    /**
+     * Return the byte address of the next byte to be read.
+     */
+    addr() {
+        return this.pos;
+    }
+    /**
+     * Reads a little-endian short (two-byte) integer.
+     *
+     * @param allowEofAfterFirstByte if true, an EOF after the first byte will result in just the
+     * first byte. Otherwise an EOF is returned.
+     * @returns the integer, or EOF on end of file.
+     */
+    readShort(allowEofAfterFirstByte) {
+        const low = this.read();
+        if (low === exports.EOF) {
+            return exports.EOF;
+        }
+        const high = this.read();
+        if (high === exports.EOF) {
+            return allowEofAfterFirstByte ? low : exports.EOF;
+        }
+        return low + high * 256;
+    }
+    /**
+     * Reads an ASCII string from the stream. If the returned string is shorter than "length", then we hit EOF.
+     */
+    readString(length) {
+        return new TextDecoder("ascii").decode(this.readBytes(length));
+    }
+    /**
+     * Returns the next "length" bytes. If the returned array is shorter than "length", then we hit EOF.
+     */
+    readBytes(length) {
+        const pos = this.pos;
+        length = Math.min(length, this.b.length - pos);
+        this.pos += length;
+        // So instead make a copy.
+        return this.b.slice(pos, pos + length);
+    }
+}
+exports.ByteReader = ByteReader;
 
 
 /***/ }),
@@ -50302,6 +50350,14 @@ const Preamble_1 = __webpack_require__(183);
 const TARGET = "TARGET";
 // Number of bytes in memory.
 const MEM_SIZE = 64 * 1024;
+// Whether the byte can be converted to readable ASCII.
+function isPrintable(b) {
+    return b >= 32 && b < 127;
+}
+// Whether the byte is appropriate for a .text instruction.
+function isText(b) {
+    return isPrintable(b) || b === 0x0A || b === 0x0D;
+}
 /**
  * Main class for disassembling a binary.
  */
@@ -50316,6 +50372,11 @@ class Disasm {
          * Addresses that might be jumped to when running the code.
          */
         this.entryPoints = [];
+        /**
+         * Values that were loaded into a 16-bit register. We can't be sure that these were meant to be
+         * addresses, but guess that they were if it helps make a nicer disassembly.
+         */
+        this.referencedAddresses = new Set();
     }
     /**
      * Add a chunk of binary somewhere in memory.
@@ -50387,6 +50448,9 @@ class Disasm {
                             }
                             else {
                                 target = "0x" + z80_base_1.toHex(nnnn, 4);
+                                // Perhaps we should only do this if the destination register is HL, since that's
+                                // often an address and other registers are more often lengths.
+                                this.referencedAddresses.add(nnnn);
                             }
                             arg = arg.substr(0, pos) + target + arg.substr(pos + 4);
                             changed = true;
@@ -50425,15 +50489,15 @@ class Disasm {
      */
     makeDataInstruction(address) {
         const startAddress = address;
-        // Whether the byte is appropriate for a .text instruction.
-        const isPrintable = (b) => b >= 32 && b < 127;
-        const isText = (b) => isPrintable(b) || b === 10 || b === 13;
         const parts = [];
         let mnemonic = undefined;
         // Look for contiguous sequence of either text or not text.
         if (isText(this.memory[address])) {
+            // Gobble as much text as we can.
             mnemonic = ".text";
-            while (address < MEM_SIZE && this.hasContent[address] && !this.isDecoded[address] && isText(this.memory[address]) && address - startAddress < 50) {
+            while (address < MEM_SIZE && this.hasContent[address] && !this.isDecoded[address] &&
+                isText(this.memory[address]) && address - startAddress < 50 &&
+                !(address > startAddress && this.referencedAddresses.has(address))) {
                 const byte = this.memory[address];
                 if (isPrintable(byte)) {
                     let char = String.fromCharCode(byte);
@@ -50456,6 +50520,7 @@ class Disasm {
                 }
                 address += 1;
             }
+            // See if it's too short.
             if (address - startAddress < 2) {
                 // Probably not actual text.
                 mnemonic = undefined;
@@ -50463,16 +50528,19 @@ class Disasm {
                 address = startAddress;
             }
             else {
-                // Allow terminating NUL.
-                if (address < MEM_SIZE && this.hasContent[address] && !this.isDecoded[address] && this.memory[address] === 0) {
-                    parts.push("0x" + z80_base_1.toHexByte(0));
+                // Allow terminating NUL. Also allow terminating 0x03, it was used by the TRS-80 $VDLINE routine.
+                if (address < MEM_SIZE && this.hasContent[address] &&
+                    !(address > startAddress && this.referencedAddresses.has(address)) &&
+                    !this.isDecoded[address] && (this.memory[address] === 0x00 || this.memory[address] === 0x03)) {
+                    parts.push("0x" + z80_base_1.toHexByte(this.memory[address]));
                     address += 1;
                 }
             }
         }
         if (mnemonic === undefined) {
             mnemonic = ".byte";
-            while (address < MEM_SIZE && this.hasContent[address] && !this.isDecoded[address] && address - startAddress < 8) {
+            while (address < MEM_SIZE && this.hasContent[address] && !this.isDecoded[address] &&
+                address - startAddress < 8 && !(address > startAddress && this.referencedAddresses.has(address))) {
                 parts.push("0x" + z80_base_1.toHexByte(this.memory[address]));
                 address += 1;
             }
@@ -50580,6 +50648,7 @@ class Disasm {
         }
         // Map from jump target to list of instructions that jump there.
         const jumpTargetMap = new Map();
+        // Make list of instructions in memory order.
         const instructions = [];
         for (let address = 0; address < MEM_SIZE; address++) {
             if (this.hasContent[address]) {
@@ -50997,7 +51066,7 @@ exports.addCssFontToPage = addCssFontToPage;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ../trs80-emulator/dist/index.js
-var dist = __webpack_require__(10);
+var dist = __webpack_require__(9);
 
 // EXTERNAL MODULE: ./node_modules/firebase/app/dist/index.esm.js
 var index_esm = __webpack_require__(1);
@@ -51015,7 +51084,7 @@ var logger_dist_index_esm = __webpack_require__(11);
 var util_dist_index_esm = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./node_modules/@firebase/webchannel-wrapper/dist/index.esm.js
-var webchannel_wrapper_dist_index_esm = __webpack_require__(9);
+var webchannel_wrapper_dist_index_esm = __webpack_require__(10);
 
 // EXTERNAL MODULE: ./node_modules/@firebase/firestore/dist/esm5/prebuilt-30db9a88-9b75cc8d.js
 var prebuilt_30db9a88_9b75cc8d = __webpack_require__(8);
@@ -53779,7 +53848,7 @@ function computeTagColor(tag) {
     for (let i = 0; i < tag.length; i++) {
         hash += tag.charCodeAt(i);
     }
-    return (hash % 7).toString();
+    return (hash % 6).toString();
 }
 /**
  * Make a capsule to display a tag.
@@ -54077,7 +54146,7 @@ class Library_Library {
 var base64_js = __webpack_require__(34);
 
 // EXTERNAL MODULE: ./node_modules/z80-base/dist/index.js
-var z80_base_dist = __webpack_require__(7);
+var z80_base_dist = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./src/Sha1.ts
 
@@ -54540,6 +54609,7 @@ class PageTab {
     onShow() {
         if (this.firstShow) {
             this.firstShow = false;
+            // Delay to give the UI a chance to highlight the tab.
             setTimeout(() => this.onFirstShow(), 0);
         }
     }
@@ -54647,6 +54717,8 @@ class YourFilesTab_YourFilesTab extends PageTab {
         this.searchCursor = undefined;
         this.libraryInSync = false;
         this.context = context;
+        // Make this blank screen synchronously so that it's immediately available when populating the file list.
+        this.blankScreen = new dist["CanvasScreen"]().asImage();
         this.element.classList.add("your-files-tab");
         context.onUser.subscribe(user => {
             this.visible = user !== undefined;
@@ -54684,8 +54756,10 @@ class YourFilesTab_YourFilesTab extends PageTab {
         const exportAllButton = makeTextButton("Export All", "get_app", "export-all-button", () => this.exportAll());
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button", () => this.uploadFile());
         actionBar.append(this.openTrashButton, this.tagEditor, this.searchButton, this.searchEditor, spacer, exportAllButton, uploadButton);
-        // Populate initial library state.
-        this.context.library.getAllFiles().forEach(f => this.addFile(f));
+        // Populate initial library state. Sort the files so that the screenshots get loaded in
+        // display order and the top (visible) ones are done first.
+        this.context.library.getAllFiles().sort(File_File.compare).forEach(f => this.addFile(f));
+        // Sort again anyway, since this updates various things.
         this.sortFiles();
     }
     onKeyDown(e) {
@@ -54833,23 +54907,10 @@ class YourFilesTab_YourFilesTab extends PageTab {
         fileDiv.classList.add("file");
         fileDiv.setAttribute(FILE_ID_ATTR, file.id);
         this.filesDiv.append(fileDiv);
-        const contentDiv = document.createElement("div");
-        contentDiv.classList.add("content");
-        fileDiv.append(contentDiv);
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
-        contentDiv.append(screenshotsDiv);
-        /* TODO find a way to show all screenshots.
-        for (const screenshot of file.screenshots) {
-            // Don't do these all at once, they can take tens of milliseconds each, and in a large
-            // library that can hang the page for several seconds. Dribble them in later.
-            defer(() => {
-                const screen = new CanvasScreen();
-                screen.displayScreenshot(screenshot);
-                const image = screen.asImage();
-                screenshotsDiv.append(image)
-            });
-        }*/
+        fileDiv.append(screenshotsDiv);
+        screenshotsDiv.append(this.blankScreen.cloneNode(true));
         defer(() => {
             const screen = new dist["CanvasScreen"]();
             if (file.screenshots.length > 0) {
@@ -54858,7 +54919,10 @@ class YourFilesTab_YourFilesTab extends PageTab {
             else {
                 screenshotsDiv.classList.add("missing");
             }
-            screenshotsDiv.append(screen.asImage());
+            screen.asImageAsync().then(image => {
+                Object(teamten_ts_utils_dist["clearElement"])(screenshotsDiv);
+                screenshotsDiv.append(image);
+            });
         });
         const nameDiv = document.createElement("div");
         nameDiv.classList.add("name");
@@ -54869,15 +54933,15 @@ class YourFilesTab_YourFilesTab extends PageTab {
             releaseYearSpan.innerText = " (" + file.releaseYear + ")";
             nameDiv.append(releaseYearSpan);
         }
-        contentDiv.append(nameDiv);
+        fileDiv.append(nameDiv);
         const filenameDiv = document.createElement("div");
         filenameDiv.classList.add("filename");
         filenameDiv.innerText = file.filename;
-        contentDiv.append(filenameDiv);
+        fileDiv.append(filenameDiv);
         const noteDiv = document.createElement("div");
         noteDiv.classList.add("note");
         noteDiv.innerText = [file.author, file.note].filter(field => field !== "").join(" — ");
-        contentDiv.append(noteDiv);
+        fileDiv.append(noteDiv);
         const tagsDiv = document.createElement("span");
         tagsDiv.classList.add("tags");
         for (const tag of file.getAllTags().asArray()) {
@@ -54889,7 +54953,7 @@ class YourFilesTab_YourFilesTab extends PageTab {
                 },
             }));
         }
-        contentDiv.append(tagsDiv);
+        fileDiv.append(tagsDiv);
         const buttonsDiv = document.createElement("div");
         buttonsDiv.classList.add("buttons");
         fileDiv.append(buttonsDiv);
@@ -56427,11 +56491,9 @@ var ProgramAnnotation = __webpack_require__(13);
 
 
 const STRIDE = 16;
-function newLine(lines) {
-    const line = document.createElement("div");
-    lines.push(line);
-    return line;
-}
+/**
+ * Add a span with the given text and CSS classes to the specified line.
+ */
 function newSpan(line, text, ...cssClass) {
     const e = document.createElement("span");
     e.classList.add(...cssClass);
@@ -56484,99 +56546,118 @@ class HexdumpGenerator_HexdumpGenerator {
         this.collapse = collapse;
         this.annotations = annotations;
     }
-    generate() {
-        const lines = [];
+    /**
+     * Generate all HTML elements for this binary.
+     */
+    *generate() {
         const binary = this.binary;
-        // Figure out the number of digits in the address: 4 or 6.
-        const addrDigits = binary.length < (2 << 16) ? 4 : 6;
-        const addrSpaces = "".padStart(addrDigits, " ");
-        const generateAnnotation = (annotation) => {
-            var _a;
-            const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
-            const endAddr = Math.min(Math.ceil(annotation.end / STRIDE) * STRIDE, binary.length);
-            let lastAddr = undefined;
-            for (let addr = beginAddr; addr < endAddr; addr += STRIDE) {
-                if (this.collapse && lastAddr !== undefined &&
-                    binary.length - addr >= STRIDE && segmentsEqual(binary, lastAddr, addr, STRIDE)) {
-                    if (addr === lastAddr + STRIDE) {
-                        const line = newLine(lines);
-                        if (allSameByte(binary, addr, STRIDE)) {
-                            // Lots of the same byte repeated. Say many there are.
-                            const count = countConsecutive(binary, addr);
-                            newSpan(line, addrSpaces + "   ... ", "address");
-                            newSpan(line, count.toString(), "ascii");
-                            newSpan(line, " (", "address");
-                            newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
-                            newSpan(line, ") consecutive bytes of ", "address");
-                            newSpan(line, "0x" + Object(z80_base_dist["toHexByte"])(binary[addr]), "hex");
-                            newSpan(line, " ...", "address");
-                        }
-                        else {
-                            // A repeating pattern, but not all the same byte. Say how many times repeated.
-                            let count = 1;
-                            for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
-                                if (segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
-                                    count += 1;
-                                }
-                                else {
-                                    break;
-                                }
-                            }
-                            newSpan(line, addrSpaces + "  ... ", "address");
-                            newSpan(line, count.toString(), "ascii");
-                            const plural = count === 1 ? "" : "s";
-                            newSpan(line, ` repetition${plural} of previous row ...`, "address");
-                        }
-                        // Draw vertical ellipsis.
-                        if (annotation.text !== "" && addr !== beginAddr) {
-                            // textContent doesn't trigger a reflow. Don't use innerText, which does.
-                            const lineText = (_a = line.textContent) !== null && _a !== void 0 ? _a : "";
-                            const width = addrDigits + STRIDE * 4 + 9;
-                            const label = String.fromCodePoint(0x22EE).padStart(width - lineText.length, " ");
-                            newSpan(line, label, "annotation");
-                        }
-                    }
-                }
-                else {
-                    lastAddr = addr;
-                    let label = "";
-                    if (annotation.text !== "") {
-                        if (addr === beginAddr) {
-                            label = annotation.text;
-                        }
-                        else {
-                            // Vertical ellipsis.
-                            label = "  " + String.fromCodePoint(0x22EE);
-                        }
-                    }
-                    this.generateRow(lines, addr, addrDigits, annotation.begin, annotation.end, label);
-                }
-            }
-        };
+        const [addrDigits, addrSpaces] = this.computeAddressSize();
         // Sort in case they were generated out of order.
         this.annotations.sort((a, b) => a.begin - b.begin);
         let lastAnnotation = undefined;
         for (const annotation of this.annotations) {
             if (lastAnnotation !== undefined && lastAnnotation.end < annotation.begin) {
-                generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotation.end, annotation.begin));
+                yield* this.generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotation.end, annotation.begin));
             }
             // Make sure there are no overlapping annotations.
             if (lastAnnotation === undefined || lastAnnotation.end <= annotation.begin) {
-                generateAnnotation(annotation);
+                yield* this.generateAnnotation(annotation);
             }
             lastAnnotation = annotation;
         }
         const lastAnnotationEnd = lastAnnotation !== undefined ? lastAnnotation.end : 0;
         if (lastAnnotationEnd < binary.length) {
-            generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
+            yield* this.generateAnnotation(new ProgramAnnotation["ProgramAnnotation"]("", lastAnnotationEnd, binary.length));
         }
         // Final address to show where file ends.
-        newSpan(newLine(lines), Object(z80_base_dist["toHex"])(binary.length, addrDigits), "address");
-        return lines;
+        const finalLine = document.createElement("div");
+        newSpan(finalLine, Object(z80_base_dist["toHex"])(binary.length, addrDigits), "address");
+        yield finalLine;
     }
-    generateRow(lines, addr, addrDigits, beginAddr, endAddr, label) {
+    /**
+     * Generate all the lines for an annotation.
+     * @param annotation the annotation to generate.
+     */
+    *generateAnnotation(annotation) {
+        var _a;
         const binary = this.binary;
-        const line = newLine(lines);
+        const [addrDigits, addrSpaces] = this.computeAddressSize();
+        const beginAddr = Math.floor(annotation.begin / STRIDE) * STRIDE;
+        const endAddr = Math.min(Math.ceil(annotation.end / STRIDE) * STRIDE, binary.length);
+        let lastAddr = undefined;
+        for (let addr = beginAddr; addr < endAddr; addr += STRIDE) {
+            if (this.collapse && lastAddr !== undefined &&
+                binary.length - addr >= STRIDE && segmentsEqual(binary, lastAddr, addr, STRIDE)) {
+                // Collapsed section. See if we want to print the text for it this time.
+                if (addr === lastAddr + STRIDE) {
+                    const line = document.createElement("div");
+                    if (allSameByte(binary, addr, STRIDE)) {
+                        // Lots of the same byte repeated. Say many there are.
+                        const count = countConsecutive(binary, addr);
+                        newSpan(line, addrSpaces + "   ... ", "address");
+                        newSpan(line, count.toString(), "ascii");
+                        newSpan(line, " (", "address");
+                        newSpan(line, "0x" + count.toString(16).toUpperCase(), "ascii");
+                        newSpan(line, ") consecutive bytes of ", "address");
+                        newSpan(line, "0x" + Object(z80_base_dist["toHexByte"])(binary[addr]), "hex");
+                        newSpan(line, " ...", "address");
+                    }
+                    else {
+                        // A repeating pattern, but not all the same byte. Say how many times repeated.
+                        let count = 1;
+                        for (let otherAddr = addr + STRIDE; otherAddr <= binary.length - STRIDE; otherAddr += STRIDE) {
+                            if (segmentsEqual(binary, lastAddr, otherAddr, STRIDE)) {
+                                count += 1;
+                            }
+                            else {
+                                break;
+                            }
+                        }
+                        newSpan(line, addrSpaces + "  ... ", "address");
+                        newSpan(line, count.toString(), "ascii");
+                        const plural = count === 1 ? "" : "s";
+                        newSpan(line, ` repetition${plural} of previous row ...`, "address");
+                    }
+                    // Draw vertical ellipsis.
+                    if (annotation.text !== "" && addr !== beginAddr) {
+                        // textContent doesn't trigger a reflow. Don't use innerText, which does.
+                        const lineText = (_a = line.textContent) !== null && _a !== void 0 ? _a : "";
+                        const width = addrDigits + STRIDE * 4 + 9;
+                        const label = String.fromCodePoint(0x22EE).padStart(width - lineText.length, " ");
+                        newSpan(line, label, "annotation");
+                    }
+                    yield line;
+                }
+            }
+            else {
+                // Non-collapsed row.
+                lastAddr = addr;
+                let label = "";
+                if (annotation.text !== "") {
+                    if (addr === beginAddr) {
+                        label = annotation.text;
+                    }
+                    else {
+                        // Vertical ellipsis.
+                        label = "  " + String.fromCodePoint(0x22EE);
+                    }
+                }
+                yield this.generateRow(addr, addrDigits, annotation.begin, annotation.end, label);
+            }
+        }
+    }
+    /**
+     * Generates a single row of hex and ASCII.
+     * @param addr address for the line.
+     * @param addrDigits the number of digits in the address.
+     * @param beginAddr the first address of this annotation (inclusive).
+     * @param endAddr this last address of this annotation (exclusive).
+     * @param label the label to show on this row.
+     * @return the created row.
+     */
+    generateRow(addr, addrDigits, beginAddr, endAddr, label) {
+        const binary = this.binary;
+        const line = document.createElement("div");
         const cssClass = ["address"];
         if (addr < beginAddr) {
             cssClass.push("outside-annotation");
@@ -56625,6 +56706,16 @@ class HexdumpGenerator_HexdumpGenerator {
         if (label !== "") {
             addText("".padStart(addr + STRIDE - subAddr + 2, " ") + label, "annotation");
         }
+        return line;
+    }
+    /**
+     * Computes the number of hex digits in the displayed address, and the number of spaces this represents.
+     */
+    computeAddressSize() {
+        // Figure out the number of digits in the address: 4 or 6.
+        const addrDigits = this.binary.length < (2 << 16) ? 4 : 6;
+        const addrSpaces = "".padStart(addrDigits, " ");
+        return [addrDigits, addrSpaces];
     }
 }
 
@@ -56640,6 +56731,8 @@ class HexdumpTab_HexdumpTab extends PageTab {
         super("Hexdump");
         this.collapse = true;
         this.annotate = true;
+        this.lineGenerator = undefined;
+        this.lastLine = undefined;
         this.binary = trs80File.binary;
         this.trs80File = trs80File;
         this.element.classList.add("hexdump-tab");
@@ -56648,6 +56741,9 @@ class HexdumpTab_HexdumpTab extends PageTab {
         this.element.append(outer);
         this.hexdumpElement = document.createElement("div");
         this.hexdumpElement.classList.add("hexdump");
+        this.hexdumpElement.addEventListener("scroll", () => {
+            this.checkLoadMore();
+        });
         outer.append(this.hexdumpElement);
         const actionBar = document.createElement("div");
         actionBar.classList.add("action-bar");
@@ -56674,7 +56770,7 @@ class HexdumpTab_HexdumpTab extends PageTab {
             this.generateHexdump();
         });
         actionBar.append(annotateLabel);
-        // Take the hexdump out of the dom when the panel is hidden because it slows down things
+        // Hide the hexdump when the panel is hidden because it slows down things
         // like changing themes (the animations aren't smooth).
         let hideHandle = undefined;
         const cancelHide = () => {
@@ -56692,18 +56788,64 @@ class HexdumpTab_HexdumpTab extends PageTab {
                 hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
             }
         });
+        this.windowResizeListener = () => {
+            this.checkLoadMore();
+        };
+    }
+    onShow() {
+        super.onShow();
+        window.addEventListener("resize", this.windowResizeListener);
+        // Wait for layout or our rectangle testing fails.
+        setTimeout(() => this.checkLoadMore(), 10);
     }
     onFirstShow() {
         this.generateHexdump();
+    }
+    onHide() {
+        window.removeEventListener("resize", this.windowResizeListener);
+        super.onHide();
     }
     /**
      * Regenerate the HTML for the hexdump.
      */
     generateHexdump() {
-        const hexdumpGenerator = new HexdumpGenerator_HexdumpGenerator(this.binary, this.collapse, this.annotate ? this.trs80File.annotations : []);
-        const lines = hexdumpGenerator.generate();
         Object(teamten_ts_utils_dist["clearElement"])(this.hexdumpElement);
-        this.hexdumpElement.append(...lines);
+        this.lastLine = undefined;
+        const hexdumpGenerator = new HexdumpGenerator_HexdumpGenerator(this.binary, this.collapse, this.annotate ? this.trs80File.annotations : []);
+        this.lineGenerator = hexdumpGenerator.generate();
+        this.checkLoadMore();
+    }
+    /**
+     * See if we should generate more lines, and if so, do so.
+     */
+    checkLoadMore() {
+        while (this.lineGenerator !== undefined && this.shouldLoadMore()) {
+            const lineInfo = this.lineGenerator.next();
+            if (lineInfo.done) {
+                // All done.
+                this.lineGenerator = undefined;
+            }
+            else {
+                // Generate one more line.
+                this.lastLine = lineInfo.value;
+                this.hexdumpElement.append(this.lastLine);
+            }
+        }
+    }
+    /**
+     * Whether we're close enough to the bottom of the text that we should generate more.
+     */
+    shouldLoadMore() {
+        if (this.lastLine === undefined) {
+            // We've not loaded anything yet.
+            return true;
+        }
+        else {
+            // See if we're close to running out of text.
+            const containerRect = this.hexdumpElement.getBoundingClientRect();
+            const lineRect = this.lastLine.getBoundingClientRect();
+            return lineRect.top < containerRect.bottom + 1000;
+        }
     }
 }
 
@@ -57049,7 +57191,7 @@ class FileInfoTab_FileInfoTab extends PageTab {
             defer(() => {
                 const screen = new dist["CanvasScreen"]();
                 screen.displayScreenshot(screenshot);
-                screenshotDiv.append(screen.asImage());
+                screen.asImageAsync().then(image => screenshotDiv.append(image));
             });
         }
     }
@@ -57647,7 +57789,7 @@ class SystemProgramTab_SystemProgramTab extends PageTab {
         if (wroteToScreen) {
             const screenDiv = document.createElement("div");
             screenDiv.classList.add("system-program-screenshot");
-            screenDiv.append(screen.asImage());
+            screen.asImageAsync().then(image => screenDiv.append(image));
             lines.unshift(screenDiv);
         }
         // Add the lines all at once.
@@ -58069,6 +58211,7 @@ var Editor = __webpack_require__(75);
 
 
 
+
 class Main_EmptyCassette extends dist["CassettePlayer"] {
 }
 function createNavbar(openLibrary, signIn, signOut) {
@@ -58241,8 +58384,14 @@ function main() {
             // Fetch all files.
             context.db.getAllFiles(user.uid)
                 .then((querySnapshot) => {
+                // Sort files before adding them to the library so that they show up in the UI in order
+                // and the screenshots get loaded with the visible ones first.
+                const files = [];
                 for (const doc of querySnapshot.docs) {
-                    const file = File_FileBuilder.fromDoc(doc).build();
+                    files.push(File_FileBuilder.fromDoc(doc).build());
+                }
+                files.sort(File_File.compare);
+                for (const file of files) {
                     library.addFile(file);
                     // Update hash if necessary. We can probably remove this now that all files
                     // have a hash in the DB and we make one when we import.
