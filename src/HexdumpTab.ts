@@ -11,8 +11,11 @@ export class HexdumpTab extends PageTab {
     private readonly binary: Uint8Array;
     private readonly trs80File: Trs80File;
     private readonly hexdumpElement: HTMLElement;
+    private readonly windowResizeListener: () => void;
     private collapse = true;
     private annotate = true;
+    private lineGenerator: Generator<HTMLElement, void, void> | undefined = undefined;
+    private lastLine: HTMLElement | undefined = undefined;
 
     constructor(context: Context, trs80File: Trs80File) {
         super("Hexdump");
@@ -28,6 +31,9 @@ export class HexdumpTab extends PageTab {
 
         this.hexdumpElement = document.createElement("div");
         this.hexdumpElement.classList.add("hexdump");
+        this.hexdumpElement.addEventListener("scroll", () => {
+            this.checkLoadMore();
+        });
         outer.append(this.hexdumpElement);
 
         const actionBar = document.createElement("div");
@@ -58,7 +64,7 @@ export class HexdumpTab extends PageTab {
         });
         actionBar.append(annotateLabel);
 
-        // Take the hexdump out of the dom when the panel is hidden because it slows down things
+        // Hide the hexdump when the panel is hidden because it slows down things
         // like changing themes (the animations aren't smooth).
         let hideHandle: number | undefined = undefined;
         const cancelHide = () => {
@@ -75,21 +81,72 @@ export class HexdumpTab extends PageTab {
                 hideHandle = window.setTimeout(() => this.hexdumpElement.classList.add("hidden"), 400);
             }
         });
+
+        this.windowResizeListener = () => {
+            this.checkLoadMore();
+        };
+    }
+
+    public onShow(): void {
+        super.onShow();
+        window.addEventListener("resize", this.windowResizeListener);
+
+        // Wait for layout or our rectangle testing fails.
+        setTimeout(() => this.checkLoadMore(), 10);
     }
 
     public onFirstShow(): void {
         this.generateHexdump();
     }
 
+    public onHide(): void {
+        window.removeEventListener("resize", this.windowResizeListener);
+        super.onHide();
+    }
+
     /**
      * Regenerate the HTML for the hexdump.
      */
     private generateHexdump(): void {
+        clearElement(this.hexdumpElement);
+        this.lastLine = undefined;
+
         const hexdumpGenerator = new HexdumpGenerator(this.binary, this.collapse,
             this.annotate ? this.trs80File.annotations : []);
-        const lines = hexdumpGenerator.generate();
+        this.lineGenerator = hexdumpGenerator.generate();
 
-        clearElement(this.hexdumpElement);
-        this.hexdumpElement.append(... lines);
+        this.checkLoadMore();
+    }
+
+    /**
+     * See if we should generate more lines, and if so, do so.
+     */
+    private checkLoadMore(): void {
+        while (this.lineGenerator !== undefined && this.shouldLoadMore()) {
+            const lineInfo = this.lineGenerator.next();
+            if (lineInfo.done) {
+                // All done.
+                this.lineGenerator = undefined;
+            } else {
+                // Generate one more line.
+                this.lastLine = lineInfo.value;
+                this.hexdumpElement.append(this.lastLine);
+            }
+        }
+    }
+
+    /**
+     * Whether we're close enough to the bottom of the text that we should generate more.
+     */
+    private shouldLoadMore(): boolean {
+        if (this.lastLine === undefined) {
+            // We've not loaded anything yet.
+            return true;
+        } else {
+            // See if we're close to running out of text.
+            const containerRect = this.hexdumpElement.getBoundingClientRect();
+            const lineRect = this.lastLine.getBoundingClientRect();
+            return lineRect.top < containerRect.bottom + 1000;
+        }
     }
 }

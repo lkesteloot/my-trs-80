@@ -23,6 +23,7 @@ export abstract class PageTab {
     public onShow(): void {
         if (this.firstShow) {
             this.firstShow = false;
+            // Delay to give the UI a chance to highlight the tab.
             setTimeout(() => this.onFirstShow(), 0);
         }
     }
