@@ -119,7 +119,7 @@ export class SystemProgramTab extends PageTab {
         if (wroteToScreen) {
             const screenDiv = document.createElement("div");
             screenDiv.classList.add("system-program-screenshot");
-            screenDiv.append(screen.asImage());
+            screen.asImageAsync().then(image => screenDiv.append(image));
             lines.unshift(screenDiv);
         }
 

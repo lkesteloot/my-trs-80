@@ -14,6 +14,7 @@ import {FileBuilder} from "./File";
 import {DialogBox} from "./DialogBox";
 import {AuthUser} from "./User";
 import {Database} from "./Database";
+import {File} from "./File";
 import {Editor} from "trs80-emulator/dist/Editor";
 
 class EmptyCassette extends CassettePlayer {
@@ -228,8 +229,14 @@ export function main() {
             // Fetch all files.
             context.db.getAllFiles(user.uid)
                 .then((querySnapshot) => {
+                    // Sort files before adding them to the library so that they show up in the UI in order
+                    // and the screenshots get loaded with the visible ones first.
+                    const files: File[] = [];
                     for (const doc of querySnapshot.docs) {
-                        const file = FileBuilder.fromDoc(doc).build();
+                        files.push(FileBuilder.fromDoc(doc).build());
+                    }
+                    files.sort(File.compare);
+                    for (const file of files) {
                         library.addFile(file);
 
                         // Update hash if necessary. We can probably remove this now that all files

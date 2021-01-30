@@ -418,7 +418,7 @@ export class FileInfoTab extends PageTab {
             defer(() => {
                 const screen = new CanvasScreen();
                 screen.displayScreenshot(screenshot);
-                screenshotDiv.append(screen.asImage());
+                screen.asImageAsync().then(image => screenshotDiv.append(image));
             });
         }
     }

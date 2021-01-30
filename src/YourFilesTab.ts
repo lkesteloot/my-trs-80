@@ -85,6 +85,7 @@ export class YourFilesTab extends PageTab {
     private searchString: string = "";
     private readonly tagEditor: HTMLElement;
     private readonly searchEditor: HTMLElement;
+    private readonly blankScreen: HTMLElement;
 
     private forceShowSearch = false;
     private readonly searchButton: HTMLButtonElement;
@@ -96,6 +97,9 @@ export class YourFilesTab extends PageTab {
         super("Your Files", context.user !== undefined);
 
         this.context = context;
+
+        // Make this blank screen synchronously so that it's immediately available when populating the file list.
+        this.blankScreen = new CanvasScreen().asImage();
 
         this.element.classList.add("your-files-tab");
         context.onUser.subscribe(user => {
@@ -152,8 +156,11 @@ export class YourFilesTab extends PageTab {
         actionBar.append(this.openTrashButton, this.tagEditor,this.searchButton, this.searchEditor, spacer,
             exportAllButton, uploadButton);
 
-        // Populate initial library state.
-        this.context.library.getAllFiles().forEach(f => this.addFile(f));
+        // Populate initial library state. Sort the files so that the screenshots get loaded in
+        // display order and the top (visible) ones are done first.
+        this.context.library.getAllFiles().sort(File.compare).forEach(f => this.addFile(f));
+
+        // Sort again anyway, since this updates various things.
         this.sortFiles();
     }
 
@@ -315,17 +322,7 @@ export class YourFilesTab extends PageTab {
         const screenshotsDiv = document.createElement("div");
         screenshotsDiv.classList.add("screenshots");
         fileDiv.append(screenshotsDiv);
-        /* TODO find a way to show all screenshots.
-        for (const screenshot of file.screenshots) {
-            // Don't do these all at once, they can take tens of milliseconds each, and in a large
-            // library that can hang the page for several seconds. Dribble them in later.
-            defer(() => {
-                const screen = new CanvasScreen();
-                screen.displayScreenshot(screenshot);
-                const image = screen.asImage();
-                screenshotsDiv.append(image)
-            });
-        }*/
+        screenshotsDiv.append(this.blankScreen.cloneNode(true));
         defer(() => {
             const screen = new CanvasScreen();
             if (file.screenshots.length > 0) {
@@ -333,7 +330,10 @@ export class YourFilesTab extends PageTab {
             } else {
                 screenshotsDiv.classList.add("missing");
             }
-            screenshotsDiv.append(screen.asImage());
+            screen.asImageAsync().then(image => {
+                clearElement(screenshotsDiv);
+                screenshotsDiv.append(image)
+            });
         });
 
         const nameDiv = document.createElement("div");
