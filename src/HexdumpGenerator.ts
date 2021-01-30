@@ -4,12 +4,9 @@ import {isSameStringArray} from "./Utils";
 
 const STRIDE = 16;
 
-function newLine(lines: HTMLElement[]): HTMLElement {
-    const line = document.createElement("div");
-    lines.push(line);
-    return line;
-}
-
+/**
+ * Add a span with the given text and CSS classes to the specified line.
+ */
 function newSpan(line: HTMLElement, text: string, ...cssClass: string[]): HTMLElement {
     const e = document.createElement("span");
     e.classList.add(...cssClass);
@@ -17,7 +14,6 @@ function newSpan(line: HTMLElement, text: string, ...cssClass: string[]): HTMLEl
     line.append(e);
     return e;
 }
-
 
 /**
  * Compare two parts of an array for equality.
@@ -80,8 +76,7 @@ export class HexdumpGenerator {
     /**
      * Generate all HTML elements for this binary.
      */
-    public generate(): HTMLElement[] {
-        const lines: HTMLElement[] = [];
+    public *generate(): Generator<HTMLElement, void, void> {
         const binary = this.binary;
 
         const [addrDigits, addrSpaces] = this.computeAddressSize();
@@ -92,31 +87,30 @@ export class HexdumpGenerator {
         let lastAnnotation: ProgramAnnotation | undefined = undefined;
         for (const annotation of this.annotations) {
             if (lastAnnotation !== undefined && lastAnnotation.end < annotation.begin) {
-                this.generateAnnotation(lines, new ProgramAnnotation("", lastAnnotation.end, annotation.begin));
+                yield* this.generateAnnotation(new ProgramAnnotation("", lastAnnotation.end, annotation.begin));
             }
             // Make sure there are no overlapping annotations.
             if (lastAnnotation === undefined || lastAnnotation.end <= annotation.begin) {
-                this.generateAnnotation(lines, annotation);
+                yield* this.generateAnnotation(annotation);
             }
             lastAnnotation = annotation;
         }
         const lastAnnotationEnd = lastAnnotation !== undefined ? lastAnnotation.end : 0;
         if (lastAnnotationEnd < binary.length) {
-            this.generateAnnotation(lines, new ProgramAnnotation("", lastAnnotationEnd, binary.length));
+            yield* this.generateAnnotation(new ProgramAnnotation("", lastAnnotationEnd, binary.length));
         }
 
         // Final address to show where file ends.
-        newSpan(newLine(lines), toHex(binary.length, addrDigits), "address");
-
-        return lines;
+        const finalLine = document.createElement("div");
+        newSpan(finalLine, toHex(binary.length, addrDigits), "address");
+        yield finalLine;
     }
 
     /**
      * Generate all the lines for an annotation.
-     * @param lines lines to append to.
      * @param annotation the annotation to generate.
      */
-    private generateAnnotation(lines: HTMLElement[], annotation: ProgramAnnotation) {
+    private *generateAnnotation(annotation: ProgramAnnotation): Generator<HTMLElement, void, void> {
         const binary = this.binary;
 
         const [addrDigits, addrSpaces] = this.computeAddressSize();
@@ -130,7 +124,7 @@ export class HexdumpGenerator {
 
                 // Collapsed section. See if we want to print the text for it this time.
                 if (addr === lastAddr + STRIDE) {
-                    const line = newLine(lines);
+                    const line = document.createElement("div");
 
                     if (allSameByte(binary, addr, STRIDE)) {
                         // Lots of the same byte repeated. Say many there are.
@@ -166,6 +160,8 @@ export class HexdumpGenerator {
                         const label = String.fromCodePoint(0x22EE).padStart(width - lineText.length, " ");
                         newSpan(line, label, "annotation");
                     }
+
+                    yield line;
                 }
             } else {
                 // Non-collapsed row.
@@ -181,7 +177,7 @@ export class HexdumpGenerator {
                     }
                 }
 
-                lines.push(this.generateRow(addr, addrDigits, annotation.begin, annotation.end, label));
+                yield this.generateRow(addr, addrDigits, annotation.begin, annotation.end, label);
             }
         }
     }
