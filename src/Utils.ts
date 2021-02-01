@@ -90,13 +90,20 @@ export function makeCloseIconButton(closeCallback: () => void) {
     return button;
 }
 
+const TEXT_BUTTON_LABEL_CLASS = "text-button-label";
 export function makeTextButton(label: string, iconName: string | string[] | undefined,
                                cssClass: string, clickCallback: (() => void) | undefined): HTMLButtonElement {
 
     const button = document.createElement("button");
-    button.innerText = label;
     button.classList.add("text-button", cssClass);
 
+    // Add text.
+    const labelNode = document.createElement("span");
+    labelNode.classList.add(TEXT_BUTTON_LABEL_CLASS);
+    labelNode.innerText = label;
+    button.append(labelNode);
+
+    // Add icons.
     if (iconName !== undefined) {
         if (typeof iconName === "string") {
             iconName = [iconName];
@@ -109,11 +116,19 @@ export function makeTextButton(label: string, iconName: string | string[] | unde
         }
     }
 
+    // Action.
     if (clickCallback !== undefined) {
         button.addEventListener("click", clickCallback);
     }
 
     return button;
+}
+
+/**
+ * Get the label node for a text button created by {@link makeTextButton}.
+ */
+export function getLabelNodeForTextButton(button: HTMLElement): HTMLElement {
+    return button.querySelector("." + TEXT_BUTTON_LABEL_CLASS) as HTMLElement;
 }
 
 /**

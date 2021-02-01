@@ -1,7 +1,15 @@
 import {LibraryAddEvent, LibraryEvent, LibraryModifyEvent, LibraryRemoveEvent} from "./Library";
 import {File, FileBuilder} from "./File";
 import {CanvasScreen} from "trs80-emulator";
-import {defer, makeIcon, makeIconButton, makeTagCapsule, makeTextButton, TRASH_TAG} from "./Utils";
+import {
+    defer,
+    getLabelNodeForTextButton,
+    makeIcon,
+    makeIconButton,
+    makeTagCapsule,
+    makeTextButton,
+    TRASH_TAG
+} from "./Utils";
 import {clearElement} from "teamten-ts-utils";
 import {Context} from "./Context";
 import {PageTab} from "./PageTab";
@@ -86,7 +94,6 @@ export class YourFilesTab extends PageTab {
     private readonly excludeTags = new TagSet();
     private searchString: string = "";
     private readonly tagEditor: HTMLElement;
-    private readonly searchEditor: HTMLElement;
     private readonly blankScreen: HTMLElement;
 
     private forceShowSearch = false;
@@ -143,9 +150,6 @@ export class YourFilesTab extends PageTab {
             this.refreshFilter();
         });
 
-        this.searchEditor = document.createElement("span");
-        this.searchEditor.classList.add("search-editor");
-
         const spacer = document.createElement("div");
         spacer.classList.add("action-bar-spacer");
 
@@ -155,8 +159,7 @@ export class YourFilesTab extends PageTab {
         const uploadButton = makeTextButton(IMPORT_FILE_LABEL, "publish", "import-file-button",
             () => this.uploadFile());
 
-        actionBar.append(this.openTrashButton, this.tagEditor,this.searchButton, this.searchEditor, spacer,
-            exportAllButton, uploadButton);
+        actionBar.append(this.openTrashButton, this.tagEditor,this.searchButton, spacer, exportAllButton, uploadButton);
 
         // Populate initial library state. Sort the files so that the screenshots get loaded in
         // display order and the top (visible) ones are done first.
@@ -517,23 +520,18 @@ export class YourFilesTab extends PageTab {
         }
 
         // Draw search prefix.
+        const labelNode = getLabelNodeForTextButton(this.searchButton);
+        clearElement(labelNode);
         if (this.searchString !== "" || this.forceShowSearch) {
-            this.searchButton.classList.add("hidden");
-            this.searchEditor.classList.remove("hidden");
-
-            const labelNode = document.createElement("label");
-            labelNode.innerText = "Search:";
             const searchStringNode = document.createElement("span");
+            searchStringNode.classList.add("search-string");
             searchStringNode.innerText = this.searchString;
             if (this.searchCursor === undefined) {
                 this.searchCursor = new AuthenticCursor();
             }
-            clearElement(this.searchEditor);
-            this.searchEditor.append(labelNode, searchStringNode, this.searchCursor.node);
+            labelNode.append("Search:", searchStringNode, this.searchCursor.node);
         } else {
-            this.searchButton.classList.remove("hidden");
-            this.searchEditor.classList.add("hidden");
-
+            labelNode.innerText = "Search";
             if (this.searchCursor !== undefined) {
                 this.searchCursor.disable();
                 this.searchCursor = undefined;

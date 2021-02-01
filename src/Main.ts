@@ -44,8 +44,8 @@ function createNavbar(openLibrary: () => void, signIn: () => void, signOut: () =
     themeButton.classList.add("theme-button");
     navbar.append(themeButton);
 
-    const signInButton = makeTextButton("Sign In", undefined, "sign-in-button", signIn);
-    const signOutButton = makeTextButton("Sign Out", undefined, "sign-out-button", signOut);
+    const signInButton = makeTextButton("Sign In", "person", "sign-in-button", signIn);
+    const signOutButton = makeTextButton("Sign Out", "person", "sign-out-button", signOut);
     navbar.append(signInButton, signOutButton);
 
     return navbar;

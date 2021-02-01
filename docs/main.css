@@ -103,6 +103,10 @@ i.material-icons-round {
 }
 
 .authentic-cursor {
+    /* The cursor font is tall and affects vertical centering of the text, so take it out of the
+    flow. Be sure to add some margin to make space for it. */
+    position: absolute;
+
     /* This is loaded because we use the TRS-80 emulator, which uses it for its editor. */
     font-family: "TreasureMIII64C", monospace;
     font-size: 20px;
@@ -599,16 +603,20 @@ button i {
     align-items: center;
 }
 
-.your-files-tab .action-bar .search-editor label {
-    margin-right: 0.4em;
-}
+.your-files-tab .action-bar .search-string {
+    /* Make space after "Search:". */
+    margin-left: 0.4em;
 
-.your-files-tab .action-bar .search-editor span {
     white-space: pre-wrap;
 }
 
-.your-files-tab .action-bar .search-editor span,
-.your-files-tab .action-bar .search-editor .authentic-cursor {
+.your-files-tab .action-bar .search-button i {
+    /* Make space for the cursor, which is positioned absolutely and takes no space. */
+    margin-left: 3px;
+}
+
+.your-files-tab .action-bar .search-string,
+.your-files-tab .action-bar .search-button .authentic-cursor {
 
     color: var(--blue);
 }
