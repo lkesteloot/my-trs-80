@@ -1,5 +1,16 @@
 
 /**
+ * Compare two tags for sorting.
+ */
+function compareTags(t1: string, t2: string): number {
+    return t1.localeCompare(t2, undefined, {
+        usage: "sort",
+        sensitivity: "base",
+        numeric: true,
+    });
+}
+
+/**
  * Manages a set of tags for a File.
  */
 export class TagSet {
@@ -51,6 +62,19 @@ export class TagSet {
     }
 
     /**
+     * Whether this tag set has any of the tags in the other tag set.
+     */
+    public hasAny(tags: TagSet): boolean {
+        for (const tag of tags.tagSet) {
+            if (this.has(tag)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Remove the tag, returning whether it was in the set before.
      */
     public remove(tag: string): boolean {
@@ -74,7 +98,7 @@ export class TagSet {
             tags.push(tag);
         }
 
-        tags.sort();
+        tags.sort(compareTags);
 
         return tags;
     }

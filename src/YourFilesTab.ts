@@ -81,7 +81,9 @@ export class YourFilesTab extends PageTab {
     private readonly emptyBody: HTMLElement;
     private emptyQuote: string | undefined = undefined;
     // If empty, show all files except Trash. Otherwise show only files that have all of these tags.
-    private readonly filterTags = new TagSet();
+    private readonly includeTags = new TagSet();
+    // Exclude files that have any of these tags.
+    private readonly excludeTags = new TagSet();
     private searchString: string = "";
     private readonly tagEditor: HTMLElement;
     private readonly searchEditor: HTMLElement;
@@ -362,8 +364,12 @@ export class YourFilesTab extends PageTab {
         for (const tag of file.getAllTags().asArray()) {
             tagsDiv.append(makeTagCapsule({
                 tag: tag,
-                clickCallback: () => {
-                    this.filterTags.add(tag);
+                clickCallback: (e) => {
+                    if (e.shiftKey) {
+                        this.excludeTags.add(tag);
+                    } else {
+                        this.includeTags.add(tag);
+                    }
                     this.refreshFilter();
                 },
             }));
@@ -422,12 +428,17 @@ export class YourFilesTab extends PageTab {
                     const fileTags = file.getAllTags();
 
                     // Only show files that have all the filter items.
-                    if (!this.filterTags.isEmpty() && !fileTags.hasAll(this.filterTags)) {
+                    if (!this.includeTags.isEmpty() && !fileTags.hasAll(this.includeTags)) {
                         hidden = true;
                     }
 
                     // If we're not explicitly filtering for trash, hide files in the trash.
-                    if (!this.filterTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
+                    if (!this.includeTags.has(TRASH_TAG) && fileTags.has(TRASH_TAG)) {
+                        hidden = true;
+                    }
+
+                    // Excluded tags.
+                    if (fileTags.hasAny(this.excludeTags)) {
                         hidden = true;
                     }
 
@@ -474,7 +485,10 @@ export class YourFilesTab extends PageTab {
         this.emptyLibrary.classList.toggle("hidden", !displaySplashScreen);
 
         // Update filter UI in the action bar.
-        if (this.filterTags.isEmpty()) {
+        const allTags = new TagSet();
+        allTags.addAll(this.includeTags);
+        allTags.addAll(this.excludeTags);
+        if (allTags.isEmpty()) {
             this.tagEditor.classList.add("hidden");
             this.openTrashButton.classList.toggle("hidden", !this.anyFileInTrash());
         } else {
@@ -484,12 +498,18 @@ export class YourFilesTab extends PageTab {
             clearElement(this.tagEditor);
             this.tagEditor.append("Filter tags:");
 
-            for (const tag of this.filterTags.asArray()) {
+            for (const tag of allTags.asArray()) {
+                const isExclude = this.excludeTags.has(tag);
                 this.tagEditor.append(makeTagCapsule({
                     tag: tag,
                     iconName: "clear",
+                    exclude: isExclude,
                     clickCallback: () => {
-                        this.filterTags.remove(tag);
+                        if (isExclude) {
+                            this.excludeTags.remove(tag);
+                        } else {
+                            this.includeTags.remove(tag);
+                        }
                         this.refreshFilter();
                     },
                 }));
@@ -538,7 +558,7 @@ export class YourFilesTab extends PageTab {
      * Adds trash to the filter.
      */
     private openTrash(): void {
-        this.filterTags.add(TRASH_TAG);
+        this.includeTags.add(TRASH_TAG);
         this.refreshFilter();
     }
 

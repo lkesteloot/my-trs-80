@@ -129,8 +129,11 @@ export interface TagCapsuleOptions {
     // Whether to draw it dimly.
     faint?: boolean;
 
+    // Whether this is an "exclude" tag.
+    exclude?: boolean;
+
     // Change cursor to pointer and make it clickable.
-    clickCallback?: () => void;
+    clickCallback?: (event: MouseEvent) => void;
 }
 
 /**
@@ -152,24 +155,49 @@ function computeTagColor(tag: string): string {
  * Make a capsule to display a tag.
  */
 export function makeTagCapsule(options: TagCapsuleOptions): HTMLElement {
-
+    // The capsule itself.
     const capsule = document.createElement("div");
     capsule.classList.add("tag", "tag-" + computeTagColor(options.tag));
-    capsule.innerText = options.tag;
-    if (options.iconName !== undefined) {
-        const deleteIcon = document.createElement("i");
-        deleteIcon.classList.add(MATERIAL_ICONS_CLASS);
-        deleteIcon.innerText = options.iconName;
-
-        capsule.append(deleteIcon)
-    }
-    if (options.clickCallback !== undefined) {
-        capsule.addEventListener("click", options.clickCallback);
-        capsule.classList.add("tag-clickable");
+    if (options.exclude) {
+        capsule.classList.add("tag-exclude");
     }
     if (options.faint) {
         capsule.classList.add("tag-faint");
     }
+
+    // The text.
+    const capsuleText = document.createElement("span");
+    capsuleText.classList.add("tag-text");
+    capsuleText.innerText = options.tag;
+    capsule.append(capsuleText);
+
+    // The icon.
+    if (options.iconName !== undefined) {
+        const deleteIcon = document.createElement("i");
+        deleteIcon.classList.add(MATERIAL_ICONS_CLASS);
+        deleteIcon.innerText = options.iconName;
+        capsule.append(deleteIcon)
+    }
+
+    // The X for exclude.
+    if (options.exclude) {
+        const excludeIcon = document.createElement("i");
+        excludeIcon.classList.add(MATERIAL_ICONS_CLASS, "tag-exclude-icon");
+        excludeIcon.innerText = "clear";
+        capsule.append(excludeIcon)
+    }
+
+    // Action.
+    const clickCallback = options.clickCallback;
+    if (clickCallback !== undefined) {
+        capsule.addEventListener("click", e => {
+            clickCallback(e);
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        capsule.classList.add("tag-clickable");
+    }
+
     return capsule;
 }
 

@@ -212,12 +212,15 @@ button i {
 }
 
 .tag {
+    position: relative; /* For absolute-positioned exclude mark. */
+
     border-radius: 999px;
     color: white;
     font-size: 11px;
     padding: 2px 7px;
 
     white-space: nowrap;
+    user-select: none;
 
     display: flex;
     gap: 3px; /* Between text and delete icon. */
@@ -245,6 +248,16 @@ button i {
 .tag-4 { background-color: var(--blue); }
 .tag-5 { background-color: var(--cyan); }
 .tag-trash { background-color: var(--red); }
+
+.tag .tag-exclude-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 40px;
+    transform: translate(-50%, -50%);
+    color: black;
+    opacity: 50%;
+}
 
 @keyframes spin {
     from {
