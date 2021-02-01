@@ -146,7 +146,10 @@ function computeTagColor(tag: string): string {
 
     let hash = 0;
     for (let i = 0; i < tag.length; i++) {
-        hash += tag.charCodeAt(i);
+        hash = (hash*37 + tag.charCodeAt(i)) & 0xFFFFFFFF;
+    }
+    if (hash < 0) {
+        hash += 0x100000000;
     }
     return (hash % 6).toString();
 }
