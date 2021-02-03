@@ -612,7 +612,7 @@ button i {
 
 .your-files-tab .action-bar .search-button i {
     /* Make space for the cursor, which is positioned absolutely and takes no space. */
-    margin-left: 3px;
+    margin-left: 5px;
 }
 
 .your-files-tab .action-bar .search-string,
@@ -1234,4 +1234,77 @@ body.signed-out .trsdos .dir {
 
 .trsdos .dir .hidden-file {
     opacity: 30%;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+
+.duplicates-tab {
+    display: grid;
+    grid-template-rows: 1fr; /* contents */
+
+    background-color: var(--background);
+    padding: var(--side-padding);
+    overflow-y: auto;
+}
+
+.duplicates {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 25px;
+    align-items: center;
+    align-content: start;
+}
+
+.duplicates .name {
+    color: var(--magenta);
+}
+
+.duplicates .filename {
+    color: var(--cyan);
+}
+
+.duplicates .type {
+    color: var(--blue);
+}
+
+.duplicates .in-trash {
+    color: var(--violet);
+    text-align: center;
+}
+
+.duplicates .edit {
+    cursor: pointer;
+    text-align: center;
+}
+
+.duplicates .edit.disabled {
+    cursor: default;
+    opacity: 30%;
+}
+
+.duplicates .header {
+    font-weight: bold;
+    margin-bottom: 6px;
+    padding-bottom: 2px;
+}
+
+.duplicates .name.header {
+    border-bottom: 1px solid var(--magenta);
+}
+
+.duplicates .filename.header {
+    border-bottom: 1px solid var(--cyan);
+}
+
+.duplicates .type.header {
+    border-bottom: 1px solid var(--blue);
+}
+
+.duplicates .in-trash.header {
+    border-bottom: 1px solid var(--violet);
+}
+
+.duplicates .edit.header {
+    border-bottom: 1px solid var(--icon-color);
 }

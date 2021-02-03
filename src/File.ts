@@ -6,9 +6,13 @@ import {TagSet} from "./TagSet";
 import DocumentData = firebase.firestore.DocumentData;
 import UpdateData = firebase.firestore.UpdateData;
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
+import {BasicProgram, Cassette, decodeTrs80File, setBasicName} from "trs80-base";
 
 // What's considered a "new" file.
 const NEW_TIME_MS = 60*60*24*7*1000;
+
+// Prefix for version of hash. Increment this number when the hash algorithm changes.
+const HASH_PREFIX = "1:";
 
 /**
  * Return whether the test string starts with the filter prefix.
@@ -212,14 +216,30 @@ export class File {
     }
 
     /**
+     * Whether the hash was computed with an outdated algorithm.
+     */
+    public isOldHash(): boolean {
+        return !this.hash.startsWith(HASH_PREFIX);
+    }
+
+    /**
      * Compare two files for sorting.
      */
     public static compare(a: File, b: File): number {
         // Primary sort by name.
-        const cmp = a.name.localeCompare(b.name, undefined, {
+        let cmp = a.name.localeCompare(b.name, undefined, {
             usage: "sort",
             sensitivity: "base",
             ignorePunctuation: true,
+            numeric: true,
+        });
+        if (cmp !== 0) {
+            return cmp;
+        }
+
+        // Secondary sort is filename.
+        cmp = a.filename.localeCompare(b.filename, undefined, {
+            usage: "sort",
             numeric: true,
         });
         if (cmp !== 0) {
@@ -325,7 +345,27 @@ export class FileBuilder {
 
     public withBinary(binary: Uint8Array): this {
         this.binary = binary;
-        this.hash = sha1(binary);
+
+        // We used to do the raw binary, but that doesn't catch some irrelevant changes, like differences
+        // in CAS header or the Basic name. So decode the binary and see if we can zero out the differences.
+        // This might create an unfortunate preference for setting the filename first.
+        let trs80File = decodeTrs80File(binary, this.filename);
+
+        // Pull the program out of the cassette.
+        if (trs80File instanceof Cassette) {
+            if (trs80File.files.length > 0) {
+                trs80File = trs80File.files[0].file;
+                binary = trs80File.binary;
+            }
+        }
+
+        // Clear out the Basic name.
+        if (trs80File instanceof BasicProgram) {
+            binary = setBasicName(binary, "A");
+        }
+
+        // Prefix with version number.
+        this.hash = HASH_PREFIX + sha1(binary);
         return this;
     }
 

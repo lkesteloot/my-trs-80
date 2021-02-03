@@ -419,6 +419,15 @@ export class YourFilesTab extends PageTab {
         // Parse out the search terms.
         const searchWords = this.searchString.split(/\W+/).filter(s => s !== "");
 
+        { // TODO delete
+            console.log("-----------------");
+            for (const file of this.context.library.getAllFiles()) {
+                if (this.context.library.isDuplicate(file)) {
+                    console.log(file.name, file.filename);
+                }
+            }
+        }
+
         // Update hidden.
         for (const fileDiv of this.filesDiv.children) {
             let hidden = false;

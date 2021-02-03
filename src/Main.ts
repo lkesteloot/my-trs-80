@@ -239,11 +239,11 @@ export function main() {
                     for (const file of files) {
                         library.addFile(file);
 
-                        // Update hash if necessary. We can probably remove this now that all files
-                        // have a hash in the DB and we make one when we import.
-                        if (file.hash === "" && file.binary.length !== 0) {
+                        // Update hash if necessary.
+                        if (file.binary.length !== 0 && file.isOldHash()) {
                             // This updates the hash.
                             const newFile = file.builder().withBinary(file.binary).build();
+                            console.log("Hash for " + file.name + " has been recomputed");
                             context.db.updateFile(file, newFile)
                                 .then(() => {
                                     library.modifyFile(newFile);

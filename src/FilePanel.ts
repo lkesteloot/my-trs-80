@@ -11,17 +11,27 @@ import {CmdTab} from "./CmdTab";
 import {DisassemblyTab} from "./DisassemblyTab";
 import {SystemProgramTab} from "./SystemProgramTab";
 import {TabbedPanel} from "./TabbedPanel";
+import {DuplicatesTab} from "./DuplicatesTab";
+
+/**
+ * Head of linked list of displayed file panels.
+ */
+let gFilePanelHead: IFilePanel | undefined = undefined;
 
 /**
  * Panel to explore a file.
  */
 export class FilePanel extends TabbedPanel implements IFilePanel {
     public file: File;
+    public nextFilePanel: IFilePanel | undefined;
 
     constructor(context: Context, file: File) {
         super(context, file.name, "file-panel", true);
 
         this.file = file;
+        this.nextFilePanel = gFilePanelHead;
+        gFilePanelHead = this;
+
         const trs80File = decodeTrs80File(file.binary, file.filename);
 
         this.pageTabs.addTab(new FileInfoTab(this, trs80File));
@@ -52,6 +62,15 @@ export class FilePanel extends TabbedPanel implements IFilePanel {
             this.pageTabs.addTab(new SystemProgramTab(effectiveFile));
             this.pageTabs.addTab(new DisassemblyTab(effectiveFile));
         }
+
+        if (context.library.isDuplicate(file)) {
+            this.pageTabs.addTab(new DuplicatesTab(this));
+        }
+    }
+
+    onPanelDestroy(): void {
+        gFilePanelHead = this.nextFilePanel;
+        super.onPanelDestroy();
     }
 
     setHeaderText(header: string): void {
