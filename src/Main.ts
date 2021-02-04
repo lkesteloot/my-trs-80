@@ -169,6 +169,7 @@ export function main() {
     controlPanel.addSettingsButton(viewPanel);
     // const progressBar = new ProgressBar(screen.getNode());
     // cassette.setProgressBar(progressBar);
+    controlPanel.addMuteButton(trs80.soundPlayer);
 
     body.append(navbar);
     body.append(screenDiv);
