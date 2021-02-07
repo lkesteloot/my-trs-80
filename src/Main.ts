@@ -1,4 +1,12 @@
-import {CanvasScreen, CassettePlayer, ControlPanel, PanelType, SettingsPanel, Trs80} from "trs80-emulator";
+import {
+    CanvasScreen,
+    CassettePlayer,
+    ControlPanel,
+    DriveIndicators,
+    PanelType,
+    SettingsPanel,
+    Trs80
+} from "trs80-emulator";
 import firebase from 'firebase/app';
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
@@ -170,6 +178,9 @@ export function main() {
     // const progressBar = new ProgressBar(screen.getNode());
     // cassette.setProgressBar(progressBar);
     controlPanel.addMuteButton(trs80.soundPlayer);
+
+    const driveIndicators = new DriveIndicators(screen.getNode());
+    trs80.onMotorOn.subscribe(drive => driveIndicators.setActiveDrive(drive));
 
     body.append(navbar);
     body.append(screenDiv);
