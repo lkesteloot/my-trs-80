@@ -59,7 +59,7 @@ export class BasicTab extends PageTab {
                 lines.push(line);
             }
 
-            add(line, basicElement.text, BasicTab.classNameForBasicElement(basicElement));
+            add(line, basicElement.asAscii(), BasicTab.classNameForBasicElement(basicElement));
         }
 
         // Add the lines all at once.
