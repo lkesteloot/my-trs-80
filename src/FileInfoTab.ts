@@ -145,6 +145,16 @@ export class FileInfoTab extends PageTab {
         actionBar.classList.add("action-bar");
         this.element.append(actionBar);
 
+        const exportButton = makeTextButton("Export", "get_app", "export-button", () => {
+            // Download binary.
+            const a = document.createElement("a");
+            const contents = this.filePanel.file.binary;
+            const blob = new Blob([contents], {type: "application/octet-stream"});
+            a.href = window.URL.createObjectURL(blob);
+            a.download = this.filePanel.file.filename;
+            a.click();
+        });
+        actionBar.append(exportButton);
         const runButton = makeTextButton("Run", "play_arrow", "play-button", () => {
             this.filePanel.context.runProgram(this.filePanel.file, this.trs80File);
             this.filePanel.context.panelManager.close();
