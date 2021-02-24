@@ -1,16 +1,8 @@
 import {toHexByte, toHexWord} from "z80-base";
 import {PageTab} from "./PageTab";
-import {
-    CmdLoadBlockChunk,
-    CmdProgram,
-    CmdTransferAddressChunk,
-    SystemChunk,
-    SystemProgram,
-    TRS80_SCREEN_BEGIN,
-    TRS80_SCREEN_END,
-} from "trs80-base";
+import {CmdProgram, SystemProgram} from "trs80-base";
 import {clearElement} from "teamten-ts-utils";
-import {Disasm, TRS80_MODEL_III_KNOWN_LABELS, Z80_KNOWN_LABELS} from "z80-disasm";
+import {disasmForTrs80Program} from "trs80-disasm";
 
 /**
  * Add text to the line with the specified class.
@@ -25,20 +17,6 @@ function add(out: HTMLElement, text: string, className: string): HTMLElement {
     e.classList.add(className);
     out.appendChild(e);
     return e;
-}
-
-// Whether to try to disassemble this chunk.
-function shouldDisassembleSystemProgramChunk(chunk: SystemChunk): boolean {
-    if (chunk.loadAddress >= TRS80_SCREEN_BEGIN && chunk.loadAddress + chunk.data.length <= TRS80_SCREEN_END) {
-        return false;
-    }
-
-    // Various addresses that don't represent code.
-    if (chunk.loadAddress === 0x4210 || chunk.loadAddress === 0x401E) {
-        return false;
-    }
-
-    return true;
 }
 
 /**
@@ -69,40 +47,10 @@ export class DisassemblyTab extends PageTab {
     }
 
     private generateDisassembly(): void {
-        const lines: HTMLElement[] = [];
-        const program = this.program;
-
-        const disasm = new Disasm();
-        disasm.addLabels(Z80_KNOWN_LABELS);
-        disasm.addLabels(TRS80_MODEL_III_KNOWN_LABELS);
-        if (program.entryPointAddress !== undefined) {
-            disasm.addLabels([[program.entryPointAddress, "main"]]);
-        }
-        if (program instanceof CmdProgram) {
-            for (const chunk of program.chunks) {
-                if (chunk instanceof CmdLoadBlockChunk) {
-                    disasm.addChunk(chunk.loadData, chunk.address);
-                }
-                if (chunk instanceof CmdTransferAddressChunk) {
-                    // Not sure what to do here. I've seen junk after this block, and we risk
-                    // overwriting valid things in memory. I suspect that CMD parsers of the time,
-                    // when running into this block, would immediately just jump to the address
-                    // and ignore everything after it, so let's emulate that.
-                    break;
-                }
-            }
-        } else {
-            for (const chunk of program.chunks) {
-                if (shouldDisassembleSystemProgramChunk(chunk)) {
-                    disasm.addChunk(chunk.data, chunk.loadAddress);
-                }
-            }
-        }
-        if (program.entryPointAddress !== undefined) {
-            disasm.addEntryPoint(program.entryPointAddress);
-        }
+        const disasm = disasmForTrs80Program(this.program);
         const instructions = disasm.disassemble();
 
+        const lines: HTMLElement[] = [];
         for (const instruction of instructions) {
             if (instruction.label !== undefined) {
                 const line = document.createElement("div");

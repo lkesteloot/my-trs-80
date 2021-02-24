@@ -530,6 +530,7 @@ button i {
 .your-files-tab .file .filename {
     font-family: "Roboto Mono", monospace;
     white-space: pre;
+    overflow: hidden;
 }
 
 .your-files-tab .file .note {
