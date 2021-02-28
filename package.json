@@ -35,9 +35,9 @@
     "split.js": "^1.5.11",
     "strongly-typed-events": "^1.7.3",
     "teamten-ts-utils": "^1.0.0",
-    "trs80-base": "../trs80-base",
-    "trs80-disasm": "../trs80-disasm",
-    "trs80-emulator": "../trs80-emulator",
+    "trs80-base": "^1.0.4",
+    "trs80-disasm": "^1.0.1",
+    "trs80-emulator": "^1.1.9",
     "z80-base": "^1.0.6"
   }
 }
