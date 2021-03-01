@@ -60,6 +60,10 @@ function createNavbar(openLibrary: () => void, signIn: () => void, signOut: () =
 }
 
 export function main() {
+    const args = Context.parseFragment(window.location.hash);
+    const runFileId = args.get("runFile")?.[0];
+    const userId = args.get("user")?.[0];
+
     const body = document.querySelector("body") as HTMLElement;
     body.classList.add("signed-out");
 
@@ -170,9 +174,11 @@ export function main() {
     const viewPanel = new SettingsPanel(screen.getNode(), trs80, PanelType.VIEW);
     const controlPanel = new ControlPanel(screen.getNode());
     controlPanel.addResetButton(reboot);
+    /* We don't currently mount a cassette.
     controlPanel.addTapeRewindButton(() => {
         // cassette.rewind();
     });
+     */
     controlPanel.addSettingsButton(hardwareSettingsPanel);
     controlPanel.addSettingsButton(viewPanel);
     // const progressBar = new ProgressBar(screen.getNode());
@@ -205,17 +211,8 @@ export function main() {
     reboot();
 
     const context = new Context(library, trs80, db, panelManager);
-    context.onFragment.subscribe(fragment => {
-        window.location.hash = fragment;
-    });
 
-    context.onUser.subscribe(user => {
-        body.classList.toggle("signed-in", user !== undefined);
-        body.classList.toggle("signed-out", user === undefined);
-    });
-
-    // TODO make this button appear and disappear as we have/not have a program.
-    controlPanel.addScreenshotButton(() => {
+    const screenshotButton = controlPanel.addScreenshotButton(() => {
         if (context.runningFile !== undefined) {
             let file = context.runningFile;
             const screenshot = trs80.getScreenshot();
@@ -232,14 +229,35 @@ export function main() {
                 });
         }
     });
+    // Start hidden, since the user isn't signed in until later.
+    screenshotButton.classList.add("hidden");
 
     controlPanel.addEditorButton(() => editor.startEdit());
 
+    /**
+     * Update whether the user can take a screenshot of the running program.
+     */
+    function updateScreenshotButtonVisibility() {
+        const canSaveScreenshot = context.runningFile !== undefined &&
+            context.user !== undefined &&
+            context.runningFile.uid === context.user.uid;
+        screenshotButton.classList.toggle("hidden", !canSaveScreenshot);
+    }
+
+    context.onRunningFile.subscribe(() => {
+        window.location.hash = context.getFragment();
+        updateScreenshotButtonVisibility();
+    });
+
     context.onUser.subscribe(user => {
+        body.classList.toggle("signed-in", user !== undefined);
+        body.classList.toggle("signed-out", user === undefined);
+        updateScreenshotButtonVisibility();
+
         library.removeAll();
         if (user !== undefined) {
             // Fetch all files.
-            context.db.getAllFiles(user.uid)
+            context.db.getAllFiles(userId ?? user.uid)
                 .then((querySnapshot) => {
                     // Sort files before adding them to the library so that they show up in the UI in order
                     // and the screenshots get loaded with the visible ones first.
@@ -277,8 +295,6 @@ export function main() {
     });
 
     // See if we should run an app right away.
-    const args = Context.parseFragment(window.location.hash);
-    const runFileId = args.get("runFile")?.[0];
     context.onUserResolved.subscribe(() => {
         // We're signed in, or not, and can now read the database.
         if (runFileId !== undefined) {

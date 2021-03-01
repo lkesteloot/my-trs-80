@@ -769,7 +769,8 @@ button i {
     height: max-content;
 }
 
-.file-panel-form .screenshots-instructions {
+.file-panel-form .screenshots-instructions,
+.file-panel-form .tags-instructions {
     margin-top: 5px;
     font-style: italic;
     color: var(--foreground-secondary);
@@ -817,6 +818,10 @@ button i {
     font-size: 36px;
     display: block;
     cursor: pointer;
+}
+
+.file-panel-form .shared input:disabled ~ i {
+    cursor: default;
 }
 
 .file-panel-form .shared i.on-state {

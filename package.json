@@ -28,8 +28,6 @@
     "base64-js": "^1.5.1",
     "firebase": "^8.1.2",
     "firebaseui": "^4.7.1",
-    "jss": "^10.0.3",
-    "jss-preset-default": "^10.0.3",
     "jszip": "^3.5.0",
     "lodash": "^4.17.20",
     "split.js": "^1.5.11",
@@ -37,7 +35,7 @@
     "teamten-ts-utils": "^1.0.0",
     "trs80-base": "^1.0.4",
     "trs80-disasm": "^1.0.1",
-    "trs80-emulator": "^1.1.9",
+    "trs80-emulator": "^1.1.10",
     "z80-base": "^1.0.6"
   }
 }

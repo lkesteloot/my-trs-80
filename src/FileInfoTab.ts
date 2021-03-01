@@ -28,6 +28,7 @@ const SCREENSHOT_ATTR = "data-screenshot";
 export class FileInfoTab extends PageTab {
     private readonly filePanel: IFilePanel;
     private readonly trs80File: Trs80File;
+    private readonly editable: boolean;
     private readonly nameInput: HTMLInputElement;
     private readonly filenameInput: HTMLInputElement;
     private readonly noteInput: HTMLTextAreaElement;
@@ -53,18 +54,20 @@ export class FileInfoTab extends PageTab {
 
         this.filePanel = filePanel;
         this.trs80File = trs80File;
+        this.editable = filePanel.context.user?.uid === filePanel.file.uid;
 
         // Make union of all tags in all files. Do this here once so that if the user deletes a tag
         // that only this file has, it'll stay in this set so it can be added again easily.
         for (const file of this.filePanel.context.library.getAllFiles()) {
             this.allTags.add(... file.tags);
         }
+        // We have buttons for adding/removing the trash tag.
         this.allTags.remove(TRASH_TAG);
 
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
 
-        this.element.classList.add("file-info-tab");
+        this.element.classList.add("file-info-tab", this.editable ? "file-info-tab-editable" : "file-info-tab-readonly");
 
         // Container of form.
         const formContainer = document.createElement("div");
@@ -85,7 +88,7 @@ export class FileInfoTab extends PageTab {
             form.append(labelElement);
 
             const inputElement = document.createElement("input");
-            inputElement.disabled = !enabled;
+            inputElement.disabled = !enabled || !this.editable;
             labelElement.append(inputElement);
 
             return inputElement;
@@ -100,6 +103,7 @@ export class FileInfoTab extends PageTab {
         form.append(noteLabel);
         this.noteInput = document.createElement("textarea");
         this.noteInput.rows = 10;
+        this.noteInput.disabled = !this.editable;
         noteLabel.append(this.noteInput);
 
         this.authorInput = makeInputBox("Author", undefined, true);
@@ -127,6 +131,7 @@ export class FileInfoTab extends PageTab {
 
             this.sharedInput = document.createElement("input");
             this.sharedInput.type = "checkbox";
+            this.sharedInput.disabled = !this.editable;
 
             const offIcon = makeIcon("toggle_off");
             offIcon.classList.add("off-state");
@@ -200,7 +205,9 @@ export class FileInfoTab extends PageTab {
         this.saveButton = makeTextButton("Save",
             ["save", "cached", "check"], "save-button", undefined);
         this.saveButton.title = "Ctrl-Enter to save and close";
-        actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
+        if (this.editable) {
+            actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
+        }
 
         for (const input of [this.nameInput, this.filenameInput, this.noteInput, this.authorInput, this.releaseYearInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
@@ -347,52 +354,67 @@ export class FileInfoTab extends PageTab {
         tagListElement.classList.add("tag-list");
         this.tagsInput.append(tagListElement);
 
+        let count = 0;
         for (const tag of this.allTags.asArray()) {
-            const tagOptions: TagCapsuleOptions = {
-                tag: tag,
-            };
+            if (this.tags.has(tag) || this.editable) {
+                const tagOptions: TagCapsuleOptions = {
+                    tag: tag,
+                };
 
-            if (this.tags.has(tag)) {
-                tagOptions.iconName = "clear";
-                tagOptions.clickCallback = () => {
-                    this.tags.remove(tag);
-                    this.updateTagsInput();
-                    this.updateButtonStatus();
-                };
-            } else {
-                tagOptions.iconName = "add";
-                tagOptions.faint = true;
-                tagOptions.clickCallback = () => {
-                    this.tags.add(tag);
-                    this.updateTagsInput();
-                    this.updateButtonStatus();
-                };
+                // Add clear/add actions if editable.
+                if (this.editable) {
+                    if (this.tags.has(tag)) {
+                        tagOptions.iconName = "clear";
+                        tagOptions.clickCallback = () => {
+                            this.tags.remove(tag);
+                            this.updateTagsInput();
+                            this.updateButtonStatus();
+                        };
+                    } else {
+                        tagOptions.faint = true;
+                        tagOptions.iconName = "add";
+                        tagOptions.clickCallback = () => {
+                            this.tags.add(tag);
+                            this.updateTagsInput();
+                            this.updateButtonStatus();
+                        };
+                    }
+                }
+                tagListElement.append(makeTagCapsule(tagOptions));
+                count += 1;
             }
-            tagListElement.append(makeTagCapsule(tagOptions));
         }
 
-        const newTagForm = document.createElement("form");
-        newTagForm.classList.add("new-tag-form");
-        newTagForm.addEventListener("submit", event => {
-            const newTag = newTagInput.value.trim();
-            if (newTag !== "" && newTag !== TRASH_TAG) {
-                this.tags.add(newTag);
-                this.allTags.add(newTag);
-                this.updateTagsInput(true);
-                this.updateButtonStatus();
-            }
-            event.preventDefault();
-            event.stopPropagation();
-        });
-        // this.tagsInput.append(newTagForm);
-        tagListElement.append(newTagForm);
+        // Form to add a new tag.
+        if (this.editable) {
+            const newTagForm = document.createElement("form");
+            newTagForm.classList.add("new-tag-form");
+            newTagForm.addEventListener("submit", event => {
+                const newTag = newTagInput.value.trim();
+                if (newTag !== "" && newTag !== TRASH_TAG) {
+                    this.tags.add(newTag);
+                    this.allTags.add(newTag);
+                    this.updateTagsInput(true);
+                    this.updateButtonStatus();
+                }
+                event.preventDefault();
+                event.stopPropagation();
+            });
+            tagListElement.append(newTagForm);
 
-        const newTagInput = document.createElement("input");
-        newTagInput.placeholder = "New tag";
-        if (newTagFocus) {
-            setTimeout(() => newTagInput.focus(), 0);
+            const newTagInput = document.createElement("input");
+            newTagInput.placeholder = "New tag";
+            if (newTagFocus) {
+                setTimeout(() => newTagInput.focus(), 0);
+            }
+            newTagForm.append(newTagInput);
+        } else if (count === 0) {
+            const instructions = document.createElement("div");
+            instructions.classList.add("tags-instructions");
+            instructions.innerText = "There are to tags for this file.";
+            tagListElement.append(instructions);
+
         }
-        newTagForm.append(newTagInput);
     }
 
     /**
@@ -408,7 +430,11 @@ export class FileInfoTab extends PageTab {
         if (this.filePanel.file.screenshots.length === 0) {
             const instructions = document.createElement("div");
             instructions.classList.add("screenshots-instructions");
-            instructions.innerText = "To take a screenshot, run the program and click the camera icon.";
+            if (this.editable) {
+                instructions.innerText = "To take a screenshot, run the program and click the camera icon.";
+            } else {
+                instructions.innerText = "There are no screenshots for this file.";
+            }
             this.screenshotsDiv.append(instructions);
         }
 
@@ -416,11 +442,13 @@ export class FileInfoTab extends PageTab {
             const screenshotDiv = document.createElement("div");
             screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
             screenshotDiv.classList.add("screenshot");
-            const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
-                screenshotDiv.remove();
-                this.updateButtonStatus();
-            });
-            screenshotDiv.append(deleteButton);
+            if (this.editable) {
+                const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
+                    screenshotDiv.remove();
+                    this.updateButtonStatus();
+                });
+                screenshotDiv.append(deleteButton);
+            }
             this.screenshotsDiv.append(screenshotDiv);
 
             // Defer this so that if we have a lot of screenshots it doesn't hang the browser when

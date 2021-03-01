@@ -27472,19 +27472,19 @@ class ControlPanel {
      * Add a reset button.
      */
     addResetButton(callback) {
-        this.addButton(RESET_ICON, callback);
+        return this.addButton(RESET_ICON, callback);
     }
     /**
      * Add a screenshot button.
      */
     addScreenshotButton(callback) {
-        this.addButton(CAMERA_ICON, callback);
+        return this.addButton(CAMERA_ICON, callback);
     }
     /**
      * Add a tape rewind button.
      */
     addTapeRewindButton(callback) {
-        this.addButton(PREVIOUS_TRACK_ICON, callback);
+        return this.addButton(PREVIOUS_TRACK_ICON, callback);
     }
     /**
      * Add a settings button.
@@ -27502,13 +27502,13 @@ class ControlPanel {
                 iconSvg = VIEW_SETTINGS_ICON;
                 break;
         }
-        this.addButton(iconSvg, () => settingsPanel.open());
+        return this.addButton(iconSvg, () => settingsPanel.open());
     }
     /**
      * Add a button to edit the program.
      */
     addEditorButton(callback) {
-        this.addButton(EDIT_ICON, callback);
+        return this.addButton(EDIT_ICON, callback);
     }
     /**
      * Add button to toggle mute.
@@ -58396,20 +58396,23 @@ const SCREENSHOT_ATTR = "data-screenshot";
  */
 class FileInfoTab_FileInfoTab extends PageTab {
     constructor(filePanel, trs80File) {
+        var _a;
         super("File Info");
         this.tags = new TagSet();
         this.allTags = new TagSet();
         this.filePanel = filePanel;
         this.trs80File = trs80File;
+        this.editable = ((_a = filePanel.context.user) === null || _a === void 0 ? void 0 : _a.uid) === filePanel.file.uid;
         // Make union of all tags in all files. Do this here once so that if the user deletes a tag
         // that only this file has, it'll stay in this set so it can be added again easily.
         for (const file of this.filePanel.context.library.getAllFiles()) {
             this.allTags.add(...file.tags);
         }
+        // We have buttons for adding/removing the trash tag.
         this.allTags.remove(TRASH_TAG);
         // Make our own copy of tags that will reflect what's in the UI.
         this.tags.add(...filePanel.file.tags);
-        this.element.classList.add("file-info-tab");
+        this.element.classList.add("file-info-tab", this.editable ? "file-info-tab-editable" : "file-info-tab-readonly");
         // Container of form.
         const formContainer = document.createElement("div");
         formContainer.classList.add("file-panel-form-container");
@@ -58426,7 +58429,7 @@ class FileInfoTab_FileInfoTab extends PageTab {
             labelElement.innerText = label;
             form.append(labelElement);
             const inputElement = document.createElement("input");
-            inputElement.disabled = !enabled;
+            inputElement.disabled = !enabled || !this.editable;
             labelElement.append(inputElement);
             return inputElement;
         };
@@ -58438,6 +58441,7 @@ class FileInfoTab_FileInfoTab extends PageTab {
         form.append(noteLabel);
         this.noteInput = document.createElement("textarea");
         this.noteInput.rows = 10;
+        this.noteInput.disabled = !this.editable;
         noteLabel.append(this.noteInput);
         this.authorInput = makeInputBox("Author", undefined, true);
         this.releaseYearInput = makeInputBox("Release year", undefined, true);
@@ -58462,6 +58466,7 @@ class FileInfoTab_FileInfoTab extends PageTab {
             form.append(labelElement);
             this.sharedInput = document.createElement("input");
             this.sharedInput.type = "checkbox";
+            this.sharedInput.disabled = !this.editable;
             const offIcon = makeIcon("toggle_off");
             offIcon.classList.add("off-state");
             const onIcon = makeIcon("toggle_on");
@@ -58528,7 +58533,9 @@ class FileInfoTab_FileInfoTab extends PageTab {
         this.revertButton = makeTextButton("Revert", "undo", "revert-button", undefined);
         this.saveButton = makeTextButton("Save", ["save", "cached", "check"], "save-button", undefined);
         this.saveButton.title = "Ctrl-Enter to save and close";
-        actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
+        if (this.editable) {
+            actionBar.append(this.deleteButton, this.undeleteButton, this.revertButton, this.saveButton);
+        }
         for (const input of [this.nameInput, this.filenameInput, this.noteInput, this.authorInput, this.releaseYearInput]) {
             input.addEventListener("input", () => this.updateButtonStatus());
         }
@@ -58656,50 +58663,65 @@ class FileInfoTab_FileInfoTab extends PageTab {
         const tagListElement = document.createElement("div");
         tagListElement.classList.add("tag-list");
         this.tagsInput.append(tagListElement);
+        let count = 0;
         for (const tag of this.allTags.asArray()) {
-            const tagOptions = {
-                tag: tag,
-            };
-            if (this.tags.has(tag)) {
-                tagOptions.iconName = "clear";
-                tagOptions.clickCallback = () => {
-                    this.tags.remove(tag);
-                    this.updateTagsInput();
-                    this.updateButtonStatus();
+            if (this.tags.has(tag) || this.editable) {
+                const tagOptions = {
+                    tag: tag,
                 };
+                // Add clear/add actions if editable.
+                if (this.editable) {
+                    if (this.tags.has(tag)) {
+                        tagOptions.iconName = "clear";
+                        tagOptions.clickCallback = () => {
+                            this.tags.remove(tag);
+                            this.updateTagsInput();
+                            this.updateButtonStatus();
+                        };
+                    }
+                    else {
+                        tagOptions.faint = true;
+                        tagOptions.iconName = "add";
+                        tagOptions.clickCallback = () => {
+                            this.tags.add(tag);
+                            this.updateTagsInput();
+                            this.updateButtonStatus();
+                        };
+                    }
+                }
+                tagListElement.append(makeTagCapsule(tagOptions));
+                count += 1;
             }
-            else {
-                tagOptions.iconName = "add";
-                tagOptions.faint = true;
-                tagOptions.clickCallback = () => {
-                    this.tags.add(tag);
-                    this.updateTagsInput();
+        }
+        // Form to add a new tag.
+        if (this.editable) {
+            const newTagForm = document.createElement("form");
+            newTagForm.classList.add("new-tag-form");
+            newTagForm.addEventListener("submit", event => {
+                const newTag = newTagInput.value.trim();
+                if (newTag !== "" && newTag !== TRASH_TAG) {
+                    this.tags.add(newTag);
+                    this.allTags.add(newTag);
+                    this.updateTagsInput(true);
                     this.updateButtonStatus();
-                };
+                }
+                event.preventDefault();
+                event.stopPropagation();
+            });
+            tagListElement.append(newTagForm);
+            const newTagInput = document.createElement("input");
+            newTagInput.placeholder = "New tag";
+            if (newTagFocus) {
+                setTimeout(() => newTagInput.focus(), 0);
             }
-            tagListElement.append(makeTagCapsule(tagOptions));
+            newTagForm.append(newTagInput);
         }
-        const newTagForm = document.createElement("form");
-        newTagForm.classList.add("new-tag-form");
-        newTagForm.addEventListener("submit", event => {
-            const newTag = newTagInput.value.trim();
-            if (newTag !== "" && newTag !== TRASH_TAG) {
-                this.tags.add(newTag);
-                this.allTags.add(newTag);
-                this.updateTagsInput(true);
-                this.updateButtonStatus();
-            }
-            event.preventDefault();
-            event.stopPropagation();
-        });
-        // this.tagsInput.append(newTagForm);
-        tagListElement.append(newTagForm);
-        const newTagInput = document.createElement("input");
-        newTagInput.placeholder = "New tag";
-        if (newTagFocus) {
-            setTimeout(() => newTagInput.focus(), 0);
+        else if (count === 0) {
+            const instructions = document.createElement("div");
+            instructions.classList.add("tags-instructions");
+            instructions.innerText = "There are to tags for this file.";
+            tagListElement.append(instructions);
         }
-        newTagForm.append(newTagInput);
     }
     /**
      * Fill the screenshots UI with those from the file.
@@ -58712,18 +58734,25 @@ class FileInfoTab_FileInfoTab extends PageTab {
         if (this.filePanel.file.screenshots.length === 0) {
             const instructions = document.createElement("div");
             instructions.classList.add("screenshots-instructions");
-            instructions.innerText = "To take a screenshot, run the program and click the camera icon.";
+            if (this.editable) {
+                instructions.innerText = "To take a screenshot, run the program and click the camera icon.";
+            }
+            else {
+                instructions.innerText = "There are no screenshots for this file.";
+            }
             this.screenshotsDiv.append(instructions);
         }
         for (const screenshot of this.filePanel.file.screenshots) {
             const screenshotDiv = document.createElement("div");
             screenshotDiv.setAttribute(SCREENSHOT_ATTR, screenshot);
             screenshotDiv.classList.add("screenshot");
-            const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
-                screenshotDiv.remove();
-                this.updateButtonStatus();
-            });
-            screenshotDiv.append(deleteButton);
+            if (this.editable) {
+                const deleteButton = makeIconButton(makeIcon("delete"), "Delete screenshot", () => {
+                    screenshotDiv.remove();
+                    this.updateButtonStatus();
+                });
+                screenshotDiv.append(deleteButton);
+            }
             this.screenshotsDiv.append(screenshotDiv);
             // Defer this so that if we have a lot of screenshots it doesn't hang the browser when
             // creating this panel.
@@ -59466,7 +59495,7 @@ class Context_Context {
         this._user = undefined;
         this.userResolved = false;
         this.onUser = new strongly_typed_events_dist["SimpleEventDispatcher"]();
-        this.onFragment = new strongly_typed_events_dist["SimpleEventDispatcher"]();
+        this.onRunningFile = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         // Dispatched when we initially figure out if we're signed in or not.
         this.onUserResolved = new strongly_typed_events_dist["SimpleEventDispatcher"]();
         this.library = library;
@@ -59517,9 +59546,9 @@ class Context_Context {
     /**
      * Set the currently-running file, if any.
      */
-    set runningFile(value) {
-        this._runningFile = value;
-        this.onFragment.dispatch(this.getFragment());
+    set runningFile(file) {
+        this._runningFile = file;
+        this.onRunningFile.dispatch(file);
     }
     /**
      * Set the currently signed-in user.
@@ -59836,7 +59865,10 @@ function createNavbar(openLibrary, signIn, signOut) {
     return navbar;
 }
 function main() {
-    var _a;
+    var _a, _b;
+    const args = Context_Context.parseFragment(window.location.hash);
+    const runFileId = (_a = args.get("runFile")) === null || _a === void 0 ? void 0 : _a[0];
+    const userId = (_b = args.get("user")) === null || _b === void 0 ? void 0 : _b[0];
     const body = document.querySelector("body");
     body.classList.add("signed-out");
     // Configuration for Firebase.
@@ -59923,9 +59955,11 @@ function main() {
     const viewPanel = new dist["SettingsPanel"](screen.getNode(), trs80, dist["PanelType"].VIEW);
     const controlPanel = new dist["ControlPanel"](screen.getNode());
     controlPanel.addResetButton(reboot);
+    /* We don't currently mount a cassette.
     controlPanel.addTapeRewindButton(() => {
         // cassette.rewind();
     });
+     */
     controlPanel.addSettingsButton(hardwareSettingsPanel);
     controlPanel.addSettingsButton(viewPanel);
     // const progressBar = new ProgressBar(screen.getNode());
@@ -59953,15 +59987,7 @@ function main() {
     });
     reboot();
     const context = new Context_Context(library, trs80, db, panelManager);
-    context.onFragment.subscribe(fragment => {
-        window.location.hash = fragment;
-    });
-    context.onUser.subscribe(user => {
-        body.classList.toggle("signed-in", user !== undefined);
-        body.classList.toggle("signed-out", user === undefined);
-    });
-    // TODO make this button appear and disappear as we have/not have a program.
-    controlPanel.addScreenshotButton(() => {
+    const screenshotButton = controlPanel.addScreenshotButton(() => {
         if (context.runningFile !== undefined) {
             let file = context.runningFile;
             const screenshot = trs80.getScreenshot();
@@ -59978,12 +60004,30 @@ function main() {
             });
         }
     });
+    // Start hidden, since the user isn't signed in until later.
+    screenshotButton.classList.add("hidden");
     controlPanel.addEditorButton(() => editor.startEdit());
+    /**
+     * Update whether the user can take a screenshot of the running program.
+     */
+    function updateScreenshotButtonVisibility() {
+        const canSaveScreenshot = context.runningFile !== undefined &&
+            context.user !== undefined &&
+            context.runningFile.uid === context.user.uid;
+        screenshotButton.classList.toggle("hidden", !canSaveScreenshot);
+    }
+    context.onRunningFile.subscribe(() => {
+        window.location.hash = context.getFragment();
+        updateScreenshotButtonVisibility();
+    });
     context.onUser.subscribe(user => {
+        body.classList.toggle("signed-in", user !== undefined);
+        body.classList.toggle("signed-out", user === undefined);
+        updateScreenshotButtonVisibility();
         library.removeAll();
         if (user !== undefined) {
             // Fetch all files.
-            context.db.getAllFiles(user.uid)
+            context.db.getAllFiles(userId !== null && userId !== void 0 ? userId : user.uid)
                 .then((querySnapshot) => {
                 // Sort files before adding them to the library so that they show up in the UI in order
                 // and the screenshots get loaded with the visible ones first.
@@ -60019,8 +60063,6 @@ function main() {
         }
     });
     // See if we should run an app right away.
-    const args = Context_Context.parseFragment(window.location.hash);
-    const runFileId = (_a = args.get("runFile")) === null || _a === void 0 ? void 0 : _a[0];
     context.onUserResolved.subscribe(() => {
         // We're signed in, or not, and can now read the database.
         if (runFileId !== undefined) {
