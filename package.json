@@ -35,7 +35,7 @@
     "teamten-ts-utils": "^1.0.0",
     "trs80-base": "^1.0.4",
     "trs80-disasm": "^1.0.1",
-    "trs80-emulator": "^1.1.10",
+    "trs80-emulator": "^1.1.12",
     "z80-base": "^1.0.6"
   }
 }
