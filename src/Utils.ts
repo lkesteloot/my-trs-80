@@ -42,9 +42,12 @@ export function defer(f: () => void): void {
  * Format a long date without a time.
  */
 export function formatDate(date: Date): string {
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-
-    return date.toLocaleDateString(undefined, options);
+    return date.toLocaleDateString(undefined, {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
 }
 
 /**
