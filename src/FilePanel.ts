@@ -32,35 +32,40 @@ export class FilePanel extends TabbedPanel implements IFilePanel {
         this.nextFilePanel = gFilePanelHead;
         gFilePanelHead = this;
 
-        const trs80File = decodeTrs80File(file.binary, file.filename);
+        let trs80File = decodeTrs80File(file.binary, file.filename);
 
         this.pageTabs.addTab(new FileInfoTab(this, trs80File));
         this.pageTabs.addTab(new HexdumpTab(this.context, trs80File));
 
         // Refer to the file in the cassette if possible.
-        let effectiveFile = trs80File;
-        if (effectiveFile instanceof Cassette && effectiveFile.files.length === 1) {
+        if (trs80File.className === "Cassette" && trs80File.files.length === 1) {
             // Here we could open a tab for each file on the cassette.
-            effectiveFile = effectiveFile.files[0].file;
+            trs80File = trs80File.files[0].file;
         }
 
-        if (trs80File instanceof FloppyDisk) {
-            const trsdos = decodeTrsdos(trs80File);
-            if (trsdos !== undefined) {
-                this.pageTabs.addTab(new TrsdosTab(this, trsdos));
-            }
-        }
+        switch (trs80File.className) {
+            case "Jv1FloppyDisk":
+            case "Jv3FloppyDisk":
+            case "DmkFloppyDisk":
+                const trsdos = decodeTrsdos(trs80File);
+                if (trsdos !== undefined) {
+                    this.pageTabs.addTab(new TrsdosTab(this, trsdos));
+                }
+                break;
 
-        if (effectiveFile instanceof BasicProgram) {
-            this.pageTabs.addTab(new BasicTab(effectiveFile));
-        }
-        if (effectiveFile instanceof CmdProgram) {
-            this.pageTabs.addTab(new CmdTab(effectiveFile));
-            this.pageTabs.addTab(new DisassemblyTab(effectiveFile));
-        }
-        if (effectiveFile instanceof SystemProgram) {
-            this.pageTabs.addTab(new SystemProgramTab(effectiveFile));
-            this.pageTabs.addTab(new DisassemblyTab(effectiveFile));
+            case "BasicProgram":
+                this.pageTabs.addTab(new BasicTab(trs80File));
+                break;
+
+            case "CmdProgram":
+                this.pageTabs.addTab(new CmdTab(trs80File));
+                this.pageTabs.addTab(new DisassemblyTab(trs80File));
+                break;
+
+            case "SystemProgram":
+                this.pageTabs.addTab(new SystemProgramTab(trs80File));
+                this.pageTabs.addTab(new DisassemblyTab(trs80File));
+                break;
         }
 
         if (context.library.isDuplicate(file)) {

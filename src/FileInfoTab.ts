@@ -20,7 +20,7 @@ import firebase from "firebase";
 import {TagSet} from "./TagSet";
 import UpdateData = firebase.firestore.UpdateData;
 
-const SCREENSHOT_ATTR = "data-screenshot";
+const SCREENSHOT_ATTR = `data-screenshot`;
 
 /**
  * Handles the file info tab in the file panel.

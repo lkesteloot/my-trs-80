@@ -73,43 +73,50 @@ export class CmdTab extends PageTab {
 
         // Display a row for each chunk.
         let programAddress: number | undefined = undefined;
-        for (const chunk of cmdProgram.chunks) {
+        chunkLoop: for (const chunk of cmdProgram.chunks) {
             const line = document.createElement("div");
             lines.push(line);
 
             // Chunk type.
             add(line, toHexByte(chunk.type) + "  ", "cmd-address");
 
-            if (chunk instanceof CmdLoadBlockChunk) {
-                add(line, "Load at ", "cmd-opcodes");
-                add(line, toHexWord(chunk.address), "cmd-address");
-                add(line, ": ", "cmd-opcodes");
-                addBinarySnippet(line, chunk.loadData);
-                if (programAddress !== undefined && chunk.address !== programAddress) {
-                    add(line, " (not contiguous, expected " + toHexWord(programAddress) + ")", "cmd-error");
-                }
-                programAddress = chunk.address + chunk.loadData.length;
-            } else if (chunk instanceof CmdTransferAddressChunk) {
-                if (chunk.rawData.length !== 2) {
-                    add(line, "Transfer address chunk has invalid length " + chunk.rawData.length, "cmd-error");
-                } else {
-                    add(line, "Jump to ", "cmd-opcodes");
+            switch (chunk.className) {
+                case "CmdLoadBlockChunk":
+                    add(line, "Load at ", "cmd-opcodes");
                     add(line, toHexWord(chunk.address), "cmd-address");
-                }
-                // Not sure what to do here. I've seen junk after this block. I suspect that CMD
-                // parsers of the time, when running into this block, would immediately just
-                // jump to the address and ignore everything after it, so let's emulate that.
-                break;
-            } else if (chunk instanceof CmdLoadModuleHeaderChunk) {
-                add(line, "Load module header: ", "cmd-opcodes");
-                add(line, chunk.filename, "cmd-hex");
-            } else {
-                add(line, "Unknown type: ", "cmd-error");
-                addBinarySnippet(line, chunk.rawData);
-                const name = CMD_CHUNK_TYPE_NAME.get(chunk.type);
-                if (name !== undefined) {
-                    add(line, " (" + name + ")", "cmd-error");
-                }
+                    add(line, ": ", "cmd-opcodes");
+                    addBinarySnippet(line, chunk.loadData);
+                    if (programAddress !== undefined && chunk.address !== programAddress) {
+                        add(line, " (not contiguous, expected " + toHexWord(programAddress) + ")", "cmd-error");
+                    }
+                    programAddress = chunk.address + chunk.loadData.length;
+                    break;
+
+                case "CmdTransferAddressChunk":
+                    if (chunk.rawData.length !== 2) {
+                        add(line, "Transfer address chunk has invalid length " + chunk.rawData.length, "cmd-error");
+                    } else {
+                        add(line, "Jump to ", "cmd-opcodes");
+                        add(line, toHexWord(chunk.address), "cmd-address");
+                    }
+                    // Not sure what to do here. I've seen junk after this block. I suspect that CMD
+                    // parsers of the time, when running into this block, would immediately just
+                    // jump to the address and ignore everything after it, so let's emulate that.
+                    break chunkLoop;
+
+                case "CmdLoadModuleHeaderChunk":
+                    add(line, "Load module header: ", "cmd-opcodes");
+                    add(line, chunk.filename, "cmd-hex");
+                    break;
+
+                default:
+                    add(line, "Unknown type: ", "cmd-error");
+                    addBinarySnippet(line, chunk.rawData);
+                    const name = CMD_CHUNK_TYPE_NAME.get(chunk.type);
+                    if (name !== undefined) {
+                        add(line, " (" + name + ")", "cmd-error");
+                    }
+                    break;
             }
         }
 

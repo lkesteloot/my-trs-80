@@ -352,7 +352,7 @@ export class FileBuilder {
         let trs80File = decodeTrs80File(binary, this.filename);
 
         // Pull the program out of the cassette.
-        if (trs80File instanceof Cassette) {
+        if (trs80File.className === "Cassette") {
             if (trs80File.files.length > 0) {
                 trs80File = trs80File.files[0].file;
                 binary = trs80File.binary;
@@ -360,7 +360,7 @@ export class FileBuilder {
         }
 
         // Clear out the Basic name.
-        if (trs80File instanceof BasicProgram) {
+        if (trs80File.className === "BasicProgram") {
             binary = setBasicName(binary, "A");
         }
 
