@@ -16,7 +16,7 @@
     "@types/navigo": "^7.0.1",
     "@types/node": "^13.13.46",
     "http-server": "^0.12.0",
-    "snowpack": "^3.0.13",
+    "snowpack": "^3.1.0-pre.12",
     "source-map-loader": "^2.0.1",
     "ts-loader": "^8.0.18",
     "tslint": "^6.1.3",
@@ -35,7 +35,7 @@
     "strongly-typed-events": "^1.7.3",
     "teamten-ts-utils": "^1.0.0",
     "trs80-base": "^1.0.5",
-    "trs80-disasm": "^1.0.1",
+    "trs80-disasm": "^1.0.2",
     "trs80-emulator": "^1.1.14",
     "z80-base": "^1.0.6"
   }

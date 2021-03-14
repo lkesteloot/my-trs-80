@@ -4,9 +4,9 @@ import * as base64js from "base64-js";
 import {sha1} from "./Sha1";
 import {TagSet} from "./TagSet";
 import DocumentData = firebase.firestore.DocumentData;
-import UpdateData = firebase.firestore.UpdateData;
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import {BasicProgram, Cassette, decodeTrs80File, setBasicName} from "trs80-base";
+type UpdateData = firebase.firestore.UpdateData;
 
 // What's considered a "new" file.
 const NEW_TIME_MS = 60*60*24*7*1000;
