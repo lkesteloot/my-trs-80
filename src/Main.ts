@@ -24,6 +24,8 @@ import {AuthUser} from "./User";
 import {Database} from "./Database";
 import {File} from "./File";
 import {Editor} from "trs80-emulator/dist/Editor";
+import {isRegisterSetField, isWordReg, Register, toHexWord} from "z80-base";
+import {disasmForTrs80, disasmForTrs80Program} from "trs80-disasm";
 
 class EmptyCassette extends CassettePlayer {
     // Nothing to do.
@@ -57,6 +59,22 @@ function createNavbar(openLibrary: () => void, signIn: () => void, signOut: () =
     navbar.append(signInButton, signOutButton);
 
     return navbar;
+}
+
+const FLAG_STRING = "CNP3H5ZS"; // From LSB to MSB.
+/**
+ * Convert an 8-bit flag byte to a debug string.
+ * TODO: Move this to z80-base.
+ */
+function makeFlagString(f: number): string {
+    let flagString = "";
+
+    for (let i = 0; i < 8; i++) {
+        flagString += (f & 0x01) !== 0 ? FLAG_STRING[i] : "-";
+        f >>= 1;
+    }
+
+    return flagString;
 }
 
 export function main() {
@@ -233,6 +251,55 @@ export function main() {
     screenshotButton.classList.add("hidden");
 
     controlPanel.addEditorButton(() => editor.startEdit());
+
+    let logging = false;
+    const logs: string[] = [];
+    const MAX_LOGS = 16*1024;
+    const disasm = disasmForTrs80();
+    const readMemory = (address: number): number => trs80.readMemory(address);
+    let stepPc = 0;
+    trs80.onPreStep.subscribe(() => {
+        stepPc = trs80.z80.regs.pc;
+    });
+    trs80.onPostStep.subscribe(() => {
+        if (logging) {
+            const instruction = disasm.disassembleTrace(stepPc, readMemory);
+            const values: string[] = [];
+            for (const arg of instruction.args) {
+                for (const reg of arg.split(/[^a-zA-Z']+/)) {
+                    const regExpanded = reg.replace("'", "Prime");
+                    if (isRegisterSetField(regExpanded)) {
+                        const value = trs80.z80.regs.getValue(regExpanded);
+                        values.push(reg + "=" + toHexWord(value));
+                    }
+                }
+            }
+            const line = toHexWord(stepPc) + "  " +
+                instruction.binText().padEnd(11) + "  " +
+                instruction.toText().padEnd(20) + "  " +
+                makeFlagString(trs80.z80.regs.f) + "  " +
+                values.join(", ");
+            logs.push(line.trimEnd());
+            if (logs.length > MAX_LOGS) {
+                logs.splice(0, logs.length - MAX_LOGS);
+            }
+        }
+    });
+    controlPanel.addResetButton(() => {
+        if (logging) {
+            const dump = logs.join("\n");
+            const blob = new Blob([dump], {type: "text/plain"});
+            const a = document.createElement("a");
+            a.href = window.URL.createObjectURL(blob);
+            a.download = "trace.lst";
+            a.click();
+
+            logging = false;
+        } else {
+            logs.splice(0, logs.length);
+            logging = true;
+        }
+    });
 
     /**
      * Update whether the user can take a screenshot of the running program.
